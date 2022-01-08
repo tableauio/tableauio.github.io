@@ -3,8 +3,8 @@
 ## Homepage
 title = "Tableau"
 titleSeparator = "-"
-titleAddition = "Modern Documentation Theme"
-description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
+titleAddition = "A powerful and cross-platform configuration conversion tool."
+description = "Tableau can convert Excel to Protobuf, and export to different formats: JSON, prototext, and protowire."
 
 ## Documentation
 # docsVersion = "0.3"

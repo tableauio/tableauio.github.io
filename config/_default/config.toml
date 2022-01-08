@@ -12,7 +12,10 @@ rssLimit = 10
 # Multilingual
 defaultContentLanguage = "en"
 disableLanguages = ["de", "nl"]
-# defaultContentLanguageInSubdir = true
+defaultContentLanguageInSubdir = true
+
+# copyright
+copyright = "Tableauio"
 
 # add redirects/headers
 [outputs]
