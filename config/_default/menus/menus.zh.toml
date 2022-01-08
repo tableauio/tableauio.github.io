@@ -1,23 +1,23 @@
 [[docs]]
-  name = "Prologue"
+  name = "前言"
   weight = 10
   identifier = "prologue"
   url = "/docs/prologue/"
 
 [[docs]]
-  name = "Help"
+  name = "帮助"
   weight = 60
   identifier = "help"
   url = "/docs/help/"
 
 [[main]]
-  name = "Docs"
+  name = "文档"
   url = "/docs/prologue/introduction/"
 # url = "/docs/1.0/prologue/introduction/"
   weight = 10
 
 [[main]]
-  name = "Blog"
+  name = "博客"
   url = "/blog/"
   weight = 20
 
@@ -35,6 +35,6 @@
 #   weight = 20
 
 # [[footer]]
-#   name = "Privacy"
+#   name = "隐私政策"
 #   url = "/privacy-policy/"
 #   weight = 10

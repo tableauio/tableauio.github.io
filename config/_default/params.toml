@@ -1,7 +1,7 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Doks"
+title = "Tableau"
 titleSeparator = "-"
 titleAddition = "Modern Documentation Theme"
 description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
@@ -69,7 +69,7 @@ alertText = "Introducing the Doks child theme, several DX + UX updates, and more
 # repoHost [Github | Gitea | GitLab] is used for building the edit link based on git hoster
 repoHost = "GitHub"
 #repoHost = "Gitea"
-docsRepo = "https://github.com/h-enk/doks"
+docsRepo = "https://github.com/tableauio"
 docsRepoBranch = "master"
 editPage = false
 
@@ -84,5 +84,5 @@ editPage = false
   highLight = true
   kaTex = false
   collapsibleSidebar = true
-  multilingualMode = false
+  multilingualMode = true
   docsVersioning = false
