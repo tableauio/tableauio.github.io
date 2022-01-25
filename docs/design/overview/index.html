@@ -11,15 +11,32 @@ Prologue</button><div class=collapse id=section-prologue><ul class="btn-toggle-n
 Guide</button><div class=collapse id=section-guide><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/type/>Type</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/nesting/>Nesting</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/incell/>Incell</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/concept/>Concept</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-design aria-expanded=true>
 Design</button><div class="collapse show" id=section-design><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded active" href=https://tableauio.github.io/docs/design/overview/>Overview</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/design/metadata/>Metadata</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-help aria-expanded=false>
 Help</button><div class=collapse id=section-help><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/help/how-to-update/>How to Update</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/help/troubleshooting/>Troubleshooting</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/help/faq/>FAQ</a></li></ul></div></li></ul></nav></div><nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation"><div class=page-links><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#features>Features</a></li><li><a href=#concepts>Concepts</a></li><li><a href=#workflow>Workflow</a></li><li><a href=#types>Types</a></li><li><a href=#todo>TODO</a><ul><li><a href=#protoc-plugins>protoc plugins</a></li><li><a href=#metadata>Metadata</a></li><li><a href=#generator>Generator</a></li><li><a href=#conversion>Conversion</a></li><li><a href=#pretty-print>Pretty Print</a></li><li><a href=#emitunpopulated>EmitUnpopulated</a></li><li><a href=#scalar-types>Scalar Types</a></li><li><a href=#enumerations>Enumerations</a></li><li><a href=#composite-types>Composite Types</a></li><li><a href=#default-values>Default Values</a></li><li><a href=#empty>Empty</a></li><li><a href=#merge>Merge</a></li><li><a href=#workbook-meta>Workbook meta</a></li><li><a href=#datetime>Datetime</a></li><li><a href=#transpose>Transpose</a></li><li><a href=#validation>Validation</a></li><li><a href=#error-message>Error Message</a></li><li><a href=#performace>Performace</a></li><li><a href=#optimization>Optimization</a></li></ul></li></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><nav aria-label=breadcrumb><ol class=breadcrumb><li class=breadcrumb-item><a href=https://tableauio.github.io/>Home</a></li><li class=breadcrumb-item><a href=https://tableauio.github.io/docs/>Docs</a></li><li class=breadcrumb-item><a href=https://tableauio.github.io/docs/design/>Design</a></li><li class="breadcrumb-item active" aria-current=page>Overview</li></ol></nav><h1>Overview</h1><p class=lead>Tableau is a powerful configuration converter based on Protobuf(proto3).</p><nav class=d-xl-none aria-label="Quaternary navigation"><div class=page-links><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#features>Features</a></li><li><a href=#concepts>Concepts</a></li><li><a href=#workflow>Workflow</a></li><li><a href=#types>Types</a></li><li><a href=#todo>TODO</a><ul><li><a href=#protoc-plugins>protoc plugins</a></li><li><a href=#metadata>Metadata</a></li><li><a href=#generator>Generator</a></li><li><a href=#conversion>Conversion</a></li><li><a href=#pretty-print>Pretty Print</a></li><li><a href=#emitunpopulated>EmitUnpopulated</a></li><li><a href=#scalar-types>Scalar Types</a></li><li><a href=#enumerations>Enumerations</a></li><li><a href=#composite-types>Composite Types</a></li><li><a href=#default-values>Default Values</a></li><li><a href=#empty>Empty</a></li><li><a href=#merge>Merge</a></li><li><a href=#workbook-meta>Workbook meta</a></li><li><a href=#datetime>Datetime</a></li><li><a href=#transpose>Transpose</a></li><li><a href=#validation>Validation</a></li><li><a href=#error-message>Error Message</a></li><li><a href=#performace>Performace</a></li><li><a href=#optimization>Optimization</a></li></ul></li></ul></nav></div></nav><h2 id=features>Features <a href=#features class=anchor aria-hidden=true>#</a></h2><ul><li>Convert <strong>Excel</strong> to <strong>JSON</strong>, JSON is the first-class citizen of exporting targets.</li><li>Use <strong>Protoconf</strong> as the IDL(Interface Description Language) to define the structure of <strong>Excel/XML</strong>.</li><li>Use <strong>Golang</strong> to develop the conversion engine.</li><li>Support multiple programming languages, thanks to <strong>Protobuf(proto3)</strong>.</li></ul><h2 id=concepts>Concepts <a href=#concepts class=anchor aria-hidden=true>#</a></h2><ul><li>Importer: Excel/XML importer.</li><li>IR: Intermediate Representation.</li><li>Filter: filter the IR.</li><li>Exporter: JSON(protojson), TEXT(prototext), and BIN(protowire).</li><li>Protoconf: a configuration metadata format based on protobuf.</li></ul><h2 id=workflow>Workflow <a href=#workflow class=anchor aria-hidden=true>#</a></h2><pre><code class=language-mermaid>graph TD
-  A1(XML) --&gt;|xlsxgen| A
-  A(Excel) --&gt;|protogen| B[Protoconf]
-  A --&gt; |excelize loader|C[confgen.Parser]
+  A0(Excel) --&gt; |excelize| I[importer]
+  click A0 href &quot;https://github.com/qax-os/excelize&quot;
 
-  subgraph Core
-    B --&gt; |protoc-gen-go| D[Protobuf Go]
-    D --&gt; |protoreflect| C
-    C --&gt; E[confgen.Exporter]
+  A1(CSV) --&gt; |&quot;encoding/csv&quot;| I
+  click A1 href &quot;https://pkg.go.dev/encoding/csv&quot;
+
+  A2(XML) --&gt; |xmlquery| I
+  click A2 href &quot;https://github.com/antchfx/xmlquery&quot;
+
+  I --&gt; PG
+  I --&gt; CG
+
+  subgraph Generator
+    PG[protogen] --&gt; PGP
+    PGP[protogen.Parser] --&gt; PGE
+    
+
+    CG[confgen] --&gt; CGP
+    CGP[confgen.Parser] --&gt; E[confgen.Exporter]
+    
   end
+
+  PGE[protogen.Exporter] --&gt; B
+  B(Protoconf) --&gt; |protoc-gen-go| D
+  D[Protobuf Go] --&gt; |protoreflect| CGP
+   
 
   E --&gt; O1(&quot;JSON(protojson)&quot;)
   E --&gt; O2(&quot;TEXT(prototext)&quot;)
@@ -30,4 +47,4 @@ Help</button><div class=collapse id=section-help><ul class="btn-toggle-nav list-
 <script src=https://tableauio.github.io/js/highlight.min.e13cfba4c5524e30386cb9ea71f0f191f39d15b25b222f4b67549689f7c076158f42a2282446044f5cdacc76a6d003efbfa252a84aea0116703803b6339ae35f.js integrity="sha512-4Tz7pMVSTjA4bLnqcfDxkfOdFbJbIi9LZ1SWiffAdhWPQqIoJEYET1zazHam0APvv6JSqErqARZwOAO2M5rjXw==" crossorigin=anonymous defer></script>
 <script src=https://tableauio.github.io/main.min.91c02dae7365d87df08e396d1321cd34c1c3ad1b8ebc44eece060f7c26efdf1d8fca26ede809880087f11c133f3d9dd6b27760c79f403b8f1b393602d30f7f04.js integrity="sha512-kcAtrnNl2H3wjjltEyHNNMHDrRuOvETuzgYPfCbv3x2Pyibt6AmIAIfxHBM/PZ3Wsndgx59AO48bOTYC0w9/BA==" crossorigin=anonymous defer></script>
 <script src=https://tableauio.github.io/js/mermaid.min.e0baa9c44caa02b79335fe30c4018207da122cf38634a934282ebd2fcda7562edf04403ac11b822e3ab1b11db3ae404497fc609198c1a71d548d655da3b079b5.js integrity="sha512-4LqpxEyqAreTNf4wxAGCB9oSLPOGNKk0KC69L82nVi7fBEA6wRuCLjqxsR2zrkBEl/xgkZjBpx1UjWVdo7B5tQ==" crossorigin=anonymous defer></script>
-<script src=https://tableauio.github.io/index.min.9352b41fa422593efbc3b11fe3b2167f45b92ade8dcd962d5eb7d5a3dd5890c84b150651e588256d502c6cd55c3234b34cb82d60d819d03426a7fa99788ef9c1.js integrity="sha512-k1K0H6QiWT77w7Ef47IWf0W5Kt6NzZYtXrfVo91YkMhLFQZR5YglbVAsbNVcMjSzTLgtYNgZ0DQmp/qZeI75wQ==" crossorigin=anonymous defer></script></body></html>
+<script src=https://tableauio.github.io/index.min.74089086f366fdd9d244f1bfcbf732b5d7f50cf3d9fb96e9923e08d1231b5a5e24c17b3d15b4857bf76f48bcb5214f81996ef890a9d83461c2cb4c62ee2d6ab0.js integrity="sha512-dAiQhvNm/dnSRPG/y/cytdf1DPPZ+5bpkj4I0SMbWl4kwXs9FbSFe/dvSLy1IU+BmW74kKnYNGHCy0xi7i1qsA==" crossorigin=anonymous defer></script></body></html>
