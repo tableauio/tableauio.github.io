@@ -12,15 +12,15 @@ toc: true
 
 ## Overview
 
-| Option       | Function                                                                                        |
-| ------------ | ----------------------------------------------------------------------------------------------- |
-| `Sheet`      | The worksheet name needed to be processed.                                                      |
-| `Alias`      | Rename worksheet to be used as the generated protoconf message name.                            |
-| `Nameline`   | The line number of column name definition in a cell. `0` means the whole cell.<br>Default: `0`. |
-| `Typeline`   | The line number of column type definition in a cell. `0` means the whole cell.<br>Default: `0`. |
-| `Transpose`  | Interchanging the rows and columns of a given sheet.                                            |
-| `Nested`     | Nested naming of the **namerow**.<br>Default: `false`.                                          |
-| `Sep`        | Separator for in-cell list or map item.<br>Default: `,`.                                        |
-| `Subsep`     | Subseparator for separating in-cell map Key-Value pair.<br>Default: `:`.                        |
-| `OrderedMap` |      Whether generate OrderedMap accessers.<br>Default: `false`.                                                                                           |
+| Option       | Function                                                                                                         |
+|--------------|------------------------------------------------------------------------------------------------------------------|
+| `Sheet`      | The worksheet name needed to be processed.                                                                       |
+| `Alias`      | Rename worksheet to be used as the generated protoconf message name.                                             |
+| `Nameline`   | The line number of column name definition in a cell. `0` means the whole cell.<br>Default: `0`.                  |
+| `Typeline`   | The line number of column type definition in a cell. `0` means the whole cell.<br>Default: `0`.                  |
+| `Transpose`  | Interchanging the rows and columns of a given sheet.                                                             |
+| `Nested`     | Nested naming of the **namerow**.<br>Default: `false`.                                                           |
+| `Sep`        | Separator for:<br> &nbsp;&nbsp; 1. separating in-cell list elements. <br> &nbsp;&nbsp; 2. separating in-cell map items.<br>Default: `,`. |
+| `subsep`     | Subseparator for separating in-cell map Key-Value pair.<br>Default: `:`.                                         |
+| `OrderedMap` | Generate OrderedMap accessers or not.<br>Default: `false`.                                                       |
 {.table-striped .table-hover}

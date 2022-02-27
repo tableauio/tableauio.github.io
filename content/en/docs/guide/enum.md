@@ -18,7 +18,7 @@ The tableau parser accepts three enum value forms:
   2. enum value name.
   3. enum value alias name (with EnumValueOptions specified).
 
-Enum type `FruitType` is defined as:
+For example, enum type `FruitType` is defined as:
 
 ```protobuf
 enum FruitType {

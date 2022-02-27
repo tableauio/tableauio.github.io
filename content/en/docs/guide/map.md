@@ -219,15 +219,15 @@ More useful options are illustrated at metasheet chapter. [Metasheet @TABLEAU â†
 
 ## Enum key map
 
-As the protobuf documents the restrictions of map key type:
+As the protobuf documents the restrictions of [map key type](https://developers.google.com/protocol-buffers/docs/proto3#maps):
 
 > ... the `key_type` can be any integral or string type (so, any
-> scalar type except for floating point types and bytes). Note
+> **scalar** type except for floating point types and `bytes`). Note
 > that enum is not a valid `key_type`.
 
 However, key type as enum is very useful in some situations. So we
-support it in a simple way: enum type is treated as `int32` to define
-key type, but enum type is include in value type (struct).
+support it in a simple way: enum type is treated as `int32` as
+key type, but enum type is included in value type (struct).
 
 If `EnumKeyType` is predefined as:
 

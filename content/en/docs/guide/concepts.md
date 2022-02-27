@@ -36,7 +36,7 @@ toc: true
 | `datarow`   | Start row number of data at a worksheet.<br>Default: `4`.                                                                              |
 | `nameline`  | The line number of column name definition in a cell. `0` means the whole cell.<br>Default: `0`.                                        |
 | `typeline`  | The line number of column type definition in a cell. `0` means the whole cell.<br>Default: `0`.                                        |
-| `sep`       | Separator for:<br>  1. separating in-cell list elements. <br>  2. separating in-cell map items.<br>Default: `,`.                       |
+| `sep`       | Separator for:<br> &nbsp;&nbsp; 1. separating in-cell list elements. <br> &nbsp;&nbsp; 2. separating in-cell map items.<br>Default: `,`.                       |
 | `subsep`    | Subseparator for separating in-cell map Key-Value pair.<br>Default: `:`.                                                               |
 | `nested`    | Nested naming of the **namerow**.<br>Default: `false`.                                                                                 |
 | `layout`    | Incell, vertical(cross-cell) or horizontal(cross-cell).                                                                                |
