@@ -1,79 +1,70 @@
 ---
 title: "Quick Start"
-description: "One page summary of how to start a new Doks project."
-lead: "One page summary of how to start a new Doks project."
+description: "This guide gets you started with Tableau in Go with a simple working example."
+lead: "This guide gets you started with Tableau in Go with a simple working example."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
 images: []
-menu:
-  docs:
-    parent: "prologue"
-weight: 110
+weight: 100
 toc: true
 ---
 
-## Requirements
+## Prerequisites
 
-- [Git](https://git-scm.com/) — latest source release
-- [Node.js](https://nodejs.org/) — latest LTS version or newer
+- [Go](https://golang.org/), any one of the **three latest major**  [releases of Go](https://golang.org/doc/devel/release.html).
+  - For installation instructions, see Go’s [Getting Started](https://golang.org/doc/install) guide.
+- [Protocol buffer](https://developers.google.com/protocol-buffers)  compiler,  `protoc`,  [version 3](https://developers.google.com/protocol-buffers/docs/proto3).
+  - For installation instructions, see  [Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/).
+- **Go plugins** for the protocol compiler:
+  1. Install the protocol compiler plugins for Go using the following commands:
 
-{{< details "Why Node.js?" >}}
-Doks uses npm (included with Node.js) to centralize dependency management, making it [easy to update]({{< relref "how-to-update" >}}) resources, build tooling, plugins, and build scripts.
-{{< /details >}}
+     ```bash
+     go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+     go install github.com/tableauio/tableau/cmd/tableauc@v0.9.4
+     ```
 
-## Start a new Doks project
+  2. Update your PATH so that the protoc compiler can find the plugins:
 
-Create a new site, change directories, install dependencies, and start development server.
+     ```bash
+     export PATH="$PATH:$(go env GOPATH)/bin"
+     ```
 
-### Create a new site
+## Get the example code
 
-Doks is available as a child theme and a starter theme.
+The example code is part of the [tableau/demo](https://github.com/tableauio/demo) repo.
 
-#### Child theme
+1. [Download the repo as a zip file](https://github.com/tableauio/demo/archive/refs/heads/master.zip) and unzip it, or clone the repo:
 
-- Intended for novice to intermediate users
-- Intended for minor customizations
-- [Easily update npm packages]({{< relref "how-to-update" >}}) — __including__ [Doks](https://www.npmjs.com/package/@hyas/doks)
+   ```bash
+   git clone https://github.com/tableauio/demo
+   ```
 
-```bash
-git clone https://github.com/h-enk/doks-child-theme.git my-doks-site
-```
+2. Change to the quick start example directory:
 
-#### Starter theme
+   ```bash
+   cd demo/examples/helloworld
+   ```
 
-- Intended for intermediate to advanced users
-- Intended for major customizations
-- [Easily update npm packages]({{< relref "how-to-update" >}})
+## Run the example
 
-```bash
-git clone https://github.com/h-enk/doks.git my-doks-site
-```
+From the `examples/helloworld` directory:
 
-{{< details "Help me choose" >}}
-Not sure which one is for you? Pick the child theme.
-{{< /details >}}
+1. Change dir to **excel2proto**, compile and execute:
 
-### Change directories
+   ```bash
+   go run main.go
+   ```
 
-```bash
-cd my-doks-site
-```
+   Then proto files will be generated to `examples/helloworld/proto`.
 
-### Install dependencies
+2. Change dir to **excel2conf**, generate `*.pb.go` and then compile and execute:
 
-```bash
-npm install
-```
+   ```bash
+   bash gen.sh
+   go run main.go
+   ```
 
-### Start development server
+   Then `*.pb.go` files will be generated to `examples/helloworld/protoconf`, and JSON files will be generated to `examples/helloworld/excel2conf/_out`.
 
-```bash
-npm run start
-```
-
-Doks will start the Hugo development webserver accessible by default at `http://localhost:1313`. Saved changes will live reload in the browser.
-
-## Other commands
-
-Doks comes with commands for common tasks. [Commands →]({{< relref "commands" >}})
+Congratulations! You’ve just run a modern configuration converter application with Tableau.

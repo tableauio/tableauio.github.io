@@ -1,34 +1,25 @@
+[[docs]]
+  name = "序"
+  weight = 10
+  identifier = "prologue"
+  url = "/docs/prologue/"
+
+[[docs]]
+  name = "帮助"
+  weight = 60
+  identifier = "help"
+  url = "/docs/help/"
+
 [[main]]
-  name = "Docs"
+  name = "文档"
   url = "/docs/prologue/introduction/"
 # url = "/docs/1.0/prologue/introduction/"
-  identifier = "docs"
   weight = 10
 
 [[main]]
-  name = "Tutorial"
-  weight = 20
-  identifier = "tutorial"
-  url = "/docs/prologue/introduction/"
-
-[[main]]
-  name = "Quick Start"
-  weight = 310
-  identifier = "quick-start"
-  url = "/docs/prologue/quick-start/"
-  parent = "tutorial"
-
-[[main]]
-  name = "Introduction"
-  weight = 320
-  identifier = "introduction"
-  url = "/docs/prologue/introduction/"
-  parent = "tutorial"
-
-[[main]]
-  name = "Blog"
+  name = "博客"
   url = "/blog/"
-  weight = 30
+  weight = 20
 
 [[social]]
   name = "GitHub"
@@ -43,7 +34,7 @@
 #   url = "https://twitter.com/getdoks"
 #   weight = 20
 
-[[footer]]
-  name = "Privacy"
-  url = "/privacy-policy/"
-  weight = 10
+# [[footer]]
+#   name = "隐私政策"
+#   url = "/privacy-policy/"
+#   weight = 10

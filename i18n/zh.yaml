@@ -1,0 +1,6 @@
+get-started:
+   other: 开始
+features:
+   fast:
+      title: 快
+      content: 可以在数秒内转换数千个Excel/XML文件到指定输出格式，这是利用Go语言开发的益处。

@@ -2,52 +2,74 @@
 <section class="section container-fluid mt-n3 pb-3">
   <div class="row justify-content-center">
     <div class="col-lg-12 text-center">
-      <h1 class="mt-0">{{ .Title }}</h1>
+      <h1 class="mt-0"><image src='https://avatars.githubusercontent.com/u/97329105?s=200&v=4' width='100'/>{{ .Title }}</h1>
     </div>
     <div class="col-lg-9 col-xl-8 text-center">
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
-      <a class="btn btn-primary btn-lg px-4 mb-2" href="/docs/{{ if .Site.Params.options.docsVersioning }}{{ .Site.Params.docsVersion }}/{{ end }}prologue/introduction/" role="button">Get Started</a>
-      <p class="meta">Open-source MIT Licensed. <a href="https://github.com/h-enk/doks">GitHub v{{ $data := getJSON "/package.json" }}{{ $data.version }}</a></p>
+      <a class="btn btn-primary btn-lg px-4 mb-2"
+        href="{{ .Site.LanguagePrefix }}/docs/{{ if .Site.Params.options.docsVersioning }}{{ .Site.Params.docsVersion }}/{{ end }}prologue/quick-start/"
+        role="button">{{ T "get-started" }}</a>
+      <p class="meta">Open-source MIT Licensed. <a href="https://github.com/tableauio/tableau/tree/v0.9.4">Tableau v0.9.4</a></p>
     </div>
   </div>
 </section>
+<hr/>
 {{ end }}
 
 {{ define "sidebar-prefooter" }}
-  {{ if eq $.Site.Language.LanguageName "English" }}
-  <section class="section section-sm">
-    <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-5">
-          <h2 class="h4">Security aware</h2>
-          <p>Get A+ scores on <a href="https://observatory.mozilla.org/analyze/doks.netlify.app">Mozilla Observatory</a> out of the box. Easily change the default Security Headers to suit your needs.</p>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">Fast by default ⚡️</h2>
-          <p>Get 100 scores on <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=92eaa982d7dbf92f94fe8ecc03987c9a">Google Lighthouse</a> by default. Doks removes unused css, prefetches links, and lazy loads images.</p>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">SEO-ready</h2>
-          <p>Use sensible defaults for structured data, open graph, and Twitter cards. Or easily change the SEO settings to your liking.</p>
-        </div>
+<section class="section section-sm">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-5">
+        <h2 class="h4">{{ T "features.fast.title" }}</h2>
+        <p>{{ T "features.fast.content" }}</p>
       </div>
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-5">
-          <h2 class="h4">Full text search</h2>
-          <p>Search your Doks site with FlexSearch. Easily customize index settings and search options to your liking.</p>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">Page layouts</h2>
-          <p>Build pages with a landing page, blog, or documentation layout. Add custom sections and components to suit your needs.</p>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">Dark mode</h2>
-          <p>Switch to a low-light UI with the click of a button. Change colors with variables to match your branding.</p>
+      <div class="col-lg-5">
+        <h2 class="h4">{{ T "features.scaffolding.title" }}</h2>
+        <p>{{ T "features.scaffolding.content" }}</p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4">{{ T "features.metadata.title" }}</h2>
+        <p>{{ T "features.metadata.content" }}</p>
+      </div>
+    </div>
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-5">
+        <h2 class="h4">{{ T "features.platform.title" }}</h2>
+        <p>{{ T "features.platform.content" }}</p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4">{{ T "features.format.title" }}</h2>
+        <p>{{ T "features.format.content" }}</p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4">{{ T "features.language.title" }}</h2>
+        <p>{{ T "features.language.content" }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sm mt-3 pt-3">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-10 col-xl-8">
+        <h2 class="h3 mt-3 text-center">Latest blog</h2>
+        <div class="card-list">
+          {{ range first 3 (where .Site.RegularPages.ByDate.Reverse "Section" "blog") -}}
+          <div class="card">
+            <div class="card-body">
+              <h3><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h3>
+              <p>{{ .Params.lead | safeHTML }}</p>
+              {{ partial "main/blog-meta.html" . -}}
+            </div>
+          </div>
+          {{ end -}}
         </div>
       </div>
     </div>
-  </section>
-  {{ end }}
+  </div>
+</section>
 {{ end }}
 
 {{ define "sidebar-footer" }}
