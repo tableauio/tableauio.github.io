@@ -30,6 +30,8 @@ workbook: `(AliasTest)DemoTest`, worksheet: `(AliasActivity)DemoActivity`
   - Timestamp: `google.protobuf.Timestamp`
   - Duration: `google.protobuf.Duration`
 
+{{< details "activity.proto" >}}
+
 | ActivityID           | ActivityName | ActivityBeginTime   | ActivityDuration | ChapterID           | ChapterName | SectionID       | SectionName | SectionItem1Id | SectionItem1Num | SectionItem2Id | SectionItem2Num |
 | -------------------- | ------------ | ------------------- | ---------------- | ------------------- | ----------- | --------------- | ----------- | -------------- | --------------- | -------------- | --------------- |
 | map<uint32,Activity> | string       | timestamp           | duration         | map<uint32,Chapter> | string      | [Section]uint32 | int32       | [.Item]int32   | int32           | int32          | int32           |
@@ -38,6 +40,8 @@ workbook: `(AliasTest)DemoTest`, worksheet: `(AliasActivity)DemoActivity`
 | 1                    | activity1    | 2020-01-01 05:00:00 | 72h              | 2                   | chapter2    | 1               | section1    | 1001           | 1               | 1002           | 2               |
 | 2                    | activity2    | 2020-01-01 05:00:00 | 72h3m0.5s        | 1                   | chapter1    | 1               | section1    | 1001           | 1               | 1002           | 2               |
 {.table-bordered .table-success .table-sm}
+
+{{< /details >}}
 
 ```protobuf
 // common.proto

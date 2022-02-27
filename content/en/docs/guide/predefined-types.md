@@ -10,10 +10,14 @@ weight: 1500
 toc: true
 ---
 
+## Enum
+
+TODO
+
 ## Struct
+
+TODO
 
 ### Variable naming
 
 You can define custom variable name with the predefined struct.
-
-## Enum
