@@ -1,15 +1,41 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Guide on</title><link>https://tableauio.github.io/docs/guide/</link><description>Recent content in Guide on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Tableauio</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="https://tableauio.github.io/docs/guide/index.xml" rel="self" type="application/rss+xml"/><item><title>Concepts</title><link>https://tableauio.github.io/docs/guide/concepts/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/concepts/</guid><description>Terminology # Term Definition workbook One excel file.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Guide on</title><link>https://tableauio.github.io/docs/guide/</link><description>Recent content in Guide on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Tableauio</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="https://tableauio.github.io/docs/guide/index.xml" rel="self" type="application/rss+xml"/><item><title>Concepts</title><link>https://tableauio.github.io/docs/guide/concepts/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/concepts/</guid><description>Terminology #
+Basics #
+Term Definition workbook One excel file.
 One XML file.
 Multiple CSV files named with same prefix seperated by #. worksheet One sheet in a excel file.
 One root node of a XML file.
-One CSV file. metasheet A worksheet named @TABLEAU to specify tableau parser options. row The row in a sheet. namerow Exact row number of column name definition at a worksheet.</description></item><item><title>Grammar and types</title><link>https://tableauio.github.io/docs/guide/grammar-and-types/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/grammar-and-types/</guid><description>Basics # Tableau borrows most of its syntax and types from Protocol Buffers (proto3) and Golang.
-Scalar types # Details disccused at Protocol Buffers Proto3 Scalar.
+One CSV file. metasheet A worksheet named @TABLEAU to specify tableau parser options. row The row in a sheet. column The column in a sheet.</description></item><item><title>Grammar and types</title><link>https://tableauio.github.io/docs/guide/grammar-and-types/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/grammar-and-types/</guid><description>Basics #
+Tableau borrows most of its syntax and types from Protocol Buffers (proto3) and Golang.
+Scalar types #
+Details disccused at Protocol Buffers Proto3 Scalar.
 Kind Types Default Numbers int32, uint32
 int64, uint64
 float, double 0
 0
-0.0 Booleans bool false Strings string &amp;quot;&amp;quot; Bytes bytes &amp;quot;&amp;quot; Well-known types # Type Default Notes datetime 0000-00-00 00:00:00 Format: yyyy-MM-dd HH:mm:ss, e.</description></item><item><title>Struct</title><link>https://tableauio.github.io/docs/guide/struct/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/struct/</guid><description>Cross-cell struct # Horizontal struct # In-cell struct # Each field type of the struct should be scalar type.</description></item><item><title>List</title><link>https://tableauio.github.io/docs/guide/list/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/list/</guid><description>Cross-cell list # Horizontal list # cross-cell scalar list cross-cell struct list: [Conf]string Horizontal layout is list&amp;rsquo;s default layout.
-Vertical list # In-cell list # in-cell scalar list: []string in-cell struct list Keyed list # Pattern: [Conf]&amp;lt;string&amp;gt;</description></item><item><title>Map</title><link>https://tableauio.github.io/docs/guide/map/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/map/</guid><description>Cross-cell map # Horizontal map # cross-cell scalar map cross-cell struct map Vertical map # cross-cell scalar map: map&amp;lt;int32, int32&amp;gt; cross-cell struct map: map&amp;lt;int32, Item&amp;gt; Vertical layout is map&amp;rsquo;s default layout.
-Input # A worksheet ItemConf in HelloWorld.xlsx:
-ID Name Type Item&amp;rsquo;s ID. Item&amp;rsquo;s name. Item&amp;rsquo;s type. map&amp;lt;uint32, Item&amp;gt; string int32 1 item1 100 2 item2 200 3 item3 300 Output # Generated protoconf is hello_world.</description></item><item><title>Enum</title><link>https://tableauio.github.io/docs/guide/enum/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/enum/</guid><description>👉 Enum type must be predefined. Go to Enum section of Include common types →.</description></item><item><title>Nesting</title><link>https://tableauio.github.io/docs/guide/nesting/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0000</pubDate><guid>https://tableauio.github.io/docs/guide/nesting/</guid><description>TODO # nesting: unlimited nesting of message, list, and map. nesting: the composite type&amp;rsquo;s first element can be composite type. Composite types # Struct List Map</description></item><item><title>Predefined types</title><link>https://tableauio.github.io/docs/guide/predefined-types/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0000</pubDate><guid>https://tableauio.github.io/docs/guide/predefined-types/</guid><description>Struct # Enum #</description></item><item><title>Metasheet @TABLEAU</title><link>https://tableauio.github.io/docs/guide/metasheet/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/metasheet/</guid><description>Overview # Option Function Sheet The worksheet name needed to be processed. Alias Rename worksheet to be used as the generated protoconf message name. Nameline The line number of column name definition in a cell. 0 means the whole cell.
+0.0 Booleans bool false Strings string &amp;quot;&amp;quot; Bytes bytes &amp;quot;&amp;quot; Well-known types #
+Type Default Notes datetime 0000-00-00 00:00:00 Format: yyyy-MM-dd HH:mm:ss, e.</description></item><item><title>Struct</title><link>https://tableauio.github.io/docs/guide/struct/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/struct/</guid><description>Cross-cell struct #
+Horizontal struct #
+In-cell struct #
+Each field type of the struct should be scalar type.</description></item><item><title>List</title><link>https://tableauio.github.io/docs/guide/list/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/list/</guid><description>Cross-cell list #
+Horizontal list #
+cross-cell scalar list cross-cell struct list: [Conf]string Horizontal layout is list&amp;rsquo;s default layout.
+Vertical list #
+In-cell list #
+in-cell scalar list: []string in-cell struct list Keyed list #
+Pattern: [Conf]&amp;lt;string&amp;gt;</description></item><item><title>Enum</title><link>https://tableauio.github.io/docs/guide/enum/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/enum/</guid><description>👉
+Enum type must be predefined.
+Go to Enum section of Include common types →.</description></item><item><title>Map</title><link>https://tableauio.github.io/docs/guide/map/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/map/</guid><description>Cross-cell map #
+Horizontal map #
+cross-cell scalar map cross-cell struct map Vertical map #
+cross-cell scalar map: map&amp;lt;int32, int32&amp;gt; cross-cell struct map: map&amp;lt;int32, Item&amp;gt; Vertical layout is map&amp;rsquo;s default layout.
+Input #
+A worksheet ItemConf in HelloWorld.xlsx:
+ID Name Type map&amp;lt;uint32, Item&amp;gt; string int32 Item&amp;rsquo;s ID. Item&amp;rsquo;s name. Item&amp;rsquo;s type. 1 item1 100 2 item2 200 3 item3 300 Output #
+Generated protoconf is hello_world.</description></item><item><title>Nesting</title><link>https://tableauio.github.io/docs/guide/nesting/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0000</pubDate><guid>https://tableauio.github.io/docs/guide/nesting/</guid><description>TODO #
+nesting: unlimited nesting of message, list, and map. nesting: the composite type&amp;rsquo;s first element can be composite type. Composite types #
+Struct List Map</description></item><item><title>Predefined types</title><link>https://tableauio.github.io/docs/guide/predefined-types/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0000</pubDate><guid>https://tableauio.github.io/docs/guide/predefined-types/</guid><description>Struct #
+Variable naming #
+You can define custom variable name with the predefined struct.
+Enum #</description></item><item><title>Metasheet @TABLEAU</title><link>https://tableauio.github.io/docs/guide/metasheet/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/docs/guide/metasheet/</guid><description>Overview #
+Option Function Sheet The worksheet name needed to be processed. Alias Rename worksheet to be used as the generated protoconf message name. Nameline The line number of column name definition in a cell. 0 means the whole cell.
 Default: 0. Typeline The line number of column type definition in a cell. 0 means the whole cell.</description></item></channel></rss>
