@@ -11,6 +11,403 @@ Guide</button><div class="collapse show" id=section-6602bbeb2956c035fb4cb5e844a4
 Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/nl/en/docs/prologue/quick-start/>Quick Start</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/nl/en/docs/prologue/introduction/>Introduction</a></li></ul></div></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-be8df1f28c0abc85a0ed0c6860e5d832 aria-expanded=false>
 Blog</button><div class=collapse id=section-be8df1f28c0abc85a0ed0c6860e5d832><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/nl/en/blog/say-hello-to-tableau/>Say hello to Tableau 👋</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-96858cb143562346b7f065e32c403f30 aria-expanded=false>
 Contributors</button><div class=collapse id=section-96858cb143562346b7f065e32c403f30><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li class="my-1 ms-3"><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-96ba756e95aa71919ef7928a9e265169 aria-expanded=false>
-Wenchy</button><div class=collapse id=section-96ba756e95aa71919ef7928a9e265169><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"></ul></div></li></ul></div></li></ul></nav></aside></div><div class="wrap container-fluid" role=document><div class=content><div class="row justify-content-center"><div class="col-md-12 col-lg-10 col-xl-8"><article><h1>Nesting</h1><h2 id=overview>Overview <a href=#overview class=anchor aria-hidden=true>#</a></h2><ul><li><input checked disabled type=checkbox> nesting: unlimited nesting of message, list, and map.</li><li><input disabled type=checkbox> nesting: the composite type&rsquo;s first element can be composite type.</li></ul><h2 id=composite-types>Composite types <a href=#composite-types class=anchor aria-hidden=true>#</a></h2><ul><li>Struct</li><li>List</li><li>Map</li></ul><h2 id=nested-naming>Nested naming <a href=#nested-naming class=anchor aria-hidden=true>#</a></h2><p>TODO</p></article></div></div></div></div><footer class="footer text-muted"><div class=container-fluid><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a class=text-muted href=https://www.netlify.com/>Netlify</a>, <a class=text-muted href=https://gohugo.io/>Hugo</a>, and <a class=text-muted href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline></ul></div></div></div></footer><script src=/js/bootstrap.min.fdbe9b9ba88a036135318f3c721784d684ac9e3280fe282cc80d7d49f7f9c82780cd54228c1608685a230c09984300d7946fc471734d566fcebc148b65bd16db.js integrity="sha512-/b6bm6iKA2E1MY88cheE1oSsnjKA/igsyA19Sff5yCeAzVQijBYIaFojDAmYQwDXlG/EcXNNVm/OvBSLZb0W2w==" crossorigin=anonymous defer></script>
+Wenchy</button><div class=collapse id=section-96ba756e95aa71919ef7928a9e265169><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"></ul></div></li></ul></div></li></ul></nav></aside></div><div class="wrap container-fluid" role=document><div class=content><div class="row justify-content-center"><div class="col-md-12 col-lg-10 col-xl-8"><article><h1>Nesting</h1><h2 id=overview>Overview <a href=#overview class=anchor aria-hidden=true>#</a></h2><ul><li><input checked disabled type=checkbox> nesting: unlimited nesting of message, list, and map.</li><li><input disabled type=checkbox> nesting: the composite type&rsquo;s first element can be composite type.</li></ul><h2 id=map-in-map>Map in map <a href=#map-in-map class=anchor aria-hidden=true>#</a></h2><h3 id=horizontal-map-in-vertical-map>Horizontal-map in vertical-map <a href=#horizontal-map-in-vertical-map class=anchor aria-hidden=true>#</a></h3><p>TODO</p><h3 id=vertical-map-in-vertical-map>Vertical-map in vertical-map <a href=#vertical-map-in-vertical-map class=anchor aria-hidden=true>#</a></h3><h4 id=input>Input <a href=#input class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>PropID</th><th>PropValue</th></tr></thead><tbody><tr><td>map&lt;uint32, Item></td><td>string</td><td>map&lt;int32, Prop></td><td>int64</td></tr><tr><td>Item&rsquo;s ID.</td><td>Item&rsquo;s name.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td></tr></tbody></table><h4 id=output>Output <a href=#output class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map&lt;uint32, Item&gt; item_map = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    map&lt;int32, Prop&gt; prop_map = 3 [(tableau.field) = {key:&quot;PropID&quot; layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:&quot;PropID&quot;}];
+      int64 prop_value = 2 [(tableau.field) = {name:&quot;PropValue&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemMap&quot;:  {
+        &quot;1&quot;:  {
+            &quot;id&quot;:  1,
+            &quot;name&quot;:  &quot;item1&quot;,
+            &quot;propMap&quot;:  {
+                &quot;10&quot;:  {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                }
+            }
+        },
+        &quot;2&quot;:  {
+            &quot;id&quot;:  2,
+            &quot;name&quot;:  &quot;item2&quot;,
+            &quot;propMap&quot;:  {
+                &quot;10&quot;:  {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                },
+                &quot;20&quot;:  {
+                    &quot;propId&quot;:  20,
+                    &quot;propValue&quot;:  &quot;200&quot;
+                },
+                &quot;30&quot;:  {
+                    &quot;propId&quot;:  30,
+                    &quot;propValue&quot;:  &quot;300&quot;
+                }
+            }
+        }
+    }
+}
+</code></pre></details><h2 id=list-in-map>List in map <a href=#list-in-map class=anchor aria-hidden=true>#</a></h2><h3 id=horizontal-list-in-vertical-map>Horizontal-list in vertical-map <a href=#horizontal-list-in-vertical-map class=anchor aria-hidden=true>#</a></h3><h4 id=input-1>Input <a href=#input-1 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>Prop1ID</th><th>Prop1Value</th><th>Prop2ID</th><th>Prop2Value</th></tr></thead><tbody><tr><td>map&lt;uint32, Item></td><td>string</td><td>[Prop]int32</td><td>int64</td><td>int32</td><td>int64</td></tr><tr><td>Item&rsquo;s ID.</td><td>Item&rsquo;s name.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td><td>40</td><td>400</td></tr><tr><td>3</td><td>item3</td><td>50</td><td>500</td><td></td><td></td></tr></tbody></table><h4 id=output-1>Output <a href=#output-1 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map&lt;uint32, Item&gt; item_map = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    repeated Prop prop_list = 3 [(tableau.field) = {name:&quot;Prop&quot; layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+      int64 value = 2 [(tableau.field) = {name:&quot;Value&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemMap&quot;: {
+        &quot;1&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;item1&quot;,
+            &quot;propList&quot;: [
+                {
+                    &quot;id&quot;: 10,
+                    &quot;value&quot;: &quot;100&quot;
+                },
+                {
+                    &quot;id&quot;: 20,
+                    &quot;value&quot;: &quot;200&quot;
+                }
+            ]
+        },
+        &quot;2&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;item2&quot;,
+            &quot;propList&quot;: [
+                {
+                    &quot;id&quot;: 30,
+                    &quot;value&quot;: &quot;300&quot;
+                },
+                {
+                    &quot;id&quot;: 40,
+                    &quot;value&quot;: &quot;400&quot;
+                }
+            ]
+        },
+        &quot;3&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;item3&quot;,
+            &quot;propList&quot;: [
+                {
+                    &quot;id&quot;: 50,
+                    &quot;value&quot;: &quot;500&quot;
+                }
+            ]
+        }
+    }
+}
+</code></pre></details><h3 id=vertical-list-in-vertical-map>Vertical-list in vertical-map <a href=#vertical-list-in-vertical-map class=anchor aria-hidden=true>#</a></h3><h4 id=input-2>Input <a href=#input-2 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>PropID</th><th>PropValue</th></tr></thead><tbody><tr><td>map&lt;uint32, Item></td><td>string</td><td>[Prop]int32</td><td>int64</td></tr><tr><td>Item&rsquo;s ID.</td><td>Item&rsquo;s name.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td></tr></tbody></table><h4 id=output-2>Output <a href=#output-2 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map&lt;uint32, Item&gt; item_map = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    repeated Prop prop_list = 3 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:&quot;PropID&quot;}];
+      int64 prop_value = 2 [(tableau.field) = {name:&quot;PropValue&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemMap&quot;:  {
+        &quot;1&quot;:  {
+            &quot;id&quot;:  1,
+            &quot;name&quot;:  &quot;item1&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                }
+            ]
+        },
+        &quot;2&quot;:  {
+            &quot;id&quot;:  2,
+            &quot;name&quot;:  &quot;item2&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                },
+                {
+                    &quot;propId&quot;:  20,
+                    &quot;propValue&quot;:  &quot;200&quot;
+                },
+                {
+                    &quot;propId&quot;:  30,
+                    &quot;propValue&quot;:  &quot;300&quot;
+                }
+            ]
+        }
+    }
+}
+</code></pre></details><h2 id=list-in-list>List in list <a href=#list-in-list class=anchor aria-hidden=true>#</a></h2><h3 id=horizontal-list-in-vertical-list>Horizontal-list in vertical-list <a href=#horizontal-list-in-vertical-list class=anchor aria-hidden=true>#</a></h3><h4 id=input-3>Input <a href=#input-3 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>Prop1ID</th><th>Prop1Value</th><th>Prop2ID</th><th>Prop2Value</th></tr></thead><tbody><tr><td>[Item]uint32</td><td>string</td><td>[Prop]int32</td><td>int64</td><td>int32</td><td>int64</td></tr><tr><td>Item&rsquo;s ID.</td><td>Item&rsquo;s name.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td><td>40</td><td>400</td></tr><tr><td>3</td><td>item3</td><td>50</td><td>500</td><td></td><td></td></tr></tbody></table><h4 id=output-3>Output <a href=#output-3 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    repeated Prop prop_list = 3 [(tableau.field) = {name:&quot;Prop&quot; layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+      int64 value = 2 [(tableau.field) = {name:&quot;Value&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemList&quot;:  [
+        {
+            &quot;id&quot;:  1,
+            &quot;name&quot;:  &quot;item1&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;id&quot;:  10,
+                    &quot;value&quot;:  &quot;100&quot;
+                },
+                {
+                    &quot;id&quot;:  20,
+                    &quot;value&quot;:  &quot;200&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;:  2,
+            &quot;name&quot;:  &quot;item2&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;id&quot;:  30,
+                    &quot;value&quot;:  &quot;300&quot;
+                },
+                {
+                    &quot;id&quot;:  40,
+                    &quot;value&quot;:  &quot;400&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;:  3,
+            &quot;name&quot;:  &quot;item3&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;id&quot;:  50,
+                    &quot;value&quot;:  &quot;500&quot;
+                }
+            ]
+        }
+    ]
+}
+</code></pre></details><h3 id=vertical-list-in-vertical-keyed-list>Vertical-list in vertical-keyed-list <a href=#vertical-list-in-vertical-keyed-list class=anchor aria-hidden=true>#</a></h3><h4 id=input-4>Input <a href=#input-4 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>PropID</th><th>PropValue</th></tr></thead><tbody><tr><td>[Item]&lt;uint32></td><td>string</td><td>[Prop]int32</td><td>int64</td></tr><tr><td>Item&rsquo;s ID.</td><td>Item&rsquo;s name.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td></tr></tbody></table><h4 id=output-4>Output <a href=#output-4 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    repeated Prop prop_list = 3 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:&quot;PropID&quot;}];
+      int64 prop_value = 2 [(tableau.field) = {name:&quot;PropValue&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemList&quot;:  [
+        {
+            &quot;id&quot;:  1,
+            &quot;name&quot;:  &quot;item1&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;:  2,
+            &quot;name&quot;:  &quot;item2&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                },
+                {
+                    &quot;propId&quot;:  20,
+                    &quot;propValue&quot;:  &quot;200&quot;
+                },
+                {
+                    &quot;propId&quot;:  30,
+                    &quot;propValue&quot;:  &quot;300&quot;
+                }
+            ]
+        }
+    ]
+}
+</code></pre></details><h2 id=map-in-list>Map in list <a href=#map-in-list class=anchor aria-hidden=true>#</a></h2><h3 id=horizontal-map-in-vertical-list>Horizontal-map in vertical-list <a href=#horizontal-map-in-vertical-list class=anchor aria-hidden=true>#</a></h3><div class="alert alert-danger d-flex" role=alert><div class="flex-shrink-1 alert-icon">👉</div><div class=w-100>To be fixed.</div></div><h4 id=input-5>Input <a href=#input-5 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>Prop1ID</th><th>Prop1Value</th><th>Prop2ID</th><th>Prop2Value</th></tr></thead><tbody><tr><td>[Item]int32</td><td>string</td><td>map&lt;int32, Prop></td><td>int64</td><td>int32</td><td>int64</td></tr><tr><td>Item&rsquo;s ID.</td><td>Item&rsquo;s name.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td><td>40</td><td>400</td></tr><tr><td>3</td><td>item3</td><td>50</td><td>500</td><td></td><td></td></tr></tbody></table><h4 id=output-5>Output <a href=#output-5 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+TODO
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>TODO
+</code></pre></details><h3 id=horizontal-map-in-vertical-keyed-list>Horizontal-map in vertical-keyed-list <a href=#horizontal-map-in-vertical-keyed-list class=anchor aria-hidden=true>#</a></h3><p>TODO</p><h3 id=vertical-map-in-vertical-keyed-list>Vertical-map in vertical-keyed-list <a href=#vertical-map-in-vertical-keyed-list class=anchor aria-hidden=true>#</a></h3><h4 id=input-6>Input <a href=#input-6 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>PropID</th><th>PropValue</th></tr></thead><tbody><tr><td>[Item]&lt;uint32></td><td>string</td><td>map&lt;int32, Prop></td><td>int64</td></tr><tr><td>Item&rsquo;s ID.</td><td>Item&rsquo;s name.</td><td>Item&rsquo;s prop id.</td><td>Item&rsquo;s prop value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td></tr></tbody></table><h4 id=output-6>Output <a href=#output-6 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    map&lt;int32, Prop&gt; prop_map = 3 [(tableau.field) = {key:&quot;PropID&quot; layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:&quot;PropID&quot;}];
+      int64 prop_value = 2 [(tableau.field) = {name:&quot;PropValue&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemList&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;item1&quot;,
+            &quot;propMap&quot;: {
+                &quot;10&quot;: {
+                    &quot;propId&quot;: 10,
+                    &quot;propValue&quot;: &quot;100&quot;
+                }
+            }
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;item2&quot;,
+            &quot;propMap&quot;: {
+                &quot;10&quot;: {
+                    &quot;propId&quot;: 10,
+                    &quot;propValue&quot;: &quot;100&quot;
+                },
+                &quot;20&quot;: {
+                    &quot;propId&quot;: 20,
+                    &quot;propValue&quot;: &quot;200&quot;
+                },
+                &quot;30&quot;: {
+                    &quot;propId&quot;: 30,
+                    &quot;propValue&quot;: &quot;300&quot;
+                }
+            }
+        }
+    ]
+}
+</code></pre></details><h2 id=nested-naming>Nested naming <a href=#nested-naming class=anchor aria-hidden=true>#</a></h2><h3 id=input-7>Input <a href=#input-7 class=anchor aria-hidden=true>#</a></h3><details><summary>worksheet <b>LoaderConf</b> in <b>HelloWorld.xlsx</b></summary><table class="table-bordered table-success"><thead><tr><th>ServerType</th><th>ServerConfType</th><th>ServerConfConditionType</th><th>ServerConfConditionValue</th></tr></thead><tbody><tr><td>map&lt;enum&lt;.ServerType>, Server></td><td>[Conf]&lt;enum&lt;.ConfType&#187;</td><td>[Condition]<int32></td><td>int32</td></tr><tr><td>Server name</td><td>Sheet name</td><td>Condition type</td><td>Condition value</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td>SERVER_TYPE_GAME</td><td>CONF_TYPE_CLOUD</td><td>0</td><td>113</td></tr><tr><td></td><td></td><td>0</td><td>134</td></tr><tr><td>SERVER_TYPE_ACTIVITY</td><td>CONF_TYPE_CLOUD</td><td></td><td></td></tr><tr><td></td><td>1</td><td></td><td></td></tr><tr><td></td><td>CONF_TYPE_LOCAL</td><td>9</td><td>34</td></tr><tr><td></td><td>CONF_TYPE_LOCAL</td><td>9</td><td>12</td></tr><tr><td></td><td>CONF_TYPE_LOCAL</td><td></td><td></td></tr><tr><td></td><td>Remote</td><td></td><td></td></tr><tr><td>MatchServer</td><td>CONF_TYPE_UNKNOWN</td><td></td><td></td></tr></tbody></table></details><details><summary>metasheet <b>@TABLEAU</b> in <b>HelloWorld.xlsx</b></summary><table class="table-bordered table-success"><thead><tr><th>Sheet</th><th>Nested</th></tr></thead><tbody><tr><td>LoaderConf</td><td>true</td></tr></tbody></table></details><details><summary>common.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+enum ConfType {
+  CONF_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &quot;Unknown&quot;];
+  CONF_TYPE_CLOUD = 1 [(tableau.evalue).name = &quot;Cloud&quot;];
+  CONF_TYPE_LOCAL = 2 [(tableau.evalue).name = &quot;Local&quot;];
+  CONF_TYPE_REMOTE = 3 [(tableau.evalue).name = &quot;Remote&quot;];
+}
+
+enum ServerType {
+  SERVER_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &quot;Unknown&quot;];
+  SERVER_TYPE_GAME = 1 [(tableau.evalue).name = &quot;GameServer&quot;];
+  SERVER_TYPE_ACTIVITY = 2 [(tableau.evalue).name = &quot;ActivityServer&quot;];
+  SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &quot;MatchServer&quot;];
+}
+</code></pre></details><h3 id=output-7>Output <a href=#output-7 class=anchor aria-hidden=true>#</a></h3><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message LoaderConf {
+  option (tableau.worksheet) = {name:&quot;LoaderConf&quot; namerow:1 typerow:2 noterow:3 datarow:4 nested:true};
+
+  map&lt;int32, Server&gt; server_map = 1 [(tableau.field) = {name:&quot;Server&quot; key:&quot;Type&quot; layout:LAYOUT_VERTICAL}];
+  message Server {
+    ServerType type = 1 [(tableau.field) = {name:&quot;Type&quot;}];
+    repeated Conf conf_list = 2 [(tableau.field) = {name:&quot;Conf&quot; key:&quot;Type&quot; layout:LAYOUT_VERTICAL}];
+    message Conf {
+      ConfType type = 1 [(tableau.field) = {name:&quot;Type&quot;}];
+      repeated Condition condition_list = 2 [(tableau.field) = {name:&quot;Condition&quot; key:&quot;Type&quot; layout:LAYOUT_VERTICAL}];
+      message Condition {
+        int32 type = 1 [(tableau.field) = {name:&quot;Type&quot;}];
+        int32 value = 2 [(tableau.field) = {name:&quot;Value&quot;}];
+      }
+    }
+  }
+}
+</code></pre></details><details><summary>loader_conf.json</summary><pre><code class=language-json>{
+    &quot;serverMap&quot;:  {
+        &quot;1&quot;:  {
+            &quot;type&quot;:  &quot;SERVER_TYPE_GAME&quot;,
+            &quot;confList&quot;:  [
+                {
+                    &quot;type&quot;:  &quot;CONF_TYPE_CLOUD&quot;,
+                    &quot;conditionList&quot;:  [
+                        {
+                            &quot;type&quot;:  0,
+                            &quot;value&quot;:  113
+                        }
+                    ]
+                }
+            ]
+        },
+        &quot;2&quot;:  {
+            &quot;type&quot;:  &quot;SERVER_TYPE_ACTIVITY&quot;,
+            &quot;confList&quot;:  [
+                {
+                    &quot;type&quot;:  &quot;CONF_TYPE_CLOUD&quot;,
+                    &quot;conditionList&quot;:  []
+                },
+                {
+                    &quot;type&quot;:  &quot;CONF_TYPE_LOCAL&quot;,
+                    &quot;conditionList&quot;:  [
+                        {
+                            &quot;type&quot;:  9,
+                            &quot;value&quot;:  34
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;:  &quot;CONF_TYPE_REMOTE&quot;,
+                    &quot;conditionList&quot;:  []
+                }
+            ]
+        },
+        &quot;3&quot;:  {
+            &quot;type&quot;:  &quot;SERVER_TYPE_MATCH&quot;,
+            &quot;confList&quot;:  []
+        }
+    }
+}
+</code></pre></details></article></div></div></div></div><footer class="footer text-muted"><div class=container-fluid><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a class=text-muted href=https://www.netlify.com/>Netlify</a>, <a class=text-muted href=https://gohugo.io/>Hugo</a>, and <a class=text-muted href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline></ul></div></div></div></footer><script src=/js/bootstrap.min.fdbe9b9ba88a036135318f3c721784d684ac9e3280fe282cc80d7d49f7f9c82780cd54228c1608685a230c09984300d7946fc471734d566fcebc148b65bd16db.js integrity="sha512-/b6bm6iKA2E1MY88cheE1oSsnjKA/igsyA19Sff5yCeAzVQijBYIaFojDAmYQwDXlG/EcXNNVm/OvBSLZb0W2w==" crossorigin=anonymous defer></script>
 <script src=/js/highlight.min.2bffd851168ecbbf28174aa9c2250a9f4f720f8e3b4d83c7d3fead6b626f041aca6675601c165b6f05db01e49a8bb5e5dee21006f8ef0dd710831f3210620c1a.js integrity="sha512-K//YURaOy78oF0qpwiUKn09yD447TYPH0/6ta2JvBBrKZnVgHBZbbwXbAeSai7Xl3uIQBvjvDdcQgx8yEGIMGg==" crossorigin=anonymous defer></script>
 <script src=/main.min.6bcd117899ffc9e0f284a6a38e48794689fd80fbd8a0a50a6c886e47e1bfac6c90f39ecad7cdc1a52f577e7c99ed379a3b3b84adb674a5776d815dd650d71eb6.js integrity="sha512-a80ReJn/yeDyhKajjkh5Ron9gPvYoKUKbIhuR+G/rGyQ857K183BpS9XfnyZ7TeaOzuErbZ0pXdtgV3WUNcetg==" crossorigin=anonymous defer></script></body></html>
