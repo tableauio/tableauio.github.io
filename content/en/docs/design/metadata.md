@@ -30,7 +30,7 @@ workbook: `(AliasTest)DemoTest`, worksheet: `(AliasActivity)DemoActivity`
   - Timestamp: `google.protobuf.Timestamp`
   - Duration: `google.protobuf.Duration`
 
-{{< details "activity.proto" >}}
+{{< details "activity.xlsx" >}}
 
 | ActivityID           | ActivityName | ActivityBeginTime   | ActivityDuration | ChapterID           | ChapterName | SectionID       | SectionName | SectionItem1Id | SectionItem1Num | SectionItem2Id | SectionItem2Num |
 | -------------------- | ------------ | ------------------- | ---------------- | ------------------- | ----------- | --------------- | ----------- | -------------- | --------------- | -------------- | --------------- |

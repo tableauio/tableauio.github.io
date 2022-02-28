@@ -16,8 +16,8 @@ toc: true
 
 There are two kinds of cross-cell horizontal map:
 
-1. cross-cell horizontal **scalar** map, which means the map value type is scalar. E.g: `map<int32, int32>`.
-2. cross-cell horizontal **struct** map, which means the map value type is struct. E.g: `map<int32, Item>`.
+1. cross-cell horizontal **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.
+2. cross-cell horizontal **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
 
 #### Cross-cell horizontal scalar map
 
@@ -25,7 +25,7 @@ There are two kinds of cross-cell horizontal map:
 
 #### Cross-cell horizontal struct map
 
-> NOTE: need to be tested enought.
+> NOTE: need to be tested enough.
 
 ##### Input
 
@@ -67,8 +67,8 @@ message ItemConf {
 
 There are two kinds of cross-cell vertical map:
 
-1. cross-cell vertical **scalar** map, which means the map value type is scalar. E.g: `map<int32, int32>`.
-2. cross-cell vertical **struct** map, which means the map value type is struct. E.g: `map<int32, Item>`.
+1. cross-cell vertical **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.
+2. cross-cell vertical **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
 
 #### Cross-cell vertical scalar map
 
@@ -149,8 +149,8 @@ message ItemConf {
 
 There are two kinds of in-cell map:
 
-1. in-cell **scalar** map, which means the map value type is scalar. E.g: `map<int32, int32>`.
-2. in-cell **struct** map, which means the map value type is struct. E.g: `map<int32, Item>`.
+1. in-cell **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.
+2. in-cell **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
 
 ### In-cell scalar map
 

@@ -16,14 +16,14 @@ toc: true
 
 | Term         | Definition                                                                                       |
 |--------------|--------------------------------------------------------------------------------------------------|
-| `workbook`   | One excel file.<br>One XML file.<br> Multiple CSV files named with same prefix seperated by `#`. |
-| `worksheet`  | One sheet in a excel file.<br>One root node of a XML file.<br>One CSV file.                      |
+| `workbook`   | An excel file.<br>A XML file.<br> A bundle of CSV files named with same prefix seperated by `#`. |
+| `worksheet`  | A sheet in a excel file.<br>A root node of a XML file.<br>A CSV file.                      |
 | `metasheet`  | A worksheet named `@TABLEAU` to specify tableau parser options.                                  |
 | `row`        | The row in a sheet.                                                                              |
 | `column`     | The column in a sheet.                                                                           |
-| `cell`       | The intersection of one row and one column.                                                      |
+| `cell`       | The intersection of a row and a column.                                                      |
 | `in-cell`    | The inner-side of a cell.                                                                        |
-| `cross-cell` | Continuous cells of one row or one column.                                                       |
+| `cross-cell` | Continuous cells of a row or a column.                                                       |
 {.table-striped .table-hover}
 
 ### Worksheet
@@ -53,7 +53,7 @@ toc: true
 
 ## A simple mapping example
 
-### Input: one excel file
+### Input: an excel file
 
 A workbook(`HelloWorld.xlsx`) with two data worksheets(`ItemConf` and `ActivityConf`) and an empty tableau metasheet(`@TABLEAU`).
 
@@ -79,7 +79,7 @@ A workbook(`HelloWorld.xlsx`) with two data worksheets(`ItemConf` and `ActivityC
 | 3                     | activity3        |                   |
 {.table-bordered .table-success}
 
-### Output: one protoconf file
+### Output: a protoconf file
 
 A protoconf file(`hello_world.proto`) with two top-level messages(`ItemConf` and `ActivityConf`).
 
