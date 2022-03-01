@@ -28,28 +28,28 @@ toc: true
 
 ### Worksheet
 
-| Term        | Definition                                                                                                                             |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `namerow`   | Exact row number of column name definition at a worksheet.<br>⚠️NOTE: each column name must be unique in a worksheet!<br>Default: `1`. |
-| `typerow`   | Exact row number of column type definition at a worksheet.<br>Default: `2`.                                                            |
-| `noterow`   | Exact row number of column note at a worksheet.<br>Default: `3`.                                                                       |
-| `datarow`   | Start row number of data at a worksheet.<br>Default: `4`.                                                                              |
-| `nameline`  | The line number of column name definition in a cell. `0` means the whole cell.<br>Default: `0`.                                        |
-| `typeline`  | The line number of column type definition in a cell. `0` means the whole cell.<br>Default: `0`.                                        |
-| `sep`       | Separator for:<br> &nbsp;&nbsp; 1. separating in-cell list elements. <br> &nbsp;&nbsp; 2. separating in-cell map items.<br>Default: `,`.                       |
-| `subsep`    | Subseparator for separating in-cell map Key-Value pair.<br>Default: `:`.                                                               |
-| `nested`    | Nested naming of the **namerow**.<br>Default: `false`.                                                                                 |
-| `layout`    | Incell, vertical(cross-cell) or horizontal(cross-cell).                                                                                |
-| `transpose` | Interchanging the rows and columns of a given sheet.                                                                                   |
+| Term | Definition |
+|---|---|
+| `namerow` | Exact row number of column name definition at a worksheet.<br>⚠️NOTE: each column name must be unique in a worksheet!<br>Default: `1`. |
+| `typerow` | Exact row number of column type definition at a worksheet.<br>Default: `2`. |
+| `noterow` | Exact row number of column note at a worksheet.<br>Default: `3`. |
+| `datarow` | Start row number of data at a worksheet.<br>Default: `4`. |
+| `nameline` | The line number of column name definition in a cell. `0` means the whole cell.<br>Default: `0`. |
+| `typeline` | The line number of column type definition in a cell. `0` means the whole cell.<br>Default: `0`. |
+| `sep` | Separator for:<br>    1. separating in-cell list elements. <br>    2. separating in-cell map items.<br>Default: `,`. |
+| `subsep` | Subseparator for separating in-cell map Key-Value pair.<br>Default: `:`. |
+| `nested` | Nested naming of the **namerow**.<br>Default: `false`. |
+| `layout` | Incell, vertical(cross-cell) or horizontal(cross-cell). |
+| `transpose` | Interchanging the rows and columns of a given sheet. |
 {.table-striped .table-hover}
 
 ## Mappings to Protoconf
 
-| Term        | Protoconf                                                                                                                                                      |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `workbook`  | One protoconf(`.proto`) file.                                                                                                                                  |
+| Term | Protoconf |
+|---|---|
+| `workbook` | One protoconf(`.proto`) file. |
 | `worksheet` | One top-level [message](https://developers.google.com/protocol-buffers/docs/proto3#simple) in a protoconf file, except the tableau metasheet named `@TABLEAU`. |
-| `column`    | One field in a [message](https://developers.google.com/protocol-buffers/docs/proto3#simple).                                                                   |
+| `column` | One field in a [message](https://developers.google.com/protocol-buffers/docs/proto3#simple) |
 
 ## A simple mapping example
 
