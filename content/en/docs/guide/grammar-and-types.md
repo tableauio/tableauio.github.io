@@ -28,6 +28,7 @@ Tableau borrows most of its syntax and types from [Protocol Buffers (proto3)](ht
 ## Well-known types
 
 ### Datetime
+
 | Type       | Default               | Description                                                             |
 |------------|-----------------------|-------------------------------------------------------------------------|
 | `datetime` | `0000-00-00 00:00:00` | Format: `yyyy-MM-dd HH:mm:ss`, <br>e.g.: `2020-01-01 05:10:00`.         |
@@ -41,6 +42,7 @@ Tableau borrows most of its syntax and types from [Protocol Buffers (proto3)](ht
 - `time`  is based on [**google.protobuf.Duration**](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration), see [JSON mapping](https://developers.google.com/protocol-buffers/docs/proto3#json).
 
 ### Duration
+
 | Type       | Default | Description                                                                                                        |
 |------------|---------|--------------------------------------------------------------------------------------------------------------------|
 | `duration` | `0s`    | Format like: `"72h3m0.5s"`. <br>Refer [golang duration string form](https://golang.org/pkg/time/#Duration.String). |
