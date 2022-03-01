@@ -32,7 +32,7 @@ If metasheet `@TABLEAU` is empty, then all other worksheets in the same workbook
 ## A simple example
 
 There is a worksheet `Sheet1` in `HelloWorld.xlsx`, we want to rename sheet to `ItemConf`,
-define custom seperator as `|`, and generate ordered map accessers. 
+define custom seperator as `|`, and generate ordered map accessers.
 
 So the metasheet `@TABLEAU` in `HelloWorld.xlsx` should be configured as:
 
