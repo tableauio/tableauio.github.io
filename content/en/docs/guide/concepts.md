@@ -16,7 +16,7 @@ toc: true
 
 | Term         | Definition                                                                                       |
 |--------------|--------------------------------------------------------------------------------------------------|
-| `workbook`   | An excel file.<br>A XML file.<br> A bundle of CSV files named with same prefix seperated by `#`. |
+| `workbook`   | An excel file.<br>A XML file.<br> A bundle of CSV files named with the same prefix seperated by `#`. |
 | `worksheet`  | A sheet in a excel file.<br>A root node of a XML file.<br>A CSV file.                      |
 | `metasheet`  | A worksheet named `@TABLEAU` to specify tableau parser options.                                  |
 | `row`        | The row in a sheet.                                                                              |

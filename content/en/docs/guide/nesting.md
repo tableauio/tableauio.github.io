@@ -12,8 +12,7 @@ toc: true
 
 ## Overview
 
-- [x] nesting: unlimited nesting of message, list, and map.
-- [ ] nesting: the composite type's first element can be composite type.
+{{< alert icon="👉" context="danger" text="The nested composite type's first field/element/item can not be a composite type." />}}
 
 ## Map in map
 
@@ -579,6 +578,8 @@ message ItemConf {
 
 {{< details "worksheet <b>LoaderConf</b> in <b>HelloWorld.xlsx</b>" >}}
 
+<div class="table-responsive">
+
 | ServerType                     | ServerConfType          | ServerConfConditionType | ServerConfConditionValue |
 |--------------------------------|-------------------------|-------------------------|--------------------------|
 | map<enum<.ServerType>, Server> | [Conf]<enum<.ConfType>> | [Condition]<int32>      | int32                    |
@@ -594,6 +595,8 @@ message ItemConf {
 |                                | Remote                  |                         |                          |
 | MatchServer                    | CONF_TYPE_UNKNOWN       |                         |                          |
 {.table-bordered .table-success}
+
+</div>
 
 {{< /details >}}
 
