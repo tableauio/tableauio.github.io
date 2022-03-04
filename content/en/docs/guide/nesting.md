@@ -18,7 +18,93 @@ toc: true
 
 ### Horizontal-map in vertical-map
 
-TODO
+#### Input
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID               | Name         | Prop1ID          | Prop1Value    | Prop2ID    | Prop2Value    |
+|------------------|--------------|------------------|---------------|------------|---------------|
+| map<int32, Item> | string       | map<int32, Prop> | int64         | int32      | int64         |
+| Item's id.       | Item's name. | Prop's id.       | Prop's value. | Prop's id. | Prop's value. |
+| 1                | item1        | 10               | 100           | 20         | 200           |
+| 2                | item2        | 30               | 300           | 40         | 400           |
+| 3                | item3        | 50               | 500           |            |               |
+{.table-bordered .table-success}
+
+#### Output
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<int32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    map<int32, Prop> prop_map = 3 [(tableau.field) = {name:"Prop" key:"ID" layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int64 value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "item_conf.json" >}}
+
+```json
+{
+    "itemMap":  {
+        "1":  {
+            "id":  1,
+            "name":  "item1",
+            "propMap":  {
+                "10":  {
+                    "id":  10,
+                    "value":  "100"
+                },
+                "20":  {
+                    "id":  20,
+                    "value":  "200"
+                }
+            }
+        },
+        "2":  {
+            "id":  2,
+            "name":  "item2",
+            "propMap":  {
+                "30":  {
+                    "id":  30,
+                    "value":  "300"
+                },
+                "40":  {
+                    "id":  40,
+                    "value":  "400"
+                }
+            }
+        },
+        "3":  {
+            "id":  3,
+            "name":  "item3",
+            "propMap":  {
+                "50":  {
+                    "id":  50,
+                    "value":  "500"
+                }
+            }
+        }
+    }
+}
+```
+
+{{< /details >}}
 
 ### Vertical-map in vertical-map
 
@@ -26,14 +112,14 @@ TODO
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID                | Name         | PropID           | PropValue          |
-|-------------------|--------------|------------------|--------------------|
-| map<uint32, Item> | string       | map<int32, Prop> | int64              |
-| Item's ID.        | Item's name. | Item's prop id.  | Item's prop value. |
-| 1                 | item1        | 10               | 100                |
-| 2                 | item2        | 10               | 100                |
-| 2                 | item2        | 20               | 200                |
-| 2                 | item2        | 30               | 300                |
+| ID                | Name         | PropID           | PropValue     |
+|-------------------|--------------|------------------|---------------|
+| map<uint32, Item> | string       | map<int32, Prop> | int64         |
+| Item's id.        | Item's name. | Prop's id.       | Prop's value. |
+| 1                 | item1        | 10               | 100           |
+| 2                 | item2        | 10               | 100           |
+| 2                 | item2        | 20               | 200           |
+| 2                 | item2        | 30               | 300           |
 {.table-bordered .table-success}
 
 #### Output
@@ -109,13 +195,13 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID                | Name         | Prop1ID         | Prop1Value         | Prop2ID         | Prop2Value         |
-|-------------------|--------------|-----------------|--------------------|-----------------|--------------------|
-| map<uint32, Item> | string       | [Prop]int32     | int64              | int32           | int64              |
-| Item's ID.        | Item's name. | Item's prop id. | Item's prop value. | Item's prop id. | Item's prop value. |
-| 1                 | item1        | 10              | 100                | 20              | 200                |
-| 2                 | item2        | 30              | 300                | 40              | 400                |
-| 3                 | item3        | 50              | 500                |                 |                    |
+| ID                | Name         | Prop1ID     | Prop1Value    | Prop2ID    | Prop2Value    |
+|-------------------|--------------|-------------|---------------|------------|---------------|
+| map<uint32, Item> | string       | [Prop]int32 | int64         | int32      | int64         |
+| Item's id.        | Item's name. | Prop's id.  | Prop's value. | Prop's id. | Prop's value. |
+| 1                 | item1        | 10          | 100           | 20         | 200           |
+| 2                 | item2        | 30          | 300           | 40         | 400           |
+| 3                 | item3        | 50          | 500           |            |               |
 {.table-bordered .table-success}
 
 #### Output
@@ -199,14 +285,14 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID                | Name         | PropID          | PropValue          |
-|-------------------|--------------|-----------------|--------------------|
-| map<uint32, Item> | string       | [Prop]int32     | int64              |
-| Item's ID.        | Item's name. | Item's prop id. | Item's prop value. |
-| 1                 | item1        | 10              | 100                |
-| 2                 | item2        | 10              | 100                |
-| 2                 | item2        | 20              | 200                |
-| 2                 | item2        | 30              | 300                |
+| ID                | Name         | PropID      | PropValue     |
+|-------------------|--------------|-------------|---------------|
+| map<uint32, Item> | string       | [Prop]int32 | int64         |
+| Item's id.        | Item's name. | Prop's id.  | Prop's value. |
+| 1                 | item1        | 10          | 100           |
+| 2                 | item2        | 10          | 100           |
+| 2                 | item2        | 20          | 200           |
+| 2                 | item2        | 30          | 300           |
 {.table-bordered .table-success}
 
 #### Output
@@ -274,6 +360,179 @@ message ItemConf {
 
 {{< /details >}}
 
+## Map in list
+
+### Horizontal-map in vertical-list
+
+#### Input
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID          | Name         | Prop1ID          | Prop1Value    | Prop2ID    | Prop2Value    |
+|-------------|--------------|------------------|---------------|------------|---------------|
+| [Item]int32 | string       | map<int32, Prop> | int64         | int32      | int64         |
+| Item's id.  | Item's name. | Prop's id.       | Prop's value. | Prop's id. | Prop's value. |
+| 1           | item1        | 10               | 100           | 20         | 200           |
+| 2           | item2        | 30               | 300           | 40         | 400           |
+| 3           | item3        | 50               | 500           |            |               |
+{.table-bordered .table-success}
+
+#### Output
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+  message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    map<int32, Prop> prop_map = 3 [(tableau.field) = {name:"Prop" key:"ID" layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int64 value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "item_conf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "name": "item1",
+            "propMap": {
+                "10": {
+                    "id": 10,
+                    "value": "100"
+                },
+                "20": {
+                    "id": 20,
+                    "value": "200"
+                }
+            }
+        },
+        {
+            "id": 2,
+            "name": "item2",
+            "propMap": {
+                "30": {
+                    "id": 30,
+                    "value": "300"
+                },
+                "40": {
+                    "id": 40,
+                    "value": "400"
+                }
+            }
+        },
+        {
+            "id": 3,
+            "name": "item3",
+            "propMap": {
+                "50": {
+                    "id": 50,
+                    "value": "500"
+                }
+            }
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### Vertical-map in vertical-keyed-list
+
+#### Input
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID               | Name         | PropID             | PropValue     |
+|------------------|--------------|--------------------|---------------|
+| [Item]\<uint32\> | string       | map\<int32, Prop\> | int64         |
+| Item's id.       | Item's name. | Prop's id.         | Prop's value. |
+| 1                | item1        | 10                 | 100           |
+| 2                | item2        | 10                 | 100           |
+| 2                | item2        | 20                 | 200           |
+| 2                | item2        | 30                 | 300           |
+{.table-bordered .table-success}
+
+#### Output
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    map<int32, Prop> prop_map = 3 [(tableau.field) = {key:"PropID" layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:"PropID"}];
+      int64 prop_value = 2 [(tableau.field) = {name:"PropValue"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "item_conf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "name": "item1",
+            "propMap": {
+                "10": {
+                    "propId": 10,
+                    "propValue": "100"
+                }
+            }
+        },
+        {
+            "id": 2,
+            "name": "item2",
+            "propMap": {
+                "10": {
+                    "propId": 10,
+                    "propValue": "100"
+                },
+                "20": {
+                    "propId": 20,
+                    "propValue": "200"
+                },
+                "30": {
+                    "propId": 30,
+                    "propValue": "300"
+                }
+            }
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
 ## List in list
 
 ### Horizontal-list in vertical-list
@@ -282,13 +541,13 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID           | Name         | Prop1ID         | Prop1Value         | Prop2ID         | Prop2Value         |
-|--------------|--------------|-----------------|--------------------|-----------------|--------------------|
-| [Item]uint32 | string       | [Prop]int32     | int64              | int32           | int64              |
-| Item's ID.   | Item's name. | Item's prop id. | Item's prop value. | Item's prop id. | Item's prop value. |
-| 1            | item1        | 10              | 100                | 20              | 200                |
-| 2            | item2        | 30              | 300                | 40              | 400                |
-| 3            | item3        | 50              | 500                |                 |                    |
+| ID           | Name         | Prop1ID     | Prop1Value    | Prop2ID    | Prop2Value    |
+|--------------|--------------|-------------|---------------|------------|---------------|
+| [Item]uint32 | string       | [Prop]int32 | int64         | int32      | int64         |
+| Item's id.   | Item's name. | Prop's id.  | Prop's value. | Prop's id. | Prop's value. |
+| 1            | item1        | 10          | 100           | 20         | 200           |
+| 2            | item2        | 30          | 300           | 40         | 400           |
+| 3            | item3        | 50          | 500           |            |               |
 {.table-bordered .table-success}
 
 #### Output
@@ -372,14 +631,14 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID               | Name         | PropID          | PropValue          |
-|------------------|--------------|-----------------|--------------------|
-| [Item]\<uint32\> | string       | [Prop]int32     | int64              |
-| Item's ID.       | Item's name. | Item's prop id. | Item's prop value. |
-| 1                | item1        | 10              | 100                |
-| 2                | item2        | 10              | 100                |
-| 2                | item2        | 20              | 200                |
-| 2                | item2        | 30              | 300                |
+| ID               | Name         | PropID      | PropValue     |
+|------------------|--------------|-------------|---------------|
+| [Item]\<uint32\> | string       | [Prop]int32 | int64         |
+| Item's id.       | Item's name. | Prop's id.  | Prop's value. |
+| 1                | item1        | 10          | 100           |
+| 2                | item2        | 10          | 100           |
+| 2                | item2        | 20          | 200           |
+| 2                | item2        | 30          | 300           |
 {.table-bordered .table-success}
 
 #### Output
@@ -440,131 +699,6 @@ message ItemConf {
                     "propValue":  "300"
                 }
             ]
-        }
-    ]
-}
-```
-
-{{< /details >}}
-
-## Map in list
-
-### Horizontal-map in vertical-list
-
-{{< alert icon="👉" context="danger" text="To be fixed." />}}
-
-#### Input
-
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
-
-| ID          | Name         | Prop1ID            | Prop1Value         | Prop2ID         | Prop2Value         |
-|-------------|--------------|--------------------|--------------------|-----------------|--------------------|
-| [Item]int32 | string       | map<int32, Prop> | int64              | int32           | int64              |
-| Item's ID.  | Item's name. | Item's prop id.    | Item's prop value. | Item's prop id. | Item's prop value. |
-| 1           | item1        | 10                 | 100                | 20              | 200                |
-| 2           | item2        | 30                 | 300                | 40              | 400                |
-| 3           | item3        | 50                 | 500                |                 |                    |
-{.table-bordered .table-success}
-
-#### Output
-
-{{< details "hello_world.proto" >}}
-
-```protobuf
-// NOTE: Some trivial code snippets are eliminated.
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-TODO
-```
-
-{{< /details >}}
-
-{{< details "item_conf.json" >}}
-
-```json
-TODO
-```
-
-{{< /details >}}
-
-### Horizontal-map in vertical-keyed-list
-
-TODO
-
-### Vertical-map in vertical-keyed-list
-
-#### Input
-
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
-
-| ID               | Name         | PropID             | PropValue          |
-|------------------|--------------|--------------------|--------------------|
-| [Item]\<uint32\> | string       | map\<int32, Prop\> | int64              |
-| Item's ID.       | Item's name. | Item's prop id.    | Item's prop value. |
-| 1                | item1        | 10                 | 100                |
-| 2                | item2        | 10                 | 100                |
-| 2                | item2        | 20                 | 200                |
-| 2                | item2        | 30                 | 300                |
-{.table-bordered .table-success}
-
-#### Output
-
-{{< details "hello_world.proto" >}}
-
-```protobuf
-// NOTE: Some trivial code snippets are eliminated.
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
-
-  repeated Item item_list = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
-  message Item {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    string name = 2 [(tableau.field) = {name:"Name"}];
-    map<int32, Prop> prop_map = 3 [(tableau.field) = {key:"PropID" layout:LAYOUT_VERTICAL}];
-    message Prop {
-      int32 prop_id = 1 [(tableau.field) = {name:"PropID"}];
-      int64 prop_value = 2 [(tableau.field) = {name:"PropValue"}];
-    }
-  }
-}
-```
-
-{{< /details >}}
-
-{{< details "item_conf.json" >}}
-
-```json
-{
-    "itemList": [
-        {
-            "id": 1,
-            "name": "item1",
-            "propMap": {
-                "10": {
-                    "propId": 10,
-                    "propValue": "100"
-                }
-            }
-        },
-        {
-            "id": 2,
-            "name": "item2",
-            "propMap": {
-                "10": {
-                    "propId": 10,
-                    "propValue": "100"
-                },
-                "20": {
-                    "propId": 20,
-                    "propValue": "200"
-                },
-                "30": {
-                    "propId": 30,
-                    "propValue": "300"
-                }
-            }
         }
     ]
 }
