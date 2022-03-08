@@ -6,7 +6,7 @@ date: 2022-02-26T13:59:39+01:00
 lastmod: 2022-02-26T13:59:39+01:00
 draft: false
 images: []
-weight: 1390
+weight: 1210
 toc: true
 ---
 
@@ -18,7 +18,7 @@ The tableau parser accepts three enum value forms:
   2. enum value name.
   3. enum value alias name (with EnumValueOptions specified).
 
-For example, enum type `FruitType` is defined as:
+For example, enum type `FruitType` in `common.proto` is defined as:
 
 ```protobuf
 enum FruitType {
@@ -41,42 +41,6 @@ Then the three forms of enum value are all accepted:
 {{< alert icon="👉" context="warning" text="Enum type must be predefined." />}}
 
 Go to read details about predefiend **Enum** type. [Predefined types →]({{< relref "predefined-types" >}})
-
-### Input
-
-A worksheet `FruitConf` in `HelloWorld.xlsx`:
-
-| ID                 | Type             |
-|--------------------|------------------|
-| map<uint32, Fruit> | enum<.FruitType> |
-| Fruit's ID.        | Fruit's type.    |
-| 1                  | 1                |
-| 2                  | FRUIT_TYPE_APPLE |
-| 3                  | banana           |
-{.table-bordered .table-success}
-
-### Output
-
-Generated protoconf is `hello_world.proto`:
-
-{{< details "hello_world.proto" open >}}
-
-```protobuf
-// NOTE: Some trivial code snippets are eliminated.
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-message ItemConf {
-  option (tableau.worksheet) = {name:"FruitConf" namerow:1 typerow:2 noterow:3 datarow:4};
-
-  map<uint32, Fruit> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
-   message Fruit {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    FruitType type = 2 [(tableau.field) = {name:"Type"}];
-  }
-}
-```
-
-{{< /details >}}
 
 ## Validation
 

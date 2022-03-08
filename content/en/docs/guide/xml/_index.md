@@ -1,10 +1,10 @@
 ---
-title : "Advanced"
-description: "Advanced topics of  Tableau."
-lead: ""
+title : "XML"
+description: "XML guide."
+lead: "XML guide."
 date: 2020-10-06T08:48:45+00:00
 lastmod: 2020-10-06T08:48:45+00:00
 draft: false
 images: []
-weight: -2000
+weight: 1999
 ---

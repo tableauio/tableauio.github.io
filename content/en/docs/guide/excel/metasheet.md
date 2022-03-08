@@ -1,12 +1,12 @@
 ---
-title: "Metasheet @TABLEAU"
+title: "Metasheet"
 description: "Metasheet @TABLEAU."
 lead: "The tableau metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
 date: 2022-02-26T13:59:39+01:00
 lastmod: 2022-02-26T13:59:39+01:00
 draft: false
 images: []
-weight: 1900
+weight: 1790
 toc: true
 ---
 
