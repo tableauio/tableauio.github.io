@@ -1,0 +1,533 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=preload as=font href=https://tableauio.github.io/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://tableauio.github.io/fonts/vendor/jost/jost-v4-latin-500.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://tableauio.github.io/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin><script>(()=>{var b=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,a=localStorage.getItem("theme");b&&a===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),b&&a==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),a==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script><link rel=stylesheet href=https://tableauio.github.io/main.42cfd980c1eb52585ca873649b5d0d3d40c70fcb233fbce46c09b62d112f1132636596e35301aed380833f6ada23553f2720b474510b564605b2615e99ffc689.css integrity="sha512-Qs/ZgMHrUlhcqHNkm10NPUDHD8sjP7zkbAm2LREvETJjZZbjUwGu04CDP2raI1U/JyC0dFELVkYFsmFemf/GiQ==" crossorigin=anonymous><noscript><style>img.lazyload{display:none}</style></noscript><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><title>Nesting - Tableau</title><meta name=description content="Infinite nesting of composite types."><link rel=canonical href=https://tableauio.github.io/docs/guide/excel/nesting/><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Nesting"><meta property="og:description" content="Infinite nesting of composite types."><meta property="og:url" content="https://tableauio.github.io/docs/guide/excel/nesting/"><meta property="og:site_name" content="Tableau"><meta property="article:published_time" content="2022-02-26T08:48:57+00:00"><meta property="article:modified_time" content="2022-03-08T22:24:37+08:00"><meta property="og:image" content="https://tableauio.github.io/doks.png"><meta property="og:image:alt" content="Tableau"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@getdoks"><meta name=twitter:creator content="@henkverlinde"><meta name=twitter:title content="Nesting"><meta name=twitter:description content="Infinite nesting of composite types."><meta name=twitter:image content="https://tableauio.github.io/doks.png"><meta name=twitter:image:alt content="Nesting"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://tableauio.github.io/#/schema/organization/1","name":"Doks","url":"https://tableauio.github.io/","sameAs":["https://twitter.com/getdoks","https://github.com/h-enk/doks"],"logo":{"@type":"ImageObject","@id":"https://tableauio.github.io/#/schema/image/1","url":"https://tableauio.github.io/logo-doks.png","width":512,"height":512,"caption":"Doks"},"image":{"@id":"https://tableauio.github.io/#/schema/image/1"}},{"@type":"WebSite","@id":"https://tableauio.github.io/#/schema/website/1","url":"https://tableauio.github.io/","name":"Tableau","description":"Tableau can convert Excel\/CSV\/XML to multiple formats: JSON, Text, and Wire.","publisher":{"@id":"https://tableauio.github.io/#/schema/organization/1"}},{"@type":"WebPage","@id":"https://tableauio.github.io/docs/guide/excel/nesting/","url":"https://tableauio.github.io/docs/guide/excel/nesting/","name":"Nesting","description":"Infinite nesting of composite types.","isPartOf":{"@id":"https://tableauio.github.io/#/schema/website/1"},"about":{"@id":"https://tableauio.github.io/#/schema/organization/1"},"datePublished":"2022-02-26T08:48:57CET","dateModified":"2022-03-08T22:24:37CET","breadcrumb":{"@id":"https://tableauio.github.io/docs/guide/excel/nesting/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://tableauio.github.io/docs/guide/excel/nesting/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://tableauio.github.io/docs/guide/excel/nesting/"]}]},{"@type":"BreadcrumbList","@id":"https://tableauio.github.io/docs/guide/excel/nesting/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://tableauio.github.io","url":"https://tableauio.github.io","name":"Home"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://tableauio.github.io/docs/","url":"https://tableauio.github.io/docs/","name":"Docs"}},{"@type":"ListItem","position":4,"item":{"@type":"WebPage","@id":"https://tableauio.github.io/docs/guide/","url":"https://tableauio.github.io/docs/guide/","name":"Guide"}},{"@type":"ListItem","position":5,"item":{"@type":"WebPage","@id":"https://tableauio.github.io/docs/guide/excel/","url":"https://tableauio.github.io/docs/guide/excel/","name":"Excel"}},{"@type":"ListItem","position":6,"item":{"@id":"https://tableauio.github.io/docs/guide/excel/nesting/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://tableauio.github.io/#/schema/article/1","headline":"Nesting","description":"Infinite nesting of composite types.","isPartOf":{"@id":"https://tableauio.github.io/docs/guide/excel/nesting/"},"mainEntityOfPage":{"@id":"https://tableauio.github.io/docs/guide/excel/nesting/"},"datePublished":"2022-02-26T08:48:57CET","dateModified":"2022-03-08T22:24:37CET","author":{"@id":"https://tableauio.github.io/#/schema/person/2"},"publisher":{"@id":"https://tableauio.github.io/#/schema/organization/1"},"image":{"@id":"https://tableauio.github.io/docs/guide/excel/nesting/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tableauio.github.io/#/schema/person/2","name":"Henk Verlinde","sameAs":["https://twitter.com/henkverlinde","https://www.linkedin.com/in/henkverlinde/","https://github.com/h-enk"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://tableauio.github.io/docs/guide/excel/nesting/#/schema/image/2","url":"https://tableauio.github.io/doks.png","contentUrl":"https://tableauio.github.io/doks.png","caption":"Nesting"}]}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=https://tableauio.github.io/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://tableauio.github.io/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://tableauio.github.io/favicon-16x16.png><link rel=manifest crossorigin=use-credentials href=https://tableauio.github.io/site.webmanifest></head><body class="docs single"><div class="alert alert-primary text-lg-center" role=alert>Still Work-In-Progress! <a class="alert-link stretched-link" href=https://github.com/tableauio/tableau>Refer Tableau</a></div><div class=header-bar></div><header class="navbar navbar-expand-md navbar-light doks-navbar"><nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation"><a class="navbar-brand p-0 me-auto" href=/ aria-label=Tableau>Tableau</a>
+<button class="btn btn-menu d-block d-md-none order-5" type=button data-bs-toggle=offcanvas data-bs-target=#offcanvasDoks aria-controls=offcanvasDoks aria-label="Open main menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><div class="offcanvas offcanvas-start border-0 py-md-1" tabindex=-1 id=offcanvasDoks data-bs-backdrop=true aria-labelledby=offcanvasDoksLabel><div class="header-bar d-md-none"></div><div class="offcanvas-header d-md-none"><h2 class="h5 offcanvas-title ps-2" id=offcanvasDoksLabel><a class=text-dark href=/>Tableau</a></h2><button type=button class="btn-close text-reset me-2" data-bs-dismiss=offcanvas aria-label="Close main menu"></button></div><div class="offcanvas-body px-4"><h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3><ul class="nav flex-column flex-md-row ms-md-n3"><li class=nav-item><a class="nav-link ps-0 py-1 active" href=/docs/prologue/introduction/>Docs</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle ps-0 py-1" href=# id=navbarDropdownMenuLink role=button data-bs-toggle=dropdown aria-expanded=false>Tutorial
+<span class=dropdown-caret><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"/></svg></span></a><ul class="dropdown-menu dropdown-menu-main shadow rounded border-0" aria-labelledby=navbarDropdownMenuLink><li><a class=dropdown-item href=/docs/prologue/quick-start/>Quick Start</a></li><li><a class=dropdown-item href=/docs/prologue/introduction/>Introduction</a></li></ul></li><li class=nav-item><a class="nav-link ps-0 py-1" href=/blog/>Blog</a></li></ul><hr class="text-black-50 my-4 d-md-none"><h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3><ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-2"><li class=nav-item><a class="nav-link ps-0 py-1" href=https://github.com/tableauio/tableau><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg><small class="ms-2 d-md-none">GitHub</small></a></li></ul></div></div><button id=mode class="btn btn-link order-md-1" type=button aria-label="Toggle user interface mode">
+<span class=toggle-dark><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span><span class=toggle-light><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span></button><div class="dropdown order-md-2"><button class="btn btn-doks-light dropdown-toggle" id=doks-languages data-bs-toggle=dropdown aria-expanded=false data-bs-display=static>
+EN
+<span class=dropdown-caret><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"/></svg></span></button><ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby=doks-languages><li><a class="dropdown-item current" aria-current=true href=/docs/guide/excel/nesting/>English</a></li><li><hr class=dropdown-divider></li><li><a class=dropdown-item rel=alternate href=/nl hreflang=nl lang=nl></a></li><li><a class=dropdown-item rel=alternate href=/zh hreflang=zh lang=zh>简体中文</a></li></ul></div></nav></header><nav class="doks-subnavbar py-2 sticky-lg-top" aria-label="Secondary navigation"><div class="container-fluid d-flex align-items-md-center"><form class="doks-search position-relative flex-grow-1 me-auto"><input id=search class="form-control is-search" type=search placeholder="Search docs..." aria-label="Search docs..." autocomplete=off><div id=suggestions class="shadow bg-white rounded d-none"></div></form><button class="btn doks-sidebar-toggle d-lg-none ms-3 order-3 collapsed" type=button data-bs-toggle=collapse data-bs-target=#doks-docs-nav aria-controls=doks-docs-nav aria-expanded=false aria-label="Toggle documentation navigation"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></button></div></nav><div class=container-fluid><aside class=doks-sidebar><nav id=doks-docs-nav class="collapse d-lg-none" aria-label="Tertiary navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/prologue/quick-start/>Quick Start</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/prologue/introduction/>Introduction</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6602bbeb2956c035fb4cb5e844a4861b aria-expanded=true>
+Guide</button><div class="collapse show" id=section-6602bbeb2956c035fb4cb5e844a4861b><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/concepts/>Concepts</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/grammar-and-types/>Grammar and types</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/enum/>Enum</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/predefined-types/>Predefined types</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/validation/>Validation</a></li><li class="my-1 ms-3"><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c1d81af5835844b4e9d936910ded8fdc aria-expanded=true>
+Excel</button><div class="collapse show" id=section-c1d81af5835844b4e9d936910ded8fdc><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/excel/struct/>Struct</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/excel/list/>List</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/excel/map/>Map</a></li><li><a class="docs-link rounded active" href=https://tableauio.github.io/docs/guide/excel/nesting/>Nesting</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/excel/metasheet/>Metasheet</a></li></ul></div></li><li class="my-1 ms-3"><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-cc8d68c551c4a9a6d5313e07de4deafd aria-expanded=false>
+CSV</button><div class=collapse id=section-cc8d68c551c4a9a6d5313e07de4deafd><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/csv/overview/>Overview</a></li></ul></div></li><li class="my-1 ms-3"><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-3501bb093d363810b671059b9cfed3f8 aria-expanded=false>
+XML</button><div class=collapse id=section-3501bb093d363810b671059b9cfed3f8><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/xml/struct/>Struct</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/xml/list/>List</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/xml/map/>Map</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/xml/metasheet/>Metasheet</a></li></ul></div></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-1afa74da05ca145d3418aad9af510109 aria-expanded=false>
+Design</button><div class=collapse id=section-1afa74da05ca145d3418aad9af510109><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/design/overview/>Overview</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/design/metadata/>Metadata</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a26f548831e6a8c26bfbbd9f6ec61e0 aria-expanded=false>
+Help</button><div class=collapse id=section-6a26f548831e6a8c26bfbbd9f6ec61e0><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/help/how-to-update/>How to Update</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/help/troubleshooting/>Troubleshooting</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/help/faq/>FAQ</a></li></ul></div></li></ul></nav></aside></div><div class="wrap container-fluid" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block"><nav class=docs-links aria-label="Main navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/prologue/quick-start/>Quick Start</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/prologue/introduction/>Introduction</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6602bbeb2956c035fb4cb5e844a4861b aria-expanded=true>
+Guide</button><div class="collapse show" id=section-6602bbeb2956c035fb4cb5e844a4861b><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/concepts/>Concepts</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/grammar-and-types/>Grammar and types</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/enum/>Enum</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/predefined-types/>Predefined types</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/validation/>Validation</a></li><li class="my-1 ms-3"><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c1d81af5835844b4e9d936910ded8fdc aria-expanded=true>
+Excel</button><div class="collapse show" id=section-c1d81af5835844b4e9d936910ded8fdc><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/excel/struct/>Struct</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/excel/list/>List</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/excel/map/>Map</a></li><li><a class="docs-link rounded active" href=https://tableauio.github.io/docs/guide/excel/nesting/>Nesting</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/excel/metasheet/>Metasheet</a></li></ul></div></li><li class="my-1 ms-3"><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-cc8d68c551c4a9a6d5313e07de4deafd aria-expanded=false>
+CSV</button><div class=collapse id=section-cc8d68c551c4a9a6d5313e07de4deafd><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/csv/overview/>Overview</a></li></ul></div></li><li class="my-1 ms-3"><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-3501bb093d363810b671059b9cfed3f8 aria-expanded=false>
+XML</button><div class=collapse id=section-3501bb093d363810b671059b9cfed3f8><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/xml/struct/>Struct</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/xml/list/>List</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/xml/map/>Map</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/guide/xml/metasheet/>Metasheet</a></li></ul></div></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-1afa74da05ca145d3418aad9af510109 aria-expanded=false>
+Design</button><div class=collapse id=section-1afa74da05ca145d3418aad9af510109><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/design/overview/>Overview</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/design/metadata/>Metadata</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a26f548831e6a8c26bfbbd9f6ec61e0 aria-expanded=false>
+Help</button><div class=collapse id=section-6a26f548831e6a8c26bfbbd9f6ec61e0><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/help/how-to-update/>How to Update</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/help/troubleshooting/>Troubleshooting</a></li><li><a class="docs-link rounded" href=https://tableauio.github.io/docs/help/faq/>FAQ</a></li></ul></div></li></ul></nav></div><nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation"><div class=page-links><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#overview>Overview</a></li><li><a href=#map-in-map>Map in map</a><ul><li><a href=#horizontal-map-in-vertical-map>Horizontal-map in vertical-map</a></li><li><a href=#vertical-map-in-vertical-map>Vertical-map in vertical-map</a></li></ul></li><li><a href=#list-in-map>List in map</a><ul><li><a href=#horizontal-list-in-vertical-map>Horizontal-list in vertical-map</a></li><li><a href=#vertical-list-in-vertical-map>Vertical-list in vertical-map</a></li></ul></li><li><a href=#map-in-list>Map in list</a><ul><li><a href=#horizontal-map-in-vertical-list>Horizontal-map in vertical-list</a></li><li><a href=#vertical-map-in-vertical-keyed-list>Vertical-map in vertical-keyed-list</a></li></ul></li><li><a href=#list-in-list>List in list</a><ul><li><a href=#horizontal-list-in-vertical-list>Horizontal-list in vertical-list</a></li><li><a href=#vertical-list-in-vertical-keyed-list>Vertical-list in vertical-keyed-list</a></li></ul></li><li><a href=#nested-naming>Nested naming</a><ul><li><a href=#input-8>Input</a></li><li><a href=#output-8>Output</a></li></ul></li></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl"><nav aria-label=breadcrumb><ol class=breadcrumb><li class=breadcrumb-item><a href=/>Home</a></li><li class=breadcrumb-item><a href=/docs/>Docs</a></li><li class=breadcrumb-item><a href=/docs/guide/>Guide</a></li><li class=breadcrumb-item><a href=/docs/guide/excel/>Excel</a></li><li class="breadcrumb-item active" aria-current=page>Nesting</li></ol></nav><h1>Nesting</h1><p class=lead>Infinite nesting of composite types.</p><nav class=d-xl-none aria-label="Quaternary navigation"><div class=page-links><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#overview>Overview</a></li><li><a href=#map-in-map>Map in map</a><ul><li><a href=#horizontal-map-in-vertical-map>Horizontal-map in vertical-map</a></li><li><a href=#vertical-map-in-vertical-map>Vertical-map in vertical-map</a></li></ul></li><li><a href=#list-in-map>List in map</a><ul><li><a href=#horizontal-list-in-vertical-map>Horizontal-list in vertical-map</a></li><li><a href=#vertical-list-in-vertical-map>Vertical-list in vertical-map</a></li></ul></li><li><a href=#map-in-list>Map in list</a><ul><li><a href=#horizontal-map-in-vertical-list>Horizontal-map in vertical-list</a></li><li><a href=#vertical-map-in-vertical-keyed-list>Vertical-map in vertical-keyed-list</a></li></ul></li><li><a href=#list-in-list>List in list</a><ul><li><a href=#horizontal-list-in-vertical-list>Horizontal-list in vertical-list</a></li><li><a href=#vertical-list-in-vertical-keyed-list>Vertical-list in vertical-keyed-list</a></li></ul></li><li><a href=#nested-naming>Nested naming</a><ul><li><a href=#input-8>Input</a></li><li><a href=#output-8>Output</a></li></ul></li></ul></nav></div></nav><h2 id=overview>Overview <a href=#overview class=anchor aria-hidden=true>#</a></h2><div class="alert alert-danger d-flex" role=alert><div class="flex-shrink-1 alert-icon">👉</div><div class=w-100>The nested composite type's first field/element/item can not be a composite type.</div></div><h2 id=map-in-map>Map in map <a href=#map-in-map class=anchor aria-hidden=true>#</a></h2><h3 id=horizontal-map-in-vertical-map>Horizontal-map in vertical-map <a href=#horizontal-map-in-vertical-map class=anchor aria-hidden=true>#</a></h3><h4 id=input>Input <a href=#input class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>Prop1ID</th><th>Prop1Value</th><th>Prop2ID</th><th>Prop2Value</th></tr></thead><tbody><tr><td>map&lt;int32, Item></td><td>string</td><td>map&lt;int32, Prop></td><td>int64</td><td>int32</td><td>int64</td></tr><tr><td>Item&rsquo;s id.</td><td>Item&rsquo;s name.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td><td>40</td><td>400</td></tr><tr><td>3</td><td>item3</td><td>50</td><td>500</td><td></td><td></td></tr></tbody></table><h4 id=output>Output <a href=#output class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map&lt;int32, Item&gt; item_map = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    int32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    map&lt;int32, Prop&gt; prop_map = 3 [(tableau.field) = {name:&quot;Prop&quot; key:&quot;ID&quot; layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+      int64 value = 2 [(tableau.field) = {name:&quot;Value&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemMap&quot;:  {
+        &quot;1&quot;:  {
+            &quot;id&quot;:  1,
+            &quot;name&quot;:  &quot;item1&quot;,
+            &quot;propMap&quot;:  {
+                &quot;10&quot;:  {
+                    &quot;id&quot;:  10,
+                    &quot;value&quot;:  &quot;100&quot;
+                },
+                &quot;20&quot;:  {
+                    &quot;id&quot;:  20,
+                    &quot;value&quot;:  &quot;200&quot;
+                }
+            }
+        },
+        &quot;2&quot;:  {
+            &quot;id&quot;:  2,
+            &quot;name&quot;:  &quot;item2&quot;,
+            &quot;propMap&quot;:  {
+                &quot;30&quot;:  {
+                    &quot;id&quot;:  30,
+                    &quot;value&quot;:  &quot;300&quot;
+                },
+                &quot;40&quot;:  {
+                    &quot;id&quot;:  40,
+                    &quot;value&quot;:  &quot;400&quot;
+                }
+            }
+        },
+        &quot;3&quot;:  {
+            &quot;id&quot;:  3,
+            &quot;name&quot;:  &quot;item3&quot;,
+            &quot;propMap&quot;:  {
+                &quot;50&quot;:  {
+                    &quot;id&quot;:  50,
+                    &quot;value&quot;:  &quot;500&quot;
+                }
+            }
+        }
+    }
+}
+</code></pre></details><h3 id=vertical-map-in-vertical-map>Vertical-map in vertical-map <a href=#vertical-map-in-vertical-map class=anchor aria-hidden=true>#</a></h3><h4 id=input-1>Input <a href=#input-1 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>PropID</th><th>PropValue</th></tr></thead><tbody><tr><td>map&lt;uint32, Item></td><td>string</td><td>map&lt;int32, Prop></td><td>int64</td></tr><tr><td>Item&rsquo;s id.</td><td>Item&rsquo;s name.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td></tr></tbody></table><h4 id=output-1>Output <a href=#output-1 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map&lt;uint32, Item&gt; item_map = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    map&lt;int32, Prop&gt; prop_map = 3 [(tableau.field) = {key:&quot;PropID&quot; layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:&quot;PropID&quot;}];
+      int64 prop_value = 2 [(tableau.field) = {name:&quot;PropValue&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemMap&quot;:  {
+        &quot;1&quot;:  {
+            &quot;id&quot;:  1,
+            &quot;name&quot;:  &quot;item1&quot;,
+            &quot;propMap&quot;:  {
+                &quot;10&quot;:  {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                }
+            }
+        },
+        &quot;2&quot;:  {
+            &quot;id&quot;:  2,
+            &quot;name&quot;:  &quot;item2&quot;,
+            &quot;propMap&quot;:  {
+                &quot;10&quot;:  {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                },
+                &quot;20&quot;:  {
+                    &quot;propId&quot;:  20,
+                    &quot;propValue&quot;:  &quot;200&quot;
+                },
+                &quot;30&quot;:  {
+                    &quot;propId&quot;:  30,
+                    &quot;propValue&quot;:  &quot;300&quot;
+                }
+            }
+        }
+    }
+}
+</code></pre></details><h2 id=list-in-map>List in map <a href=#list-in-map class=anchor aria-hidden=true>#</a></h2><h3 id=horizontal-list-in-vertical-map>Horizontal-list in vertical-map <a href=#horizontal-list-in-vertical-map class=anchor aria-hidden=true>#</a></h3><h4 id=input-2>Input <a href=#input-2 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>Prop1ID</th><th>Prop1Value</th><th>Prop2ID</th><th>Prop2Value</th></tr></thead><tbody><tr><td>map&lt;uint32, Item></td><td>string</td><td>[Prop]int32</td><td>int64</td><td>int32</td><td>int64</td></tr><tr><td>Item&rsquo;s id.</td><td>Item&rsquo;s name.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td><td>40</td><td>400</td></tr><tr><td>3</td><td>item3</td><td>50</td><td>500</td><td></td><td></td></tr></tbody></table><h4 id=output-2>Output <a href=#output-2 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map&lt;uint32, Item&gt; item_map = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    repeated Prop prop_list = 3 [(tableau.field) = {name:&quot;Prop&quot; layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+      int64 value = 2 [(tableau.field) = {name:&quot;Value&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemMap&quot;: {
+        &quot;1&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;item1&quot;,
+            &quot;propList&quot;: [
+                {
+                    &quot;id&quot;: 10,
+                    &quot;value&quot;: &quot;100&quot;
+                },
+                {
+                    &quot;id&quot;: 20,
+                    &quot;value&quot;: &quot;200&quot;
+                }
+            ]
+        },
+        &quot;2&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;item2&quot;,
+            &quot;propList&quot;: [
+                {
+                    &quot;id&quot;: 30,
+                    &quot;value&quot;: &quot;300&quot;
+                },
+                {
+                    &quot;id&quot;: 40,
+                    &quot;value&quot;: &quot;400&quot;
+                }
+            ]
+        },
+        &quot;3&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;item3&quot;,
+            &quot;propList&quot;: [
+                {
+                    &quot;id&quot;: 50,
+                    &quot;value&quot;: &quot;500&quot;
+                }
+            ]
+        }
+    }
+}
+</code></pre></details><h3 id=vertical-list-in-vertical-map>Vertical-list in vertical-map <a href=#vertical-list-in-vertical-map class=anchor aria-hidden=true>#</a></h3><h4 id=input-3>Input <a href=#input-3 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>PropID</th><th>PropValue</th></tr></thead><tbody><tr><td>map&lt;uint32, Item></td><td>string</td><td>[Prop]int32</td><td>int64</td></tr><tr><td>Item&rsquo;s id.</td><td>Item&rsquo;s name.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td></tr></tbody></table><h4 id=output-3>Output <a href=#output-3 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map&lt;uint32, Item&gt; item_map = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    repeated Prop prop_list = 3 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:&quot;PropID&quot;}];
+      int64 prop_value = 2 [(tableau.field) = {name:&quot;PropValue&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemMap&quot;:  {
+        &quot;1&quot;:  {
+            &quot;id&quot;:  1,
+            &quot;name&quot;:  &quot;item1&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                }
+            ]
+        },
+        &quot;2&quot;:  {
+            &quot;id&quot;:  2,
+            &quot;name&quot;:  &quot;item2&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                },
+                {
+                    &quot;propId&quot;:  20,
+                    &quot;propValue&quot;:  &quot;200&quot;
+                },
+                {
+                    &quot;propId&quot;:  30,
+                    &quot;propValue&quot;:  &quot;300&quot;
+                }
+            ]
+        }
+    }
+}
+</code></pre></details><h2 id=map-in-list>Map in list <a href=#map-in-list class=anchor aria-hidden=true>#</a></h2><h3 id=horizontal-map-in-vertical-list>Horizontal-map in vertical-list <a href=#horizontal-map-in-vertical-list class=anchor aria-hidden=true>#</a></h3><h4 id=input-4>Input <a href=#input-4 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>Prop1ID</th><th>Prop1Value</th><th>Prop2ID</th><th>Prop2Value</th></tr></thead><tbody><tr><td>[Item]int32</td><td>string</td><td>map&lt;int32, Prop></td><td>int64</td><td>int32</td><td>int64</td></tr><tr><td>Item&rsquo;s id.</td><td>Item&rsquo;s name.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td><td>40</td><td>400</td></tr><tr><td>3</td><td>item3</td><td>50</td><td>500</td><td></td><td></td></tr></tbody></table><h4 id=output-4>Output <a href=#output-4 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+  message Item {
+    int32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    map&lt;int32, Prop&gt; prop_map = 3 [(tableau.field) = {name:&quot;Prop&quot; key:&quot;ID&quot; layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+      int64 value = 2 [(tableau.field) = {name:&quot;Value&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemList&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;item1&quot;,
+            &quot;propMap&quot;: {
+                &quot;10&quot;: {
+                    &quot;id&quot;: 10,
+                    &quot;value&quot;: &quot;100&quot;
+                },
+                &quot;20&quot;: {
+                    &quot;id&quot;: 20,
+                    &quot;value&quot;: &quot;200&quot;
+                }
+            }
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;item2&quot;,
+            &quot;propMap&quot;: {
+                &quot;30&quot;: {
+                    &quot;id&quot;: 30,
+                    &quot;value&quot;: &quot;300&quot;
+                },
+                &quot;40&quot;: {
+                    &quot;id&quot;: 40,
+                    &quot;value&quot;: &quot;400&quot;
+                }
+            }
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;item3&quot;,
+            &quot;propMap&quot;: {
+                &quot;50&quot;: {
+                    &quot;id&quot;: 50,
+                    &quot;value&quot;: &quot;500&quot;
+                }
+            }
+        }
+    ]
+}
+</code></pre></details><h3 id=vertical-map-in-vertical-keyed-list>Vertical-map in vertical-keyed-list <a href=#vertical-map-in-vertical-keyed-list class=anchor aria-hidden=true>#</a></h3><h4 id=input-5>Input <a href=#input-5 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>PropID</th><th>PropValue</th></tr></thead><tbody><tr><td>[Item]&lt;uint32></td><td>string</td><td>map&lt;int32, Prop></td><td>int64</td></tr><tr><td>Item&rsquo;s id.</td><td>Item&rsquo;s name.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td></tr></tbody></table><h4 id=output-5>Output <a href=#output-5 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    map&lt;int32, Prop&gt; prop_map = 3 [(tableau.field) = {key:&quot;PropID&quot; layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:&quot;PropID&quot;}];
+      int64 prop_value = 2 [(tableau.field) = {name:&quot;PropValue&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemList&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;item1&quot;,
+            &quot;propMap&quot;: {
+                &quot;10&quot;: {
+                    &quot;propId&quot;: 10,
+                    &quot;propValue&quot;: &quot;100&quot;
+                }
+            }
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;item2&quot;,
+            &quot;propMap&quot;: {
+                &quot;10&quot;: {
+                    &quot;propId&quot;: 10,
+                    &quot;propValue&quot;: &quot;100&quot;
+                },
+                &quot;20&quot;: {
+                    &quot;propId&quot;: 20,
+                    &quot;propValue&quot;: &quot;200&quot;
+                },
+                &quot;30&quot;: {
+                    &quot;propId&quot;: 30,
+                    &quot;propValue&quot;: &quot;300&quot;
+                }
+            }
+        }
+    ]
+}
+</code></pre></details><h2 id=list-in-list>List in list <a href=#list-in-list class=anchor aria-hidden=true>#</a></h2><h3 id=horizontal-list-in-vertical-list>Horizontal-list in vertical-list <a href=#horizontal-list-in-vertical-list class=anchor aria-hidden=true>#</a></h3><h4 id=input-6>Input <a href=#input-6 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>Prop1ID</th><th>Prop1Value</th><th>Prop2ID</th><th>Prop2Value</th></tr></thead><tbody><tr><td>[Item]uint32</td><td>string</td><td>[Prop]int32</td><td>int64</td><td>int32</td><td>int64</td></tr><tr><td>Item&rsquo;s id.</td><td>Item&rsquo;s name.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td><td>40</td><td>400</td></tr><tr><td>3</td><td>item3</td><td>50</td><td>500</td><td></td><td></td></tr></tbody></table><h4 id=output-6>Output <a href=#output-6 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    repeated Prop prop_list = 3 [(tableau.field) = {name:&quot;Prop&quot; layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+      int64 value = 2 [(tableau.field) = {name:&quot;Value&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemList&quot;:  [
+        {
+            &quot;id&quot;:  1,
+            &quot;name&quot;:  &quot;item1&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;id&quot;:  10,
+                    &quot;value&quot;:  &quot;100&quot;
+                },
+                {
+                    &quot;id&quot;:  20,
+                    &quot;value&quot;:  &quot;200&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;:  2,
+            &quot;name&quot;:  &quot;item2&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;id&quot;:  30,
+                    &quot;value&quot;:  &quot;300&quot;
+                },
+                {
+                    &quot;id&quot;:  40,
+                    &quot;value&quot;:  &quot;400&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;:  3,
+            &quot;name&quot;:  &quot;item3&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;id&quot;:  50,
+                    &quot;value&quot;:  &quot;500&quot;
+                }
+            ]
+        }
+    ]
+}
+</code></pre></details><h3 id=vertical-list-in-vertical-keyed-list>Vertical-list in vertical-keyed-list <a href=#vertical-list-in-vertical-keyed-list class=anchor aria-hidden=true>#</a></h3><h4 id=input-7>Input <a href=#input-7 class=anchor aria-hidden=true>#</a></h4><p>A worksheet <code>ItemConf</code> in <code>HelloWorld.xlsx</code>:</p><table class="table-bordered table-success"><thead><tr><th>ID</th><th>Name</th><th>PropID</th><th>PropValue</th></tr></thead><tbody><tr><td>[Item]&lt;uint32></td><td>string</td><td>[Prop]int32</td><td>int64</td></tr><tr><td>Item&rsquo;s id.</td><td>Item&rsquo;s name.</td><td>Prop&rsquo;s id.</td><td>Prop&rsquo;s value.</td></tr><tr><td>1</td><td>item1</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>10</td><td>100</td></tr><tr><td>2</td><td>item2</td><td>20</td><td>200</td></tr><tr><td>2</td><td>item2</td><td>30</td><td>300</td></tr></tbody></table><h4 id=output-7>Output <a href=#output-7 class=anchor aria-hidden=true>#</a></h4><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:&quot;ItemConf&quot; namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {key:&quot;ID&quot; layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:&quot;ID&quot;}];
+    string name = 2 [(tableau.field) = {name:&quot;Name&quot;}];
+    repeated Prop prop_list = 3 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:&quot;PropID&quot;}];
+      int64 prop_value = 2 [(tableau.field) = {name:&quot;PropValue&quot;}];
+    }
+  }
+}
+</code></pre></details><details><summary>item_conf.json</summary><pre><code class=language-json>{
+    &quot;itemList&quot;:  [
+        {
+            &quot;id&quot;:  1,
+            &quot;name&quot;:  &quot;item1&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;:  2,
+            &quot;name&quot;:  &quot;item2&quot;,
+            &quot;propList&quot;:  [
+                {
+                    &quot;propId&quot;:  10,
+                    &quot;propValue&quot;:  &quot;100&quot;
+                },
+                {
+                    &quot;propId&quot;:  20,
+                    &quot;propValue&quot;:  &quot;200&quot;
+                },
+                {
+                    &quot;propId&quot;:  30,
+                    &quot;propValue&quot;:  &quot;300&quot;
+                }
+            ]
+        }
+    ]
+}
+</code></pre></details><h2 id=nested-naming>Nested naming <a href=#nested-naming class=anchor aria-hidden=true>#</a></h2><h3 id=input-8>Input <a href=#input-8 class=anchor aria-hidden=true>#</a></h3><details><summary>worksheet <b>LoaderConf</b> in <b>HelloWorld.xlsx</b></summary><div class=table-responsive><table class="table-bordered table-success"><thead><tr><th>ServerType</th><th>ServerConfType</th><th>ServerConfConditionType</th><th>ServerConfConditionValue</th></tr></thead><tbody><tr><td>map&lt;enum&lt;.ServerType>, Server></td><td>[Conf]&lt;enum&lt;.ConfType&#187;</td><td>[Condition]<int32></td><td>int32</td></tr><tr><td>Server name</td><td>Sheet name</td><td>Condition type</td><td>Condition value</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td>SERVER_TYPE_GAME</td><td>CONF_TYPE_CLOUD</td><td>0</td><td>113</td></tr><tr><td></td><td></td><td>0</td><td>134</td></tr><tr><td>SERVER_TYPE_ACTIVITY</td><td>CONF_TYPE_CLOUD</td><td></td><td></td></tr><tr><td></td><td>1</td><td></td><td></td></tr><tr><td></td><td>CONF_TYPE_LOCAL</td><td>9</td><td>34</td></tr><tr><td></td><td>CONF_TYPE_LOCAL</td><td>9</td><td>12</td></tr><tr><td></td><td>CONF_TYPE_LOCAL</td><td></td><td></td></tr><tr><td></td><td>Remote</td><td></td><td></td></tr><tr><td>MatchServer</td><td>CONF_TYPE_UNKNOWN</td><td></td><td></td></tr></tbody></table></div></details><details><summary>metasheet <b>@TABLEAU</b> in <b>HelloWorld.xlsx</b></summary><table class="table-bordered table-success"><thead><tr><th>Sheet</th><th>Nested</th></tr></thead><tbody><tr><td>LoaderConf</td><td>true</td></tr></tbody></table></details><details><summary>common.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+enum ConfType {
+  CONF_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &quot;Unknown&quot;];
+  CONF_TYPE_CLOUD = 1 [(tableau.evalue).name = &quot;Cloud&quot;];
+  CONF_TYPE_LOCAL = 2 [(tableau.evalue).name = &quot;Local&quot;];
+  CONF_TYPE_REMOTE = 3 [(tableau.evalue).name = &quot;Remote&quot;];
+}
+
+enum ServerType {
+  SERVER_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &quot;Unknown&quot;];
+  SERVER_TYPE_GAME = 1 [(tableau.evalue).name = &quot;GameServer&quot;];
+  SERVER_TYPE_ACTIVITY = 2 [(tableau.evalue).name = &quot;ActivityServer&quot;];
+  SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &quot;MatchServer&quot;];
+}
+</code></pre></details><h3 id=output-8>Output <a href=#output-8 class=anchor aria-hidden=true>#</a></h3><details><summary>hello_world.proto</summary><pre><code class=language-protobuf>// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:&quot;HelloWorld.xlsx&quot;};
+
+message LoaderConf {
+  option (tableau.worksheet) = {name:&quot;LoaderConf&quot; namerow:1 typerow:2 noterow:3 datarow:4 nested:true};
+
+  map&lt;int32, Server&gt; server_map = 1 [(tableau.field) = {name:&quot;Server&quot; key:&quot;Type&quot; layout:LAYOUT_VERTICAL}];
+  message Server {
+    ServerType type = 1 [(tableau.field) = {name:&quot;Type&quot;}];
+    repeated Conf conf_list = 2 [(tableau.field) = {name:&quot;Conf&quot; key:&quot;Type&quot; layout:LAYOUT_VERTICAL}];
+    message Conf {
+      ConfType type = 1 [(tableau.field) = {name:&quot;Type&quot;}];
+      repeated Condition condition_list = 2 [(tableau.field) = {name:&quot;Condition&quot; key:&quot;Type&quot; layout:LAYOUT_VERTICAL}];
+      message Condition {
+        int32 type = 1 [(tableau.field) = {name:&quot;Type&quot;}];
+        int32 value = 2 [(tableau.field) = {name:&quot;Value&quot;}];
+      }
+    }
+  }
+}
+</code></pre></details><details><summary>loader_conf.json</summary><pre><code class=language-json>{
+    &quot;serverMap&quot;:  {
+        &quot;1&quot;:  {
+            &quot;type&quot;:  &quot;SERVER_TYPE_GAME&quot;,
+            &quot;confList&quot;:  [
+                {
+                    &quot;type&quot;:  &quot;CONF_TYPE_CLOUD&quot;,
+                    &quot;conditionList&quot;:  [
+                        {
+                            &quot;type&quot;:  0,
+                            &quot;value&quot;:  113
+                        }
+                    ]
+                }
+            ]
+        },
+        &quot;2&quot;:  {
+            &quot;type&quot;:  &quot;SERVER_TYPE_ACTIVITY&quot;,
+            &quot;confList&quot;:  [
+                {
+                    &quot;type&quot;:  &quot;CONF_TYPE_CLOUD&quot;,
+                    &quot;conditionList&quot;:  []
+                },
+                {
+                    &quot;type&quot;:  &quot;CONF_TYPE_LOCAL&quot;,
+                    &quot;conditionList&quot;:  [
+                        {
+                            &quot;type&quot;:  9,
+                            &quot;value&quot;:  34
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;:  &quot;CONF_TYPE_REMOTE&quot;,
+                    &quot;conditionList&quot;:  []
+                }
+            ]
+        },
+        &quot;3&quot;:  {
+            &quot;type&quot;:  &quot;SERVER_TYPE_MATCH&quot;,
+            &quot;confList&quot;:  []
+        }
+    }
+}
+</code></pre></details><div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between"><div class=last-modified><a href=https://github.com/tableauio/tableauio.github.io/commit/3d568b8c8674af9558921d965ccb59afb5ae08d6><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Last modified on March 8, 2022</a></div><div class=edit-page><a href=https://github.com/tableauio/tableauio.github.io/blob/master/content/en/docs/guide/excel/nesting.md><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828.0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>Edit this page on GitHub</a></div></div><div class="docs-navigation d-flex justify-content-between"><a href=/docs/guide/excel/map/><div class="card my-1"><div class="card-body py-2">&larr; Map</div></div></a><a class=ms-auto href=/docs/guide/excel/metasheet/><div class="card my-1"><div class="card-body py-2">Metasheet &rarr;</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container-fluid><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a class=text-muted href=https://www.netlify.com/>Netlify</a>, <a class=text-muted href=https://gohugo.io/>Hugo</a>, and <a class=text-muted href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline><li class=list-inline-item><a href=/privacy-policy/>Privacy</a></li></ul></div></div></div></footer><script src=/js/bootstrap.min.fdbe9b9ba88a036135318f3c721784d684ac9e3280fe282cc80d7d49f7f9c82780cd54228c1608685a230c09984300d7946fc471734d566fcebc148b65bd16db.js integrity="sha512-/b6bm6iKA2E1MY88cheE1oSsnjKA/igsyA19Sff5yCeAzVQijBYIaFojDAmYQwDXlG/EcXNNVm/OvBSLZb0W2w==" crossorigin=anonymous defer></script>
+<script src=/js/highlight.min.1bc9ddcb8901d7d518b3599f737c9ac164aac086a92066cf0e33cc668ce6e6422061f7531d7545f574880647f4e6a52e0051739271194626dd800dd394081b78.js integrity="sha512-G8ndy4kB19UYs1mfc3yawWSqwIapIGbPDjPMZozm5kIgYfdTHXVF9XSIBkf05qUuAFFzknEZRibdgA3TlAgbeA==" crossorigin=anonymous defer></script>
+<script src=/main.min.6bcd117899ffc9e0f284a6a38e48794689fd80fbd8a0a50a6c886e47e1bfac6c90f39ecad7cdc1a52f577e7c99ed379a3b3b84adb674a5776d815dd650d71eb6.js integrity="sha512-a80ReJn/yeDyhKajjkh5Ron9gPvYoKUKbIhuR+G/rGyQ857K183BpS9XfnyZ7TeaOzuErbZ0pXdtgV3WUNcetg==" crossorigin=anonymous defer></script>
+<script src=https://tableauio.github.io/index.min.a5c25393a0d39d5990bb1c6f4b7a3006011b66c636afbb5ae996c08ca5cfe8646aaf9be9e6934b221f7fdf94b01976dfabf39b775872a4b3ff8241fcd802010f.js integrity="sha512-pcJTk6DTnVmQuxxvS3owBgEbZsY2r7ta6ZbAjKXP6GRqr5vp5pNLIh9/35SwGXbfq/Obd1hypLP/gkH82AIBDw==" crossorigin=anonymous defer></script></body></html>
