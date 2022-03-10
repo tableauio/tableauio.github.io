@@ -173,14 +173,14 @@ Pattern: `[Item]<int32>`
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID             | PropID           | PropName          |
-|----------------|------------------|-------------------|
-| [Item]<uint32> | map<int32, Prop> | string            |
-| Item's ID.     | Item's prop.     | Item's prop name. |
-| 1              | 1                | prop1             |
-| 2              | 1                | prop1             |
-| 2              | 2                | prop2             |
-| 2              | 3                | prop13            |
+| ID               | PropID           | PropName          |
+|------------------|------------------|-------------------|
+| [Item]\<uint32\> | map<int32, Prop> | string            |
+| Item's ID.       | Item's prop.     | Item's prop name. |
+| 1                | 1                | prop1             |
+| 2                | 1                | prop1             |
+| 2                | 2                | prop2             |
+| 2                | 3                | prop13            |
 {.table-bordered .table-success}
 
 ### Output
