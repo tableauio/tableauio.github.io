@@ -21,7 +21,6 @@ toc: true
 
      ```bash
      go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
-     go install github.com/tableauio/tableau/cmd/tableauc@v0.9.6
      ```
 
   2. Update your PATH so that the protoc compiler can find the plugins:

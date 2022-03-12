@@ -6,9 +6,10 @@ date: 2022-01-09T23:35:42+08:00
 lastmod: 2022-01-09T23:35:42+08:00
 draft: false
 weight: 50
-images: ["say-hello-to-doks.png"]
+images: ["tableau-logo.png"]
 contributors: ["Wenchy"]
 ---
 
 TODO...
-![Image](say-hello-to-doks.png "Day and Night, 1938 — M.C. Escher")
+
+![Image](tableau-logo.png "Tableau logo, 2022 — Wenchy")
