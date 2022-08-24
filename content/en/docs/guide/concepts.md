@@ -14,42 +14,42 @@ toc: true
 
 ### Basics
 
-| Term         | Definition                                                                                       |
-|--------------|--------------------------------------------------------------------------------------------------|
-| `workbook`   | An excel file.<br>A XML file.<br> A bundle of CSV files named with the same prefix seperated by `#`. |
-| `worksheet`  | A sheet in a excel file.<br>A root node of a XML file.<br>A CSV file.                      |
-| `metasheet`  | A worksheet named `@TABLEAU` to specify tableau parser options.                                  |
-| `row`        | The row in a sheet.                                                                              |
-| `column`     | The column in a sheet.                                                                           |
-| `cell`       | The intersection of a row and a column.                                                      |
-| `in-cell`    | The inner-side of a cell.                                                                        |
-| `cross-cell` | Continuous cells of a row or a column.                                                       |
+| Term         | Definition                                                                                           |
+|--------------|------------------------------------------------------------------------------------------------------|
+| `Workbook`   | An excel file.<br>A XML file.<br> A bundle of CSV files named with the same prefix seperated by `#`. |
+| `Worksheet`  | A sheet in a excel file.<br>A root node of a XML file.<br>A CSV file.                                |
+| `Metasheet`  | A worksheet named `@TABLEAU` to specify tableau parser options.                                      |
+| `Row`        | The row in a sheet.                                                                                  |
+| `Column`     | The column in a sheet.                                                                               |
+| `Cell`       | The intersection of a row and a column.                                                              |
+| `In-cell`    | The inner-side of a cell.                                                                            |
+| `Cross-cell` | Continuous cells of a row or a column.                                                               |
 {.table-striped .table-hover}
 
 ### Worksheet
 
-| Term | Definition |
-|---|---|
-| `namerow` | Exact row number of column name definition at a worksheet.<br>⚠️NOTE: each column name must be unique in a worksheet!<br>Default: `1`. |
-| `typerow` | Exact row number of column type definition at a worksheet.<br>Default: `2`. |
-| `noterow` | Exact row number of column note at a worksheet.<br>Default: `3`. |
-| `datarow` | Start row number of data at a worksheet.<br>Default: `4`. |
-| `nameline` | The line number of column name definition in a cell. `0` means the whole cell.<br>Default: `0`. |
-| `typeline` | The line number of column type definition in a cell. `0` means the whole cell.<br>Default: `0`. |
-| `sep` | Separator for:<br>    1. separating in-cell list elements. <br>    2. separating in-cell map items.<br>Default: `,`. |
-| `subsep` | Subseparator for separating in-cell map Key-Value pair.<br>Default: `:`. |
-| `nested` | Nested naming of the **namerow**.<br>Default: `false`. |
-| `layout` | Incell, vertical(cross-cell) or horizontal(cross-cell). |
-| `transpose` | Interchanging the rows and columns of a given sheet. |
+| Term        | Definition                                                                                                                             |
+|-------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `Namerow`   | Exact row number of column name definition at a worksheet.<br>⚠️NOTE: each column name must be unique in a worksheet!<br>Default: `1`. |
+| `Typerow`   | Exact row number of column type definition at a worksheet.<br>Default: `2`.                                                            |
+| `Noterow`   | Exact row number of column note at a worksheet.<br>Default: `3`.                                                                       |
+| `Datarow`   | Start row number of data at a worksheet.<br>Default: `4`.                                                                              |
+| `Nameline`  | The line number of column name definition in a cell. `0` means the whole cell.<br>Default: `0`.                                        |
+| `Typeline`  | The line number of column type definition in a cell. `0` means the whole cell.<br>Default: `0`.                                        |
+| `Sep`       | Separator for:<br>    1. separating in-cell list elements. <br>    2. separating in-cell map items.<br>Default: `,`.                   |
+| `Subsep`    | Subseparator for separating in-cell map Key-Value pair.<br>Default: `:`.                                                               |
+| `Nested`    | Nested naming of the **namerow**.<br>Default: `false`.                                                                                 |
+| `Layout`    | Incell, vertical(cross-cell) or horizontal(cross-cell).                                                                                |
+| `Transpose` | Interchanging the rows and columns of a given sheet.                                                                                   |
 {.table-striped .table-hover}
 
 ## Mappings to Protoconf
 
-| Term | Protoconf |
-|---|---|
-| `workbook` | One protoconf(`.proto`) file. |
-| `worksheet` | One top-level [message](https://developers.google.com/protocol-buffers/docs/proto3#simple) in a protoconf file, except the tableau metasheet named `@TABLEAU`. |
-| `column` | One field in a [message](https://developers.google.com/protocol-buffers/docs/proto3#simple) |
+| Term        | Protoconf                                                                                                                                                      |
+|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Workbook`  | One protoconf(`.proto`) file.                                                                                                                                  |
+| `Worksheet` | One top-level [message](https://developers.google.com/protocol-buffers/docs/proto3#simple) in a protoconf file, except the tableau metasheet named `@TABLEAU`. |
+| `column`    | One field in a [message](https://developers.google.com/protocol-buffers/docs/proto3#simple)                                                                    |
 
 ## A simple mapping example
 

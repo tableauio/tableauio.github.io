@@ -244,7 +244,7 @@ then `map<.EnumKeyType, ValueType>` will be converted to `map<int32, ValueType>`
 and `EnumKeyType` is included in `ValueType` as:
 
 ```protobuf
-enum ValueType {
+message ValueType {
   EnumKeyType key = 1;
   ...
 }

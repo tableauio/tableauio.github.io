@@ -16,12 +16,17 @@ toc: true
 
 {{< alert icon="👉" context="info" text="Vertical layout is list's default layout." />}}
 
-There are two kinds of cross-cell horizontal map:
+There are three kinds of cross-cell horizontal map:
 
 1. cross-cell horizontal **scalar** list, as element type is scalar. E.g: `[]int32`.
-2. cross-cell horizontal **struct** list, as element type is struct. E.g: `[Item]int32`.
+2. cross-cell horizontal **incell-struct** list, as element type is incell struct. E.g: `[]{int32 ID, string Desc}Item`.
+3. cross-cell horizontal **struct** list, as element type is struct. E.g: `[Item]int32`.
 
 #### Cross-cell horizontal scalar list
+
+{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+
+#### Cross-cell horizontal incell-struct list
 
 {{< alert icon="👉" context="danger" text="Not supported yet." />}}
 
@@ -158,7 +163,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### in-cell struct list
+### In-cell struct list
 
 {{< alert icon="👉" context="danger" text="Not supported yet." />}}
 
