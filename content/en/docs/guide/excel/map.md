@@ -21,7 +21,7 @@ There are two kinds of cross-cell horizontal map:
 
 #### Cross-cell horizontal scalar map
 
-{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+{{< alert icon="👉" context="danger" text="No need to support, use this instead: `map<int32, Item>`." />}}
 
 #### Cross-cell horizontal struct map
 
@@ -72,7 +72,7 @@ There are two kinds of cross-cell vertical map:
 
 #### Cross-cell vertical scalar map
 
-{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+{{< alert icon="👉" context="danger" text="No need to support, use this instead: `map<int32, Item>`." />}}
 
 ##### Input
 
@@ -285,3 +285,35 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+## Horizontal map size
+
+### Dynamic size
+
+Defaultly, all maps are dynamic sized. Map items should be present continuously, and report error if an empty item is inserted.
+
+### Fixed size
+
+#### Implicit fixed size
+
+The map size is auto resolved by the max present map items in `Namerow`.
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Item1ID                         | Item1Name     | Item2ID     | Item2Name     |
+|---------------------------------|---------------|-------------|---------------|
+| map<uint32, Item>\|{fixed:true} | string        | uint32      | string        |
+| Item1's ID.                     | Item1's name. | Item2's ID. | Item2's name. |
+| 1                               | item1         | 2           | item2         |
+{.table-bordered .table-success}
+
+#### Explicit fixed size
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Item1ID                       | Item1Name     | Item2ID     | Item2Name     |
+|-------------------------------|---------------|-------------|---------------|
+| map<uint32, Item>\|{length:2} | string        | uint32      | string        |
+| Item1's ID.                   | Item1's name. | Item2's ID. | Item2's name. |
+| 1                             | item1         | 2           | item2         |
+{.table-bordered .table-success}
