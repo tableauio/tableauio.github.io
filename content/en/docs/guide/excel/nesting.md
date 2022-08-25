@@ -12,7 +12,16 @@ toc: true
 
 ## Overview
 
-{{< alert icon="👉" context="danger" text="The nested composite type's first field/element/item can not be a composite type." />}}
+Now, the horizontal/vertical list element's first field can be any type, even as struct, list, and map.
+
+- List element's first field is struct: `[Reward]{Icon}int32`
+- List element's first field is predefined struct: `[Cost]{.Item}uint32`
+- List element's first field is in-cell struct: `[Magic]{int32 Id, int32 Num}Ability`
+- List element's first field is list: `[Reward][Item]uint32`
+- List element's first field is list with element as predefined struct: `[Power][.Item]uint32`
+- List element's first field is map: `[Superpower]map<uint32, Ability>`
+
+> TODO: some clear examples.
 
 ## Map in map
 

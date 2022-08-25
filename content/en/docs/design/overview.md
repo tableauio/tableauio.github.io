@@ -114,7 +114,7 @@ flowchart TD
 [Newline](https://www.wikiwand.com/en/Newline)(line break) in major operating systems:
 
 | OS                  | Abbreviation | Escape sequence |
-| ------------------- | ------------ | --------------- |
+|---------------------|--------------|-----------------|
 | Unix (linux, OS X)  | LF           | `\n`            |
 | Microsoft Windows   | CRLF         | `\r\n`          |
 | classic Mac OS/OS X | CR           | `\r`            |
@@ -174,6 +174,15 @@ flowchart TD
 - [x] list: simple in-cell list, element must be **scalar** type. It is a comma-separated list of elements. E.g.: `1,2,3`.
 - [x] list: scalable or dynamic list size.
 - [x] list: smart recognition of empty element at any position.
+- [x] list
+  - [ ] In-cell struct list: no need to support
+  - [x] Cross-cell horizontal scalar/enum list
+  - [x] Cross-cell horizontal incell-struct list
+  - [ ] Cross-cell vertical scalar list: no need to support, use this: `[Item]int32`
+  - [x] Cross-cell vertical incell-struct list
+- [x] list size
+  - [x] dynamic size: items should be present continuously, and report error if empty item is inserted.
+  - [x] fixed size
 - [x] map: horizontal(row direction) layout.
 - [x] map: vertical(column direction) layout, and is map's default layout.
 - [x] map: unordered-map or hash-map.
@@ -184,6 +193,12 @@ flowchart TD
 - [x] map: simple in-cell map, both key and value must be **scalar** type. It is a comma-separated list of `key:value` pairs. E.g.: `1:10,2:20,3:30`.
 - [x] map: scalable or dynamic map size.
 - [x] map: smart recognition of empty value at any position.
+- [x] map
+  - [ ] Cross-cell horizontal scalar map: no need to support, use this: `map<int32, Item>`
+  - [ ] Cross-cell vertical scalar map: : no need to support, use this: `map<int32, Item>`
+- [x] map size
+  - [x] dynamic size: items should be present continuously, and report error if empty item is inserted.
+  - [x] fixed size
 - [x] nesting: unlimited nesting of message, list, and map.
 - [ ] nesting: the composite type's first element can be composite type.
 
@@ -224,7 +239,7 @@ workbook meta sheet **@TABLEAU**:
 - specify parser options for each sheet
 
 | Sheet  | Alias        | Nameline | Typeline |
-| ------ | ------------ | -------- | -------- |
+|--------|--------------|----------|----------|
 | Sheet1 | ExchangeInfo | 2        | 2        |
 
 ### Datetime

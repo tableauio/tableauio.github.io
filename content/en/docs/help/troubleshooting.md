@@ -10,18 +10,10 @@ weight: 9200
 toc: true
 ---
 
-## Problems updating npm packages
+## Problems updating tableauc config
 
-Delete the `./node_modules` folder, and run again:
+> TODO ...
 
-```bash
-npm install
-```
+## Problems with loader
 
-## Problems with cache
-
-Delete the temporary directories:
-
-```bash
-npm run clean
-```
+> TODO ...

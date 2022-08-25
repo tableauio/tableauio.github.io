@@ -10,9 +10,9 @@ weight: 1950
 toc: true
 ---
 
-## What is a Metasheet in XML?
+## What is a metasheet in XML?
 
-A **Metasheet** is a comment block normally written at the beginning of an XML file, which must begin with keyword `@TABLEAU` and define types of attributes of nodes in the following lines. e.g.:
+A **metasheet** is a comment block normally written at the beginning of an XML file, which must begin with keyword `@TABLEAU` and define types of attributes of nodes in the following lines. e.g.:
 
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -23,11 +23,11 @@ A **Metasheet** is a comment block normally written at the beginning of an XML f
 -->
 ```
 
-## Without Metasheet
+## Without metasheet
 
-If one XML file has no Metasheet (In other words, has no comment block beginning with `@TABLEAU`), no protobuf and json will be generated.
+If one XML file has no metasheet (In other words, has no comment block beginning with `@TABLEAU`), no protobuf and json will be generated.
 
-## Empty Metasheet
+## Empty metasheet
 
 An empty Metasheet is like that:
 
@@ -36,4 +36,4 @@ An empty Metasheet is like that:
 <!-- @TABLEAU -->
 ```
 
-If one XML file has an empty Metasheet, then types of all attributes of all nodes in the file will be automatically inferred (e.g.: `int32` for 128, `int64` for 1.8e15, and `string` for "123fdt53g" etc.).
+If a XML file has an empty metasheet, then types of all attributes of all nodes in the file will be automatically inferred (e.g.: `int32` for 128, `int64` for 1.8e15, and `string` for "123fdt53g" etc.).

@@ -11,11 +11,11 @@ toc: true
 mermaid: true
 ---
 
-## Get started
+## tableauc
+
+The `tableauc` is the tableau compiler with **protogen** and **confgen** inside.
 
 ### protogen
-
-> The `tableauc` is the tableau compiler with **protogen** inside.
 
 `protogen` convert **Excel/CSV/XML** files to **Protoconf** files.
 **Protoconf** is a dialect of [Protocol Buffers (proto3)](https://developers.google.com/protocol-buffers/docs/proto3) extended with [tableau options](https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto), aimed to define the structure of Excel/CSV/XML.
@@ -37,6 +37,14 @@ flowchart LR
 
 ```mermaid
 flowchart LR
+  subgraph Input
+    direction RL
+    I1(Excel)
+    I2(CSV)
+    I3(XML)
+  end
+  
+  Input --> B
   A(Protoconf) --> B
   B((confgen)):::orangecalss --> Output
   classDef orangecalss fill:#f96;

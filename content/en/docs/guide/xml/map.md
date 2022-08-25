@@ -116,7 +116,7 @@ A worksheet `RankConf` in `Rank.xml`:
 </RankConf>
 ```
 
-The `IP` attribute's type is in-cell list `[]string`, as the list element is scalar type `string`.
+The `Subject` attribute's type is in-cell map `map<string, int32>`, as the map value-type is scalar type.
 
 #### Output
 
