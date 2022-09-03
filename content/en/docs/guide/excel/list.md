@@ -14,7 +14,7 @@ toc: true
 
 ### Horizontal list
 
-{{< alert icon="👉" context="info" text="Vertical layout is list's default layout." />}}
+> Vertical layout is list's default layout.
 
 There are three kinds of cross-cell horizontal map:
 
@@ -66,8 +66,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 #### Cross-cell horizontal struct list
 
-##### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | Item1ID      | Item1Name     | Item2ID     | Item2Name     |
@@ -77,11 +75,9 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | item1         | 2           | item2         |
 {.table-bordered .table-success}
 
-##### Output
+Generated::
 
-Generated protoconf is `hello_world.proto`:
-
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // NOTE: Some trivial code snippets are eliminated.
@@ -109,11 +105,9 @@ There are two kinds of cross-cell vertical list:
 
 #### Cross-cell vertical scalar list
 
-{{< alert icon="👉" context="danger" text="No need to support, use this instead: `[Item]int32`." />}}
+No need to support, use this instead: `[Item]int32`.
 
 #### Cross-cell vertical struct list
-
-##### Input
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -126,11 +120,9 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 3            | item3        | 300          |
 {.table-bordered .table-success}
 
-##### Output
+Generated:
 
-Generated protoconf is `hello_world.proto`:
-
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // NOTE: Some trivial code snippets are eliminated.
@@ -152,8 +144,6 @@ message ItemConf {
 
 #### Cross-cell vertical incell struct list
 
-##### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | Reward                        |
@@ -174,8 +164,6 @@ There are two kinds of in-cell list:
 
 ### In-cell scalar list
 
-#### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID                | Props         |
@@ -189,11 +177,9 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 The `Props` column's type is in-cell list `[]int32`, as the list element is scalar type `int32`.
 
-#### Output
+Generated:
 
-Generated protoconf is `hello_world.proto`:
-
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // NOTE: Some trivial code snippets are eliminated.
@@ -214,7 +200,7 @@ message ItemConf {
 
 ### In-cell struct list
 
-{{< alert icon="👉" context="danger" text="No need to support." />}}
+No need to support.
 
 ## Horizontal list size
 

@@ -20,5 +20,5 @@ toc: true
 | `sequence` | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                                                              |
 | `default`  | string | Use this default value if cell is not empty.                                                                                                                                                                     |
 | `fixed`    | bool   | Fixed length of horizontal list/map. </br> Default: `false`.                                                                                                                                                     |
-| `length`   | string | Specified fixed length of horizontal list/map.                                                                                                                                                                   |
+| `length`   | uint32 | Specified fixed length of horizontal list/map.                                                                                                                                                                   |
 {.table-striped .table-hover}

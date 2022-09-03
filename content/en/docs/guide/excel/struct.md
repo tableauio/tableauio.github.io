@@ -12,7 +12,42 @@ toc: true
 
 ## Cross-cell struct
 
-**Horizontal** and **vertical** struct both should be used with:
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID           | Name         | Desc                          |
+|--------------|--------------|-------------------------------|
+| {Item}uint32 | string       | string                        |
+| Item's ID.   | Item's Name. | Item's Description            |
+| 1            | Orange       | A kind of sour fruit.         |
+| 2            | Apple        | A kind of delicious fruit.    |
+| 3            | Banana       | A kind of calorie-rich fruit. |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  Item item = 1;
+  message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    string desc = 3 [(tableau.field) = {name:"Desc"}];
+  }
+}
+```
+
+{{< /details >}}
+
+### Note
+
+Cross-cell struct is usually used together with:
 
 - cross-cell horizontal/vertical map, as map value type. [Map →]({{< relref "map" >}})
 - cross-cell horizontal/vertical list, as list element type. [List →]({{< relref "list" >}})
@@ -20,8 +55,6 @@ toc: true
 ## In-cell struct
 
 Each field type of the struct should be scalar type.
-
-### Input
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -36,9 +69,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 The `Property` column's type is in-cell struct `{int32 ID,string Name,string Desc}Prop`.
 
-### Output
-
-Generated protoconf is `hello_world.proto`:
+Generated:
 
 {{< details "hello_world.proto" open >}}
 

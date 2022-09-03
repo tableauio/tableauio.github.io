@@ -21,13 +21,11 @@ There are two kinds of cross-cell horizontal map:
 
 #### Cross-cell horizontal scalar map
 
-{{< alert icon="👉" context="danger" text="No need to support, use this instead: `map<int32, Item>`." />}}
+No need to support, use this instead: `map<int32, Item>`.
 
 #### Cross-cell horizontal struct map
 
 > NOTE: need to be tested enough.
-
-##### Input
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -38,11 +36,9 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | item1         | 2           | item2         |
 {.table-bordered .table-success}
 
-##### Output
+Generated:
 
-Generated protoconf is `hello_world.proto`:
-
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // NOTE: Some trivial code snippets are eliminated.
@@ -63,7 +59,7 @@ message ItemConf {
 
 ### Vertical map
 
-{{< alert icon="👉" context="info" text="Vertical layout is map's default layout." />}}
+> Vertical layout is map's default layout.
 
 There are two kinds of cross-cell vertical map:
 
@@ -72,9 +68,7 @@ There are two kinds of cross-cell vertical map:
 
 #### Cross-cell vertical scalar map
 
-{{< alert icon="👉" context="danger" text="No need to support, use this instead: `map<int32, Item>`." />}}
-
-##### Input
+No need to support, use this instead: `map<int32, Item>`.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -87,11 +81,9 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 3                   | item3        |
 {.table-bordered .table-success}
 
-##### Output
+Generated:
 
-Generated protoconf is `hello_world.proto`:
-
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // NOTE: Some trivial code snippets are eliminated.
@@ -108,8 +100,6 @@ message ItemConf {
 
 #### Cross-cell vertical struct map
 
-##### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID                | Name         | Type         |
@@ -121,11 +111,9 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 3                 | item3        | 300          |
 {.table-bordered .table-success}
 
-##### Output
+Generated:
 
-Generated protoconf is `hello_world.proto`:
-
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // NOTE: Some trivial code snippets are eliminated.
@@ -153,9 +141,7 @@ There are two kinds of in-cell map:
 2. in-cell **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
 
 ### In-cell scalar map
-
-#### Input
-
+Generated:
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID                | Props                |
@@ -169,11 +155,9 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 The `Props` column's type is in-cell map `map<string, int32>`, as the map value is scalar type `int32`.
 
-#### Output
+Generated:
 
-Generated protoconf is `hello_world.proto`:
-
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // NOTE: Some trivial code snippets are eliminated.
@@ -194,7 +178,7 @@ message ItemConf {
 
 ### In-cell struct map
 
-{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+Not supported yet.
 
 ## Ordered map
 
@@ -227,20 +211,20 @@ As the protobuf documents the restrictions of [map key type](https://developers.
 
 However, key type as enum is very useful in some situations. So we
 support it in a simple way: enum type is treated as `int32` as
-key type, but enum type is included in value type (struct).
+map key-type, but enum type is keeped in map value-type (struct).
 
 If `EnumKeyType` is predefined as:
 
 ```protobuf
 enum EnumKeyType {
-  ENUM_KEY_TYPE_UNKOWN = 0 [(tableau.evalue).name = "unknown"];
-  ENUM_KEY_TYPE_ORANGE = 1 [(tableau.evalue).name = "orange"];
-  ENUM_KEY_TYPE_APPLE  = 2 [(tableau.evalue).name = "apple"];
-  ENUM_KEY_TYPE_BANANA = 3 [(tableau.evalue).name = "banana"];
+  ENUM_KEY_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "unknown"];
+  ENUM_KEY_TYPE_ORANGE  = 1 [(tableau.evalue).name = "orange"];
+  ENUM_KEY_TYPE_APPLE   = 2 [(tableau.evalue).name = "apple"];
+  ENUM_KEY_TYPE_BANANA  = 3 [(tableau.evalue).name = "banana"];
 }
 ```
 
-then `map<.EnumKeyType, ValueType>` will be converted to `map<int32, ValueType>`,
+then `map<enum<.EnumKeyType>, ValueType>` will be converted to `map<int32, ValueType>`,
 and `EnumKeyType` is included in `ValueType` as:
 
 ```protobuf
@@ -249,8 +233,6 @@ message ValueType {
   ...
 }
 ```
-
-### Input
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -263,11 +245,9 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | banana                        | 300           |
 {.table-bordered .table-success}
 
-### Output
+Generated:
 
-Generated protoconf is `hello_world.proto`:
-
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // NOTE: Some trivial code snippets are eliminated.
@@ -296,7 +276,7 @@ Defaultly, all maps are dynamic sized. Map items should be present continuously,
 
 #### Implicit fixed size
 
-The map size is auto resolved by the max present map items in `Namerow`.
+The map size is auto resolved by the max map items present in **Namerow**.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 

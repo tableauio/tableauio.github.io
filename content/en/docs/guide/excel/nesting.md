@@ -27,8 +27,6 @@ Now, the horizontal/vertical list element's first field can be any type, even as
 
 ### Horizontal-map in vertical-map
 
-#### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID               | Name         | Prop1ID          | Prop1Value    | Prop2ID    | Prop2Value    |
@@ -40,7 +38,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 3                | item3        | 50               | 500           |            |               |
 {.table-bordered .table-success}
 
-#### Output
+Generated:
 
 {{< details "hello_world.proto" >}}
 
@@ -116,9 +114,7 @@ message ItemConf {
 {{< /details >}}
 
 ### Vertical-map in vertical-map
-
-#### Input
-
+Generated:
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID                | Name         | PropID           | PropValue     |
@@ -131,7 +127,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 2                 | item2        | 30               | 300           |
 {.table-bordered .table-success}
 
-#### Output
+Generated:
 
 {{< details "hello_world.proto" >}}
 
@@ -200,8 +196,6 @@ message ItemConf {
 
 ### Horizontal-list in vertical-map
 
-#### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID                | Name         | Prop1ID     | Prop1Value    | Prop2ID    | Prop2Value    |
@@ -213,7 +207,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 3                 | item3        | 50          | 500           |            |               |
 {.table-bordered .table-success}
 
-#### Output
+Generated:
 
 {{< details "hello_world.proto" >}}
 
@@ -290,8 +284,6 @@ message ItemConf {
 
 ### Vertical-list in vertical-map
 
-#### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID                | Name         | PropID      | PropValue     |
@@ -304,7 +296,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 2                 | item2        | 30          | 300           |
 {.table-bordered .table-success}
 
-#### Output
+Generated:
 
 {{< details "hello_world.proto" >}}
 
@@ -373,8 +365,6 @@ message ItemConf {
 
 ### Horizontal-map in vertical-list
 
-#### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID          | Name         | Prop1ID          | Prop1Value    | Prop2ID    | Prop2Value    |
@@ -386,7 +376,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 3           | item3        | 50               | 500           |            |               |
 {.table-bordered .table-success}
 
-#### Output
+Generated:
 
 {{< details "hello_world.proto" >}}
 
@@ -463,8 +453,6 @@ message ItemConf {
 
 ### Vertical-map in vertical-keyed-list
 
-#### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID               | Name         | PropID             | PropValue     |
@@ -477,7 +465,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 2                | item2        | 30                 | 300           |
 {.table-bordered .table-success}
 
-#### Output
+Generated:
 
 {{< details "hello_world.proto" >}}
 
@@ -546,8 +534,6 @@ message ItemConf {
 
 ### Horizontal-list in vertical-list
 
-#### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID           | Name         | Prop1ID     | Prop1Value    | Prop2ID    | Prop2Value    |
@@ -559,7 +545,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 3            | item3        | 50          | 500           |            |               |
 {.table-bordered .table-success}
 
-#### Output
+Generated:
 
 {{< details "hello_world.proto" >}}
 
@@ -636,8 +622,6 @@ message ItemConf {
 
 ### Vertical-list in vertical-keyed-list
 
-#### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID               | Name         | PropID      | PropValue     |
@@ -650,7 +634,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 2                | item2        | 30          | 300           |
 {.table-bordered .table-success}
 
-#### Output
+Generated:
 
 {{< details "hello_world.proto" >}}
 
@@ -717,7 +701,24 @@ message ItemConf {
 
 ## Nested naming
 
-### Input
+Predefined types in "common.proto":
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+enum ConfType {
+  CONF_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  CONF_TYPE_CLOUD = 1 [(tableau.evalue).name = "Cloud"];
+  CONF_TYPE_LOCAL = 2 [(tableau.evalue).name = "Local"];
+  CONF_TYPE_REMOTE = 3 [(tableau.evalue).name = "Remote"];
+}
+
+enum ServerType {
+  SERVER_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  SERVER_TYPE_GAME = 1 [(tableau.evalue).name = "GameServer"];
+  SERVER_TYPE_ACTIVITY = 2 [(tableau.evalue).name = "ActivityServer"];
+  SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = "MatchServer"];
+}
+```
 
 {{< details "worksheet <b>LoaderConf</b> in <b>HelloWorld.xlsx</b>" >}}
 
@@ -752,28 +753,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "common.proto" >}}
-
-```protobuf
-// NOTE: Some trivial code snippets are eliminated.
-enum ConfType {
-  CONF_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
-  CONF_TYPE_CLOUD = 1 [(tableau.evalue).name = "Cloud"];
-  CONF_TYPE_LOCAL = 2 [(tableau.evalue).name = "Local"];
-  CONF_TYPE_REMOTE = 3 [(tableau.evalue).name = "Remote"];
-}
-
-enum ServerType {
-  SERVER_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
-  SERVER_TYPE_GAME = 1 [(tableau.evalue).name = "GameServer"];
-  SERVER_TYPE_ACTIVITY = 2 [(tableau.evalue).name = "ActivityServer"];
-  SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = "MatchServer"];
-}
-```
-
-{{< /details >}}
-
-### Output
+Generated:
 
 {{< details "hello_world.proto" >}}
 

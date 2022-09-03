@@ -1,7 +1,7 @@
 ---
 title: "Overview"
-description: "Tableau is a powerful configuration converter powered by Protobuf(proto3)."
-lead: "Tableau is a powerful configuration converter powered by Protobuf(proto3)."
+description: "Tableau is a powerful configuration converter powered by Protobuf (proto3)."
+lead: "Tableau is a powerful configuration converter powered by Protobuf (proto3)."
 date: 2022-01-09T19:39:57+08:00
 lastmod: 2022-01-09T19:39:57+08:00
 draft: false
@@ -16,7 +16,7 @@ mermaid: true
 - Convert **Excel** to **JSON**, JSON is the first-class citizen of exporting targets.
 - Use **Protoconf** as the IDL(Interface Description Language) to define the structure of **Excel/XML**.
 - Use **Golang** to develop the conversion engine.
-- Support multiple programming languages, thanks to **Protobuf(proto3)**.
+- Support multiple programming languages, thanks to **Protobuf (proto3)**.
 
 ## Concepts
 

@@ -1,21 +1,21 @@
 get-started:
-   other: Get Started
+  other: Get Started
 features:
-   fast:
-      title: Lightning fast
-      content: Fast enough to convert thoudsands of Excel/CSV/XML in seconds.
-   scaffolding:
-      title: Scaffolding
-      content: Provide scaffolding code of configuration Loader and Checker. Powered by protoc plugin system.
-   metadata:
-      title: Metadata Protoconf
-      content: The powerful IDL Protoconf (based on Protobuf) is designed to define the structure of Excel/CSV/XML.
-   format:
-      title: Multiple formats
-      content: "Convert Excel/CSV/XML to multiple formats: JSON, Text, and Wire."
-   platform:
-      title: Cross-platform
-      content: The tableau toolset can be run on Windows, macOS, Linux, and so on.
-   language:
-      title: Multilingual
-      content: C++, C#, Go, Java, Python, TS/JS, and so on, are supported, due to Protobuf.
+  fast:
+    title: Lightning fast
+    content: Fast enough to convert thoudsands of Excel/CSV/XML files in seconds.
+  scaffolding:
+    title: Scaffolding
+    content: Provide scaffolding code of configuration Loader and Checker. Powered by protoc plugin system.
+  metadata:
+    title: Metadata Protoconf
+    content: A well-designed IDL Protoconf (based on Protobuf) to define the structure of Excel/CSV/XML.
+  format:
+    title: Multiple formats
+    content: "Convert Excel/CSV/XML to multiple formats: JSON, Text, and Wire."
+  platform:
+    title: Cross-platform
+    content: The tableau toolset can be run on Windows, macOS, and Linux.
+  language:
+    title: Multilingual
+    content: C++, C#, Go, Java, Python, TS/JS, and so on, are supported, due to Protobuf.

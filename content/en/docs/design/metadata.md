@@ -1,7 +1,7 @@
 ---
 title: "Metadata"
-description: "We create an IDL called Protoconf to describe Excel's structure(metadata), based on Protobuf(proto3)."
-lead: "We create an IDL called Protoconf to describe Excel's structure(metadata), based on Protobuf(proto3)."
+description: "We create an IDL called Protoconf to describe Excel's structure(metadata), based on Protobuf (proto3)."
+lead: "We create an IDL called Protoconf to describe Excel's structure(metadata), based on Protobuf (proto3)."
 date: 2022-01-09T19:39:57+08:00
 lastmod: 2022-01-09T19:39:57+08:00
 draft: false

@@ -28,8 +28,6 @@ like the map key.
 
 Pattern: `[Item]<int32>`
 
-### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID               | PropID           | PropName          |
@@ -42,9 +40,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 2                | 3                | prop13            |
 {.table-bordered .table-success}
 
-### Output
-
-Generated protoconf is `hello_world.proto`:
+Generated:
 
 {{< details "hello_world.proto" open >}}
 

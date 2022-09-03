@@ -30,7 +30,7 @@ toc: true
 
 | Term        | Definition                                                                                                                             |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `Namerow`   | Exact row number of column name definition at a worksheet.<br>⚠️NOTE: each column name must be unique in a worksheet!<br>Default: `1`. |
+| `Namerow`   | Exact row number of column name definition at a worksheet.<br>⚠️ NOTE: each column name must be unique in a worksheet!<br>Default: `1`. |
 | `Typerow`   | Exact row number of column type definition at a worksheet.<br>Default: `2`.                                                            |
 | `Noterow`   | Exact row number of column note at a worksheet.<br>Default: `3`.                                                                       |
 | `Datarow`   | Start row number of data at a worksheet.<br>Default: `4`.                                                                              |

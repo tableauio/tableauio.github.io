@@ -12,13 +12,12 @@ toc: true
 
 ## Overview
 
-You can define `enum` or `struct` types in a protoconf file (such as `common.proto`) previously. It means you create custom types, and then can use them to specify the
-column type or cross-cell struct type of a worksheet.
+You can define `enum` or `struct` types in a protoconf file (such as `common.proto`) ahead. It means you create predefined types, and then can use them to specify the column type or cross-cell struct type of a worksheet.
 
 ## Usage
 
-- Prepend a dot `.` to `CustomType` when you use it in a worksheet.
-- Specify the `Imports` option when call `tableau.GenProto` func, to import the common proto files, where custom `enum` or `struct` types are defined. Refer: [Tableau Options](https://github.com/tableauio/tableau/blob/master/options/options.go#L105).
+- Syntax: prepend a dot `.` to predefined `CustomType` (a.k.a. `.CustomType`) when you use it in a worksheet.
+- Import: specify the `importedProtoFiles` option of **tableauc** config to import the common proto files, where predefined `enum` or `struct` types are defined. Refer: [Tableau Options](https://github.com/tableauio/tableau/blob/master/options/options.go#L105).
 
 ## Enum
 
@@ -28,29 +27,24 @@ For example, enum type `FruitType` in `common.proto` is defined as:
 
 ```protobuf
 enum FruitType {
-  FRUIT_TYPE_UNKOWN = 0 [(tableau.evalue).name = "unknown"];
-  FRUIT_TYPE_ORANGE = 1 [(tableau.evalue).name = "orange"];
-  FRUIT_TYPE_APPLE  = 2 [(tableau.evalue).name = "apple"];
-  FRUIT_TYPE_BANANA = 3 [(tableau.evalue).name = "banana"];
+  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "unknown"];
+  FRUIT_TYPE_ORANGE  = 1 [(tableau.evalue).name = "orange"];
+  FRUIT_TYPE_APPLE   = 2 [(tableau.evalue).name = "苹果"];
 }
 ```
 
-### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID                | Type             |
-|-------------------|------------------|
-| map<uint32, Item> | enum<.FruitType> |
-| Item's ID.        | Fruit's type.    |
-| 1                 | 1                |
-| 2                 | FRUIT_TYPE_APPLE |
-| 3                 | banana           |
+| ID                | Type              |
+|-------------------|-------------------|
+| map<uint32, Item> | enum<.FruitType>  |
+| Item's ID.        | Fruit's type.     |
+| 1                 | 0                 |
+| 2                 | FRUIT_TYPE_ORANGE |
+| 3                 | 苹果              |
 {.table-bordered .table-success}
 
-### Output
-
-Generated protoconf is `hello_world.proto`:
+Generated:
 
 {{< details "hello_world.proto" open >}}
 
@@ -79,15 +73,15 @@ message ItemConf {
     "itemMap":  {
         "1":  {
             "id":  1,
-            "type":  "FRUIT_TYPE_ORANGE"
+            "type":  "FRUIT_TYPE_UNKNOWN"
         },
         "2":  {
             "id":  2,
-            "type":  "FRUIT_TYPE_APPLE"
+            "type":  "FRUIT_TYPE_ORANGE"
         },
         "3":  {
             "id":  3,
-            "type":  "FRUIT_TYPE_BANANA"
+            "type":  "FRUIT_TYPE_APPLE"
         }
     }
 }
@@ -106,8 +100,6 @@ message Prop {
 }
 ```
 
-### Input
-
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID                | Prop1ID      | Prop1Value    | Prop2ID    | Prop2Value   |
@@ -119,9 +111,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 3                 | 5            | 500           |            |              |
 {.table-bordered .table-success}
 
-### Output
-
-Generated protoconf is `hello_world.proto`:
+Generated:
 
 {{< details "hello_world.proto" open >}}
 
