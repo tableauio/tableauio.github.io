@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
 description: "Intro to Tableau."
-lead: "Tableau is a modern configuration converter powered by <a href='https://developers.google.com/protocol-buffers/docs/proto3'>Protobuf (proto3)</a>, which can convert <b>Excel/CSV/XML</b> to multiple formats: <a href='https://developers.google.com/protocol-buffers/docs/proto3#json'><b>JSON(protojson)</b></a>, <a href='https://pkg.go.dev/google.golang.org/protobuf/encoding/prototext'><b>Text(prototext)</b></a>, and <a href='https://pkg.go.dev/google.golang.org/protobuf/encoding/protowire'><b>Wire(protowire)</b></a>."
+lead: "Tableau is a modern configuration converter powered by <a href='https://developers.google.com/protocol-buffers/docs/proto3'>Protobuf (proto3)</a>, which can convert <b>Excel/CSV/XML</b> to multiple formats: <a href='https://developers.google.com/protocol-buffers/docs/proto3#json'><b>JSON (protojson)</b></a>, <a href='https://pkg.go.dev/google.golang.org/protobuf/encoding/prototext'><b>Text (prototext)</b></a>, and <a href='https://pkg.go.dev/google.golang.org/protobuf/encoding/protowire'><b>Wire (protowire)</b></a>."
 date: 2020-10-06T08:48:57+00:00
 lastmod: 2020-10-06T08:48:57+00:00
 draft: false
@@ -51,8 +51,8 @@ flowchart LR
   
   subgraph Output
     direction RL
-    O1("JSON(protojson)")
-    O2("Text(prototext)")
-    O3("Wire(protowire)")
+    O1("JSON (protojson)")
+    O2("Text (prototext)")
+    O3("Wire (protowire)")
   end
 ```

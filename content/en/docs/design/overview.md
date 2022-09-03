@@ -23,7 +23,7 @@ mermaid: true
 - Importer: Excel/XML importer.
 - IR: Intermediate Representation.
 - Filter: filter the IR.
-- Exporter: JSON(protojson), TEXT(prototext), and BIN(protowire).
+- Exporter: JSON (protojson), Text (prototext), and wire (protowire).
 - Protoconf: a configuration metadata format based on protobuf.
 
 ## Workflow
@@ -65,13 +65,13 @@ flowchart TD
   B{{Protoconf}}:::greenclass --> |protoc-gen-go| Confgen
 
   subgraph Output
-    O1("JSON(protojson)")
+    O1("JSON (protojson)")
     click O1 href "https://developers.google.com/protocol-buffers/docs/proto3#json"
 
-    O2("Text(prototext)")
+    O2("Text (prototext)")
     click O2 href "https://pkg.go.dev/google.golang.org/protobuf/encoding/prototext"
 
-    O3("Wire(protowire)")
+    O3("Wire (protowire)")
     click O3 href "https://pkg.go.dev/google.golang.org/protobuf/encoding/protowire"
   end
 

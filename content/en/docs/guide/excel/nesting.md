@@ -114,7 +114,7 @@ message ItemConf {
 {{< /details >}}
 
 ### Vertical-map in vertical-map
-Generated:
+
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID                | Name         | PropID           | PropValue     |

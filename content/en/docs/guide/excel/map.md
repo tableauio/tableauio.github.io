@@ -141,7 +141,7 @@ There are two kinds of in-cell map:
 2. in-cell **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
 
 ### In-cell scalar map
-Generated:
+
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | ID                | Props                |
