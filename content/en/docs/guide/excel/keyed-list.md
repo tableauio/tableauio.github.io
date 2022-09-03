@@ -10,17 +10,6 @@ weight: 1721
 toc: true
 ---
 
-## Scalar keyed list
-
-A worksheet `PropConf` in `HelloWorld.xlsx`:
-
-| Prop        |
-|-------------|
-| []\<int32\> |
-| Props.      |
-| 1,2,3       |
-{.table-bordered .table-success}
-
 ## Struct keyed list
 
 Keyed list is same as normal list, except the first field of list struct is treated as
@@ -101,3 +90,14 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+## Scalar keyed list
+
+A worksheet `PropConf` in `HelloWorld.xlsx`:
+
+| Prop        |
+|-------------|
+| []\<int32\> |
+| Props.      |
+| 1,2,3       |
+{.table-bordered .table-success}
