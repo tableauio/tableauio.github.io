@@ -14,18 +14,16 @@ toc: true
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID           | Name         | Desc                          |
-|--------------|--------------|-------------------------------|
-| {Item}uint32 | string       | string                        |
-| Item's ID.   | Item's Name. | Item's Description            |
-| 1            | Orange       | A kind of sour fruit.         |
-| 2            | Apple        | A kind of delicious fruit.    |
-| 3            | Banana       | A kind of calorie-rich fruit. |
+| ItemID       | ItemName    | ItemDesc              |
+|:-------------|:------------|:----------------------|
+| {Item}uint32 | string      | string                |
+| Item’s ID    | Item’s Name | Item’s Description    |
+| 1            | Orange      | A kind of sour fruit. |
 {.table-bordered .table-success}
 
 Generated:
 
-{{< details "hello_world.proto" >}}
+{{< details "hello_world.proto" open >}}
 
 ```protobuf
 // NOTE: Some trivial code snippets are eliminated.
@@ -45,6 +43,20 @@ message ItemConf {
 
 {{< /details >}}
 
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "item": {
+        "id": 1,
+        "name": "Orange",
+        "desc": "A kind of sour fruit."
+    }
+}
+```
+
+{{< /details >}}
+
 ### Note
 
 Cross-cell struct is usually used together with:
@@ -58,16 +70,16 @@ Each field type of the struct should be scalar type.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID                | Property                               |
-|-------------------|----------------------------------------|
-| map<uint32, Item> | {int32 ID,string Name,string Desc}Prop |
-| Item's ID.        | Item's property.                       |
-| 1                 | 1,Orange,A good fruit.                 |
-| 2                 | 2,Apple                                |
-| 3                 | 3                                      |
+| ID                | Property                                   |
+|-------------------|--------------------------------------------|
+| map<uint32, Item> | {int32 ID,string Name,string Desc}Property |
+| Item's ID         | Item's property.                           |
+| 1                 | 1,Orange,A good fruit.                     |
+| 2                 | 2,Apple                                    |
+| 3                 | 3                                          |
 {.table-bordered .table-success}
 
-The `Property` column's type is in-cell struct `{int32 ID,string Name,string Desc}Prop`.
+The `Property` column's type is in-cell struct `{int32 ID,string Name,string Desc}Property`.
 
 Generated:
 
@@ -83,8 +95,8 @@ message ItemConf {
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {
     uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    Prop property = 2 [(tableau.field) = {name:"Property" type:TYPE_INCELL_STRUCT}];
-    message Prop {
+    Property property = 2 [(tableau.field) = {name:"Property" span:SPAN_INNER_CELL}];
+    message Property {
       int32 id = 1 [(tableau.field) = {name:"ID"}];
       string name = 2 [(tableau.field) = {name:"Name"}];
       string desc = 3 [(tableau.field) = {name:"Desc"}];
@@ -95,7 +107,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
@@ -104,15 +116,15 @@ message ItemConf {
             "id": 1,
             "property": {
                 "id": 1,
-                "name": "Orange",
-                "desc": "A good fruit."
+                "name": "Apple",
+                "desc": "A kind of delicious fruit."
             }
         },
         "2": {
             "id": 2,
             "property": {
                 "id": 2,
-                "name": "Apple",
+                "name": "Orange",
                 "desc": ""
             }
         },

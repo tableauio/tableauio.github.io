@@ -28,8 +28,8 @@ For example, enum type `FruitType` in `common.proto` is defined as:
 ```protobuf
 enum FruitType {
   FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "unknown"];
-  FRUIT_TYPE_ORANGE  = 1 [(tableau.evalue).name = "orange"];
-  FRUIT_TYPE_APPLE   = 2 [(tableau.evalue).name = "苹果"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "苹果"];
+  FRUIT_TYPE_ORANGE  = 2 [(tableau.evalue).name = "orange"];
 }
 ```
 
@@ -38,10 +38,10 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | ID                | Type              |
 |-------------------|-------------------|
 | map<uint32, Item> | enum<.FruitType>  |
-| Item's ID.        | Fruit's type.     |
+| Item's ID         | Fruit's type      |
 | 1                 | 0                 |
-| 2                 | FRUIT_TYPE_ORANGE |
-| 3                 | 苹果              |
+| 2                 | 苹果              |
+| 3                 | FRUIT_TYPE_ORANGE |
 {.table-bordered .table-success}
 
 Generated:
@@ -66,7 +66,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
@@ -133,7 +133,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {

@@ -64,7 +64,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
@@ -153,7 +153,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
@@ -233,7 +233,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
@@ -322,7 +322,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
@@ -402,7 +402,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
@@ -491,7 +491,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
@@ -571,7 +571,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
@@ -660,7 +660,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "item_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {

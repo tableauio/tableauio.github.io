@@ -23,8 +23,8 @@ For example, enum type `FruitType` in `common.proto` is defined as:
 ```protobuf
 enum FruitType {
   FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "unknown"];
-  FRUIT_TYPE_ORANGE  = 1 [(tableau.evalue).name = "orange"];
-  FRUIT_TYPE_APPLE   = 2 [(tableau.evalue).name = "苹果"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "苹果"];
+  FRUIT_TYPE_ORANGE  = 2 [(tableau.evalue).name = "orange"];
 }
 ```
 
@@ -33,8 +33,8 @@ Then the three forms of enum value are all accepted:
 | Enum value number | Enum value name    | Enum value alias |
 |-------------------|--------------------|------------------|
 | 0                 | FRUIT_TYPE_UNKNOWN | unknown          |
-| 1                 | FRUIT_TYPE_ORANGE  | orange           |
-| 2                 | FRUIT_TYPE_APPLE   | 苹果             |
+| 1                 | FRUIT_TYPE_APPLE   | 苹果             |
+| 2                 | FRUIT_TYPE_ORANGE  | orange           |
 
 > NOTE: Enum type must be predefined.
 

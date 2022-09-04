@@ -114,7 +114,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | ID           | Name         | Type         |
 |--------------|--------------|--------------|
 | [Item]uint32 | string       | int32        |
-| Item's ID.   | Item's name. | Item's type. |
+| Item's ID   | Item's name. | Item's type. |
 | 1            | item1        | 100          |
 | 2            | item2        | 200          |
 | 3            | item3        | 300          |
@@ -169,7 +169,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | ID                | Props         |
 |-------------------|---------------|
 | map<uint32, Item> | []int32       |
-| Item's ID.        | Item's props. |
+| Item's ID        | Item's props. |
 | 1                 | 1,2,3         |
 | 2                 | 4,5           |
 | 3                 | 6             |
