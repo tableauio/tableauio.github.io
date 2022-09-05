@@ -34,7 +34,7 @@ message ItemConf {
 
   Item item = 1;
   message Item {
-    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
     string name = 2 [(tableau.field) = {name:"Name"}];
     string desc = 3 [(tableau.field) = {name:"Desc"}];
   }

@@ -38,7 +38,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 message Apple {
   option (tableau.worksheet) = {name:"Apple" namerow:1 typerow:2 noterow:3 datarow:4};
 
-  int32 id = 1 [(tableau.field) = {name:"ID"}];
+  uint32 id = 1 [(tableau.field) = {name:"ID"}];
   string name = 2 [(tableau.field) = {name:"Name"}];
   string desc = 3 [(tableau.field) = {name:"Desc"}];
 }

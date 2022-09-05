@@ -75,7 +75,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | ID                  | Name         |
 |---------------------|--------------|
 | map<uint32, string> | string       |
-| Item's ID          | Item's name. |
+| Item's ID           | Item's name. |
 | 1                   | item1        |
 | 2                   | item2        |
 | 3                   | item3        |
@@ -105,7 +105,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | ID                | Name         | Type         |
 |-------------------|--------------|--------------|
 | map<uint32, Item> | string       | int32        |
-| Item's ID        | Item's name. | Item's type. |
+| Item's ID         | Item's name. | Item's type. |
 | 1                 | item1        | 100          |
 | 2                 | item2        | 200          |
 | 3                 | item3        | 300          |
@@ -147,7 +147,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | ID                | Props                |
 |-------------------|----------------------|
 | map<uint32, Item> | map<string, int32>   |
-| Item's ID        | Item's props.        |
+| Item's ID         | Item's props.        |
 | 1                 | hp:1,power:2,magic:3 |
 | 2                 | hp:10,power:20       |
 | 3                 | hp:30                |
@@ -297,3 +297,92 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | Item1's ID.                   | Item1's name. | Item2's ID. | Item2's name. |
 | 1                             | item1         | 2           | item2         |
 {.table-bordered .table-success}
+
+## Advanced features
+
+### Horizontal column-skipped map
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| D                 | Prop1ID          |              | Prop1Value    | Prop2ID    |              | Prop2Value    |
+|:------------------|:-----------------|:-------------|:--------------|:-----------|:-------------|:--------------|
+| map<uint32, Item> | map<int32, Prop> |              | int32         | int32      |              | int32         |
+| Item's ID         | Prop1’s ID       | Prop1’s name | Prop1’s value | Prop2’s ID | Prop2’s name | Prop2’s value |
+| 1                 | 1                | Apple        | 100           | 2          | Orange       | 200           |
+| 2                 | 3                | Banana       | 300           | 4          | Pomelo       | 400           |
+| 3                 | 5                | Watermelon   | 500           |            |              |               |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    map<int32, Prop> prop_map = 2 [(tableau.field) = {name:"Prop" key:"ID" layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int32 value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "HeroConf.json" >}}
+
+```json
+{
+    "itemMap": {
+        "1": {
+            "id": 1,
+            "desc": "item1",
+            "propertyMap": {
+                "1": {
+                    "id": 1,
+                    "value": "10"
+                },
+                "2": {
+                    "id": 2,
+                    "value": "20"
+                }
+            }
+        },
+        "2": {
+            "id": 2,
+            "desc": "item2",
+            "propertyMap": {
+                "3": {
+                    "id": 3,
+                    "value": "30"
+                },
+                "4": {
+                    "id": 4,
+                    "value": "40"
+                }
+            }
+        },
+        "3": {
+            "id": 3,
+            "desc": "item3",
+            "propertyMap": {
+                "5": {
+                    "id": 5,
+                    "value": "50"
+                }
+            }
+        }
+    }
+}
+```
+
+{{< /details >}}

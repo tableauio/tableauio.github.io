@@ -76,13 +76,13 @@ message ItemConf {
             "type":  "FRUIT_TYPE_UNKNOWN"
         },
         "2":  {
-            "id":  2,
-            "type":  "FRUIT_TYPE_ORANGE"
-        },
-        "3":  {
             "id":  3,
             "type":  "FRUIT_TYPE_APPLE"
         }
+        "3":  {
+            "id":  2,
+            "type":  "FRUIT_TYPE_ORANGE"
+        },
     }
 }
 ```
@@ -102,13 +102,13 @@ message Prop {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID                | Prop1ID      | Prop1Value    | Prop2ID    | Prop2Value   |
-|-------------------|--------------|---------------|------------|--------------|
-| map<uint32, Item> | [.Prop]int32 | int32         | int32      | int32        |
-| Item's id.        | Prop's id.   | Prop's value. | Prop's id. | Prop's value |
-| 1                 | 1            | 100           | 2          | 200          |
-| 2                 | 3            | 300           | 4          | 400          |
-| 3                 | 5            | 500           |            |              |
+| ID                | Prop1ID      | Prop1Value    | Prop2ID    | Prop2Value    |
+|-------------------|--------------|---------------|------------|---------------|
+| map<uint32, Item> | [.Prop]int32 | int32         | int32      | int32         |
+| Item's ID         | Prop1's ID   | Prop1's value | Prop2's ID | Prop2's value |
+| 1                 | 1            | 100           | 2          | 200           |
+| 2                 | 3            | 300           | 4          | 400           |
+| 3                 | 5            | 500           |            |               |
 {.table-bordered .table-success}
 
 Generated:
