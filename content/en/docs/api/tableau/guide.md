@@ -6,10 +6,10 @@ date: 2022-03-10T08:00:00+00:00
 lastmod: 2022-03-10T08:00:00+00:00
 draft: false
 images: []
-weight: 3100
+weight: 100
 toc: true
 ---
 
 ## Overview
 
-TODO: refer [Tableau checker](https://github.com/tableauio/checker).
+TODO: refer [Tableau](https://github.com/tableauio/tableau).

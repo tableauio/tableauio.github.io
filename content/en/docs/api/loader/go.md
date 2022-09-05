@@ -1,12 +1,12 @@
 ---
-title: "C++"
-description: "C++ loader guide."
-lead: "C++ loader guide."
+title: "Go"
+description: "Go loader guide."
+lead: "Go loader guide."
 date: 2022-03-10T08:00:00+00:00
 lastmod: 2022-03-10T08:00:00+00:00
 draft: false
 images: []
-weight: 2200
+weight: 201
 toc: true
 ---
 

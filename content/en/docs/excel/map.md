@@ -1,0 +1,388 @@
+---
+title: "Map"
+description: "Map features."
+lead: "This guide demonstrates different features of map type."
+date: 2022-02-26T13:59:39+01:00
+lastmod: 2022-02-26T13:59:39+01:00
+draft: false
+images: []
+weight: 7400
+toc: true
+---
+
+## Cross-cell map
+
+### Horizontal map
+
+There are two kinds of cross-cell horizontal map:
+
+1. cross-cell horizontal **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.
+2. cross-cell horizontal **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
+
+#### Cross-cell horizontal scalar map
+
+No need to support, use this instead: `map<int32, Item>`.
+
+#### Cross-cell horizontal struct map
+
+> NOTE: need to be tested enough.
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Item1ID           | Item1Name     | Item2ID     | Item2Name     |
+|-------------------|---------------|-------------|---------------|
+| map<uint32, Item> | string        | uint32      | string        |
+| Item1's ID.       | Item1's name. | Item2's ID. | Item2's name. |
+| 1                 | item1         | 2           | item2         |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_HORIZONTAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+### Vertical map
+
+> Vertical layout is map's default layout.
+
+There are two kinds of cross-cell vertical map:
+
+1. cross-cell vertical **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.
+2. cross-cell vertical **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
+
+#### Cross-cell vertical scalar map
+
+No need to support, use this instead: `map<int32, Item>`.
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID                  | Name         |
+|---------------------|--------------|
+| map<uint32, string> | string       |
+| Item's ID           | Item's name. |
+| 1                   | item1        |
+| 2                   | item2        |
+| 3                   | item3        |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, string> item_map = 1 [(tableau.field) = {key:"ID" value:"Name" layout:LAYOUT_VERTICAL}];
+}
+```
+
+{{< /details >}}
+
+#### Cross-cell vertical struct map
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID                | Name         | Type         |
+|-------------------|--------------|--------------|
+| map<uint32, Item> | string       | int32        |
+| Item's ID         | Item's name. | Item's type. |
+| 1                 | item1        | 100          |
+| 2                 | item2        | 200          |
+| 3                 | item3        | 300          |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    int32 type = 3 [(tableau.field) = {name:"Type"}];
+  }
+}
+```
+
+{{< /details >}}
+
+## In-cell map
+
+There are two kinds of in-cell map:
+
+1. in-cell **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.
+2. in-cell **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
+
+### In-cell scalar map
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID                | Props                |
+|-------------------|----------------------|
+| map<uint32, Item> | map<string, int32>   |
+| Item's ID         | Item's props.        |
+| 1                 | hp:1,power:2,magic:3 |
+| 2                 | hp:10,power:20       |
+| 3                 | hp:30                |
+{.table-bordered .table-success}
+
+The `Props` column's type is in-cell map `map<string, int32>`, as the map value is scalar type `int32`.
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    map<string, int32> props = 2 [(tableau.field) = {name:"Props" type:TYPE_INCELL_MAP}];
+  }
+}
+```
+
+{{< /details >}}
+
+### In-cell struct map
+
+Not supported yet.
+
+## Ordered map
+
+In the metasheet `@TABLEAU`, set the `OrderedMap` option to `true`, then
+ordered map accessers will be generated. This feature is powered by [tableauio/loader](https://github.com/tableauio/loader). Currently supported programming languages are:
+
+- [x] C++
+- [ ] Golang
+- [ ] C#
+
+### Example
+
+If we want `ItemConf` to generate ordered map accessers, then set
+`OrderedMap` option to `true` of metasheet `@TABLEAU`:
+
+| Sheet    | OrderedMap |
+|----------|------------|
+| ItemConf | true       |
+{.table-bordered .table-success}
+
+More useful options are illustrated at metasheet chapter. [Metasheet @TABLEAU →]({{< relref "metasheet" >}})
+
+## Enum key map
+
+As the protobuf documents the restrictions of [map key type](https://developers.google.com/protocol-buffers/docs/proto3#maps):
+
+> ... the `key_type` can be any integral or string type (so, any
+> **scalar** type except for floating point types and `bytes`). Note
+> that enum is not a valid `key_type`.
+
+However, key type as enum is very useful in some situations. So we
+support it in a simple way: enum type is treated as `int32` as
+map key-type, but enum type is keeped in map value-type (struct).
+
+If `EnumKeyType` is predefined as:
+
+```protobuf
+enum EnumKeyType {
+  ENUM_KEY_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "unknown"];
+  ENUM_KEY_TYPE_ORANGE  = 1 [(tableau.evalue).name = "orange"];
+  ENUM_KEY_TYPE_APPLE   = 2 [(tableau.evalue).name = "apple"];
+  ENUM_KEY_TYPE_BANANA  = 3 [(tableau.evalue).name = "banana"];
+}
+```
+
+then `map<enum<.EnumKeyType>, ValueType>` will be converted to `map<int32, ValueType>`,
+and `EnumKeyType` is included in `ValueType` as:
+
+```protobuf
+message ValueType {
+  EnumKeyType key = 1;
+  ...
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Type                          | Price         |
+|-------------------------------|---------------|
+| map<enum<.EnumKeyType>, Item> | int32         |
+| Item's type.                  | Item's price. |
+| orange                        | 100           |
+| apple                         | 200           |
+| banana                        | 300           |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<int32, Item> item_map = 1 [(tableau.field) = {key:"Type" layout:LAYOUT_VERTICAL}];
+   message Item {
+    EnumKeyType type = 1 [(tableau.field) = {name:"Type"}];
+    int32 price = 2 [(tableau.field) = {name:"Price"}];
+  }
+}
+```
+
+{{< /details >}}
+
+## Horizontal map size
+
+### Dynamic size
+
+Defaultly, all maps are dynamic sized. Map items should be present continuously, and report error if an empty item is inserted.
+
+### Fixed size
+
+#### Implicit fixed size
+
+The map size is auto resolved by the max map items present in **Namerow**.
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Item1ID                         | Item1Name     | Item2ID     | Item2Name     |
+|---------------------------------|---------------|-------------|---------------|
+| map<uint32, Item>\|{fixed:true} | string        | uint32      | string        |
+| Item1's ID.                     | Item1's name. | Item2's ID. | Item2's name. |
+| 1                               | item1         | 2           | item2         |
+{.table-bordered .table-success}
+
+#### Explicit fixed size
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Item1ID                       | Item1Name     | Item2ID     | Item2Name     |
+|-------------------------------|---------------|-------------|---------------|
+| map<uint32, Item>\|{length:2} | string        | uint32      | string        |
+| Item1's ID.                   | Item1's name. | Item2's ID. | Item2's name. |
+| 1                             | item1         | 2           | item2         |
+{.table-bordered .table-success}
+
+## Advanced features
+
+### Horizontal column-skipped map
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| D                 | Prop1ID          |              | Prop1Value    | Prop2ID    |              | Prop2Value    |
+|:------------------|:-----------------|:-------------|:--------------|:-----------|:-------------|:--------------|
+| map<uint32, Item> | map<int32, Prop> |              | int32         | int32      |              | int32         |
+| Item's ID         | Prop1’s ID       | Prop1’s name | Prop1’s value | Prop2’s ID | Prop2’s name | Prop2’s value |
+| 1                 | 1                | Apple        | 100           | 2          | Orange       | 200           |
+| 2                 | 3                | Banana       | 300           | 4          | Pomelo       | 400           |
+| 3                 | 5                | Watermelon   | 500           |            |              |               |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    map<int32, Prop> prop_map = 2 [(tableau.field) = {name:"Prop" key:"ID" layout:LAYOUT_HORIZONTAL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int32 value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "HeroConf.json" >}}
+
+```json
+{
+    "itemMap": {
+        "1": {
+            "id": 1,
+            "desc": "item1",
+            "propertyMap": {
+                "1": {
+                    "id": 1,
+                    "value": "10"
+                },
+                "2": {
+                    "id": 2,
+                    "value": "20"
+                }
+            }
+        },
+        "2": {
+            "id": 2,
+            "desc": "item2",
+            "propertyMap": {
+                "3": {
+                    "id": 3,
+                    "value": "30"
+                },
+                "4": {
+                    "id": 4,
+                    "value": "40"
+                }
+            }
+        },
+        "3": {
+            "id": 3,
+            "desc": "item3",
+            "propertyMap": {
+                "5": {
+                    "id": 5,
+                    "value": "50"
+                }
+            }
+        }
+    }
+}
+```
+
+{{< /details >}}
