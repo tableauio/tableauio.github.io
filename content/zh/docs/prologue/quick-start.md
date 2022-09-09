@@ -1,69 +1,69 @@
 ---
 title: "快速开始"
-description: "One page summary of how to start a new Doks project."
-lead: "One page summary of how to start a new Doks project."
+description: "This guide gets you started with Tableau in Go with a simple working example."
+lead: "This guide gets you started with Tableau in Go with a simple working example."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
 images: []
-menu:
-  docs:
-    parent: "prologue"
-weight: 110
+weight: 100
 toc: true
 ---
 
-## Requirements
+## Prerequisites
 
-Doks uses npm to centralize dependency management, making it [easy to update]({{< relref "../help/how-to-update" >}}) resources, build tooling, plugins, and build scripts:
+- [Go](https://golang.org/), any one of the **three latest major**  [releases of Go](https://golang.org/doc/devel/release.html).
+  - For installation instructions, see Go’s [Getting Started](https://golang.org/doc/install) guide.
+- [Protocol buffer](https://developers.google.com/protocol-buffers)  compiler,  `protoc`,  [version 3](https://developers.google.com/protocol-buffers/docs/proto3).
+  - For installation instructions, see  [Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/).
+- **Go plugins** for the protocol compiler:
+  1. Install the protocol compiler plugins for Go using the following commands:
 
-- Download and install [Node.js](https://nodejs.org/) (it includes npm) for your platform.
+     ```bash
+     go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+     ```
 
-## Start a new Doks project
+  2. Update your PATH so that the protoc compiler can find the plugins:
 
-Create a new site, change directories, install dependencies, and start development server.
+     ```bash
+     export PATH="$PATH:$(go env GOPATH)/bin"
+     ```
 
-### Create a new site
+## Get the example code
 
-Doks is available as a child theme, and a starter theme:
+The example code is part of the [tableau/demo](https://github.com/tableauio/demo) repo.
 
-- Use the Doks child theme, if you do __not__ plan to customize a lot, and/or need future Doks updates.
-- Use the Doks starter theme, if you plan to customize a lot, and/or do __not__ need future Doks updates.
+1. [Download the repo as a zip file](https://github.com/tableauio/demo/archive/refs/heads/master.zip) and unzip it, or clone the repo:
 
-Not quite sure? Use the Doks child theme.
+   ```bash
+   git clone https://github.com/tableauio/demo
+   ```
 
-#### Doks child theme
+2. Change to the quick start example directory:
 
-```bash
-git clone https://github.com/h-enk/doks-child-theme.git my-doks-site
-```
+   ```bash
+   cd demo/examples/helloworld
+   ```
 
-#### Doks starter theme
+## Run the example
 
-```bash
-git clone https://github.com/h-enk/doks.git my-doks-site
-```
+From the `examples/helloworld` directory:
 
-### Change directories
+1. Change dir to **excel2proto**, compile and execute:
 
-```bash
-cd my-doks-site
-```
+   ```bash
+   go run main.go
+   ```
 
-### Install dependencies
+   Then proto files will be generated to `examples/helloworld/proto`.
 
-```bash
-npm install
-```
+2. Change dir to **excel2conf**, generate `*.pb.go` and then compile and execute:
 
-### Start development server
+   ```bash
+   bash gen.sh
+   go run main.go
+   ```
 
-```bash
-npm run start
-```
+   Then `*.pb.go` files will be generated to `examples/helloworld/protoconf`, and JSON files will be generated to `examples/helloworld/excel2conf/_out`.
 
-Doks will start the Hugo development webserver accessible by default at `http://localhost:1313`. Saved changes will live reload in the browser.
-
-## Other commands
-
-Doks comes with commands for common tasks. [Commands →]({{< relref "commands" >}})
+Congratulations! You’ve just run a modern configuration converter application with Tableau.

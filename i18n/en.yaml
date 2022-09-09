@@ -2,20 +2,20 @@ get-started:
   other: Get Started
 features:
   fast:
-    title: Lightning fast
+    title: ⚡ Lightning fast
     content: Fast enough to convert thoudsands of Excel/CSV/XML files in seconds.
   scaffolding:
-    title: Scaffolding
+    title: 🛠️ Scaffolding
     content: Provide scaffolding code of configuration Loader and Checker. Powered by protoc plugin system.
   metadata:
-    title: Metadata Protoconf
+    title: 📄 Metadata
     content: A well-designed IDL Protoconf (based on Protobuf) to define the structure of Excel/CSV/XML.
   format:
-    title: Multiple formats
-    content: "Convert Excel/CSV/XML to multiple formats: JSON, Text, and Wire."
+    title: 📚 Multiple formats
+    content: "Convert Excel/CSV/XML to multiple formats: JSON, Text and Wire."
   platform:
-    title: Cross-platform
-    content: The tableau toolset can be run on Windows, macOS, and Linux.
+    title: 🧊 Cross-platform
+    content: The tableau toolset can be run on Windows, macOS and Linux.
   language:
-    title: Multilingual
-    content: C++, C#, Go, Java, Python, TS/JS, and so on, are supported, due to Protobuf.
+    title: ♾️ Multilingual
+    content: C++, C#, Go, Java, Python, TS/JS, and so on, are supported due to Protobuf.

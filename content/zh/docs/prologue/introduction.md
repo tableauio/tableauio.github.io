@@ -1,58 +1,61 @@
 ---
 title: "简介"
-description: "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
-lead: "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
+description: "Intro to Tableau."
+lead: "Tableau是一款功能强大的现代化配置转换器。基于<a href='https://developers.google.com/protocol-buffers/docs/proto3'>Protobuf (proto3)</a>，它能够将 <b>Excel/CSV/XML</b> 转换成多种格式：<a href='https://developers.google.com/protocol-buffers/docs/proto3#json'><b>JSON (protojson)</b></a>，<a href='https://pkg.go.dev/google.golang.org/protobuf/encoding/prototext'><b>Text (prototext)</b></a> 和 <a href='https://pkg.go.dev/google.golang.org/protobuf/encoding/protowire'><b>Wire (protowire)</b></a>。"
 date: 2020-10-06T08:48:57+00:00
 lastmod: 2020-10-06T08:48:57+00:00
 draft: false
 images: []
-menu:
-  docs:
-    parent: "prologue"
-weight: 100
+weight: 110
 toc: true
+mermaid: true
 ---
 
-## Get started
+## tableauc
 
-There are two main ways to get started with Doks:
+`tableauc` 是 tableau 转换器（tableau converter）的意思，主要由以下两个转换模块组成：
 
-### Tutorial
+1. **protogen**：分析 Excel/CSV/XML 文件，提取文件结构信息，转换为 Protoconf 文件。
+2. **confgen**：分析 Excel/CSV/XML 文件 和对应的元信息文件 Protoconf，提取文件数据信息，转换为 JSON/Text/Wire 文件。
 
-{{< alert icon="👉" text="The Tutorial is intended for novice to intermediate users." />}}
+### protogen
 
-Step-by-step instructions on how to start a new Doks project. [Tutorial →](https://getdoks.org/tutorial/introduction/)
+`protogen` convert **Excel/CSV/XML** files to **Protoconf** files.
+**Protoconf** is a dialect of [Protocol Buffers (proto3)](https://developers.google.com/protocol-buffers/docs/proto3) extended with [tableau options](https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto), aimed to define the structure of Excel/CSV/XML.
 
-### Quick Start
+```mermaid
+flowchart LR
+  subgraph Input
+    direction RL
+    I1(Excel)
+    I2(CSV)
+    I3(XML)
+  end
+  Input --> B
+  B((protogen)):::orangecalss --> C(Protoconf)
+  classDef orangecalss fill:#f96;
+```
 
-{{< alert icon="👉" text="The Quick Start is intended for intermediate to advanced users." />}}
+### confgen
 
-One page summary of how to start a new Doks project. [Quick Start →]({{< relref "quick-start" >}})
-
-## Go further
-
-Recipes, Reference Guides, Extensions, and Showcase.
-
-### Recipes
-
-Get instructions on how to accomplish common tasks with Doks. [Recipes →](https://getdoks.org/docs/recipes/project-configuration/)
-
-### Reference Guides
-
-Learn how to customize Doks to fully make it your own. [Reference Guides →](https://getdoks.org/docs/reference-guides/security/)
-
-### Extensions
-
-Get instructions on how to add even more to Doks. [Extensions →](https://getdoks.org/docs/extensions/breadcrumb-navigation/)
-
-### Showcase
-
-See what others have build with Doks. [Showcase →](https://getdoks.org/showcase/electric-blocks/)
-
-## Contributing
-
-Find out how to contribute to Doks. [Contributing →](https://getdoks.org/docs/contributing/how-to-contribute/)
-
-## Help
-
-Get help on Doks. [Help →]({{< relref "../help/how-to-update" >}})
+```mermaid
+flowchart LR
+  subgraph Input
+    direction RL
+    I1(Excel)
+    I2(CSV)
+    I3(XML)
+  end
+  
+  Input --> B
+  A(Protoconf) --> B
+  B((confgen)):::orangecalss --> Output
+  classDef orangecalss fill:#f96;
+  
+  subgraph Output
+    direction RL
+    O1("JSON (protojson)")
+    O2("Text (prototext)")
+    O3("Wire (protowire)")
+  end
+```
