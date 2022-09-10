@@ -17,5 +17,5 @@ features:
     title: 🧊 跨平台
     content: Tableau相关工具链可运行于多种操作系统：Windows, macOS 和 Linux.
   language:
-    title: ♾️ 多语言
+    title: 📝 多语言
     content: 支持 C++, C#, Go, Java, Python, Lua, TS/JS 等多种语言接入，这得益于 Protobuf 的强大生态。

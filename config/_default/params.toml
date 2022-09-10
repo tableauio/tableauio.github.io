@@ -4,7 +4,7 @@
 title = "Tableau"
 titleSeparator = "-"
 titleAddition = "Modern Configuration Converter"
-description = "Tableau can convert Excel/CSV/XML to multiple formats: JSON, Text, and Wire."
+description = "Tableau can convert Excel/CSV/XML to multiple formats: JSON, Text and Wire."
 
 ## Documentation
 # docsVersion = "0.3"
@@ -22,21 +22,21 @@ twitterCreator = "@henkverlinde"
 ## JSON-LD
 # schemaType = "Person"
 schemaType = "Organization"
-schemaName = "Doks"
-schemaAuthor = "Henk Verlinde"
-schemaAuthorTwitter = "https://twitter.com/henkverlinde"
-schemaAuthorLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
-schemaAuthorGitHub = "https://github.com/h-enk"
+schemaName = "Tableauio"
+schemaAuthor = "Wenchy"
+schemaAuthorTwitter = "https://twitter.com/wenchyzhu"
+schemaAuthorLinkedIn = "https://www.linkedin.com/in/wenchyzhu/"
+schemaAuthorGitHub = "https://github.com/wenchyzhu"
 schemaLocale = "en-US"
-schemaLogo = "logo-doks.png"
+schemaLogo = "tableau-logo.png"
 schemaLogoWidth = 512
 schemaLogoHeight = 512
-schemaImage = "doks.png"
+schemaImage = "tableau-logo.png"
 schemaImageWidth = 1280
 schemaImageHeight = 640
-schemaTwitter = "https://twitter.com/getdoks"
+schemaTwitter = "https://twitter.com/tableauio"
 schemaLinkedIn = ""
-schemaGitHub = "https://github.com/h-enk/doks"
+schemaGitHub = "https://github.com/tableauio/tableau"
 schemaSection = "blog"
 
 ## Sitelinks Search Box
@@ -86,7 +86,7 @@ lastMod = true
   kaTex = false
   multilingualMode = true
   docsVersioning = false
-  fullWidth = true
+  fullWidth = false
 
 [menu]
   [menu.section]

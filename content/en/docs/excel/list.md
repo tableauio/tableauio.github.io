@@ -10,69 +10,70 @@ weight: 7300
 toc: true
 ---
 
-## Cross-cell list
 
-### Horizontal list
+## Horizontal list
 
-> Vertical layout is list's default layout.
+There are three kinds of horizontal list:
 
-There are three kinds of cross-cell horizontal map:
+1. Horizontal **scalar/enum** list, as element type is scalar. E.g: `[]int32`.
+2. Horizontal **incell struct** list, as element type is incell struct. E.g: `[]{int32 ID, string Name}Item`.
+3. Horizontal **struct** list, as element type is struct. E.g: `[Item]int32`.
 
-1. cross-cell horizontal **scalar/enum** list, as element type is scalar. E.g: `[]int32`.
-2. cross-cell horizontal **incell struct** list, as element type is incell struct. E.g: `[]{int32 ID, string Name}Item`.
-3. cross-cell horizontal **struct** list, as element type is struct. E.g: `[Item]int32`.
-
-#### Cross-cell horizontal scalar/enum list
+### Horizontal scalar list
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| Param1          | Param2          | Param3          |
-|-----------------|-----------------|-----------------|
-| []int32         | int32           | int32           |
-| Param1's value. | Param2's value. | Param3's value. |
-| 1               | 2               | 3               |
+| Param1         | Param2         | Param3         |
+|----------------|----------------|----------------|
+| []int32        | int32          | int32          |
+| Param1's value | Param2's value | Param3's value |
+| 1              | 2              | 3              |
 {.table-bordered .table-success}
 
-#### Cross-cell horizontal incell struct list
+Generated:
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+{{< details "hello_world.proto" >}}
 
-| Item1                         | Item2                       | Item3                       |
-|-------------------------------|-----------------------------|-----------------------------|
-| []{int32 Id, string Name}Item | {int32 Id, string Name}Item | {int32 Id, string Name}Item |
-| Item1's info.                 | Item2's info.               | Item2's info.               |
-| 1,apple                       | 2,banana                    | 3,peach                     |
-{.table-bordered .table-success}
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
-#### Cross-cell horizontal incell predefined-struct list
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
 
-`Item` is predefined as:
-
-```proto
-message Item {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    string name = 2 [(tableau.field) = {name:"Name"}];
+  repeated int32 param_list = 1 [(tableau.field) = {name:"Param" layout:LAYOUT_HORIZONTAL}];
 }
 ```
 
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "paramList": [
+        1,
+        2,
+        3
+    ]
+}
+```
+
+{{< /details >}}
+
+### Horizontal enum list
+
+TODO...
+
+### Horizontal struct list
+
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| Item1         | Item2         | Item3         |
-|---------------|---------------|---------------|
-| []{.Item}     | {.Item}       | {.Item}       |
-| Item1's info. | Item2's info. | Item2's info. |
-| 1,apple       | 2,banana      | 3,peach       |
-{.table-bordered .table-success}
-
-#### Cross-cell horizontal struct list
-
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
-
-| Item1ID      | Item1Name     | Item2ID     | Item2Name     |
-|--------------|---------------|-------------|---------------|
-| [Item]uint32 | string        | uint32      | string        |
-| Item1's ID.  | Item1's name. | Item2's ID. | Item2's name. |
-| 1            | item1         | 2           | item2         |
+| Item1ID      | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
+|--------------|--------------|------------|--------------|------------|--------------|
+| [Item]uint32 | string       | uint32     | string       | uint32     | string       |
+| Item1's ID   | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
+| 1            | Apple        | 2          | Orange       | 3          | Banana       |
 {.table-bordered .table-success}
 
 Generated::
@@ -96,28 +97,130 @@ message ItemConf {
 
 {{< /details >}}
 
-### Vertical list
+{{< details "ItemConf.json" >}}
 
-There are two kinds of cross-cell vertical list:
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "name": "Apple"
+        },
+        {
+            "id": 2,
+            "name": "Orange"
+        },
+        {
+            "id": 3,
+            "name": "Banana"
+        }
+    ]
+}
+```
 
-1. cross-cell vertical **scalar** list, as list element type is scalar. E.g: `[]int32`.
-2. cross-cell vertical **struct** list, as list element type is struct. E.g: `[Item]int32`.
+{{< /details >}}
 
-#### Cross-cell vertical scalar list
+### Horizontal predefined-struct list
 
-No need to support, use this instead: `[Item]int32`.
+TODO...
 
-#### Cross-cell vertical struct list
+### Horizontal incell-struct list
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID           | Name         | Type         |
-|--------------|--------------|--------------|
-| [Item]uint32 | string       | int32        |
-| Item's ID    | Item's name. | Item's type. |
-| 1            | item1        | 100          |
-| 2            | item2        | 200          |
-| 3            | item3        | 300          |
+| Item1                         | Item2        | Item3        |
+|-------------------------------|--------------|--------------|
+| []{int32 ID, string Name}Item | Item         | Item         |
+| Item1's info                  | Item2's info | Item3's info |
+| 1,Apple                       | 2,Orange     | 3,Banana     |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL span:SPAN_INNER_CELL}];
+  message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "name": "Apple"
+        },
+        {
+            "id": 2,
+            "name": "Orange"
+        },
+        {
+            "id": 3,
+            "name": "Banana"
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### Horizontal incell-predefined-struct list
+
+`Item` is predefined as:
+
+```proto
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Item1         | Item2         | Item3         |
+|---------------|---------------|---------------|
+| []{.Item}     | .Item         | .Item         |
+| Item1's info. | Item2's info. | Item2's info. |
+| 1,100         | 2,200         | 3,300         |
+{.table-bordered .table-success}
+
+## Vertical list
+
+There are two kinds of vertical list:
+
+1. Vertical **scalar** list, as list element type is scalar. E.g: `[]int32`.
+2. Vertical **struct** list, as list element type is struct. E.g: `[Item]int32`.
+
+### Vertical scalar list
+
+No need to support, use `[Item]int32` instead.
+
+### Vertical struct list
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID           | Name        | Desc                          |
+|--------------|-------------|-------------------------------|
+| [Item]uint32 | string      | string                        |
+| Item's ID    | Item's name | Item's desc                   |
+| 1            | Apple       | A kind of delicious fruit.    |
+| 2            | Orange      | A kind of sour fruit.         |
+| 3            | Banana      | A kind of calorie-rich fruit. |
 {.table-bordered .table-success}
 
 Generated:
@@ -135,47 +238,51 @@ message ItemConf {
   message Item {
     uint32 id = 1 [(tableau.field) = {name:"ID"}];
     string name = 2 [(tableau.field) = {name:"Name"}];
-    int32 type = 3 [(tableau.field) = {name:"Type"}];
+    string desc = 3 [(tableau.field) = {name:"Desc"}];
   }
 }
 ```
 
 {{< /details >}}
 
-#### Cross-cell vertical incell struct list
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "name": "Apple",
+            "desc": "A kind of delicious fruit."
+        },
+        {
+            "id": 2,
+            "name": "Orange",
+            "desc": "A kind of sour fruit."
+        },
+        {
+            "id": 3,
+            "name": "Banana",
+            "desc": "A kind of calorie-rich fruit."
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### Vertical incell-struct list
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| Reward                        |
-|-------------------------------|
-| []{int32 Id, int32 Num}Reward |
-| Reward info.                  |
-| 1,100                         |
-| 2,200                         |
-| 3,300                         |
+| Item                       |
+|----------------------------|
+| []{int32 ID,int32 Num}Item |
+| Item's info                |
+| 1,100                      |
+| 2,200                      |
+| 3,300                      |
 {.table-bordered .table-success}
-
-## In-cell list
-
-There are two kinds of in-cell list:
-
-1. in-cell **scalar** list, as list value type is scalar. E.g: `[]int32`.
-2. in-cell **struct** list, as list value type is struct. E.g: `[Item]int32`.
-
-### In-cell scalar list
-
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
-
-| ID                | Props         |
-|-------------------|---------------|
-| map<uint32, Item> | []int32       |
-| Item's ID         | Item's props. |
-| 1                 | 1,2,3         |
-| 2                 | 4,5           |
-| 3                 | 6             |
-{.table-bordered .table-success}
-
-The `Props` column's type is in-cell list `[]int32`, as the list element is scalar type `int32`.
 
 Generated:
 
@@ -188,17 +295,96 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
 
-  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_VERTICAL span:SPAN_INNER_CELL}];
   message Item {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    repeated int32 props = 2 [(tableau.field) = {name:"Props" type:TYPE_INCELL_LIST}];
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
   }
 }
 ```
 
 {{< /details >}}
 
-### In-cell struct list
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+## Incell list
+
+There are two kinds of in-cell list:
+
+1. Incell **scalar** list, as list value type is scalar. E.g: `[]int32`.
+2. Incell **struct** list, as list value type is struct. E.g: `[Item]int32`.
+
+### Incell scalar list
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Param      |
+|------------|
+| []int32   |
+| Param list |
+| 1,2,3      |
+| 4,5        |
+| 6          |
+{.table-bordered .table-success}
+
+The `Param` column's type is incell list `[]int32`, as the list element is scalar type `int32`.
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated int32 param_list = 1 [(tableau.field) = {name:"Param" layout:LAYOUT_INCELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "paramList": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ]
+}
+```
+
+{{< /details >}}
+
+### Incell struct list
 
 No need to support.
 

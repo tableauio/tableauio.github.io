@@ -17,5 +17,5 @@ features:
     title: 🧊 Cross-platform
     content: The tableau toolset can be run on Windows, macOS and Linux.
   language:
-    title: ♾️ Multilingual
+    title: 📝 Multilingual
     content: C++, C#, Go, Java, Python, TS/JS, and so on, are supported due to Protobuf.

@@ -23,7 +23,7 @@ mermaid: true
 - Importer: Excel/XML importer.
 - IR: Intermediate Representation.
 - Filter: filter the IR.
-- Exporter: JSON (protojson), Text (prototext), and wire (protowire).
+- Exporter: JSON (protojson), Text (prototext) and wire (protowire).
 - Protoconf: a configuration metadata format based on protobuf.
 
 ## Workflow

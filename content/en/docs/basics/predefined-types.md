@@ -27,9 +27,10 @@ For example, enum type `FruitType` in `common.proto` is defined as:
 
 ```protobuf
 enum FruitType {
-  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "unknown"];
-  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "苹果"];
-  FRUIT_TYPE_ORANGE  = 2 [(tableau.evalue).name = "orange"];
+  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
+  FRUIT_TYPE_ORANGE  = 2 [(tableau.evalue).name = "Orange"];
+  FRUIT_TYPE_BANANA  = 4 [(tableau.evalue).name = "Banana"];
 }
 ```
 
@@ -39,9 +40,9 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 |-------------------|-------------------|
 | map<uint32, Item> | enum<.FruitType>  |
 | Item's ID         | Fruit's type      |
-| 1                 | 0                 |
-| 2                 | 苹果              |
-| 3                 | FRUIT_TYPE_ORANGE |
+| 1                 | 1                 |
+| 2                 | Orange            |
+| 3                 | FRUIT_TYPE_BANANA |
 {.table-bordered .table-success}
 
 Generated:
@@ -73,15 +74,15 @@ message ItemConf {
     "itemMap":  {
         "1":  {
             "id":  1,
-            "type":  "FRUIT_TYPE_UNKNOWN"
+            "type":  "FRUIT_TYPE_APPLE"
         },
         "2":  {
             "id":  3,
-            "type":  "FRUIT_TYPE_APPLE"
+            "type":  "FRUIT_TYPE_ORANGE"
         }
         "3":  {
             "id":  2,
-            "type":  "FRUIT_TYPE_ORANGE"
+            "type":  "FRUIT_TYPE_BANANA"
         },
     }
 }

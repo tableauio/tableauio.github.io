@@ -63,10 +63,11 @@ A worksheet `HeroConf` in `HelloWorld.xlsx`:
 
 {{< details "HeroConf" open >}}
 
-| ID   | int32  | ID   | 123       |
-|:-----|:-------|:-----|:----------|
-| Name | string | Name | Robin     |
-| Desc | string | Desc | Big hero! |
+| ID    | int32   | Hero's ID          | 123         |
+|-------|---------|--------------------|-------------|
+| Name  | string  | Hero's name        | Robin       |
+| Desc  | string  | Hero's description | A big hero! |
+| Skill | []int32 | Hero's skills      | 100,101,102 |
 {.table-bordered .table-success}
 
 {{< /details >}}
@@ -94,6 +95,7 @@ message HeroConf {
   int32 id = 1 [(tableau.field) = {name:"ID"}];
   string name = 2 [(tableau.field) = {name:"Name"}];
   string desc = 3 [(tableau.field) = {name:"Desc"}];
+  repeated int32 skill_list = 4 [(tableau.field) = {name:"Skill" layout:LAYOUT_INCELL}];
 }
 ```
 
@@ -105,7 +107,12 @@ message HeroConf {
 {
     "id": 123,
     "name": "Robin",
-    "desc": "Big hero!"
+    "desc": "A big hero!",
+    "skillList": [
+        100,
+        101,
+        102
+    ]
 }
 ```
 

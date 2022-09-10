@@ -13,10 +13,10 @@ mermaid: true
 
 ## tableauc
 
-`tableauc` 是 tableau 转换器（tableau converter）的意思，主要由以下两个转换模块组成：
+tableau命令行工具 `tableauc` 是 tableau 转换器（tableau converter）的缩写，主要由以下两个转换模块组成：
 
 1. **protogen**：分析 Excel/CSV/XML 文件，提取文件结构信息，转换为 Protoconf 文件。
-2. **confgen**：分析 Excel/CSV/XML 文件 和对应的元信息文件 Protoconf，提取文件数据信息，转换为 JSON/Text/Wire 文件。
+2. **confgen**：分析 Excel/CSV/XML 文件和对应的元信息文件 Protoconf，提取文件数据信息，转换为 JSON/Text/Wire 文件。
 
 ### protogen
 

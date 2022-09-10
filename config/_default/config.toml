@@ -15,7 +15,7 @@ defaultContentLanguage = "en"
 # defaultContentLanguageInSubdir = true
 
 # copyright
-copyright = "Tableauio"
+copyright = "Tableau"
 
 # add redirects/headers
 [outputs]
