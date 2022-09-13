@@ -12,18 +12,17 @@ toc: true
 
 ## Horizontal map
 
-There are two kinds of horizontal map:
+There are some kinds of horizontal map:
 
 1. Horizontal **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.
-2. Hhorizontal **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
+2. Horizontal **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
+3. Horizontal **predefined-struct** map, as map value type is predefined struct. E.g: `map<int32, .Item>`.
 
 ### Horizontal scalar map
 
 No need to support, use this instead: `map<int32, Item>`.
 
 ### Horizontal struct map
-
-> NOTE: need to be tested enough.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -78,14 +77,73 @@ message ItemConf {
 
 {{< /details >}}
 
+### Horizontal predefined-struct map
+
+`Item` in **common.proto** is predefined as:
+
+```proto
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Item1ID           | Item1Num    | Item2ID    | Item2Num    | Item3ID    | Item3Num    |
+|-------------------|-------------|------------|-------------|------------|-------------|
+| map<int32, .Item> | int32       | int32      | int32       | int32      | int32       |
+| Item1's ID        | Item1's num | Item2's ID | Item3's num | Item3's ID | Item3's num |
+| 1                 | 100         | 2          | 200         | 3          | 300         |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<int32, protoconf.Item> item_map = 1 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemMap": {
+        "1": {
+            "id": 1,
+            "num": 100
+        },
+        "2": {
+            "id": 2,
+            "num": 200
+        },
+        "3": {
+            "id": 3,
+            "num": 300
+        }
+    }
+}
+```
+
+{{< /details >}}
+
 ## Vertical map
 
-> Vertical layout is map's default layout.
-
-There are two kinds of vertical map:
+There are some kinds of vertical map:
 
 1. Vertical **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.
 2. Vertical **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
+3. Vertical **predefined-struct** map, as map value type is predefined struct. E.g: `map<int32, .Item>`.
 
 ### Vertical scalar map
 
@@ -152,9 +210,71 @@ message ItemConf {
 
 {{< /details >}}
 
+### Vertical predefined-struct map
+
+`Item` in **common.proto** is predefined as:
+
+```proto
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID                | Num        |
+|-------------------|------------|
+| map<int32, .Item> | int32      |
+| Item's ID         | Item's num |
+| 1                 | 100        |
+| 2                 | 200        |
+| 3                 | 300        |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<int32, protoconf.Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemMap": {
+        "1": {
+            "id": 1,
+            "num": 100
+        },
+        "2": {
+            "id": 2,
+            "num": 200
+        },
+        "3": {
+            "id": 3,
+            "num": 300
+        }
+    }
+}
+```
+
+{{< /details >}}
+
 ## Incell map
 
-There are two kinds of in-cell map:
+There are some kinds of in-cell map:
 
 1. in-cell **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.
 2. in-cell **struct** map, as map value type is struct. E.g: `map<int32, Item>`.
@@ -211,13 +331,13 @@ Not supported yet.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| ID                  | Desc        |
-|---------------------|-------------|
+| ID                | Desc        |
+|-------------------|-------------|
 | map<uint32, Item> | string      |
-| Item's ID           | Item's name |
-| 1                   | Apple       |
-|                     | Orange      |
-| 3                   | Banana      |
+| Item's ID         | Item's name |
+| 1                 | Apple       |
+|                   | Orange      |
+| 3                 | Banana      |
 {.table-bordered .table-success}
 
 Generated:
@@ -276,7 +396,7 @@ However, key type as enum is very useful in some situations. So we
 support it in a simple way: enum type is treated as `int32` as
 map key-type, but enum type is keeped in map value-type (struct).
 
-If `FruitType` is predefined as:
+If `FruitType` in **common.proto** is predefined as:
 
 ```protobuf
 enum FruitType {

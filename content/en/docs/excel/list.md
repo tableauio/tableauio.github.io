@@ -63,7 +63,56 @@ message ItemConf {
 
 ### Horizontal enum list
 
-TODO...
+`FruitType` in **common.proto** is predefined as:
+
+```proto
+enum FruitType {
+  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
+  FRUIT_TYPE_ORANGE  = 3 [(tableau.evalue).name = "Orange"];
+  FRUIT_TYPE_BANANA  = 4 [(tableau.evalue).name = "Banana"];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Param1             | Param2            | Param3           |
+|--------------------|-------------------|------------------|
+| []enum<.FruitType> | enum<.FruitType>  | enum<.FruitType> |
+| Param1's value     | Param2's value    | Param3's value   |
+| 1                  | FRUIT_TYPE_ORANGE | Banana           |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated protoconf.FruitType param_list = 1 [(tableau.field) = {name:"Param" layout:LAYOUT_HORIZONTAL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "paramList": [
+        "FRUIT_TYPE_APPLE",
+        "FRUIT_TYPE_ORANGE",
+        "FRUIT_TYPE_BANANA"
+    ]
+}
+```
+
+{{< /details >}}
 
 ### Horizontal struct list
 
@@ -76,7 +125,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | Apple        | 2          | Orange       | 3          | Banana       |
 {.table-bordered .table-success}
 
-Generated::
+Generated:
 
 {{< details "hello_world.proto" >}}
 
@@ -122,7 +171,63 @@ message ItemConf {
 
 ### Horizontal predefined-struct list
 
-TODO...
+`Item` in **common.proto** is predefined as:
+
+```proto
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Item1ID      | Item1Num    | Item2ID    | Item2Num    | Item3ID    | Item3Num    |
+|--------------|-------------|------------|-------------|------------|-------------|
+| [.Item]int32 | int32       | int32      | int32       | int32      | int32       |
+| Item1's ID   | Item1's num | Item2's ID | Item3's num | Item3's ID | Item3's num |
+| 1            | 100         | 2          | 200         | 3          | 300         |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "ItemList": [
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
+    ]
+}
+```
+
+{{< /details >}}
 
 ### Horizontal incell-struct list
 
@@ -181,7 +286,7 @@ message ItemConf {
 
 ### Horizontal incell-predefined-struct list
 
-`Item` is predefined as:
+`Item` in **common.proto** is predefined as:
 
 ```proto
 message Item {
@@ -192,12 +297,52 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| Item1         | Item2         | Item3         |
-|---------------|---------------|---------------|
-| []{.Item}     | .Item         | .Item         |
-| Item1's info. | Item2's info. | Item2's info. |
-| 1,100         | 2,200         | 3,300         |
+| Item1        | Item2        | Item3        |
+|--------------|--------------|--------------|
+| []{.Item}    | .Item        | .Item        |
+| Item1's info | Item2's info | Item3's info |
+| 1,100        | 2,200        | 3,300        |
 {.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL span:SPAN_INNER_CELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
+    ]
+}
+```
+
+{{< /details >}}
 
 ## Vertical list
 
@@ -208,7 +353,10 @@ There are two kinds of vertical list:
 
 ### Vertical scalar list
 
-No need to support, use `[Item]int32` instead.
+No need to support, use `[Item]SCALAR` instead:
+
+- `[Item]int32`
+- `[Item]enum<.FruitType>`
 
 ### Vertical struct list
 
@@ -264,6 +412,68 @@ message ItemConf {
             "id": 3,
             "name": "Banana",
             "desc": "A kind of calorie-rich fruit."
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### Vertical predefined-struct list
+
+`Item` in **common.proto** is predefined as:
+
+```proto
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| ID           | Num        |
+|--------------|------------|
+| [.Item]int32 | int32      |
+| Item's ID    | Item's num |
+| 1            | 100        |
+| 2            | 200        |
+| 3            | 300        |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated protoconf.Item _item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "ItemList": [
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
         }
     ]
 }
@@ -328,6 +538,68 @@ message ItemConf {
 
 {{< /details >}}
 
+### Vertical incell-predefined-struct list
+
+`Item` in **common.proto** is predefined as:
+
+```proto
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| Item        |
+|-------------|
+| []{.Item}   |
+| Item's info |
+| 1,100       |
+| 2,200       |
+| 3,300       |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_VERTICAL span:SPAN_INNER_CELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
 ## Incell list
 
 There are two kinds of in-cell list:
@@ -341,7 +613,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 | Param      |
 |------------|
-| []int32   |
+| []int32    |
 | Param list |
 | 1,2,3      |
 | 4,5        |
