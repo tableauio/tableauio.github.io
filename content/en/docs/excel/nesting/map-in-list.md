@@ -6,11 +6,13 @@ date: 2022-02-26T08:48:57+00:00
 lastmod: 2022-02-26T08:48:57+00:00
 draft: false
 images: []
-weight: 7520
+weight: 7530
 toc: true
 ---
 
-## Horizontal-map in vertical-list
+## Nested in vertical-list
+
+### Horizontal-map in vertical-list
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -89,7 +91,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Vertical-map in vertical-keyed-list
+### Vertical-map in vertical-keyed-list
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -163,7 +165,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell-map in vertical-list
+### Incell-map in vertical-list
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -222,6 +224,159 @@ message ItemConf {
             "propsMap": {
                 "1": "sour"
             }
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+## First-field in horizontal-list
+
+### Horizontal-map in horizontal-list
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+<div class="table-responsive">
+
+| Reward1Item1ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Reward1Item1Num | Reward1Item2ID | Reward1Item2Num | Reward1Name   | Reward2Item1ID | Reward2Item1Num | Reward2Name   |
+|----------------------------------------------------------------------------------------------------|-----------------|----------------|-----------------|---------------|----------------|-----------------|---------------|
+| [Reward]map<int32, Item>                                                                           | int32           | int32          | int32           | string        | int32          | int32           | string        |
+| Item1's ID                                                                                         | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
+| 1                                                                                                  | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
+{.table .table-sm .table-bordered .table-success}
+
+</div>
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Reward reward_list = 1 [(tableau.field) = {name:"Reward" layout:LAYOUT_HORIZONTAL}];
+  message Reward {
+    map<int32, Item> item_map = 1 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL}];
+    message Item {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
+    }
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "rewardList": [
+        {
+            "itemMap": {
+                "1": {
+                    "id": 1,
+                    "num": 10
+                },
+                "2": {
+                    "id": 2,
+                    "num": 20
+                }
+            },
+            "name": "Lotto"
+        },
+        {
+            "itemMap": {
+                "10": {
+                    "id": 10,
+                    "num": 100
+                }
+            },
+            "name": "Super Lotto"
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### Predefined-struct-map in horizontal-list
+
+`Item` in **common.proto** is predefined as:
+
+```proto
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+<div class="table-responsive">
+
+| Reward1Item1ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Reward1Item1Num | Reward1Item2ID | Reward1Item2Num | Reward1Name   | Reward2Item1ID | Reward2Item1Num | Reward2Name   |
+|----------------------------------------------------------------------------------------------------|-----------------|----------------|-----------------|---------------|----------------|-----------------|---------------|
+| [Reward]map<int32, .Item>                                                                          | int32           | int32          | int32           | string        | int32          | int32           | string        |
+| Item1's ID                                                                                         | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
+| 1                                                                                                  | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
+{.table .table-sm .table-bordered .table-success}
+
+</div>
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Reward reward_list = 1 [(tableau.field) = {name:"Reward" layout:LAYOUT_HORIZONTAL}];
+  message Reward {
+    map<int32, protoconf.Item> item_map = 1 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "rewardList": [
+        {
+            "itemMap": {
+                "1": {
+                    "id": 1,
+                    "num": 10
+                },
+                "2": {
+                    "id": 2,
+                    "num": 20
+                }
+            },
+            "name": "Lotto"
+        },
+        {
+            "itemMap": {
+                "10": {
+                    "id": 10,
+                    "num": 100
+                }
+            },
+            "name": "Super Lotto"
         }
     ]
 }

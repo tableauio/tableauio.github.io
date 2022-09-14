@@ -6,11 +6,13 @@ date: 2022-02-26T08:48:57+00:00
 lastmod: 2022-02-26T08:48:57+00:00
 draft: false
 images: []
-weight: 7510
+weight: 7521
 toc: true
 ---
 
-## Horizontal-list in vertical-map
+## Nested in vertical-map
+
+### Horizontal-list in vertical-map
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -89,7 +91,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Vertical-list in vertical-map
+### Vertical-list in vertical-map
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -163,7 +165,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell-list in vertical-map
+### Incell-list in vertical-map
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 

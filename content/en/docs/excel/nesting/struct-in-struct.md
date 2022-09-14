@@ -1,0 +1,177 @@
+---
+title: "Struct in struct"
+description: "Struct in struct"
+lead: "Nesting examples of struct in struct."
+date: 2022-02-26T08:48:57+00:00
+lastmod: 2022-02-26T08:48:57+00:00
+draft: false
+images: []
+weight: 7510
+toc: true
+---
+
+## Struct in struct
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| RewardID      | RewardItemID | RewardItemNum |
+|---------------|--------------|---------------|
+| {Reward}int32 | {Item}int32  | int32         |
+| Reward's ID   | Item's ID    | Item's num    |
+| 1             | 1            | 10            |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  Reward reward = 1 [(tableau.field) = {name:"Reward"}];
+  message Reward {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    Item item = 2 [(tableau.field) = {name:"Item"}];
+    message Item {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "reward": {
+        "id": 1,
+        "item": {
+            "id": 1,
+            "num": 10
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+## Predefined-struct in struct
+
+`Item` in **common.proto** is predefined as:
+
+```proto
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+<div class="table-responsive">
+
+| RewardID      | RewardItemID | RewardItemNum |
+|---------------|--------------|---------------|
+| {Reward}int32 | {.Item}int32 | int32         |
+| Reward's ID   | Item's ID    | Item's num    |
+| 1             | 1            | 10            |
+{.table .table-sm .table-bordered .table-success}
+
+</div>
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  Reward reward = 1 [(tableau.field) = {name:"Reward"}];
+  message Reward {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    protoconf.Item item = 2 [(tableau.field) = {name:"Item"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "reward": {
+        "id": 1,
+        "item": {
+            "id": 1,
+            "num": 10
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+## Incell-struct in struct
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+| RewardID      | RewardItem                |
+|---------------|---------------------------|
+| {Reward}int32 | {int32 ID, int32 Num}Item |
+| Reward's ID   | Reward's item             |
+| 1             | 1,100                     |
+|               | 2,200                     |
+{.table-bordered .table-success}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// NOTE: Some trivial code snippets are eliminated.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  Reward reward = 1 [(tableau.field) = {name:"Reward"}];
+  message Reward {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    Item item = 2 [(tableau.field) = {name:"Item" span:SPAN_INNER_CELL}];
+    message Item {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "reward": {
+        "id": 1,
+        "item": {
+            "id": 2,
+            "num": 200
+        }
+    }
+}
+```
+
+{{< /details >}}
