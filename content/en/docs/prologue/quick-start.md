@@ -14,11 +14,53 @@ toc: true
 
 Select the appropriate tableauc (a.k.a. Tableau Compiler) to download:
 
-| Platform    | Tableauc                                                                                                                                                                                                                                                                                                                                                                              |
-|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Windows x64 | <a href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.windows.amd64.tar.gz"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" id="Layer_1" viewBox="0 0 16 16"><style>.st0{fill:#0071BC}</style><path class="st0" d="M13 8.5l-1.3-1.4L8.9 10V0H7.1v10L4.3 7.1 3 8.5l5 5zM3.6 14.1h8.8V16H3.6z"/></svg>Download</a> |
-| Linux x64   | <a href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.linux.amd64.tar.gz"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" id="Layer_1" viewBox="0 0 16 16"><style>.st0{fill:#0071BC}</style><path class="st0" d="M13 8.5l-1.3-1.4L8.9 10V0H7.1v10L4.3 7.1 3 8.5l5 5zM3.6 14.1h8.8V16H3.6z"/></svg>Download</a>   |
-| macOS       | <a href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.darwin.amd64.tar.gz"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" id="Layer_1" viewBox="0 0 16 16"><style>.st0{fill:#0071BC}</style><path class="st0" d="M13 8.5l-1.3-1.4L8.9 10V0H7.1v10L4.3 7.1 3 8.5l5 5zM3.6 14.1h8.8V16H3.6z"/></svg>Download</a>  |
+<div class="row">
+    <div class="col-lg-5 col-xl-5 col-sm-6 text-center">
+        <p>
+            <img height="100px" src="/images/logo/windows-logo.png" alt="Windows" />
+        </p>
+        <p>
+            <a class="btn btn-outline-info btn-lg" role="button"
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.windows.amd64.tar.gz">
+                <image height="25px" src="/images/download_blue.svg" alt="Download" /> Windows x64
+            </a>
+        </p>
+        <p>
+            <a class="btn btn-outline-info btn-lg" role="button"
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.windows.386.tar.gz">
+                <image height="25px" src="/images/download_blue.svg" alt="Download" /> Windows x86
+            </a>
+        </p>
+    </div>
+    <div class="col-lg-5 col-xl-5 col-sm-6 text-center">
+        <p>
+            <img height="100px" src="/images/logo/linux-logo.png" alt="Linux" />
+        </p>
+        <p>
+            <a class="btn btn-outline-info btn-lg" role="button"
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.linux.amd64.tar.gz">
+                <image height="25px" src="/images/download_blue.svg" alt="Download" /> Linux x64
+            </a>
+        </p>
+        <p>
+            <a class="btn btn-outline-info btn-lg" role="button"
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.linux.386.tar.gz">
+                <image height="25px" src="/images/download_blue.svg" alt="Download" /> Linux x86
+            </a>
+        </p>
+    </div>
+    <div class="col-lg-5 col-xl-5 col-sm-6 text-center">
+        <p>
+            <img height="100px" src="/images/logo/apple-logo.svg" alt="Apple" />
+        </p>
+        <p>
+            <a class="btn btn-outline-info btn-lg" role="button"
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.darwin.amd64.tar.gz">
+                <image height="25px" src="/images/download_blue.svg" alt="Download" /> macOS
+            </a>
+        </p>
+    </div>
+</div>
 
 > More platforms are available on [tableau releases →](https://github.com/tableauio/tableau/releases).
 
