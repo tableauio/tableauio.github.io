@@ -25,7 +25,7 @@ enum FruitType {
   FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
   FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
   FRUIT_TYPE_ORANGE  = 2 [(tableau.evalue).name = "Orange"];
-  FRUIT_TYPE_BANANA  = 4 [(tableau.evalue).name = "Banana"];
+  FRUIT_TYPE_BANANA  = 3 [(tableau.evalue).name = "Banana"];
 }
 ```
 

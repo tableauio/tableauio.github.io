@@ -6,14 +6,14 @@ date: 2020-10-06T08:48:57+00:00
 lastmod: 2020-10-06T08:48:57+00:00
 draft: false
 images: []
-weight: 110
+weight: 100
 toc: true
 mermaid: true
 ---
 
 ## tableauc
 
-The `tableauc` is the tableau compiler with **protogen** and **confgen** inside.
+`tableauc` is the **Tableau Compiler** with **protogen** and **confgen** inside.
 
 ### protogen
 
@@ -34,6 +34,8 @@ flowchart LR
 ```
 
 ### confgen
+
+`confgen` convert **Excel/CSV/XML** with **Protoconf** files to **JSON/Text/Wire** files.
 
 ```mermaid
 flowchart LR

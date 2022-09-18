@@ -12,7 +12,7 @@ features:
     content: A well-designed IDL Protoconf (based on Protobuf) to define the structure of Excel/CSV/XML.
   format:
     title: 📚 Multiple formats
-    content: "Convert Excel/CSV/XML to multiple formats: JSON, Text and Wire."
+    content: "Convert Excel/CSV/XML to multiple formats: JSON, Text, and Wire."
   platform:
     title: 🧊 Cross-platform
     content: The tableau toolset can be run on Windows, macOS and Linux.

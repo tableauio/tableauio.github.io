@@ -4,7 +4,7 @@
 title = "Tableau"
 titleSeparator = "-"
 titleAddition = "Modern Configuration Converter"
-description = "Tableau can convert Excel/CSV/XML to multiple formats: JSON, Text and Wire."
+description = "Tableau can convert Excel/CSV/XML to multiple formats: JSON, Text, and Wire."
 
 ## Documentation
 # docsVersion = "0.3"

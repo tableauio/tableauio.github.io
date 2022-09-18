@@ -1,69 +1,88 @@
 ---
 title: "Quick Start"
-description: "This guide gets you started with Tableau in Go with a simple working example."
-lead: "This guide gets you started with Tableau in Go with a simple working example."
+description: "Quick Start"
+lead: "One page summary of how to convert a workbook file to proto and JSON files by tableauc."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
 images: []
-weight: 100
+weight: 110
 toc: true
 ---
 
-## Prerequisites
+## 1. Download tableauc
 
-- [Go](https://golang.org/), any one of the **three latest major**  [releases of Go](https://golang.org/doc/devel/release.html).
-  - For installation instructions, see Go’s [Getting Started](https://golang.org/doc/install) guide.
-- [Protocol buffer](https://developers.google.com/protocol-buffers)  compiler,  `protoc`,  [version 3](https://developers.google.com/protocol-buffers/docs/proto3).
-  - For installation instructions, see  [Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/).
-- **Go plugins** for the protocol compiler:
-  1. Install the protocol compiler plugins for Go using the following commands:
+Select the appropriate tableauc (a.k.a. Tableau Compiler) to download:
 
-     ```bash
-     go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
-     ```
+| Platform    | Tableauc                                                                                                                                                                                                                                                                                                                                                                              |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Windows x64 | <a href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.windows.amd64.tar.gz"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" id="Layer_1" viewBox="0 0 16 16"><style>.st0{fill:#0071BC}</style><path class="st0" d="M13 8.5l-1.3-1.4L8.9 10V0H7.1v10L4.3 7.1 3 8.5l5 5zM3.6 14.1h8.8V16H3.6z"/></svg>Download</a> |
+| Linux x64   | <a href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.linux.amd64.tar.gz"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" id="Layer_1" viewBox="0 0 16 16"><style>.st0{fill:#0071BC}</style><path class="st0" d="M13 8.5l-1.3-1.4L8.9 10V0H7.1v10L4.3 7.1 3 8.5l5 5zM3.6 14.1h8.8V16H3.6z"/></svg>Download</a>   |
+| macOS       | <a href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.darwin.amd64.tar.gz"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" id="Layer_1" viewBox="0 0 16 16"><style>.st0{fill:#0071BC}</style><path class="st0" d="M13 8.5l-1.3-1.4L8.9 10V0H7.1v10L4.3 7.1 3 8.5l5 5zM3.6 14.1h8.8V16H3.6z"/></svg>Download</a>  |
 
-  2. Update your PATH so that the protoc compiler can find the plugins:
+> More platforms are available on [tableau releases →](https://github.com/tableauio/tableau/releases).
 
-     ```bash
-     export PATH="$PATH:$(go env GOPATH)/bin"
-     ```
+## 2. Add a workbook
 
-## Get the example code
+Add **HelloWorld.xlsx** with two sheets:
 
-The example code is part of the [tableau/demo](https://github.com/tableauio/demo) repo.
+- `Item`: Copy data below to this worksheet.
+- `@TABLEAU`: Just leave it empty now. It is the tableau [metasheet →]({{< relref "../excel/metasheet" >}}) for specifying parser options.
 
-1. [Download the repo as a zip file](https://github.com/tableauio/demo/archive/refs/heads/master.zip) and unzip it, or clone the repo:
+{{< details "Item" open >}}
 
-   ```bash
-   git clone https://github.com/tableauio/demo
-   ```
+| ID        | Name        | Desc                       |
+|-----------|-------------|----------------------------|
+| int32     | string      | string                     |
+| Item's ID | Item's name | Item's description         |
+| 1         | Apple       | A kind of delicious fruit. |
+{.table-bordered .table-success}
 
-2. Change to the quick start example directory:
+{{< /details >}}
 
-   ```bash
-   cd demo/examples/helloworld
-   ```
+{{< details "@TABLEAU" >}}
+{{< /details >}}
 
-## Run the example
+## 3. Run tableauc
 
-From the `examples/helloworld` directory:
+Run command: `./tableauc HelloWorld.xlsx`
 
-1. Change dir to **excel2proto**, compile and execute:
+Then *hello_world.proto* and *Item.json* are generated:
 
-   ```bash
-   go run main.go
-   ```
+{{< details "hello_world.proto" open >}}
 
-   Then proto files will be generated to `examples/helloworld/proto`.
+```protobuf
+// Code generated by tableau (protogen v0.4.2). DO NOT EDIT.
 
-2. Change dir to **excel2conf**, generate `*.pb.go` and then compile and execute:
+syntax = "proto3";
 
-   ```bash
-   bash gen.sh
-   go run main.go
-   ```
+package protoconf;
 
-   Then `*.pb.go` files will be generated to `examples/helloworld/protoconf`, and JSON files will be generated to `examples/helloworld/excel2conf/_out`.
+import "tableau/protobuf/tableau.proto";
 
-Congratulations! You’ve just run a modern configuration converter application with Tableau.
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message Item {
+  option (tableau.worksheet) = {name:"Item" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  int32 id = 1 [(tableau.field) = {name:"ID"}];
+  string name = 2 [(tableau.field) = {name:"Name"}];
+  string desc = 3 [(tableau.field) = {name:"Desc"}];
+}
+```
+
+{{< /details >}}
+
+{{< details "Item.json" open >}}
+
+```json
+{
+    "id": 1,
+    "name": "Apple",
+    "desc": "A kind of delicious fruit."
+}
+```
+
+{{< /details >}}
+
+Congratulations! You’ve just run the `tableauc` to convert a workbook to proto and JSON files.
