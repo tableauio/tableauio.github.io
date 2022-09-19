@@ -13,17 +13,17 @@ mermaid: true
 
 ## Features
 
-- Convert **Excel** to **JSON**, JSON is the first-class citizen of exporting targets.
-- Use **Protoconf** as the IDL(Interface Description Language) to define the structure of **Excel/XML**.
+- Convert **Excel/CSV/XML** to **JSON/Text/Bin**, JSON is the first-class citizen of exporting targets.
+- Use **Protobuf** to define the structure of **Excel/CSV/XML**.
 - Use **Golang** to develop the conversion engine.
 - Support multiple programming languages, thanks to **Protobuf (proto3)**.
 
 ## Concepts
 
-- Importer: Excel/XML importer.
+- Importer: Excel/CSV/XML importer.
 - IR: Intermediate Representation.
 - Filter: filter the IR.
-- Exporter: JSON (protojson), Text (prototext) and wire (protowire).
+- Exporter: JSON, Text, and Bin.
 - Protoconf: a configuration metadata format based on protobuf.
 
 ## Workflow
@@ -62,17 +62,17 @@ flowchart TD
   I --> Confgen:::orangeclass
  
   Protogen --> B
-  B{{Protoconf}}:::greenclass --> |protoc-gen-go| Confgen
+  B{{Protoconf}}:::greenclass --> | protobuf descriptor | Confgen
 
   subgraph Output
-    O1("JSON (protojson)")
+    O1("JSON")
     click O1 href "https://developers.google.com/protocol-buffers/docs/proto3#json"
 
-    O2("Text (prototext)")
-    click O2 href "https://pkg.go.dev/google.golang.org/protobuf/encoding/prototext"
+    O2("Text")
+    click O2 href "https://developers.google.com/protocol-buffers/docs/text-format-spec"
 
-    O3("Wire (protowire)")
-    click O3 href "https://pkg.go.dev/google.golang.org/protobuf/encoding/protowire"
+    O3("Bin")
+    click O3 href "https://developers.google.com/protocol-buffers/docs/encoding"
   end
 
   Confgen --> Output
