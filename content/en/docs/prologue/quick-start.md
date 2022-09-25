@@ -12,7 +12,7 @@ toc: true
 
 ## 1. Download tableauc
 
-Select the appropriate tableauc (a.k.a. Tableau Compiler) to download:
+Select the appropriate tableauc (aka Tableau Compiler) to download:
 
 <div class="row">
     <div class="col-lg-5 col-xl-5 col-sm-6 text-center">
@@ -73,11 +73,13 @@ Add **HelloWorld.xlsx** with two sheets:
 
 {{< details "Item" open >}}
 
-| ID        | Name        | Desc                       |
-|-----------|-------------|----------------------------|
-| int32     | string      | string                     |
-| Item's ID | Item's name | Item's description         |
-| 1         | Apple       | A kind of delicious fruit. |
+| ID               | Name        | Desc                          |
+|------------------|-------------|-------------------------------|
+| map<int32, Item> | string      | string                        |
+| Item’s ID        | Item’s name | Item’s description            |
+| 1                | Apple       | A kind of delicious fruit.    |
+| 2                | Orange      | A kind of sour fruit.         |
+| 3                | Banana      | A kind of calorie-rich fruit. |
 {.table-bordered .table-success}
 
 {{< /details >}}
@@ -107,9 +109,12 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 message Item {
   option (tableau.worksheet) = {name:"Item" namerow:1 typerow:2 noterow:3 datarow:4};
 
-  int32 id = 1 [(tableau.field) = {name:"ID"}];
-  string name = 2 [(tableau.field) = {name:"Name"}];
-  string desc = 3 [(tableau.field) = {name:"Desc"}];
+  map<int32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    string desc = 3 [(tableau.field) = {name:"Desc"}];
+  }
 }
 ```
 
@@ -119,9 +124,23 @@ message Item {
 
 ```json
 {
-    "id": 1,
-    "name": "Apple",
-    "desc": "A kind of delicious fruit."
+    "itemMap": {
+        "1": {
+            "id": 1,
+            "name": "Apple",
+            "desc": "A kind of delicious fruit."
+        },
+        "2": {
+            "id": 2,
+            "name": "Orange",
+            "desc": "A kind of sour fruit."
+        },
+        "3": {
+            "id": 3,
+            "name": "Banana",
+            "desc": "A kind of calorie-rich fruit."
+        }
+    }
 }
 ```
 
