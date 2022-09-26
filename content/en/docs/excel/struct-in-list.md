@@ -23,7 +23,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | Apple       | 1           | 10           |
 | 2            | Orange      | 2           | 20           |
 | 3            | Banana      |             |              |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -94,7 +94,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | Apple       | 1,100                      |
 | 2            | Orange      | 2,200                      |
 | 3            | Banana      |                            |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -167,7 +167,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | [Reward]{Item}int32                   | int32          | string        | int32         | int32          | string        |
 | Item1's ID                            | Item1's num    | Reward's name | Item1's ID    | Item1's num    | Reward's name |
 | 1                                     | 10             | Lotto         | 10            | 100            | Super Lotto   |
-{.table .table-sm .table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 </div>
 
@@ -241,7 +241,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | [Reward]{.Item}int32                        | int32          | string        | int32         | int32          | string        |
 | Item1's ID                                  | Item1's num    | Reward's name | Item1's ID    | Item1's num    | Reward's name |
 | 1                                           | 10             | Lotto         | 10            | 100            | Super Lotto   |
-{.table .table-sm .table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 </div>
 
@@ -302,7 +302,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | [Reward]{int32 ID, int32 Num}Item                                       | string        | Item           | string        |
 | Reward1's item                                                          | Reward's name | Reward2's item | Reward's name |
 | 1,10                                                                    | Lotto         | 2,20           | Super Lotto   |
-{.table .table-sm .table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 </div>
 

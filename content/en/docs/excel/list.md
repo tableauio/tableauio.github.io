@@ -28,7 +28,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | []int32        | int32          | int32          |
 | Param1's value | Param2's value | Param3's value |
 | 1              | 2              | 3              |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -81,7 +81,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | []enum<.FruitType> | enum<.FruitType>  | enum<.FruitType> |
 | Param1's value     | Param2's value    | Param3's value   |
 | 1                  | FRUIT_TYPE_ORANGE | Banana           |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -123,7 +123,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | [Item]uint32 | string       | uint32     | string       | uint32     | string       |
 | Item1's ID   | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1            | Apple        | 2          | Orange       | 3          | Banana       |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -187,7 +187,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | [.Item]int32 | int32       | int32      | int32       | int32      | int32       |
 | Item1's ID   | Item1's num | Item2's ID | Item3's num | Item3's ID | Item3's num |
 | 1            | 100         | 2          | 200         | 3          | 300         |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -238,7 +238,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | []{int32 ID, string Name}Item | Item         | Item         |
 | Item1's info                  | Item2's info | Item3's info |
 | 1,Apple                       | 2,Orange     | 3,Banana     |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -302,7 +302,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | []{.Item}    | .Item        | .Item        |
 | Item1's info | Item2's info | Item3's info |
 | 1,100        | 2,200        | 3,300        |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -369,7 +369,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | Apple       | A kind of delicious fruit.    |
 | 2            | Orange      | A kind of sour fruit.         |
 | 3            | Banana      | A kind of calorie-rich fruit. |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -439,7 +439,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | 100        |
 | 2            | 200        |
 | 3            | 300        |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -492,7 +492,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1,100                      |
 | 2,200                      |
 | 3,300                      |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -558,7 +558,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1,100       |
 | 2,200       |
 | 3,300       |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -618,7 +618,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1,2,3      |
 | 4,5        |
 | 6          |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 The `Param` column's type is incell list `[]int32`, as the list element is scalar type `int32`.
 
@@ -679,7 +679,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | [Item]uint32\|{fixed:true} | string        | uint32      | string        |
 | Item1's ID.                | Item1's name. | Item2's ID. | Item2's name. |
 | 1                          | item1         | 2           | item2         |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 #### Explicit fixed size
 
@@ -690,7 +690,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | [Item]uint32\|{length:2} | string        | uint32      | string        |
 | Item1's ID.              | Item1's name. | Item2's ID. | Item2's name. |
 | 1                        | item1         | 2           | item2         |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 ## Advanced features
 
@@ -705,7 +705,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1           | Apple        | 100           | 2          | Orange       | 200           |
 | 2                 | 3           | Banana       | 300           | 4          | Pomelo       | 400           |
 | 3                 | 5           | Watermelon   | 500           |            |              |               |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 

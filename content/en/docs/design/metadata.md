@@ -41,7 +41,7 @@ workbook: `(AliasTest)DemoTest`, worksheet: `(AliasActivity)DemoActivity`
 | 1                    | activity1    | 2020-01-01 05:00:00 | 72h              | 1                   | chapter1    | 2               | section2    | 1001           | 1               | 1002           | 2               |
 | 1                    | activity1    | 2020-01-01 05:00:00 | 72h              | 2                   | chapter2    | 1               | section1    | 1001           | 1               | 1002           | 2               |
 | 2                    | activity2    | 2020-01-01 05:00:00 | 72h3m0.5s        | 1                   | chapter1    | 1               | section1    | 1001           | 1               | 1002           | 2               |
-{.table-bordered .table-success .table-hover}
+{.table .table-sm .table-bordered .table-light .table-hover}
 
 </div>
 
@@ -113,7 +113,7 @@ workbook: `(AliasTest)DemoTest`, worksheet: `(Env)Environment`
 | ------ | ------ | ------------------------------------- | ---------- | ----------------- | ---------------------------- | -------------------------------------- |
 | uint32 | string | {int32 id,string desc,int32 value}Msg | []int32    | map<int32,string> | []{int32 id,string desc}Elem | map<int32,Value{int32 id,string desc}> |
 | 1      | Earth  | 1,desc,100                            | 1,2,3      | 1:hello,2:world   | {1,hello},{2,world}          | 1:{1,hello},2:{2,world}                |
-{.table-bordered .table-success .table-sm}
+{.table .table-sm .table-bordered .table-light .table-sm}
 
 #### IncellMessage
 

@@ -51,7 +51,7 @@ So the metasheet `@TABLEAU` in `HelloWorld.xlsx` should be configured as:
 | Sheet  | Alias    | Sep | OrderedMap |
 |--------|----------|-----|------------|
 | Sheet1 | ItemConf | \|  | true       |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 {{< /details >}}
 
@@ -68,7 +68,7 @@ A worksheet `HeroConf` in `HelloWorld.xlsx`:
 | Name  | string  | Hero's name        | Robin       |
 | Desc  | string  | Hero's description | A big hero! |
 | Skill | []int32 | Hero's skills      | 100,101,102 |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 {{< /details >}}
 
@@ -77,7 +77,7 @@ A worksheet `HeroConf` in `HelloWorld.xlsx`:
 | Sheet    | Transpose |
 |----------|-----------|
 | HeroConf | true      |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 {{< /details >}}
 

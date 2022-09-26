@@ -19,7 +19,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | {Item}uint32 | string      | string                |
 | Item’s ID    | Item’s Name | Item’s Description    |
 | 1            | Orange      | A kind of sour fruit. |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -77,7 +77,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1,Orange,A good fruit.                     |
 | 2                 | 2,Apple                                    |
 | 3                 | 3                                          |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 The `Property` column's type is in-cell struct `{int32 ID,string Name,string Desc}Property`.
 

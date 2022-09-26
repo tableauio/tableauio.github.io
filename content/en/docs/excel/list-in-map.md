@@ -23,7 +23,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | Apple       | 1           | 10            | 2          | 20            |
 | 2                 | Orange      | 3           | 30            |            |               |
 | 3                 | Banana      |             |               |            |               |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -102,7 +102,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | Apple       | 1           | 10           |
 | 2                 | Orange      | 1           | 20           |
 | 2                 | Banana      | 2           | 30           |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -176,7 +176,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 10,20,30     |
 | 2                 | 10,20        |
 | 3                 | 10           |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 

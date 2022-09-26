@@ -19,7 +19,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | {Reward}int32 | {Item}int32  | int32         |
 | Reward's ID   | Item's ID    | Item's num    |
 | 1             | 1            | 10            |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -82,7 +82,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | {Reward}int32 | {.Item}int32 | int32         |
 | Reward's ID   | Item's ID    | Item's num    |
 | 1             | 1            | 10            |
-{.table .table-sm .table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 </div>
 
@@ -133,7 +133,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | Reward's ID   | Reward's item             |
 | 1             | 1,100                     |
 |               | 2,200                     |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 

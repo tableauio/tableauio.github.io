@@ -80,7 +80,7 @@ Add **HelloWorld.xlsx** with two sheets:
 | 1                | Apple       | A kind of delicious fruit.    |
 | 2                | Orange      | A kind of sour fruit.         |
 | 3                | Banana      | A kind of calorie-rich fruit. |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 {{< /details >}}
 

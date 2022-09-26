@@ -23,7 +23,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | Apple       | 1                | 10            | 2          | 20            |
 | 2            | Orange      | 3                | 30            |            |               |
 | 3            | Banana      |                  |               |            |               |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -102,7 +102,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                | Apple       | 1                | 10           |
 | 2                | Orange      | 1                | 20           |
 | 2                | Banana      | 2                | 30           |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -176,7 +176,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | 1:sour,2:sweet,3:delicious |
 | 2            | 1:sour,2:sweet             |
 | 3            | 1:sour                     |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -244,7 +244,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | [Reward]map<int32, Item>                                                                           | int32           | int32          | int32           | string        | int32          | int32           | string        |
 | Item1's ID                                                                                         | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
 | 1                                                                                                  | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
-{.table .table-sm .table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 </div>
 
@@ -326,7 +326,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | [Reward]map<int32, .Item>                                                                          | int32           | int32          | int32           | string        | int32          | int32           | string        |
 | Item1's ID                                                                                         | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
 | 1                                                                                                  | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
-{.table .table-sm .table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 </div>
 

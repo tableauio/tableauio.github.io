@@ -26,7 +26,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                | 1                | sweet       |
 | 2                | 1                | sweet       |
 | 2                | 2                | delicious   |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -95,7 +95,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | []<int32>  |
 | Param list |
 | 1,2,2,3    |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 

@@ -62,7 +62,7 @@ enum ServerType {
 |                                | CONF_TYPE_LOCAL         |                         |                          |
 |                                | Remote                  |                         |                          |
 | MatchServer                    | CONF_TYPE_UNKNOWN       |                         |                          |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 </div>
 
@@ -73,7 +73,7 @@ enum ServerType {
 | Sheet      | Nested |
 |------------|--------|
 | LoaderConf | true   |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 {{< /details >}}
 

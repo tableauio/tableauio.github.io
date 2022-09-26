@@ -66,7 +66,7 @@ A workbook(`HelloWorld.xlsx`) with two data worksheets(`ItemConf` and `ActivityC
 | 1                 | item1        | 100          |
 | 2                 | item2        | 200          |
 | 3                 | item3        | 300          |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 - Second worksheet `ActivityConf`:
 
@@ -77,7 +77,7 @@ A workbook(`HelloWorld.xlsx`) with two data worksheets(`ItemConf` and `ActivityC
 | 1                     | activity1        | true              |
 | 2                     | activity2        | false             |
 | 3                     | activity3        |                   |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 ### Output: a protoconf file
 

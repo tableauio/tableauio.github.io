@@ -23,7 +23,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                  | 1           | 10         |
 | 2                  | 2           | 20         |
 | 3                  |             |            |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -101,7 +101,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                  | 1            | 10         |
 | 2                  | 2            | 20         |
 | 3                  |              |            |
-{.table .table-sm .table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 </div>
 
@@ -166,7 +166,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                  | 1,100                     |
 | 2                  | 2,200                     |
 | 3                  |                           |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 

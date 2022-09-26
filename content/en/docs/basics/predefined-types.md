@@ -43,7 +43,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1                 |
 | 2                 | Orange            |
 | 3                 | FRUIT_TYPE_BANANA |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -110,7 +110,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1            | 100           | 2          | 200           |
 | 2                 | 3            | 300           | 4          | 400           |
 | 3                 | 5            | 500           |            |               |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 

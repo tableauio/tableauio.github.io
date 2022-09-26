@@ -191,7 +191,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | uint32    | string      | string                     |
 | Item's ID | Item's name | Item's description         |
 | 1         | Apple       | A kind of delicious fruit. |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 ## 4. Run tableauc
 

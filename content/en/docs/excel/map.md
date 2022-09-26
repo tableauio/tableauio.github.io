@@ -31,7 +31,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | map<uint32, Item> | string       | uint32     | string       | uint32     | string       |
 | Item1's ID        | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1                 | Apple        | 2          | Orange       | 3          | Banana       |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -95,7 +95,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | map<int32, .Item> | int32       | int32      | int32       | int32      | int32       |
 | Item1's ID        | Item1's num | Item2's ID | Item3's num | Item3's ID | Item3's num |
 | 1                 | 100         | 2          | 200         | 3          | 300         |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -160,7 +160,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | Apple       | A kind of delicious fruit.    |
 | 2                 | Orange      | A kind of sour fruit.         |
 | 3                 | Banana      | A kind of calorie-rich fruit. |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -230,7 +230,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 100        |
 | 2                 | 200        |
 | 3                 | 300        |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -288,7 +288,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | map<uint32, string>       |
 | Items                     |
 | 1:Apple,2:Orange,3:Banana |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 The `Items` column's type is in-cell map `map<uint32, string>`, as the map value is scalar type `string`.
 
@@ -338,7 +338,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | Apple       |
 |                   | Orange      |
 | 3                 | Banana      |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -426,7 +426,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | Apple                       | 100          |
 | Orange                      | 200          |
 | Banana                      | 300          |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -491,7 +491,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | map<uint32, Item>\|{fixed:true} | string        | uint32      | string        |
 | Item1's ID.                     | Item1's name. | Item2's ID. | Item2's name. |
 | 1                               | item1         | 2           | item2         |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 #### Explicit fixed size
 
@@ -502,7 +502,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | map<uint32, Item>\|{length:2} | string        | uint32      | string        |
 | Item1's ID.                   | Item1's name. | Item2's ID. | Item2's name. |
 | 1                             | item1         | 2           | item2         |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 ## Advanced features
 
@@ -517,7 +517,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1                | Apple        | 100           | 2          | Orange       | 200           |
 | 2                 | 3                | Banana       | 300           | 4          | Pomelo       | 400           |
 | 3                 | 5                | Watermelon   | 500           |            |              |               |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 Generated:
 
@@ -610,6 +610,6 @@ If we want `ItemConf` to generate ordered map accessers, then set
 | Sheet    | OrderedMap |
 |----------|------------|
 | ItemConf | true       |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 More useful options are illustrated at metasheet chapter. [Metasheet @TABLEAU →]({{< relref "metasheet" >}})

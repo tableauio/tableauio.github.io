@@ -19,7 +19,7 @@ A worksheet `Apple` in `HelloWorld.xlsx`:
 | uint32    | string      | string                     |
 | Item's ID | Item's Name | Item's Description         |
 | 1         | Apple       | A kind of delicious fruit. |
-{.table-bordered .table-success}
+{.table .table-sm .table-bordered .table-light}
 
 In this worksheet, three scalar fields are defined:
 
