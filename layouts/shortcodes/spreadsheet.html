@@ -1,0 +1,25 @@
+ {{ $sheets := (after 1 .Params) }}
+ {{ $name :=index .Params 0}}
+
+<div class="position-relative">
+    <ul class="nav nav-tabs" role="tablist">
+    {{ range $index, $sheet := $sheets }} 
+        {{ $safeSheet := (printf "sheet-%s" (md5 $sheet)) }}
+        <li class="nav-item" role="presentation">
+            <button class="nav-link {{ if not $index}} active {{end}}" id="{{ $safeSheet }}-tab" data-bs-toggle="tab" data-bs-target="#{{ $safeSheet}}" type="button" role="tab" aria-controls="{{ $safeSheet }}" aria-selected="{{ if not $index}} active {{ else }} false {{end}}">{{ $sheet }}</button>
+        </li>
+    {{ end }}
+        <li class="nav-tabs"><span class="badge text-dark text-muted fw-light fst-italic ps-5">{{ $name }}</span></li>
+    </ul>
+
+    <div class="tab-content">
+        {{- $children := split .Inner "<p hidden>--break-me-here--</p>" -}}
+        {{ range $index, $sheet := $sheets }} 
+            {{ $safeSheet := (printf "sheet-%s" (md5 $sheet)) }}
+            <div class="tab-pane fade {{ if not $index}} active show {{end}}" id="{{ $safeSheet }}" role="tabpanel" aria-labelledby="{{ $safeSheet }}-tab">
+            {{ index $children $index | markdownify }}
+            </div>
+        {{ end }}
+    </div>
+    <!-- <hr/>  -->
+</div>

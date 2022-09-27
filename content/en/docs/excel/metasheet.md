@@ -61,25 +61,27 @@ Option `Transpose` is specified as `true` in the metasheet `@TABLEAU`.
 
 A worksheet `HeroConf` in `HelloWorld.xlsx`:
 
-{{< details "HeroConf" open >}}
+{{< spreadsheet "HelloWorld.xlsx" HeroConf "@TABLEAU" >}}
+
+{{< sheet colored>}}
 
 | ID    | int32   | Hero's ID          | 123         |
 |-------|---------|--------------------|-------------|
 | Name  | string  | Hero's name        | Robin       |
 | Desc  | string  | Hero's description | A big hero! |
 | Skill | []int32 | Hero's skills      | 100,101,102 |
-{.table .table-sm .table-bordered .table-light}
 
-{{< /details >}}
+{{< /sheet >}}
 
-{{< details "@TABLEAU" open >}}
+{{< sheet >}}
 
 | Sheet    | Transpose |
 |----------|-----------|
 | HeroConf | true      |
-{.table .table-sm .table-bordered .table-light}
 
-{{< /details >}}
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 

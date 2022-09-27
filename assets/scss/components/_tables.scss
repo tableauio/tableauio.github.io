@@ -3,33 +3,3 @@ table {
 
   margin: 1rem 0;
 }
-
-.table-light > thead > tr > th {
-  font-weight: normal !important;
-}
-
-.table-light > thead > tr {
-  background-color: #f5c242 !important;
-
-  --bs-table-bg: #f5c242 !important;
-}
-
-.table-light > tbody {
-  border-top-width: 1px !important;
-}
-
-.table-sm > tbody > tr:first-child {
-  background-color: #f5c242 !important;
-
-  --bs-table-bg: #f5c242 !important;
-}
-
-.table-light > tbody > tr:nth-child(2) {
-  background-color: #b1cf95 !important;
-
-  --bs-table-bg: #b1cf95 !important;
-}
-
-.table-light {
-  border-color: #333 !important;
-}

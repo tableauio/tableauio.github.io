@@ -71,7 +71,9 @@ Add **HelloWorld.xlsx** with two sheets:
 - `Item`: Copy data below to this worksheet.
 - `@TABLEAU`: Just leave it empty now. It is the tableau [metasheet →]({{< relref "../excel/metasheet" >}}) for specifying parser options.
 
-{{< details "Item" open >}}
+{{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
+
+{{< sheet colored>}}
 
 | ID               | Name        | Desc                          |
 |------------------|-------------|-------------------------------|
@@ -80,12 +82,20 @@ Add **HelloWorld.xlsx** with two sheets:
 | 1                | Apple       | A kind of delicious fruit.    |
 | 2                | Orange      | A kind of sour fruit.         |
 | 3                | Banana      | A kind of calorie-rich fruit. |
-{.table .table-sm .table-bordered .table-light}
 
-{{< /details >}}
+{{< /sheet >}}
 
-{{< details "@TABLEAU" >}}
-{{< /details >}}
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 ## 3. Run tableauc
 

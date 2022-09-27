@@ -14,12 +14,29 @@ toc: true
 
 A worksheet `Apple` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
+
+{{< sheet colored>}}
+
 | ID        | Name        | Desc                       |
 |-----------|-------------|----------------------------|
 | uint32    | string      | string                     |
 | Item's ID | Item's Name | Item's Description         |
 | 1         | Apple       | A kind of delicious fruit. |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 In this worksheet, three scalar fields are defined:
 
