@@ -1,4 +1,4 @@
-<div class="sheet{{ with .Get 0 }} sheet-{{ . | safeHTML }}{{ end -}}">
+<div class="table-responsive text-nowrap sheet{{ with .Get 0 }} sheet-{{ . | safeHTML }}{{ end -}}">
 {{ with .Inner -}}{{ . | markdownify}}{{ else -}}{{ errorf "No sheet content provided"}}{{ end -}}
 </div>
 <p hidden>--break-me-here--</p>

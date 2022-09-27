@@ -14,19 +14,36 @@ toc: true
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ItemID       | ItemName    | ItemDesc              |
 |:-------------|:------------|:----------------------|
 | {Item}uint32 | string      | string                |
 | Item’s ID    | Item’s Name | Item’s Description    |
 | 1            | Orange      | A kind of sour fruit. |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -70,6 +87,10 @@ Each field type of the struct should be scalar type.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID                | Property                                   |
 |-------------------|--------------------------------------------|
 | map<uint32, Item> | {int32 ID,string Name,string Desc}Property |
@@ -77,7 +98,20 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1,Orange,A good fruit.                     |
 | 2                 | 2,Apple                                    |
 | 3                 | 3                                          |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 The `Property` column's type is in-cell struct `{int32 ID,string Name,string Desc}Property`.
 
@@ -86,7 +120,7 @@ Generated:
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {

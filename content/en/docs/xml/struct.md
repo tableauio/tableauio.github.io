@@ -40,7 +40,7 @@ Generated protoconf is `server_conf.proto`:
 {{< details "server_conf.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"server/AutoConfig2/Server.xml"};
 
 message ServerConf {

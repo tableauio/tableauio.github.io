@@ -16,6 +16,10 @@ toc: true
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID           | Name        | Prop1ID     | Prop1Value    | Prop2ID    | Prop2Value    |
 |--------------|-------------|-------------|---------------|------------|---------------|
 | [Item]uint32 | string      | [Prop]int32 | int64         | int32      | int64         |
@@ -23,14 +27,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | Apple       | 1           | 10            | 2          | 20            |
 | 2            | Orange      | 3           | 30            |            |               |
 | 3            | Banana      |             |               |            |               |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -95,6 +112,10 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID               | Name        | PropID      | PropValue    |
 |------------------|-------------|-------------|--------------|
 | [Item]\<uint32\> | string      | [Prop]int32 | int64        |
@@ -102,14 +123,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                | Apple       | 1           | 10           |
 | 2                | Orange      | 1           | 20           |
 | 2                | Banana      | 2           | 30           |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -169,6 +203,10 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID           | Prop         |
 |--------------|--------------|
 | [Item]uint32 | []int32      |
@@ -176,14 +214,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | 10,20,30     |
 | 2            | 10,20        |
 | 3            | 10           |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -237,23 +288,36 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-<div class="table-responsive">
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
-| Reward1Item1ID&nbsp;&nbsp;&nbsp;&nbsp; | Reward1Item1Num | Reward1Item2ID | Reward1Item2Num | Reward1Name   | Reward2Item1ID | Reward2Item1Num | Reward2Name   |
-|-----------------------------------------|-----------------|----------------|-----------------|---------------|----------------|-----------------|---------------|
-| [Reward][Item]int32                     | int32           | int32          | int32           | string        | int32          | int32           | string        |
-| Item1's ID                              | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
-| 1                                       | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
-{.table .table-sm .table-bordered .table-light}
+{{< sheet colored >}}
 
-</div>
+| Reward1Item1ID      | Reward1Item1Num | Reward1Item2ID | Reward1Item2Num | Reward1Name   | Reward2Item1ID | Reward2Item1Num | Reward2Name   |
+|---------------------|-----------------|----------------|-----------------|---------------|----------------|-----------------|---------------|
+| [Reward][Item]int32 | int32           | int32          | int32           | string        | int32          | int32           | string        |
+| Item1's ID          | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
+| 1                   | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -319,23 +383,36 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-<div class="table-responsive">
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
-| Reward1Item1ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Reward1Item1Num | Reward1Item2ID | Reward1Item2Num | Reward1Name   | Reward2Item1ID | Reward2Item1Num | Reward2Name   |
-|-----------------------------------------------|-----------------|----------------|-----------------|---------------|----------------|-----------------|---------------|
-| [Reward][.Item]int32                          | int32           | int32          | int32           | string        | int32          | int32           | string        |
-| Item1's ID                                    | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
-| 1                                             | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
-{.table .table-sm .table-bordered .table-light}
+{{< sheet colored >}}
 
-</div>
+| Reward1Item1ID       | Reward1Item1Num | Reward1Item2ID | Reward1Item2Num | Reward1Name   | Reward2Item1ID | Reward2Item1Num | Reward2Name   |
+|----------------------|-----------------|----------------|-----------------|---------------|----------------|-----------------|---------------|
+| [Reward][.Item]int32 | int32           | int32          | int32           | string        | int32          | int32           | string        |
+| Item1's ID           | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
+| 1                    | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {

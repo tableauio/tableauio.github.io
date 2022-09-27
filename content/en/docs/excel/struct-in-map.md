@@ -16,6 +16,10 @@ toc: true
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID                 | ItemID      | ItemNum    |
 |--------------------|-------------|------------|
 | map<int32, Reward> | {Item}int32 | int32      |
@@ -23,14 +27,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                  | 1           | 10         |
 | 2                  | 2           | 20         |
 | 3                  |             |            |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -92,7 +109,9 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-<div class="table-responsive">
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
 
 | ID                 | ItemID       | ItemNum    |
 |--------------------|--------------|------------|
@@ -101,16 +120,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                  | 1            | 10         |
 | 2                  | 2            | 20         |
 | 3                  |              |            |
-{.table .table-sm .table-bordered .table-light}
 
-</div>
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -159,6 +189,10 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID                 | Item                      |
 |--------------------|---------------------------|
 | map<int32, Reward> | {int32 ID, int32 Num}Item |
@@ -166,14 +200,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                  | 1,100                     |
 | 2                  | 2,200                     |
 | 3                  |                           |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {

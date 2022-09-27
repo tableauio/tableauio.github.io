@@ -46,14 +46,29 @@ There is a worksheet `Sheet1` in `HelloWorld.xlsx`, we want to rename sheet to
 
 So the metasheet `@TABLEAU` in `HelloWorld.xlsx` should be configured as:
 
-{{< details "@TABLEAU" open >}}
+{{< spreadsheet "HelloWorld.xlsx" Sheet1 "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                | Name        |
+|-------------------|-------------|
+| map<uint32, Item> | string      |
+| Item's ID         | Item's Name |
+| 1                 | Apple       |
+| 2                 | Orange      |
+| 3                 | Banana      |
+
+{{< /sheet >}}
+
+{{< sheet >}}
 
 | Sheet  | Alias    | Sep | OrderedMap |
 |--------|----------|-----|------------|
 | Sheet1 | ItemConf | \|  | true       |
-{.table .table-sm .table-bordered .table-light}
 
-{{< /details >}}
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 ## Option `Transpose`
 
@@ -88,7 +103,7 @@ Generated:
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message HeroConf {

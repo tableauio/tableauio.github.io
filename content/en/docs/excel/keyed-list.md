@@ -1,7 +1,7 @@
 ---
-title: "KeyedList"
-description: "KeyedList features."
-lead: "This guide demonstrates different features of KeyedList type."
+title: "Keyed list"
+description: "Keyed list features."
+lead: "This guide demonstrates different features of Keyed list type."
 date: 2022-02-26T13:59:39+01:00
 lastmod: 2022-02-26T13:59:39+01:00
 draft: false
@@ -19,6 +19,10 @@ Pattern: `[Item]<int32>`
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID               | PropID           | PropName    |
 |------------------|------------------|-------------|
 | [Item]\<uint32\> | map<int32, Prop> | string      |
@@ -26,14 +30,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                | 1                | sweet       |
 | 2                | 1                | sweet       |
 | 2                | 2                | delicious   |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -90,19 +107,36 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| Param      |
-|------------|
-| []<int32>  |
-| Param list |
-| 1,2,2,3    |
-{.table .table-sm .table-bordered .table-light}
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Param       |
+|-------------|
+| []\<int32\> |
+| Param list  |
+| 1,2,2,3     |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {

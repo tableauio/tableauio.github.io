@@ -186,12 +186,15 @@ output:
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< sheet >}}
+
 | ID        | Name        | Desc                       |
 |-----------|-------------|----------------------------|
 | uint32    | string      | string                     |
 | Item's ID | Item's name | Item's description         |
 | 1         | Apple       | A kind of delicious fruit. |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
 
 ## 4. Run tableauc
 
@@ -202,7 +205,7 @@ Generated:
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message Apple {

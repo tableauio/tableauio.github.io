@@ -28,7 +28,7 @@ Now, the horizontal/vertical list element's first field can be any type, even as
 Predefined types in "common.proto":
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 enum ConfType {
   CONF_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
   CONF_TYPE_CLOUD = 1 [(tableau.evalue).name = "Cloud"];
@@ -44,9 +44,9 @@ enum ServerType {
 }
 ```
 
-{{< details "worksheet <b>LoaderConf</b> in <b>HelloWorld.xlsx</b>" >}}
+{{< spreadsheet "HelloWorld.xlsx" LoaderConf "@TABLEAU" >}}
 
-<div class="table-responsive">
+{{< sheet colored >}}
 
 | ServerType                     | ServerConfType          | ServerConfConditionType | ServerConfConditionValue |
 |--------------------------------|-------------------------|-------------------------|--------------------------|
@@ -62,27 +62,25 @@ enum ServerType {
 |                                | CONF_TYPE_LOCAL         |                         |                          |
 |                                | Remote                  |                         |                          |
 | MatchServer                    | CONF_TYPE_UNKNOWN       |                         |                          |
-{.table .table-sm .table-bordered .table-light}
 
-</div>
+{{< /sheet >}}
 
-{{< /details >}}
-
-{{< details "metasheet <b>@TABLEAU</b> in <b>HelloWorld.xlsx</b>" >}}
+{{< sheet >}}
 
 | Sheet      | Nested |
 |------------|--------|
 | LoaderConf | true   |
-{.table .table-sm .table-bordered .table-light}
 
-{{< /details >}}
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message LoaderConf {

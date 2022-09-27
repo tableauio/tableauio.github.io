@@ -23,19 +23,36 @@ There are three kinds of horizontal list:
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Param1         | Param2         | Param3         |
 |----------------|----------------|----------------|
 | []int32        | int32          | int32          |
 | Param1's value | Param2's value | Param3's value |
 | 1              | 2              | 3              |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -76,19 +93,36 @@ enum FruitType {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Param1             | Param2            | Param3           |
 |--------------------|-------------------|------------------|
 | []enum<.FruitType> | enum<.FruitType>  | enum<.FruitType> |
 | Param1's value     | Param2's value    | Param3's value   |
 | 1                  | FRUIT_TYPE_ORANGE | Banana           |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -118,19 +152,36 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Item1ID      | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
 |--------------|--------------|------------|--------------|------------|--------------|
 | [Item]uint32 | string       | uint32     | string       | uint32     | string       |
 | Item1's ID   | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1            | Apple        | 2          | Orange       | 3          | Banana       |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -182,19 +233,36 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Item1ID      | Item1Num    | Item2ID    | Item2Num    | Item3ID    | Item3Num    |
 |--------------|-------------|------------|-------------|------------|-------------|
 | [.Item]int32 | int32       | int32      | int32       | int32      | int32       |
 | Item1's ID   | Item1's num | Item2's ID | Item3's num | Item3's ID | Item3's num |
 | 1            | 100         | 2          | 200         | 3          | 300         |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -233,19 +301,36 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Item1                         | Item2        | Item3        |
 |-------------------------------|--------------|--------------|
 | []{int32 ID, string Name}Item | Item         | Item         |
 | Item1's info                  | Item2's info | Item3's info |
 | 1,Apple                       | 2,Orange     | 3,Banana     |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -297,19 +382,36 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Item1        | Item2        | Item3        |
 |--------------|--------------|--------------|
 | []{.Item}    | .Item        | .Item        |
 | Item1's info | Item2's info | Item3's info |
 | 1,100        | 2,200        | 3,300        |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -362,6 +464,10 @@ No need to support, use `[Item]SCALAR` instead:
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID           | Name        | Desc                          |
 |--------------|-------------|-------------------------------|
 | [Item]uint32 | string      | string                        |
@@ -369,14 +475,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | Apple       | A kind of delicious fruit.    |
 | 2            | Orange      | A kind of sour fruit.         |
 | 3            | Banana      | A kind of calorie-rich fruit. |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -432,6 +551,10 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID           | Num        |
 |--------------|------------|
 | [.Item]int32 | int32      |
@@ -439,14 +562,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1            | 100        |
 | 2            | 200        |
 | 3            | 300        |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -485,6 +621,10 @@ message ItemConf {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Item                       |
 |----------------------------|
 | []{int32 ID,int32 Num}Item |
@@ -492,14 +632,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1,100                      |
 | 2,200                      |
 | 3,300                      |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -551,6 +704,10 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Item        |
 |-------------|
 | []{.Item}   |
@@ -558,14 +715,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1,100       |
 | 2,200       |
 | 3,300       |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -611,6 +781,10 @@ There are two kinds of in-cell list:
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Param      |
 |------------|
 | []int32    |
@@ -618,7 +792,20 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1,2,3      |
 | 4,5        |
 | 6          |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 The `Param` column's type is incell list `[]int32`, as the list element is scalar type `int32`.
 
@@ -627,7 +814,7 @@ Generated:
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -672,31 +859,67 @@ Defaultly, all lists are dynamic sized. List items should be present continuousl
 
 The list size is auto resolved by the max present list items in `Namerow`.
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
 
 | Item1ID                    | Item1Name     | Item2ID     | Item2Name     |
 |----------------------------|---------------|-------------|---------------|
 | [Item]uint32\|{fixed:true} | string        | uint32      | string        |
 | Item1's ID.                | Item1's name. | Item2's ID. | Item2's name. |
 | 1                          | item1         | 2           | item2         |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 #### Explicit fixed size
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| Item1ID                  | Item1Name     | Item2ID     | Item2Name     |
-|--------------------------|---------------|-------------|---------------|
-| [Item]uint32\|{length:2} | string        | uint32      | string        |
-| Item1's ID.              | Item1's name. | Item2's ID. | Item2's name. |
-| 1                        | item1         | 2           | item2         |
-{.table .table-sm .table-bordered .table-light}
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Item1ID                | Item1Name     | Item2ID     | Item2Name     |
+|------------------------|---------------|-------------|---------------|
+| [Item]uint32\|{size:2} | string        | uint32      | string        |
+| Item1's ID.            | Item1's name. | Item2's ID. | Item2's name. |
+| 1                      | item1         | 2           | item2         |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 ## Advanced features
 
 ### Horizontal column-skipped list
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
 
 | D                 | Prop1ID     |              | Prop1Value    | Prop2ID    |              | Prop2Value    |
 |:------------------|:------------|:-------------|:--------------|:-----------|:-------------|:--------------|
@@ -705,14 +928,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1           | Apple        | 100           | 2          | Orange       | 200           |
 | 2                 | 3           | Banana       | 300           | 4          | Pomelo       | 400           |
 | 3                 | 5           | Watermelon   | 500           |            |              |               |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {

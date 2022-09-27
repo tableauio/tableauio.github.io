@@ -39,7 +39,7 @@ Generated protoconf is `rank_conf.proto`:
 {{< details "rank_conf.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"server/AutoConfig2/Server.xml"};
 
 message RankConf {
@@ -125,7 +125,7 @@ Generated protoconf is `rank_conf.proto`:
 {{< details "rank_conf.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"server/AutoConfig2/Server.xml"};
 
 message RankConf {

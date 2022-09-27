@@ -26,19 +26,36 @@ No need to support, use this instead: `map<int32, Item>`.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Item1ID           | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
 |-------------------|--------------|------------|--------------|------------|--------------|
 | map<uint32, Item> | string       | uint32     | string       | uint32     | string       |
 | Item1's ID        | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1                 | Apple        | 2          | Orange       | 3          | Banana       |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -90,19 +107,36 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Item1ID           | Item1Num    | Item2ID    | Item2Num    | Item3ID    | Item3Num    |
 |-------------------|-------------|------------|-------------|------------|-------------|
 | map<int32, .Item> | int32       | int32      | int32       | int32      | int32       |
 | Item1's ID        | Item1's num | Item2's ID | Item3's num | Item3's ID | Item3's num |
 | 1                 | 100         | 2          | 200         | 3          | 300         |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -153,6 +187,10 @@ No need to support, use `map<int32, Item>` instead.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID                | Name        | Desc                          |
 |-------------------|-------------|-------------------------------|
 | map<uint32, Item> | string      | string                        |
@@ -160,14 +198,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | Apple       | A kind of delicious fruit.    |
 | 2                 | Orange      | A kind of sour fruit.         |
 | 3                 | Banana      | A kind of calorie-rich fruit. |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -223,6 +274,10 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID                | Num        |
 |-------------------|------------|
 | map<int32, .Item> | int32      |
@@ -230,14 +285,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 100        |
 | 2                 | 200        |
 | 3                 | 300        |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -283,12 +351,29 @@ There are some kinds of in-cell map:
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Items                     |
 |---------------------------|
 | map<uint32, string>       |
 | Items                     |
 | 1:Apple,2:Orange,3:Banana |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 The `Items` column's type is in-cell map `map<uint32, string>`, as the map value is scalar type `string`.
 
@@ -297,7 +382,7 @@ Generated:
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -331,6 +416,10 @@ Not supported yet.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID                | Desc        |
 |-------------------|-------------|
 | map<uint32, Item> | string      |
@@ -338,14 +427,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | Apple       |
 |                   | Orange      |
 | 3                 | Banana      |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -419,6 +521,10 @@ message ValueType {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Type                        | Price        |
 |-----------------------------|--------------|
 | map<enum<.FruitType>, Item> | int32        |
@@ -426,14 +532,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | Apple                       | 100          |
 | Orange                      | 200          |
 | Banana                      | 300          |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -486,29 +605,67 @@ The map size is auto resolved by the max map items present in **Namerow**.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | Item1ID                         | Item1Name     | Item2ID     | Item2Name     |
 |---------------------------------|---------------|-------------|---------------|
 | map<uint32, Item>\|{fixed:true} | string        | uint32      | string        |
 | Item1's ID.                     | Item1's name. | Item2's ID. | Item2's name. |
 | 1                               | item1         | 2           | item2         |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 #### Explicit fixed size
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-| Item1ID                       | Item1Name     | Item2ID     | Item2Name     |
-|-------------------------------|---------------|-------------|---------------|
-| map<uint32, Item>\|{length:2} | string        | uint32      | string        |
-| Item1's ID.                   | Item1's name. | Item2's ID. | Item2's name. |
-| 1                             | item1         | 2           | item2         |
-{.table .table-sm .table-bordered .table-light}
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Item1ID                     | Item1Name     | Item2ID     | Item2Name     |
+|-----------------------------|---------------|-------------|---------------|
+| map<uint32, Item>\|{size:2} | string        | uint32      | string        |
+| Item1's ID.                 | Item1's name. | Item2's ID. | Item2's name. |
+| 1                           | item1         | 2           | item2         |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 ## Advanced features
 
 ### Horizontal column-skipped map
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
 
 | D                 | Prop1ID          |              | Prop1Value    | Prop2ID    |              | Prop2Value    |
 |:------------------|:-----------------|:-------------|:--------------|:-----------|:-------------|:--------------|
@@ -517,14 +674,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1                | Apple        | 100           | 2          | Orange       | 200           |
 | 2                 | 3                | Banana       | 300           | 4          | Pomelo       | 400           |
 | 3                 | 5                | Watermelon   | 500           |            |              |               |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message ItemConf {
@@ -607,9 +777,28 @@ ordered map accessers will be generated. This feature is powered by [tableauio/l
 If we want `ItemConf` to generate ordered map accessers, then set
 `OrderedMap` option to `true` of metasheet `@TABLEAU`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                | Name        |
+|-------------------|-------------|
+| map<uint32, Item> | string      |
+| Item's ID         | Item's Name |
+| 1                 | Apple       |
+| 2                 | Orange      |
+| 3                 | Banana      |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
 | Sheet    | OrderedMap |
 |----------|------------|
 | ItemConf | true       |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 More useful options are illustrated at metasheet chapter. [Metasheet @TABLEAU →]({{< relref "metasheet" >}})

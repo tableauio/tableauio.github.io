@@ -36,6 +36,10 @@ enum FruitType {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID                | Type              |
 |-------------------|-------------------|
 | map<uint32, Item> | enum<.FruitType>  |
@@ -43,14 +47,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1                 |
 | 2                 | Orange            |
 | 3                 | FRUIT_TYPE_BANANA |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
@@ -103,6 +120,10 @@ message Prop {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
 | ID                | Prop1ID      | Prop1Value    | Prop2ID    | Prop2Value    |
 |-------------------|--------------|---------------|------------|---------------|
 | map<uint32, Item> | [.Prop]int32 | int32         | int32      | int32         |
@@ -110,14 +131,27 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | 1                 | 1            | 100           | 2          | 200           |
 | 2                 | 3            | 300           | 4          | 400           |
 | 3                 | 5            | 500           |            |               |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 Generated:
 
 {{< details "hello_world.proto" open >}}
 
 ```protobuf
-// NOTE: Some trivial code snippets are eliminated.
+// --snip--
 import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 

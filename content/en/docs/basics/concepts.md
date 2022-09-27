@@ -57,7 +57,9 @@ toc: true
 
 A workbook(`HelloWorld.xlsx`) with two data worksheets(`ItemConf` and `ActivityConf`) and an empty tableau metasheet(`@TABLEAU`).
 
-- First worksheet `ItemConf`:
+{{< spreadsheet "HelloWorld.xlsx" ItemConf ActivityConf "@TABLEAU" >}}
+
+{{< sheet colored>}}
 
 | ID                | Name         | Type         |
 |-------------------|--------------|--------------|
@@ -66,9 +68,10 @@ A workbook(`HelloWorld.xlsx`) with two data worksheets(`ItemConf` and `ActivityC
 | 1                 | item1        | 100          |
 | 2                 | item2        | 200          |
 | 3                 | item3        | 300          |
-{.table .table-sm .table-bordered .table-light}
 
-- Second worksheet `ActivityConf`:
+{{< /sheet >}}
+
+{{< sheet colored>}}
 
 | ID                    | Name             | Open              |
 |-----------------------|------------------|-------------------|
@@ -77,7 +80,20 @@ A workbook(`HelloWorld.xlsx`) with two data worksheets(`ItemConf` and `ActivityC
 | 1                     | activity1        | true              |
 | 2                     | activity2        | false             |
 | 3                     | activity3        |                   |
-{.table .table-sm .table-bordered .table-light}
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|   |   |   |
+|---|---|---|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 ### Output: a protoconf file
 
