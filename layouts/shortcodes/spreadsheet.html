@@ -5,26 +5,28 @@
 
 {{/* calculate unique sheet id in page for tabs id. Refer: https://geekthis.net/post/hugo-random-numbers/ */}}
 {{ $sheetIds := slice }}
+{{ $charSlice := slice "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" }}
 {{ range $sheets }}
+    {{ $randPrefix := delimit (shuffle $charSlice) "" }}
     {{ $seed := now.UnixMicro }}
-    {{ $rand := (mod (add (mul 13 $seed) 97) 400000) }}
-    {{ $sheetIds = $sheetIds | append $rand }}
+    {{ $randSuffix := (mod (add (mul 13 $seed) 97) 400000) }}
+    {{ $sheetIds = $sheetIds | append (printf "sheet-%v-%d" $randPrefix $randSuffix) }}
 {{ end }}
 
+<div class="text-center"><span class="badge text-dark text-muted fw-light fst-italic border-bottom">{{ $name }}</span></div>
 <div class="table-responsive">
     <ul class="nav nav-tabs" role="tablist">
     {{ range $index, $sheet := $sheets }}
-        {{ $sheetId := printf "sheet-%d" (index $sheetIds $index) }}
+        {{ $sheetId := index $sheetIds $index }}
         <li class="nav-item" role="presentation">
             <button class="nav-link {{ if not $index}} active {{end}}" id="{{ $sheetId }}-tab" data-bs-toggle="tab" data-bs-target="#{{ $sheetId}}" type="button" role="tab" aria-controls="{{ $sheetId }}" aria-selected="{{ if not $index}} active {{ else }} false {{end}}">{{ $sheet }}</button>
         </li>
     {{ end }}
-        <li class="nav-tabs"><span class="badge text-dark text-muted fw-light fst-italic ps-5">{{ $name }}</span></li>
     </ul>
 
     <div class="tab-content">
         {{ range $index, $sheet := $sheets }} 
-            {{ $sheetId := printf "sheet-%d" (index $sheetIds $index) }}
+            {{ $sheetId := index $sheetIds $index }}
             <div class="tab-pane fade {{ if not $index}} active show {{end}}" id="{{ $sheetId }}" role="tabpanel" aria-labelledby="{{ $sheetId }}-tab">
             {{ index $children $index | markdownify }}
             </div>

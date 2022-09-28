@@ -35,6 +35,10 @@ $navbar-dark-active-color:          $link-color-dark;
   color: $body-color-dark !important;
 }
 
+[data-dark-mode] body .nav-tabs .nav-link {
+  color: $link-color-dark !important;
+}
+
 [data-dark-mode] body .btn-primary {
   @include button-variant($button-color-dark, $button-color-dark);
 
