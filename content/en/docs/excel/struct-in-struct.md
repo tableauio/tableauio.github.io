@@ -92,8 +92,6 @@ message Item {
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
-<div class="table-responsive">
-
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
 {{< sheet colored >}}

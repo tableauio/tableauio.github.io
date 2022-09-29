@@ -3,6 +3,8 @@
   @extend .table-sm;
   @extend .table-light;
   @extend .table-bordered;
+
+  border-color: #808080 !important;
 }
 
 .sheet > table > tbody {
@@ -22,8 +24,6 @@ div.sheet-colored > table {
   @extend .table-sm;
   @extend .table-light;
   @extend .table-bordered;
-
-  border-color: #333 !important;
 }
 
 div.sheet-colored > table > thead > tr > th {
@@ -34,10 +34,6 @@ div.sheet-colored > table > thead > tr {
   background-color: #f5c242 !important;
 
   --bs-table-bg: #f5c242 !important;
-}
-
-div.sheet-colored > table > tbody {
-  border-top-width: 1px !important;
 }
 
 div.sheet-colored > table > tbody > tr:first-child {
