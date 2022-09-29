@@ -13,8 +13,8 @@
     {{ $sheetIds = $sheetIds | append (printf "sheet-%v-%d" $randPrefix $randSuffix) }}
 {{ end }}
 
-<div class="text-center"><span class="badge text-dark text-muted fw-light fst-italic border-bottom">{{ $name }}</span></div>
-<div class="table-responsive">
+<div class="table-responsive spreadsheet">
+    <div class="text-center"><button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom"><span>{{ $name }}</span>&nbsp;<img height="14px" src="/images/download_black.svg" alt="Download" /></button></div>
     <ul class="nav nav-tabs" role="tablist">
     {{ range $index, $sheet := $sheets }}
         {{ $sheetId := index $sheetIds $index }}

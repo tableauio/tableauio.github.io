@@ -87,6 +87,7 @@ lastMod = true
   multilingualMode = true
   docsVersioning = false
   fullWidth = false
+  spreadsheetJS = true
 
 [menu]
   [menu.section]
