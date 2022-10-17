@@ -32,7 +32,7 @@ Options below can be specified in the metasheet `@TABLEAU` to affect the corresp
 | `AdjacentKey`   | bool     | Merge adjacent rows with the same key. If the key cell is not set, it will be treated the same as the nearest key above the same column.<br>Default:`false`.                                                                                   |
 | `FieldPresence` | bool     | In order to track field presence of basic types (numeric, string, bytes, and enums), the generated field will be labeled `optional`.<br>Default:`false`.                                                                                       |
 | `OrderedMap`    | bool     | Generate OrderedMap accessers or not.<br>Default: `false`.<br> Supported: `C++`.                                                                                                                                                               |
-| `Index`         | []string | Generate index accessers, and multiple index columns is comma-separated. Format: `<ColumnName>[@IndexName]`, if `IndexName` is not set, it will be this column's parent struct type name.<br>E.g.: `ItemID,ShopID@Shop`.<br> Supported: `C++`. |
+| `Index`         | []string | Generate index accessers, and multiple index columns are comma-separated. Format: `<ColumnName>[@IndexName]`, if `IndexName` is not set, it will be this column's parent struct type name.<br>E.g.: `ItemID,ShopID@Shop`.<br> Supported: `C++`. |
 {.table-striped .table-hover}
 
 ## Empty `@TABLEAU`

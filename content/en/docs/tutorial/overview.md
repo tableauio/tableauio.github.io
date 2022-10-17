@@ -27,11 +27,15 @@ Select the appropriate tableauc (a.k.a. Tableau Compiler) to download:
 Create a file named *config.yaml*, and copy configurations below to it:
 
 ```yaml
+# locale BCP 47 language tags: en, zh.
+lang: en
 # Location represents the collection of time offsets in use in a geographical area.
-# If the name is "" or "UTC", LoadLocation returns UTC.
-# If the name is "Local", LoadLocation returns Local.
+#  - If the name is "" or "UTC", LoadLocation returns UTC.
+#  - If the name is "Local", LoadLocation returns Local.
+#  - Otherwise, the name is taken to be a location name corresponding to a file in the
+#    IANA Time Zone database, such as "America/New_York", "Asia/Shanghai", and so on.
 #
-# Default: Local.
+# See https://go.dev/src/time/zoneinfo_abbrs_windows.go.
 locationName: Local
 # Log options.
 log:
@@ -43,12 +47,9 @@ log:
   filename: ""
   # Log sink: CONSOLE, FILE, and MULTI.
   sink: CONSOLE
-  # Log language: en, zh.
-  # Default: en.
-  lang: en
-input:
-  # Input options for generating proto files.
-  proto:
+# Options for generating proto files.
+proto:
+  input:
     # Header options of worksheet.
     header:
       # Exact row number of column name definition at a worksheet.
@@ -94,8 +95,24 @@ input:
     # WARN: be careful to use this option, it may lead to infinite loop.
     # Default: false.
     followSymlink: false
-  # Input options for generating conf files.
-  conf:
+  output:
+    # Specify subdir (relative to output dir) for generated proto files.
+    # Default: "".
+    subdir: ""
+    # Dir separator `/` or `\`  in filename is replaced by "__".
+    # Default: false.
+    filenameWithSubdirPrefix: false
+    # Append suffix to each generated proto filename.
+    # Default: "".
+    filenameSuffix: ""
+    # Specify proto file options.
+    # Example: go_package, csharp_namespace...
+    #
+    # Default: nil.
+    fileOptions: {}
+# Options for generating conf files.
+conf:
+  input:
     # The proto paths are used to search for dependencies that are referenced in import
     # statements in proto source files. If no import paths are provided then
     # "." (current directory) is assumed to be the only import path.
@@ -131,23 +148,7 @@ input:
     #
     # Default: nil.
     subdirRewrites: {}
-output:
-  proto:
-    # Specify subdir (relative to output dir) for generated proto files.
-    # Default: "".
-    subdir: ""
-    # Dir separator `/` or `\`  in filename is replaced by "__".
-    # Default: false.
-    filenameWithSubdirPrefix: false
-    # Append suffix to each generated proto filename.
-    # Default: "".
-    filenameSuffix: ""
-    # Specify proto file options.
-    # Example: go_package, csharp_namespace...
-    #
-    # Default: nil.
-    fileOptions: {}
-  conf:
+  output:
     # Specify subdir (relative to output dir) for generated configuration files.
     # Default: "".
     subdir: ""
