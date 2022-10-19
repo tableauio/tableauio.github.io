@@ -31,9 +31,9 @@ Tableau borrows most of its syntax and types from [Protocol Buffers (proto3)](ht
 
 | Type | Default | Description |
 |---|---|---|
-| `datetime` | `0000-00-00 00:00:00` | Format: `yyyy-MM-dd HH:mm:ss`, <br>e.g.: `2020-01-01 05:10:00`. |
-| `date` | `0000-00-00` | Format: `yyyy-MM-dd` or `yyMMdd`, <br>e.g.: `2020-01-01` or `20200101`. |
-| `time` | `00:00:00` | Format: `HH:mm:ss` or `HHmmss`, <br>e.g.: `05:10:00` or `051000`. |
+| `datetime` | `0000-00-00 00:00:00` | Format: `yyyy-MM-dd HH:mm:ss`. <br>e.g.: `2020-01-01 05:10:00`. |
+| `date` | `0000-00-00` | Format: `yyyy-MM-dd` or `yyyyMMdd`. <br>e.g.: `2020-01-01` or `20200101`. |
+| `time` | `00:00:00` | Format: `HH:mm:ss` or `HHmmss`, `HH:mm` or `HHmm`. <br>e.g.: `05:10:00` or `051000`, `05:10` or `0510`. |
 {.table-striped}
 
 #### Tips

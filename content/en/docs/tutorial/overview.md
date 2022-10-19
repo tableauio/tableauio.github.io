@@ -77,10 +77,10 @@ proto:
     # "." (current directory) is assumed to be the only import path.
     # Default: nil.
     protoPaths: [.]
-    # The enums and messages in ImportedProtoFiles can be used in Excel/CSV/XML as
+    # The enums and messages in protoFiles can be used in Excel/CSV/XML as
     # common types.
     # Default: nil.
-    importedProtoFiles: []
+    protoFiles: []
     # Specify input file formats.
     # Note: recognize all formats (Excel/CSV/XML) if not set (value is nil).
     # Default: nil.
