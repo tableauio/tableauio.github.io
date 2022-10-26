@@ -1,7 +1,7 @@
 ---
 title: "List in list"
-description: "List in list"
-lead: "Nesting examples of list in list."
+description: "The nesting specification of list in list."
+lead: "The nesting specification of list in list."
 date: 2022-02-26T08:48:57+00:00
 lastmod: 2022-02-26T08:48:57+00:00
 draft: false

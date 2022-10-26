@@ -10,7 +10,7 @@ description = "Tableau can convert Excel/CSV/XML to multiple formats: JSON, Text
 # docsVersion = "0.3"
 
 ## Open Graph
-images = ["doks.png"]
+images = ["tableau-logo.png"]
 ogLocale = "en_US"
 domainTLD = "doks.netlify.app"
 titleHome = "Doks Theme"

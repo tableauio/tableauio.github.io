@@ -1,7 +1,7 @@
 ---
 title: "Metasheet"
-description: "Metasheet @TABLEAU."
-lead: "The tableau metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
+description: "The metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
+lead: "The metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
 date: 2022-02-26T13:59:39+01:00
 lastmod: 2022-02-26T13:59:39+01:00
 draft: false
@@ -147,7 +147,10 @@ Each column type can be:
 - **incell scalar list**: e.g: `[]int32`
 - **incell enum list**: e.g: `[]enum<.FruiteType>`
 
-Example: a worksheet `ItemConf` in `HelloWorld.xlsx`:
+Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
+
+- *ItemConf*: index on columns of the same struct as **map value**.
+- *ShopConf*: index on columns of the same struct as **list element**.
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
 

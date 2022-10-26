@@ -1,7 +1,7 @@
 ---
 title: "Struct in struct"
-description: "Struct in struct"
-lead: "Nesting examples of struct in struct."
+description: "The nesting specification of struct in struct."
+lead: "The nesting specification of struct in struct."
 date: 2022-02-26T08:48:57+00:00
 lastmod: 2022-02-26T08:48:57+00:00
 draft: false

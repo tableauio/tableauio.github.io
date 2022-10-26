@@ -1,7 +1,7 @@
 ---
 title: "Map in list"
-description: "Map in list"
-lead: "Nesting examples of map in list."
+description: "The nesting specification of map in list."
+lead: "The nesting specification of map in list."
 date: 2022-02-26T08:48:57+00:00
 lastmod: 2022-02-26T08:48:57+00:00
 draft: false
