@@ -12,12 +12,12 @@ description = "Tableau can convert Excel/CSV/XML to multiple formats: JSON, Text
 ## Open Graph
 images = ["tableau-logo.png"]
 ogLocale = "en_US"
-domainTLD = "doks.netlify.app"
-titleHome = "Doks Theme"
+domainTLD = "tableauio.github.io"
+titleHome = "Tableau"
 
 ## Twitter Cards
-twitterSite = "@getdoks"
-twitterCreator = "@henkverlinde"
+twitterSite = "@wenchyzhu"
+twitterCreator = "@wenchyzhu"
 
 ## JSON-LD
 # schemaType = "Person"
