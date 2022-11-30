@@ -184,7 +184,6 @@ Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 |----------|------------------------------------------------|---|
 | ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem |   |
 | ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |   |
-|          |                                                |   |
 
 {{< /sheet >}}
 

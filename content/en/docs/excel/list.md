@@ -37,12 +37,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -107,12 +101,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -165,12 +153,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
 
 {{< /sheet >}}
 
@@ -247,12 +229,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -314,12 +290,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
 
 {{< /sheet >}}
 
@@ -395,12 +365,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
 
 {{< /sheet >}}
 
@@ -479,12 +443,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
 
 {{< /sheet >}}
 
@@ -567,12 +525,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -636,12 +588,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
 
 {{< /sheet >}}
 
@@ -720,12 +666,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -797,12 +737,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -873,12 +807,6 @@ The list size is auto resolved by the max present list items in `Namerow`.
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -900,12 +828,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
 
 {{< /sheet >}}
 
@@ -932,12 +854,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
 
 {{< /sheet >}}
 

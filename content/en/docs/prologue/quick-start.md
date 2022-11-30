@@ -21,13 +21,13 @@ Select the appropriate tableauc (aka Tableau Compiler) to download:
         </p>
         <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.windows.amd64.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.5/tableauc.v0.5.5.windows.amd64.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> Windows x64
             </a>
         </p>
         <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.windows.386.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.5/tableauc.v0.5.5.windows.386.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> Windows x86
             </a>
         </p>
@@ -38,13 +38,13 @@ Select the appropriate tableauc (aka Tableau Compiler) to download:
         </p>
         <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.linux.amd64.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.5/tableauc.v0.5.5.linux.amd64.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> Linux x64
             </a>
         </p>
         <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.linux.386.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.5/tableauc.v0.5.5.linux.386.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> Linux x86
             </a>
         </p>
@@ -55,7 +55,7 @@ Select the appropriate tableauc (aka Tableau Compiler) to download:
         </p>
         <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.darwin.amd64.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.5/tableauc.v0.5.5.darwin.amd64.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> macOS
             </a>
         </p>
@@ -86,12 +86,6 @@ Add **HelloWorld.xlsx** with two sheets:
 {{< /sheet >}}
 
 {{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
 
 {{< /sheet >}}
 

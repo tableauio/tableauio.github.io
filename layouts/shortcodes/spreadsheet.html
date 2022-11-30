@@ -28,7 +28,12 @@
         {{ range $index, $sheet := $sheets }} 
             {{ $sheetId := index $sheetIds $index }}
             <div class="tab-pane fade {{ if not $index}} active show {{end}}" id="{{ $sheetId }}" role="tabpanel" aria-labelledby="{{ $sheetId }}-tab">
-            {{ index $children $index | markdownify }}
+            {{ $sheetContent := index $children $index }}
+            {{ if in $sheetContent "<table>"}}
+                {{ markdownify $sheetContent }}
+            {{ else }}
+                <table></table>
+            {{ end }}
             </div>
         {{ end }}
     </div>

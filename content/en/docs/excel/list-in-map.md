@@ -32,12 +32,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -128,12 +122,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -218,12 +206,6 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
 
 {{< /sheet >}}
 
