@@ -10,7 +10,7 @@ weight: 7901
 toc: true
 ---
 
-## Options
+## Overview
 
 | Option     | Type   | Description                                                                                                                                                                                    |
 |------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -22,3 +22,33 @@ toc: true
 | `fixed`    | bool   | Auto-detected fixed size of horizontal list/map. <br> Default: `false`.                                                                                                                       |
 | `size`     | uint32 | Specified fixed size of horizontal list/map.                                                                                                                                                   |
 {.table-striped .table-hover}
+
+## Option `unique`
+
+Option `unique` can be specified as `true` in the map field property. Then the tableauc will report an error if a duplicate key is appeared.
+
+## Option `range`
+
+> TODO
+
+## Option `refer`
+
+> TODO
+
+## Option `sequence`
+
+> TODO
+
+## Option `default`
+
+> TODO
+
+## Option `fixed`
+
+- [List: implicit fixed size →]({{< relref "list/#implicit-fixed-size" >}})
+- [Map: implicit fixed size →]({{< relref "map/#implicit-fixed-size" >}})
+
+## Option `size`
+
+- [List: explicit fixed size →]({{< relref "list/#explicit-fixed-size" >}})
+- [Map: explicit fixed size →]({{< relref "map/#explicit-fixed-size" >}})

@@ -553,13 +553,17 @@ message ItemConf {
 
 ### Dynamic size
 
-Defaultly, all maps are dynamic sized. Map items should be present continuously, and report error if an empty item is inserted.
+By default, all maps are **Dynamically Sized Types**. Map items should be present continuously, otherwise an error is reported if an empty item is existed in between.
 
 ### Fixed size
 
 #### Implicit fixed size
 
-The map size is auto resolved by the max map items present in **Namerow**.
+The map size is auto resolved by the max map items present in name row.
+
+In this example below, though the second map item **Item2** is empty, it is legal as the field property `fixed` is set `true`. Besides, **Item2** will also be generated as an empty map item. You can see it in the generated file *ItemConf.json*.
+
+{{< alert icon="👉" context="info" text="If more than one empty map items are inserted into map, then only one empty map item is really generated. Because all the empty map items's keys are same. This is different from list, you should pay special attention to it." />}}
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -567,11 +571,11 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet colored >}}
 
-| Item1ID                         | Item1Name     | Item2ID     | Item2Name     |
-|---------------------------------|---------------|-------------|---------------|
-| map<uint32, Item>\|{fixed:true} | string        | uint32      | string        |
-| Item1's ID.                     | Item1's name. | Item2's ID. | Item2's name. |
-| 1                               | item1         | 2           | item2         |
+| Item1ID                         | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
+|---------------------------------|--------------|------------|--------------|------------|--------------|
+| map<uint32, Item>\|{fixed:true} | string       | uint32     | string       | uint32     | string       |
+| Item1's ID                      | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
+| 1                               | Apple        |            |              | 3          | Banana       |
 
 {{< /sheet >}}
 
@@ -580,20 +584,70 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL prop:{fixed:true}}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" open >}}
+
+```json
+{
+    "itemMap": {
+        "0": {
+            "id": 0,
+            "name": ""
+        },
+        "1": {
+            "id": 1,
+            "name": "Apple"
+        },
+        "3": {
+            "id": 3,
+            "name": "Banana"
+        }
+    }
+}
+```
+
+{{< /details >}}
 
 #### Explicit fixed size
 
+The map size is explicitly set by field property `size`.
+
+In this example below, field property `size` is set as 2, then map items after the second item **Item2** will all be truncated. Besides, **Item2** will also be generated as an empty map item. You can see it in the generated file *ItemConf.json*.
+
+{{< alert icon="👉" context="info" text="If more than one empty map items are inserted into map, then only one empty map item is really generated. Because all the empty map items's keys are same. This is different from list, you should pay special attention to it." />}}
+
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
 {{< sheet colored >}}
 
-| Item1ID                     | Item1Name     | Item2ID     | Item2Name     |
-|-----------------------------|---------------|-------------|---------------|
-| map<uint32, Item>\|{size:2} | string        | uint32      | string        |
-| Item1's ID.                 | Item1's name. | Item2's ID. | Item2's name. |
-| 1                           | item1         | 2           | item2         |
+| Item1ID                     | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
+|-----------------------------|--------------|------------|--------------|------------|--------------|
+| map<uint32, Item>\|{size:2} | string       | uint32     | string       | uint32     | string       |
+| Item1's ID                  | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
+| 1                           | Apple        |            |              | 3          | Banana       |
 
 {{< /sheet >}}
 
@@ -602,6 +656,46 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL prop:{size:2}}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" open >}}
+
+```json
+{
+    "itemMap": {
+        "0": {
+            "id": 0,
+            "name": ""
+        },
+        "1": {
+            "id": 1,
+            "name": "Apple"
+        }
+    }
+}
+```
+
+{{< /details >}}
 
 ## Advanced features
 

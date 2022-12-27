@@ -116,7 +116,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 | Item's ID         | Item's name | Prop's ID        | Prop's value |
 | 1                 | Apple       | 1                | 10           |
 | 2                 | Orange      | 1                | 20           |
-| 2                 | Banana      | 2                | 30           |
+| 2                 | Orange      | 2                | 30           |
 
 {{< /sheet >}}
 

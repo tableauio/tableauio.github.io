@@ -785,23 +785,27 @@ No need to support.
 
 ### Dynamic size
 
-Defaultly, all lists are dynamic sized. List items should be present continuously, and report error if an empty item is inserted.
+By default, all lists are **Dynamically Sized Types**. List elements should be present continuously, otherwise an error is reported if an empty element is existed in between.
 
 ### Fixed size
 
 #### Implicit fixed size
 
-The list size is auto resolved by the max present list items in `Namerow`.
+The list size is auto resolved by the max present list elements in name row.
+
+In this example below, though the second element **Item2** is empty, it is legal as the field property `fixed` is set `true`. Besides, **Item2** will also be generated as an empty element. You can see it in the generated file *ItemConf.json*.
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`.
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
 {{< sheet colored >}}
 
-| Item1ID                    | Item1Name     | Item2ID     | Item2Name     |
-|----------------------------|---------------|-------------|---------------|
-| [Item]uint32\|{fixed:true} | string        | uint32      | string        |
-| Item1's ID.                | Item1's name. | Item2's ID. | Item2's name. |
-| 1                          | item1         | 2           | item2         |
+| Item1ID                    | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
+|:---------------------------|:-------------|:-----------|:-------------|:-----------|:-------------|
+| [Item]uint32\|{fixed:true} | string       | uint32     | string       | uint32     | string       |
+| Item1's ID                 | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
+| 1                          | Apple        |            |              | 3          | Banana       |
 
 {{< /sheet >}}
 
@@ -811,7 +815,55 @@ The list size is auto resolved by the max present list items in `Namerow`.
 
 {{< /spreadsheet >}}
 
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL prop:{fixed:true}}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" open >}}
+
+```json
+{
+    "itemList":  [
+        {
+            "id":  1,
+            "name":  "Apple"
+        },
+        {
+            "id":  0,
+            "name":  ""
+        },
+        {
+            "id":  3,
+            "name":  "Banana"
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
 #### Explicit fixed size
+
+The list size is explicitly set by field property `size`.
+
+In this example below, field property `size` is set as 2, then list elements after the second element **Item2** will all be truncated. Besides, **Item2** will also be generated as an empty element. You can see it in the generated file *ItemConf.json*.
 
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
@@ -819,11 +871,11 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet colored >}}
 
-| Item1ID                | Item1Name     | Item2ID     | Item2Name     |
-|------------------------|---------------|-------------|---------------|
-| [Item]uint32\|{size:2} | string        | uint32      | string        |
-| Item1's ID.            | Item1's name. | Item2's ID. | Item2's name. |
-| 1                      | item1         | 2           | item2         |
+| Item1ID                | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
+|------------------------|--------------|------------|--------------|------------|--------------|
+| [Item]uint32\|{size:2} | string       | uint32     | string       | uint32     | string       |
+| Item1's ID             | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
+| 1                      | Apple        |            |              | 3          | Banana       |
 
 {{< /sheet >}}
 
@@ -832,6 +884,46 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL prop:{size:2}}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" open >}}
+
+```json
+{
+    "itemList":  [
+        {
+            "id":  1,
+            "name":  "Apple"
+        },
+        {
+            "id":  0,
+            "name":  ""
+        }
+    ]
+}
+```
+
+{{< /details >}}
 
 ## Advanced features
 
@@ -861,7 +953,7 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 Generated:
 
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
