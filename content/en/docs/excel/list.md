@@ -1021,3 +1021,144 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+### Keyed list
+
+Keyed list is same as normal list, except that `ColumnType` (first field type) is surrounded by angle brackets `<>`, and is treated as map key.
+
+**Syntax**: `[ElemType]<ColumnType>`
+
+#### Vertical struct keyed-list
+
+For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID               | PropID           | PropName    |
+|------------------|------------------|-------------|
+| [Item]\<uint32\> | map<int32, Prop> | string      |
+| Item's ID        | Prop's ID        | Prop's name |
+| 1                | 1                | sweet       |
+| 2                | 1                | sweet       |
+| 2                | 2                | delicious   |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    map<int32, Prop> prop_map = 2 [(tableau.field) = {key:"PropID" layout:LAYOUT_VERTICAL}];
+    message Prop {
+      int32 prop_id = 1 [(tableau.field) = {name:"PropID"}];
+      string prop_name = 2 [(tableau.field) = {name:"PropName"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "propMap": {
+                "1": {
+                    "propId": 1,
+                    "propName": "sweet"
+                }
+            }
+        },
+        {
+            "id": 2,
+            "propMap": {
+                "1": {
+                    "propId": 1,
+                    "propName": "sweet"
+                },
+                "2": {
+                    "propId": 2,
+                    "propName": "delicious"
+                }
+            }
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+#### Scalar keyed-list
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Param       |
+|-------------|
+| []\<int32\> |
+| Param list  |
+| 1,2,2,3     |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated int32 param_list = 1 [(tableau.field) = {name:"Param" key:"Param" layout:LAYOUT_INCELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "paramList": [
+        1,
+        2,
+        3
+    ]
+}
+```
+
+{{< /details >}}

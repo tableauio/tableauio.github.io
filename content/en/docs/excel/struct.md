@@ -12,17 +12,19 @@ toc: true
 
 ## Cross-cell struct
 
+Each column name should be prefixed with a common struct variable name: `<StructName>FieldName`.
+
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
 {{< sheet colored >}}
 
-| ItemID       | ItemName    | ItemDesc              |
-|:-------------|:------------|:----------------------|
-| {Item}uint32 | string      | string                |
-| Item’s ID    | Item’s Name | Item’s Description    |
-| 1            | Orange      | A kind of sour fruit. |
+| PropertyID      | PropertyName    | PropertyDesc           |
+|:----------------|:----------------|:-----------------------|
+| {Property}int32 | string          | string                 |
+| Property's ID   | Property's Name | Property's Description |
+| 1               | Orange          | A kind of sour fruit.  |
 
 {{< /sheet >}}
 
@@ -31,6 +33,8 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
+
+Note that each column name in `ItemConf` is prefixed with struct variable name **Property** which is same as struct type name.
 
 Generated:
 
@@ -43,9 +47,9 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
 
-  Item item = 1;
-  message Item {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+  Property property = 1 [(tableau.field) = {name:"Property"}];
+  message Property {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
     string name = 2 [(tableau.field) = {name:"Name"}];
     string desc = 3 [(tableau.field) = {name:"Desc"}];
   }
@@ -58,10 +62,10 @@ message ItemConf {
 
 ```json
 {
-    "item": {
-        "id": 1,
-        "name": "Orange",
-        "desc": "A kind of sour fruit."
+    "property":  {
+        "id":  1,
+        "name":  "Orange",
+        "desc":  "A kind of sour fruit."
     }
 }
 ```
@@ -75,7 +79,7 @@ Cross-cell struct is usually used together with:
 - cross-cell horizontal/vertical map, as map value type. [Map →]({{< relref "map" >}})
 - cross-cell horizontal/vertical list, as list element type. [List →]({{< relref "list" >}})
 
-## In-cell struct
+## Incell struct
 
 Each field type of the struct should be scalar type.
 
@@ -85,13 +89,13 @@ A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet colored >}}
 
-| ID                | Property                                   |
-|-------------------|--------------------------------------------|
-| map<uint32, Item> | {int32 ID,string Name,string Desc}Property |
-| Item's ID         | Item's property.                           |
-| 1                 | 1,Orange,A good fruit.                     |
-| 2                 | 2,Apple                                    |
-| 3                 | 3                                          |
+| ID               | Prop                                       |
+|------------------|--------------------------------------------|
+| map<int32, Item> | {int32 ID,string Name,string Desc}Property |
+| Item's ID        | Item's property.                           |
+| 1                | 1,Orange,A good fruit.                     |
+| 2                | 2,Apple                                    |
+| 3                | 3                                          |
 
 {{< /sheet >}}
 
@@ -117,7 +121,7 @@ message ItemConf {
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {
     uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    Property property = 2 [(tableau.field) = {name:"Property" span:SPAN_INNER_CELL}];
+    Property prop = 2 [(tableau.field) = {name:"Prop" span:SPAN_INNER_CELL}];
     message Property {
       int32 id = 1 [(tableau.field) = {name:"ID"}];
       string name = 2 [(tableau.field) = {name:"Name"}];
@@ -133,29 +137,29 @@ message ItemConf {
 
 ```json
 {
-    "itemMap": {
-        "1": {
-            "id": 1,
-            "property": {
-                "id": 1,
-                "name": "Apple",
-                "desc": "A kind of delicious fruit."
+    "itemMap":  {
+        "1":  {
+            "id":  1,
+            "prop":  {
+                "id":  1,
+                "name":  "Apple",
+                "desc":  "A kind of delicious fruit."
             }
         },
-        "2": {
-            "id": 2,
-            "property": {
-                "id": 2,
-                "name": "Orange",
-                "desc": ""
+        "2":  {
+            "id":  2,
+            "prop":  {
+                "id":  2,
+                "name":  "Orange",
+                "desc":  ""
             }
         },
-        "3": {
-            "id": 3,
-            "property": {
-                "id": 3,
-                "name": "",
-                "desc": ""
+        "3":  {
+            "id":  3,
+            "prop":  {
+                "id":  3,
+                "name":  "",
+                "desc":  ""
             }
         }
     }
@@ -163,3 +167,174 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+## Predefined incell struct
+
+Each field type of the predefined struct should be scalar type.
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                | Prop                   |
+|-------------------|------------------------|
+| map<uint32, Item> | {.Property}            |
+| Item's ID         | Item's property.       |
+| 1                 | 1,Orange,A good fruit. |
+| 2                 | 2,Apple                |
+| 3                 | 3                      |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+The `Prop` column's type is a predefined struct `Property`.
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    protoconf.Property prop = 2 [(tableau.field) = {name:"Prop" span:SPAN_INNER_CELL}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemMap":  {
+        "1":  {
+            "id":  1,
+            "prop":  {
+                "id":  1,
+                "name":  "Apple",
+                "desc":  "A kind of delicious fruit."
+            }
+        },
+        "2":  {
+            "id":  2,
+            "prop":  {
+                "id":  2,
+                "name":  "Orange",
+                "desc":  ""
+            }
+        },
+        "3":  {
+            "id":  3,
+            "prop":  {
+                "id":  3,
+                "name":  "",
+                "desc":  ""
+            }
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+## Custom named struct
+
+By default, struct variable name is same as struct type name, but you can specify a different struct variable name. Custom named struct is mainly used for identifying name prefix of continuous cells in name row, when the tableau (protogen) can't auto-recognize the variable name.
+
+**Syntax**: just after struct type name, use parentheses `()` to specify struct variable name: `VariableType(VariableName)`.
+
+For example, `Item` is predefined:
+
+```protobuf
+message Item {
+  int32 id = 1 [(tableau.field).name = "ID"];
+  int32 num = 2 [(tableau.field).name = "Num"];
+}
+```
+
+A worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| RewardItemID            | RewardItemNum | CostItemID            | CostItemNum | PredefinedItemID             | PredefinedItemNum    |
+|-------------------------|---------------|-----------------------|-------------|------------------------------|----------------------|
+| {Item(RewardItem)}int32 | int32         | {Item(CostItem)}int32 | int32       | {.Item(PredefinedItem)}int32 | int32                |
+| Item's ID               | Item's ID     | Cost's ID             | Cost's ID   | Predefined item's ID         | Predefined item's ID |
+| 1                       | 100           | 2                     | 200         | 10                           | 20                   |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+**Details**:
+In type cell `{Item(RewardItem)}int32`, `RewardItem` is the custom variable name of new defined struct `Item`. And in type cell `{Item(CostItem)}int32`, `CostItem` is the custom variable name of just already defined struct `Item` in the same scope. Finally, in type cell `{.Item(PredefinedItem)}int32`, `PredefinedItem` is the custom variable name of predefined struct `Item` at global (at the same protobuf package).
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  Item reward_item = 1 [(tableau.field) = {name:"RewardItem"}];
+  message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+  }
+  Item cost_item = 2 [(tableau.field) = {name:"CostItem"}];
+  protoconf.Item predefined_item = 3 [(tableau.field) = {name:"PredefinedItem"}];
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "rewardItem": {
+        "id": 1,
+        "num": 100
+    },
+    "costItem": {
+        "id": 2,
+        "num": 200
+    },
+    "predefinedItem": {
+        "id": 10,
+        "num": 20
+    }
+}
+```
+
+{{< /details >}}
+
+## Advanced predefined incell struct
+
+At some situations, we want to configure any complex message in one cell, which is called advanced incell message. And tableau (confgen) can support two kinds of protobuf serialized formats: [text format](https://developers.google.com/protocol-buffers/docs/text-format-spec), and [JSON format](https://developers.google.com/protocol-buffers/docs/proto3#json).
+
+> TODO

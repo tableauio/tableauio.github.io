@@ -384,6 +384,8 @@ Not supported yet.
 
 ## Empty key map
 
+If map key is not configured, then it will be treated as default value of map key type. Default value is illustrated at [Scalar types →]({{< relref "../basics/grammar-and-types/#scalar-types" >}}).
+
 A worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
@@ -455,14 +457,16 @@ message ItemConf {
 As the protobuf documents the restrictions of [map key type](https://developers.google.com/protocol-buffers/docs/proto3#maps):
 
 > ... the `key_type` can be any integral or string type (so, any
-> **scalar** type except for floating point types and `bytes`). Note
-> that enum is not a valid `key_type`.
+> [scalar](https://developers.google.com/protocol-buffers/docs/proto3#scalar) type
+> except for floating point types and `bytes`). Note that `enum` is not a valid `key_type`.
 
 However, key type as enum is very useful in some situations. So we
-support it in a simple way: enum type is treated as `int32` as
-map key-type, but enum type is keeped in map value-type (struct).
+support it in a simple way:
 
-If `FruitType` in **common.proto** is predefined as:
+- enum type is treated as `int32` as map key type，
+- enum type is keeped in map value type (struct).
+
+For example, `FruitType` in **common.proto** is predefined as:
 
 ```protobuf
 enum FruitType {
@@ -474,7 +478,7 @@ enum FruitType {
 ```
 
 then `map<enum<.FruitType>, ValueType>` will be converted to `map<int32, ValueType>`,
-and `FruitType` is included in `ValueType` as:
+and `FruitType` is keeped in `ValueType`:
 
 ```protobuf
 message ValueType {
