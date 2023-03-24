@@ -14,7 +14,7 @@ toc: true
 
 ### Horizontal-list in vertical-map
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -104,7 +104,7 @@ message ItemConf {
 
 ### Vertical-list in vertical-map
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -189,7 +189,7 @@ message ItemConf {
 
 ### Incell-list in vertical-map
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

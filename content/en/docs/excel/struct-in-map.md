@@ -14,7 +14,7 @@ toc: true
 
 ### Struct in vertical-map
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -92,7 +92,7 @@ message ItemConf {
 
 ### Predefined-struct in vertical-map
 
-`Item` in **common.proto** is predefined as:
+`Item` in *common.proto* is predefined as:
 
 ```proto
 message Item {
@@ -101,7 +101,7 @@ message Item {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -175,7 +175,7 @@ message ItemConf {
 
 ### Incell-struct in vertical-map
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

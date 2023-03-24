@@ -6,7 +6,7 @@ date: 2022-02-26T13:59:39+01:00
 lastmod: 2022-02-26T13:59:39+01:00
 draft: false
 images: []
-weight: 7103
+weight: 7104
 toc: true
 ---
 
@@ -21,7 +21,7 @@ There are three kinds of horizontal list:
 
 ### Horizontal scalar list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -74,7 +74,7 @@ message ItemConf {
 
 ### Horizontal enum list
 
-`FruitType` in **common.proto** is predefined as:
+`FruitType` in *common.proto* is predefined as:
 
 ```proto
 enum FruitType {
@@ -85,7 +85,7 @@ enum FruitType {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -138,7 +138,7 @@ message ItemConf {
 
 ### Horizontal struct list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -204,7 +204,7 @@ message ItemConf {
 
 ### Horizontal predefined-struct list
 
-`Item` in **common.proto** is predefined as:
+`Item` in *common.proto* is predefined as:
 
 ```proto
 message Item {
@@ -213,7 +213,7 @@ message Item {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -275,7 +275,7 @@ message ItemConf {
 
 ### Horizontal incell-struct list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -341,7 +341,7 @@ message ItemConf {
 
 ### Horizontal incell-predefined-struct list
 
-`Item` in **common.proto** is predefined as:
+`Item` in *common.proto* is predefined as:
 
 ```proto
 message Item {
@@ -350,7 +350,7 @@ message Item {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -426,7 +426,7 @@ No need to support, use `[Item]SCALAR` instead:
 
 ### Vertical struct list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -498,7 +498,7 @@ message ItemConf {
 
 ### Vertical predefined-struct list
 
-`Item` in **common.proto** is predefined as:
+`Item` in *common.proto* is predefined as:
 
 ```proto
 message Item {
@@ -507,7 +507,7 @@ message Item {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -571,7 +571,7 @@ message ItemConf {
 
 ### Vertical incell-struct list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -639,7 +639,7 @@ message ItemConf {
 
 ### Vertical incell-predefined-struct list
 
-`Item` in **common.proto** is predefined as:
+`Item` in *common.proto* is predefined as:
 
 ```proto
 message Item {
@@ -648,7 +648,7 @@ message Item {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -719,7 +719,7 @@ There are two kinds of in-cell list:
 
 ### Incell scalar list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -795,7 +795,7 @@ The list size is auto resolved by the max present list elements in name row.
 
 In this example below, though the second element **Item2** is empty, it is legal as the field property `fixed` is set `true`. Besides, **Item2** will also be generated as an empty element. You can see it in the generated file *ItemConf.json*.
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`.
+A worksheet `ItemConf` in *HelloWorld.xlsx*.
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -865,7 +865,7 @@ The list size is explicitly set by field property `size`.
 
 In this example below, field property `size` is set as 2, then list elements after the second element **Item2** will all be truncated. Besides, **Item2** will also be generated as an empty element. You can see it in the generated file *ItemConf.json*.
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -929,7 +929,7 @@ message ItemConf {
 
 ### Horizontal column-skipped list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -1030,7 +1030,7 @@ Keyed list is same as normal list, except that `ColumnType` (first field type) i
 
 #### Vertical struct keyed-list
 
-For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
+For example, a worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -1112,7 +1112,7 @@ message ItemConf {
 
 #### Scalar keyed-list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

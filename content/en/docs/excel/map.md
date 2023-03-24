@@ -24,7 +24,7 @@ No need to support, use this instead: `map<int32, Item>`.
 
 ### Horizontal struct map
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -90,7 +90,7 @@ message ItemConf {
 
 ### Horizontal predefined-struct map
 
-`Item` in **common.proto** is predefined as:
+`Item` in *common.proto* is predefined as:
 
 ```proto
 message Item {
@@ -99,7 +99,7 @@ message Item {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -173,7 +173,7 @@ No need to support, use `map<int32, Item>` instead.
 
 ### Vertical struct map
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -245,7 +245,7 @@ message ItemConf {
 
 ### Vertical predefined-struct map
 
-`Item` in **common.proto** is predefined as:
+`Item` in *common.proto* is predefined as:
 
 ```proto
 message Item {
@@ -254,7 +254,7 @@ message Item {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -325,7 +325,7 @@ There are some kinds of in-cell map:
 
 ### Incell scalar map
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -378,15 +378,114 @@ message ItemConf {
 
 {{< /details >}}
 
-### Incell struct map
+### Incell enum map
 
-Not supported yet.
+The key and value of incell map can be enum types.
+
+For example, predefined enum types `FruitType` and `FruitFlavor` in *common.proto* are:
+
+```protobuf
+enum FruitType {
+  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
+  FRUIT_TYPE_ORANGE  = 2 [(tableau.evalue).name = "Orange"];
+  FRUIT_TYPE_BANANA  = 3 [(tableau.evalue).name = "Banana"];
+}
+
+enum FruitFlavor {
+  FRUIT_FLAVOR_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_FLAVOR_FRAGRANT = 1 [(tableau.evalue).name = "Fragrant"];
+  FRUIT_FLAVOR_SOUR = 2 [(tableau.evalue).name = "Sour"];
+  FRUIT_FLAVOR_SWEET = 3 [(tableau.evalue).name = "Sweet"];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Fruit                        | Flavor                         | Item                                      |
+|------------------------------|--------------------------------|-------------------------------------------|
+| map<enum<.FruitType>, int64> | map<int64, enum<.FruitFlavor>> | map<enum<.FruitType>, enum<.FruitFlavor>> |
+| Fruits                       | Flavors                        | Items                                     |
+| Apple:1,Orange:2             | 1:Fragrant,2:Sweet             | Apple:Fragrant,Orange:Sour                |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "common.proto";
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<int32, Fruit> fruit_map = 1 [(tableau.field) = {name:"Fruit" key:"Key" layout:LAYOUT_INCELL}];
+  message Fruit {
+    protoconf.FruitType key = 1 [(tableau.field) = {name:"Key"}];
+    int64 value = 2 [(tableau.field) = {name:"Value"}];
+  }
+  map<int64, protoconf.FruitFlavor> flavor_map = 2 [(tableau.field) = {name:"Flavor" layout:LAYOUT_INCELL}];
+  map<int32, Item> item_map = 3 [(tableau.field) = {name:"Item" key:"Key" layout:LAYOUT_INCELL}];
+  message Item {
+    protoconf.FruitType key = 1 [(tableau.field) = {name:"Key"}];
+    protoconf.FruitFlavor value = 2 [(tableau.field) = {name:"Value"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "fruitMap": {
+        "1": {
+            "key": "FRUIT_TYPE_APPLE",
+            "value": "1"
+        },
+        "3": {
+            "key": "FRUIT_TYPE_ORANGE",
+            "value": "2"
+        }
+    },
+    "flavorMap": {
+        "1": "FRUIT_FLAVOR_FRAGRANT",
+        "2": "FRUIT_FLAVOR_SWEET"
+    },
+    "itemMap": {
+        "1": {
+            "key": "FRUIT_TYPE_APPLE",
+            "value": "FRUIT_FLAVOR_FRAGRANT"
+        },
+        "3": {
+            "key": "FRUIT_TYPE_ORANGE",
+            "value": "FRUIT_FLAVOR_SOUR"
+        }
+    }
+}
+```
+
+{{< /details >}}
 
 ## Empty key map
 
 If map key is not configured, then it will be treated as default value of map key type. Default value is illustrated at [Scalar types →]({{< relref "../basics/grammar-and-types/#scalar-types" >}}).
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -466,7 +565,7 @@ support it in a simple way:
 - enum type is treated as `int32` as map key type，
 - enum type is keeped in map value type (struct).
 
-For example, `FruitType` in **common.proto** is predefined as:
+For example, `FruitType` in *common.proto* is predefined as:
 
 ```protobuf
 enum FruitType {
@@ -487,7 +586,7 @@ message ValueType {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -569,7 +668,7 @@ In this example below, though the second map item **Item2** is empty, it is lega
 
 {{< alert icon="👉" context="info" text="If more than one empty map items are inserted into map, then only one empty map item is really generated. Because all the empty map items's keys are same. This is different from list, you should pay special attention to it." />}}
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -641,7 +740,7 @@ In this example below, field property `size` is set as 2, then map items after t
 
 {{< alert icon="👉" context="info" text="If more than one empty map items are inserted into map, then only one empty map item is really generated. Because all the empty map items's keys are same. This is different from list, you should pay special attention to it." />}}
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -705,7 +804,7 @@ message ItemConf {
 
 ### Horizontal column-skipped map
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

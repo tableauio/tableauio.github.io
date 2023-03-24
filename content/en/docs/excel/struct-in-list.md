@@ -14,7 +14,7 @@ toc: true
 
 ### Struct in vertical-list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -96,7 +96,7 @@ message ItemConf {
 
 ### Incell-struct in vertical-list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -180,7 +180,7 @@ message ItemConf {
 
 ### Struct in horizontal-list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -252,7 +252,7 @@ message ItemConf {
 
 ### Predefined-struct in horizontal-list
 
-`Item` in **common.proto** is predefined as:
+`Item` in *common.proto* is predefined as:
 
 ```proto
 message Item {
@@ -261,7 +261,7 @@ message Item {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -329,7 +329,7 @@ message ItemConf {
 
 ### Incell-struct in horizontal-list
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

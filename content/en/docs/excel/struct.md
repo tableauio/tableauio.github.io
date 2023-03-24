@@ -14,7 +14,7 @@ toc: true
 
 Each column name should be prefixed with a common struct variable name: `<StructName>FieldName`.
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -83,7 +83,7 @@ Cross-cell struct is usually used together with:
 
 Each field type of the struct should be scalar type.
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -172,7 +172,17 @@ message ItemConf {
 
 Each field type of the predefined struct should be scalar type.
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+For example, `Property` in *common.proto* is predefined as:
+
+```protobuf
+message Property {
+  int32 id = 1 [(tableau.field) = {name:"ID"}];
+  string name = 2 [(tableau.field) = {name:"Name"}];
+  string desc = 3 [(tableau.field) = {name:"Desc"}];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -254,7 +264,7 @@ message ItemConf {
 
 ## Custom named struct
 
-By default, struct variable name is same as struct type name, but you can specify a different struct variable name. Custom named struct is mainly used for identifying name prefix of continuous cells in name row, when the tableau (protogen) can't auto-recognize the variable name.
+By default, struct variable name is same as struct type name, but you can specify a different struct variable name. Custom named struct is mainly used to identify name prefix of continuous cells in name row, when the tableau (protogen) can't auto-recognize the variable name.
 
 **Syntax**: just after struct type name, use parentheses `()` to specify struct variable name: `VariableType(VariableName)`.
 
@@ -267,7 +277,7 @@ message Item {
 }
 ```
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -308,6 +318,7 @@ message ItemConf {
   }
   Item cost_item = 2 [(tableau.field) = {name:"CostItem"}];
   protoconf.Item predefined_item = 3 [(tableau.field) = {name:"PredefinedItem"}];
+}
 ```
 
 {{< /details >}}
@@ -335,6 +346,103 @@ message ItemConf {
 
 ## Advanced predefined incell struct
 
-At some situations, we want to configure any complex message in one cell, which is called advanced incell message. And tableau (confgen) can support two kinds of protobuf serialized formats: [text format](https://developers.google.com/protocol-buffers/docs/text-format-spec), and [JSON format](https://developers.google.com/protocol-buffers/docs/proto3#json).
+In some situations, you may want to configure any complex struct in a cell, so tableau support two kinds of protobuf serialized formats: [text format](https://developers.google.com/protocol-buffers/docs/text-format-spec), and [JSON format](https://developers.google.com/protocol-buffers/docs/proto3#json).
 
-> TODO
+**Syntax**: in field prop, specify `form` option as `FORM_TEXT` or `FORM_JSON`.
+
+For example, `Transform` is predefined as:
+
+```protobuf
+message Transform {
+  Vector3 position = 1;
+  Vector3 rotation = 2;
+  Vector3 scale = 3;
+}
+
+message Vector3 {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Transform1                                                        | Transform2                                                                                          |
+|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| {.Transform}\|{form:FORM_TEXT}                                    | {.Transform}\|{form:FORM_JSON}                                                                      |
+| Box's transform1                                                  | Box's transform2                                                                                    |
+| position:{x:1 y:2 z:3} rotation:{x:4 y:5 z:6} scale:{x:7 y:8 z:9} | {"position":{"x":1, "y":2, "z":3}, "rotation":{"x":4, "y":5, "z":6}, "scale":{"x":7, "y":8, "z":9}} |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  protoconf.Transform transform_1 = 1 [(tableau.field) = {name:"Transform1" span:SPAN_INNER_CELL prop{form:FORM_TEXT}}];
+  protoconf.Transform transform_2 = 2 [(tableau.field) = {name:"Transform2" span:SPAN_INNER_CELL prop:{form:FORM_JSON}}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "transform1":  {
+        "position":  {
+            "x":  1,
+            "y":  2,
+            "z":  3
+        },
+        "rotation":  {
+            "x":  4,
+            "y":  5,
+            "z":  6
+        },
+        "scale":  {
+            "x":  7,
+            "y":  8,
+            "z":  9
+        }
+    },
+    "transform2":  {
+        "position":  {
+            "x":  1,
+            "y":  2,
+            "z":  3
+        },
+        "rotation":  {
+            "x":  4,
+            "y":  5,
+            "z":  6
+        },
+        "scale":  {
+            "x":  7,
+            "y":  8,
+            "z":  9
+        }
+    }
+}
+```
+
+{{< /details >}}

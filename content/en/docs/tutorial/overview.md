@@ -185,7 +185,7 @@ conf:
 
 ## 3. Add a workbook
 
-A worksheet `ItemConf` in `HelloWorld.xlsx`:
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 

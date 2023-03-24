@@ -41,10 +41,10 @@ If metasheet `@TABLEAU` is empty, then all other worksheets in the same workbook
 
 ## A simple example
 
-There is a worksheet `Sheet1` in `HelloWorld.xlsx`, we want to rename sheet to
+There is a worksheet `Sheet1` in *HelloWorld.xlsx*, we want to rename sheet to
 `ItemConf`, define custom seperator as `|`, and generate ordered map accessers.
 
-So the metasheet `@TABLEAU` in `HelloWorld.xlsx` should be configured as:
+So the metasheet `@TABLEAU` in *HelloWorld.xlsx* should be configured as:
 
 {{< spreadsheet "HelloWorld.xlsx" Sheet1 "@TABLEAU" >}}
 
@@ -74,7 +74,7 @@ So the metasheet `@TABLEAU` in `HelloWorld.xlsx` should be configured as:
 
 Option `Transpose` is specified as `true` in the metasheet `@TABLEAU`.
 
-A worksheet `HeroConf` in `HelloWorld.xlsx`:
+A worksheet `HeroConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" HeroConf "@TABLEAU" >}}
 
@@ -215,3 +215,263 @@ Examples:
 - `(ID,Name)`
 - `(ID,Name)@AwardItem`
 - `ID@Item, (ID,Name)@AwardItem`: one single-column index and one multi-column index.
+
+## Option `Merger`
+
+Option `Merger` is used to merge multiple sheets (comma-separated) with same schema to one.
+
+Each element can be:
+
+1. just a workbook file path or [Glob](https://pkg.go.dev/path/filepath#Glob) path (relative to this workbook): `<Workbook>`,
+   then the sheet name is the same as this sheet.
+2. a workbook file path (relative to this workbook) with a worksheet name: `<Workbook>#<Worksheet>`.
+
+For example:
+
+The first (main) workbook: a worksheet `ZoneConf` in *MergerMain.xlsx* (with `@TABLEAU`):
+
+{{< spreadsheet "MergerMain.xlsx" ZoneConf "@TABLEAU" >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+|-------------------|-------------|-------------------|
+| map<uint32, Zone> | string      | int32             |
+| Zone’s ID         | Zone’s name | Zone’s difficulty |
+| 1                 | Infinity    | 100               |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet    | Merger       |
+|----------|--------------|
+| ZoneConf | Merger*.xlsx |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+The second (sub) workbook: a worksheet `ZoneConf` in *Merger2.xlsx* (without `@TABLEAU`):
+
+{{< spreadsheet "Merger2.xlsx" ZoneConf >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+|-------------------|-------------|-------------------|
+| map<uint32, Zone> | string      | int32             |
+| Zone’s ID         | Zone’s name | Zone’s difficulty |
+| 2                 | Desert      | 200               |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+The third (sub) workbook: a worksheet `ZoneConf` in *Merger3.xlsx* (without `@TABLEAU`):
+
+{{< spreadsheet "Merger3.xlsx" ZoneConf >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+|-------------------|-------------|-------------------|
+| map<uint32, Zone> | string      | int32             |
+| Zone’s ID         | Zone’s name | Zone’s difficulty |
+| 3                 | Snowfield   | 300               |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "merger_main.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ZoneConf {
+  option (tableau.worksheet) = {name:"ZoneConf" namerow:1 typerow:2 noterow:3 datarow:4 merger:"Merger*.xlsx"};
+
+  map<uint32, Zone> zone_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Zone {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    int32 difficulty = 3 [(tableau.field) = {name:"Difficulty"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "HeroConf.json" >}}
+
+```json
+{
+    "zoneMap": {
+        "1": {
+            "id": 1,
+            "name": "Infinity",
+            "difficulty": 100
+        },
+        "2": {
+            "id": 2,
+            "name": "Desert",
+            "difficulty": 200
+        },
+        "3": {
+            "id": 3,
+            "name": "Snowfield",
+            "difficulty": 300
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+## Option `Scatter`
+
+Option `Scatter` is used to scatter multiple sheets (comma-separated) with same schema to different generated config files.
+
+Each element can be:
+
+1. just a workbook file path or [Glob](https://pkg.go.dev/path/filepath#Glob) path (relative to this workbook): `<Workbook>`,
+   then the sheet name is the same as this sheet.
+2. a workbook file path (relative to this workbook) with a worksheet name: `<Workbook>#<Worksheet>`.
+
+For example, there are three workbooks (each with same sheet schema, and *Scatter1.xlsx* is the main workbook):
+
+- Scatter1.xlsx
+- Scatter2.xlsx
+- Scatter3.xlsx
+
+The first (main) workbook: a worksheet `ZoneConf` in *Scatter1.xlsx* (with `@TABLEAU`):
+
+{{< spreadsheet "Scatter1.xlsx" ZoneConf "@TABLEAU" >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+|-------------------|-------------|-------------------|
+| map<uint32, Zone> | string      | int32             |
+| Zone’s ID         | Zone’s name | Zone’s difficulty |
+| 1                 | Infinity    | 100               |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet    | Scatter       |
+|----------|---------------|
+| ZoneConf | Scatter*.xlsx |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+The second (sub) workbook: a worksheet `ZoneConf` in *Scatter2.xlsx* (without `@TABLEAU`):
+
+{{< spreadsheet "Scatter2.xlsx" ZoneConf >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+|-------------------|-------------|-------------------|
+| map<uint32, Zone> | string      | int32             |
+| Zone’s ID         | Zone’s name | Zone’s difficulty |
+| 2                 | Desert      | 200               |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+The third (sub) workbook: a worksheet `ZoneConf` in *Scatter3.xlsx* (without `@TABLEAU`):
+
+{{< spreadsheet "Scatter3.xlsx" ZoneConf >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+|-------------------|-------------|-------------------|
+| map<uint32, Zone> | string      | int32             |
+| Zone’s ID         | Zone’s name | Zone’s difficulty |
+| 3                 | Snowfield   | 300               |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated protoconf:
+
+{{< details "scatter_1.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ZoneConf {
+  option (tableau.worksheet) = {name:"ZoneConf" namerow:1 typerow:2 noterow:3 datarow:4 scatter:"Scatter*.xlsx"};
+
+  map<uint32, Zone> zone_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Zone {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    int32 difficulty = 3 [(tableau.field) = {name:"Difficulty"}];
+  }
+}
+```
+
+{{< /details >}}
+
+It is supposed to generate three different config files (name pattern: `<BookName>_<SheetName>`):
+
+{{< details "Scatter1_ZoneConf.json" >}}
+
+```json
+{
+    "zoneMap": {
+        "1": {
+            "id": 1,
+            "name": "Infinity",
+            "difficulty": 100
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+{{< details "Scatter2_ZoneConf.json" >}}
+
+```json
+{
+    "zoneMap": {
+        "2": {
+            "id": 2,
+            "name": "Desert",
+            "difficulty": 200
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+{{< details "Scatter3_ZoneConf.json" >}}
+
+```json
+{
+    "zoneMap": {
+        "3": {
+            "id": 3,
+            "name": "Snowfield",
+            "difficulty": 300
+        }
+    }
+}
+```
+
+{{< /details >}}

@@ -12,7 +12,7 @@ toc: true
 
 ## Scalar
 
-A worksheet `Apple` in `HelloWorld.xlsx`:
+A worksheet `Apple` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
 

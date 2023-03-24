@@ -55,7 +55,7 @@ toc: true
 
 ### Input: an excel file
 
-A workbook(`HelloWorld.xlsx`) with two data worksheets(`ItemConf` and `ActivityConf`) and an empty tableau metasheet(`@TABLEAU`).
+A workbook(*HelloWorld.xlsx*) with two data worksheets(`ItemConf` and `ActivityConf`) and an empty tableau metasheet(`@TABLEAU`).
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf ActivityConf "@TABLEAU" >}}
 
