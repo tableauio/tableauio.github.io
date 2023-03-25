@@ -16,12 +16,12 @@ In protoconf, `union` type means the **tagged union**: a data structure used to 
 
 **Tagged union** in different programming languages:
 
-- C++: [std::variant](https://en.cppreference.com/w/cpp/utility/variant)
-- Rust: [Defining an Enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html)
+- C++: [std::variant](https://en.cppreference.com/w/cpp/utility/variant).
+- Rust: [Defining an Enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html).
 
-Tableau use protobuf `message` to bundle `enum` type and [`oneof`](https://protobuf.dev/programming-guides/proto3/#oneof) type together to implement **tagged union**. By default,  each enum value (>0) is binded to a field with the same tag number of [`oneof`](https://protobuf.dev/programming-guides/proto3/#oneof) type.
+Tableau use protobuf `message` to bundle `enum` type and [`oneof`](https://protobuf.dev/programming-guides/proto3/#oneof) type together to implement **tagged union**. By default, each enum value (>0) is bound to a field with the same tag number of [`oneof`](https://protobuf.dev/programming-guides/proto3/#oneof) type.
 
-## Predefined union in map
+## Union definition
 
 For example, union type `Target` in *common.proto* is predefined as:
 
@@ -80,6 +80,10 @@ message Target {
   }
 }
 ```
+
+## Predefined union in map
+
+> Based on [predefined union type `Target`]({{< relref "union/#union-definition" >}}).
 
 A worksheet `TaskConf` in *HelloWorld.xlsx*:
 
@@ -201,6 +205,315 @@ message TaskConf {
         "4":  {
             "id":  4,
             "target":  {
+                "type":  "TYPE_SKILL",
+                "skill":  {
+                    "id":  1,
+                    "damage":  "2"
+                }
+            },
+            "progress":  8
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+{{< details "TaskConf.txt" >}}
+
+```prototxt
+task_map:  {
+    key:  1
+    value:  {
+        id:  1
+        target:  {
+            type:  TYPE_PVP
+            pvp:  {
+                type:  1
+                damage:  10
+                types:  FRUIT_TYPE_APPLE
+                types:  FRUIT_TYPE_ORANGE
+                types:  FRUIT_TYPE_BANANA
+            }
+        }
+        progress:  3
+    }
+}
+task_map:  {
+    key:  2
+    value:  {
+        id:  2
+        target:  {
+            type:  TYPE_PVE
+            pve:  {
+                mission:  {
+                    id:  1
+                    level:  100
+                    damage:  999
+                }
+                heros:  1
+                heros:  2
+                heros:  3
+                dungeons:  {
+                    key:  1
+                    value:  10
+                }
+                dungeons:  {
+                    key:  2
+                    value:  20
+                }
+                dungeons:  {
+                    key:  3
+                    value:  30
+                }
+            }
+        }
+        progress:  10
+    }
+}
+task_map:  {
+    key:  3
+    value:  {
+        id:  3
+        target:  {
+            type:  TYPE_STORY
+            story:  {
+                cost:  {
+                    id:  1001
+                    num:  10
+                }
+                fruits:  {
+                    key:  1
+                    value:  FRUIT_TYPE_APPLE
+                }
+                fruits:  {
+                    key:  2
+                    value:  FRUIT_TYPE_ORANGE
+                }
+                flavors:  {
+                    key:  1
+                    value:  {
+                        key:  FRUIT_FLAVOR_FRAGRANT
+                        value:  1
+                    }
+                }
+                flavors:  {
+                    key:  2
+                    value:  {
+                        key:  FRUIT_FLAVOR_SOUR
+                        value:  2
+                    }
+                }
+            }
+        }
+        progress:  10
+    }
+}
+task_map:  {
+    key:  4
+    value:  {
+        id:  4
+        target:  {
+            type:  TYPE_SKILL
+            skill:  {
+                id:  1
+                damage:  2
+            }
+        }
+        progress:  8
+    }
+}
+```
+
+{{< /details >}}
+
+## Predefined incell union in map
+
+> Based on [predefined union type `Target`]({{< relref "union/#union-definition" >}}).
+
+A worksheet `TaskConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
+
+{{< sheet colored>}}
+
+| ID               | Target1                                                                                                                                                                                                                                    | Target2                                                                                                                                                                                                                   | Progress |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| map<int32, Task> | {.Target}\|{form:FORM_TEXT}                                                                                                                                                                                                                | {.Target}\|{form:FORM_JSON}                                                                                                                                                                                               | int32    |
+| ID               | Target1                                                                                                                                                                                                                                    | Target2                                                                                                                                                                                                                   | Progress |
+| 1                | type:TYPE_PVP pvp:{type:1 damage:10 types:FRUIT_TYPE_APPLE types:FRUIT_TYPE_ORANGE types:FRUIT_TYPE_BANANA}                                                                                                                                | {"type":"TYPE_PVP","pvp":{"type":1,"damage":"10","types":["FRUIT_TYPE_APPLE","FRUIT_TYPE_ORANGE","FRUIT_TYPE_BANANA"]}}                                                                                                   | 3        |
+| 2                | type:TYPE_PVE pve:{mission:{id:1 level:100 damage:999} heros:1 heros:2 heros:3 dungeons:{key:1 value:10} dungeons:{key:2 value:20} dungeons:{key:3 value:30}}                                                                              | {"type":"TYPE_PVE","pve":{"mission":{"id":1,"level":100,"damage":"999"},"heros":[1,2,3],"dungeons":{"1":"10","2":"20","3":"30"}}}                                                                                         | 10       |
+| 3                | type:TYPE_STORY story:{cost:{id:1001 num:10} fruits:{key:1 value:FRUIT_TYPE_APPLE} fruits:{key:2 value:FRUIT_TYPE_ORANGE} flavors:{key:1 value:{key:FRUIT_FLAVOR_FRAGRANT value:1}} flavors:{key:2 value:{key:FRUIT_FLAVOR_SOUR value:2}}} | {"type":"TYPE_STORY","story":{"cost":{"id":1001,"num":10},"fruits":{"1":"FRUIT_TYPE_APPLE","2":"FRUIT_TYPE_ORANGE"},"flavors":{"1":{"key":"FRUIT_FLAVOR_FRAGRANT","value":1},"2":{"key":"FRUIT_FLAVOR_SOUR","value":2}}}} | 10       |
+| 4                | type:TYPE_SKILL skill:{id:1 damage:2}                                                                                                                                                                                                      | {"type":"TYPE_SKILL","skill":{"id":1,"damage":"2"}}                                                                                                                                                                       | 8        |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message TaskConf {
+  option (tableau.worksheet) = {name:"TaskConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<int32, Task> task_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Task {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    protoconf.Target target_1 = 2 [(tableau.field) = {name:"Target1" span:SPAN_INNER_CELL prop:{form:FORM_TEXT}}];
+    protoconf.Target target_2 = 3 [(tableau.field) = {name:"Target2" span:SPAN_INNER_CELL prop:{form:FORM_JSON}}];
+    int32 progress = 4 [(tableau.field) = {name:"Progress"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "TaskConf.json" >}}
+
+```json
+{
+    "taskMap":  {
+        "1":  {
+            "id":  1,
+            "target1":  {
+                "type":  "TYPE_PVP",
+                "pvp":  {
+                    "type":  1,
+                    "damage":  "10",
+                    "types":  [
+                        "FRUIT_TYPE_APPLE",
+                        "FRUIT_TYPE_ORANGE",
+                        "FRUIT_TYPE_BANANA"
+                    ]
+                }
+            },
+            "target2":  {
+                "type":  "TYPE_PVP",
+                "pvp":  {
+                    "type":  1,
+                    "damage":  "10",
+                    "types":  [
+                        "FRUIT_TYPE_APPLE",
+                        "FRUIT_TYPE_ORANGE",
+                        "FRUIT_TYPE_BANANA"
+                    ]
+                }
+            },
+            "progress":  3
+        },
+        "2":  {
+            "id":  2,
+            "target1":  {
+                "type":  "TYPE_PVE",
+                "pve":  {
+                    "mission":  {
+                        "id":  1,
+                        "level":  100,
+                        "damage":  "999"
+                    },
+                    "heros":  [
+                        1,
+                        2,
+                        3
+                    ],
+                    "dungeons":  {
+                        "1":  "10",
+                        "2":  "20",
+                        "3":  "30"
+                    }
+                }
+            },
+            "target2":  {
+                "type":  "TYPE_PVE",
+                "pve":  {
+                    "mission":  {
+                        "id":  1,
+                        "level":  100,
+                        "damage":  "999"
+                    },
+                    "heros":  [
+                        1,
+                        2,
+                        3
+                    ],
+                    "dungeons":  {
+                        "1":  "10",
+                        "2":  "20",
+                        "3":  "30"
+                    }
+                }
+            },
+            "progress":  10
+        },
+        "3":  {
+            "id":  3,
+            "target1":  {
+                "type":  "TYPE_STORY",
+                "story":  {
+                    "cost":  {
+                        "id":  1001,
+                        "num":  10
+                    },
+                    "fruits":  {
+                        "1":  "FRUIT_TYPE_APPLE",
+                        "2":  "FRUIT_TYPE_ORANGE"
+                    },
+                    "flavors":  {
+                        "1":  {
+                            "key":  "FRUIT_FLAVOR_FRAGRANT",
+                            "value":  1
+                        },
+                        "2":  {
+                            "key":  "FRUIT_FLAVOR_SOUR",
+                            "value":  2
+                        }
+                    }
+                }
+            },
+            "target2":  {
+                "type":  "TYPE_STORY",
+                "story":  {
+                    "cost":  {
+                        "id":  1001,
+                        "num":  10
+                    },
+                    "fruits":  {
+                        "1":  "FRUIT_TYPE_APPLE",
+                        "2":  "FRUIT_TYPE_ORANGE"
+                    },
+                    "flavors":  {
+                        "1":  {
+                            "key":  "FRUIT_FLAVOR_FRAGRANT",
+                            "value":  1
+                        },
+                        "2":  {
+                            "key":  "FRUIT_FLAVOR_SOUR",
+                            "value":  2
+                        }
+                    }
+                }
+            },
+            "progress":  10
+        },
+        "4":  {
+            "id":  4,
+            "target1":  {
+                "type":  "TYPE_SKILL",
+                "skill":  {
+                    "id":  1,
+                    "damage":  "2"
+                }
+            },
+            "target2":  {
                 "type":  "TYPE_SKILL",
                 "skill":  {
                     "id":  1,
