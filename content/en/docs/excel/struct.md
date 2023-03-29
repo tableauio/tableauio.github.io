@@ -12,9 +12,11 @@ toc: true
 
 ## Cross-cell struct
 
-Each column name should be prefixed with a common struct variable name: `<StructName>FieldName`.
+**Syntax**: `<StructType>ColumnType`.
 
-A worksheet `ItemConf` in *HelloWorld.xlsx*:
+Each column name should be prefixed with the same struct variable name, which is just the same as struct type name by default.
+
+For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -83,7 +85,7 @@ Cross-cell struct is usually used together with:
 
 Each field type of the struct should be scalar type.
 
-A worksheet `ItemConf` in *HelloWorld.xlsx*:
+For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

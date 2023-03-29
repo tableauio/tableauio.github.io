@@ -10,19 +10,7 @@ weight: 9801
 toc: true
 ---
 
-## 1. Download tableauc
-
-Select the appropriate tableauc (a.k.a. Tableau Compiler) to download:
-
-| Platform    | Tableauc                                                                                                                                                                                                                                                                                                                                                                              |
-|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Windows x64 | <a href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.windows.amd64.tar.gz"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" id="Layer_1" viewBox="0 0 16 16"><style>.st0{fill:#0071BC}</style><path class="st0" d="M13 8.5l-1.3-1.4L8.9 10V0H7.1v10L4.3 7.1 3 8.5l5 5zM3.6 14.1h8.8V16H3.6z"/></svg>Download</a> |
-| Linux x64   | <a href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.linux.amd64.tar.gz"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" id="Layer_1" viewBox="0 0 16 16"><style>.st0{fill:#0071BC}</style><path class="st0" d="M13 8.5l-1.3-1.4L8.9 10V0H7.1v10L4.3 7.1 3 8.5l5 5zM3.6 14.1h8.8V16H3.6z"/></svg>Download</a>   |
-| macOS       | <a href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.5.4/tableauc.v0.5.4.darwin.amd64.tar.gz"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" id="Layer_1" viewBox="0 0 16 16"><style>.st0{fill:#0071BC}</style><path class="st0" d="M13 8.5l-1.3-1.4L8.9 10V0H7.1v10L4.3 7.1 3 8.5l5 5zM3.6 14.1h8.8V16H3.6z"/></svg>Download</a>  |
-
-> More platforms are available on [tableau releases](https://github.com/tableauio/tableau/releases).
-
-## 2. Configure tableauc
+## Configure tableauc
 
 Create a file named *config.yaml*, and copy configurations below to it:
 
@@ -136,10 +124,10 @@ conf:
     # Default: nil.
     excludedProtoFiles: []
     # Specify input file formats to be parsed.
-    # Note: recognize all formats (Excel/CSV/XML) if not set (value is nil).
+    # Note: recognize all formats ("xlsx", "csv", or "xml") if not set (value is nil).
     #
     # Default: nil.
-    formats: []
+    formats: [xlsx]
     # Specify only these subdirs (relative to workbook name option in proto file).
     #
     # Default: nil.
@@ -153,7 +141,7 @@ conf:
     # Default: "".
     subdir: ""
     # Specify generated conf file formats. If not set, it will generate all
-    # formats (JSON/Text/Bin).
+    # formats: "json", "bin", or "txt".
     #
     # Default: nil.
     formats: [json]
@@ -181,55 +169,9 @@ conf:
     #
     # Default: false.
     emitUnpopulated: false
+    # UseProtoNames uses proto field name instead of lowerCamelCase name in JSON
+    # field names.
+    useProtoNames: false
+    # UseEnumNumbers emits enum values as numbers.
+    useEnumNumbers: false
 ```
-
-## 3. Add a workbook
-
-A worksheet `ItemConf` in *HelloWorld.xlsx*:
-
-{{< sheet >}}
-
-| ID        | Name        | Desc                       |
-|-----------|-------------|----------------------------|
-| uint32    | string      | string                     |
-| Item's ID | Item's name | Item's description         |
-| 1         | Apple       | A kind of delicious fruit. |
-
-{{< /sheet >}}
-
-## 4. Run tableauc
-
-Run `./tableauc -c config.yaml`
-
-Generated:
-
-{{< details "hello_world.proto" open >}}
-
-```protobuf
-// --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-message Apple {
-  option (tableau.worksheet) = {name:"Apple" namerow:1 typerow:2 noterow:3 datarow:4};
-
-  uint32 id = 1 [(tableau.field) = {name:"ID"}];
-  string name = 2 [(tableau.field) = {name:"Name"}];
-  string desc = 3 [(tableau.field) = {name:"Desc"}];
-}
-```
-
-{{< /details >}}
-
-{{< details "Apple.json" >}}
-
-```json
-{
-    "id": 1,
-    "name": "Apple",
-    "desc": "A kind of delicious fruit."
-}
-```
-
-{{< /details >}}
-
-Congratulations! You’ve just run the tableauc to convert a workbook to proto and JSON files.

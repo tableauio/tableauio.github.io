@@ -10,6 +10,6 @@ images: ["tableau-logo.png"]
 contributors: ["Wenchy"]
 ---
 
-TODO...
+{{< figure src="/tableau-logo.png" caption="Tableau logo, 2022 — Wenchy" width="200px" >}}
 
-![Image](tableau-logo.png "Tableau logo, 2022 — Wenchy")
+TODO...
