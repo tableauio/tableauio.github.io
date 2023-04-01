@@ -331,11 +331,11 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet colored >}}
 
-| Items                     |
-|---------------------------|
-| map<uint32, string>       |
-| Items                     |
-| 1:Apple,2:Orange,3:Banana |
+| Items                              |
+|------------------------------------|
+| map<uint32, string>                |
+| Items                              |
+| 1:Apple,2:Orange,3:Banana,4,:Peach |
 
 {{< /sheet >}}
 
@@ -346,6 +346,9 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /spreadsheet >}}
 
 The `Items` column's type is in-cell map `map<uint32, string>`, as the map value is scalar type `string`.
+
+> ⚠️ NOTE: If you want explicit pattern like: `[Key:Value]...`, then set the field property `present` as true.
+> See [Option `present` →]({{< relref "field-property/#option-present" >}}).
 
 Generated:
 
@@ -364,14 +367,16 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "ItemConf.json" >}}
+{{< details "ItemConf.json" open >}}
 
 ```json
 {
     "itemsMap": {
+        "0":  "Peach",
         "1": "Apple",
         "2": "Orange",
-        "3": "Banana"
+        "3": "Banana",
+        "4":  ""
     }
 }
 ```
