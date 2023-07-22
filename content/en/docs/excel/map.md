@@ -385,7 +385,7 @@ message ItemConf {
 
 ### Incell enum map
 
-The key and value of incell map can be enum types.
+For incell map, both the key and value can be enum types.
 
 For example, predefined enum types `FruitType` and `FruitFlavor` in *common.proto* are:
 

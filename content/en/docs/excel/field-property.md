@@ -12,18 +12,18 @@ toc: true
 
 ## Overview
 
-| Option      | Type   | Description                                                                                                                                                                                                                                                                                                                                            |
-|-------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `unique`    | bool   | Check map key uniqueness. <br> Default: `false`.                                                                                                                                                                                                                                                                                                       |
-| `range`     | string | Format: `"left, right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point.                                                                                                                                                                             |
-| `refer`     | string | Format: `"SheetName(SheetAlias).ColumnName"`.<br>Ensure this field is in another sheet's column value space (aka message's field value space). <br>E.g.:<br> - `"ItemConf.ID"`: without alias, sheet name is just the generated protobuf message name.<br> - `"Item(ItemConf).ID"`: with alias, so sheet alias is the generated protobuf message name. |
-| `sequence`  | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                                                                                                                                                                                                    |
-| `default`   | string | Use this default value if cell is empty.                                                                                                                                                                                                                                                                                                               |
-| `fixed`     | bool   | Auto-detected fixed size of horizontal list/map. <br> Default: `false`.                                                                                                                                                                                                                                                                                |
-| `size`      | uint32 | Specify fixed size of horizontal list/map.                                                                                                                                                                                                                                                                                                             |
-| `form`      | Form   | Specify cell data form of incell struct.<br> -  `FORM_TEXT`<br> - `FORM_JSON`                                                                                                                                                                                                                                                                          |
-| `json_name` | string | Specify field's custom JSON name instead of lowerCamelCase name of proto field name.                                                                                                                                                                                                                                                                   |
-| `present`   | bool   | Must fill cell data explicitly if present is true. <br> Default: `false`.                                                                                                                                                                                                                                                                              |
+| Option      | Type   | Description                                                                                                                                                                |
+| ----------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `unique`    | bool   | Check map key uniqueness. <br> Default: `false`.                                                                                                                           |
+| `range`     | string | Format: `"left, right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point. |
+| `refer`     | string | Format: `"SheetName(SheetAlias).ColumnName"`.<br>Ensure this field is in another sheet's column value space. Multiple refers are comma-separated.                          |
+| `sequence`  | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                        |
+| `default`   | string | Use this default value if cell is empty.                                                                                                                                   |
+| `fixed`     | bool   | Auto-detected fixed size of horizontal list/map. <br> Default: `false`.                                                                                                    |
+| `size`      | uint32 | Specify fixed size of horizontal list/map.                                                                                                                                 |
+| `form`      | Form   | Specify cell data form of incell struct.<br> -  `FORM_TEXT`<br> - `FORM_JSON`                                                                                              |
+| `json_name` | string | Specify field's custom JSON name instead of lowerCamelCase name of proto field name.                                                                                       |
+| `present`   | bool   | Must fill cell data explicitly if present is true. <br> Default: `false`.                                                                                                  |
 
 {.table-striped .table-hover}
 
@@ -42,12 +42,15 @@ Different interpretations of `range`:
 
 ## Option `refer`
 
-Option `refer` can be specified as format: `"SheetName(SheetAlias).ColumnName"`. It is used to ensure this field is in another sheet's column value space (aka message's field value space).
+Option `refer` is some like the **FOREIGN KEY** constraint in SQL to prevent actions that would destroy links between tables. However, tableau `refer` can refer to any sheet's column even if it is not map key column, and **multiple refers** (comma-separated) are also supported. It is used to ensure this field is at least in one of the other sheets' column value space (aka message's field value space).
+
+Format: `"SheetName(SheetAlias).ColumnName[,SheetName(SheetAlias).ColumnName]..."`.
 
 For example:
 
-- `"ItemConf.ID"`: without alias, so **sheet name** is just the generated protobuf message name.
-- `"Item(ItemConf).ID"`: with alias, then **sheet alias** is the generated protobuf message name.
+- `map<uint32, Reward>|{refer:"ItemConf.ID"}`: single-refer without alias, so **sheet name** is just the generated protobuf message name.
+- `map<uint32, Reward>|{refer:"ItemConf.ID,EquipConf.ID"}`: multi-refer without alias, then **sheet alias** is the generated protobuf message name.
+- `map<uint32, Reward>|{refer:"Sheet1(ItemConf).ID"}`: single-refer with alias, then **sheet alias** is the generated protobuf message name.
 
 ## Option `sequence`
 
@@ -105,7 +108,7 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< sheet colored >}}
 
 | ID               | Rarity_1                      | SpecialEffect_2                      |
-|------------------|-------------------------------|--------------------------------------|
+| ---------------- | ----------------------------- | ------------------------------------ |
 | map<int32, Item> | int32\|{json_name:"rarity_1"} | int32\|{json_name:"specialEffect_2"} |
 | Item's ID        | Item's rarity.                | Item's special effect.               |
 | 1                | 10                            | 101                                  |
