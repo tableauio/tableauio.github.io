@@ -76,7 +76,7 @@ message ItemConf {
 
 `FruitType` in *common.proto* is predefined as:
 
-```proto
+```protobuf
 enum FruitType {
   FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
   FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
@@ -206,7 +206,7 @@ message ItemConf {
 
 `Item` in *common.proto* is predefined as:
 
-```proto
+```protobuf
 message Item {
     int32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -343,7 +343,7 @@ message ItemConf {
 
 `Item` in *common.proto* is predefined as:
 
-```proto
+```protobuf
 message Item {
     int32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -500,7 +500,7 @@ message ItemConf {
 
 `Item` in *common.proto* is predefined as:
 
-```proto
+```protobuf
 message Item {
     int32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -641,7 +641,7 @@ message ItemConf {
 
 `Item` in *common.proto* is predefined as:
 
-```proto
+```protobuf
 message Item {
     int32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];

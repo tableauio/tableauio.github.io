@@ -8,6 +8,8 @@ This website is based on [Doks](https://getdoks.org). And we choose [child-theme
 
 ## Quick Start
 
+Change to this repo's working directory:
+
 - Install dependencies: `npm install`
 - Start development server: `npm run start`
 

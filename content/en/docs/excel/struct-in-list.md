@@ -254,7 +254,7 @@ message ItemConf {
 
 `Item` in *common.proto* is predefined as:
 
-```proto
+```protobuf
 message Item {
     int32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
