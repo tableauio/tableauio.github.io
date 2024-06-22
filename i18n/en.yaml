@@ -3,16 +3,16 @@ get-started:
 features:
   fast:
     title: ⚡ Lightning fast
-    content: Fast enough to convert thoudsands of Excel/CSV/XML files in seconds.
+    content: Fast enough to convert thoudsands of Excel/CSV/XML/YAML files in seconds.
   scaffolding:
     title: 🛠️ Scaffolding
     content: Provide scaffolding code of configuration Loader and Checker. Powered by protoc plugin system.
   metadata:
     title: 📄 Metadata
-    content: A well-designed IDL Protoconf (based on Protobuf) to define the structure of Excel/CSV/XML.
+    content: A well-designed IDL Protoconf (based on Protobuf) to define the structure of Excel/CSV/XML/YAML.
   format:
     title: 📚 Multiple formats
-    content: "Convert Excel/CSV/XML to multiple formats: JSON, Text, and Bin."
+    content: "Convert Excel/CSV/XML/YAML to multiple formats: JSON, Text, and Bin."
   platform:
     title: 🧊 Cross-platform
     content: The tableau toolset can be run on Windows, macOS and Linux.

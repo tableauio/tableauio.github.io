@@ -23,10 +23,9 @@ A worksheet `ItemConf` in *HelloWorld.yaml*:
 "@sheet": "@ItemConf"
 Item:
   "@type": "{Item}"
-  "@struct":
-    ID: uint32
-    StartTime: datetime
-    Expire: duration
+  ID: uint32
+  StartTime: datetime
+  Expire: duration
 
 ---
 "@sheet": ItemConf
@@ -85,10 +84,9 @@ A worksheet `ItemConf` in *HelloWorld.yaml*:
 "@sheet": "@ItemConf"
 Item:
   "@type": "{Item}"
-  "@struct":
-    ID: uint32
-    StartTime: datetime
-    Expire: duration
+  ID: uint32
+  StartTime: datetime
+  Expire: duration
 NewItem: "{Item}" # resue predefined struct type Item above
 
 ---
@@ -267,9 +265,8 @@ A worksheet `ItemConf` in *HelloWorld.yaml*:
 Item:
   "@type": "{Item}"
   "@incell": true
-  "@struct":
-    ID: uint32
-    Num: int32
+  ID: uint32
+  Num: int32
 
 ---
 "@sheet": ItemConf

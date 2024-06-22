@@ -4,7 +4,7 @@
 title = "Tableau"
 titleSeparator = "-"
 titleAddition = "Modern Configuration Converter"
-description = "Tableau can convert Excel/CSV/XML to multiple formats: JSON, Text, and Bin."
+description = "Tableau can convert Excel/CSV/XML/YAML to multiple formats: JSON, Text, and Bin."
 
 ## Documentation
 # docsVersion = "0.3"
@@ -88,7 +88,7 @@ lastMod = true
   docsVersioning = false
   fullWidth = false
   spreadsheetJS = true
- 
+      
 [menu]
   [menu.section]
     auto = true

@@ -61,7 +61,7 @@ message ItemConf {
 
 ## Enum list
 
-`FruitType` in *common.proto* is predefined as:
+Enum type `FruitType` in *common.proto* is predefined as:
 
 ```protobuf
 enum FruitType {
@@ -170,7 +170,7 @@ message ItemConf {
 
 ## Incell enum list
 
-`FruitType` in *common.proto* is predefined as:
+Enum type `FruitType` in *common.proto* is predefined as:
 
 ```protobuf
 enum FruitType {

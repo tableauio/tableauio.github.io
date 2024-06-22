@@ -1,7 +1,7 @@
 ---
 title: "Predefined types"
 description: "Predefined types."
-lead: "Tableau support predefined types to be imported, then you can use it in Excel/CSV/XML."
+lead: "Tableau support predefined types to be imported, then you can use it in Excel/CSV/XML/YAML."
 date: 2022-02-26T08:48:57+00:00
 lastmod: 2022-02-26T08:48:57+00:00
 draft: false

@@ -3,16 +3,16 @@ get-started:
 features:
   fast:
     title: ⚡ 快
-    content: 数秒内可转换上千个 Excel/CSV/XML 文件。
+    content: 数秒内可转换上千个 Excel/CSV/XML/YAML 文件。
   scaffolding:
     title: 🛠️ 脚手架
     content: 提供 protoc 插件，生成 Loader 和 Checker 脚手架代码。
   metadata:
     title: 📄 元数据
-    content: 基于 Protobuf 扩展，精心设计了 IDL Protoconf，以便于定义和描述 Excel/CSV/XML 文件结构.
+    content: 基于 Protobuf 扩展，精心设计了 IDL Protoconf，以便于定义和描述 Excel/CSV/XML/YAML 文件结构.
   format:
     title: 📚 多格式
-    content: 可以将 Excel/CSV/XML 导出多种文件格式：JSON, Text 和 Bin.
+    content: 可以将 Excel/CSV/XML/YAML 导出多种文件格式：JSON, Text 和 Bin.
   platform:
     title: 🧊 跨平台
     content: Tableau相关工具链可运行于多种操作系统：Windows, macOS 和 Linux.

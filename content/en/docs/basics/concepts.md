@@ -135,7 +135,3 @@ message ActivityConf {
 ```
 
 {{< /details >}}
-
-## Naming convention
-
-All names of **workbook**, **worksheet**, **column**, and **struct**(message), should use the `CamelCase` style naming convention. So the tableau parser can keep the worksheet name as protoconf message name, and exactly convert `CamelCase`  to `snake_case` for protoconf field name and filename, which is suggested by [Protocol Buffers Style Guide](https://developers.google.com/protocol-buffers/docs/style).

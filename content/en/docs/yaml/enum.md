@@ -12,6 +12,17 @@ toc: true
 
 ## Enum
 
+Enum type `FruitType` in *common.proto* is predefined as:
+
+```protobuf
+enum FruitType {
+  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
+  FRUIT_TYPE_ORANGE  = 3 [(tableau.evalue).name = "Orange"];
+  FRUIT_TYPE_BANANA  = 4 [(tableau.evalue).name = "Banana"];
+}
+```
+
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
@@ -38,6 +49,7 @@ Generated:
 
 ```protobuf
 // --snip--
+import "common/common.proto";
 option (tableau.workbook) = {name:"HelloWorld.yaml"};
 
 message ItemConf {
@@ -51,7 +63,7 @@ message ItemConf {
 
 {{< /details >}}
 
-{{< details "ItemConf.json" >}}
+{{< details "ItemConf.json" open >}}
 
 ```json
 {

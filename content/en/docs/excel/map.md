@@ -568,7 +568,7 @@ However, key type as enum is very useful in some situations. So we
 support it in a simple way:
 
 - enum type is treated as `int32` as map key type，
-- enum type is keeped in map value type (struct).
+- enum type is reserved in map value type (struct).
 
 For example, `FruitType` in *common.proto* is predefined as:
 
@@ -582,7 +582,7 @@ enum FruitType {
 ```
 
 then `map<enum<.FruitType>, ValueType>` will be converted to `map<int32, ValueType>`,
-and `FruitType` is keeped in `ValueType`:
+and `FruitType` is reserved in `ValueType`:
 
 ```protobuf
 message ValueType {

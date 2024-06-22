@@ -64,7 +64,7 @@ message ItemConf {
 
 ## Enum key map
 
-`FruitType` in *common.proto* is predefined as:
+Enum type `FruitType` in *common.proto* is predefined as:
 
 ```protobuf
 enum FruitType {
@@ -140,7 +140,7 @@ message ItemConf {
 
 ## Enum key-value map
 
-Enum types `FruitType` and `FruitFlavor` in *common.proto* are predefined as:
+Enum types Enum type `FruitType` and `FruitFlavor` in *common.proto* are predefined as:
 
 ```protobuf
 enum FruitType {
@@ -277,7 +277,7 @@ message ItemConf {
 
 ## Incell enum map
 
-Enum types `FruitType` and `FruitFlavor` in *common.proto* are predefined as:
+Enum types Enum type `FruitType` and `FruitFlavor` in *common.proto* are predefined as:
 
 ```protobuf
 enum FruitType {
@@ -435,7 +435,7 @@ message ItemConf {
 
 ## Enum key struct map
 
-`FruitType` in *common.proto* is predefined as:
+Enum type `FruitType` in *common.proto* is predefined as:
 
 ```protobuf
 enum FruitType {

@@ -13,14 +13,14 @@ mermaid: true
 
 ## Features
 
-- Convert **Excel/CSV/XML** to **JSON/Text/Bin**, JSON is the first-class citizen of exporting targets.
-- Use **Protobuf** to define the structure of **Excel/CSV/XML**.
+- Convert **Excel/CSV/XML/YAML** to **JSON/Text/Bin**, JSON is the first-class citizen of exporting targets.
+- Use **Protobuf** to define the structure of **Excel/CSV/XML/YAML**.
 - Use **Golang** to develop the conversion engine.
 - Support multiple programming languages, thanks to **Protobuf (proto3)**.
 
 ## Concepts
 
-- Importer: Excel/CSV/XML importer.
+- Importer: Excel/CSV/XML/YAML importer.
 - IR: Intermediate Representation.
 - Filter: filter the IR.
 - Exporter: JSON, Text, and Bin.
@@ -40,6 +40,9 @@ flowchart TD
 
     I3(XML)
     click I3 href "https://github.com/antchfx/xmlquery"
+
+    I4(YAML)
+    click I4 href "https://github.com/go-yaml/yaml"
   end
 
   Input --> I[importer]
