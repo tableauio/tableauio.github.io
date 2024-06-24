@@ -32,7 +32,7 @@ Blob: bytes
 OK: bool
 
 ---
-"@sheet": YamlScalarConf
+"@sheet": ItemConf
 ID: 1
 Num: 10
 Value: 20

@@ -25,15 +25,20 @@ Item:
   "@type": "{Item}"
   ID: uint32
   StartTime: datetime
-  Expire: duration
+  Expiry: duration
 
 ---
 "@sheet": ItemConf
 Item:
   ID: 1
   StartTime: 2024-10-01 10:10:10
-  Expire: 1h
+  Expiry: 1h
 ```
+
+> Tips
+>
+> - Well-known type: [datetime →]({{< relref "../basics/grammar-and-types/#datetime" >}})
+> - Well-known type: [duration →]({{< relref "../basics/grammar-and-types/#duration" >}})
 
 Generated:
 
@@ -50,7 +55,7 @@ message ItemConf {
   message Item {
     uint32 id = 1 [(tableau.field) = {name:"ID"}];
     google.protobuf.Timestamp start_time = 2 [(tableau.field) = {name:"StartTime"}];
-    google.protobuf.Duration expire = 3 [(tableau.field) = {name:"Expire"}];
+    google.protobuf.Duration expiry = 3 [(tableau.field) = {name:"Expiry"}];
   }
 }
 ```
@@ -64,7 +69,7 @@ message ItemConf {
     "item": {
         "id": 1,
         "startTime": "2024-10-01T02:10:10Z",
-        "expire": "3600s"
+        "expiry": "3600s"
     }
 }
 ```
@@ -86,7 +91,7 @@ Item:
   "@type": "{Item}"
   ID: uint32
   StartTime: datetime
-  Expire: duration
+  Expiry: duration
 NewItem: "{Item}" # resue predefined struct type Item above
 
 ---
@@ -94,11 +99,11 @@ NewItem: "{Item}" # resue predefined struct type Item above
 Item:
   ID: 1
   StartTime: 2024-10-01 10:10:10
-  Expire: 1h
+  Expiry: 1h
 NewItem:
   ID: 2
   StartTime: 2026-10-01 10:10:10
-  Expire: 2h
+  Expiry: 2h
 ```
 
 Generated:
@@ -116,7 +121,7 @@ message ItemConf {
   message Item {
     uint32 id = 1 [(tableau.field) = {name:"ID"}];
     google.protobuf.Timestamp start_time = 2 [(tableau.field) = {name:"StartTime"}];
-    google.protobuf.Duration expire = 3 [(tableau.field) = {name:"Expire"}];
+    google.protobuf.Duration expiry = 3 [(tableau.field) = {name:"Expiry"}];
   }
   Item new_item = 2 [(tableau.field) = {name:"NewItem"}];
 }
@@ -131,12 +136,12 @@ message ItemConf {
     "item": {
         "id": 1,
         "startTime": "2024-10-01T02:10:10Z",
-        "expire": "3600s"
+        "expiry": "3600s"
     },
     "newItem": {
         "id": 2,
         "startTime": "2026-10-01T02:10:10Z",
-        "expire": "7200s"
+        "expiry": "7200s"
     }
 }
 ```
