@@ -13,18 +13,23 @@ mermaid: true
 
 ## Features
 
-- Convert **Excel/CSV/XML/YAML** to **JSON/Text/Bin**, JSON is the first-class citizen of exporting targets.
+- Convert **Excel/CSV/XML/YAML** to **JSON/Text/Bin**.
 - Use **Protobuf** to define the structure of **Excel/CSV/XML/YAML**.
 - Use **Golang** to develop the conversion engine.
 - Support multiple programming languages, thanks to **Protobuf (proto3)**.
 
 ## Concepts
 
-- Importer: Excel/CSV/XML/YAML importer.
-- IR: Intermediate Representation.
-- Filter: filter the IR.
-- Exporter: JSON, Text, and Bin.
-- Protoconf: a configuration metadata format based on protobuf.
+- Importer:
+  - imports a **Excel/CSV** file to a in-memory book of **Table** sheets.
+  - imports a **XML/YAML** file to a in-memory book of **Document** sheets.
+- Parsers:
+  - protogen: converts **Excel/CSV/XML/YAML** files to **Protoconf** files.
+  - confgen: converts **Excel/CSV/XML/YAML** with **Protoconf** files to **JSON/Text/Bin** files.
+- Exporter:
+  - protogen: exports a [tableau.Workbook](https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/workbook.proto) to a proto file.
+  - confgen: exports a protobuf message to a **JSON/Text/Bin** file.
+- Protoconf: a dialect of [Protocol Buffers (proto3)](https://developers.google.com/protocol-buffers/docs/proto3) extended with [tableau options](https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto), aimed to define the structure of Excel/CSV/XML/YAML.
 
 ## Workflow
 

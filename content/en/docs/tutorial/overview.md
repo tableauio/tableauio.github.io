@@ -63,21 +63,18 @@ proto:
     # The proto paths are used to search for dependencies that are referenced in import
     # statements in proto source files. If no import paths are provided then
     # "." (current directory) is assumed to be the only import path.
-    # Default: nil.
     protoPaths: [.]
     # The enums and messages in protoFiles can be used in Excel/CSV/XML/YAML as
     # common types.
-    # Default: nil.
     protoFiles: []
-    # Specify input file formats.
-    # Note: recognize all formats (Excel/CSV/XML/YAML) if not set (value is nil).
-    # Default: nil.
-    formats: []
+    # Specify input file formats to be parsed. It will recognize all formats
+    # if not set.
+    #
+    # Available formats: "xlsx", "csv", "xml", and "yaml".
+    formats: [xlsx]
     # Specify only these subdirs (relative to input dir) to be processed.
-    # Default: nil.
     subdirs: []
     # Specify rewrite subdir path (relative to input dir).
-    # Default: nil.
     subdirRewrites: {}
     # Follow the symbolic links when traversing directories recursively.
     # WARN: be careful to use this option, it may lead to infinite loop.
@@ -85,18 +82,14 @@ proto:
     followSymlink: false
   output:
     # Specify subdir (relative to output dir) for generated proto files.
-    # Default: "".
     subdir: ""
     # Dir separator `/` or `\`  in filename is replaced by "__".
     # Default: false.
     filenameWithSubdirPrefix: false
     # Append suffix to each generated proto filename.
-    # Default: "".
     filenameSuffix: ""
     # Specify proto file options.
     # Example: go_package, csharp_namespace...
-    #
-    # Default: nil.
     fileOptions: {}
 # Options for generating conf files.
 conf:
@@ -104,46 +97,33 @@ conf:
     # The proto paths are used to search for dependencies that are referenced in import
     # statements in proto source files. If no import paths are provided then
     # "." (current directory) is assumed to be the only import path.
-    #
-    # Default: nil.
     protoPaths: [.]
     # The files to be parsed to generate configurations.
     #
     # NOTE:
-    #  - Recognize "*.proto" pattern if not set (value is nil).
+    #  - Recognize "*.proto" pattern if not set.
     #  - Glob patterns is supported, which can specify sets
     #    of filenames with wildcard characters.
-    #
-    # Default: nil.
     protoFiles: ["*.proto"]
     # The files not to be parsed to generate configurations.
     #
     # NOTE: Glob patterns is supported, which can specify sets
     # of filenames with wildcard characters.
-    #
-    # Default: nil.
     excludedProtoFiles: []
-    # Specify input file formats to be parsed.
-    # Note: recognize all formats ("xlsx", "csv", or "xml") if not set (value is nil).
+    # Specify input file formats to be parsed. It will recognize all formats
+    # if not set.
     #
-    # Default: nil.
+    # Available formats: "xlsx", "csv", "xml", and "yaml".
     formats: [xlsx]
     # Specify only these subdirs (relative to workbook name option in proto file).
-    #
-    # Default: nil.
     subdirs: []
     # Specify rewrite subdir path (relative to workbook name option in proto file).
-    #
-    # Default: nil.
     subdirRewrites: {}
   output:
     # Specify subdir (relative to output dir) for generated configuration files.
-    # Default: "".
     subdir: ""
-    # Specify generated conf file formats. If not set, it will generate all
-    # formats: "json", "bin", or "txt".
-    #
-    # Default: nil.
+    # Specify generated conf file formats. It will generate all formats if not set.
+    # Available formats: "xlsx", "csv", "xml", and "yaml".
     formats: [json]
     # Output pretty format of JSON, with multiline and indent.
     # Default: false.
@@ -166,8 +146,6 @@ conf:
     # NOTE: worksheet with FieldPresence set as true ignore this option.
     #
     # Refer: https://github.com/protocolbuffers/protobuf/blob/main/docs/field_presence.md
-    #
-    # Default: false.
     emitUnpopulated: false
     # UseProtoNames uses proto field name instead of lowerCamelCase name in JSON
     # field names.

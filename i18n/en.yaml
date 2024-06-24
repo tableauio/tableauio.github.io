@@ -7,15 +7,15 @@ features:
   scaffolding:
     title: 🛠️ Scaffolding
     content: Provide scaffolding code of configuration Loader and Checker. Powered by protoc plugin system.
-  metadata:
-    title: 📄 Metadata
+  platform:
+    title: 🧊 Cross-platform
+    content: The tableau toolchain is available on Windows, macOS, and Linux.
+  schema:
+    title: ♾️ Schema
     content: A well-designed IDL Protoconf (based on Protobuf) to define the structure of Excel/CSV/XML/YAML.
   format:
     title: 📚 Multiple formats
     content: "Convert Excel/CSV/XML/YAML to multiple formats: JSON, Text, and Bin."
-  platform:
-    title: 🧊 Cross-platform
-    content: The tableau toolset can be run on Windows, macOS and Linux.
   language:
-    title: 📝 Multilingual
+    title: 🔣 Multilingual
     content: C++, C#, Go, Java, Python, TS/JS, and so on, are supported due to Protobuf.

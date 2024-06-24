@@ -92,7 +92,7 @@ Item:
   ID: uint32
   StartTime: datetime
   Expiry: duration
-NewItem: "{Item}" # resue predefined struct type Item above
+NewItem: "{Item}" # reuse predefined struct type Item above
 
 ---
 "@sheet": ItemConf

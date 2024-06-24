@@ -7,15 +7,15 @@ features:
   scaffolding:
     title: 🛠️ 脚手架
     content: 提供 protoc 插件，生成 Loader 和 Checker 脚手架代码。
-  metadata:
-    title: 📄 元数据
+  platform:
+    title: 🧊 跨平台
+    content: Tableau工具链支持多平台：Windows, macOS 和 Linux.
+  schema:
+    title: ♾️ 表结构
     content: 基于 Protobuf 扩展，精心设计了 IDL Protoconf，以便于定义和描述 Excel/CSV/XML/YAML 文件结构.
   format:
     title: 📚 多格式
     content: 可以将 Excel/CSV/XML/YAML 导出多种文件格式：JSON, Text 和 Bin.
-  platform:
-    title: 🧊 跨平台
-    content: Tableau相关工具链可运行于多种操作系统：Windows, macOS 和 Linux.
   language:
-    title: 📝 多语言
+    title: 🔣 多语言
     content: 支持 C++, C#, Go, Java, Python, Lua, TS/JS 等多种语言接入，这得益于 Protobuf 的强大生态。
