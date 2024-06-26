@@ -49,7 +49,7 @@ Generated:
 
 ```protobuf
 // --snip--
-import "common/common.proto";
+import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.yaml"};
 
 message ItemConf {

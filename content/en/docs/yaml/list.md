@@ -94,6 +94,7 @@ Generated:
 
 ```protobuf
 // --snip--
+import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.yaml"};
 
 message ItemConf {
@@ -203,6 +204,7 @@ Generated:
 
 ```protobuf
 // --snip--
+import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.yaml"};
 
 message ItemConf {
@@ -329,6 +331,7 @@ Generated:
 
 ```protobuf
 // --snip--
+import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.yaml"};
 
 message ItemConf {

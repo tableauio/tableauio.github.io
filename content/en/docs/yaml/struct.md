@@ -182,6 +182,7 @@ Generated:
 
 ```protobuf
 // --snip--
+import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.yaml"};
 
 message ItemConf {
@@ -337,9 +338,7 @@ Item:
 
 ---
 "@sheet": ItemConf
-Item:
-  ID: 1
-  Num: 10
+Item: "1, 10"
 ```
 
 Generated:
@@ -348,6 +347,7 @@ Generated:
 
 ```protobuf
 // --snip--
+import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.yaml"};
 
 message ItemConf {

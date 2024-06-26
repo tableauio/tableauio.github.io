@@ -33,12 +33,16 @@ Option `unique` can be specified as `true` in the map field property. Then the t
 
 ## Option `range`
 
-Option `range` can be specified as format: `"left, right"`.
+{{< alert icon="⚠️️" context="info" text="This check option will not be applied if cell data is empty (not present). So if you still want to check even if cell data is empty (not present), then you need to set present option to true." />}}
+
+Option `range` can be specified as format: `"left, right"` (left and right are both inclusive).
 
 Different interpretations of `range`:
 
-- number: value range, e.g.: `"1,10"`, `"1,~"`, `"~,10"`.
-- string: count of utf-8 code point.
+- [x] **number**: value range, e.g.: `"1,10"`, `"1,~"`, `"~,10"`.
+- [ ] **string**: count of utf-8 code point.
+- [ ] **list**: length of list.
+- [ ] **map**: length of map.
 
 ## Option `refer`
 

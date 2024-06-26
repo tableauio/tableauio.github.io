@@ -73,6 +73,10 @@ So the metasheet `@TABLEAU` in *HelloWorld.xlsx* should be configured as:
 
 ## Option `Transpose`
 
+In linear algebra, the transpose of a matrix is an operator which flips a matrix over its diagonal. Likewise, the transpose of a sheet (2D matrix) means interchanging its rows into columns or columns into rows.
+
+See more details about [Excel: Transpose (rotate) data from rows to columns or vice versa](https://support.microsoft.com/en-us/office/transpose-rotate-data-from-rows-to-columns-or-vice-versa-3419f2e3-beab-4318-aae5-d0f862209744).
+
 Option `Transpose` is specified as `true` in the metasheet `@TABLEAU`.
 
 A worksheet `HeroConf` in *HelloWorld.xlsx*:
@@ -101,7 +105,7 @@ A worksheet `HeroConf` in *HelloWorld.xlsx*:
 
 Generated:
 
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
