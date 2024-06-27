@@ -15,7 +15,6 @@ toc: true
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
@@ -78,7 +77,6 @@ enum FruitType {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
@@ -162,7 +160,6 @@ enum FruitFlavor {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
@@ -228,7 +225,6 @@ message ItemConf {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
@@ -300,7 +296,6 @@ enum FruitFlavor {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
@@ -362,7 +357,6 @@ message ItemConf {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
@@ -452,7 +446,6 @@ enum FruitType {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
@@ -532,7 +525,6 @@ message ItemConf {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
@@ -612,7 +604,6 @@ message ItemConf {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
@@ -717,7 +708,6 @@ message ItemConf {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---

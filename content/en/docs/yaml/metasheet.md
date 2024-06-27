@@ -18,7 +18,6 @@ Go to read details about [Metatsheet →]({{< relref "../excel/metasheet" >}}).
 A YAML metasheet example:
 
 ```yaml
----
 # define metasheet
 "@sheet": "@TABLEAU"
 Sheet1:

@@ -26,7 +26,6 @@ enum FruitType {
 A worksheet `ItemConf` in *HelloWorld.yaml*:
 
 ```yaml
----
 # define metasheet: generate all sheets
 "@sheet": "@TABLEAU"
 ---
