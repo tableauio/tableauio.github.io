@@ -22,12 +22,12 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Items>map<uint32, string></Items>
+    <Item>map<uint32, string></Item>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Items>1:dog,2:bird,3:cat</Items>
+    <Item>1:dog,2:bird,3:cat</Item>
 </ItemConf>
 ```
 
@@ -42,7 +42,7 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<uint32, string> items = 1 [(tableau.field) = {name:"Items" layout:LAYOUT_INCELL}];
+  map<uint32, string> item_map = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL}];
 }
 ```
 
@@ -52,7 +52,7 @@ message ItemConf {
 
 ```json
 {
-    "items": {
+    "itemMap": {
         "1": "dog",
         "2": "bird",
         "3": "cat"
@@ -92,12 +92,12 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Items>map<enum<.FruitType>, enum<.FruitFlavor>></Items>
+    <Item>map<enum<.FruitType>, enum<.FruitFlavor>></Item>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Items>FRUIT_TYPE_APPLE:FRUIT_FLAVOR_FRAGRANT, FRUIT_TYPE_ORANGE:FRUIT_FLAVOR_SOUR</Items>
+    <Item>FRUIT_TYPE_APPLE:FRUIT_FLAVOR_FRAGRANT, FRUIT_TYPE_ORANGE:FRUIT_FLAVOR_SOUR</Item>
 </ItemConf>
 ```
 
@@ -113,8 +113,8 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<int32, ItemsValue> items = 1 [(tableau.field) = {name:"Items" key:"@key" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
-  message ItemsValue {
+  map<int32, ItemValue> item_map = 1 [(tableau.field) = {name:"Item" key:"@key" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
+  message ItemValue {
     protoconf.FruitType key = 1 [(tableau.field) = {name:"@key"}];
     protoconf.FruitFlavor value = 2 [(tableau.field) = {name:"@value"}];
   }
@@ -127,7 +127,7 @@ message ItemConf {
 
 ```json
 {
-    "items": {
+    "itemMap": {
         "1": {
             "key": "FRUIT_TYPE_APPLE",
             "value": "FRUIT_FLAVOR_FRAGRANT"
@@ -154,14 +154,14 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Items Key="map<uint32, Item>" Name="string" Num="int32" />
+    <Item Name="map<string, Item>" Num="int32" />
 </ItemConf>
 -->
 
 <ItemConf>
-    <Items Key="1" Name="apple" Num="10" />
-    <Items Key="2" Name="orange" Num="20" />
-    <Items Key="3" Name="banana" Num="30" />
+    <Item Name="apple" Num="10" />
+    <Item Name="orange" Num="20" />
+    <Item Name="banana" Num="30" />
 </ItemConf>
 ```
 
@@ -176,13 +176,11 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<uint32, Item> items = 1 [(tableau.field) = {name:"Items" key:"Key"}];
+  map<string, Item> item_map = 1 [(tableau.field) = {name:"Item" key:"Name"}];
   message Item {
-    uint32 key = 1 [(tableau.field) = {name:"Key"}];
-    string name = 2 [(tableau.field) = {name:"Name"}];
-    int32 num = 3 [(tableau.field) = {name:"Num"}];
+    string name = 1 [(tableau.field) = {name:"Name"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
   }
-}
 ```
 
 {{< /details >}}
@@ -191,21 +189,18 @@ message ItemConf {
 
 ```json
 {
-    "items": {
-        "1": {
-            "key": 1,
+    "itemMap": {
+        "apple": {
             "name": "apple",
             "num": 10
         },
-        "2": {
-            "key": 2,
-            "name": "orange",
-            "num": 20
-        },
-        "3": {
-            "key": 3,
+        "banana": {
             "name": "banana",
             "num": 30
+        },
+        "orange": {
+            "name": "orange",
+            "num": 20
         }
     }
 }
@@ -236,14 +231,14 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Items Key="map<enum<.FruitType>, EnumItem>" Name="string" Num="int32" />
+    <Item Key="map<enum<.FruitType>, EnumItem>" Name="string" Num="int32" />
 </ItemConf>
 -->
 
 <ItemConf>
-    <Items Key="FRUIT_TYPE_APPLE" Name="apple" Num="10" />
-    <Items Key="FRUIT_TYPE_ORANGE" Name="orange" Num="20" />
-    <Items Key="FRUIT_TYPE_BANANA" Name="banana" Num="30" />
+    <Item Key="FRUIT_TYPE_APPLE" Name="apple" Num="10" />
+    <Item Key="FRUIT_TYPE_ORANGE" Name="orange" Num="20" />
+    <Item Key="FRUIT_TYPE_BANANA" Name="banana" Num="30" />
 </ItemConf>
 ```
 
@@ -259,7 +254,7 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<int32, EnumItem> items = 1 [(tableau.field) = {name:"Items" key:"Key"}];
+  map<int32, EnumItem> item_map = 1 [(tableau.field) = {name:"Item" key:"Key"}];
   message EnumItem {
     protoconf.FruitType key = 1 [(tableau.field) = {name:"Key"}];
     string name = 2 [(tableau.field) = {name:"Name"}];
@@ -274,7 +269,7 @@ message ItemConf {
 
 ```json
 {
-    "items": {
+    "itemMap": {
         "1": {
             "key": "FRUIT_TYPE_APPLE",
             "name": "apple",
@@ -308,21 +303,21 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Countries Key="map<string, Country>" Desc="string">
-        <Items Name="[Item]string" Num="int32" />
-    </Countries>
+    <Country Key="map<string, Country>" Desc="string">
+        <Item Name="[Item]string" Num="int32" />
+    </Country>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Countries Key="USA" Desc="A country in North America.">
-        <Items Name="apple" Num="10" />
-        <Items Name="orange" Num="20" />
-    </Countries>
-    <Countries Key="China" Desc="A country in East Asia.">
-        <Items Name="apple" Num="100" />
-        <Items Name="orange" Num="200" />
-    </Countries>
+    <Country Key="USA" Desc="A country in North America.">
+        <Item Name="apple" Num="10" />
+        <Item Name="orange" Num="20" />
+    </Country>
+    <Country Key="China" Desc="A country in East Asia.">
+        <Item Name="apple" Num="100" />
+        <Item Name="orange" Num="200" />
+    </Country>
 </ItemConf>
 ```
 
@@ -337,11 +332,11 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<string, Country> countries = 1 [(tableau.field) = {name:"Countries" key:"Key"}];
+  map<string, Country> country_map = 1 [(tableau.field) = {name:"Country" key:"Key"}];
   message Country {
     string key = 1 [(tableau.field) = {name:"Key"}];
     string desc = 2 [(tableau.field) = {name:"Desc"}];
-    repeated Item items = 3 [(tableau.field) = {name:"Items"}];
+    repeated Item item_list = 3 [(tableau.field) = {name:"Item"}];
     message Item {
       string name = 1 [(tableau.field) = {name:"Name"}];
       int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -356,11 +351,11 @@ message ItemConf {
 
 ```json
 {
-    "countries": {
+    "countryMap": {
         "China": {
             "key": "China",
             "desc": "A country in East Asia.",
-            "items": [
+            "itemList": [
                 {
                     "name": "apple",
                     "num": 100
@@ -374,7 +369,7 @@ message ItemConf {
         "USA": {
             "key": "USA",
             "desc": "A country in North America.",
-            "items": [
+            "itemList": [
                 {
                     "name": "apple",
                     "num": 10
@@ -403,21 +398,21 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Countries Key="map<string, Country>" Desc="string">
-        <Items Name="map<string, Item>" Num="int32" />
-    </Countries>
+    <Country Key="map<string, Country>" Desc="string">
+        <Item Name="map<string, Item>" Num="int32" />
+    </Country>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Countries Key="USA" Desc="A country in North America.">
-        <Items Name="apple" Num="10" />
-        <Items Name="orange" Num="20" />
-    </Countries>
-    <Countries Key="China" Desc="A country in East Asia.">
-        <Items Name="apple" Num="100" />
-        <Items Name="orange" Num="200" />
-    </Countries>
+    <Country Key="USA" Desc="A country in North America.">
+        <Item Name="apple" Num="10" />
+        <Item Name="orange" Num="20" />
+    </Country>
+    <Country Key="China" Desc="A country in East Asia.">
+        <Item Name="apple" Num="100" />
+        <Item Name="orange" Num="200" />
+    </Country>
 </ItemConf>
 ```
 
@@ -432,11 +427,11 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<string, Country> countries = 1 [(tableau.field) = {name:"Countries" key:"Key"}];
+  map<string, Country> country_map = 1 [(tableau.field) = {name:"Country" key:"Key"}];
   message Country {
     string key = 1 [(tableau.field) = {name:"Key"}];
     string desc = 2 [(tableau.field) = {name:"Desc"}];
-    map<string, Item> items = 3 [(tableau.field) = {name:"Items" key:"Name"}];
+    map<string, Item> item_map = 3 [(tableau.field) = {name:"Item" key:"Name"}];
     message Item {
       string name = 1 [(tableau.field) = {name:"Name"}];
       int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -451,11 +446,11 @@ message ItemConf {
 
 ```json
 {
-    "countries": {
+    "countryMap": {
         "China": {
             "key": "China",
             "desc": "A country in East Asia.",
-            "items": {
+            "itemMap": {
                 "apple": {
                     "name": "apple",
                     "num": 100
@@ -469,7 +464,7 @@ message ItemConf {
         "USA": {
             "key": "USA",
             "desc": "A country in North America.",
-            "items": {
+            "itemMap": {
                 "apple": {
                     "name": "apple",
                     "num": 10

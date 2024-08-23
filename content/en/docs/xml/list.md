@@ -22,14 +22,14 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Items>[int32]</Items>
+    <Item>[int32]</Item>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Items>1</Items>
-    <Items>2</Items>
-    <Items>3</Items>
+    <Item>1</Item>
+    <Item>2</Item>
+    <Item>3</Item>
 </ItemConf>
 ```
 
@@ -44,7 +44,7 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated int32 items = 1 [(tableau.field) = {name:"Items"}];
+  repeated int32 item_list = 1 [(tableau.field) = {name:"Item"}];
 }
 ```
 
@@ -54,7 +54,7 @@ message ItemConf {
 
 ```json
 {
-    "items": [
+    "itemList": [
         1,
         2,
         3
@@ -87,14 +87,14 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Fruits>[enum<.FruitType>]</Fruits>
+    <Fruit>[enum<.FruitType>]</Fruit>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Fruits>FRUIT_TYPE_APPLE</Fruits>
-    <Fruits>FRUIT_TYPE_ORANGE</Fruits>
-    <Fruits>FRUIT_TYPE_BANANA</Fruits>
+    <Fruit>FRUIT_TYPE_APPLE</Fruit>
+    <Fruit>FRUIT_TYPE_ORANGE</Fruit>
+    <Fruit>FRUIT_TYPE_BANANA</Fruit>
 </ItemConf>
 ```
 
@@ -110,7 +110,7 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated protoconf.FruitType fruits = 1 [(tableau.field) = {name:"Fruits"}];
+  repeated protoconf.FruitType fruit_list = 1 [(tableau.field) = {name:"Fruit"}];
 }
 ```
 
@@ -120,7 +120,7 @@ message ItemConf {
 
 ```json
 {
-    "fruits": [
+    "fruitList": [
         "FRUIT_TYPE_APPLE",
         "FRUIT_TYPE_ORANGE",
         "FRUIT_TYPE_BANANA"
@@ -142,12 +142,12 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Items>[]int32</Items>
+    <Item>[]int32</Item>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Items>1, 2, 3</Items>
+    <Item>1, 2, 3</Item>
 </ItemConf>
 ```
 
@@ -162,7 +162,7 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated int32 items = 1 [(tableau.field) = {name:"Items" layout:LAYOUT_INCELL}];
+  repeated int32 item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL}];
 }
 ```
 
@@ -172,7 +172,7 @@ message ItemConf {
 
 ```json
 {
-    "items": [
+    "itemList": [
         1,
         2,
         3
@@ -205,12 +205,12 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Fruits>[]enum<.FruitType></Fruits>
+    <Fruit>[]enum<.FruitType></Fruit>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Fruits>FRUIT_TYPE_APPLE, FRUIT_TYPE_ORANGE, FRUIT_TYPE_BANANA</Fruits>
+    <Fruit>FRUIT_TYPE_APPLE, FRUIT_TYPE_ORANGE, FRUIT_TYPE_BANANA</Fruit>
 </ItemConf>
 ```
 
@@ -226,7 +226,7 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated protoconf.FruitType fruits = 1 [(tableau.field) = {name:"Fruits" layout:LAYOUT_INCELL}];
+  repeated protoconf.FruitType fruit_list = 1 [(tableau.field) = {name:"Fruit" layout:LAYOUT_INCELL}];
 }
 ```
 
@@ -236,7 +236,7 @@ message ItemConf {
 
 ```json
 {
-    "fruits": [
+    "fruitList": [
         "FRUIT_TYPE_APPLE",
         "FRUIT_TYPE_ORANGE",
         "FRUIT_TYPE_BANANA"
@@ -258,13 +258,13 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Items ID="[Item]uint32" Num="int32"/>
+    <Item ID="[Item]uint32" Num="int32"/>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Items ID="1" Num="10"/>
-    <Items ID="2" Num="20"/>
+    <Item ID="1" Num="10"/>
+    <Item ID="2" Num="20"/>
 </ItemConf>
 ```
 
@@ -279,12 +279,13 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated Item items = 1 [(tableau.field) = {name:"Items"}];
+  repeated Item item_list = 1 [(tableau.field) = {name:"Item"}];
   message Item {
     uint32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
   }
 }
+
 ```
 
 {{< /details >}}
@@ -293,7 +294,7 @@ message ItemConf {
 
 ```json
 {
-    "items": [
+    "itemList": [
         {
             "id": 1,
             "num": 10
@@ -329,13 +330,13 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Items @type="[.Item]"/>
+    <Item @type="[.Item]"/>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Items ID="1" Num="10"/>
-    <Items ID="2" Num="20"/>
+    <Item ID="1" Num="10"/>
+    <Item ID="2" Num="20"/>
 </ItemConf>
 ```
 
@@ -351,7 +352,7 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated protoconf.Item items = 1 [(tableau.field) = {name:"Items"}];
+  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item"}];
 }
 ```
 
@@ -361,7 +362,7 @@ message ItemConf {
 
 ```json
 {
-    "items": [
+    "itemList": [
         {
             "id": 1,
             "num": 10
@@ -388,21 +389,21 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Countries Country="[Country]string" Desc="string">
-        <Items Name="[Item]string" Num="int32" />
-    </Countries>
+    <Country Country="[Country]string" Desc="string">
+        <Item Name="[Item]string" Num="int32" />
+    </Country>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Countries Country="USA" Desc="A country in North America.">
-        <Items Name="apple" Num="10" />
-        <Items Name="orange" Num="20" />
-    </Countries>
-    <Countries Country="China" Desc="A country in East Asia.">
-        <Items Name="apple" Num="100" />
-        <Items Name="orange" Num="200" />
-    </Countries>
+    <Country Country="USA" Desc="A country in North America.">
+        <Item Name="apple" Num="10" />
+        <Item Name="orange" Num="20" />
+    </Country>
+    <Country Country="China" Desc="A country in East Asia.">
+        <Item Name="apple" Num="100" />
+        <Item Name="orange" Num="200" />
+    </Country>
 </ItemConf>
 ```
 
@@ -417,11 +418,11 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated Country countries = 1 [(tableau.field) = {name:"Countries"}];
+  repeated Country country_list = 1 [(tableau.field) = {name:"Country"}];
   message Country {
     string country = 1 [(tableau.field) = {name:"Country"}];
     string desc = 2 [(tableau.field) = {name:"Desc"}];
-    repeated Item items = 3 [(tableau.field) = {name:"Items"}];
+    repeated Item item_list = 3 [(tableau.field) = {name:"Item"}];
     message Item {
       string name = 1 [(tableau.field) = {name:"Name"}];
       int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -436,11 +437,11 @@ message ItemConf {
 
 ```json
 {
-    "countries": [
+    "countryList": [
         {
             "country": "USA",
             "desc": "A country in North America.",
-            "items": [
+            "itemList": [
                 {
                     "name": "apple",
                     "num": 10
@@ -454,7 +455,7 @@ message ItemConf {
         {
             "country": "China",
             "desc": "A country in East Asia.",
-            "items": [
+            "itemList": [
                 {
                     "name": "apple",
                     "num": 100
@@ -483,21 +484,21 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 </@TABLEAU>
 
 <ItemConf>
-    <Countries Country="[Country]string" Desc="string">
-        <Items Name="map<string, Item>" Num="int32" />
-    </Countries>
+    <Country Country="[Country]string" Desc="string">
+        <Item Name="map<string, Item>" Num="int32" />
+    </Country>
 </ItemConf>
 -->
 
 <ItemConf>
-    <Countries Country="USA" Desc="A country in North America.">
-        <Items Name="apple" Num="10" />
-        <Items Name="orange" Num="20" />
-    </Countries>
-    <Countries Country="China" Desc="A country in East Asia.">
-        <Items Name="apple" Num="100" />
-        <Items Name="orange" Num="200" />
-    </Countries>
+    <Country Country="USA" Desc="A country in North America.">
+        <Item Name="apple" Num="10" />
+        <Item Name="orange" Num="20" />
+    </Country>
+    <Country Country="China" Desc="A country in East Asia.">
+        <Item Name="apple" Num="100" />
+        <Item Name="orange" Num="200" />
+    </Country>
 </ItemConf>
 ```
 
@@ -512,11 +513,11 @@ option (tableau.workbook) = {name:"HelloWorld.xml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated Country countries = 1 [(tableau.field) = {name:"Countries"}];
+  repeated Country country_list = 1 [(tableau.field) = {name:"Country"}];
   message Country {
     string country = 1 [(tableau.field) = {name:"Country"}];
     string desc = 2 [(tableau.field) = {name:"Desc"}];
-    map<string, Item> items = 3 [(tableau.field) = {name:"Items" key:"Name"}];
+    map<string, Item> item_map = 3 [(tableau.field) = {name:"Item" key:"Name"}];
     message Item {
       string name = 1 [(tableau.field) = {name:"Name"}];
       int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -531,11 +532,11 @@ message ItemConf {
 
 ```json
 {
-    "countries": [
+    "countryList": [
         {
             "country": "USA",
             "desc": "A country in North America.",
-            "items": {
+            "itemMap": {
                 "apple": {
                     "name": "apple",
                     "num": 10
@@ -549,7 +550,7 @@ message ItemConf {
         {
             "country": "China",
             "desc": "A country in East Asia.",
-            "items": {
+            "itemMap": {
                 "apple": {
                     "name": "apple",
                     "num": 100
