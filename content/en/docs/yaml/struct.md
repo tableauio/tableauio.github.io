@@ -164,6 +164,7 @@ A worksheet `ItemConf` in *HelloWorld.yaml*:
 "@sheet": "@TABLEAU"
 ---
 # define schema
+"@sheet": "@ItemConf"
 Item: "{.Item}"
 
 ---
@@ -213,6 +214,7 @@ A worksheet `ItemConf` in *HelloWorld.yaml*:
 "@sheet": "@TABLEAU"
 ---
 # define schema
+"@sheet": "@ItemConf"
 Item: "{uint32 ID, int32 Num}Item"
 
 ---
@@ -263,6 +265,7 @@ A worksheet `ItemConf` in *HelloWorld.yaml*:
 "@sheet": "@TABLEAU"
 ---
 # define schema
+"@sheet": "@ItemConf"
 Item:
   "@type": "{Item}"
   "@incell": true
@@ -326,6 +329,7 @@ A worksheet `ItemConf` in *HelloWorld.yaml*:
 "@sheet": "@TABLEAU"
 ---
 # define schema
+"@sheet": "@ItemConf"
 Item:
   "@type": "{.Item}"
   "@incell": true

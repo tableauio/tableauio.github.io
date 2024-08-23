@@ -236,10 +236,7 @@ Items:
 
 ---
 "@sheet": ItemConf
-Items:
-  1: dog
-  2: bird
-  3: cat
+Items: "1:dog,2:bird,3:cat"
 ```
 
 Generated:
@@ -340,11 +337,11 @@ message ItemConf {
     "items": {
         "1": {
             "key": "FRUIT_TYPE_APPLE",
-            "value": "apple"
+            "value": "FRUIT_FLAVOR_FRAGRANT"
         },
         "3": {
             "key": "FRUIT_TYPE_ORANGE",
-            "value": "orange"
+            "value": "FRUIT_FLAVOR_SOUR"
         }
     }
 }
@@ -483,8 +480,8 @@ option (tableau.workbook) = {name:"HelloWorld.yaml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<int32, Item> items = 1 [(tableau.field) = {name:"Items" key:"@key"}];
-  message Item {
+  map<int32, EnumItem> items = 1 [(tableau.field) = {name:"Items" key:"@key"}];
+  message EnumItem {
     protoconf.FruitType key = 1 [(tableau.field) = {name:"@key"}];
     string name = 2 [(tableau.field) = {name:"Name"}];
     int32 num = 3 [(tableau.field) = {name:"Num"}];
@@ -718,9 +715,9 @@ Countries:
   "@struct":
     Desc: string
     Items:
-      "@type": "map<uint32, Item>"
+      "@type": "map<string, Item>"
       "@struct":
-        Name: string
+        "@key": Name
         Num: int32
 
 ---
@@ -729,20 +726,16 @@ Countries:
   USA:
     Desc: A country in North America.
     Items:
-      1:
-        Name: apple
+      apple:
         Num: 10
-      2:
-        Name: orange
+      orange:
         Num: 20
   China:
     Desc: A country in East Asia.
     Items:
-      1:
-        Name: apple
+      apple:
         Num: 100
-      2:
-        Name: orange
+      orange:
         Num: 200
 ```
 
@@ -757,15 +750,14 @@ option (tableau.workbook) = {name:"HelloWorld.yaml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<uint32, Country> countries = 1 [(tableau.field) = {name:"Countries" key:"@key"}];
+  map<string, Country> countries = 1 [(tableau.field) = {name:"Countries" key:"@key"}];
   message Country {
     string key = 1 [(tableau.field) = {name:"@key"}];
     string desc = 2 [(tableau.field) = {name:"Desc"}];
-    map<uint32, Item> items = 3 [(tableau.field) = {name:"Items" key:"@key"}];
+    map<string, Item> items = 3 [(tableau.field) = {name:"Items" key:"@key"}];
     message Item {
-      uint32 key = 1 [(tableau.field) = {name:"@key"}];
-      string name = 2 [(tableau.field) = {name:"Name"}];
-      int32 num = 3 [(tableau.field) = {name:"Num"}];
+      string name = 1 [(tableau.field) = {name:"@key"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
     }
   }
 }
@@ -782,13 +774,11 @@ message ItemConf {
             "key": "China",
             "desc": "A country in East Asia.",
             "items": {
-                "1": {
-                    "key": 1,
+                "apple": {
                     "name": "apple",
                     "num": 100
                 },
-                "2": {
-                    "key": 2,
+                "orange": {
                     "name": "orange",
                     "num": 200
                 }
@@ -798,13 +788,11 @@ message ItemConf {
             "key": "USA",
             "desc": "A country in North America.",
             "items": {
-                "1": {
-                    "key": 1,
+                "apple": {
                     "name": "apple",
                     "num": 10
                 },
-                "2": {
-                    "key": 2,
+                "orange": {
                     "name": "orange",
                     "num": 20
                 }

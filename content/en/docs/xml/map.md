@@ -3,83 +3,138 @@ title: "Map"
 description: "XML map guide."
 lead: "XML map guide."
 date: 2020-10-13T15:21:01+02:00
-lastmod: 2020-10-13T15:21:01+02:00
+lastmod: 2024-08-23T11:21:01+08:00
 draft: false
 images: []
 weight: 5300
 toc: true
 ---
 
-## Cross-cell map
+## Incell scalar map
 
-### Input
+A worksheet `ItemConf` in *HelloWorld.xml*:
 
-A worksheet `RankConf` in `Rank.xml`:
-
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- @TABLEAU 
-<RankConf>
-  <RankItem ID="map<uint32, RankItem>"/>
-</RankConf>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf>
+    <Items>map<uint32, string></Items>
+</ItemConf>
 -->
 
-<RankConf>
-  <RankItem ID="1" Score="100" Name="Tony"/>
-  <RankItem ID="2" Score="99" Name="Eric"/>
-  <RankItem ID="3" Score="98" Name="David"/>
-  <RankItem ID="4" Score="98" Name="Jenny"/>
-</RankConf>
+<ItemConf>
+    <Items>1:dog,2:bird,3:cat</Items>
+</ItemConf>
 ```
 
-### Output
+Generated:
 
-Generated protoconf is `rank_conf.proto`:
-
-{{< details "rank_conf.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"server/AutoConfig2/Server.xml"};
+option (tableau.workbook) = {name:"HelloWorld.xml"};
 
-message RankConf {
-  option (tableau.worksheet) = {name:"RankConf" namerow:1 typerow:2 noterow:3 datarow:4 nameline:1 typeline:1 nested:true};
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<uint32, RankItem> rank_item_map = 1 [(tableau.field) = {name:"RankItem" key:"Id" layout:LAYOUT_VERTICAL}];
-  message RankItem {
-    uint32 id = 1 [(tableau.field) = {name:"Id"}];
-    int32 score = 2 [(tableau.field) = {name:"Score"}];
-    string name = 3 [(tableau.field) = {name:"Name"}];
+  map<uint32, string> items = 1 [(tableau.field) = {name:"Items" layout:LAYOUT_INCELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "items": {
+        "1": "dog",
+        "2": "bird",
+        "3": "cat"
+    }
+}
+```
+
+{{< /details >}}
+
+## Incell enum map
+
+Enum types Enum type `FruitType` and `FruitFlavor` in *common.proto* are predefined as:
+
+```protobuf
+enum FruitType {
+  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
+  FRUIT_TYPE_ORANGE  = 3 [(tableau.evalue).name = "Orange"];
+  FRUIT_TYPE_BANANA  = 4 [(tableau.evalue).name = "Banana"];
+}
+
+enum FruitFlavor {
+  FRUIT_FLAVOR_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_FLAVOR_FRAGRANT = 1 [(tableau.evalue).name = "Fragrant"];
+  FRUIT_FLAVOR_SOUR = 2 [(tableau.evalue).name = "Sour"];
+  FRUIT_FLAVOR_SWEET = 3 [(tableau.evalue).name = "Sweet"];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xml*:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf>
+    <Items>map<enum<.FruitType>, enum<.FruitFlavor>></Items>
+</ItemConf>
+-->
+
+<ItemConf>
+    <Items>FRUIT_TYPE_APPLE:FRUIT_FLAVOR_FRAGRANT, FRUIT_TYPE_ORANGE:FRUIT_FLAVOR_SOUR</Items>
+</ItemConf>
+```
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "common.proto";
+option (tableau.workbook) = {name:"HelloWorld.xml"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<int32, ItemsValue> items = 1 [(tableau.field) = {name:"Items" key:"@key" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
+  message ItemsValue {
+    protoconf.FruitType key = 1 [(tableau.field) = {name:"@key"}];
+    protoconf.FruitFlavor value = 2 [(tableau.field) = {name:"@value"}];
   }
 }
 ```
 
 {{< /details >}}
 
-{{< details "rank_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
-    "rankItemMap":  {
-        "1":  {
-            "id":  1,
-            "score":  100,
-            "name":  "Tony"
+    "items": {
+        "1": {
+            "key": "FRUIT_TYPE_APPLE",
+            "value": "FRUIT_FLAVOR_FRAGRANT"
         },
-        "2":  {
-            "id":  2,
-            "score":  99,
-            "name":  "Eric"
-        },
-        "3":  {
-            "id":  3,
-            "score":  98,
-            "name":  "David"
-        },
-        "4":  {
-            "id":  4,
-            "score":  98,
-            "name":  "Jenny"
+        "3": {
+            "key": "FRUIT_TYPE_ORANGE",
+            "value": "FRUIT_FLAVOR_SOUR"
         }
     }
 }
@@ -87,102 +142,70 @@ message RankConf {
 
 {{< /details >}}
 
-## In-cell map
+## Struct map
 
-There are two kinds of in-cell map:
+A worksheet `ItemConf` in *HelloWorld.xml*:
 
-1. in-cell **scalar** map, as map value type is scalar. E.g: `map<uint32, int32>`.
-2. in-cell **struct** map, as map value type is struct. E.g: `map<uint32, Item>`.
-
-### In-cell scalar map
-
-#### Input
-
-A worksheet `RankConf` in `Rank.xml`:
-
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- @TABLEAU 
-<RankConf>
-  <RankItem ID="map<uint32, RankItem>" Subject="map<string, int32>"/>
-</RankConf>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf>
+    <Items Key="map<uint32, Item>" Name="string" Num="int32" />
+</ItemConf>
 -->
 
-<RankConf>
-  <RankItem ID="1" Score="100" Name="Tony" Subject="Math:80,English:20"/>
-  <RankItem ID="2" Score="99" Name="Eric" Subject="Math:80,English:19"/>
-  <RankItem ID="3" Score="98" Name="David" Subject="Math:80,English:18"/>
-  <RankItem ID="4" Score="98" Name="Jenny" Subject="Math:80,English:18"/>
-</RankConf>
+<ItemConf>
+    <Items Key="1" Name="apple" Num="10" />
+    <Items Key="2" Name="orange" Num="20" />
+    <Items Key="3" Name="banana" Num="30" />
+</ItemConf>
 ```
 
-The `Subject` attribute's type is in-cell map `map<string, int32>`, as the map value-type is scalar type.
+Generated:
 
-#### Output
-
-Generated protoconf is `rank_conf.proto`:
-
-{{< details "rank_conf.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"server/AutoConfig2/Server.xml"};
+option (tableau.workbook) = {name:"HelloWorld.xml"};
 
-message RankConf {
-  option (tableau.worksheet) = {name:"RankConf" namerow:1 typerow:2 noterow:3 datarow:4 nameline:1 typeline:1 nested:true};
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<uint32, RankItem> rank_item_map = 1 [(tableau.field) = {name:"RankItem" key:"Id" layout:LAYOUT_VERTICAL}];
-  message RankItem {
-    uint32 id = 1 [(tableau.field) = {name:"Id"}];
-    map<string, int32> subject_map = 2 [(tableau.field) = {name:"Subject" layout:LAYOUT_INCELL}];
-    int32 score = 3 [(tableau.field) = {name:"Score"}];
-    string name = 4 [(tableau.field) = {name:"Name"}];
+  map<uint32, Item> items = 1 [(tableau.field) = {name:"Items" key:"Key"}];
+  message Item {
+    uint32 key = 1 [(tableau.field) = {name:"Key"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    int32 num = 3 [(tableau.field) = {name:"Num"}];
   }
 }
 ```
 
 {{< /details >}}
 
-{{< details "rank_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
-    "rankItemMap":  {
-        "1":  {
-            "id":  1,
-            "subjectMap":  {
-                "English":  20,
-                "Math":  80
-            },
-            "score":  100,
-            "name":  "Tony"
+    "items": {
+        "1": {
+            "key": 1,
+            "name": "apple",
+            "num": 10
         },
-        "2":  {
-            "id":  2,
-            "subjectMap":  {
-                "English":  19,
-                "Math":  80
-            },
-            "score":  99,
-            "name":  "Eric"
+        "2": {
+            "key": 2,
+            "name": "orange",
+            "num": 20
         },
-        "3":  {
-            "id":  3,
-            "subjectMap":  {
-                "English":  18,
-                "Math":  80
-            },
-            "score":  98,
-            "name":  "David"
-        },
-        "4":  {
-            "id":  4,
-            "subjectMap":  {
-                "English":  18,
-                "Math":  80
-            },
-            "score":  98,
-            "name":  "Jenny"
+        "3": {
+            "key": 3,
+            "name": "banana",
+            "num": 30
         }
     }
 }
@@ -190,6 +213,275 @@ message RankConf {
 
 {{< /details >}}
 
-### in-cell struct list
+## Enum key struct map
 
-{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+Enum type `FruitType` in *common.proto* is predefined as:
+
+```protobuf
+enum FruitType {
+  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
+  FRUIT_TYPE_ORANGE  = 3 [(tableau.evalue).name = "Orange"];
+  FRUIT_TYPE_BANANA  = 4 [(tableau.evalue).name = "Banana"];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xml*:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf>
+    <Items Key="map<enum<.FruitType>, EnumItem>" Name="string" Num="int32" />
+</ItemConf>
+-->
+
+<ItemConf>
+    <Items Key="FRUIT_TYPE_APPLE" Name="apple" Num="10" />
+    <Items Key="FRUIT_TYPE_ORANGE" Name="orange" Num="20" />
+    <Items Key="FRUIT_TYPE_BANANA" Name="banana" Num="30" />
+</ItemConf>
+```
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "common.proto";
+option (tableau.workbook) = {name:"HelloWorld.xml"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<int32, EnumItem> items = 1 [(tableau.field) = {name:"Items" key:"Key"}];
+  message EnumItem {
+    protoconf.FruitType key = 1 [(tableau.field) = {name:"Key"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    int32 num = 3 [(tableau.field) = {name:"Num"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "items": {
+        "1": {
+            "key": "FRUIT_TYPE_APPLE",
+            "name": "apple",
+            "num": 10
+        },
+        "3": {
+            "key": "FRUIT_TYPE_ORANGE",
+            "name": "orange",
+            "num": 20
+        },
+        "4": {
+            "key": "FRUIT_TYPE_BANANA",
+            "name": "banana",
+            "num": 30
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+## List in map
+
+A worksheet `ItemConf` in *HelloWorld.xml*:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf>
+    <Countries Key="map<string, Country>" Desc="string">
+        <Items Name="[Item]string" Num="int32" />
+    </Countries>
+</ItemConf>
+-->
+
+<ItemConf>
+    <Countries Key="USA" Desc="A country in North America.">
+        <Items Name="apple" Num="10" />
+        <Items Name="orange" Num="20" />
+    </Countries>
+    <Countries Key="China" Desc="A country in East Asia.">
+        <Items Name="apple" Num="100" />
+        <Items Name="orange" Num="200" />
+    </Countries>
+</ItemConf>
+```
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xml"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<string, Country> countries = 1 [(tableau.field) = {name:"Countries" key:"Key"}];
+  message Country {
+    string key = 1 [(tableau.field) = {name:"Key"}];
+    string desc = 2 [(tableau.field) = {name:"Desc"}];
+    repeated Item items = 3 [(tableau.field) = {name:"Items"}];
+    message Item {
+      string name = 1 [(tableau.field) = {name:"Name"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "countries": {
+        "China": {
+            "key": "China",
+            "desc": "A country in East Asia.",
+            "items": [
+                {
+                    "name": "apple",
+                    "num": 100
+                },
+                {
+                    "name": "orange",
+                    "num": 200
+                }
+            ]
+        },
+        "USA": {
+            "key": "USA",
+            "desc": "A country in North America.",
+            "items": [
+                {
+                    "name": "apple",
+                    "num": 10
+                },
+                {
+                    "name": "orange",
+                    "num": 20
+                }
+            ]
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+## Map in map
+
+A worksheet `ItemConf` in *HelloWorld.xml*:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf>
+    <Countries Key="map<string, Country>" Desc="string">
+        <Items Name="map<string, Item>" Num="int32" />
+    </Countries>
+</ItemConf>
+-->
+
+<ItemConf>
+    <Countries Key="USA" Desc="A country in North America.">
+        <Items Name="apple" Num="10" />
+        <Items Name="orange" Num="20" />
+    </Countries>
+    <Countries Key="China" Desc="A country in East Asia.">
+        <Items Name="apple" Num="100" />
+        <Items Name="orange" Num="200" />
+    </Countries>
+</ItemConf>
+```
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xml"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<string, Country> countries = 1 [(tableau.field) = {name:"Countries" key:"Key"}];
+  message Country {
+    string key = 1 [(tableau.field) = {name:"Key"}];
+    string desc = 2 [(tableau.field) = {name:"Desc"}];
+    map<string, Item> items = 3 [(tableau.field) = {name:"Items" key:"Name"}];
+    message Item {
+      string name = 1 [(tableau.field) = {name:"Name"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "countries": {
+        "China": {
+            "key": "China",
+            "desc": "A country in East Asia.",
+            "items": {
+                "apple": {
+                    "name": "apple",
+                    "num": 100
+                },
+                "orange": {
+                    "name": "orange",
+                    "num": 200
+                }
+            }
+        },
+        "USA": {
+            "key": "USA",
+            "desc": "A country in North America.",
+            "items": {
+                "apple": {
+                    "name": "apple",
+                    "num": 10
+                },
+                "orange": {
+                    "name": "orange",
+                    "num": 20
+                }
+            }
+        }
+    }
+}
+```
+
+{{< /details >}}

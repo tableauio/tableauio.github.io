@@ -3,75 +3,219 @@ title: "Struct"
 description: "XML struct guide."
 lead: "XML struct guide."
 date: 2020-10-13T15:21:01+02:00
-lastmod: 2020-10-13T15:21:01+02:00
+lastmod: 2024-08-23T11:21:01+08:00
 draft: false
 images: []
 weight: 5100
 toc: true
 ---
 
-## Cross-cell struct
+## General struct
 
-Any node in XML (with or without attributes) will be converted to a struct in protobuf.
+A worksheet `ItemConf` in *HelloWorld.xml*:
 
-## In-cell struct
-
-{{< alert icon="👉" context="danger" text="Not supported yet." />}}
-
-### Input
-
-A worksheet `ServerConf` in `Server.xml`:
-
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- @TABLEAU -->
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
 
-<ServerConf Author="David" LastBuildTime="2022-08-07 11:21:00">
-    <GameServer BinPath="/home/server/bin" Cmd="./gamesvr --id='1.0.1.1'" Desc="game server" />
-</ServerConf>
+<ItemConf>
+    <Item ID="uint32" StartTime="datetime">
+      <Expiry>duration</Expiry>
+    </Item>
+</ItemConf>
+-->
+
+<ItemConf>
+    <Item ID="1" StartTime="2024-10-01 10:10:10">
+      <Expiry>1h</Expiry>
+    </Item>
+</ItemConf>
 ```
 
-The `GameServer` node's type is cross-cell struct `{string BinPath,string Cmd,string Desc}GameServer`.
+> Tips
+>
+> - Well-known type: [datetime →]({{< relref "../basics/grammar-and-types/#datetime" >}})
+> - Well-known type: [duration →]({{< relref "../basics/grammar-and-types/#duration" >}})
 
-### Output
+Generated:
 
-Generated protoconf is `server_conf.proto`:
-
-{{< details "server_conf.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"server/AutoConfig2/Server.xml"};
+option (tableau.workbook) = {name:"HelloWorld.xml"};
 
-message ServerConf {
-  option (tableau.worksheet) = {name:"ServerConf" namerow:1 typerow:2 noterow:3 datarow:4 nameline:1 typeline:1 nested:true};
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
 
-  string author = 1 [(tableau.field) = {name:"Author"}];
-  string last_build_time = 2 [(tableau.field) = {name:"LastBuildTime"}];
-  GameServer game_server = 3 [(tableau.field) = {name:"GameServer"}];
-  message GameServer {
-    string bin_path = 1 [(tableau.field) = {name:"BinPath"}];
-    string cmd = 2 [(tableau.field) = {name:"Cmd"}];
-    string desc = 3 [(tableau.field) = {name:"Desc"}];
+  Item item = 1 [(tableau.field) = {name:"Item"}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    google.protobuf.Timestamp start_time = 2 [(tableau.field) = {name:"StartTime"}];
+    google.protobuf.Duration expiry = 3 [(tableau.field) = {name:"Expiry"}];
   }
 }
-
 ```
 
 {{< /details >}}
 
-{{< details "server_conf.json" >}}
+{{< details "ItemConf.json" >}}
 
 ```json
 {
-    "author":  "David",
-    "lastBuildTime":  "2022-08-07 11:21:00",
-    "gameServer":  {
-        "binPath":  "/home/server/bin",
-        "cmd":  "./gamesvr --id='1.0.1.1'",
-        "desc":  "game server"
+    "item": {
+        "id": 1,
+        "startTime": "2024-10-01T02:10:10Z",
+        "expiry": "3600s"
     }
 }
 ```
 
 {{< /details >}}
+
+## Reuse same-level struct
+
+A worksheet `ItemConf` in *HelloWorld.xml*:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf>
+    <Item ID="uint32" StartTime="datetime">
+      <Expiry>duration</Expiry>
+    </Item>
+    <NewItem @type="{Item}" />
+</ItemConf>
+-->
+
+<ItemConf>
+    <Item ID="1" StartTime="2024-10-01 10:10:10">
+      <Expiry>1h</Expiry>
+    </Item>
+    <NewItem ID="2" StartTime="2026-10-01 10:10:10">
+      <Expiry>2h</Expiry>
+    </NewItem>
+</ItemConf>
+```
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xml"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  Item item = 1 [(tableau.field) = {name:"Item"}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    google.protobuf.Timestamp start_time = 2 [(tableau.field) = {name:"StartTime"}];
+    google.protobuf.Duration expiry = 3 [(tableau.field) = {name:"Expiry"}];
+  }
+  Item new_item = 2 [(tableau.field) = {name:"NewItem"}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "item": {
+        "id": 1,
+        "startTime": "2024-10-01T02:10:10Z",
+        "expiry": "3600s"
+    },
+    "newItem": {
+        "id": 2,
+        "startTime": "2026-10-01T02:10:10Z",
+        "expiry": "7200s"
+    }
+}
+```
+
+{{< /details >}}
+
+## Predefined struct
+
+`Item` in *common.proto* is predefined as:
+
+```protobuf
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xml*:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf>
+    <Item @type="{.Item}" />
+</ItemConf>
+-->
+
+<ItemConf>
+    <Item ID="1" Num="10" />
+</ItemConf>
+```
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "common.proto";
+option (tableau.workbook) = {name:"HelloWorld.xml"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  protoconf.Item item = 1 [(tableau.field) = {name:"Item"}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "item": {
+        "id": 1,
+        "num": 10
+    }
+}
+```
+
+{{< /details >}}
+
+## Incell struct
+
+{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+
+## Incell general struct
+
+{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+
+## Incell predefined struct
+
+{{< alert icon="👉" context="danger" text="Not supported yet." />}}
