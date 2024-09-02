@@ -235,7 +235,7 @@ message ItemConf {
 
   Item item = 1 [(tableau.field) = {name:"Item" span:SPAN_INNER_CELL}];
   message Item {
-    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
   }
 }
@@ -290,7 +290,7 @@ message ItemConf {
 
   Item item = 1 [(tableau.field) = {name:"Item" span:SPAN_INNER_CELL}];
   message Item {
-    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
   }
 }

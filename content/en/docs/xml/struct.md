@@ -25,6 +25,7 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
     <Item ID="uint32" StartTime="datetime">
       <Expiry>duration</Expiry>
     </Item>
+    <Item2 ID="{OtherItem}uint32" Name="string" />
 </ItemConf>
 -->
 
@@ -32,6 +33,7 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
     <Item ID="1" StartTime="2024-10-01 10:10:10">
       <Expiry>1h</Expiry>
     </Item>
+    <Item2 ID="1" Name="gold" />
 </ItemConf>
 ```
 
@@ -57,6 +59,11 @@ message ItemConf {
     google.protobuf.Timestamp start_time = 2 [(tableau.field) = {name:"StartTime"}];
     google.protobuf.Duration expiry = 3 [(tableau.field) = {name:"Expiry"}];
   }
+  OtherItem item_2 = 2 [(tableau.field) = {name:"Item2"}];
+  message OtherItem {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
 }
 ```
 
@@ -70,6 +77,10 @@ message ItemConf {
         "id": 1,
         "startTime": "2024-10-01T02:10:10Z",
         "expiry": "3600s"
+    },
+    "item2": {
+        "id": 1,
+        "name": "gold"
     }
 }
 ```
@@ -92,6 +103,9 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
       <Expiry>duration</Expiry>
     </Item>
     <NewItem @type="{Item}" />
+    <OtherItem ID="{Item}uint32" StartTime="datetime">
+      <Expiry>duration</Expiry>
+    </OtherItem>
 </ItemConf>
 -->
 
@@ -102,6 +116,9 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
     <NewItem ID="2" StartTime="2026-10-01 10:10:10">
       <Expiry>2h</Expiry>
     </NewItem>
+    <OtherItem ID="3" StartTime="2028-10-01 10:10:10">
+      <Expiry>3h</Expiry>
+    </OtherItem>
 </ItemConf>
 ```
 
@@ -123,6 +140,7 @@ message ItemConf {
     google.protobuf.Duration expiry = 3 [(tableau.field) = {name:"Expiry"}];
   }
   Item new_item = 2 [(tableau.field) = {name:"NewItem"}];
+  Item other_item = 3 [(tableau.field) = {name:"OtherItem"}];
 }
 ```
 
@@ -141,6 +159,11 @@ message ItemConf {
         "id": 2,
         "startTime": "2026-10-01T02:10:10Z",
         "expiry": "7200s"
+    },
+    "otherItem": {
+        "id": 3,
+        "startTime": "2028-10-01T02:10:10Z",
+        "expiry": "10800s"
     }
 }
 ```
@@ -169,11 +192,13 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 
 <ItemConf>
     <Item @type="{.Item}" />
+    <Item2 ID="{.Item}int32" Num="int32"  />
 </ItemConf>
 -->
 
 <ItemConf>
     <Item ID="1" Num="10" />
+    <Item2 ID="2" Num="20" />
 </ItemConf>
 ```
 
@@ -190,6 +215,7 @@ message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
   protoconf.Item item = 1 [(tableau.field) = {name:"Item"}];
+  protoconf.Item item_2 = 2 [(tableau.field) = {name:"Item2"}];
 }
 ```
 
@@ -202,6 +228,10 @@ message ItemConf {
     "item": {
         "id": 1,
         "num": 10
+    },
+    "item2": {
+        "id": 2,
+        "num": 20
     }
 }
 ```
@@ -210,12 +240,130 @@ message ItemConf {
 
 ## Incell struct
 
-{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+A worksheet `ItemConf` in *HelloWorld.xml*:
 
-## Incell general struct
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
 
-{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+<ItemConf Item="{uint32 ID, int32 Num}Item" >
+    <Item2>{uint32 ID, int32 Num}OtherItem</Item2>
+</ItemConf>
+-->
+
+<ItemConf Item="2, 20">
+    <Item2>1, 10</Item2>
+</ItemConf>
+```
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xml"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  Item item = 1 [(tableau.field) = {name:"Item" span:SPAN_INNER_CELL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+  }
+  OtherItem item_2 = 2 [(tableau.field) = {name:"Item2" span:SPAN_INNER_CELL}];
+  message OtherItem {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "item": {
+        "id": 2,
+        "num": 20
+    },
+    "item2": {
+        "id": 1,
+        "num": 10
+    }
+}
+```
+
+{{< /details >}}
 
 ## Incell predefined struct
 
-{{< alert icon="👉" context="danger" text="Not supported yet." />}}
+`Item` in *common.proto* is predefined as:
+
+```protobuf
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xml*:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf Item="{.Item}">
+    <Item2>{.Item}</Item2>
+</ItemConf>
+-->
+
+<ItemConf Item="2, 20">
+    <Item2>1, 10</Item2>
+</ItemConf>
+```
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "common.proto";
+option (tableau.workbook) = {name:"HelloWorld.xml"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  protoconf.Item item = 1 [(tableau.field) = {name:"Item" span:SPAN_INNER_CELL}];
+  protoconf.Item item_2 = 2 [(tableau.field) = {name:"Item2" span:SPAN_INNER_CELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "item": {
+        "id": 2,
+        "num": 20
+    },
+    "item2": {
+        "id": 1,
+        "num": 10
+    }
+}
+```
+
+{{< /details >}}

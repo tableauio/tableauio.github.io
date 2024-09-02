@@ -81,6 +81,228 @@ message Target {
 }
 ```
 
+## Predefined union in list
+
+> Based on [predefined union type `Target`]({{< relref "union/#union-definition" >}}).
+
+A worksheet `TaskConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
+
+{{< sheet colored>}}
+
+| ID               | Target1Type                 | Target1Field1    | Target1Field2    | Target1Field3       | Target2Type        | Target2Field1    | Target2Field2    | Target2Field3    |
+|------------------|-----------------------------|------------------|------------------|---------------------|--------------------|------------------|------------------|------------------|
+| map<int32, Task> | [.Target]enum<.Target.Type> | union            | union            | union               | enum<.Target.Type> | union            | union            | union            |
+| ID               | Target1's type              | Target1's field1 | Target1's field2 | Target1's field3    | Target2's type     | Target2's field1 | Target2's field2 | Target2's field3 |
+| 1                | PVP                         | 1                | 10               | Apple,Orange,Banana | PVE                | 1,100,999        | 1,2,3            | 1:10,2:20,3:30   |
+| 2                | Story                       | 1001,10          | 1:Apple,2:Orange | Fragrant:1,Sour:2   | Skill              | 1                | 2                |                  |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+import "common.proto";
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message TaskConf {
+  option (tableau.worksheet) = {name:"TaskConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<int32, Task> task_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Task {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    repeated protoconf.Target target_list = 2 [(tableau.field) = {name:"Target" layout:LAYOUT_HORIZONTAL}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "TaskConf.json" >}}
+
+```json
+{
+    "taskMap": {
+        "1": {
+            "id": 1,
+            "targetList": [
+                {
+                    "type": "TYPE_PVP",
+                    "pvp": {
+                        "type": 1,
+                        "damage": "10",
+                        "types": [
+                            "FRUIT_TYPE_APPLE",
+                            "FRUIT_TYPE_ORANGE",
+                            "FRUIT_TYPE_BANANA"
+                        ]
+                    }
+                },
+                {
+                    "type": "TYPE_PVE",
+                    "pve": {
+                        "mission": {
+                            "id": 1,
+                            "level": 100,
+                            "damage": "999"
+                        },
+                        "heros": [
+                            1,
+                            2,
+                            3
+                        ],
+                        "dungeons": {
+                            "1": "10",
+                            "2": "20",
+                            "3": "30"
+                        }
+                    }
+                }
+            ]
+        },
+        "2": {
+            "id": 2,
+            "targetList": [
+                {
+                    "type": "TYPE_STORY",
+                    "story": {
+                        "cost": {
+                            "id": 1001,
+                            "num": 10
+                        },
+                        "fruits": {
+                            "1": "FRUIT_TYPE_APPLE",
+                            "2": "FRUIT_TYPE_ORANGE"
+                        },
+                        "flavors": {
+                            "1": {
+                                "key": "FRUIT_FLAVOR_FRAGRANT",
+                                "value": 1
+                            },
+                            "2": {
+                                "key": "FRUIT_FLAVOR_SOUR",
+                                "value": 2
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "TYPE_SKILL",
+                    "skill": {
+                        "id": 1,
+                        "damage": "2"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+{{< details "TaskConf.txt" >}}
+
+```prototxt
+task_map: {
+  key: 1
+  value: {
+    id: 1
+    target_list: {
+      type: TYPE_PVP
+      pvp: {
+        type: 1
+        damage: 10
+        types: FRUIT_TYPE_APPLE
+        types: FRUIT_TYPE_ORANGE
+        types: FRUIT_TYPE_BANANA
+      }
+    }
+    target_list: {
+      type: TYPE_PVE
+      pve: {
+        mission: {
+          id: 1
+          level: 100
+          damage: 999
+        }
+        heros: 1
+        heros: 2
+        heros: 3
+        dungeons: {
+          key: 1
+          value: 10
+        }
+        dungeons: {
+          key: 2
+          value: 20
+        }
+        dungeons: {
+          key: 3
+          value: 30
+        }
+      }
+    }
+  }
+}
+task_map: {
+  key: 2
+  value: {
+    id: 2
+    target_list: {
+      type: TYPE_STORY
+      story: {
+        cost: {
+          id: 1001
+          num: 10
+        }
+        fruits: {
+          key: 1
+          value: FRUIT_TYPE_APPLE
+        }
+        fruits: {
+          key: 2
+          value: FRUIT_TYPE_ORANGE
+        }
+        flavors: {
+          key: 1
+          value: {
+            key: FRUIT_FLAVOR_FRAGRANT
+            value: 1
+          }
+        }
+        flavors: {
+          key: 2
+          value: {
+            key: FRUIT_FLAVOR_SOUR
+            value: 2
+          }
+        }
+      }
+    }
+    target_list: {
+      type: TYPE_SKILL
+      skill: {
+        id: 1
+        damage: 2
+      }
+    }
+  }
+}
+```
+
+{{< /details >}}
+
 ## Predefined union in map
 
 > Based on [predefined union type `Target`]({{< relref "union/#union-definition" >}}).
