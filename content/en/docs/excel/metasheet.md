@@ -3,7 +3,7 @@ title: "Metasheet"
 description: "The metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
 lead: "The metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
 date: 2022-02-26T13:59:39+01:00
-lastmod: 2022-02-26T13:59:39+01:00
+lastmod: 2024-09-03T13:59:39+01:00
 draft: false
 images: []
 weight: 7902
@@ -31,9 +31,15 @@ Options below can be specified in the metasheet `@TABLEAU` to affect the corresp
 | `Merger`        | []string | Merge multiple workbook sheets (comma-separated) into this one with the same structure.<br>E.g.: `Item1.xlsx,Item2.xlsx`.                                                                                                                                                                                                                                                                                                                                             |
 | `AdjacentKey`   | bool     | Merge adjacent rows with the same key. If the key cell is not set, it will be treated the same as the nearest key above the same column.<br>Default:`false`.                                                                                                                                                                                                                                                                                                          |
 | `FieldPresence` | bool     | In order to track field presence of basic types (numeric, string, bytes, and enums), the generated field will be labeled `optional`.<br>Default:`false`.                                                                                                                                                                                                                                                                                                              |
-| `Scatter`       | bool     | Convert multiple sheets separately with same schema.                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `OrderedMap`    | bool     | Generate OrderedMap accessers or not.<br>Default: `false`.<br> Supported: `C++`.                                                                                                                                                                                                                                                                                                                                                                                      |
-| `Index`         | []string | Generate index accessers, and multiple indexes are comma-separated. <br> - Single-column index is in the forma: `<ColumnName>[@IndexName]`, if `IndexName` is not set, it will be this column's parent struct type name.<br> - Multi-column index (or composite index) is in the form: `([column1, column2, column3,...])[@IndexName]`<br>E.g.: <br> - `ID`<br> - `ID@Item`<br> - `(ID,Type)`<br> - `(ID,Type)@Item`<br> - `ID, (ID,Type)@Item`<br> Supported: `C++`. |
+| `Mode`       | Mode     | Sheet mode. <br> Valid modes are: `MODE_DEFAULT`, `MODE_UE_CSV`, `MODE_UE_JSON`, `MODE_ENUM_TYPE`, `MODE_STRUCT_TYPE`, `MODE_UNION_TYPE`. |
+| `Scatter`       | bool     | Convert multiple sheets separately with same schema.                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `Optional`       | bool     | Whether all fields in this sheet are optional (field name existence). <br> each element is: <br> - a workbook name or Glob which is relative to this workbook: `<Workbook>`, then the sheet name is the same as this sheet. <br> - or a workbook name which is relative to this workbook with a worksheet name: `<Workbook>#<Worksheet>`. |
+| `Patch`       | Patch     | Sheet patch type. <br> Valid types are: `PATCH_NONE`, `PATCH_REPLACE`, `PATCH_MERGE`. |
+| `WithParentDir`       | bool     | confgen: export JSON/Bin/Text files with parent dir created. |
+| `ScatterWithoutBookName`       | bool     | confgen(scatter): export JSON/Bin/Text filenames without book name prefix. |
+| `OrderedMap`    | bool     | Generate OrderedMap accessers or not.<br>Default: `false`.<br> Supported: `C++, Go`.                                                                                                                                                                                                                                                                                                                                                                                      |
+| `Index`         | []string | Generate index accessers, and multiple indexes are comma-separated. <br> - Single-column index is in the forma: `<ColumnName>[@IndexName]`, if `IndexName` is not set, it will be this column's parent struct type name.<br> - Multi-column index (or composite index) is in the form: `([column1, column2, column3,...])[@IndexName]`<br>E.g.: <br> - `ID`<br> - `ID@Item`<br> - `(ID,Type)`<br> - `(ID,Type)@Item`<br> - `ID, (ID,Type)@Item`<br> Supported: `C++, Go`. |
+| `LangOptions`   | map<string, string> | Specify loader language options. <br> Valid keys are: `OrderedMap`, `Index`. <br> Different kvs must be seperated by `,` and one key value must be seperated by `:`. <br> If one key doesn't exist in map, it means that this loader option is supported in all languages. <br> Valid values are all combinations of `cpp`, `go` with space as seperator. <br> Examples: <br> - `OrderedMap:cpp,Index:cpp go` // ordered map supported in cpp, index supported in cpp and go <br> - `OrderedMap:cpp` // ordered map supported in cpp, index supported in all languages |
 {.table-striped .table-hover}
 
 ## Empty `@TABLEAU`
@@ -70,6 +76,58 @@ So the metasheet `@TABLEAU` in *HelloWorld.xlsx* should be configured as:
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
+
+## Workbook alias
+
+The generated proto file name is the snake case of input file name. For example, if you have a workbook named *HelloWorld.xlsx*, the generated proto file name is *hello_world.proto*. If you want to manually specify a name for the generated proto file, you can also use the `Alias` option. In this scenario, `#` refers to the workbook.
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Sheet1 "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                | Name        |
+|-------------------|-------------|
+| map<uint32, Item> | string      |
+| Item's ID         | Item's Name |
+| 1                 | Apple       |
+| 2                 | Orange      |
+| 3                 | Banana      |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet  | Alias       |
+|--------|-------------|
+| #      | custom_conf |
+| Sheet1 | ItemConf    |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "custom_conf.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
 
 ## Option `Transpose`
 
