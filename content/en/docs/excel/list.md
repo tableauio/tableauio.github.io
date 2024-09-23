@@ -28,7 +28,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Param1         | Param2         | Param3         |
-|----------------|----------------|----------------|
+| -------------- | -------------- | -------------- |
 | []int32        | int32          | int32          |
 | Param1's value | Param2's value | Param3's value |
 | 1              | 2              | 3              |
@@ -92,7 +92,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Param1             | Param2            | Param3           |
-|--------------------|-------------------|------------------|
+| ------------------ | ----------------- | ---------------- |
 | []enum<.FruitType> | enum<.FruitType>  | enum<.FruitType> |
 | Param1's value     | Param2's value    | Param3's value   |
 | 1                  | FRUIT_TYPE_ORANGE | Banana           |
@@ -146,7 +146,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item1ID      | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
-|--------------|--------------|------------|--------------|------------|--------------|
+| ------------ | ------------ | ---------- | ------------ | ---------- | ------------ |
 | [Item]uint32 | string       | uint32     | string       | uint32     | string       |
 | Item1's ID   | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1            | Apple        | 2          | Orange       | 3          | Banana       |
@@ -221,7 +221,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item1ID      | Item1Num    | Item2ID    | Item2Num    | Item3ID    | Item3Num    |
-|--------------|-------------|------------|-------------|------------|-------------|
+| ------------ | ----------- | ---------- | ----------- | ---------- | ----------- |
 | [.Item]int32 | int32       | int32      | int32       | int32      | int32       |
 | Item1's ID   | Item1's num | Item2's ID | Item3's num | Item3's ID | Item3's num |
 | 1            | 100         | 2          | 200         | 3          | 300         |
@@ -284,7 +284,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item1                         | Item2        | Item3        |
-|-------------------------------|--------------|--------------|
+| ----------------------------- | ------------ | ------------ |
 | []{int32 ID, string Name}Item | Item         | Item         |
 | Item1's info                  | Item2's info | Item3's info |
 | 1,Apple                       | 2,Orange     | 3,Banana     |
@@ -359,7 +359,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item1        | Item2        | Item3        |
-|--------------|--------------|--------------|
+| ------------ | ------------ | ------------ |
 | []{.Item}    | .Item        | .Item        |
 | Item1's info | Item2's info | Item3's info |
 | 1,100        | 2,200        | 3,300        |
@@ -436,7 +436,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID           | Name        | Desc                          |
-|--------------|-------------|-------------------------------|
+| ------------ | ----------- | ----------------------------- |
 | [Item]uint32 | string      | string                        |
 | Item's ID    | Item's name | Item's desc                   |
 | 1            | Apple       | A kind of delicious fruit.    |
@@ -517,7 +517,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID           | Num        |
-|--------------|------------|
+| ------------ | ---------- |
 | [.Item]int32 | int32      |
 | Item's ID    | Item's num |
 | 1            | 100        |
@@ -582,7 +582,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item                       |
-|----------------------------|
+| -------------------------- |
 | []{int32 ID,int32 Num}Item |
 | Item's info                |
 | 1,100                      |
@@ -659,7 +659,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item        |
-|-------------|
+| ----------- |
 | []{.Item}   |
 | Item's info |
 | 1,100       |
@@ -731,7 +731,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Param      |
-|------------|
+| ---------- |
 | []int32    |
 | Param list |
 | 1,2,3      |
@@ -782,9 +782,76 @@ message ItemConf {
 
 {{< /details >}}
 
+### Incell enum list
+
+`FruitType` in *common.proto* is predefined as:
+
+```protobuf
+enum FruitType {
+  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
+  FRUIT_TYPE_ORANGE  = 3 [(tableau.evalue).name = "Orange"];
+  FRUIT_TYPE_BANANA  = 4 [(tableau.evalue).name = "Banana"];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Param                      |
+| -------------------------- |
+| []enum<.FruitType>         |
+| Param list                 |
+| 1,FRUIT_TYPE_ORANGE,Banana |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+The `Param` column's type is incell list `[]enum<.FruitType>`, as the list element is the predefined enum type `FruitType`.
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "common.proto";
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated protoconf.FruitType param_list = 1 [(tableau.field) = {name:"Param" layout:LAYOUT_INCELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "paramList": [
+        "FRUIT_TYPE_APPLE",
+        "FRUIT_TYPE_ORANGE",
+        "FRUIT_TYPE_BANANA"
+    ]
+}
+```
+
+{{< /details >}}
+
 ### Incell struct list
 
-No need to support.
+See [Advanced predefined incell struct →]({{< relref "struct/#advanced-predefined-incell-struct" >}}).
 
 ## Horizontal list size
 
@@ -807,7 +874,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*.
 {{< sheet colored >}}
 
 | Item1ID                    | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
-|:---------------------------|:-------------|:-----------|:-------------|:-----------|:-------------|
+| :------------------------- | :----------- | :--------- | :----------- | :--------- | :----------- |
 | [Item]uint32\|{fixed:true} | string       | uint32     | string       | uint32     | string       |
 | Item1's ID                 | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1                          | Apple        |            |              | 3          | Banana       |
@@ -877,7 +944,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item1ID                | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
-|------------------------|--------------|------------|--------------|------------|--------------|
+| ---------------------- | ------------ | ---------- | ------------ | ---------- | ------------ |
 | [Item]uint32\|{size:2} | string       | uint32     | string       | uint32     | string       |
 | Item1's ID             | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1                      | Apple        |            |              | 3          | Banana       |
@@ -941,7 +1008,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | D                 | Prop1ID     |              | Prop1Value    | Prop2ID    |              | Prop2Value    |
-|:------------------|:------------|:-------------|:--------------|:-----------|:-------------|:--------------|
+| :---------------- | :---------- | :----------- | :------------ | :--------- | :----------- | :------------ |
 | map<uint32, Item> | [Prop]int32 |              | int32         | int32      |              | int32         |
 | Item's ID         | Prop1’s ID  | Prop1’s name | Prop1’s value | Prop2’s ID | Prop2’s name | Prop2’s value |
 | 1                 | 1           | Apple        | 100           | 2          | Orange       | 200           |
@@ -1042,7 +1109,7 @@ For example, a worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID               | PropID           | PropName    |
-|------------------|------------------|-------------|
+| ---------------- | ---------------- | ----------- |
 | [Item]\<uint32\> | map<int32, Prop> | string      |
 | Item's ID        | Prop's ID        | Prop's name |
 | 1                | 1                | sweet       |
@@ -1124,7 +1191,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Param       |
-|-------------|
+| ----------- |
 | []\<int32\> |
 | Param list  |
 | 1,2,2,3     |

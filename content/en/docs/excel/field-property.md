@@ -21,9 +21,11 @@ toc: true
 | `default`   | string | Use this default value if cell is empty.                                                                                                                                   |
 | `fixed`     | bool   | Auto-detected fixed size of horizontal list/map. <br> Default: `false`.                                                                                                    |
 | `size`      | uint32 | Specify fixed size of horizontal list/map.                                                                                                                                 |
-| `form`      | Form   | Specify cell data form of incell struct.<br> -  `FORM_TEXT`<br> - `FORM_JSON`                                                                                              |
+| `form`      | Form   | Specify cell data form of incell struct.<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                               |
 | `json_name` | string | Specify field's custom JSON name instead of lowerCamelCase name of proto field name.                                                                                       |
 | `present`   | bool   | Must fill cell data explicitly if present is true. <br> Default: `false`.                                                                                                  |
+| `optional`  | bool   | Whether this field is optional (field name existence).                                                                                                                     |
+| `patch`     | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                              |
 
 {.table-striped .table-hover}
 
@@ -33,7 +35,7 @@ Option `unique` can be specified as `true` in the map field property. Then the t
 
 ## Option `range`
 
-{{< alert icon="⚠️️" context="info" text="This check option will not be applied if cell data is empty (not present). So if you still want to check even if cell data is empty (not present), then you need to set present option to true." />}}
+{{< alert icon="⚠️️" context="warning" text="This check option will not be applied if cell data is empty (not present). So if you still want to check even if cell data is empty, then you should set option `present` to true." />}}
 
 Option `range` can be specified as format: `"left, right"` (left and right are both inclusive).
 
@@ -103,8 +105,6 @@ For detailed demos, see [Advanced predefined incell struct →]({{< relref "stru
 By default, JSON name is deduced from the field's proto name by converting it to camelCase. Now you
 can explicitly specify it by `json_name` prop option.
 
-For example:
-
 For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
@@ -131,3 +131,16 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 If option `present` is set as `true`, then cell data cannot be empty and must be filled explicitly.
 Otherwise an error will be reported.
+
+## Option `optional`
+
+Specify whether this field is optional (field name existence).
+
+If set to true, then:
+
+- table formats (Excel/CSV): field's column can be absent.
+- document formats (XML/YAML): field's name can be absent.
+
+## Option `patch`
+
+See field-level patch in [Option Patch →]({{< relref "metasheet/#option-patch" >}}).
