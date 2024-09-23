@@ -32,7 +32,7 @@ enum FruitType {
 Then the three forms of enum value are all accepted:
 
 | Enum value number | Enum value name    | Enum value alias |
-|-------------------|--------------------|------------------|
+| ----------------- | ------------------ | ---------------- |
 | 0                 | FRUIT_TYPE_UNKNOWN | Unknown          |
 | 1                 | FRUIT_TYPE_APPLE   | Apple            |
 | 2                 | FRUIT_TYPE_ORANGE  | Orange           |
@@ -40,7 +40,7 @@ Then the three forms of enum value are all accepted:
 
 > NOTE: Enum type must be predefined.
 
-Go to read details about predefiend **Enum** type. [Predefined types →]({{< relref "predefined-types" >}})
+Go to read details about predefiend **Enum** type: [Predefined types →]({{< relref "predefined-types" >}}).
 
 ## Validation
 

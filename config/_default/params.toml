@@ -62,7 +62,7 @@ copyRight = "Copyright (c) 2020-2021 Tableau IO"
 # Alert
 alert = true
 alertDismissable = true
-alertText = "🆕📢 YAML is supported now, <a class='alert-link stretched-link' href='https://tableauio.github.io/docs/yaml/scalar/'>Take a look</a>!"
+alertText = "🆕📢 YAML is supported now, <a class='alert-link stretched-link' href='https://tableauio.github.io/docs/yaml/scalar/'>Learn More</a>!"
 
 # Edit Page
 # repoHost [Github | Gitea | GitLab] is used for building the edit link based on git hoster
@@ -92,4 +92,4 @@ lastMod = true
 [menu]
   [menu.section]
     auto = true
-    collapsibleSidebar = true
+    collapsibleSidebar = false
