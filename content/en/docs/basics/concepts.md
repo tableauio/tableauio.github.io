@@ -2,8 +2,8 @@
 title: "Concepts"
 description: "Core concepts of Tableau."
 lead: "Core concepts of Tableau."
-date: 2022-02-26T13:59:39+01:00
-lastmod: 2022-02-26T13:59:39+01:00
+date: 2022-02-26T13:59:39+08:00
+lastmod: 2022-02-26T13:59:39+08:00
 draft: false
 images: []
 weight: 8100
@@ -14,22 +14,22 @@ toc: true
 
 ### Basics
 
-| Term         | Definition                                                                                           |
-|--------------|------------------------------------------------------------------------------------------------------|
-| `Workbook`   | An excel file.<br>A XML file.<br> A bundle of CSV files named with the same prefix seperated by `#`. |
-| `Worksheet`  | A sheet in a excel file.<br>A root node of a XML file.<br>A CSV file.                                |
-| `Metasheet`  | A worksheet named `@TABLEAU` to specify tableau parser options.                                      |
-| `Row`        | The row in a sheet.                                                                                  |
-| `Column`     | The column in a sheet.                                                                               |
-| `Cell`       | The intersection of a row and a column.                                                              |
-| `In-cell`    | The inner-side of a cell.                                                                            |
-| `Cross-cell` | Continuous cells of a row or a column.                                                               |
+| Term         | Definition                                                                                                             |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `Workbook`   | An excel file.<br> A bundle of CSV files named with the same prefix seperated by `#`. <br>A XML file. <br>A YAML file. |
+| `Worksheet`  | A sheet in a excel file. <br>A CSV file. <br>A root node of a XML file. <br>A document in YAML file.                   |
+| `Metasheet`  | A worksheet named `@TABLEAU` to specify tableau parser options.                                                        |
+| `Row`        | The row in a sheet.                                                                                                    |
+| `Column`     | The column in a sheet.                                                                                                 |
+| `Cell`       | The intersection of a row and a column.                                                                                |
+| `In-cell`    | The inner-side of a cell.                                                                                              |
+| `Cross-cell` | Continuous cells of a row or a column.                                                                                 |
 {.table-striped .table-hover}
 
 ### Worksheet
 
 | Term        | Definition                                                                                                                             |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Namerow`   | Exact row number of column name definition at a worksheet.<br>⚠️ NOTE: each column name must be unique in a worksheet!<br>Default: `1`. |
 | `Typerow`   | Exact row number of column type definition at a worksheet.<br>Default: `2`.                                                            |
 | `Noterow`   | Exact row number of column note at a worksheet.<br>Default: `3`.                                                                       |
@@ -46,7 +46,7 @@ toc: true
 ## Mappings to Protoconf
 
 | Term        | Protoconf                                                                                                                                                      |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Workbook`  | One protoconf(`.proto`) file.                                                                                                                                  |
 | `Worksheet` | One top-level [message](https://developers.google.com/protocol-buffers/docs/proto3#simple) in a protoconf file, except the tableau metasheet named `@TABLEAU`. |
 | `column`    | One field in a [message](https://developers.google.com/protocol-buffers/docs/proto3#simple)                                                                    |
@@ -62,7 +62,7 @@ A workbook(*HelloWorld.xlsx*) with two data worksheets(`ItemConf` and `ActivityC
 {{< sheet colored>}}
 
 | ID                | Name         | Type         |
-|-------------------|--------------|--------------|
+| ----------------- | ------------ | ------------ |
 | map<uint32, Item> | string       | int32        |
 | Item's ID.        | Item's name. | Item's type. |
 | 1                 | item1        | 100          |
@@ -74,7 +74,7 @@ A workbook(*HelloWorld.xlsx*) with two data worksheets(`ItemConf` and `ActivityC
 {{< sheet colored>}}
 
 | ID                    | Name             | Open              |
-|-----------------------|------------------|-------------------|
+| --------------------- | ---------------- | ----------------- |
 | map<uint32, Activity> | string           | bool              |
 | Activity's ID.        | Activity's name. | Activity is open? |
 | 1                     | activity1        | true              |
@@ -85,11 +85,11 @@ A workbook(*HelloWorld.xlsx*) with two data worksheets(`ItemConf` and `ActivityC
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

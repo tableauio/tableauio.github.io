@@ -2,8 +2,8 @@
 title: "Metasheet"
 description: "The metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
 lead: "The metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
-date: 2022-02-26T13:59:39+01:00
-lastmod: 2024-09-03T13:59:39+01:00
+date: 2022-02-26T13:59:39+08:00
+lastmod: 2024-09-03T13:59:39+08:00
 draft: false
 images: []
 weight: 7902

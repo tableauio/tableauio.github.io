@@ -2,8 +2,8 @@
 title: "How to Update"
 description: "Regularly update the installed toolchain to keep your tableau stable, usable, and secure."
 lead: "Regularly update the installed toolchain to keep your tableau stable, usable, and secure."
-date: 2020-11-12T13:26:54+01:00
-lastmod: 2020-11-12T13:26:54+01:00
+date: 2020-11-12T13:26:54+08:00
+lastmod: 2020-11-12T13:26:54+08:00
 draft: false
 images: []
 weight: 1001

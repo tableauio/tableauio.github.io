@@ -2,11 +2,11 @@
 title: "Union"
 description: "Union type features."
 lead: "This guide demonstrates different features of union type."
-date: 2022-09-04T13:59:39+01:00
-lastmod: 2022-09-04T13:59:39+01:00
+date: 2022-09-04T13:59:39+08:00
+lastmod: 2022-09-04T13:59:39+08:00
 draft: false
 images: []
-weight: 7103
+weight: 7105
 toc: true
 ---
 

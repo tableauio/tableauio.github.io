@@ -2,8 +2,8 @@
 title: "Overview"
 description: "Overview"
 lead: "Welcome to Tableau! This tutorial will guide you through setting up and running tableauc, loader, and checker."
-date: 2020-11-16T13:59:39+01:00
-lastmod: 2020-11-16T13:59:39+01:00
+date: 2020-11-16T13:59:39+08:00
+lastmod: 2020-11-16T13:59:39+08:00
 draft: false
 images: []
 weight: 9801

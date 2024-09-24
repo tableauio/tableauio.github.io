@@ -2,110 +2,22 @@
 title: "Predefined types"
 description: "Predefined types."
 lead: "Tableau support predefined types to be imported, then you can use it in Excel/CSV/XML/YAML."
-date: 2022-02-26T08:48:57+00:00
-lastmod: 2022-02-26T08:48:57+00:00
+date: 2022-02-26T08:48:57+08:00
+lastmod: 2022-02-26T08:48:57+08:00
 draft: false
 images: []
-weight: 8400
+weight: 8500
 toc: true
 ---
 
 ## Overview
 
-You can define `enum` or `struct` types in a protoconf file (such as `common.proto`) ahead. It means you create predefined types, and then can use them to specify the column type or cross-cell struct type of a worksheet.
+You can define `enum` or `struct` types in a protoconf file (such as `common.proto`) ahead. It means you can create predefined types, and then can use them to specify the column type or cross-cell struct type of a worksheet.
 
 ## Usage
 
 - Syntax: prepend a dot `.` to predefined `CustomType` (a.k.a. `.CustomType`) when you use it in a worksheet.
 - Import: specify the `importedProtoFiles` option of **tableauc** config to import the common proto files, where predefined `enum` or `struct` types are defined. Refer: [Tableau Options](https://github.com/tableauio/tableau/blob/master/options/options.go#L105).
-
-## Enum
-
-The basic enum guide, please go to read [Enum →]({{< relref "enum" >}})
-
-For example, enum type `FruitType` in `common.proto` is defined as:
-
-```protobuf
-enum FruitType {
-  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
-  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
-  FRUIT_TYPE_ORANGE  = 2 [(tableau.evalue).name = "Orange"];
-  FRUIT_TYPE_BANANA  = 4 [(tableau.evalue).name = "Banana"];
-}
-```
-
-A worksheet `ItemConf` in *HelloWorld.xlsx*:
-
-{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
-
-{{< sheet colored >}}
-
-| ID                | Type              |
-|-------------------|-------------------|
-| map<uint32, Item> | enum<.FruitType>  |
-| Item's ID         | Fruit's type      |
-| 1                 | 1                 |
-| 2                 | Orange            |
-| 3                 | FRUIT_TYPE_BANANA |
-
-{{< /sheet >}}
-
-{{< sheet >}}
-
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
-{{< /sheet >}}
-
-{{< /spreadsheet >}}
-
-Generated:
-
-{{< details "hello_world.proto" open >}}
-
-```protobuf
-// --snip--
-import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
-
-  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
-  message Item {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    FruitType type = 2 [(tableau.field) = {name:"Type"}];
-  }
-}
-```
-
-{{< /details >}}
-
-{{< details "ItemConf.json" >}}
-
-```json
-{
-    "itemMap":  {
-        "1":  {
-            "id":  1,
-            "type":  "FRUIT_TYPE_APPLE"
-        },
-        "2":  {
-            "id":  3,
-            "type":  "FRUIT_TYPE_ORANGE"
-        }
-        "3":  {
-            "id":  2,
-            "type":  "FRUIT_TYPE_BANANA"
-        },
-    }
-}
-```
-
-{{< /details >}}
 
 ## Struct
 
@@ -125,7 +37,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Prop1ID      | Prop1Value    | Prop2ID    | Prop2Value    |
-|-------------------|--------------|---------------|------------|---------------|
+| ----------------- | ------------ | ------------- | ---------- | ------------- |
 | map<uint32, Item> | [.Prop]int32 | int32         | int32      | int32         |
 | Item's ID         | Prop1's ID   | Prop1's value | Prop2's ID | Prop2's value |
 | 1                 | 1            | 100           | 2          | 200           |
@@ -136,11 +48,11 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

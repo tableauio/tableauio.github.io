@@ -2,11 +2,11 @@
 title: "Struct"
 description: "Struct features."
 lead: "This guide demonstrates different features of struct type."
-date: 2022-02-26T13:59:39+01:00
-lastmod: 2022-02-26T13:59:39+01:00
+date: 2022-02-26T13:59:39+08:00
+lastmod: 2022-02-26T13:59:39+08:00
 draft: false
 images: []
-weight: 7102
+weight: 7104
 toc: true
 ---
 

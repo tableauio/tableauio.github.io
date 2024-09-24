@@ -2,11 +2,11 @@
 title: "Map"
 description: "Map features."
 lead: "This guide demonstrates different features of map type."
-date: 2022-02-26T13:59:39+01:00
-lastmod: 2022-02-26T13:59:39+01:00
+date: 2022-02-26T13:59:39+08:00
+lastmod: 2022-02-26T13:59:39+08:00
 draft: false
 images: []
-weight: 7105
+weight: 7107
 toc: true
 ---
 
