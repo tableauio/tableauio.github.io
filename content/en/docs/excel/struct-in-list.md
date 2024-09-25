@@ -21,7 +21,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID           | Name        | PropID      | PropValue    |
-|--------------|-------------|-------------|--------------|
+| ------------ | ----------- | ----------- | ------------ |
 | [Item]uint32 | string      | {Prop}int32 | int64        |
 | Item's ID    | Item's name | Prop's ID   | Prop's value |
 | 1            | Apple       | 1           | 10           |
@@ -31,6 +31,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -103,7 +109,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID           | Name        | PropID                     |
-|--------------|-------------|----------------------------|
+| ------------ | ----------- | -------------------------- |
 | [Item]uint32 | string      | {int32 ID,int64 Value}Prop |
 | Item's ID    | Item's name | Prop's ID                  |
 | 1            | Apple       | 1,100                      |
@@ -113,6 +119,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -187,7 +199,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Reward1ItemID       | Reward1ItemNum | Reward1Name   | Reward2ItemID | Reward2ItemNum | Reward2Name   |
-|---------------------|----------------|---------------|---------------|----------------|---------------|
+| ------------------- | -------------- | ------------- | ------------- | -------------- | ------------- |
 | [Reward]{Item}int32 | int32          | string        | int32         | int32          | string        |
 | Item1's ID          | Item1's num    | Reward's name | Item1's ID    | Item1's num    | Reward's name |
 | 1                   | 10             | Lotto         | 10            | 100            | Super Lotto   |
@@ -195,6 +207,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -268,7 +286,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Reward1ItemID        | Reward1ItemNum | Reward1Name   | Reward2ItemID | Reward2ItemNum | Reward2Name   |
-|----------------------|----------------|---------------|---------------|----------------|---------------|
+| -------------------- | -------------- | ------------- | ------------- | -------------- | ------------- |
 | [Reward]{.Item}int32 | int32          | string        | int32         | int32          | string        |
 | Item1's ID           | Item1's num    | Reward's name | Item1's ID    | Item1's num    | Reward's name |
 | 1                    | 10             | Lotto         | 10            | 100            | Super Lotto   |
@@ -276,6 +294,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -337,7 +361,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Reward1Item                       | Reward1Name   | Reward2Item    | Reward2Name   |
-|-----------------------------------|---------------|----------------|---------------|
+| --------------------------------- | ------------- | -------------- | ------------- |
 | [Reward]{int32 ID, int32 Num}Item | string        | Item           | string        |
 | Reward1's item                    | Reward's name | Reward2's item | Reward's name |
 | 1,10                              | Lotto         | 2,20           | Super Lotto   |
@@ -345,6 +369,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

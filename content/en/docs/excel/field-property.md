@@ -123,6 +123,12 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}

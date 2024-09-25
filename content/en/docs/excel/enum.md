@@ -118,6 +118,12 @@ A worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}

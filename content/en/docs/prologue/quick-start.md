@@ -82,7 +82,7 @@ Add **HelloWorld.xlsx** with two sheets:
 {{< sheet colored>}}
 
 | ID               | Name        | Desc                          |
-|------------------|-------------|-------------------------------|
+| ---------------- | ----------- | ----------------------------- |
 | map<int32, Item> | string      | string                        |
 | Item’s ID        | Item’s name | Item’s description            |
 | 1                | Apple       | A kind of delicious fruit.    |
@@ -92,6 +92,12 @@ Add **HelloWorld.xlsx** with two sheets:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

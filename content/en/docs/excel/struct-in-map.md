@@ -21,7 +21,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                 | ItemID      | ItemNum    |
-|--------------------|-------------|------------|
+| ------------------ | ----------- | ---------- |
 | map<int32, Reward> | {Item}int32 | int32      |
 | Reward's ID        | Item's ID   | Item's Num |
 | 1                  | 1           | 10         |
@@ -31,6 +31,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -108,7 +114,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                 | ItemID       | ItemNum    |
-|--------------------|--------------|------------|
+| ------------------ | ------------ | ---------- |
 | map<int32, Reward> | {.Item}int32 | int32      |
 | Reward's ID        | Item's ID    | Item's Num |
 | 1                  | 1            | 10         |
@@ -118,6 +124,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -183,7 +195,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                 | Item                      |
-|--------------------|---------------------------|
+| ------------------ | ------------------------- |
 | map<int32, Reward> | {int32 ID, int32 Num}Item |
 | Reward's ID        | Item's info               |
 | 1                  | 1,100                     |
@@ -193,6 +205,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

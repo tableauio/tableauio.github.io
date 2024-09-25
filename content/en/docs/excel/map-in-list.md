@@ -21,7 +21,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID           | Name        | Prop1ID          | Prop1Value    | Prop2ID    | Prop2Value    |
-|--------------|-------------|------------------|---------------|------------|---------------|
+| ------------ | ----------- | ---------------- | ------------- | ---------- | ------------- |
 | [Item]uint32 | string      | map<int32, Prop> | int64         | int32      | int64         |
 | Item's ID    | Item's name | Prop1's ID       | Prop1's value | Prop2's ID | Prop2's value |
 | 1            | Apple       | 1                | 10            | 2          | 20            |
@@ -31,6 +31,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -111,7 +117,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID               | Name        | PropID           | PropValue    |
-|------------------|-------------|------------------|--------------|
+| ---------------- | ----------- | ---------------- | ------------ |
 | [Item]\<uint32\> | string      | map<int32, Prop> | int64        |
 | Item's ID        | Item's name | Prop's ID        | Prop's value |
 | 1                | Apple       | 1                | 10           |
@@ -121,6 +127,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -196,7 +208,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID           | Props                      |
-|--------------|----------------------------|
+| ------------ | -------------------------- |
 | [Item]uint32 | map\<int32, string\>       |
 | Item's ID    | Item's props               |
 | 1            | 1:sour,2:sweet,3:delicious |
@@ -206,6 +218,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -275,7 +293,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Reward1Item1ID           | Reward1Item1Num | Reward1Item2ID | Reward1Item2Num | Reward1Name   | Reward2Item1ID | Reward2Item1Num | Reward2Name   |
-|--------------------------|-----------------|----------------|-----------------|---------------|----------------|-----------------|---------------|
+| ------------------------ | --------------- | -------------- | --------------- | ------------- | -------------- | --------------- | ------------- |
 | [Reward]map<int32, Item> | int32           | int32          | int32           | string        | int32          | int32           | string        |
 | Item1's ID               | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
 | 1                        | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
@@ -283,6 +301,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -364,7 +388,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Reward1Item1ID            | Reward1Item1Num | Reward1Item2ID | Reward1Item2Num | Reward1Name   | Reward2Item1ID | Reward2Item1Num | Reward2Name   |
-|---------------------------|-----------------|----------------|-----------------|---------------|----------------|-----------------|---------------|
+| ------------------------- | --------------- | -------------- | --------------- | ------------- | -------------- | --------------- | ------------- |
 | [Reward]map<int32, .Item> | int32           | int32          | int32           | string        | int32          | int32           | string        |
 | Item1's ID                | Item1's num     | Item2's ID     | Item2's num     | Reward's name | Item1's ID     | Item1's num     | Reward's name |
 | 1                         | 10              | 2              | 20              | Lotto         | 10             | 100             | Super Lotto   |
@@ -372,6 +396,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

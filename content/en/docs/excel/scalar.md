@@ -19,7 +19,7 @@ A worksheet `Apple` in *HelloWorld.xlsx*:
 {{< sheet colored>}}
 
 | ID        | Name        | Desc                       |
-|-----------|-------------|----------------------------|
+| --------- | ----------- | -------------------------- |
 | uint32    | string      | string                     |
 | Item's ID | Item's Name | Item's Description         |
 | 1         | Apple       | A kind of delicious fruit. |
@@ -27,6 +27,12 @@ A worksheet `Apple` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

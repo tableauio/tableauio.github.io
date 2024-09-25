@@ -31,7 +31,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item1ID           | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
-|-------------------|--------------|------------|--------------|------------|--------------|
+| ----------------- | ------------ | ---------- | ------------ | ---------- | ------------ |
 | map<uint32, Item> | string       | uint32     | string       | uint32     | string       |
 | Item1's ID        | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1                 | Apple        | 2          | Orange       | 3          | Banana       |
@@ -39,6 +39,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -106,7 +112,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item1ID           | Item1Num    | Item2ID    | Item2Num    | Item3ID    | Item3Num    |
-|-------------------|-------------|------------|-------------|------------|-------------|
+| ----------------- | ----------- | ---------- | ----------- | ---------- | ----------- |
 | map<int32, .Item> | int32       | int32      | int32       | int32      | int32       |
 | Item1's ID        | Item1's num | Item2's ID | Item3's num | Item3's ID | Item3's num |
 | 1                 | 100         | 2          | 200         | 3          | 300         |
@@ -114,6 +120,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -181,7 +193,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Name        | Desc                          |
-|-------------------|-------------|-------------------------------|
+| ----------------- | ----------- | ----------------------------- |
 | map<uint32, Item> | string      | string                        |
 | Item’s ID         | Item’s name | Item’s desc                   |
 | 1                 | Apple       | A kind of delicious fruit.    |
@@ -191,6 +203,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -262,7 +280,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Num        |
-|-------------------|------------|
+| ----------------- | ---------- |
 | map<int32, .Item> | int32      |
 | Item's ID         | Item's num |
 | 1                 | 100        |
@@ -272,6 +290,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -334,7 +358,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Items                              |
-|------------------------------------|
+| ---------------------------------- |
 | map<uint32, string>                |
 | Items                              |
 | 1:Apple,2:Orange,3:Banana,4,:Peach |
@@ -342,6 +366,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -414,7 +444,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Fruit                        | Flavor                         | Item                                      |
-|------------------------------|--------------------------------|-------------------------------------------|
+| ---------------------------- | ------------------------------ | ----------------------------------------- |
 | map<enum<.FruitType>, int64> | map<int64, enum<.FruitFlavor>> | map<enum<.FruitType>, enum<.FruitFlavor>> |
 | Fruits                       | Flavors                        | Items                                     |
 | Apple:1,Orange:2             | 1:Fragrant,2:Sweet             | Apple:Fragrant,Orange:Sour                |
@@ -422,6 +452,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -499,7 +535,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Desc        |
-|-------------------|-------------|
+| ----------------- | ----------- |
 | map<uint32, Item> | string      |
 | Item's ID         | Item's name |
 | 1                 | Apple       |
@@ -509,6 +545,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -600,7 +642,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Type                        | Price        |
-|-----------------------------|--------------|
+| --------------------------- | ------------ |
 | map<enum<.FruitType>, Item> | int32        |
 | Item's type                 | Item's price |
 | Apple                       | 100          |
@@ -610,6 +652,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -683,7 +731,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item1ID                         | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
-|---------------------------------|--------------|------------|--------------|------------|--------------|
+| ------------------------------- | ------------ | ---------- | ------------ | ---------- | ------------ |
 | map<uint32, Item>\|{fixed:true} | string       | uint32     | string       | uint32     | string       |
 | Item1's ID                      | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1                               | Apple        |            |              | 3          | Banana       |
@@ -691,6 +739,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -755,7 +809,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Item1ID                     | Item1Name    | Item2ID    | Item2Name    | Item3ID    | Item3Name    |
-|-----------------------------|--------------|------------|--------------|------------|--------------|
+| --------------------------- | ------------ | ---------- | ------------ | ---------- | ------------ |
 | map<uint32, Item>\|{size:2} | string       | uint32     | string       | uint32     | string       |
 | Item1's ID                  | Item1's name | Item2's ID | Item2's name | Item3's ID | Item3's name |
 | 1                           | Apple        |            |              | 3          | Banana       |
@@ -763,6 +817,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -819,7 +879,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | D                 | Prop1ID          |              | Prop1Value    | Prop2ID    |              | Prop2Value    |
-|:------------------|:-----------------|:-------------|:--------------|:-----------|:-------------|:--------------|
+| :---------------- | :--------------- | :----------- | :------------ | :--------- | :----------- | :------------ |
 | map<uint32, Item> | map<int32, Prop> |              | int32         | int32      |              | int32         |
 | Item's ID         | Prop1’s ID       | Prop1’s name | Prop1’s value | Prop2’s ID | Prop2’s name | Prop2’s value |
 | 1                 | 1                | Apple        | 100           | 2          | Orange       | 200           |
@@ -829,6 +889,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -914,8 +980,9 @@ In the metasheet `@TABLEAU`, set the `OrderedMap` option to `true`, then
 ordered map accessers will be generated. This feature is powered by [tableauio/loader](https://github.com/tableauio/loader). Currently supported programming languages are:
 
 - [x] C++
-- [ ] Golang
+- [x] Go
 - [ ] C#
+- [ ] JS/TS
 
 #### Example
 
@@ -927,7 +994,7 @@ If we want `ItemConf` to generate ordered map accessers, then set
 {{< sheet colored >}}
 
 | ID                | Name        |
-|-------------------|-------------|
+| ----------------- | ----------- |
 | map<uint32, Item> | string      |
 | Item's ID         | Item's Name |
 | 1                 | Apple       |
@@ -939,7 +1006,7 @@ If we want `ItemConf` to generate ordered map accessers, then set
 {{< sheet >}}
 
 | Sheet    | OrderedMap |
-|----------|------------|
+| -------- | ---------- |
 | ItemConf | true       |
 
 {{< /sheet >}}

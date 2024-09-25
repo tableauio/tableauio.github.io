@@ -92,7 +92,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< sheet colored>}}
 
 | ID               | Target1Type                 | Target1Field1    | Target1Field2    | Target1Field3       | Target2Type        | Target2Field1    | Target2Field2    | Target2Field3    |
-|------------------|-----------------------------|------------------|------------------|---------------------|--------------------|------------------|------------------|------------------|
+| ---------------- | --------------------------- | ---------------- | ---------------- | ------------------- | ------------------ | ---------------- | ---------------- | ---------------- |
 | map<int32, Task> | [.Target]enum<.Target.Type> | union            | union            | union               | enum<.Target.Type> | union            | union            | union            |
 | ID               | Target1's type              | Target1's field1 | Target1's field2 | Target1's field3    | Target2's type     | Target2's field1 | Target2's field2 | Target2's field3 |
 | 1                | PVP                         | 1                | 10               | Apple,Orange,Banana | PVE                | 1,100,999        | 1,2,3            | 1:10,2:20,3:30   |
@@ -101,6 +101,12 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -314,7 +320,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< sheet colored>}}
 
 | ID               | TargetType                  | TargetField1    | TargetField2     | TargetField3        | Progress |
-|------------------|-----------------------------|-----------------|------------------|---------------------|----------|
+| ---------------- | --------------------------- | --------------- | ---------------- | ------------------- | -------- |
 | map<int32, Task> | {.Target}enum<.Target.Type> | union           | union            | union               | int32    |
 | ID               | Target's type               | Target's field1 | Target's field2  | Target's field3     | Progress |
 | 1                | PVP                         | 1               | 10               | Apple,Orange,Banana | 3        |
@@ -325,6 +331,12 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -561,7 +573,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< sheet colored>}}
 
 | ID               | Target1                                                                                                                                                                                                                                    | Target2                                                                                                                                                                                                                   | Progress |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | map<int32, Task> | {.Target}\|{form:FORM_TEXT}                                                                                                                                                                                                                | {.Target}\|{form:FORM_JSON}                                                                                                                                                                                               | int32    |
 | ID               | Target1                                                                                                                                                                                                                                    | Target2                                                                                                                                                                                                                   | Progress |
 | 1                | type:TYPE_PVP pvp:{type:1 damage:10 types:FRUIT_TYPE_APPLE types:FRUIT_TYPE_ORANGE types:FRUIT_TYPE_BANANA}                                                                                                                                | {"type":"TYPE_PVP","pvp":{"type":1,"damage":"10","types":["FRUIT_TYPE_APPLE","FRUIT_TYPE_ORANGE","FRUIT_TYPE_BANANA"]}}                                                                                                   | 3        |
@@ -572,6 +584,12 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

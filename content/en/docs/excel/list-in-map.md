@@ -21,7 +21,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Name        | Prop1ID     | Prop1Value    | Prop2ID    | Prop2Value    |
-|-------------------|-------------|-------------|---------------|------------|---------------|
+| ----------------- | ----------- | ----------- | ------------- | ---------- | ------------- |
 | map<uint32, Item> | string      | [Prop]int32 | int64         | int32      | int64         |
 | Item's ID         | Item's name | Prop1's ID  | Prop1's value | Prop2's ID | Prop2's value |
 | 1                 | Apple       | 1           | 10            | 2          | 20            |
@@ -31,6 +31,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -111,7 +117,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Name        | PropID      | PropValue    |
-|-------------------|-------------|-------------|--------------|
+| ----------------- | ----------- | ----------- | ------------ |
 | map<uint32, Item> | string      | [Prop]int32 | int64        |
 | Item's ID         | Item's name | Prop's ID   | Prop's value |
 | 1                 | Apple       | 1           | 10           |
@@ -121,6 +127,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -196,7 +208,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Prop         |
-|-------------------|--------------|
+| ----------------- | ------------ |
 | map<uint32, Item> | []int32      |
 | Item's ID         | Item's props |
 | 1                 | 10,20,30     |
@@ -206,6 +218,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

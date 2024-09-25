@@ -23,7 +23,7 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< sheet colored >}}
 
 | PropertyID      | PropertyName    | PropertyDesc           |
-|:----------------|:----------------|:-----------------------|
+| :-------------- | :-------------- | :--------------------- |
 | {Property}int32 | string          | string                 |
 | Property's ID   | Property's Name | Property's Description |
 | 1               | Orange          | A kind of sour fruit.  |
@@ -31,6 +31,12 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -92,7 +98,7 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< sheet colored >}}
 
 | ID               | Prop                                       |
-|------------------|--------------------------------------------|
+| ---------------- | ------------------------------------------ |
 | map<int32, Item> | {int32 ID,string Name,string Desc}Property |
 | Item's ID        | Item's property.                           |
 | 1                | 1,Orange,A good fruit.                     |
@@ -102,6 +108,12 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -191,7 +203,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Prop                   |
-|-------------------|------------------------|
+| ----------------- | ---------------------- |
 | map<uint32, Item> | {.Property}            |
 | Item's ID         | Item's property.       |
 | 1                 | 1,Orange,A good fruit. |
@@ -201,6 +213,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -287,7 +305,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | RewardItemID            | RewardItemNum | CostItemID            | CostItemNum | PredefinedItemID             | PredefinedItemNum    |
-|-------------------------|---------------|-----------------------|-------------|------------------------------|----------------------|
+| ----------------------- | ------------- | --------------------- | ----------- | ---------------------------- | -------------------- |
 | {Item(RewardItem)}int32 | int32         | {Item(CostItem)}int32 | int32       | {.Item(PredefinedItem)}int32 | int32                |
 | Item's ID               | Item's ID     | Cost's ID             | Cost's ID   | Predefined item's ID         | Predefined item's ID |
 | 1                       | 100           | 2                     | 200         | 10                           | 20                   |
@@ -295,6 +313,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -376,7 +400,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Transform1                                                        | Transform2                                                                                          |
-|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | {.Transform}\|{form:FORM_TEXT}                                    | {.Transform}\|{form:FORM_JSON}                                                                      |
 | Box's transform1                                                  | Box's transform2                                                                                    |
 | position:{x:1 y:2 z:3} rotation:{x:4 y:5 z:6} scale:{x:7 y:8 z:9} | {"position":{"x":1, "y":2, "z":3}, "rotation":{"x":4, "y":5, "z":6}, "scale":{"x":7, "y":8, "z":9}} |
@@ -384,6 +408,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
