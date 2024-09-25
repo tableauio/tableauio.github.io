@@ -1,7 +1,7 @@
 ---
 title: "Enum"
-description: "Enum features."
-lead: "This guide demonstrates different features of enum type."
+description: "Enum basics."
+lead: "This guide demonstrates basics of enum type."
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2022-02-26T13:59:39+08:00
 draft: false

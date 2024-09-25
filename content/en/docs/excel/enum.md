@@ -1,7 +1,7 @@
 ---
 title: "Enum"
-description: "Enum features."
-lead: "This guide demonstrates different features of Enum type."
+description: "Excel enum guide."
+lead: "This guide demonstrates different features of excel enum type."
 date: 2024-09-24T14:00:00+08:00
 lastmod: 2024-09-24T14:00:00+08:00
 draft: false
@@ -55,7 +55,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 Generated:
 
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
@@ -100,13 +100,15 @@ message ItemConf {
 
 ## Define enum type in sheet
 
-### Simple example
+In order to generate enum type definition, you should specify `Mode` option to `MODE_ENUM_TYPE` in metasheet `@TABLEAU`.
 
-A worksheet `ItemType` in *HelloWorld.xlsx*:
+### Simple enum type in sheet
 
-{{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
+For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
-{{< sheet colored>}}
+{{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
+
+{{< sheet >}}
 
 | Name            | Alias |
 | --------------- | ----- |
@@ -118,11 +120,9 @@ A worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
-|     |     |     |
-| --- | --- | --- |
-|     |     |     |
-|     |     |     |
-|     |     |     |
+| Sheet    | Mode           |
+| -------- | -------------- |
+| ItemType | MODE_ENUM_TYPE |
 
 {{< /sheet >}}
 
@@ -149,11 +149,15 @@ enum ItemType {
 
 ### Specify Number column
 
-A worksheet `ItemType` in *HelloWorld.xlsx*:
+In `Number` column, you can specify custom unique enum value number.
+
+{{< alert icon="ⓘ" context="info" text="If you not specify default enum value \"0\", it will be auto generated. And the default enum value name pattern is: \"{ENUM_TYPE}_INVALID\"." />}}
+
+For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
 
-{{< sheet colored>}}
+{{< sheet >}}
 
 | Number | Name              | Alias   |
 | ------ | ----------------- | ------- |
@@ -168,7 +172,7 @@ A worksheet `ItemType` in *HelloWorld.xlsx*:
 
 | Sheet    | Mode           |
 | -------- | -------------- |
-| ItemType | MODE_TYPE_ENUM |
+| ItemType | MODE_ENUM_TYPE |
 
 {{< /sheet >}}
 
@@ -195,21 +199,21 @@ enum ItemType {
 
 ## Define and use enum type in sheet
 
-Two worksheets `ItemType` and `ItemConf` in *HelloWorld.xlsx*:
+For example, two worksheets `ItemType` and `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType ItemConf "@TABLEAU" >}}
 
-{{< sheet colored >}}
+{{< sheet >}}
 
-| Name            | Alias |
-| --------------- | ----- |
-| ITEM_TYPE_FRUIT | Fruit |
-| ITEM_TYPE_EQUIP | Equip |
-| ITEM_TYPE_BOX   | Box   |
+| Number | Name            | Alias |
+| ------ | --------------- | ----- |
+| 1      | ITEM_TYPE_FRUIT | Fruit |
+| 2      | ITEM_TYPE_EQUIP | Equip |
+| 3      | ITEM_TYPE_BOX   | Box   |
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored >}}
 
 | ID               | Type            | Name        | Price        |
 | ---------------- | --------------- | ----------- | ------------ |
@@ -225,7 +229,7 @@ Two worksheets `ItemType` and `ItemConf` in *HelloWorld.xlsx*:
 
 | Sheet    | Mode           |
 | -------- | -------------- |
-| ItemType | MODE_TYPE_ENUM |
+| ItemType | MODE_ENUM_TYPE |
 | ItemConf |                |
 
 {{< /sheet >}}

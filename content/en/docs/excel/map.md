@@ -1,12 +1,12 @@
 ---
 title: "Map"
-description: "Map features."
-lead: "This guide demonstrates different features of map type."
+description: "Excel map guide."
+lead: "This guide demonstrates different features of excel map type."
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2022-02-26T13:59:39+08:00
 draft: false
 images: []
-weight: 7107
+weight: 7106
 toc: true
 ---
 

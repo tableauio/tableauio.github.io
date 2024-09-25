@@ -1,7 +1,7 @@
 ---
 title: "Struct in struct"
-description: "The nesting specification of struct in struct."
-lead: "The nesting specification of struct in struct."
+description: "Excel struct in struct guide."
+lead: "Excel nesting specification of struct in struct."
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Map in map"
-description: "The nesting specification of map in map."
-lead: "The nesting specification of map in map."
+description: "Excel map in map guide."
+lead: "Excel nesting specification of map in map."
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false

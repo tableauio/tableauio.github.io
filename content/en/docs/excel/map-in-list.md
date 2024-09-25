@@ -1,7 +1,7 @@
 ---
 title: "Map in list"
-description: "The nesting specification of map in list."
-lead: "The nesting specification of map in list."
+description: "Excel map in list guide."
+lead: "Excel nesting specification of map in list."
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false

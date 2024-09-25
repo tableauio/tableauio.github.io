@@ -1,7 +1,7 @@
 ---
 title: "Scalar"
-description: "Scalar features."
-lead: "This guide demonstrates different features of scalar type."
+description: "Excel scalar guide."
+lead: "This guide demonstrates different features of excel scalar type."
 date: 2022-09-04T13:59:39+08:00
 lastmod: 2022-09-04T13:59:39+08:00
 draft: false

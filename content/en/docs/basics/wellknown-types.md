@@ -66,9 +66,9 @@ message Fraction {
 
 A comparator holds a `sign` and a fraction `value`. Any number or fraction can compare with it.
 
-| Type         | Default | Description                                                                            |
-| ------------ | ------- | -------------------------------------------------------------------------------------- |
-| `comparator` | `==0`   | Format: `<Sign><Fraction>`. <br>e.g.: `==10`, `!=1/2`, `<10%` `<=10‰`, `>10%`, `>=10‱` |
+| Type         | Default | Description                                                                             |
+| ------------ | ------- | --------------------------------------------------------------------------------------- |
+| `comparator` | `==0`   | Format: `<Sign><Fraction>`. <br>e.g.: `==10`, `!=1/2`, `<10%`, `<=10‰`, `>10%`, `>=10‱` |
 
 ```protobuf
 message Comparator {

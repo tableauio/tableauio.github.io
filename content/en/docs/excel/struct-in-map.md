@@ -1,7 +1,7 @@
 ---
 title: "Struct in map"
-description: "The nesting specification of struct in map."
-lead: "The nesting specification of struct in map."
+description: "Excel struct in map guide."
+lead: "Excel nesting specification of struct in map."
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Metasheet"
-description: "The metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
-lead: "The metasheet is a worksheet named \"@TABLEAU\" to specify tableau parser options."
+description: "Excel metasheet @TABLEAU guide."
+lead: "The metasheet is a worksheet named \"@TABLEAU\" to specify sheet-level options of tableau parser."
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2024-09-03T13:59:39+08:00
 draft: false

@@ -1,12 +1,12 @@
 ---
 title: "List"
-description: "List features."
-lead: "This guide demonstrates different features of list type."
+description: "Excel list guide."
+lead: "This guide demonstrates different features of excel list type."
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2022-02-26T13:59:39+08:00
 draft: false
 images: []
-weight: 7106
+weight: 7105
 toc: true
 ---
 

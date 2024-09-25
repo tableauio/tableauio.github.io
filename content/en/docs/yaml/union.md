@@ -1,7 +1,7 @@
 ---
 title: "Union"
-description: "yaml union guide."
-lead: "yaml union guide."
+description: "YAML union guide."
+lead: "YAML union guide."
 date: 2024-09-02T19:21:01+08:00
 lastmod: 2024-09-02T19:21:01+08:00
 draft: false

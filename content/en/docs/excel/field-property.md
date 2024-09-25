@@ -1,7 +1,7 @@
 ---
 title: "Field property"
-description: "Different properties of tableau field."
-lead: "Different properties of tableau field."
+description: "Tableau field property guide."
+lead: "Tableau field property guide."
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2022-08-24T23:21:01+02:00
 draft: false
