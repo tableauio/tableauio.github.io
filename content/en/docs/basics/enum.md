@@ -1,9 +1,9 @@
 ---
 title: "Enum"
-description: "Enum features."
-lead: "This guide demonstrates different features of enum type."
-date: 2022-02-26T13:59:39+01:00
-lastmod: 2022-02-26T13:59:39+01:00
+description: "Enum basics."
+lead: "This guide demonstrates basics of enum type."
+date: 2022-02-26T13:59:39+08:00
+lastmod: 2022-02-26T13:59:39+08:00
 draft: false
 images: []
 weight: 8300
@@ -37,6 +37,7 @@ Then the three forms of enum value are all accepted:
 | 1                 | FRUIT_TYPE_APPLE   | Apple            |
 | 2                 | FRUIT_TYPE_ORANGE  | Orange           |
 | 3                 | FRUIT_TYPE_BANANA  | Banana           |
+{.table-striped}
 
 > NOTE: Enum type must be predefined.
 

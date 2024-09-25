@@ -1,9 +1,9 @@
 ---
 title: "Map in map"
-description: "The nesting specification of map in map."
-lead: "The nesting specification of map in map."
-date: 2022-02-26T08:48:57+00:00
-lastmod: 2022-02-26T08:48:57+00:00
+description: "Excel map in map guide."
+lead: "Excel nesting specification of map in map."
+date: 2022-02-26T08:48:57+08:00
+lastmod: 2022-02-26T08:48:57+08:00
 draft: false
 images: []
 weight: 7402
@@ -21,7 +21,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Name        | Prop1ID          | Prop1Value    | Prop2ID    | Prop2Value    |
-|-------------------|-------------|------------------|---------------|------------|---------------|
+| ----------------- | ----------- | ---------------- | ------------- | ---------- | ------------- |
 | map<uint32, Item> | string      | map<int32, Prop> | int64         | int32      | int64         |
 | Item's ID         | Item's name | Prop1's ID       | Prop1's value | Prop2's ID | Prop2's value |
 | 1                 | Apple       | 1                | 10            | 2          | 20            |
@@ -31,6 +31,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -111,7 +117,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Name        | PropID           | PropValue    |
-|-------------------|-------------|------------------|--------------|
+| ----------------- | ----------- | ---------------- | ------------ |
 | map<uint32, Item> | string      | map<int32, Prop> | int64        |
 | Item's ID         | Item's name | Prop's ID        | Prop's value |
 | 1                 | Apple       | 1                | 10           |
@@ -121,6 +127,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -196,7 +208,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Props                      |
-|-------------------|----------------------------|
+| ----------------- | -------------------------- |
 | map<uint32, Item> | map<int32, string>         |
 | Item's ID         | Item's props               |
 | 1                 | 1:sour,2:sweet,3:delicious |
@@ -206,6 +218,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

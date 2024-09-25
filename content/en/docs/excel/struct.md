@@ -1,12 +1,12 @@
 ---
 title: "Struct"
-description: "Struct features."
-lead: "This guide demonstrates different features of struct type."
-date: 2022-02-26T13:59:39+01:00
-lastmod: 2022-02-26T13:59:39+01:00
+description: "Excel struct guide."
+lead: "This guide demonstrates different features of excel struct type."
+date: 2022-02-26T13:59:39+08:00
+lastmod: 2022-02-26T13:59:39+08:00
 draft: false
 images: []
-weight: 7102
+weight: 7103
 toc: true
 ---
 
@@ -23,7 +23,7 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< sheet colored >}}
 
 | PropertyID      | PropertyName    | PropertyDesc           |
-|:----------------|:----------------|:-----------------------|
+| :-------------- | :-------------- | :--------------------- |
 | {Property}int32 | string          | string                 |
 | Property's ID   | Property's Name | Property's Description |
 | 1               | Orange          | A kind of sour fruit.  |
@@ -31,6 +31,12 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -92,7 +98,7 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< sheet colored >}}
 
 | ID               | Prop                                       |
-|------------------|--------------------------------------------|
+| ---------------- | ------------------------------------------ |
 | map<int32, Item> | {int32 ID,string Name,string Desc}Property |
 | Item's ID        | Item's property.                           |
 | 1                | 1,Orange,A good fruit.                     |
@@ -102,6 +108,12 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -191,7 +203,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | ID                | Prop                   |
-|-------------------|------------------------|
+| ----------------- | ---------------------- |
 | map<uint32, Item> | {.Property}            |
 | Item's ID         | Item's property.       |
 | 1                 | 1,Orange,A good fruit. |
@@ -201,6 +213,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -287,7 +305,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | RewardItemID            | RewardItemNum | CostItemID            | CostItemNum | PredefinedItemID             | PredefinedItemNum    |
-|-------------------------|---------------|-----------------------|-------------|------------------------------|----------------------|
+| ----------------------- | ------------- | --------------------- | ----------- | ---------------------------- | -------------------- |
 | {Item(RewardItem)}int32 | int32         | {Item(CostItem)}int32 | int32       | {.Item(PredefinedItem)}int32 | int32                |
 | Item's ID               | Item's ID     | Cost's ID             | Cost's ID   | Predefined item's ID         | Predefined item's ID |
 | 1                       | 100           | 2                     | 200         | 10                           | 20                   |
@@ -295,6 +313,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -376,7 +400,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | Transform1                                                        | Transform2                                                                                          |
-|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | {.Transform}\|{form:FORM_TEXT}                                    | {.Transform}\|{form:FORM_JSON}                                                                      |
 | Box's transform1                                                  | Box's transform2                                                                                    |
 | position:{x:1 y:2 z:3} rotation:{x:4 y:5 z:6} scale:{x:7 y:8 z:9} | {"position":{"x":1, "y":2, "z":3}, "rotation":{"x":4, "y":5, "z":6}, "scale":{"x":7, "y":8, "z":9}} |
@@ -384,6 +408,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -445,6 +475,63 @@ message ItemConf {
             "z":  9
         }
     }
+}
+```
+
+{{< /details >}}
+
+## Define struct type in sheet
+
+In order to generate struct type definition, you should specify `Mode` option to `MODE_STRUCT_TYPE` in metasheet `@TABLEAU`.
+
+For example, a worksheet `Item` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
+
+{{< sheet >}}
+
+| Name      | Type                                                   |
+| --------- | ------------------------------------------------------ |
+| ID        | uint32                                                 |
+| Num       | int32                                                  |
+| FruitType | enum<.FruitType>                                       |
+| Feature   | []int32                                                |
+| Prop      | map<int32, string>                                     |
+| Detail    | {enum<.ItemType> Type, string Name, string Desc}Detail |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet | Mode             |
+| ----- | ---------------- |
+| Item  | MODE_STRUCT_TYPE |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+// Generated from sheet: Item.
+message Item {
+  uint32 id = 1 [(tableau.field) = {name:"ID"}];
+  int32 num = 2 [(tableau.field) = {name:"Num"}];
+  protoconf.FruitType fruit_type = 3 [(tableau.field) = {name:"FruitType"}];
+  repeated int32 feature_list = 4 [(tableau.field) = {name:"Feature" layout:LAYOUT_INCELL}];
+  map<int32, string> prop_map = 5 [(tableau.field) = {name:"Prop" layout:LAYOUT_INCELL}];
+  Detail detail = 6 [(tableau.field) = {name:"Detail" span:SPAN_INNER_CELL}];
+  message Detail {
+    protoconf.ItemType type = 1 [(tableau.field) = {name:"Type"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    string desc = 3 [(tableau.field) = {name:"Desc"}];
+  }
 }
 ```
 

@@ -33,3 +33,4 @@ See [Protobuf style: enums](https://protobuf.dev/programming-guides/style/#enums
 | worksheet        | `PascalCase` | HelloWorld      |
 | struct (message) | `PascalCase` | HelloWorld      |
 | field (column)   | `PascalCase` | HelloWorld      |
+{.table-striped}

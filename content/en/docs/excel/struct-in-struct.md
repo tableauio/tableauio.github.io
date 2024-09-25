@@ -1,9 +1,9 @@
 ---
 title: "Struct in struct"
-description: "The nesting specification of struct in struct."
-lead: "The nesting specification of struct in struct."
-date: 2022-02-26T08:48:57+00:00
-lastmod: 2022-02-26T08:48:57+00:00
+description: "Excel struct in struct guide."
+lead: "Excel nesting specification of struct in struct."
+date: 2022-02-26T08:48:57+08:00
+lastmod: 2022-02-26T08:48:57+08:00
 draft: false
 images: []
 weight: 7201
@@ -19,7 +19,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | RewardID      | RewardItemID | RewardItemNum |
-|---------------|--------------|---------------|
+| ------------- | ------------ | ------------- |
 | {Reward}int32 | {Item}int32  | int32         |
 | Reward's ID   | Item's ID    | Item's num    |
 | 1             | 1            | 10            |
@@ -27,6 +27,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -91,7 +97,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | RewardID      | RewardItemID | RewardItemNum |
-|---------------|--------------|---------------|
+| ------------- | ------------ | ------------- |
 | {Reward}int32 | {.Item}int32 | int32         |
 | Reward's ID   | Item's ID    | Item's num    |
 | 1             | 1            | 10            |
@@ -99,6 +105,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -151,7 +163,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< sheet colored >}}
 
 | RewardID      | RewardItem                |
-|---------------|---------------------------|
+| ------------- | ------------------------- |
 | {Reward}int32 | {int32 ID, int32 Num}Item |
 | Reward's ID   | Reward's item             |
 | 1             | 1,100                     |
@@ -160,6 +172,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

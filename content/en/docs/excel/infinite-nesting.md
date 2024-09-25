@@ -1,9 +1,9 @@
 ---
 title: "Infinite nesting"
-description: "Infinite nesting."
-lead: "Infinite nesting of composite types."
-date: 2022-02-26T08:48:57+00:00
-lastmod: 2022-02-26T08:48:57+00:00
+description: "Excel infinite nesting guide."
+lead: "Excel infinite nesting features of composite types."
+date: 2022-02-26T08:48:57+08:00
+lastmod: 2022-02-26T08:48:57+08:00
 draft: false
 images: []
 weight: 7500

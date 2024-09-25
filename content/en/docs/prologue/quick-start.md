@@ -2,8 +2,8 @@
 title: "Quick Start"
 description: "Quick Start"
 lead: "One page summary of how to convert a workbook file to proto and JSON files by tableauc."
-date: 2020-11-16T13:59:39+01:00
-lastmod: 2020-11-16T13:59:39+01:00
+date: 2020-11-16T13:59:39+08:00
+lastmod: 2020-11-16T13:59:39+08:00
 draft: false
 images: []
 weight: 9902
@@ -82,7 +82,7 @@ Add **HelloWorld.xlsx** with two sheets:
 {{< sheet colored>}}
 
 | ID               | Name        | Desc                          |
-|------------------|-------------|-------------------------------|
+| ---------------- | ----------- | ----------------------------- |
 | map<int32, Item> | string      | string                        |
 | Item’s ID        | Item’s name | Item’s description            |
 | 1                | Apple       | A kind of delicious fruit.    |
@@ -92,6 +92,12 @@ Add **HelloWorld.xlsx** with two sheets:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

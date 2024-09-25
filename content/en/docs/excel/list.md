@@ -1,12 +1,12 @@
 ---
 title: "List"
-description: "List features."
-lead: "This guide demonstrates different features of list type."
-date: 2022-02-26T13:59:39+01:00
-lastmod: 2022-02-26T13:59:39+01:00
+description: "Excel list guide."
+lead: "This guide demonstrates different features of excel list type."
+date: 2022-02-26T13:59:39+08:00
+lastmod: 2022-02-26T13:59:39+08:00
 draft: false
 images: []
-weight: 7104
+weight: 7105
 toc: true
 ---
 
@@ -36,6 +36,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -101,6 +107,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -154,6 +166,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -230,6 +248,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -292,6 +316,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -367,6 +397,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -446,6 +482,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -528,6 +570,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -592,6 +640,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -670,6 +724,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -742,6 +802,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -810,6 +876,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -883,6 +955,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*.
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -953,6 +1031,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -1018,6 +1102,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -1120,6 +1210,12 @@ For example, a worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
@@ -1199,6 +1295,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

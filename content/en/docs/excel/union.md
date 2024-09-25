@@ -1,12 +1,12 @@
 ---
 title: "Union"
-description: "Union type features."
-lead: "This guide demonstrates different features of union type."
-date: 2022-09-04T13:59:39+01:00
-lastmod: 2022-09-04T13:59:39+01:00
+description: "Excel union guide."
+lead: "This guide demonstrates different features of excel union type."
+date: 2022-09-04T13:59:39+08:00
+lastmod: 2022-09-04T13:59:39+08:00
 draft: false
 images: []
-weight: 7103
+weight: 7104
 toc: true
 ---
 
@@ -35,10 +35,10 @@ message Target {
     option (tableau.oneof) = {
       field: "Field"
     };
-    Pvp pvp = 1;      // Binded to enum value 1: TYPE_PVP.
-    Pve pve = 2;      // Binded to enum value 2: TYPE_PVP.
-    Story story = 3;  // Binded to enum value 3: TYPE_STORY.
-    Skill skill = 4;  // Binded to enum value 4: TYPE_SKILL.
+    Pvp pvp = 1;      // Bound to enum value 1: TYPE_PVP.
+    Pve pve = 2;      // Bound to enum value 2: TYPE_PVP.
+    Story story = 3;  // Bound to enum value 3: TYPE_STORY.
+    Skill skill = 4;  // Bound to enum value 4: TYPE_SKILL.
   }
 
   enum Type {
@@ -92,7 +92,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< sheet colored>}}
 
 | ID               | Target1Type                 | Target1Field1    | Target1Field2    | Target1Field3       | Target2Type        | Target2Field1    | Target2Field2    | Target2Field3    |
-|------------------|-----------------------------|------------------|------------------|---------------------|--------------------|------------------|------------------|------------------|
+| ---------------- | --------------------------- | ---------------- | ---------------- | ------------------- | ------------------ | ---------------- | ---------------- | ---------------- |
 | map<int32, Task> | [.Target]enum<.Target.Type> | union            | union            | union               | enum<.Target.Type> | union            | union            | union            |
 | ID               | Target1's type              | Target1's field1 | Target1's field2 | Target1's field3    | Target2's type     | Target2's field1 | Target2's field2 | Target2's field3 |
 | 1                | PVP                         | 1                | 10               | Apple,Orange,Banana | PVE                | 1,100,999        | 1,2,3            | 1:10,2:20,3:30   |
@@ -101,6 +101,12 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 
@@ -314,7 +320,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< sheet colored>}}
 
 | ID               | TargetType                  | TargetField1    | TargetField2     | TargetField3        | Progress |
-|------------------|-----------------------------|-----------------|------------------|---------------------|----------|
+| ---------------- | --------------------------- | --------------- | ---------------- | ------------------- | -------- |
 | map<int32, Task> | {.Target}enum<.Target.Type> | union           | union            | union               | int32    |
 | ID               | Target's type               | Target's field1 | Target's field2  | Target's field3     | Progress |
 | 1                | PVP                         | 1               | 10               | Apple,Orange,Banana | 3        |
@@ -326,13 +332,19 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
 
 Generated:
 
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
@@ -561,7 +573,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 {{< sheet colored>}}
 
 | ID               | Target1                                                                                                                                                                                                                                    | Target2                                                                                                                                                                                                                   | Progress |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | map<int32, Task> | {.Target}\|{form:FORM_TEXT}                                                                                                                                                                                                                | {.Target}\|{form:FORM_JSON}                                                                                                                                                                                               | int32    |
 | ID               | Target1                                                                                                                                                                                                                                    | Target2                                                                                                                                                                                                                   | Progress |
 | 1                | type:TYPE_PVP pvp:{type:1 damage:10 types:FRUIT_TYPE_APPLE types:FRUIT_TYPE_ORANGE types:FRUIT_TYPE_BANANA}                                                                                                                                | {"type":"TYPE_PVP","pvp":{"type":1,"damage":"10","types":["FRUIT_TYPE_APPLE","FRUIT_TYPE_ORANGE","FRUIT_TYPE_BANANA"]}}                                                                                                   | 3        |
@@ -573,13 +585,19 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
 
 Generated:
 
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
@@ -744,6 +762,339 @@ message TaskConf {
                 }
             },
             "progress":  8
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+## Define union type in sheet
+
+In order to generate union type definition, you should specify `Mode` option to `MODE_UNION_TYPE` in metasheet `@TABLEAU`.
+
+You can define each union field by following types:
+
+- [Scalar →]({{< relref "scalar" >}})
+- [Enum →]({{< relref "enum" >}})
+- [Wellknown types →]({{< relref "wellknown-types" >}})
+- [Incell struct →]({{< relref "struct/#incell-struct" >}})
+- [Incell list →]({{< relref "list/#incell-list" >}})
+- [Incell map →]({{< relref "map/#incell-map" >}})
+
+### Simple union type in sheet
+
+For example, a worksheet `Target` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
+
+{{< sheet >}}
+
+| Name  | Alias      | Field1                        | Field2                               | Field3                           |
+| ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
+| PVP   | AliasPVP   | ID<br>uint32<br>Note          | Damage<br>int64<br>Note              | Type<br>enum<.FruitType><br>Note |
+| PVE   | AliasPVE   | Hero<br>[]uint32<br>Note      | Dungeon<br>map<int32, int64><br>Note |                                  |
+| Skill | AliasSkill | StartTime<br>datetime<br>Note | Duration<br>duration<br>Note         |                                  |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet  | Mode            |
+| ------ | --------------- |
+| Target | MODE_UNION_TYPE |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+// Generated from sheet: Target.
+message Target {
+  option (tableau.union) = true;
+
+  Type type = 9999 [(tableau.field) = { name: "Type" }];
+  oneof value {
+    option (tableau.oneof) = {field: "Field"};
+
+    PVP pvp = 1; // Bound to enum value: TYPE_PVP.
+    PVE pve = 2; // Bound to enum value: TYPE_PVE.
+    Skill skill = 3; // Bound to enum value: TYPE_SKILL.
+  }
+  enum Type {
+    TYPE_INVALID = 0;
+    TYPE_PVP = 1 [(tableau.evalue).name = "AliasPVP"];
+    TYPE_PVE = 2 [(tableau.evalue).name = "AliasPVE"];
+    TYPE_SKILL = 3 [(tableau.evalue).name = "AliasSkill"];
+  }
+
+  message PVP {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+    protoconf.FruitType type = 3 [(tableau.field) = {name:"Type"}];
+  }
+  message PVE {
+    repeated uint32 hero_list = 1 [(tableau.field) = {name:"Hero" layout:LAYOUT_INCELL}];
+    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
+  }
+  message Skill {
+    google.protobuf.Timestamp start_time = 1 [(tableau.field) = {name:"StartTime"}];
+    google.protobuf.Duration duration = 2 [(tableau.field) = {name:"Duration"}];
+  }
+}
+```
+
+{{< /details >}}
+
+### Complex union type in sheet
+
+For example, two worksheets `Target` and `TaskConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Target TaskConf "@TABLEAU" >}}
+
+{{< sheet >}}
+
+| Name  | Alias      | Field1                                                      | Field2                                        | Field3                                                      |
+| ----- | ---------- | ----------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------- |
+| PVP   | AliasPVP   | ID<br>uint32<br>Note                                        | Damage<br>int64<br>Note                       | Type<br>[]enum<.FruitType><br>Note                          |
+| PVE   | AliasPVE   | Mission<br>{uint32 ID, enum<.ItemType> Type}Mission<br>Note | Hero<br>[]uint32<br>Note                      | Dungeon<br>map<int32, int64><br>Note                        |
+| Story | AliasStory | Cost<br>{.Item}<br>Note                                     | Fruit<br>map<int32, enum<.FruitType>><br>Note | Flavor<br>map<enum<.FruitFlavor>, enum<.FruitType>><br>Note |
+| Hobby | AliasHobby | Flavor<br>map<enum<.FruitFlavor>, enum<.FruitType>><br>Note | StartTime<br>datetime<br>Note                 | Duration<br>duration<br>Note                                |
+| Skill | AliasSkill | ID<br>uint32<br>Note                                        | Damage<br>int64<br>Note                       |                                                             |
+| Empty | AliasEmpty |                                                             |                                               |                                                             |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID               | TargetType                  | TargetField1               | TargetField2        | TargetField3               | Progress |
+| ---------------- | --------------------------- | -------------------------- | ------------------- | -------------------------- | -------- |
+| map<int32, Task> | {.Target}enum<.Target.Type> | union                      | union               | union                      | int32    |
+| ID               | Target's type               | Target's field1            | Target's field2     | Target's field3            | Progress |
+| 1                | AliasPVP                    | 1                          | 10                  | Apple,Orange,Banana        | 3        |
+| 2                | AliasPVE                    | 1,Equip                    | 1,2,3               | 1:10,2:20,3:30             | 10       |
+| 3                | AliasStory                  | 1001,10                    | 1:Apple,2:Orange    | Fragrant:Apple,Sour:Orange | 10       |
+| 4                | AliasHobby                  | Fragrant:Apple,Sour:Orange | 2023-06-01 10:00:00 | 22s                        | 12       |
+| 5                | AliasSkill                  | 1                          | 200                 |                            | 8        |
+| 6                | AliasEmpty                  |                            |                     |                            |          |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet  | Mode            |
+| ------ | --------------- |
+| Target | MODE_UNION_TYPE |
+| Task   |                 |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+// Generated from sheet: Target.
+message Target {
+  option (tableau.union) = true;
+
+  Type type = 9999 [(tableau.field) = { name: "Type" }];
+  oneof value {
+    option (tableau.oneof) = {field: "Field"};
+
+    PVP pvp = 1; // Bound to enum value: TYPE_PVP.
+    PVE pve = 2; // Bound to enum value: TYPE_PVE.
+    Story story = 3; // Bound to enum value: TYPE_STORY.
+    Hobby hobby = 4; // Bound to enum value: TYPE_HOBBY.
+    Skill skill = 5; // Bound to enum value: TYPE_SKILL.
+    Empty empty = 6; // Bound to enum value: TYPE_EMPTY.
+  }
+  enum Type {
+    TYPE_INVALID = 0;
+    TYPE_PVP = 1 [(tableau.evalue).name = "AliasPVP"];
+    TYPE_PVE = 2 [(tableau.evalue).name = "AliasPVE"];
+    TYPE_STORY = 3 [(tableau.evalue).name = "AliasStory"];
+    TYPE_HOBBY = 4 [(tableau.evalue).name = "AliasHobby"];
+    TYPE_SKILL = 5 [(tableau.evalue).name = "AliasSkill"];
+    TYPE_EMPTY = 6 [(tableau.evalue).name = "AliasEmpty"];
+  }
+
+  message PVP {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+    repeated protoconf.FruitType type_list = 3 [(tableau.field) = {name:"Type" layout:LAYOUT_INCELL}];
+  }
+  message PVE {
+    Mission mission = 1 [(tableau.field) = {name:"Mission" span:SPAN_INNER_CELL}];
+    message Mission {
+      uint32 id = 1 [(tableau.field) = {name:"ID"}];
+      protoconf.ItemType type = 2 [(tableau.field) = {name:"Type"}];
+    }
+    repeated uint32 hero_list = 2 [(tableau.field) = {name:"Hero" layout:LAYOUT_INCELL}];
+    map<int32, int64> dungeon_map = 3 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
+  }
+  message Story {
+    protoconf.Item cost = 1 [(tableau.field) = {name:"Cost" span:SPAN_INNER_CELL}];
+    map<int32, protoconf.FruitType> fruit_map = 2 [(tableau.field) = {name:"Fruit" layout:LAYOUT_INCELL}];
+    map<int32, Flavor> flavor_map = 3 [(tableau.field) = {name:"Flavor" key:"Key" layout:LAYOUT_INCELL}];
+    message Flavor {
+      protoconf.FruitFlavor key = 1 [(tableau.field) = {name:"Key"}];
+      protoconf.FruitType value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+  message Hobby {
+    map<int32, Flavor> flavor_map = 1 [(tableau.field) = {name:"Flavor" key:"Key" layout:LAYOUT_INCELL}];
+    message Flavor {
+      protoconf.FruitFlavor key = 1 [(tableau.field) = {name:"Key"}];
+      protoconf.FruitType value = 2 [(tableau.field) = {name:"Value"}];
+    }
+    google.protobuf.Timestamp start_time = 2 [(tableau.field) = {name:"StartTime"}];
+    google.protobuf.Duration duration = 3 [(tableau.field) = {name:"Duration"}];
+  }
+  message Skill {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+  }
+  message Empty {
+  }
+}
+
+message TaskConf {
+  option (tableau.worksheet) = {name:"TaskConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<int32, Task> task_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Task {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    protoconf.Target target = 2 [(tableau.field) = {name:"Target"}];
+    int32 progress = 3 [(tableau.field) = {name:"Progress"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "TaskConf.json" >}}
+
+```json
+{
+    "taskMap": {
+        "1": {
+            "id": 1,
+            "target": {
+                "type": "TYPE_PVP",
+                "pvp": {
+                    "id": 1,
+                    "damage": "10",
+                    "typeList": [
+                        "FRUIT_TYPE_APPLE",
+                        "FRUIT_TYPE_ORANGE",
+                        "FRUIT_TYPE_BANANA"
+                    ]
+                }
+            },
+            "progress": 3
+        },
+        "2": {
+            "id": 2,
+            "target": {
+                "type": "TYPE_PVE",
+                "pve": {
+                    "mission": {
+                        "id": 1,
+                        "type": "ITEM_TYPE_EQUIP"
+                    },
+                    "heroList": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "dungeonMap": {
+                        "1": "10",
+                        "2": "20",
+                        "3": "30"
+                    }
+                }
+            },
+            "progress": 10
+        },
+        "3": {
+            "id": 3,
+            "target": {
+                "type": "TYPE_STORY",
+                "story": {
+                    "cost": {
+                        "id": 1001,
+                        "num": 10
+                    },
+                    "fruitMap": {
+                        "1": "FRUIT_TYPE_APPLE",
+                        "2": "FRUIT_TYPE_ORANGE"
+                    },
+                    "flavorMap": {
+                        "1": {
+                            "key": "FRUIT_FLAVOR_FRAGRANT",
+                            "value": "FRUIT_TYPE_APPLE"
+                        },
+                        "2": {
+                            "key": "FRUIT_FLAVOR_SOUR",
+                            "value": "FRUIT_TYPE_ORANGE"
+                        }
+                    }
+                }
+            },
+            "progress": 10
+        },
+        "4": {
+            "id": 4,
+            "target": {
+                "type": "TYPE_HOBBY",
+                "hobby": {
+                    "flavorMap": {
+                        "1": {
+                            "key": "FRUIT_FLAVOR_FRAGRANT",
+                            "value": "FRUIT_TYPE_APPLE"
+                        },
+                        "2": {
+                            "key": "FRUIT_FLAVOR_SOUR",
+                            "value": "FRUIT_TYPE_ORANGE"
+                        }
+                    },
+                    "startTime": "2023-06-01T02:00:00Z",
+                    "duration": "22s"
+                }
+            },
+            "progress": 12
+        },
+        "5": {
+            "id": 5,
+            "target": {
+                "type": "TYPE_SKILL",
+                "skill": {
+                    "id": 1,
+                    "damage": "200"
+                }
+            },
+            "progress": 8
+        },
+        "6": {
+            "id": 6,
+            "target": {
+                "type": "TYPE_EMPTY",
+                "empty": {}
+            },
+            "progress": 0
         }
     }
 }

@@ -1,9 +1,9 @@
 ---
 title: "Scalar"
-description: "Scalar features."
-lead: "This guide demonstrates different features of scalar type."
-date: 2022-09-04T13:59:39+01:00
-lastmod: 2022-09-04T13:59:39+01:00
+description: "Excel scalar guide."
+lead: "This guide demonstrates different features of excel scalar type."
+date: 2022-09-04T13:59:39+08:00
+lastmod: 2022-09-04T13:59:39+08:00
 draft: false
 images: []
 weight: 7101
@@ -19,7 +19,7 @@ A worksheet `Apple` in *HelloWorld.xlsx*:
 {{< sheet colored>}}
 
 | ID        | Name        | Desc                       |
-|-----------|-------------|----------------------------|
+| --------- | ----------- | -------------------------- |
 | uint32    | string      | string                     |
 | Item's ID | Item's Name | Item's Description         |
 | 1         | Apple       | A kind of delicious fruit. |
@@ -27,6 +27,12 @@ A worksheet `Apple` in *HelloWorld.xlsx*:
 {{< /sheet >}}
 
 {{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
 
 {{< /sheet >}}
 

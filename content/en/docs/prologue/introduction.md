@@ -2,8 +2,8 @@
 title: "Introduction"
 description: "Intro to Tableau."
 lead: "A modern configuration converter for converting <b>Excel/CSV/XML/YAML</b> to multiple formats: <a href='https://developers.google.com/protocol-buffers/docs/proto3#json'><b>JSON</b></a>, <a href='https://developers.google.com/protocol-buffers/docs/text-format-spec'><b>Text</b></a>, and <a href='https://developers.google.com/protocol-buffers/docs/encoding'><b>Bin</b></a>. Powered by <a href='https://developers.google.com/protocol-buffers/docs/proto3'>Protobuf (proto3).</a>"
-date: 2020-10-06T08:48:57+00:00
-lastmod: 2020-10-06T08:48:57+00:00
+date: 2020-10-06T08:48:57+08:00
+lastmod: 2020-10-06T08:48:57+08:00
 draft: false
 images: []
 weight: 9901

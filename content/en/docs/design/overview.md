@@ -257,7 +257,7 @@ workbook meta sheet **@TABLEAU**:
 > `2019-10-12T07:20:50.52Z # This is acceptable in ISO 8601 and RFC 3339 (with T)`
 > `2019-10-12 07:20:50.52Z # This is only accepted in RFC 3339 (without T)`
 >
-> - "Z" stands for **Zero timezone** or **Zulu timezone** `UTC+0`, and equal to `+00:00` in the RFC 3339.
+> - "Z" stands for **Zero timezone** or **Zulu timezone** `UTC+0`, and equal to `+08:00` in the RFC 3339.
 > - **RFC 3339** follows the **ISO 8601** DateTime format. The only difference is RFC allows us to replace "T" with "space".
 
 Use [RFC 3339](https://tools.ietf.org/html/rfc3339) , which is following [ISO 8601](https://www.wikiwand.com/en/ISO_8601).

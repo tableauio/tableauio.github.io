@@ -2,8 +2,8 @@
 title: "Guide"
 description: "This guide gets you started with Tableau in Go with a simple working example."
 lead: "This guide gets you started with Tableau in Go with a simple working example."
-date: 2020-11-16T13:59:39+01:00
-lastmod: 2020-11-16T13:59:39+01:00
+date: 2020-11-16T13:59:39+08:00
+lastmod: 2020-11-16T13:59:39+08:00
 draft: false
 images: []
 weight: 4101
