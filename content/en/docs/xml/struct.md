@@ -39,8 +39,8 @@ A worksheet `ItemConf` in *HelloWorld.xml*:
 
 > Tips
 >
-> - Well-known type: [datetime →]({{< relref "../basics/grammar-and-types/#datetime" >}})
-> - Well-known type: [duration →]({{< relref "../basics/grammar-and-types/#duration" >}})
+> - Well-known type: [datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
+> - Well-known type: [duration →]({{< relref "../basics/wellknown-types/#duration" >}})
 
 Generated:
 
