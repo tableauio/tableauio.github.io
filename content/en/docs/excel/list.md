@@ -388,7 +388,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet colored >}}
 
-| Item1        | Item2        | Item3        |
+| Reward1      | Reward2      | Reward3      |
 | ------------ | ------------ | ------------ |
 | []{.Item}    | .Item        | .Item        |
 | Item1's info | Item2's info | Item3's info |
@@ -420,7 +420,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
 
-  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL span:SPAN_INNER_CELL}];
+  repeated protoconf.Item reward_list = 1 [(tableau.field) = {name:"Reward" layout:LAYOUT_HORIZONTAL span:SPAN_INNER_CELL}];
 }
 ```
 
@@ -430,7 +430,7 @@ message ItemConf {
 
 ```json
 {
-    "itemList": [
+    "rewardList": [
         {
             "id": 1,
             "num": 100
