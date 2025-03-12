@@ -632,10 +632,9 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 | Item                       |
 | -------------------------- |
 | []{int32 ID,int32 Num}Item |
-| Item's info                |
-| 1,100                      |
-| 2,200                      |
-| 3,300                      |
+| Item list                  |
+| 1:100                      |
+| 2:200,3:300                |
 
 {{< /sheet >}}
 
@@ -662,7 +661,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
 
-  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_VERTICAL span:SPAN_INNER_CELL}];
+  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
   message Item {
     int32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -716,9 +715,8 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 | ----------- |
 | []{.Item}   |
 | Item's info |
-| 1,100       |
-| 2,200       |
-| 3,300       |
+| 1:100       |
+| 2:200,3:300 |
 
 {{< /sheet >}}
 
@@ -746,7 +744,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
 
-  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_VERTICAL span:SPAN_INNER_CELL}];
+  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
 }
 ```
 
@@ -923,7 +921,154 @@ message ItemConf {
 
 ### Incell struct list
 
-See [Advanced predefined incell struct →]({{< relref "struct/#advanced-predefined-incell-struct" >}}).
+> For more advanced incell data parsing, see [Advanced predefined incell struct →]({{< relref "struct/#advanced-predefined-incell-struct" >}}).
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Item                       |
+| -------------------------- |
+| []{int32 ID,int32 Num}Item |
+| Item's info                |
+| 1:100,2:200,3:300          |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
+  message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### Incell predefined-struct list
+
+`Item` in *common.proto* is predefined as:
+
+```protobuf
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Item              |
+| ----------------- |
+| []{.Item}         |
+| Item's info       |
+| 1:100,2:200,3:300 |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
+    ]
+}
+```
+
+{{< /details >}}
 
 ## Horizontal list size
 

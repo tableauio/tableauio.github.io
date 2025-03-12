@@ -281,3 +281,98 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+### Incell-struct-list in vertical-map
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                  | Item                        |
+| ------------------- | --------------------------- |
+| map<uint32, Reward> | []{uint32 ID,int32 Num}Item |
+| Reward's ID         | Reward's items              |
+| 1                   | 1001:10,1002:20,1003:30     |
+| 2                   | 2001:10,2002:20             |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+
+  map<uint32, Reward> reward_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Reward {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    repeated Item item_list = 2 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
+    message Item {
+      uint32 id = 1 [(tableau.field) = {name:"ID"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "rewardMap": {
+        "1": {
+            "id": 1,
+            "itemList": [
+                {
+                    "id": 1001,
+                    "num": 10
+                },
+                {
+                    "id": 1002,
+                    "num": 20
+                },
+                {
+                    "id": 1003,
+                    "num": 30
+                }
+            ]
+        },
+        "2": {
+            "id": 2,
+            "itemList": [
+                {
+                    "id": 2001,
+                    "num": 10
+                },
+                {
+                    "id": 2002,
+                    "num": 20
+                }
+            ]
+        }
+    }
+}
+```
+
+{{< /details >}}

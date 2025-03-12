@@ -26,6 +26,8 @@ toc: true
 | `present`   | bool   | Must fill cell data explicitly if present is true. <br> Default: `false`.                                                                                                  |
 | `optional`  | bool   | Whether this field is optional (field name existence).                                                                                                                     |
 | `patch`     | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                              |
+| `sep`       | string | Field-level separator for separating: <br> - incell list elements (scalar or struct). <br> - incell map items. <br> Default: `,`.                                          |
+| `subsep`    | string | Field-level subseparator for separating: <br> - key-value pair of each incell map item. <br> - struct fields of each incell struct list element. <br> Default: `:`.        |
 
 {.table-striped .table-hover}
 
