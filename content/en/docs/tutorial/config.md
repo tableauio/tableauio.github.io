@@ -1,7 +1,7 @@
 ---
-title: "Overview"
-description: "Overview"
-lead: "Welcome to Tableau! This tutorial will guide you through setting up and running tableauc, loader, and checker."
+title: "Tableauc config"
+description: "Tableauc config details"
+lead: ""
 date: 2020-11-16T13:59:39+08:00
 lastmod: 2020-11-16T13:59:39+08:00
 draft: false
@@ -10,7 +10,7 @@ weight: 9801
 toc: true
 ---
 
-## Configure tableauc
+## config.yaml
 
 Create a file named *config.yaml*, and copy configurations below to it:
 
@@ -25,6 +25,10 @@ lang: en
 #
 # See https://go.dev/src/time/zoneinfo_abbrs_windows.go.
 locationName: Local
+# Configure your custom acronyms. Out of the box, "ID" -> "id" is auto configured.
+# For example, if you configure K8s -> k8s, then the field name in PascalCase "InK8s"
+# will be converted to snake_case "in_k8s" but not "in_k_8_s".
+acronyms: {}
 # Log options.
 log:
   # Log mode: SIMPLE, FULL.
@@ -41,24 +45,18 @@ proto:
     # Header options of worksheet.
     header:
       # Exact row number of column name definition at a worksheet.
-      # Default: 1.
       namerow: 1
       # Exact row number of column type definition at a worksheet.
-      # Default: 2.
       typerow: 2
       # Exact row number of column note at a worksheet.
-      # Default: 3.
       noterow: 3
       # Start row number of data at a worksheet.
-      # Default: 4.
       datarow: 4
       # The line number of column name definition in a cell.
       # Value 0 means the whole cell.
-      # Default: 0.
       nameline: 0
       # The line number of column type definition in a cell.
       # Value 0 means the whole cell.
-      # Default: 0.
       typeline: 0
     # The proto paths are used to search for dependencies that are referenced in import
     # statements in proto source files. If no import paths are provided then
@@ -78,19 +76,27 @@ proto:
     subdirRewrites: {}
     # Follow the symbolic links when traversing directories recursively.
     # WARN: be careful to use this option, it may lead to infinite loop.
-    # Default: false.
     followSymlink: false
+    # Specify metasheet name.
+    metasheetName: "@TABLEAU"
   output:
     # Specify subdir (relative to output dir) for generated proto files.
     subdir: ""
     # Dir separator `/` or `\`  in filename is replaced by "__".
-    # Default: false.
     filenameWithSubdirPrefix: false
     # Append suffix to each generated proto filename.
     filenameSuffix: ""
     # Specify proto file options.
     # Example: go_package, csharp_namespace...
     fileOptions: {}
+    # EnumValueWithPrefix specifies whether to prepend prefix
+    # "UPPER_SNAKE_CASE of EnumType" to each enum value name.
+    #
+    # If set, the enum value name is prepended with "ENUM_TYPE_". For example:
+    # enum ItemType has a value "EQUIP", then converted to "ITEM_TYPE_EQUIP".
+    # If the enum value name is already prefixed with "ENUM_TYPE_", then it will
+    # not be prefixed again.
+    enumValueWithPrefix: false
 # Options for generating conf files.
 conf:
   input:
@@ -119,6 +125,14 @@ conf:
     subdirs: []
     # Specify rewrite subdir path (relative to workbook name option in proto file).
     subdirRewrites: {}
+    # Separator for separating:
+    #  - incell list elements (scalar or struct).
+    #  - incell map items.
+    sep: ","
+    # Subseparator for separating:
+    #  - key-value pair of each incell map item.
+    #  - struct fields of each incell struct list element.
+    subsep: ":"
   output:
     # Specify subdir (relative to output dir) for generated configuration files.
     subdir: ""
@@ -126,7 +140,6 @@ conf:
     # Available formats: "xlsx", "csv", "xml", and "yaml".
     formats: [json]
     # Output pretty format of JSON, with multiline and indent.
-    # Default: false.
     pretty: true
     # EmitUnpopulated specifies whether to emit unpopulated fields. It does not
     # emit unpopulated oneof fields or unpopulated extension fields.
@@ -152,4 +165,7 @@ conf:
     useProtoNames: false
     # UseEnumNumbers emits enum values as numbers.
     useEnumNumbers: false
+    # Specify dry run mode:
+    #  - patch: if sheet options are specified: Patch (PATCH_MERGE) and Scatter
+    dryRun: ""
 ```
