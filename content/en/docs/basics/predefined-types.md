@@ -17,7 +17,11 @@ You can define `enum` or `struct` types in a protoconf file (such as `common.pro
 ## Usage
 
 - Syntax: prepend a dot `.` to predefined `CustomType` (a.k.a. `.CustomType`) when you use it in a worksheet.
-- Import: specify the `importedProtoFiles` option of **tableauc** config to import the common proto files, where predefined `enum` or `struct` types are defined. Refer: [Tableau Options](https://github.com/tableauio/tableau/blob/master/options/options.go#L105).
+- Import: specify the `protoFiles` option of **tableauc** config to import the common proto files, where predefined `enum`, `struct`, `union` types are defined. See [Tableauc config](../../tutorial/config/#configyaml).
+
+## Enum
+
+> TODO...
 
 ## Struct
 
@@ -126,6 +130,10 @@ message ItemConf {
 
 {{< /details >}}
 
-### Variable naming
+### Custom named struct
 
-In `horizontal map` or `horizontal list`, you can define custom variable name with the predefined struct.
+In `horizontal map` or `horizontal list`, you can define custom variable name with the predefined struct. See [Custom named struct](../../excel/struct/#custom-named-struct).
+
+## Union
+
+> TODO...

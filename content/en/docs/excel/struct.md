@@ -482,6 +482,8 @@ message ItemConf {
 
 ## Define struct type in sheet
 
+### Single struct type in sheet
+
 In order to generate struct type definition, you should specify `Mode` option to `MODE_STRUCT_TYPE` in metasheet `@TABLEAU`.
 
 For example, a worksheet `Item` in *HelloWorld.xlsx*:
@@ -536,3 +538,11 @@ message Item {
 ```
 
 {{< /details >}}
+
+### Multiple struct types in sheet
+
+> TODO...
+
+### Specify Number column
+
+> TODO...

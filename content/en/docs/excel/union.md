@@ -782,7 +782,7 @@ You can define each union field by following types:
 - [Incell list →]({{< relref "list/#incell-list" >}})
 - [Incell map →]({{< relref "map/#incell-map" >}})
 
-### Simple union type in sheet
+### Single union type in sheet
 
 For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
@@ -852,6 +852,14 @@ message Target {
 ```
 
 {{< /details >}}
+
+### Multiple union types in sheet
+
+> TODO...
+
+### Specify Number column
+
+> TODO...
 
 ### Complex union type in sheet
 

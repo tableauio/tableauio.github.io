@@ -357,10 +357,10 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet colored >}}
 
-| Items                              |
+| Item                               |
 | ---------------------------------- |
 | map<uint32, string>                |
-| Items                              |
+| Item key-value pairs               |
 | 1:Apple,2:Orange,3:Banana,4,:Peach |
 
 {{< /sheet >}}
@@ -377,7 +377,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /spreadsheet >}}
 
-The `Items` column's type is in-cell map `map<uint32, string>`, as the map value is scalar type `string`.
+The `Item` column's type is in-cell map `map<uint32, string>`, as the map value is scalar type `string`.
 
 > ⚠️ NOTE: If you want explicit pattern like: `[Key:Value]...`, then set the field property `present` as true.
 > See [Option `present` →]({{< relref "field-property/#option-present" >}}).
@@ -393,7 +393,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
 
-  map<uint32, string> items_map = 1 [(tableau.field) = {name:"Items" layout:LAYOUT_INCELL}];
+  map<uint32, string> item_map = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL}];
 }
 ```
 
@@ -403,8 +403,8 @@ message ItemConf {
 
 ```json
 {
-    "itemsMap": {
-        "0":  "Peach",
+    "itemMap": {
+        "0": "Peach",
         "1": "Apple",
         "2": "Orange",
         "3": "Banana",

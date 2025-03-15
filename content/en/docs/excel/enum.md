@@ -102,7 +102,7 @@ message ItemConf {
 
 In order to generate enum type definition, you should specify `Mode` option to `MODE_ENUM_TYPE` in metasheet `@TABLEAU`.
 
-### Simple enum type in sheet
+### Single enum type in sheet
 
 For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
@@ -146,6 +146,10 @@ enum ItemType {
 ```
 
 {{< /details >}}
+
+### Multiple enum types in sheet
+
+> TODO...
 
 ### Specify Number column
 
