@@ -14,23 +14,31 @@ toc: true
 
 ### Data
 
-Accessor: `func Data() *ProtobufMessage`
+`func Data() *ProtobufMessage`
 
-Description: Get the internal protobuf message data.
+Get the internal protobuf message data.
 
 ### Map
 
-Accessor: `func GetN(k1 KEY1, k2 KEY2...) (*MapValueType, error)`
+`func GetN(k1 KEY1, k2 KEY2...) (*MapValueType, error)`
 
-Description: Get the `N`th-level map value..
+Get the `N`th-level map value. Be aware that only applies to each level message's **first map field**.
 
 ### OrderedMap
 
-Accessor: `func GetOrderedMapN(k1 KEY1, k2 KEY2...) (*OrderedMapValueType, error)`
+> Prerequisite: You need to set metasheet option `OrderedMap` to `true`.
+>
+> See [metatsheet option: OrderedMap](../../../excel/metasheet/#option-orderedmap).
 
-Description: Get the `N`th-level ordered map value.
+`func GetOrderedMapN(k1 KEY1, k2 KEY2...) (*OrderedMapValueType, error)`
+
+Get the `N`th-level ordered map value. Be aware that only applies to each level message's **first map field**.
 
 ### Index
+
+> Prerequisite: You need to set metatsheet option `Index` appropriately.
+>
+> See [metatsheet option: Index](../../../excel/metasheet/#option-index).
 
 If index name is `Chapter`, then the accessers are:
 
@@ -39,7 +47,8 @@ If index name is `Chapter`, then the accessers are:
 
 ## Custom messager
 
-You can add custom messager which can proprocess the loaded config objects.
+If the built-in APIs are not sufficient for you business logic, then you
+should add a custom messager which can proprocess the loaded config objects.
 
 Example: [go-tableau-loader/customconf](https://github.com/tableauio/loader/tree/master/test/go-tableau-loader/customconf)
 

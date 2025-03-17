@@ -26,14 +26,16 @@ toc: true
 | `present`   | bool   | Must fill cell data explicitly if present is true. <br> Default: `false`.                                                                                                  |
 | `optional`  | bool   | Whether this field is optional (field name existence).                                                                                                                     |
 | `patch`     | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                              |
-| `sep`       | string | Field-level separator for separating: <br> - incell list elements (scalar or struct). <br> - incell map items. <br> Default: `,`.                                          |
-| `subsep`    | string | Field-level subseparator for separating: <br> - key-value pair of each incell map item. <br> - struct fields of each incell struct list element. <br> Default: `:`.        |
+| `sep`       | string | Field-level separator.                                                                                                                                                     |
+| `subsep`    | string | Field-level subseparator.                                                                                                                                                  |
 
 {.table-striped .table-hover}
 
 ## Option `unique`
 
-Option `unique` can be specified as `true` in the map field property. Then the tableauc will report an error if a duplicate key is appeared.
+Option `unique` can be specified as `true` in the map field property. Then tableau will report an error if a duplicate key is appeared.
+
+{{< alert icon="👉" context="info" text="In most cases, tableau will auto deduce the map key is unique or not. The rule is: if a map's value type has no same layout map/list field, then this map key must be unique. So it is not neccessary to config it." />}}
 
 ## Option `range`
 
@@ -152,3 +154,21 @@ If set to true, then:
 ## Option `patch`
 
 See field-level patch in [Option Patch →]({{< relref "metasheet/#option-patch" >}}).
+
+## Option `sep`
+
+Field-level separator for separating:
+
+- incell list elements (scalar or struct).
+- incell map items.
+
+If not set, it will use sheet-level seq in [metasheet](../metasheet/#option-sep).
+
+## Option `subsep`
+
+Field-level subseparator for separating:
+
+- key-value pair of each incell map item.
+- struct fields of each incell struct list element.
+
+If not set, it will use sheet-level subseq in [metasheet](../metasheet/#option-subsep).

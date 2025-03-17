@@ -12,11 +12,11 @@ toc: true
 
 ## Supported APIs
 
-| Lang       | Get (Map) | GetOrderedMap | Find (Index) |
-| ---------- | --------- | ------------- | ------------ |
-| C++        | ✔️         | ✔️             | ✔️            |
-| Go         | ✔️         | ✔️             | ✔️            |
-| C#         |           |               |              |
-| TypeScript |           |               |              |
-| Lua        |           |               |              |
+| Lang                | Get (Map) | GetOrderedMap | Find (Index) |
+| ------------------- | --------- | ------------- | ------------ |
+| [C++](../cpp)       | ✔️         | ✔️             | ✔️            |
+| [Go](../go)         | ✔️         | ✔️             | ✔️            |
+| [C#](../csharp)     |           |               |              |
+| [TypeScript](../ts) |           |               |              |
+| [Lua](../lua)       |           |               |              |
 {.table-striped .table-hover}

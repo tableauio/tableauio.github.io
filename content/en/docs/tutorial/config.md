@@ -128,11 +128,15 @@ conf:
     # Separator for separating:
     #  - incell list elements (scalar or struct).
     #  - incell map items.
-    sep: ","
+    #
+    # Default: ","
+    sep: ""
     # Subseparator for separating:
     #  - key-value pair of each incell map item.
     #  - struct fields of each incell struct list element.
-    subsep: ":"
+    #
+    # Default: ":"
+    subsep: ""
   output:
     # Specify subdir (relative to output dir) for generated configuration files.
     subdir: ""
@@ -169,3 +173,21 @@ conf:
     #  - patch: if sheet options are specified: Patch (PATCH_MERGE) and Scatter
     dryRun: ""
 ```
+
+### conf.input.seq
+
+Default: `,`
+
+Separator for separating:
+
+- incell list elements (scalar or struct).
+- incell map items.
+
+### conf.input.subseq
+
+Default: `:`
+
+Sheet-level subseparator for separating:
+
+- key-value pair of each incell map item.
+- struct fields of each incell struct list element.

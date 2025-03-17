@@ -26,18 +26,18 @@ Options below can be specified in the metasheet `@TABLEAU` to affect the corresp
 | `Typeline`               | int32               | The line number of column type definition in a cell. `0` means the whole cell.<br>Default: `0`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `Transpose`              | bool                | Interchanging the rows and columns of a given sheet.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `Nested`                 | bool                | Nested naming of the **namerow**.<br>Default: `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `Sep`                    | string              | Sheet-level separator for separating: <br> - incell list elements (scalar or struct). <br> - incell map items. <br> Default: `,`.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `Subsep`                 | string              | Field-level subseparator for separating: <br> - key-value pair of each incell map item. <br> - struct fields of each incell struct list element. <br> Default: `:`.                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `Sep`                    | string              | Sheet-level separator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `Subsep`                 | string              | Sheet-level subseparator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | `Merger`                 | []string            | Merge multiple sheets (comma-separated) into one with the same structure. <br> Each element can be:<br> - just a workbook file path or glob path (relative to this workbook): `<Workbook>`, then the sheet name is the same as this sheet.<br> - a workbook file path (relative to this workbook) with a worksheet name: `<Workbook>#<Worksheet>`.                                                                                                                                                                                                                     |
 | `AdjacentKey`            | bool                | Merge adjacent rows with the same key. If the key cell is not set, it will be treated the same as the nearest key above the same column.<br>Default:`false`.                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `FieldPresence`          | bool                | In order to track field presence of basic types (numeric, string, bytes, and enums), the generated field will be labeled `optional`.<br>Default:`false`.                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `Mode`                   | Mode                | Sheet mode. <br> Valid modes are: `MODE_UE_CSV`, `MODE_UE_JSON`, `MODE_ENUM_TYPE`, `MODE_STRUCT_TYPE`, `MODE_UNION_TYPE`.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `Mode`                   | Mode                | Sheet mode. <br> Available modes: <br> - `MODE_ENUM_TYPE` <br> - `MODE_ENUM_TYPE_MULTI` <br> - `MODE_STRUCT_TYPE` <br> - `MODE_STRUCT_TYPE_MULTI` <br> - `MODE_UNION_TYPE`<br> - `MODE_UNION_TYPE_MULTI`                                                                                                                                                                                                                                                                                                                                                               |
 | `Scatter`                | []string            | Convert multiple sheets separately with same schema. <br> Each element can be: <br> - a workbook name or Glob which is relative to this workbook: `<Workbook>`, then the sheet name is the same as this sheet. <br> - or a workbook name which is relative to this workbook with a worksheet name: `<Workbook>#<Worksheet>`.                                                                                                                                                                                                                                           |
 | `Optional`               | bool                | Whether all fields in this sheet are optional (field name existence).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `Patch`                  | Patch               | Sheet patch type.  <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | `WithParentDir`          | bool                | confgen: export JSON/Bin/Text files with parent dir created.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `ScatterWithoutBookName` | bool                | confgen(scatter): export JSON/Bin/Text filenames without book name prefix.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `OrderedMap`             | bool                | Generate OrderedMap accessers or not.<br>Default: `false`.<br> Supported: `C++, Go`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `OrderedMap`             | bool                | Generate OrderedMap accessers or not.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `Index`                  | []string            | Generate index accessers, and multiple indexes are comma-separated. <br> - Single-column index is in the forma: `<ColumnName>[@IndexName]`, if `IndexName` is not set, it will be this column's parent struct type name.<br> - Multi-column index (or composite index) is in the form: `([column1, column2, column3,...])[@IndexName]`<br>E.g.: <br> - `ID`<br> - `ID@Item`<br> - `(ID,Type)`<br> - `(ID,Type)@Item`<br> - `ID, (ID,Type)@Item`<br> Supported: `C++, Go`.                                                                                              |
 | `LangOptions`            | map<string, string> | Specify loader language options. <br> Valid keys are: `OrderedMap`, `Index`. <br> Different kvs must be seperated by `,` and one key value must be seperated by `:`. <br> If one key doesn't exist in map, it means that this loader option is supported in all languages. <br> Valid values are all combinations of `cpp`, `go` with space as seperator. <br> Examples: <br> - `OrderedMap:cpp,Index:cpp go` // ordered map supported in cpp, index supported in cpp and go <br> - `OrderedMap:cpp` // ordered map supported in cpp, index supported in all languages |
 {.table-striped .table-hover}
@@ -128,6 +128,20 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+## Option `Mode`
+
+Sheet mode.
+
+Available modes:
+
+- `MODE_DEFAULT`: Default mode, which defines sheet's data structure.
+- `MODE_ENUM_TYPE`: Define single enum type in a sheet.
+- `MODE_ENUM_TYPE_MULTI`: Define multiple enum types in a sheet.
+- `MODE_STRUCT_TYPE`: Define single struct type in a sheet.
+- `MODE_STRUCT_TYPE_MULTI`: Define multiple struct types in a sheet.
+- `MODE_UNION_TYPE`: Define single union type in a sheet.
+- `MODE_UNION_TYPE_MULTI`: Define multiple union types in a sheet.
 
 ## Option `Transpose`
 
@@ -462,10 +476,22 @@ It is supposed to generate three different config files (name pattern: `<BookNam
 
 {{< /details >}}
 
+## Option `OrderedMap`
+
+If you set `OrderedMap` to `true`, then tableau loader plugins will generate ordered map APIs:
+
+- [C++: OrderedMap API](../../api/loader/cpp/#orderedmap)
+- [Go: OrderedMap API](../../api/loader/go/#orderedmap)
+
 ## Option `Index`
 
 Option `Index` can be specified to generate index accessers, and multiple indexes are comma-separated.
 There are two kinds of indexes in tableau: one is **single-column index**, and another is **multi-column index** (aka composite index).
+
+If you set `Index` appropriately, then tableau loader plugins will generate index APIs:
+
+- [C++: Index API](../../api/loader/cpp/#index)
+- [Go: Index API](../../api/loader/go/#index)
 
 Each column type can be:
 
@@ -570,3 +596,21 @@ enum Patch {
   PATCH_MERGE = 2;
 }
 ```
+
+## Option `Sep`
+
+Sheet-level separator for separating:
+
+- incell list elements (scalar or struct).
+- incell map items.
+
+If not set, it will use global-level seq  (default: `,`)  in tableauc [yaml.config](../../tutorial/config/#confinputseq).
+
+## Option `Subsep`
+
+Sheet-level subseparator for separating:
+
+- key-value pair of each incell map item.
+- struct fields of each incell struct list element.
+
+If not set, it will use global-level subseq (default: `:`) in tableauc [yaml.config](../../tutorial/config/#confinputseq).
