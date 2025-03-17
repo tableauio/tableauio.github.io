@@ -599,18 +599,18 @@ enum Patch {
 
 ## Option `Sep`
 
-Sheet-level separator for separating:
+**Sheet-level** separator for separating:
 
 - incell list elements (scalar or struct).
 - incell map items.
 
-If not set, it will use global-level seq  (default: `,`)  in tableauc [yaml.config](../../tutorial/config/#confinputseq).
+If not set, it will use **global-level** seq (default: `,`)  in tableauc [yaml.config](../../tutorial/config/#confinputseq).
 
 ## Option `Subsep`
 
-Sheet-level subseparator for separating:
+**Sheet-level** subseparator for separating:
 
 - key-value pair of each incell map item.
 - struct fields of each incell struct list element.
 
-If not set, it will use global-level subseq (default: `:`) in tableauc [yaml.config](../../tutorial/config/#confinputseq).
+If not set, it will use **global-level** subseq (default: `:`) in tableauc [yaml.config](../../tutorial/config/#confinputseq).

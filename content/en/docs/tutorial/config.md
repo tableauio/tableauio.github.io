@@ -178,16 +178,26 @@ conf:
 
 Default: `,`
 
-Separator for separating:
+**Global-level** separator for separating:
 
 - incell list elements (scalar or struct).
 - incell map items.
+
+**Sheet-level** and **field-level** separator options are also supported:
+
+- [Sheet-level separator in metasheet](../../excel/metasheet/#option-sep)
+- [Field-level separator in field property](../../excel/field-property/#option-sep)
 
 ### conf.input.subseq
 
 Default: `:`
 
-Sheet-level subseparator for separating:
+Global-level subseparator for separating:
 
 - key-value pair of each incell map item.
 - struct fields of each incell struct list element.
+
+**Sheet-level** and **field-level** subseparator options are also supported:
+
+- [Sheet-level subseparator in metasheet](../../excel/metasheet/#option-subsep)
+- [Field-level subseparator in field property](../../excel/field-property/#option-subsep)

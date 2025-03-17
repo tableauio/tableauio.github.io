@@ -47,10 +47,36 @@ If index name is `Chapter`, then the accessers are:
 
 ## Custom messager
 
-If the built-in APIs are not sufficient for you business logic, then you
-should add a custom messager which can proprocess the loaded config objects.
+If the built-in APIs are not sufficient for your business logic, then you
+can add a custom messager, where you can write proprocess logic based on
+loaded config objects.
 
 Example: [go-tableau-loader/customconf](https://github.com/tableauio/loader/tree/master/test/go-tableau-loader/customconf)
+
+**custom_xxx_conf.go**:
+
+```go
+const CustomXXXConfName = "CustomXXXConf"
+type CustomXXXConf struct {
+    tableau.UnimplementedMessager
+    // TODO: add custom data fields.
+}
+
+func (x *CustomItemConf) Name() string {
+    return CustomItemConfName
+}
+
+func (x *CustomItemConf) ProcessAfterLoadAll(hub *tableau.Hub) error {
+    // TODO: implement here.
+    return nil
+}
+
+func init() {
+    tableau.Register(func() tableau.Messager {
+        return new(CustomXXXConf)
+    })
+}
+```
 
 ## Plugin: protoc-gen-go-tableau-loader
 

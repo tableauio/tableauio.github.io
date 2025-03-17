@@ -48,10 +48,45 @@ If index name is `Chapter`, then the accessers are:
 
 ## Custom messager
 
-If the built-in APIs are not sufficient for you business logic, then you
-should add a custom messager which can proprocess the loaded config objects.
+If the built-in APIs are not sufficient for your business logic, then you
+can add a custom messager, where you can write proprocess logic based on
+loaded config objects.
 
 Example: [cpp-tableau-loader/hub/custom](https://github.com/tableauio/loader/tree/master/test/cpp-tableau-loader/src/hub/custom)
+
+**custom_xxx_conf.h**:
+
+```cpp
+#pragma once
+#include "protoconf/hub.pc.h"
+#include "protoconf/xxx_conf.pc.h"
+class CustomXXXConf : public tableau::Messager {
+ public:
+  static const std::string& Name() { return kCustomName; };
+  virtual bool Load(const std::string& dir, tableau::Format fmt,
+                    const tableau::LoadOptions* options = nullptr) override {
+    return true;
+  }
+  virtual bool ProcessAfterLoadAll(const tableau::Hub& hub) override;
+
+ private:
+  static const std::string kCustomName;
+  // TODO: add custom data fields.
+};
+```
+
+**custom_xxx_conf.cpp**:
+
+```cpp
+#include "hub/custom/xxx/custom_xxx_conf.h"
+
+const std::string CustomXXXConf::kCustomName = "CustomXXXConf";
+
+bool CustomItemConf::ProcessAfterLoadAll(const tableau::Hub& hub) {
+  // TODO: implement here.
+  return true;
+}
+```
 
 ## Plugin: protoc-gen-cpp-tableau-loader
 

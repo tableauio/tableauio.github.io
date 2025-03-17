@@ -157,18 +157,18 @@ See field-level patch in [Option Patch →]({{< relref "metasheet/#option-patch"
 
 ## Option `sep`
 
-Field-level separator for separating:
+**Field-level** separator for separating:
 
 - incell list elements (scalar or struct).
 - incell map items.
 
-If not set, it will use sheet-level seq in [metasheet](../metasheet/#option-sep).
+If not set, it will use **sheet-level** seq in [metasheet](../metasheet/#option-sep).
 
 ## Option `subsep`
 
-Field-level subseparator for separating:
+**Field-level** subseparator for separating:
 
 - key-value pair of each incell map item.
 - struct fields of each incell struct list element.
 
-If not set, it will use sheet-level subseq in [metasheet](../metasheet/#option-subsep).
+If not set, it will use **sheet-level** subseq in [metasheet](../metasheet/#option-subsep).
