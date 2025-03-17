@@ -8,6 +8,7 @@ import ini from 'highlight.js/lib/languages/ini';
 import yaml from 'highlight.js/lib/languages/yaml';
 import markdown from 'highlight.js/lib/languages/markdown';
 import protobuf from 'highlight.js/lib/languages/protobuf';
+import go from 'highlight.js/lib/languages/go';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('json', json);
@@ -19,6 +20,7 @@ hljs.registerLanguage('yaml', yaml);
 hljs.registerLanguage('md', markdown);
 hljs.registerLanguage('protobuf', protobuf);
 hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('go', go);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
