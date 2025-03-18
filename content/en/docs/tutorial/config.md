@@ -42,7 +42,7 @@ log:
 # Options for generating proto files.
 proto:
   input:
-    # Header options of worksheet.
+    # Header options for worksheet and workbook.
     header:
       # Exact row number of column name definition at a worksheet.
       namerow: 1
@@ -58,6 +58,18 @@ proto:
       # The line number of column type definition in a cell.
       # Value 0 means the whole cell.
       typeline: 0
+      # Separator for separating:
+      #  - incell list elements (scalar or struct).
+      #  - incell map items.
+      #
+      # Default: ","
+      sep: ""
+      # Subseparator for separating:
+      #  - key-value pair of each incell map item.
+      #  - struct fields of each incell struct list element.
+      #
+      # Default: ":"
+      subsep: ""
     # The proto paths are used to search for dependencies that are referenced in import
     # statements in proto source files. If no import paths are provided then
     # "." (current directory) is assumed to be the only import path.
@@ -125,18 +137,6 @@ conf:
     subdirs: []
     # Specify rewrite subdir path (relative to workbook name option in proto file).
     subdirRewrites: {}
-    # Separator for separating:
-    #  - incell list elements (scalar or struct).
-    #  - incell map items.
-    #
-    # Default: ","
-    sep: ""
-    # Subseparator for separating:
-    #  - key-value pair of each incell map item.
-    #  - struct fields of each incell struct list element.
-    #
-    # Default: ":"
-    subsep: ""
   output:
     # Specify subdir (relative to output dir) for generated configuration files.
     subdir: ""
@@ -174,7 +174,7 @@ conf:
     dryRun: ""
 ```
 
-### conf.input.seq
+### proto.input.header.seq
 
 Default: `,`
 
@@ -188,7 +188,7 @@ Default: `,`
 - [Sheet-level separator in metasheet](../../excel/metasheet/#option-sep)
 - [Field-level separator in field property](../../excel/field-property/#option-sep)
 
-### conf.input.subseq
+### proto.input.header.subseq
 
 Default: `:`
 
