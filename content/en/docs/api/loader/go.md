@@ -56,14 +56,13 @@ Example: [go-tableau-loader/customconf](https://github.com/tableauio/loader/tree
 **custom_xxx_conf.go**:
 
 ```go
-const CustomXXXConfName = "CustomXXXConf"
 type CustomXXXConf struct {
     tableau.UnimplementedMessager
     // TODO: add custom data fields.
 }
 
 func (x *CustomItemConf) Name() string {
-    return CustomItemConfName
+    return "CustomXXXConf"
 }
 
 func (x *CustomItemConf) ProcessAfterLoadAll(hub *tableau.Hub) error {

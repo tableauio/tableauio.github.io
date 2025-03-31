@@ -131,21 +131,21 @@ message ItemConf {
 
 ## Option `Mode`
 
-Sheet mode.
+Sheet mode defines how tableauc (protogen) parses the sheet: data or types.
 
 Available modes:
 
 - `MODE_DEFAULT`: Default mode, which defines sheet's data structure.
-- `MODE_ENUM_TYPE`: Define single enum type in a sheet.
-- `MODE_ENUM_TYPE_MULTI`: Define multiple enum types in a sheet.
-- `MODE_STRUCT_TYPE`: Define single struct type in a sheet.
-- `MODE_STRUCT_TYPE_MULTI`: Define multiple struct types in a sheet.
-- `MODE_UNION_TYPE`: Define single union type in a sheet.
-- `MODE_UNION_TYPE_MULTI`: Define multiple union types in a sheet.
+- `MODE_ENUM_TYPE`: Define single enum type in a sheet, see [Example](../enum/#single-enum-type-in-sheet).
+- `MODE_ENUM_TYPE_MULTI`: Define multiple enum types in a sheet, see [Example](../enum/#multiple-enum-types-in-sheet).
+- `MODE_STRUCT_TYPE`: Define single struct type in a sheet, see [Example](../struct/#single-struct-type-in-sheet).
+- `MODE_STRUCT_TYPE_MULTI`: Define multiple struct types in a sheet, see [Example](../struct/#multiple-struct-types-in-sheet).
+- `MODE_UNION_TYPE`: Define single union type in a sheet, see [Example](../union/#single-union-type-in-sheet).
+- `MODE_UNION_TYPE_MULTI`: Define multiple union types in a sheet, see [Example](../union/#multiple-union-types-in-sheet).
 
 ## Option `Transpose`
 
-In linear algebra, the transpose of a matrix is an operator which flips a matrix over its diagonal. Likewise, the transpose of a sheet (2D matrix) means interchanging its rows into columns or columns into rows.
+In linear algebra, transpose of a matrix is an operator which flips a matrix over its diagonal. Likewise, transpose of a sheet (2D matrix) means interchanging its rows into columns or vice versa.
 
 See more details about [Excel: Transpose (rotate) data from rows to columns or vice versa](https://support.microsoft.com/en-us/office/transpose-rotate-data-from-rows-to-columns-or-vice-versa-3419f2e3-beab-4318-aae5-d0f862209744).
 
