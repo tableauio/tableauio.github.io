@@ -108,10 +108,10 @@ option go_package = "github.com/tableauio/demo/examples/helloworld/protoconf";
 
 import "tableau/protobuf/tableau.proto";
 
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {
@@ -122,7 +122,7 @@ message ItemConf {
 }
 
 message ActivityConf {
-  option (tableau.worksheet) = {name:"ActivityConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ActivityConf"};
 
   map<uint32, Activity> activity_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Activity {

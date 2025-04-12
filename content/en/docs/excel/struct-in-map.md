@@ -48,10 +48,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<int32, Reward> reward_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Reward {
@@ -142,10 +142,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<int32, Reward> reward_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Reward {
@@ -222,10 +222,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<int32, Reward> reward_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Reward {

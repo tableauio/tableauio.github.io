@@ -56,10 +56,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL}];
   message Item {
@@ -138,10 +138,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<int32, protoconf.Item> item_map = 1 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL}];
 }
@@ -220,10 +220,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {
@@ -308,10 +308,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<int32, protoconf.Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
 }
@@ -388,10 +388,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, string> item_map = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL}];
 }
@@ -470,10 +470,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<int32, Fruit> fruit_map = 1 [(tableau.field) = {name:"Fruit" key:"Key" layout:LAYOUT_INCELL}];
   message Fruit {
@@ -562,10 +562,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {
@@ -670,10 +670,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<int32, Item> item_map = 1 [(tableau.field) = {key:"Type" layout:LAYOUT_VERTICAL}];
   message Item {
@@ -756,10 +756,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL prop:{fixed:true}}];
   message Item {
@@ -834,10 +834,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL prop:{size:2}}];
   message Item {
@@ -906,10 +906,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {

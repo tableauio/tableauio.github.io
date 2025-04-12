@@ -48,10 +48,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   google.protobuf.Timestamp begin_datetime = 1 [(tableau.field) = {name:"BeginDatetime"}];
   google.protobuf.Timestamp end_datetime = 2 [(tableau.field) = {name:"EndDatetime"}];
@@ -112,10 +112,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   google.protobuf.Timestamp begin_date = 1 [(tableau.field) = {name:"BeginDate"}];
   google.protobuf.Timestamp end_date = 2 [(tableau.field) = {name:"EndDate"}];
@@ -176,10 +176,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   google.protobuf.Duration begin_time = 1 [(tableau.field) = {name:"BeginTime"}];
   google.protobuf.Duration end_time = 2 [(tableau.field) = {name:"EndTime"}];
@@ -240,10 +240,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   google.protobuf.Duration duration_1 = 1 [(tableau.field) = {name:"Duration1"}];
   google.protobuf.Duration duration_2 = 2 [(tableau.field) = {name:"Duration2"}];
@@ -304,10 +304,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   tableau.Fraction min_ratio = 1 [(tableau.field) = {name:"MinRatio"}];
   repeated tableau.Fraction ratio_list = 2 [(tableau.field) = {name:"Ratio" layout:LAYOUT_HORIZONTAL}];
@@ -383,10 +383,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   tableau.Comparator min_ratio = 1 [(tableau.field) = {name:"MinRatio"}];
   repeated tableau.Comparator ratio_list = 2 [(tableau.field) = {name:"Ratio" layout:LAYOUT_HORIZONTAL}];

@@ -28,7 +28,6 @@ toc: true
 | `patch`     | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                              |
 | `sep`       | string | Field-level separator.                                                                                                                                                     |
 | `subsep`    | string | Field-level subseparator.                                                                                                                                                  |
-
 {.table-striped .table-hover}
 
 ## Option `unique`

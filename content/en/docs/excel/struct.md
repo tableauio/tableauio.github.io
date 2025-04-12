@@ -50,10 +50,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   Property property = 1 [(tableau.field) = {name:"Property"}];
   message Property {
@@ -127,10 +127,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {
@@ -233,10 +233,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {
@@ -333,10 +333,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   Item reward_item = 1 [(tableau.field) = {name:"RewardItem"}];
   message Item {
@@ -425,10 +425,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   protoconf.Transform transform_1 = 1 [(tableau.field) = {name:"Transform1" span:SPAN_INNER_CELL prop{form:FORM_TEXT}}];
   protoconf.Transform transform_2 = 2 [(tableau.field) = {name:"Transform2" span:SPAN_INNER_CELL prop:{form:FORM_JSON}}];

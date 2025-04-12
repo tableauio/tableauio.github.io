@@ -82,10 +82,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message LoaderConf {
-  option (tableau.worksheet) = {name:"LoaderConf" namerow:1 typerow:2 noterow:3 datarow:4 nested:true};
+  option (tableau.worksheet) = {name:"LoaderConf" nested:true};
 
   map<int32, Server> server_map = 1 [(tableau.field) = {name:"Server" key:"Type" layout:LAYOUT_VERTICAL}];
   message Server {

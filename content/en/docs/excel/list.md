@@ -3,7 +3,7 @@ title: "List"
 description: "Excel list guide."
 lead: "This guide demonstrates different features of excel list type."
 date: 2022-02-26T13:59:39+08:00
-lastmod: 2022-02-26T13:59:39+08:00
+lastmod: 2025-04-12T13:59:39+08:00
 draft: false
 images: []
 weight: 7105
@@ -13,11 +13,19 @@ toc: true
 
 ## Horizontal list
 
-There are three kinds of horizontal list:
+NOTE: Column name of horizontal list **MUST** have a digit suffix which started at `1`.
 
-1. Horizontal **scalar/enum** list, as element type is scalar. E.g: `[]int32`.
-2. Horizontal **incell struct** list, as element type is incell struct. E.g: `[]{int32 ID, string Name}Item`.
-3. Horizontal **struct** list, as element type is struct. E.g: `[Item]int32`.
+Overview of horizontal list syntax:
+
+| List element type                                                     | Syntax example                  |
+| --------------------------------------------------------------------- | ------------------------------- |
+| [scalar](#horizontal-scalar-list)                                     | `[]uint32`                      |
+| [enum](#horizontal-enum-list)                                         | `[]enum<.FruiteType>`           |
+| [struct](#horizontal-struct-list)                                     | `[Item]uint32`                  |
+| [predefined struct](#horizontal-predefined-struct-list)               | `[.Item]uint32`                 |
+| [incell struct](#horizontal-incell-struct-list)                       | `[]{uint32 ID, string Num}Item` |
+| [incell predefined struct](#horizontal-incell-predefined-struct-list) | `[]{.Item}`                     |
+{.table-striped .table-hover}
 
 ### Horizontal scalar list
 
@@ -27,11 +35,11 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet colored >}}
 
-| Param1         | Param2         | Param3         |
-| -------------- | -------------- | -------------- |
-| []int32        | int32          | int32          |
-| Param1's value | Param2's value | Param3's value |
-| 1              | 2              | 3              |
+| ID1         | ID2         | ID3         |
+| ----------- | ----------- | ----------- |
+| []uint32    | uint32      | uint32      |
+| ID1's value | ID2's value | ID3's value |
+| 1           | 2           | 3           |
 
 {{< /sheet >}}
 
@@ -53,12 +61,12 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated int32 param_list = 1 [(tableau.field) = {name:"Param" layout:LAYOUT_HORIZONTAL}];
+  repeated uint32 id_list = 1 [(tableau.field) = {name:"ID" layout:LAYOUT_HORIZONTAL}];
 }
 ```
 
@@ -68,7 +76,7 @@ message ItemConf {
 
 ```json
 {
-    "paramList": [
+    "idList": [
         1,
         2,
         3
@@ -124,10 +132,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated protoconf.FruitType param_list = 1 [(tableau.field) = {name:"Param" layout:LAYOUT_HORIZONTAL}];
 }
@@ -183,10 +191,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL}];
   message Item {
@@ -265,10 +273,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL}];
 }
@@ -333,10 +341,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL span:SPAN_INNER_CELL}];
   message Item {
@@ -415,10 +423,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated protoconf.Item reward_list = 1 [(tableau.field) = {name:"Reward" layout:LAYOUT_HORIZONTAL span:SPAN_INNER_CELL}];
 }
@@ -451,17 +459,154 @@ message ItemConf {
 
 ## Vertical list
 
-There are two kinds of vertical list:
+NOTE: Column name of horizontal list **MUST NOT** have a digit suffix which started at `1`.
 
-1. Vertical **scalar** list, as list element type is scalar. E.g: `[]int32`.
-2. Vertical **struct** list, as list element type is struct. E.g: `[Item]int32`.
+Overview of horizontal list syntax:
+
+> TODO: table form
 
 ### Vertical scalar list
 
-No need to support, use `[Item]SCALAR` instead:
+> It's defined same as [Incell scalar list](#incell-scalar-list), but will aggregate multiple rows if provided.
 
-- `[Item]int32`
-- `[Item]enum<.FruitType>`
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID       |
+| -------- |
+| []uint32 |
+| ID       |
+| 1,2,3    |
+| 1,2      |
+| 1        |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated uint32 id_list = 1 [(tableau.field) = {name:"ID" layout:LAYOUT_INCELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "idList": [
+        1,
+        2,
+        3,
+        1,
+        2,
+        1
+    ]
+}
+```
+
+{{< /details >}}
+
+### Vertical enum list
+
+> It's defined same as [Incell enum list](#incell-enum-list), but will aggregate multiple rows if provided.
+
+`FruitType` in *common.proto* is predefined as:
+
+```protobuf
+enum FruitType {
+  FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
+  FRUIT_TYPE_APPLE   = 1 [(tableau.evalue).name = "Apple"];
+  FRUIT_TYPE_ORANGE  = 3 [(tableau.evalue).name = "Orange"];
+  FRUIT_TYPE_BANANA  = 4 [(tableau.evalue).name = "Banana"];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Type                               |
+| ---------------------------------- |
+| []enum\<.FruitType\>               |
+| Type                               |
+| Apple,Orange,Banana                |
+| FRUIT_TYPE_APPLE,FRUIT_TYPE_ORANGE |
+| 1                                  |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated protoconf.FruitType type_list = 1 [(tableau.field) = {name:"Type" layout:LAYOUT_INCELL}];
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "typeList": [
+        "FRUIT_TYPE_APPLE",
+        "FRUIT_TYPE_ORANGE",
+        "FRUIT_TYPE_BANANA",
+        "FRUIT_TYPE_APPLE",
+        "FRUIT_TYPE_ORANGE",
+        "FRUIT_TYPE_APPLE"
+    ]
+}
+```
+
+{{< /details >}}
 
 ### Vertical struct list
 
@@ -499,10 +644,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated Item item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
   message Item {
@@ -587,10 +732,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated protoconf.Item _item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
 }
@@ -656,10 +801,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
   message Item {
@@ -739,10 +884,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
 }
@@ -775,10 +920,18 @@ message ItemConf {
 
 ## Incell list
 
-There are two kinds of in-cell list:
+NOTE: Column name of horizontal list **MUST NOT** have a digit suffix which started at `1`.
 
-1. Incell **scalar** list, as list value type is scalar. E.g: `[]int32`.
-2. Incell **struct** list, as list value type is struct. E.g: `[Item]int32`.
+Overview of incell list syntax:
+
+> TODO: table form
+
+There are 4 kinds of incell list:
+
+1. Incell **scalar** list, each element type is scalar. E.g: `[]int32`.
+2. Incell **enum** list, each element type is enum. E.g: `[]enum<.FruitType>`.
+3. Incell **struct** list, each element type is struct. E.g: `[]{int32 ID,int32 Num}Item`.
+4. Incell **predefined-struct** list, each element type is predefined struct. E.g.: `[]{.Item}`.
 
 ### Incell scalar list
 
@@ -818,10 +971,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated int32 param_list = 1 [(tableau.field) = {name:"Param" layout:LAYOUT_INCELL}];
 }
@@ -894,10 +1047,10 @@ Generated:
 ```protobuf
 // --snip--
 import "common.proto";
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated protoconf.FruitType param_list = 1 [(tableau.field) = {name:"Param" layout:LAYOUT_INCELL}];
 }
@@ -955,10 +1108,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
   message Item {
@@ -1036,10 +1189,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
 }
@@ -1116,10 +1269,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL prop:{fixed:true}}];
   message Item {
@@ -1192,10 +1345,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_HORIZONTAL prop:{size:2}}];
   message Item {
@@ -1264,10 +1417,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {
@@ -1324,159 +1477,6 @@ message ItemConf {
             ]
         }
     }
-}
-```
-
-{{< /details >}}
-
-### Keyed list
-
-Keyed list is same as normal list, except that `ColumnType` (first field type) is surrounded by angle brackets `<>`, and is treated as map key.
-
-**Syntax**: `[ElemType]<ColumnType>`
-
-#### Vertical struct keyed-list
-
-For example, a worksheet `ItemConf` in *HelloWorld.xlsx*:
-
-{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
-
-{{< sheet colored >}}
-
-| ID               | PropID           | PropName    |
-| ---------------- | ---------------- | ----------- |
-| [Item]\<uint32\> | map<int32, Prop> | string      |
-| Item's ID        | Prop's ID        | Prop's name |
-| 1                | 1                | sweet       |
-| 2                | 1                | sweet       |
-| 2                | 2                | delicious   |
-
-{{< /sheet >}}
-
-{{< sheet >}}
-
-|     |     |     |
-| --- | --- | --- |
-|     |     |     |
-|     |     |     |
-|     |     |     |
-
-{{< /sheet >}}
-
-{{< /spreadsheet >}}
-
-Generated:
-
-{{< details "hello_world.proto" >}}
-
-```protobuf
-// --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
-
-  repeated Item item_list = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
-  message Item {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    map<int32, Prop> prop_map = 2 [(tableau.field) = {key:"PropID" layout:LAYOUT_VERTICAL}];
-    message Prop {
-      int32 prop_id = 1 [(tableau.field) = {name:"PropID"}];
-      string prop_name = 2 [(tableau.field) = {name:"PropName"}];
-    }
-  }
-}
-```
-
-{{< /details >}}
-
-{{< details "ItemConf.json" >}}
-
-```json
-{
-    "itemList": [
-        {
-            "id": 1,
-            "propMap": {
-                "1": {
-                    "propId": 1,
-                    "propName": "sweet"
-                }
-            }
-        },
-        {
-            "id": 2,
-            "propMap": {
-                "1": {
-                    "propId": 1,
-                    "propName": "sweet"
-                },
-                "2": {
-                    "propId": 2,
-                    "propName": "delicious"
-                }
-            }
-        }
-    ]
-}
-```
-
-{{< /details >}}
-
-#### Scalar keyed-list
-
-A worksheet `ItemConf` in *HelloWorld.xlsx*:
-
-{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
-
-{{< sheet colored >}}
-
-| Param       |
-| ----------- |
-| []\<int32\> |
-| Param list  |
-| 1,2,2,3     |
-
-{{< /sheet >}}
-
-{{< sheet >}}
-
-|     |     |     |
-| --- | --- | --- |
-|     |     |     |
-|     |     |     |
-|     |     |     |
-
-{{< /sheet >}}
-
-{{< /spreadsheet >}}
-
-Generated:
-
-{{< details "hello_world.proto" >}}
-
-```protobuf
-// --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
-
-  repeated int32 param_list = 1 [(tableau.field) = {name:"Param" key:"Param" layout:LAYOUT_INCELL}];
-}
-```
-
-{{< /details >}}
-
-{{< details "ItemConf.json" >}}
-
-```json
-{
-    "paramList": [
-        1,
-        2,
-        3
-    ]
 }
 ```
 

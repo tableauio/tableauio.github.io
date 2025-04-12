@@ -114,10 +114,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ItemConf {
-  option (tableau.worksheet) = {name:"ItemConf" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"ItemConf"};
 
   map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Item {
@@ -181,10 +181,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message HeroConf {
-  option (tableau.worksheet) = {name:"HeroConf" namerow:1 typerow:2 noterow:3 datarow:4 transpose:true};
+  option (tableau.worksheet) = {name:"HeroConf" transpose:true};
 
   int32 id = 1 [(tableau.field) = {name:"ID"}];
   string name = 2 [(tableau.field) = {name:"Name"}];
@@ -288,10 +288,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ZoneConf {
-  option (tableau.worksheet) = {name:"ZoneConf" namerow:1 typerow:2 noterow:3 datarow:4 merger:"Merger*.xlsx"};
+  option (tableau.worksheet) = {name:"ZoneConf" merger:"Merger*.xlsx"};
 
   map<uint32, Zone> zone_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Zone {
@@ -410,10 +410,10 @@ Generated protoconf:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message ZoneConf {
-  option (tableau.worksheet) = {name:"ZoneConf" namerow:1 typerow:2 noterow:3 datarow:4 scatter:"Scatter*.xlsx"};
+  option (tableau.worksheet) = {name:"ZoneConf" scatter:"Scatter*.xlsx"};
 
   map<uint32, Zone> zone_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
   message Zone {

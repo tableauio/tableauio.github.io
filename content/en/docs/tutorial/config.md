@@ -86,7 +86,7 @@ proto:
     subdirs: []
     # Specify rewrite subdir path (relative to input dir).
     subdirRewrites: {}
-    # Follow the symbolic links when traversing directories recursively.
+    # Whether to follow the symbolic links when traversing directories recursively.
     # WARN: be careful to use this option, it may lead to infinite loop.
     followSymlink: false
     # Specify metasheet name.
@@ -101,8 +101,7 @@ proto:
     # Specify proto file options.
     # Example: go_package, csharp_namespace...
     fileOptions: {}
-    # EnumValueWithPrefix specifies whether to prepend prefix
-    # "UPPER_SNAKE_CASE of EnumType" to each enum value name.
+    # Whether to prepend prefix "UPPER_SNAKE_CASE of EnumType" to each enum value name.
     #
     # If set, the enum value name is prepended with "ENUM_TYPE_". For example:
     # enum ItemType has a value "EQUIP", then converted to "ITEM_TYPE_EQUIP".
@@ -143,7 +142,7 @@ conf:
     # Specify generated conf file formats. It will generate all formats if not set.
     # Available formats: "xlsx", "csv", "xml", and "yaml".
     formats: [json]
-    # Output pretty format of JSON, with multiline and indent.
+    # Whether to output pretty format of JSON, with multiline and indent.
     pretty: true
     # EmitUnpopulated specifies whether to emit unpopulated fields. It does not
     # emit unpopulated oneof fields or unpopulated extension fields.
@@ -164,10 +163,11 @@ conf:
     #
     # Refer: https://github.com/protocolbuffers/protobuf/blob/main/docs/field_presence.md
     emitUnpopulated: false
-    # UseProtoNames uses proto field name instead of lowerCamelCase name in JSON
-    # field names.
+    # Whether to emit timestamp in string format with timezones (as indicated by an offset).
+    emitTimezones: false
+    # Whether to use proto field name instead of lowerCamelCase name in JSON field names.
     useProtoNames: false
-    # UseEnumNumbers emits enum values as numbers.
+    # Whether to emit enum values as numbers.
     useEnumNumbers: false
     # Specify dry run mode:
     #  - patch: if sheet options are specified: Patch (PATCH_MERGE) and Scatter

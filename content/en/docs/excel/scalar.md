@@ -50,10 +50,10 @@ Generated:
 
 ```protobuf
 // --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 message Apple {
-  option (tableau.worksheet) = {name:"Apple" namerow:1 typerow:2 noterow:3 datarow:4};
+  option (tableau.worksheet) = {name:"Apple"};
 
   uint32 id = 1 [(tableau.field) = {name:"ID"}];
   string name = 2 [(tableau.field) = {name:"Name"}];
