@@ -14,7 +14,7 @@ toc: true
 
 | Option      | Type   | Description                                                                                                                                                                |
 | ----------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `unique`    | bool   | Check map key uniqueness. <br> Default: `false`.                                                                                                                           |
+| `unique`    | bool   | Check field uniqueness. <br> Default: `false`. Specially for map (or KeyedList) key, default will be auto deduced.                                                         |
 | `range`     | string | Format: `"left, right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point. |
 | `refer`     | string | Format: `"SheetName(SheetAlias).ColumnName"`.<br>Ensure this field is in another sheet's column value space. Multiple refers are comma-separated.                          |
 | `sequence`  | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                        |
@@ -28,13 +28,27 @@ toc: true
 | `patch`     | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                              |
 | `sep`       | string | Field-level separator.                                                                                                                                                     |
 | `subsep`    | string | Field-level subseparator.                                                                                                                                                  |
+| `cross`     | int32  | Specify count of crossed nodes/cells/fields of composite types with cardinality, such as list and map.                                                                     |
 {.table-striped .table-hover}
 
 ## Option `unique`
 
-Option `unique` can be specified as `true` in the map field property. Then tableau will report an error if a duplicate key is appeared.
+Option `unique` can be specified as `true` or `false` in the field property.
 
-{{< alert icon="👉" context="info" text="In most cases, tableau will auto deduce the map key is unique or not. The rule is: if a map's value type has no same layout map/list field, then this map key must be unique. So it is not neccessary to config it." />}}
+- If you set `unique` to `true` explicitly, then tableau will report an error if a duplicate key is appeared.
+- If you set `unique` to `false` explicitly, no check will be performed.
+
+### Map (or KeyedList) key
+
+Tableau will auto deduce the map (or KeyedList) key's `unique` as true or not.
+
+**The rule is**: if a map's value type (or KeyedList element type) has no sub map/list field of the same layout (vertical/horizontal), then the key must be unique.
+
+So in most cases, it's not neccessary to config it explicitly.
+
+### General scalar field
+
+If you specify a general scalar field's property `unique` as true, then tableau will check the field's uniquness in map or list.
 
 ## Option `range`
 
@@ -171,3 +185,21 @@ If not set, it will use **sheet-level** seq in [metasheet](../metasheet/#option-
 - struct fields of each incell struct list element.
 
 If not set, it will use **sheet-level** subseq in [metasheet](../metasheet/#option-subsep).
+
+## Option `cross`
+
+Specify count of crossed nodes/cells/fields of composite types with
+cardinality, such as list and map.
+
+### union list field
+
+Specify the count of union fields the list will cross and occupy
+(one list element for each field). It will also change this list
+field's layout from incell to horizontal.
+
+- Value 0 means it is an incell list.
+- Value > 0 means it is a horizontal list occupying N fields.
+- Value < 0 means it is a horizontal list occupying all following fields.
+
+> TODO: example illustrated.
+  

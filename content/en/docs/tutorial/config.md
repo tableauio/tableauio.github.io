@@ -58,6 +58,9 @@ proto:
       # The line number of column type definition in a cell.
       # Value 0 means the whole cell.
       typeline: 0
+      # The line number of column note definition in a cell.
+      # Value 0 means the whole cell.
+      noteline: 0
       # Separator for separating:
       #  - incell list elements (scalar or struct).
       #  - incell map items.
