@@ -49,7 +49,7 @@ If index name is `Chapter`, then the accessers are:
 ## Custom messager
 
 If the built-in APIs are not sufficient for your business logic, then you
-can add a custom messager, where you can write proprocess logic based on
+can add a custom messager, where you can write preprocess logic based on
 loaded config objects.
 
 Example: [cpp-tableau-loader/hub/custom](https://github.com/tableauio/loader/tree/master/test/cpp-tableau-loader/src/hub/custom)
