@@ -94,6 +94,16 @@ proto:
     followSymlink: false
     # Specify metasheet name.
     metasheetName: "@TABLEAU"
+    # Specify the first-pass mode to parse predefined types when generate
+    # specified config files. Under the hood, the parsed predefined types will
+    # be recognized and used in the second-pass.
+    #
+    # The first-pass mode can be:
+    #
+    #  - "": default mode, parse based on specified config files.
+    #  - "normal": parse based on all config files.
+    #  - "advanced": parse based on all previous generated proto files.
+    firstPassMode: ""
   output:
     # Specify subdir (relative to output dir) for generated proto files.
     subdir: ""
@@ -173,7 +183,7 @@ conf:
     # Whether to emit enum values as numbers.
     useEnumNumbers: false
     # Specify dry run mode:
-    #  - patch: if sheet options are specified: Patch (PATCH_MERGE) and Scatter
+    #  - "patch": if sheet options are specified: Patch (PATCH_MERGE) and Scatter
     dryRun: ""
 ```
 

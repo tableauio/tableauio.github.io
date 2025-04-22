@@ -1,7 +1,7 @@
 ---
 title: "KeyedList"
-description: "Excel list guide."
-lead: "This guide demonstrates different features of excel list type."
+description: "Excel keyed list guide."
+lead: "This guide demonstrates different features of excel keyed list type."
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2025-04-12T13:59:39+08:00
 draft: false
@@ -18,7 +18,7 @@ Keyed list is same as normal list, except that `ColumnType` (first field type) i
 
 ## Horizontal list
 
-TODO...
+> TODO...
 
 ## Vertical KeyedList
 
