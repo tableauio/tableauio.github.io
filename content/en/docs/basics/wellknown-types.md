@@ -85,3 +85,27 @@ message Comparator {
   }
 }
 ```
+
+## Version
+
+A version holds a version data with 3 formats: string, value interger and value list. A `pattern` option is required to parse the string into value interger, otherwise the default pattern `255.255.255` will be used.
+
+| Type     | Default | Description                                                                                                                                                                                                                         |
+| -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `str`    | `""`    | Format: `<MAJOR>.<MINOR>.<PATCH>[.<OTHER>]...`. <br>e.g.: `1.0.1`                                                                                                                                                                   |
+| `val`    | `0`     | Value interger of the version, see the conversion algorithm [here](https://github.com/tableauio/tableau/commit/444a01ff8c4947a249e8d0ea5c4c8c491cea69d3#diff-fd73b99348b802b948424f1740df144f17b6df75a8ff86316cd858f19fe7f87cR471). |
+| `major`  | `0`     | Major version value, the 1st interger value of version string.                                                                                                                                                                      |
+| `minor`  | `0`     | Minor version value, the 2nd interger value of version string. Zero if there is no 2nd interger value in pattern.                                                                                                                   |
+| `patch`  | `0`     | Patch version value, the 3rd interger value of version string. Zero if there is no 3rd interger value in pattern.                                                                                                                   |
+| `others` | `[]`    | Other version values, the 4rd or following interger values of version string. Nil if there is no 4rd or following interger values in pattern.                                                                                       |
+
+```protobuf
+message Version {
+  string str = 1; // Version in string form.
+  uint64 val = 2; // Version in integer form.
+  uint32 major = 3; // Major version number.
+  uint32 minor = 4; // Minor version number.
+  uint32 patch = 5; // Patch version number.
+  repeated uint32 others = 6; // Other version numbers, such as build number, resource version, and so on.
+}
+```
