@@ -25,7 +25,7 @@ You should include the proto files provided by Tableau and Protocol Buffers:
 
 | Type       | Default               | Description                                                                                             |
 | ---------- | --------------------- | ------------------------------------------------------------------------------------------------------- |
-| `datetime` | `0000-00-00 00:00:00` | Format: `yyyy-MM-dd HH:mm:ss`. <br>e.g.: `2020-01-01 05:10:00`.                                         |
+| `datetime` | `0000-00-00 00:00:00` | Format: `yyyy-MM-dd HH:mm:ss` or RFC3339. <br>e.g.: `2020-01-01 05:10:00` or `2020-01-01T05:10:00Z`.    |
 | `date`     | `0000-00-00`          | Format: `yyyy-MM-dd` or `yyyyMMdd`. <br>e.g.: `2020-01-01` or `20200101`.                               |
 | `time`     | `00:00:00`            | Format: `HH:mm:ss` or `HHmmss`, `HH:mm` or `HHmm`. <br>e.g.: `05:10:00` or `051000`, `05:10` or `0510`. |
 {.table-striped}
