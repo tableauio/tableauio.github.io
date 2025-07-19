@@ -559,9 +559,9 @@ option (tableau.workbook) = {name:"HelloWorld.yaml"};
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  map<uint32, Item> items = 1 [(tableau.field) = {name:"Items" key:"@key"}];
+  map<uint32, Item> items = 1 [(tableau.field) = {name:"Items" key:"CustomKey"}];
   message Item {
-    uint32 custom_key = 1 [(tableau.field) = {name:"@key"}];
+    uint32 custom_key = 1 [(tableau.field) = {name:"CustomKey"}];
     string name = 2 [(tableau.field) = {name:"Name"}];
     int32 num = 3 [(tableau.field) = {name:"Num"}];
   }

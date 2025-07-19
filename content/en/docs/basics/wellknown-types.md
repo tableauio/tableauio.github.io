@@ -23,17 +23,18 @@ You should include the proto files provided by Tableau and Protocol Buffers:
 
 ## Datetime
 
-| Type       | Default               | Description                                                                                             |
-| ---------- | --------------------- | ------------------------------------------------------------------------------------------------------- |
-| `datetime` | `0000-00-00 00:00:00` | Format: `yyyy-MM-dd HH:mm:ss` or RFC3339. <br>e.g.: `2020-01-01 05:10:00` or `2020-01-01T05:10:00Z`.    |
-| `date`     | `0000-00-00`          | Format: `yyyy-MM-dd` or `yyyyMMdd`. <br>e.g.: `2020-01-01` or `20200101`.                               |
-| `time`     | `00:00:00`            | Format: `HH:mm:ss` or `HHmmss`, `HH:mm` or `HHmm`. <br>e.g.: `05:10:00` or `051000`, `05:10` or `0510`. |
+| Type       | Default               | Description                                                                                                    |
+| ---------- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `datetime` | `0000-00-00 00:00:00` | Format: `yyyy-MM-dd HH:mm:ss` or RFC3339. <br>e.g.: `2020-01-01 05:10:00`<br>or `2020-01-01T05:10:00+08:00`. |
+| `date`     | `0000-00-00`          | Format: `yyyy-MM-dd` or `yyyyMMdd`. <br>e.g.: `2020-01-01` or `20200101`.                                      |
+| `time`     | `00:00:00`            | Format: `HH:mm:ss` or `HHmmss`, `HH:mm` or `HHmm`. <br>e.g.: `05:10:00` or `051000`, `05:10` or `0510`.        |
 {.table-striped}
 
-### Tips
+**Tips:**
 
 - `datetime` and `date` are based on [**google.protobuf.Timestamp**](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp), see [JSON mapping](https://developers.google.com/protocol-buffers/docs/proto3#json).
 - `time`  is based on [**google.protobuf.Duration**](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration), see [JSON mapping](https://developers.google.com/protocol-buffers/docs/proto3#json).
+- [RFC 3339: Date and Time on the Internet: Timestamps](https://datatracker.ietf.org/doc/html/rfc3339)
 
 ## Duration
 
@@ -41,7 +42,7 @@ You should include the proto files provided by Tableau and Protocol Buffers:
 | ---------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `duration` | `0s`    | Format like: `72h3m0.5s`. <br>A duration string is a possibly signed sequence of decimal numbers, each with optional fraction and a unit suffix, such as `300ms`, `-1.5h` or `2h45m`. <br>Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. |
 
-### Tips
+**Tips:**
 
 - `duration` is based on [**google.protobuf.Duration**](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration), see [JSON mapping](https://developers.google.com/protocol-buffers/docs/proto3#json).
 - [golang duration string form](https://golang.org/pkg/time/#Duration.String).
