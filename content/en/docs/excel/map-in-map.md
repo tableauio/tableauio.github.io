@@ -281,3 +281,164 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+## Nested in horizontal-map
+
+### Horizontal-map in horizontal-map
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Reward1ID           | Reward1Item1ID    | Reward1Item1Num   | Reward1Item2ID   | Reward1Item2Num   | Reward2ID  | Reward2Item1ID   | Reward2Item1Num   |
+| ------------------- | ----------------- | ----------------- | ---------------- | ----------------- | ---------- | ---------------- | ----------------- |
+| map<uint32, Reward> | map<uint32, Item> | int32             | uint32           | int32             | uint32     | uint32           | int32             |
+| Reward1 ID          | Reward1 item1 ID  | Reward1 item1 num | Reward1 item2 ID | Reward1 item2 num | Reward2 ID | Reward2 item1 ID | Reward2 item1 num |
+| 1                   | 1                 | 10                | 2                | 20                | 2          | 3                | 30                |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<uint32, Reward> reward_map = 1 [(tableau.field) = {name:"Reward" key:"ID" layout:LAYOUT_HORIZONTAL}]; // Reward
+  message Reward {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}]; // ID
+    map<uint32, Item> item_map = 2 [(tableau.field) = {name:"Item" key:"ID" layout:LAYOUT_HORIZONTAL}]; // item
+    message Item {
+      uint32 id = 1 [(tableau.field) = {name:"ID"}]; // ID
+      int32 num = 2 [(tableau.field) = {name:"Num"}]; // num
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "rewardMap": {
+        "1": {
+            "id": 1,
+            "itemMap": {
+                "1": {
+                    "id": 1,
+                    "num": 10
+                },
+                "2": {
+                    "id": 2,
+                    "num": 20
+                }
+            }
+        },
+        "2": {
+            "id": 2,
+            "itemMap": {
+                "3": {
+                    "id": 3,
+                    "num": 30
+                }
+            }
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+### Incell-map in horizontal-map
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Reward1ID           | Reward1Item        | Reward2ID  | Reward2Item        |
+| ------------------- | ------------------ | ---------- | ------------------ |
+| map<uint32, Reward> | map<uint32, int32> | uint32     | map<uint32, int32> |
+| Reward1 ID          | Reward1 items      | Reward2 ID | Reward2 items      |
+| 1                   | 1:10,2:20          | 2          | 3:30               |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<uint32, Reward> reward_map = 1 [(tableau.field) = {name:"Reward" key:"ID" layout:LAYOUT_HORIZONTAL}]; // Reward
+  message Reward {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}]; // ID
+    map<uint32, int32> item_map = 2 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL}]; // Reward1 items
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "rewardMap": {
+        "1": {
+            "id": 1,
+            "itemMap": {
+                "1": 10,
+                "2": 20
+            }
+        },
+        "2": {
+            "id": 2,
+            "itemMap": {
+                "3": 30
+            }
+        }
+    }
+}
+```
+
+{{< /details >}}
