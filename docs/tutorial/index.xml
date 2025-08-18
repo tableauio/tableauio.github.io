@@ -1,2 +1,179 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tutorial on</title><link>https://tableauio.github.io/docs/tutorial/</link><description>Recent content in Tutorial on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Tableau</copyright><lastBuildDate>Tue, 06 Sep 2022 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/tutorial/index.xml" rel="self" type="application/rss+xml"/><item><title>Tableauc config</title><link>https://tableauio.github.io/docs/tutorial/config/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/tutorial/config/</guid><description>config.yaml # Create a file named config.yaml, and copy configurations below to it:
-# locale BCP 47 language tags: en, zh. lang: en # Location represents the collection of time offsets in use in a geographical area. # - If the name is &amp;quot;&amp;quot; or &amp;quot;UTC&amp;quot;, LoadLocation returns UTC. # - If the name is &amp;quot;Local&amp;quot;, LoadLocation returns Local. # - Otherwise, the name is taken to be a location name corresponding to a file in the # IANA Time Zone database, such as &amp;quot;America/New_York&amp;quot;, &amp;quot;Asia/Shanghai&amp;quot;, and so on.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tutorial on</title><link>https://tableauio.github.io/docs/tutorial/</link><description>Recent content in Tutorial on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Sep 2022 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/tutorial/index.xml" rel="self" type="application/rss+xml"/><item><title>Tableauc config</title><link>https://tableauio.github.io/docs/tutorial/config/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/tutorial/config/</guid><description>&lt;h2 id="configyaml">config.yaml &lt;a href="#configyaml" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Create a file named &lt;em>config.yaml&lt;/em>, and copy configurations below to it:&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># locale BCP 47 language tags: en, zh.
+lang: en
+# Location represents the collection of time offsets in use in a geographical area.
+# - If the name is &amp;quot;&amp;quot; or &amp;quot;UTC&amp;quot;, LoadLocation returns UTC.
+# - If the name is &amp;quot;Local&amp;quot;, LoadLocation returns Local.
+# - Otherwise, the name is taken to be a location name corresponding to a file in the
+# IANA Time Zone database, such as &amp;quot;America/New_York&amp;quot;, &amp;quot;Asia/Shanghai&amp;quot;, and so on.
+#
+# See https://go.dev/src/time/zoneinfo_abbrs_windows.go.
+locationName: Local
+# Configure your custom acronyms. Out of the box, &amp;quot;ID&amp;quot; -&amp;gt; &amp;quot;id&amp;quot; is auto configured.
+# For example, if you configure K8s -&amp;gt; k8s, then the field name in PascalCase &amp;quot;InK8s&amp;quot;
+# will be converted to snake_case &amp;quot;in_k8s&amp;quot; but not &amp;quot;in_k_8_s&amp;quot;.
+acronyms: {}
+# Log options.
+log:
+# Log mode: SIMPLE, FULL.
+mode: SIMPLE
+# Log level: DEBUG, INFO, WARN, ERROR.
+level: INFO
+# Log filename: set this if you want to write log messages to files.
+filename: &amp;quot;&amp;quot;
+# Log sink: CONSOLE, FILE, and MULTI.
+sink: CONSOLE
+# Options for generating proto files.
+proto:
+input:
+# Header options for worksheet and workbook.
+header:
+# Exact row number of column name definition at a worksheet.
+namerow: 1
+# Exact row number of column type definition at a worksheet.
+typerow: 2
+# Exact row number of column note at a worksheet.
+noterow: 3
+# Start row number of data at a worksheet.
+datarow: 4
+# The line number of column name definition in a cell.
+# Value 0 means the whole cell.
+nameline: 0
+# The line number of column type definition in a cell.
+# Value 0 means the whole cell.
+typeline: 0
+# The line number of column note definition in a cell.
+# Value 0 means the whole cell.
+noteline: 0
+# Separator for separating:
+# - incell list elements (scalar or struct).
+# - incell map items.
+#
+# Default: &amp;quot;,&amp;quot;
+sep: &amp;quot;&amp;quot;
+# Subseparator for separating:
+# - key-value pair of each incell map item.
+# - struct fields of each incell struct list element.
+#
+# Default: &amp;quot;:&amp;quot;
+subsep: &amp;quot;&amp;quot;
+# The proto paths are used to search for dependencies that are referenced in import
+# statements in proto source files. If no import paths are provided then
+# &amp;quot;.&amp;quot; (current directory) is assumed to be the only import path.
+protoPaths: [.]
+# The enums and messages in protoFiles can be used in Excel/CSV/XML/YAML as
+# common types.
+protoFiles: []
+# Specify input file formats to be parsed. It will recognize all formats
+# if not set.
+#
+# Available formats: &amp;quot;xlsx&amp;quot;, &amp;quot;csv&amp;quot;, &amp;quot;xml&amp;quot;, and &amp;quot;yaml&amp;quot;.
+formats: [xlsx]
+# Specify only these subdirs (relative to input dir) to be processed.
+subdirs: []
+# Specify rewrite subdir path (relative to input dir).
+subdirRewrites: {}
+# Whether to follow the symbolic links when traversing directories recursively.
+# WARN: be careful to use this option, it may lead to infinite loop.
+followSymlink: false
+# Specify metasheet name.
+metasheetName: &amp;quot;@TABLEAU&amp;quot;
+# Specify the first-pass mode to parse predefined types when generate
+# specified config files. Under the hood, the parsed predefined types will
+# be recognized and used in the second-pass.
+#
+# The first-pass mode can be:
+#
+# - &amp;quot;&amp;quot;: default mode, parse based on specified config files.
+# - &amp;quot;normal&amp;quot;: parse based on all config files.
+# - &amp;quot;advanced&amp;quot;: parse based on all previous generated proto files.
+firstPassMode: &amp;quot;&amp;quot;
+# Specify the name pattern for messager(regexp supported). If the generated
+# messager name does not match this pattern, an error will be reported.
+# Example: &amp;quot;Conf$&amp;quot;
+messagerPattern: &amp;quot;&amp;quot;
+output:
+# Specify subdir (relative to output dir) for generated proto files.
+subdir: &amp;quot;&amp;quot;
+# Dir separator `/` or `\` in filename is replaced by &amp;quot;__&amp;quot;.
+filenameWithSubdirPrefix: false
+# Append suffix to each generated proto filename.
+filenameSuffix: &amp;quot;&amp;quot;
+# Specify proto file options.
+# Example: go_package, csharp_namespace...
+fileOptions: {}
+# Whether to prepend prefix &amp;quot;UPPER_SNAKE_CASE of EnumType&amp;quot; to each enum value name.
+#
+# If set, the enum value name is prepended with &amp;quot;ENUM_TYPE_&amp;quot;. For example:
+# enum ItemType has a value &amp;quot;EQUIP&amp;quot;, then converted to &amp;quot;ITEM_TYPE_EQUIP&amp;quot;.
+# If the enum value name is already prefixed with &amp;quot;ENUM_TYPE_&amp;quot;, then it will
+# not be prefixed again.
+enumValueWithPrefix: false
+# Options for generating conf files.
+conf:
+input:
+# The proto paths are used to search for dependencies that are referenced in import
+# statements in proto source files. If no import paths are provided then
+# &amp;quot;.&amp;quot; (current directory) is assumed to be the only import path.
+protoPaths: [.]
+# The files to be parsed to generate configurations.
+#
+# NOTE:
+# - Recognize &amp;quot;*.proto&amp;quot; pattern if not set.
+# - Glob patterns is supported, which can specify sets
+# of filenames with wildcard characters.
+protoFiles: [&amp;quot;*.proto&amp;quot;]
+# The files not to be parsed to generate configurations.
+#
+# NOTE: Glob patterns is supported, which can specify sets
+# of filenames with wildcard characters.
+excludedProtoFiles: []
+# Specify input file formats to be parsed. It will recognize all formats
+# if not set.
+#
+# Available formats: &amp;quot;xlsx&amp;quot;, &amp;quot;csv&amp;quot;, &amp;quot;xml&amp;quot;, and &amp;quot;yaml&amp;quot;.
+formats: [xlsx]
+# Specify only these subdirs (relative to workbook name option in proto file).
+subdirs: []
+# Specify rewrite subdir path (relative to workbook name option in proto file).
+subdirRewrites: {}
+output:
+# Specify subdir (relative to output dir) for generated configuration files.
+subdir: &amp;quot;&amp;quot;
+# Specify generated conf file formats. It will generate all formats if not set.
+# Available formats: &amp;quot;xlsx&amp;quot;, &amp;quot;csv&amp;quot;, &amp;quot;xml&amp;quot;, and &amp;quot;yaml&amp;quot;.
+formats: [json]
+# Whether to output pretty format of JSON, with multiline and indent.
+pretty: true
+# EmitUnpopulated specifies whether to emit unpopulated fields. It does not
+# emit unpopulated oneof fields or unpopulated extension fields.
+# The JSON value emitted for unpopulated fields are as follows:
+# ╔═══════╤════════════════════════════╗
+# ║ JSON │ Protobuf field ║
+# ╠═══════╪════════════════════════════╣
+# ║ false │ proto3 boolean fields ║
+# ║ 0 │ proto3 numeric fields ║
+# ║ &amp;quot;&amp;quot; │ proto3 string/bytes fields ║
+# ║ null │ proto2 scalar fields ║
+# ║ null │ message fields ║
+# ║ [] │ list fields ║
+# ║ {} │ map fields ║
+# ╚═══════╧════════════════════════════╝
+#
+# NOTE: worksheet with FieldPresence set as true ignore this option.
+#
+# Refer: https://github.com/protocolbuffers/protobuf/blob/main/docs/field_presence.md
+emitUnpopulated: false
+# Whether to emit timestamp in string format with timezones (as indicated by an offset).
+emitTimezones: false
+# Whether to use proto field name instead of lowerCamelCase name in JSON field names.
+useProtoNames: false
+# Whether to emit enum values as numbers.
+useEnumNumbers: false
+# Specify dry run mode:
+# - &amp;quot;patch&amp;quot;: if sheet options are specified: Patch (PATCH_MERGE) and Scatter
+dryRun: &amp;quot;&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h3 id="protoinputheaderseq">proto.input.header.seq &lt;a href="#protoinputheaderseq" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>Default: &lt;code>,&lt;/code>&lt;/p></description></item></channel></rss>

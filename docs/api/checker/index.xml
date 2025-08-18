@@ -1,2 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Checker on</title><link>https://tableauio.github.io/docs/api/checker/</link><description>Recent content in Checker on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Tableau</copyright><lastBuildDate>Thu, 10 Mar 2022 08:00:00 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/api/checker/index.xml" rel="self" type="application/rss+xml"/><item><title>Guide</title><link>https://tableauio.github.io/docs/api/checker/guide/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/checker/guide/</guid><description>Generate scaffolding code # For example, the generated *.check.go of protobuf message ItemConf is:
-type ItemConf struct { tableau.ItemConf } func (x *ItemConf) Check(hub *tableau.Hub) error { // TODO: implement here. return nil } func (x *ItemConf) CheckCompatibility(hub, newHub *tableau.Hub) error { // TODO: implement here. return nil } func init() { // NOTE: This func is auto-generated. DO NOT EDIT. register(func() tableau.Messager { return new(ItemConf) }) } Plugin: protoc-gen-go-tableau-checker # An example to use this protoc plugin: checker/test/gen.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Checker on</title><link>https://tableauio.github.io/docs/api/checker/</link><description>Recent content in Checker on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Thu, 10 Mar 2022 08:00:00 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/api/checker/index.xml" rel="self" type="application/rss+xml"/><item><title>Guide</title><link>https://tableauio.github.io/docs/api/checker/guide/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/checker/guide/</guid><description>&lt;h2 id="generate-scaffolding-code">Generate scaffolding code &lt;a href="#generate-scaffolding-code" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>For example, the generated &lt;code>*.check.go&lt;/code> of protobuf message &lt;code>ItemConf&lt;/code> is:&lt;/p>
+&lt;pre>&lt;code class="language-go">type ItemConf struct {
+tableau.ItemConf
+}
+func (x *ItemConf) Check(hub *tableau.Hub) error {
+// TODO: implement here.
+return nil
+}
+func (x *ItemConf) CheckCompatibility(hub, newHub *tableau.Hub) error {
+// TODO: implement here.
+return nil
+}
+func init() {
+// NOTE: This func is auto-generated. DO NOT EDIT.
+register(func() tableau.Messager {
+return new(ItemConf)
+})
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="plugin-protoc-gen-go-tableau-checker">Plugin: protoc-gen-go-tableau-checker &lt;a href="#plugin-protoc-gen-go-tableau-checker" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>An example to use this protoc plugin:
+&lt;a href="https://github.com/tableauio/checker/blob/master/test/gen.sh">checker/test/gen.sh&lt;/a>.&lt;/p></description></item></channel></rss>

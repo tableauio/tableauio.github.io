@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Design on</title><link>https://tableauio.github.io/en/docs/design/</link><description>Recent content in Design on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:49:55 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/en/docs/design/index.xml" rel="self" type="application/rss+xml"/><item><title>Overview</title><link>https://tableauio.github.io/en/docs/design/overview/</link><pubDate>Sun, 09 Jan 2022 19:39:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/design/overview/</guid><description>&lt;h2 id="features">Features &lt;a href="#features" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>Convert &lt;strong>Excel/CSV/XML/YAML&lt;/strong> to &lt;strong>JSON/Text/Bin&lt;/strong>.&lt;/li>
+&lt;li>Use &lt;strong>Protobuf&lt;/strong> to define the structure of &lt;strong>Excel/CSV/XML/YAML&lt;/strong>.&lt;/li>
+&lt;li>Use &lt;strong>Golang&lt;/strong> to develop the conversion engine.&lt;/li>
+&lt;li>Support multiple programming languages, thanks to &lt;strong>Protobuf (proto3)&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;h2 id="concepts">Concepts &lt;a href="#concepts" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>Importer:
+&lt;ul>
+&lt;li>imports a &lt;strong>Excel/CSV&lt;/strong> file to a in-memory book of &lt;strong>Table&lt;/strong> sheets.&lt;/li>
+&lt;li>imports a &lt;strong>XML/YAML&lt;/strong> file to a in-memory book of &lt;strong>Document&lt;/strong> sheets.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Parsers:
+&lt;ul>
+&lt;li>protogen: converts &lt;strong>Excel/CSV/XML/YAML&lt;/strong> files to &lt;strong>Protoconf&lt;/strong> files.&lt;/li>
+&lt;li>confgen: converts &lt;strong>Excel/CSV/XML/YAML&lt;/strong> with &lt;strong>Protoconf&lt;/strong> files to &lt;strong>JSON/Text/Bin&lt;/strong> files.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Exporter:
+&lt;ul>
+&lt;li>protogen: exports a &lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/workbook.proto">tableau.Workbook&lt;/a> to a proto file.&lt;/li>
+&lt;li>confgen: exports a protobuf message to a &lt;strong>JSON/Text/Bin&lt;/strong> file.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Protoconf: a dialect of &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers (proto3)&lt;/a> extended with &lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto">tableau options&lt;/a>, aimed to define the structure of Excel/CSV/XML/YAML.&lt;/li>
+&lt;/ul>
+&lt;h2 id="workflow">Workflow &lt;a href="#workflow" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;pre>&lt;code class="language-mermaid">flowchart TD
+subgraph Input
+I1(Excel)
+click I1 href &amp;quot;https://github.com/qax-os/excelize&amp;quot;
+I2(CSV)
+click I2 href &amp;quot;https://pkg.go.dev/encoding/csv&amp;quot;
+I3(XML)
+click I3 href &amp;quot;https://github.com/antchfx/xmlquery&amp;quot;
+I4(YAML)
+click I4 href &amp;quot;https://github.com/go-yaml/yaml&amp;quot;
+end
+Input --&amp;gt; I[importer]
+click I href &amp;quot;https://github.com/tableauio/tableau/tree/master/internal/importer&amp;quot;
+subgraph Protogen
+PGP[protogen.Parser] --&amp;gt; E1[protogen.Exporter]
+click PGP href &amp;quot;https://github.com/tableauio/tableau/tree/master/internal/protogen/parser.go&amp;quot;
+click E1 href &amp;quot;https://github.com/tableauio/tableau/tree/master/internal/protogen/exporter.go&amp;quot;
+end
+I --&amp;gt; Protogen:::orangeclass
+subgraph Confgen
+CGP[confgen.Parser] --&amp;gt; CE[confgen.Exporter]
+click CGP href &amp;quot;https://github.com/tableauio/tableau/tree/master/internal/confgen/parser.go&amp;quot;
+click CE href &amp;quot;https://github.com/tableauio/tableau/tree/master/internal/confgen/mexporter&amp;quot;
+end
+I --&amp;gt; Confgen:::orangeclass
+Protogen --&amp;gt; B
+B{{Protoconf}}:::greenclass --&amp;gt; | protobuf descriptor | Confgen
+subgraph Output
+O1(&amp;quot;JSON&amp;quot;)
+click O1 href &amp;quot;https://developers.google.com/protocol-buffers/docs/proto3#json&amp;quot;
+O2(&amp;quot;Text&amp;quot;)
+click O2 href &amp;quot;https://developers.google.com/protocol-buffers/docs/text-format-spec&amp;quot;
+O3(&amp;quot;Bin&amp;quot;)
+click O3 href &amp;quot;https://developers.google.com/protocol-buffers/docs/encoding&amp;quot;
+end
+Confgen --&amp;gt; Output
+classDef orangeclass fill:#f96;
+classDef greenclass fill:#40E0D0;
+&lt;/code>&lt;/pre>
+&lt;h2 id="types">Types &lt;a href="#types" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>Scalar&lt;/li>
+&lt;li>Message(struct)&lt;/li>
+&lt;li>List&lt;/li>
+&lt;li>Map(unordered)&lt;/li>
+&lt;li>Timestamp&lt;/li>
+&lt;li>Duration&lt;/li>
+&lt;/ul>
+&lt;h2 id="todo">TODO &lt;a href="#todo" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="protoc-plugins">protoc plugins &lt;a href="#protoc-plugins" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> Golang&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> C++&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> C#/.NET&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> Python&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> Lua&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> Javascript/Typescript/Node&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> Java&lt;/li>
+&lt;/ul>
+&lt;h3 id="metadata">Metadata &lt;a href="#metadata" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> metatable: a message to describe the worksheet&amp;rsquo;s metadata.&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> metafield: a message to describe the caption&amp;rsquo;s metadata.&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> captrow: caption row, the exact row number of captions at worksheet. &lt;strong>Newline&lt;/strong> in caption is allowed for more readability, and will be trimmed in conversion.&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> descrow: description row, the exact row number of descriptions at worksheet.&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> datarow: data row, the start row number of data.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://www.wikiwand.com/en/Newline">Newline&lt;/a>(line break) in major operating systems:&lt;/p></description></item><item><title>Metadata</title><link>https://tableauio.github.io/en/docs/design/metadata/</link><pubDate>Sun, 09 Jan 2022 19:39:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/design/metadata/</guid><description>&lt;h2 id="notation">Notation &lt;a href="#notation" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>The syntax is specified using &lt;a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form">Extended Backus-Naur Form (EBNF)&lt;/a>.&lt;/p>
+&lt;h2 id="workbook---protoconf">Workbook -&amp;gt; Protoconf &lt;a href="#workbook---protoconf" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="basic">Basic &lt;a href="#basic" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>workbook: &lt;code>(AliasTest)DemoTest&lt;/code>, worksheet: &lt;code>(AliasActivity)DemoActivity&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>protoconf file name is &lt;code>alias_test.proto&lt;/code>. If with no &lt;code>()&lt;/code>, name will be &lt;code>demo_test.proto&lt;/code>&lt;/li>
+&lt;li>configuration message name is &lt;code>AliasActivity&lt;/code>. If with no &lt;code>()&lt;/code>, name will be &lt;code>DemoActivity&lt;/code>&lt;/li>
+&lt;li>list: &lt;code>[ELEM-TYPE]COLUMN-TYPE&lt;/code>, COLUMN-TYPE is column type, ELEM-TYPE is message name and list prefix (must not conflict with the protobuf keyword).&lt;/li>
+&lt;li>map: &lt;code>map&amp;lt;KEY-TYPE,VALUE-TYPE&amp;gt;&lt;/code>, KEY-TYPE must be scalar types, and VALUE-TYPE is message name and map prefix (must not conflict with build-in scalar type).&lt;/li>
+&lt;li>import message types: &lt;code>.TYPE&lt;/code>, e.g.: &lt;code>.Item&lt;/code> represents the message &lt;code>Item&lt;/code> already defined in the same protobuf package, and should not redefine it.&lt;/li>
+&lt;li>well-known types
+&lt;ul>
+&lt;li>Timestamp: &lt;code>google.protobuf.Timestamp&lt;/code>&lt;/li>
+&lt;li>Duration: &lt;code>google.protobuf.Duration&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>Activity.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-cdmgbnhlijeafk-31406-tab" data-bs-toggle="tab" data-bs-target="#sheet-cdmgbnhlijeafk-31406" type="button" role="tab" aria-controls="sheet-cdmgbnhlijeafk-31406" aria-selected=" active ">Activity&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-ncekiljmdaghbf-31705-tab" data-bs-toggle="tab" data-bs-target="#sheet-ncekiljmdaghbf-31705" type="button" role="tab" aria-controls="sheet-ncekiljmdaghbf-31705" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-cdmgbnhlijeafk-31406" role="tabpanel" aria-labelledby="sheet-cdmgbnhlijeafk-31406-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ActivityID&lt;/th>
+&lt;th>ActivityName&lt;/th>
+&lt;th>ActivityBeginTime&lt;/th>
+&lt;th>ActivityDuration&lt;/th>
+&lt;th>ChapterID&lt;/th>
+&lt;th>ChapterName&lt;/th>
+&lt;th>SectionID&lt;/th>
+&lt;th>SectionName&lt;/th>
+&lt;th>SectionItem1Id&lt;/th>
+&lt;th>SectionItem1Num&lt;/th>
+&lt;th>SectionItem2Id&lt;/th>
+&lt;th>SectionItem2Num&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>map&amp;lt;uint32,Activity&amp;gt;&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>timestamp&lt;/td>
+&lt;td>duration&lt;/td>
+&lt;td>map&amp;lt;uint32,Chapter&amp;gt;&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>[Section]uint32&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>[.Item]int32&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>activity1&lt;/td>
+&lt;td>2020-01-01 05:00:00&lt;/td>
+&lt;td>72h&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>chapter1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>section1&lt;/td>
+&lt;td>1001&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>1002&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>activity1&lt;/td>
+&lt;td>2020-01-01 05:00:00&lt;/td>
+&lt;td>72h&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>chapter1&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>section2&lt;/td>
+&lt;td>1001&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>1002&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>activity1&lt;/td>
+&lt;td>2020-01-01 05:00:00&lt;/td>
+&lt;td>72h&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>chapter2&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>section1&lt;/td>
+&lt;td>1001&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>1002&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>activity2&lt;/td>
+&lt;td>2020-01-01 05:00:00&lt;/td>
+&lt;td>72h3m0.5s&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>chapter1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>section1&lt;/td>
+&lt;td>1001&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>1002&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-ncekiljmdaghbf-31705" role="tabpanel" aria-labelledby="sheet-ncekiljmdaghbf-31705-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;pre>&lt;code class="language-protobuf">// common.proto
+message Item {
+int32 id = 1 [(tableau.field).name = &amp;quot;Id&amp;quot;];
+int32 num= 2 [(tableau.field).name = &amp;quot;Num&amp;quot;];
+}
+&lt;/code>&lt;/pre>
+&lt;h4 id="output-without-prefix">Output without prefix &lt;a href="#output-without-prefix" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;pre>&lt;code class="language-protobuf">// demo_test.proto
+import &amp;quot;common.proto&amp;quot;
+message DemoActivity{
+map&amp;lt;uint32, Activity&amp;gt; activity_map = 1 [(key) = &amp;quot;ActivityID&amp;quot;];
+message Activity {
+uint32 id= 1 [(tableau.field).name = &amp;quot;ActivityID&amp;quot;];
+string name = 2 [(tableau.field).name = &amp;quot;ActivityName&amp;quot;];
+map&amp;lt;uint32, Chapter&amp;gt; chapter_map = 3 [(tableau.field).key = &amp;quot;ChapterID&amp;quot;];
+}
+message Chapter {
+uint32 id= 1 [(tableau.field).name = &amp;quot;ChapterID&amp;quot;];
+string name = 2 [(tableau.field).name = &amp;quot;ChapterName&amp;quot;];
+repeated Section section_list = 3 [(tableau.field).layout = LAYOUT_VERTICAL];
+}
+message Section {
+uint32 id= 1 [(tableau.field).name = &amp;quot;SectionID&amp;quot;];
+string name = 2 [(tableau.field).name = &amp;quot;SectionName&amp;quot;];
+repeated Item item_list = 3 [(tableau.field).name = &amp;quot;SectionItem&amp;quot;];
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h4 id="output-with-prefix">Output with prefix &lt;a href="#output-with-prefix" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;pre>&lt;code class="language-protobuf">// demo_test.proto
+message DemoActivity{
+map&amp;lt;uint32, Activity&amp;gt; activity_map = 1 [(key) = &amp;quot;ActivityID&amp;quot;];
+message Activity {
+uint32 activity_id= 1 [(tableau.field).name = &amp;quot;ActivityID&amp;quot;];
+string activity_name = 2 [(tableau.field).name = &amp;quot;ActivityName&amp;quot;];
+map&amp;lt;uint32, Chapter&amp;gt; chapter_map = 3 [(tableau.field).key = &amp;quot;ChapterID&amp;quot;];
+}
+message Chapter {
+uint32 chapter_id= 1 [(tableau.field).name = &amp;quot;ChapterID&amp;quot;];
+string chapter_name = 2 [(tableau.field).name = &amp;quot;ChapterName&amp;quot;];
+repeated Section section_list = 3 [(tableau.field).layout = LAYOUT_VERTICAL];
+}
+message Section {
+uint32 section_id= 1 [(tableau.field).name = &amp;quot;SectionID&amp;quot;];
+string section_name = 2 [(tableau.field).name = &amp;quot;SectionName&amp;quot;];
+repeated Item section_item_list = 3 [(tableau.field).name = &amp;quot;SectionItem&amp;quot;];
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h3 id="incell">Incell &lt;a href="#incell" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>workbook: &lt;code>(AliasTest)DemoTest&lt;/code>, worksheet: &lt;code>(Env)Environment&lt;/code>&lt;/p></description></item></channel></rss>

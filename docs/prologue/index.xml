@@ -1,6 +1,77 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Prologue on</title><link>https://tableauio.github.io/docs/prologue/</link><description>Recent content in Prologue on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Tableau</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/prologue/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction</title><link>https://tableauio.github.io/docs/prologue/introduction/</link><pubDate>Tue, 06 Oct 2020 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/docs/prologue/introduction/</guid><description>tableauc # tableauc is the Tableau Compiler with protogen and confgen inside.
-protogen # protogen converts Excel/CSV/XML/YAML files to Protoconf files. Protoconf is a dialect of Protocol Buffers (proto3) extended with tableau options, aimed to define the structure of Excel/CSV/XML/YAML.
-flowchart LR subgraph Input direction RL I1(Excel) I2(CSV) I3(XML) I4(YAML) end Input --&amp;gt; B B((protogen)):::orangecalss --&amp;gt; C(Protoconf) classDef orangecalss fill:#f96; confgen # confgen converts Excel/CSV/XML/YAML with Protoconf files to JSON/Text/Bin files.</description></item><item><title>Quick Start</title><link>https://tableauio.github.io/docs/prologue/quick-start/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/prologue/quick-start/</guid><description>1. Download tableauc # Select the appropriate tableauc (aka Tableau Compiler) to download:
-Windows x64 Windows x86 -- Linux x64 Linux x86 -- macOS x64 macOS arm64 More platforms are available on tableau releases →.
-2. Add a workbook # Add HelloWorld.xlsx with two sheets:
-Item: Copy data below to this worksheet.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Prologue on</title><link>https://tableauio.github.io/docs/prologue/</link><description>Recent content in Prologue on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/prologue/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction</title><link>https://tableauio.github.io/docs/prologue/introduction/</link><pubDate>Tue, 06 Oct 2020 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/docs/prologue/introduction/</guid><description>&lt;h2 id="tableauc">tableauc &lt;a href="#tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;code>tableauc&lt;/code> is the &lt;strong>Tableau Compiler&lt;/strong> with &lt;strong>protogen&lt;/strong> and &lt;strong>confgen&lt;/strong> inside.&lt;/p>
+&lt;h3 id="protogen">protogen &lt;a href="#protogen" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>protogen&lt;/code> converts &lt;strong>Excel/CSV/XML/YAML&lt;/strong> files to &lt;strong>Protoconf&lt;/strong> files.
+&lt;strong>Protoconf&lt;/strong> is a dialect of &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers (proto3)&lt;/a> extended with &lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto">tableau options&lt;/a>, aimed to define the structure of Excel/CSV/XML/YAML.&lt;/p>
+&lt;pre>&lt;code class="language-mermaid">flowchart LR
+subgraph Input
+direction RL
+I1(Excel)
+I2(CSV)
+I3(XML)
+I4(YAML)
+end
+Input --&amp;gt; B
+B((protogen)):::orangecalss --&amp;gt; C(Protoconf)
+classDef orangecalss fill:#f96;
+&lt;/code>&lt;/pre>
+&lt;h3 id="confgen">confgen &lt;a href="#confgen" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>confgen&lt;/code> converts &lt;strong>Excel/CSV/XML/YAML&lt;/strong> with &lt;strong>Protoconf&lt;/strong> files to &lt;strong>JSON/Text/Bin&lt;/strong> files.&lt;/p></description></item><item><title>Quick Start</title><link>https://tableauio.github.io/docs/prologue/quick-start/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/prologue/quick-start/</guid><description>&lt;h2 id="1-download-tableauc">1. Download tableauc &lt;a href="#1-download-tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Select the appropriate tableauc (aka Tableau Compiler) to download:&lt;/p>
+&lt;div class="row">
+&lt;div class="col-lg-5 col-xl-5 col-sm-6 text-center">
+&lt;p>
+&lt;img height="100px" src="https://tableauio.github.io/images/logo/windows-logo.png" alt="Windows" />
+&lt;/p>
+&lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.windows.amd64.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Windows x64
+&lt;/a>
+&lt;/p>
+&lt;!-- &lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.windows.386.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Windows x86
+&lt;/a>
+&lt;/p> -->
+&lt;/div>
+&lt;div class="col-lg-5 col-xl-5 col-sm-6 text-center">
+&lt;p>
+&lt;img height="100px" src="https://tableauio.github.io/images/logo/linux-logo.png" alt="Linux" />
+&lt;/p>
+&lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.linux.amd64.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Linux x64
+&lt;/a>
+&lt;/p>
+&lt;!-- &lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.linux.386.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Linux x86
+&lt;/a>
+&lt;/p> -->
+&lt;/div>
+&lt;div class="col-lg-5 col-xl-5 col-sm-6 text-center">
+&lt;p>
+&lt;img height="100px" src="https://tableauio.github.io/images/logo/apple-logo.svg" alt="Apple" />
+&lt;/p>
+&lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.darwin.amd64.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> macOS x64
+&lt;/a>
+&lt;/p>
+&lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.darwin.arm64.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> macOS arm64
+&lt;/a>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;blockquote>
+&lt;p>More platforms are available on &lt;a href="https://github.com/tableauio/tableau/releases">tableau releases →&lt;/a>.&lt;/p>&lt;/blockquote>
+&lt;h2 id="2-add-a-workbook">2. Add a workbook &lt;a href="#2-add-a-workbook" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Add &lt;strong>HelloWorld.xlsx&lt;/strong> with two sheets:&lt;/p></description></item></channel></rss>

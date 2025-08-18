@@ -1,4 +1,67 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>前言 on</title><link>https://tableauio.github.io/zh/docs/prologue/</link><description>Recent content in 前言 on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Tableau</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/prologue/index.xml" rel="self" type="application/rss+xml"/><item><title>快速开始</title><link>https://tableauio.github.io/zh/docs/prologue/quick-start/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/zh/docs/prologue/quick-start/</guid><description>Prerequisites # Go, any one of the three latest major releases of Go. For installation instructions, see Go’s Getting Started guide. Protocol buffer compiler, protoc, version 3. For installation instructions, see Protocol Buffer Compiler Installation. Go plugins for the protocol compiler: Install the protocol compiler plugins for Go using the following commands:
-go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26 Update your PATH so that the protoc compiler can find the plugins:</description></item><item><title>简介</title><link>https://tableauio.github.io/zh/docs/prologue/introduction/</link><pubDate>Tue, 06 Oct 2020 08:48:57 +0000</pubDate><guid>https://tableauio.github.io/zh/docs/prologue/introduction/</guid><description>tableauc # tableau命令行工具 tableauc 是 tableau 转换器（tableau converter）的缩写，主要由以下两个转换模块组成：
-protogen：分析 Excel/CSV/XML/YAML 文件，提取文件结构信息，转换为 Protoconf 文件。 confgen：分析 Excel/CSV/XML/YAML 文件和对应的元信息文件 Protoconf，提取文件数据信息，转换为 JSON/Text/Bin 文件。 protogen # protogen convert Excel/CSV/XML/YAML files to Protoconf files. Protoconf is a dialect of Protocol Buffers (proto3) extended with tableau options, aimed to define the structure of Excel/CSV/XML/YAML.
-flowchart LR subgraph Input direction RL I1(Excel) I2(CSV) I3(XML) end Input --&amp;gt; B B((protogen)):::orangecalss --&amp;gt; C(Protoconf) classDef orangecalss fill:#f96; confgen # flowchart LR subgraph Input direction RL I1(Excel) I2(CSV) I3(XML) end Input --&amp;gt; B A(Protoconf) --&amp;gt; B B((confgen)):::orangecalss --&amp;gt; Output classDef orangecalss fill:#f96; subgraph Output direction RL O1(&amp;quot;JSON&amp;quot;) O2(&amp;quot;Text&amp;quot;) O3(&amp;quot;Bin&amp;quot;) end</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>前言 on</title><link>https://tableauio.github.io/zh/docs/prologue/</link><description>Recent content in 前言 on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/prologue/index.xml" rel="self" type="application/rss+xml"/><item><title>快速开始</title><link>https://tableauio.github.io/zh/docs/prologue/quick-start/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/zh/docs/prologue/quick-start/</guid><description>&lt;h2 id="prerequisites">Prerequisites &lt;a href="#prerequisites" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://golang.org/">Go&lt;/a>, any one of the &lt;strong>three latest major&lt;/strong> &lt;a href="https://golang.org/doc/devel/release.html">releases of Go&lt;/a>.
+&lt;ul>
+&lt;li>For installation instructions, see Go’s &lt;a href="https://golang.org/doc/install">Getting Started&lt;/a> guide.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="https://developers.google.com/protocol-buffers">Protocol buffer&lt;/a> compiler, &lt;code>protoc&lt;/code>, &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">version 3&lt;/a>.
+&lt;ul>
+&lt;li>For installation instructions, see &lt;a href="https://grpc.io/docs/protoc-installation/">Protocol Buffer Compiler Installation&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>Go plugins&lt;/strong> for the protocol compiler:
+&lt;ol>
+&lt;li>
+&lt;p>Install the protocol compiler plugins for Go using the following commands:&lt;/p>
+&lt;pre>&lt;code class="language-bash">go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>Update your PATH so that the protoc compiler can find the plugins:&lt;/p>
+&lt;pre>&lt;code class="language-bash">export PATH=&amp;quot;$PATH:$(go env GOPATH)/bin&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="get-the-example-code">Get the example code &lt;a href="#get-the-example-code" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>The example code is part of the &lt;a href="https://github.com/tableauio/demo">tableau/demo&lt;/a> repo.&lt;/p></description></item><item><title>简介</title><link>https://tableauio.github.io/zh/docs/prologue/introduction/</link><pubDate>Tue, 06 Oct 2020 08:48:57 +0000</pubDate><guid>https://tableauio.github.io/zh/docs/prologue/introduction/</guid><description>&lt;h2 id="tableauc">tableauc &lt;a href="#tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>tableau命令行工具 &lt;code>tableauc&lt;/code> 是 tableau 转换器（tableau converter）的缩写，主要由以下两个转换模块组成：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>protogen&lt;/strong>：分析 Excel/CSV/XML/YAML 文件，提取文件结构信息，转换为 Protoconf 文件。&lt;/li>
+&lt;li>&lt;strong>confgen&lt;/strong>：分析 Excel/CSV/XML/YAML 文件和对应的元信息文件 Protoconf，提取文件数据信息，转换为 JSON/Text/Bin 文件。&lt;/li>
+&lt;/ol>
+&lt;h3 id="protogen">protogen &lt;a href="#protogen" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>protogen&lt;/code> convert &lt;strong>Excel/CSV/XML/YAML&lt;/strong> files to &lt;strong>Protoconf&lt;/strong> files.
+&lt;strong>Protoconf&lt;/strong> is a dialect of &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers (proto3)&lt;/a> extended with &lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto">tableau options&lt;/a>, aimed to define the structure of Excel/CSV/XML/YAML.&lt;/p>
+&lt;pre>&lt;code class="language-mermaid">flowchart LR
+subgraph Input
+direction RL
+I1(Excel)
+I2(CSV)
+I3(XML)
+end
+Input --&amp;gt; B
+B((protogen)):::orangecalss --&amp;gt; C(Protoconf)
+classDef orangecalss fill:#f96;
+&lt;/code>&lt;/pre>
+&lt;h3 id="confgen">confgen &lt;a href="#confgen" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;pre>&lt;code class="language-mermaid">flowchart LR
+subgraph Input
+direction RL
+I1(Excel)
+I2(CSV)
+I3(XML)
+end
+Input --&amp;gt; B
+A(Protoconf) --&amp;gt; B
+B((confgen)):::orangecalss --&amp;gt; Output
+classDef orangecalss fill:#f96;
+subgraph Output
+direction RL
+O1(&amp;quot;JSON&amp;quot;)
+O2(&amp;quot;Text&amp;quot;)
+O3(&amp;quot;Bin&amp;quot;)
+end
+&lt;/code>&lt;/pre></description></item></channel></rss>

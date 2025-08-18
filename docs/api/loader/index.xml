@@ -1,15 +1,70 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Loader on</title><link>https://tableauio.github.io/docs/api/loader/</link><description>Recent content in Loader on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Tableau</copyright><lastBuildDate>Thu, 10 Mar 2022 08:00:00 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/api/loader/index.xml" rel="self" type="application/rss+xml"/><item><title>Overview</title><link>https://tableauio.github.io/docs/api/loader/overview/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/overview/</guid><description>Supported APIs # Lang Get (Map) GetOrderedMap Find (Index) C++ ✔️ ✔️ ✔️ Go ✔️ ✔️ ✔️ C# TypeScript Lua</description></item><item><title>C++</title><link>https://tableauio.github.io/docs/api/loader/cpp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/cpp/</guid><description>API # Data # const ProtobufMessage&amp;amp; Data()
-Get the internal protobuf message data.
-Map # const MapValueType* Get(k1 KEY1, k2 KEY2...) const
-Get the Nth-level map value. Be aware that only applies to each level message&amp;rsquo;s first map field.
-OrderedMap # Prerequisite: You need to set metasheet option OrderedMap to true.
-See metatsheet option: OrderedMap.
-const OrderedMapValueType* GetOrderedMap(k1 KEY1, k2 KEY2...) const
-Get the Nth-level ordered map value. Be aware that only applies to each level message&amp;rsquo;s first map field.</description></item><item><title>Go</title><link>https://tableauio.github.io/docs/api/loader/go/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/go/</guid><description>API # Data # func Data() *ProtobufMessage
-Get the internal protobuf message data.
-Map # func GetN(k1 KEY1, k2 KEY2...) (*MapValueType, error)
-Get the Nth-level map value. Be aware that only applies to each level message&amp;rsquo;s first map field.
-OrderedMap # Prerequisite: You need to set metasheet option OrderedMap to true.
-See metatsheet option: OrderedMap.
-func GetOrderedMapN(k1 KEY1, k2 KEY2...) (*OrderedMapValueType, error)
-Get the Nth-level ordered map value. Be aware that only applies to each level message&amp;rsquo;s first map field.</description></item><item><title>C#</title><link>https://tableauio.github.io/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/csharp/</guid><description>Overview # TODO: refer Tableau loader.</description></item><item><title>TypeScript</title><link>https://tableauio.github.io/docs/api/loader/ts/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/ts/</guid><description>Overview # TODO: refer Tableau loader.</description></item><item><title>Lua</title><link>https://tableauio.github.io/docs/api/loader/lua/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/lua/</guid><description>Overview # TODO: refer Tableau loader.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Loader on</title><link>https://tableauio.github.io/docs/api/loader/</link><description>Recent content in Loader on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Thu, 10 Mar 2022 08:00:00 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/api/loader/index.xml" rel="self" type="application/rss+xml"/><item><title>Overview</title><link>https://tableauio.github.io/docs/api/loader/overview/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/overview/</guid><description>&lt;h2 id="supported-apis">Supported APIs &lt;a href="#supported-apis" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped table-hover">
+&lt;thead>
+&lt;tr>
+&lt;th>Lang&lt;/th>
+&lt;th>Get (Map)&lt;/th>
+&lt;th>GetOrderedMap&lt;/th>
+&lt;th>Find (Index)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;a href="../cpp">C++&lt;/a>&lt;/td>
+&lt;td>✔️&lt;/td>
+&lt;td>✔️&lt;/td>
+&lt;td>✔️&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="../go">Go&lt;/a>&lt;/td>
+&lt;td>✔️&lt;/td>
+&lt;td>✔️&lt;/td>
+&lt;td>✔️&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="../csharp">C#&lt;/a>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="../ts">TypeScript&lt;/a>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="../lua">Lua&lt;/a>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>C++</title><link>https://tableauio.github.io/docs/api/loader/cpp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/cpp/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>const ProtobufMessage&amp;amp; Data()&lt;/code>&lt;/p>
+&lt;p>Get the internal protobuf message data.&lt;/p>
+&lt;h3 id="map">Map &lt;a href="#map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>const MapValueType* Get(k1 KEY1, k2 KEY2...) const&lt;/code>&lt;/p>
+&lt;p>Get the &lt;code>N&lt;/code>th-level map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p>
+&lt;h3 id="orderedmap">OrderedMap &lt;a href="#orderedmap" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;blockquote>
+&lt;p>Prerequisite: You need to set metasheet option &lt;code>OrderedMap&lt;/code> to &lt;code>true&lt;/code>.&lt;/p>
+&lt;p>See &lt;a href="../../../excel/metasheet/#option-orderedmap">metatsheet option: OrderedMap&lt;/a>.&lt;/p>&lt;/blockquote>
+&lt;p>&lt;code>const OrderedMapValueType* GetOrderedMap(k1 KEY1, k2 KEY2...) const&lt;/code>&lt;/p>
+&lt;p>Get the &lt;code>N&lt;/code>th-level ordered map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p></description></item><item><title>Go</title><link>https://tableauio.github.io/docs/api/loader/go/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/go/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>func Data() *ProtobufMessage&lt;/code>&lt;/p>
+&lt;p>Get the internal protobuf message data.&lt;/p>
+&lt;h3 id="map">Map &lt;a href="#map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>func GetN(k1 KEY1, k2 KEY2...) (*MapValueType, error)&lt;/code>&lt;/p>
+&lt;p>Get the &lt;code>N&lt;/code>th-level map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p>
+&lt;h3 id="orderedmap">OrderedMap &lt;a href="#orderedmap" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;blockquote>
+&lt;p>Prerequisite: You need to set metasheet option &lt;code>OrderedMap&lt;/code> to &lt;code>true&lt;/code>.&lt;/p>
+&lt;p>See &lt;a href="../../../excel/metasheet/#option-orderedmap">metatsheet option: OrderedMap&lt;/a>.&lt;/p>&lt;/blockquote>
+&lt;p>&lt;code>func GetOrderedMapN(k1 KEY1, k2 KEY2...) (*OrderedMapValueType, error)&lt;/code>&lt;/p>
+&lt;p>Get the &lt;code>N&lt;/code>th-level ordered map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p></description></item><item><title>C#</title><link>https://tableauio.github.io/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/csharp/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>TODO: refer &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>.&lt;/p></description></item><item><title>TypeScript</title><link>https://tableauio.github.io/docs/api/loader/ts/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/ts/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>TODO: refer &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>.&lt;/p></description></item><item><title>Lua</title><link>https://tableauio.github.io/docs/api/loader/lua/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/api/loader/lua/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>TODO: refer &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>.&lt;/p></description></item></channel></rss>

@@ -1,14 +1,315 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>XML on</title><link>https://tableauio.github.io/docs/xml/</link><description>Recent content in XML on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Tableau</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/xml/index.xml" rel="self" type="application/rss+xml"/><item><title>Scalar</title><link>https://tableauio.github.io/docs/xml/scalar/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/docs/xml/scalar/</guid><description>Scalar # A worksheet ItemConf in HelloWorld.xml:
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!-- &amp;lt;@TABLEAU&amp;gt; &amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt; &amp;lt;/@TABLEAU&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;ID&amp;gt;uint32&amp;lt;/ID&amp;gt; &amp;lt;Num&amp;gt;int32&amp;lt;/Num&amp;gt; &amp;lt;Value&amp;gt;uint64&amp;lt;/Value&amp;gt; &amp;lt;Weight&amp;gt;int64&amp;lt;/Weight&amp;gt; &amp;lt;Percentage&amp;gt;float&amp;lt;/Percentage&amp;gt; &amp;lt;Ratio&amp;gt;double&amp;lt;/Ratio&amp;gt; &amp;lt;Name&amp;gt;string&amp;lt;/Name&amp;gt; &amp;lt;Blob&amp;gt;bytes&amp;lt;/Blob&amp;gt; &amp;lt;OK&amp;gt;bool&amp;lt;/OK&amp;gt; &amp;lt;/ItemConf&amp;gt; --&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;ID&amp;gt;1&amp;lt;/ID&amp;gt; &amp;lt;Num&amp;gt;10&amp;lt;/Num&amp;gt; &amp;lt;Value&amp;gt;20&amp;lt;/Value&amp;gt; &amp;lt;Weight&amp;gt;30&amp;lt;/Weight&amp;gt; &amp;lt;Percentage&amp;gt;0.5&amp;lt;/Percentage&amp;gt; &amp;lt;Ratio&amp;gt;3.14159&amp;lt;/Ratio&amp;gt; &amp;lt;Name&amp;gt;apple&amp;lt;/Name&amp;gt; &amp;lt;Blob&amp;gt;VGFibGVhdQ==&amp;lt;/Blob&amp;gt; &amp;lt;!-- # base64 of &amp;quot;Tableau&amp;quot; --&amp;gt; &amp;lt;OK&amp;gt;true&amp;lt;/OK&amp;gt; &amp;lt;/ItemConf&amp;gt; Generated:
-hello_world.proto // --snip-- option (tableau.workbook) = {name:&amp;quot;HelloWorld.xml&amp;quot;}; message ItemConf { option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;}; uint32 id = 1 [(tableau.field) = {name:&amp;quot;ID&amp;quot;}]; int32 num = 2 [(tableau.</description></item><item><title>Enum</title><link>https://tableauio.github.io/docs/xml/enum/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/docs/xml/enum/</guid><description>Use predefined enum type # Enum type FruitType in common.proto is predefined as:
-enum FruitType { FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;]; FRUIT_TYPE_APPLE = 1 [(tableau.evalue).name = &amp;quot;Apple&amp;quot;]; FRUIT_TYPE_ORANGE = 3 [(tableau.evalue).name = &amp;quot;Orange&amp;quot;]; FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;]; } A worksheet ItemConf in HelloWorld.xml:
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!-- &amp;lt;@TABLEAU&amp;gt; &amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt; &amp;lt;/@TABLEAU&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;ID&amp;gt;uint32&amp;lt;/ID&amp;gt; &amp;lt;Type&amp;gt;enum&amp;lt;.FruitType&amp;gt;&amp;lt;/Type&amp;gt; &amp;lt;Desc&amp;gt;string&amp;lt;/Desc&amp;gt; &amp;lt;/ItemConf&amp;gt; --&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;ID&amp;gt;1&amp;lt;/ID&amp;gt; &amp;lt;Type&amp;gt;FRUIT_TYPE_APPLE&amp;lt;/Type&amp;gt; &amp;lt;Desc&amp;gt;A kind of delicious fruit.&amp;lt;/Desc&amp;gt; &amp;lt;/ItemConf&amp;gt; Generated:</description></item><item><title>Struct</title><link>https://tableauio.github.io/docs/xml/struct/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/docs/xml/struct/</guid><description>General struct # A worksheet ItemConf in HelloWorld.xml:
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!-- &amp;lt;@TABLEAU&amp;gt; &amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt; &amp;lt;/@TABLEAU&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;Item ID=&amp;quot;uint32&amp;quot; StartTime=&amp;quot;datetime&amp;quot;&amp;gt; &amp;lt;Expiry&amp;gt;duration&amp;lt;/Expiry&amp;gt; &amp;lt;/Item&amp;gt; &amp;lt;Item2 ID=&amp;quot;{OtherItem}uint32&amp;quot; Name=&amp;quot;string&amp;quot; /&amp;gt; &amp;lt;/ItemConf&amp;gt; --&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;Item ID=&amp;quot;1&amp;quot; StartTime=&amp;quot;2024-10-01 10:10:10&amp;quot;&amp;gt; &amp;lt;Expiry&amp;gt;1h&amp;lt;/Expiry&amp;gt; &amp;lt;/Item&amp;gt; &amp;lt;Item2 ID=&amp;quot;1&amp;quot; Name=&amp;quot;gold&amp;quot; /&amp;gt; &amp;lt;/ItemConf&amp;gt; Tips
-Well-known type: datetime → Well-known type: duration → Generated:
-hello_world.proto // --snip-- option (tableau.workbook) = {name:&amp;quot;HelloWorld.xml&amp;quot;}; message ItemConf { option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;}; Item item = 1 [(tableau.</description></item><item><title>Union</title><link>https://tableauio.github.io/docs/xml/union/</link><pubDate>Mon, 02 Sep 2024 19:21:01 +0800</pubDate><guid>https://tableauio.github.io/docs/xml/union/</guid><description>Union definition # For example, union type Target in common.proto is predefined as:
-// Predefined union type. message Target { option (tableau.union) = true; Type type = 9999 [(tableau.field) = { name: &amp;quot;Type&amp;quot; }]; oneof value { option (tableau.oneof) = { field: &amp;quot;Field&amp;quot; }; Pvp pvp = 1; // Binded to enum value 1: TYPE_PVP. Pve pve = 2; // Binded to enum value 2: TYPE_PVP. Story story = 3; // Binded to enum value 3: TYPE_STORY.</description></item><item><title>List</title><link>https://tableauio.github.io/docs/xml/list/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/docs/xml/list/</guid><description>Scalar list # A worksheet ItemConf in HelloWorld.xml:
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!-- &amp;lt;@TABLEAU&amp;gt; &amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt; &amp;lt;/@TABLEAU&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;Item&amp;gt;[int32]&amp;lt;/Item&amp;gt; &amp;lt;/ItemConf&amp;gt; --&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;Item&amp;gt;1&amp;lt;/Item&amp;gt; &amp;lt;Item&amp;gt;2&amp;lt;/Item&amp;gt; &amp;lt;Item&amp;gt;3&amp;lt;/Item&amp;gt; &amp;lt;/ItemConf&amp;gt; Generated:
-hello_world.proto // --snip-- option (tableau.workbook) = {name:&amp;quot;HelloWorld.xml&amp;quot;}; message ItemConf { option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;}; repeated int32 item_list = 1 [(tableau.field) = {name:&amp;quot;Item&amp;quot;}]; } ItemConf.json { &amp;quot;itemList&amp;quot;: [ 1, 2, 3 ] } Enum list # Enum type FruitType in common.</description></item><item><title>Map</title><link>https://tableauio.github.io/docs/xml/map/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/docs/xml/map/</guid><description>Incell scalar map # A worksheet ItemConf in HelloWorld.xml:
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!-- &amp;lt;@TABLEAU&amp;gt; &amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt; &amp;lt;/@TABLEAU&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;Item&amp;gt;map&amp;lt;uint32, string&amp;gt;&amp;lt;/Item&amp;gt; &amp;lt;/ItemConf&amp;gt; --&amp;gt; &amp;lt;ItemConf&amp;gt; &amp;lt;Item&amp;gt;1:dog,2:bird,3:cat&amp;lt;/Item&amp;gt; &amp;lt;/ItemConf&amp;gt; Generated:
-hello_world.proto // --snip-- option (tableau.workbook) = {name:&amp;quot;HelloWorld.xml&amp;quot;}; message ItemConf { option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;}; map&amp;lt;uint32, string&amp;gt; item_map = 1 [(tableau.field) = {name:&amp;quot;Item&amp;quot; layout:LAYOUT_INCELL}]; } ItemConf.json { &amp;quot;itemMap&amp;quot;: { &amp;quot;1&amp;quot;: &amp;quot;dog&amp;quot;, &amp;quot;2&amp;quot;: &amp;quot;bird&amp;quot;, &amp;quot;3&amp;quot;: &amp;quot;cat&amp;quot; } } Incell enum map # Enum types Enum type FruitType and FruitFlavor in common.</description></item><item><title>Metasheet</title><link>https://tableauio.github.io/docs/xml/metasheet/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/docs/xml/metasheet/</guid><description>What is a metasheet in XML? # A metasheet is a comment block normally written at the beginning of an XML file, which must begin with keyword @TABLEAU and define types of attributes of nodes in the following lines. e.g.:
-&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!-- &amp;lt;@TABLEAU&amp;gt; &amp;lt;Item Sheet=&amp;quot;Sheet1&amp;quot; Alias=&amp;quot;ItemConf&amp;quot; OrderedMap=&amp;quot;true&amp;quot; Index=&amp;quot;(ID,Type)@Item&amp;quot; /&amp;gt; &amp;lt;Item Sheet=&amp;quot;Sheet2&amp;quot; Alias=&amp;quot;FruitConf&amp;quot; Sep=&amp;quot;,&amp;quot; Subsep=&amp;quot;:&amp;quot; FieldPresence=“true” /&amp;gt; &amp;lt;/@TABLEAU&amp;gt; &amp;lt;Sheet1&amp;gt; &amp;lt;ID&amp;gt;uint32&amp;lt;/ID&amp;gt; &amp;lt;Num&amp;gt;int32&amp;lt;/Num&amp;gt; &amp;lt;Value&amp;gt;uint64&amp;lt;/Value&amp;gt; &amp;lt;Weight&amp;gt;int64&amp;lt;/Weight&amp;gt; &amp;lt;Percentage&amp;gt;float&amp;lt;/Percentage&amp;gt; &amp;lt;Ratio&amp;gt;double&amp;lt;/Ratio&amp;gt; &amp;lt;Name&amp;gt;string&amp;lt;/Name&amp;gt; &amp;lt;Blob&amp;gt;bytes&amp;lt;/Blob&amp;gt; &amp;lt;OK&amp;gt;bool&amp;lt;/OK&amp;gt; &amp;lt;/Sheet1&amp;gt; &amp;lt;Sheet2&amp;gt; &amp;lt;Countries Key=&amp;quot;map&amp;lt;string, Country&amp;gt;&amp;quot; Desc=&amp;quot;string&amp;quot;&amp;gt; &amp;lt;Items Name=&amp;quot;map&amp;lt;string, Item&amp;gt;&amp;quot; Num=&amp;quot;int32&amp;quot; /&amp;gt; &amp;lt;/Countries&amp;gt; &amp;lt;/Sheet2&amp;gt; --&amp;gt; Without metasheet # If one XML file has no metasheet (In other words, has no comment block beginning with @TABLEAU), no protobuf and json will be generated.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>XML on</title><link>https://tableauio.github.io/docs/xml/</link><description>Recent content in XML on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/xml/index.xml" rel="self" type="application/rss+xml"/><item><title>Scalar</title><link>https://tableauio.github.io/docs/xml/scalar/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/docs/xml/scalar/</guid><description>&lt;h2 id="scalar">Scalar &lt;a href="#scalar" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!--
+&amp;lt;@TABLEAU&amp;gt;
+&amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt;
+&amp;lt;/@TABLEAU&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;ID&amp;gt;uint32&amp;lt;/ID&amp;gt;
+&amp;lt;Num&amp;gt;int32&amp;lt;/Num&amp;gt;
+&amp;lt;Value&amp;gt;uint64&amp;lt;/Value&amp;gt;
+&amp;lt;Weight&amp;gt;int64&amp;lt;/Weight&amp;gt;
+&amp;lt;Percentage&amp;gt;float&amp;lt;/Percentage&amp;gt;
+&amp;lt;Ratio&amp;gt;double&amp;lt;/Ratio&amp;gt;
+&amp;lt;Name&amp;gt;string&amp;lt;/Name&amp;gt;
+&amp;lt;Blob&amp;gt;bytes&amp;lt;/Blob&amp;gt;
+&amp;lt;OK&amp;gt;bool&amp;lt;/OK&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+--&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;ID&amp;gt;1&amp;lt;/ID&amp;gt;
+&amp;lt;Num&amp;gt;10&amp;lt;/Num&amp;gt;
+&amp;lt;Value&amp;gt;20&amp;lt;/Value&amp;gt;
+&amp;lt;Weight&amp;gt;30&amp;lt;/Weight&amp;gt;
+&amp;lt;Percentage&amp;gt;0.5&amp;lt;/Percentage&amp;gt;
+&amp;lt;Ratio&amp;gt;3.14159&amp;lt;/Ratio&amp;gt;
+&amp;lt;Name&amp;gt;apple&amp;lt;/Name&amp;gt;
+&amp;lt;Blob&amp;gt;VGFibGVhdQ==&amp;lt;/Blob&amp;gt; &amp;lt;!-- # base64 of &amp;quot;Tableau&amp;quot; --&amp;gt;
+&amp;lt;OK&amp;gt;true&amp;lt;/OK&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;p>Generated:&lt;/p>
+&lt;details open>
+&lt;summary>hello_world.proto&lt;/summary>
+&lt;pre>&lt;code class="language-protobuf">// --snip--
+option (tableau.workbook) = {name:&amp;quot;HelloWorld.xml&amp;quot;};
+message ItemConf {
+option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;};
+uint32 id = 1 [(tableau.field) = {name:&amp;quot;ID&amp;quot;}];
+int32 num = 2 [(tableau.field) = {name:&amp;quot;Num&amp;quot;}];
+uint64 value = 3 [(tableau.field) = {name:&amp;quot;Value&amp;quot;}];
+int64 weight = 4 [(tableau.field) = {name:&amp;quot;Weight&amp;quot;}];
+float percentage = 5 [(tableau.field) = {name:&amp;quot;Percentage&amp;quot;}];
+double ratio = 6 [(tableau.field) = {name:&amp;quot;Ratio&amp;quot;}];
+string name = 7 [(tableau.field) = {name:&amp;quot;Name&amp;quot;}];
+bytes blob = 8 [(tableau.field) = {name:&amp;quot;Blob&amp;quot;}];
+bool ok = 9 [(tableau.field) = {name:&amp;quot;OK&amp;quot;}];
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;details open>
+&lt;summary>ItemConf.json&lt;/summary>
+&lt;pre>&lt;code class="language-json">{
+&amp;quot;id&amp;quot;: 1,
+&amp;quot;num&amp;quot;: 10,
+&amp;quot;value&amp;quot;: &amp;quot;20&amp;quot;,
+&amp;quot;weight&amp;quot;: &amp;quot;30&amp;quot;,
+&amp;quot;percentage&amp;quot;: 0.5,
+&amp;quot;ratio&amp;quot;: 3.14159,
+&amp;quot;name&amp;quot;: &amp;quot;apple&amp;quot;,
+&amp;quot;blob&amp;quot;: &amp;quot;VkdGaWJHVmhkUT09&amp;quot;,
+&amp;quot;ok&amp;quot;: true
+}
+&lt;/code>&lt;/pre>
+&lt;/details></description></item><item><title>Enum</title><link>https://tableauio.github.io/docs/xml/enum/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/docs/xml/enum/</guid><description>&lt;h2 id="use-predefined-enum-type">Use predefined enum type &lt;a href="#use-predefined-enum-type" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Enum type &lt;code>FruitType&lt;/code> in &lt;em>common.proto&lt;/em> is predefined as:&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">enum FruitType {
+FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];
+FRUIT_TYPE_APPLE = 1 [(tableau.evalue).name = &amp;quot;Apple&amp;quot;];
+FRUIT_TYPE_ORANGE = 3 [(tableau.evalue).name = &amp;quot;Orange&amp;quot;];
+FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
+}
+&lt;/code>&lt;/pre>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!--
+&amp;lt;@TABLEAU&amp;gt;
+&amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt;
+&amp;lt;/@TABLEAU&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;ID&amp;gt;uint32&amp;lt;/ID&amp;gt;
+&amp;lt;Type&amp;gt;enum&amp;lt;.FruitType&amp;gt;&amp;lt;/Type&amp;gt;
+&amp;lt;Desc&amp;gt;string&amp;lt;/Desc&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+--&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;ID&amp;gt;1&amp;lt;/ID&amp;gt;
+&amp;lt;Type&amp;gt;FRUIT_TYPE_APPLE&amp;lt;/Type&amp;gt;
+&amp;lt;Desc&amp;gt;A kind of delicious fruit.&amp;lt;/Desc&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;p>Generated:&lt;/p></description></item><item><title>Struct</title><link>https://tableauio.github.io/docs/xml/struct/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/docs/xml/struct/</guid><description>&lt;h2 id="general-struct">General struct &lt;a href="#general-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!--
+&amp;lt;@TABLEAU&amp;gt;
+&amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt;
+&amp;lt;/@TABLEAU&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;Item ID=&amp;quot;uint32&amp;quot; StartTime=&amp;quot;datetime&amp;quot;&amp;gt;
+&amp;lt;Expiry&amp;gt;duration&amp;lt;/Expiry&amp;gt;
+&amp;lt;/Item&amp;gt;
+&amp;lt;Item2 ID=&amp;quot;{OtherItem}uint32&amp;quot; Name=&amp;quot;string&amp;quot; /&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+--&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;Item ID=&amp;quot;1&amp;quot; StartTime=&amp;quot;2024-10-01 10:10:10&amp;quot;&amp;gt;
+&amp;lt;Expiry&amp;gt;1h&amp;lt;/Expiry&amp;gt;
+&amp;lt;/Item&amp;gt;
+&amp;lt;Item2 ID=&amp;quot;1&amp;quot; Name=&amp;quot;gold&amp;quot; /&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;blockquote>
+&lt;p>Tips&lt;/p>
+&lt;ul>
+&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetime">datetime →&lt;/a>&lt;/li>
+&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#duration">duration →&lt;/a>&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;p>Generated:&lt;/p>
+&lt;details>
+&lt;summary>hello_world.proto&lt;/summary>
+&lt;pre>&lt;code class="language-protobuf">// --snip--
+option (tableau.workbook) = {name:&amp;quot;HelloWorld.xml&amp;quot;};
+message ItemConf {
+option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;};
+Item item = 1 [(tableau.field) = {name:&amp;quot;Item&amp;quot;}];
+message Item {
+uint32 id = 1 [(tableau.field) = {name:&amp;quot;ID&amp;quot;}];
+google.protobuf.Timestamp start_time = 2 [(tableau.field) = {name:&amp;quot;StartTime&amp;quot;}];
+google.protobuf.Duration expiry = 3 [(tableau.field) = {name:&amp;quot;Expiry&amp;quot;}];
+}
+OtherItem item_2 = 2 [(tableau.field) = {name:&amp;quot;Item2&amp;quot;}];
+message OtherItem {
+uint32 id = 1 [(tableau.field) = {name:&amp;quot;ID&amp;quot;}];
+string name = 2 [(tableau.field) = {name:&amp;quot;Name&amp;quot;}];
+}
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;details>
+&lt;summary>ItemConf.json&lt;/summary>
+&lt;pre>&lt;code class="language-json">{
+&amp;quot;item&amp;quot;: {
+&amp;quot;id&amp;quot;: 1,
+&amp;quot;startTime&amp;quot;: &amp;quot;2024-10-01T02:10:10Z&amp;quot;,
+&amp;quot;expiry&amp;quot;: &amp;quot;3600s&amp;quot;
+},
+&amp;quot;item2&amp;quot;: {
+&amp;quot;id&amp;quot;: 1,
+&amp;quot;name&amp;quot;: &amp;quot;gold&amp;quot;
+}
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;h2 id="reuse-same-level-struct">Reuse same-level struct &lt;a href="#reuse-same-level-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xml&lt;/em>:&lt;/p></description></item><item><title>Union</title><link>https://tableauio.github.io/docs/xml/union/</link><pubDate>Mon, 02 Sep 2024 19:21:01 +0800</pubDate><guid>https://tableauio.github.io/docs/xml/union/</guid><description>&lt;h2 id="union-definition">Union definition &lt;a href="#union-definition" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>For example, union type &lt;code>Target&lt;/code> in &lt;em>common.proto&lt;/em> is predefined as:&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">// Predefined union type.
+message Target {
+option (tableau.union) = true;
+Type type = 9999 [(tableau.field) = { name: &amp;quot;Type&amp;quot; }];
+oneof value {
+option (tableau.oneof) = {
+field: &amp;quot;Field&amp;quot;
+};
+Pvp pvp = 1; // Binded to enum value 1: TYPE_PVP.
+Pve pve = 2; // Binded to enum value 2: TYPE_PVP.
+Story story = 3; // Binded to enum value 3: TYPE_STORY.
+Skill skill = 4; // Binded to enum value 4: TYPE_SKILL.
+}
+enum Type {
+TYPE_NIL = 0;
+TYPE_PVP = 1 [(tableau.evalue) = { name: &amp;quot;PVP&amp;quot; }];
+TYPE_PVE = 2 [(tableau.evalue) = { name: &amp;quot;PVE&amp;quot; }];
+TYPE_STORY = 3 [(tableau.evalue) = { name: &amp;quot;Story&amp;quot; }];
+TYPE_SKILL = 4 [(tableau.evalue) = { name: &amp;quot;Skill&amp;quot; }];
+}
+message Pvp {
+int32 type = 1; // scalar
+int64 damage = 2; // scalar
+repeated protoconf.FruitType types = 3; // incell enum list
+}
+message Pve {
+Mission mission = 1; // incell struct
+repeated int32 heros = 2; // incell list
+map&amp;lt;int32, int64&amp;gt; dungeons = 3; // incell map
+message Mission {
+int32 id = 1;
+uint32 level = 2;
+int64 damage = 3;
+}
+}
+message Story {
+protoconf.Item cost = 1; // incell predefined struct
+map&amp;lt;int32, protoconf.FruitType&amp;gt; fruits = 2; // incell map with value as enum type
+map&amp;lt;int32, Flavor&amp;gt; flavors = 3; // incell map with key as enum type
+message Flavor {
+protoconf.FruitFlavor key = 1 [(tableau.field) = { name: &amp;quot;Key&amp;quot; }];
+int32 value = 2 [(tableau.field) = { name: &amp;quot;Value&amp;quot; }];
+}
+}
+message Skill {
+int32 id = 1; // scalar
+int64 damage = 2; // scalar
+// no field tag 3
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="predefined-union">Predefined union &lt;a href="#predefined-union" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xml&lt;/em>:&lt;/p></description></item><item><title>List</title><link>https://tableauio.github.io/docs/xml/list/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/docs/xml/list/</guid><description>&lt;h2 id="scalar-list">Scalar list &lt;a href="#scalar-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!--
+&amp;lt;@TABLEAU&amp;gt;
+&amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt;
+&amp;lt;/@TABLEAU&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;Item&amp;gt;[int32]&amp;lt;/Item&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+--&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;Item&amp;gt;1&amp;lt;/Item&amp;gt;
+&amp;lt;Item&amp;gt;2&amp;lt;/Item&amp;gt;
+&amp;lt;Item&amp;gt;3&amp;lt;/Item&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;p>Generated:&lt;/p>
+&lt;details>
+&lt;summary>hello_world.proto&lt;/summary>
+&lt;pre>&lt;code class="language-protobuf">// --snip--
+option (tableau.workbook) = {name:&amp;quot;HelloWorld.xml&amp;quot;};
+message ItemConf {
+option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;};
+repeated int32 item_list = 1 [(tableau.field) = {name:&amp;quot;Item&amp;quot;}];
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;details>
+&lt;summary>ItemConf.json&lt;/summary>
+&lt;pre>&lt;code class="language-json">{
+&amp;quot;itemList&amp;quot;: [
+1,
+2,
+3
+]
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;h2 id="enum-list">Enum list &lt;a href="#enum-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Enum type &lt;code>FruitType&lt;/code> in &lt;em>common.proto&lt;/em> is predefined as:&lt;/p></description></item><item><title>Map</title><link>https://tableauio.github.io/docs/xml/map/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/docs/xml/map/</guid><description>&lt;h2 id="incell-scalar-map">Incell scalar map &lt;a href="#incell-scalar-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!--
+&amp;lt;@TABLEAU&amp;gt;
+&amp;lt;Item Sheet=&amp;quot;ItemConf&amp;quot; /&amp;gt;
+&amp;lt;/@TABLEAU&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;Item&amp;gt;map&amp;lt;uint32, string&amp;gt;&amp;lt;/Item&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+--&amp;gt;
+&amp;lt;ItemConf&amp;gt;
+&amp;lt;Item&amp;gt;1:dog,2:bird,3:cat&amp;lt;/Item&amp;gt;
+&amp;lt;/ItemConf&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;p>Generated:&lt;/p>
+&lt;details>
+&lt;summary>hello_world.proto&lt;/summary>
+&lt;pre>&lt;code class="language-protobuf">// --snip--
+option (tableau.workbook) = {name:&amp;quot;HelloWorld.xml&amp;quot;};
+message ItemConf {
+option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;};
+map&amp;lt;uint32, string&amp;gt; item_map = 1 [(tableau.field) = {name:&amp;quot;Item&amp;quot; layout:LAYOUT_INCELL}];
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;details>
+&lt;summary>ItemConf.json&lt;/summary>
+&lt;pre>&lt;code class="language-json">{
+&amp;quot;itemMap&amp;quot;: {
+&amp;quot;1&amp;quot;: &amp;quot;dog&amp;quot;,
+&amp;quot;2&amp;quot;: &amp;quot;bird&amp;quot;,
+&amp;quot;3&amp;quot;: &amp;quot;cat&amp;quot;
+}
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;h2 id="incell-enum-map">Incell enum map &lt;a href="#incell-enum-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Enum types Enum type &lt;code>FruitType&lt;/code> and &lt;code>FruitFlavor&lt;/code> in &lt;em>common.proto&lt;/em> are predefined as:&lt;/p></description></item><item><title>Metasheet</title><link>https://tableauio.github.io/docs/xml/metasheet/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/docs/xml/metasheet/</guid><description>&lt;h2 id="what-is-a-metasheet-in-xml">What is a metasheet in XML? &lt;a href="#what-is-a-metasheet-in-xml" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A &lt;strong>metasheet&lt;/strong> is a comment block normally written at the beginning of an XML file, which must begin with keyword &lt;code>@TABLEAU&lt;/code> and define types of attributes of nodes in the following lines. e.g.:&lt;/p>
+&lt;pre>&lt;code class="language-XML">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!--
+&amp;lt;@TABLEAU&amp;gt;
+&amp;lt;Item Sheet=&amp;quot;Sheet1&amp;quot; Alias=&amp;quot;ItemConf&amp;quot; OrderedMap=&amp;quot;true&amp;quot; Index=&amp;quot;(ID,Type)@Item&amp;quot; /&amp;gt;
+&amp;lt;Item Sheet=&amp;quot;Sheet2&amp;quot; Alias=&amp;quot;FruitConf&amp;quot; Sep=&amp;quot;,&amp;quot; Subsep=&amp;quot;:&amp;quot; FieldPresence=“true” /&amp;gt;
+&amp;lt;/@TABLEAU&amp;gt;
+&amp;lt;Sheet1&amp;gt;
+&amp;lt;ID&amp;gt;uint32&amp;lt;/ID&amp;gt;
+&amp;lt;Num&amp;gt;int32&amp;lt;/Num&amp;gt;
+&amp;lt;Value&amp;gt;uint64&amp;lt;/Value&amp;gt;
+&amp;lt;Weight&amp;gt;int64&amp;lt;/Weight&amp;gt;
+&amp;lt;Percentage&amp;gt;float&amp;lt;/Percentage&amp;gt;
+&amp;lt;Ratio&amp;gt;double&amp;lt;/Ratio&amp;gt;
+&amp;lt;Name&amp;gt;string&amp;lt;/Name&amp;gt;
+&amp;lt;Blob&amp;gt;bytes&amp;lt;/Blob&amp;gt;
+&amp;lt;OK&amp;gt;bool&amp;lt;/OK&amp;gt;
+&amp;lt;/Sheet1&amp;gt;
+&amp;lt;Sheet2&amp;gt;
+&amp;lt;Countries Key=&amp;quot;map&amp;lt;string, Country&amp;gt;&amp;quot; Desc=&amp;quot;string&amp;quot;&amp;gt;
+&amp;lt;Items Name=&amp;quot;map&amp;lt;string, Item&amp;gt;&amp;quot; Num=&amp;quot;int32&amp;quot; /&amp;gt;
+&amp;lt;/Countries&amp;gt;
+&amp;lt;/Sheet2&amp;gt;
+--&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;h2 id="without-metasheet">Without metasheet &lt;a href="#without-metasheet" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>If one XML file has no metasheet (In other words, has no comment block beginning with &lt;code>@TABLEAU&lt;/code>), no protobuf and json will be generated.&lt;/p></description></item></channel></rss>

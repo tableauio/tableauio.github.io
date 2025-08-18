@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YAML on</title><link>https://tableauio.github.io/en/docs/yaml/</link><description>Recent content in YAML on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Sat, 22 Jun 2024 10:00:00 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/en/docs/yaml/index.xml" rel="self" type="application/rss+xml"/><item><title>Scalar</title><link>https://tableauio.github.io/en/docs/yaml/scalar/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/yaml/scalar/</guid><description>&lt;h2 id="scalar">Scalar &lt;a href="#scalar" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.yaml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># define metasheet: generate all sheets
+&amp;quot;@sheet&amp;quot;: &amp;quot;@TABLEAU&amp;quot;
+---
+# define schema
+&amp;quot;@sheet&amp;quot;: &amp;quot;@ItemConf&amp;quot;
+ID: uint32
+Num: int32
+Value: uint64
+Weight: int64
+Percentage: float
+Ratio: double
+Name: string
+Blob: bytes
+OK: bool
+---
+&amp;quot;@sheet&amp;quot;: ItemConf
+ID: 1
+Num: 10
+Value: 20
+Weight: 30
+Percentage: 0.5
+Ratio: 3.14159
+Name: apple
+Blob: &amp;quot;VGFibGVhdQ==&amp;quot; # base64 of &amp;quot;Tableau&amp;quot;
+OK: true
+&lt;/code>&lt;/pre>
+&lt;p>Generated:&lt;/p>
+&lt;details open>
+&lt;summary>hello_world.proto&lt;/summary>
+&lt;pre>&lt;code class="language-protobuf">// --snip--
+option (tableau.workbook) = {name:&amp;quot;HelloWorld.yaml&amp;quot;};
+message ItemConf {
+option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;};
+uint32 id = 1 [(tableau.field) = {name:&amp;quot;ID&amp;quot;}];
+int32 num = 2 [(tableau.field) = {name:&amp;quot;Num&amp;quot;}];
+uint64 value = 3 [(tableau.field) = {name:&amp;quot;Value&amp;quot;}];
+int64 weight = 4 [(tableau.field) = {name:&amp;quot;Weight&amp;quot;}];
+float percentage = 5 [(tableau.field) = {name:&amp;quot;Percentage&amp;quot;}];
+double ratio = 6 [(tableau.field) = {name:&amp;quot;Ratio&amp;quot;}];
+string name = 7 [(tableau.field) = {name:&amp;quot;Name&amp;quot;}];
+bytes blob = 8 [(tableau.field) = {name:&amp;quot;Blob&amp;quot;}];
+bool ok = 9 [(tableau.field) = {name:&amp;quot;OK&amp;quot;}];
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;details open>
+&lt;summary>ItemConf.json&lt;/summary>
+&lt;pre>&lt;code class="language-json">{
+&amp;quot;id&amp;quot;: 1,
+&amp;quot;num&amp;quot;: 10,
+&amp;quot;value&amp;quot;: &amp;quot;20&amp;quot;,
+&amp;quot;weight&amp;quot;: &amp;quot;30&amp;quot;,
+&amp;quot;percentage&amp;quot;: 0.5,
+&amp;quot;ratio&amp;quot;: 3.14159,
+&amp;quot;name&amp;quot;: &amp;quot;apple&amp;quot;,
+&amp;quot;blob&amp;quot;: &amp;quot;VkdGaWJHVmhkUT09&amp;quot;,
+&amp;quot;ok&amp;quot;: true
+}
+&lt;/code>&lt;/pre>
+&lt;/details></description></item><item><title>Enum</title><link>https://tableauio.github.io/en/docs/yaml/enum/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/yaml/enum/</guid><description>&lt;h2 id="use-predefined-enum-type">Use predefined enum type &lt;a href="#use-predefined-enum-type" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Enum type &lt;code>FruitType&lt;/code> in &lt;em>common.proto&lt;/em> is predefined as:&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">enum FruitType {
+FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];
+FRUIT_TYPE_APPLE = 1 [(tableau.evalue).name = &amp;quot;Apple&amp;quot;];
+FRUIT_TYPE_ORANGE = 3 [(tableau.evalue).name = &amp;quot;Orange&amp;quot;];
+FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
+}
+&lt;/code>&lt;/pre>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.yaml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># define metasheet: generate all sheets
+&amp;quot;@sheet&amp;quot;: &amp;quot;@TABLEAU&amp;quot;
+---
+# define schema
+&amp;quot;@sheet&amp;quot;: &amp;quot;@ItemConf&amp;quot;
+ID: uint32
+Type: &amp;quot;enum&amp;lt;.FruitType&amp;gt;&amp;quot;
+Desc: string
+---
+&amp;quot;@sheet&amp;quot;: ItemConf
+ID: 1
+Type: FRUIT_TYPE_APPLE
+Desc: A kind of delicious fruit.
+&lt;/code>&lt;/pre>
+&lt;p>Generated:&lt;/p></description></item><item><title>Struct</title><link>https://tableauio.github.io/en/docs/yaml/struct/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/yaml/struct/</guid><description>&lt;h2 id="general-struct">General struct &lt;a href="#general-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.yaml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># define metasheet: generate all sheets
+&amp;quot;@sheet&amp;quot;: &amp;quot;@TABLEAU&amp;quot;
+---
+# define schema
+&amp;quot;@sheet&amp;quot;: &amp;quot;@ItemConf&amp;quot;
+Item:
+&amp;quot;@type&amp;quot;: &amp;quot;{Item}&amp;quot;
+ID: uint32
+StartTime: datetime
+Expiry: duration
+---
+&amp;quot;@sheet&amp;quot;: ItemConf
+Item:
+ID: 1
+StartTime: 2024-10-01 10:10:10
+Expiry: 1h
+&lt;/code>&lt;/pre>
+&lt;blockquote>
+&lt;p>Tips&lt;/p>
+&lt;ul>
+&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/en/docs/basics/wellknown-types/#datetime">datetime →&lt;/a>&lt;/li>
+&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/en/docs/basics/wellknown-types/#duration">duration →&lt;/a>&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;p>Generated:&lt;/p>
+&lt;details>
+&lt;summary>hello_world.proto&lt;/summary>
+&lt;pre>&lt;code class="language-protobuf">// --snip--
+option (tableau.workbook) = {name:&amp;quot;HelloWorld.yaml&amp;quot;};
+message ItemConf {
+option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;};
+Item item = 1 [(tableau.field) = {name:&amp;quot;Item&amp;quot;}];
+message Item {
+uint32 id = 1 [(tableau.field) = {name:&amp;quot;ID&amp;quot;}];
+google.protobuf.Timestamp start_time = 2 [(tableau.field) = {name:&amp;quot;StartTime&amp;quot;}];
+google.protobuf.Duration expiry = 3 [(tableau.field) = {name:&amp;quot;Expiry&amp;quot;}];
+}
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;details>
+&lt;summary>ItemConf.json&lt;/summary>
+&lt;pre>&lt;code class="language-json">{
+&amp;quot;item&amp;quot;: {
+&amp;quot;id&amp;quot;: 1,
+&amp;quot;startTime&amp;quot;: &amp;quot;2024-10-01T02:10:10Z&amp;quot;,
+&amp;quot;expiry&amp;quot;: &amp;quot;3600s&amp;quot;
+}
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;h2 id="reuse-same-level-struct">Reuse same-level struct &lt;a href="#reuse-same-level-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.yaml&lt;/em>:&lt;/p></description></item><item><title>Union</title><link>https://tableauio.github.io/en/docs/yaml/union/</link><pubDate>Mon, 02 Sep 2024 19:21:01 +0800</pubDate><guid>https://tableauio.github.io/en/docs/yaml/union/</guid><description>&lt;h2 id="union-definition">Union definition &lt;a href="#union-definition" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>For example, union type &lt;code>Target&lt;/code> in &lt;em>common.proto&lt;/em> is predefined as:&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">// Predefined union type.
+message Target {
+option (tableau.union) = true;
+Type type = 9999 [(tableau.field) = { name: &amp;quot;Type&amp;quot; }];
+oneof value {
+option (tableau.oneof) = {
+field: &amp;quot;Field&amp;quot;
+};
+Pvp pvp = 1; // Binded to enum value 1: TYPE_PVP.
+Pve pve = 2; // Binded to enum value 2: TYPE_PVP.
+Story story = 3; // Binded to enum value 3: TYPE_STORY.
+Skill skill = 4; // Binded to enum value 4: TYPE_SKILL.
+}
+enum Type {
+TYPE_NIL = 0;
+TYPE_PVP = 1 [(tableau.evalue) = { name: &amp;quot;PVP&amp;quot; }];
+TYPE_PVE = 2 [(tableau.evalue) = { name: &amp;quot;PVE&amp;quot; }];
+TYPE_STORY = 3 [(tableau.evalue) = { name: &amp;quot;Story&amp;quot; }];
+TYPE_SKILL = 4 [(tableau.evalue) = { name: &amp;quot;Skill&amp;quot; }];
+}
+message Pvp {
+int32 type = 1; // scalar
+int64 damage = 2; // scalar
+repeated protoconf.FruitType types = 3; // incell enum list
+}
+message Pve {
+Mission mission = 1; // incell struct
+repeated int32 heros = 2; // incell list
+map&amp;lt;int32, int64&amp;gt; dungeons = 3; // incell map
+message Mission {
+int32 id = 1;
+uint32 level = 2;
+int64 damage = 3;
+}
+}
+message Story {
+protoconf.Item cost = 1; // incell predefined struct
+map&amp;lt;int32, protoconf.FruitType&amp;gt; fruits = 2; // incell map with value as enum type
+map&amp;lt;int32, Flavor&amp;gt; flavors = 3; // incell map with key as enum type
+message Flavor {
+protoconf.FruitFlavor key = 1 [(tableau.field) = { name: &amp;quot;Key&amp;quot; }];
+int32 value = 2 [(tableau.field) = { name: &amp;quot;Value&amp;quot; }];
+}
+}
+message Skill {
+int32 id = 1; // scalar
+int64 damage = 2; // scalar
+// no field tag 3
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="predefined-union">Predefined union &lt;a href="#predefined-union" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.yaml&lt;/em>:&lt;/p></description></item><item><title>List</title><link>https://tableauio.github.io/en/docs/yaml/list/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/yaml/list/</guid><description>&lt;h2 id="scalar-list">Scalar list &lt;a href="#scalar-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.yaml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># define metasheet: generate all sheets
+&amp;quot;@sheet&amp;quot;: &amp;quot;@TABLEAU&amp;quot;
+---
+# define schema
+&amp;quot;@sheet&amp;quot;: &amp;quot;@ItemConf&amp;quot;
+Items: &amp;quot;[int32]&amp;quot;
+---
+&amp;quot;@sheet&amp;quot;: ItemConf
+Items: [1, 2, 3]
+&lt;/code>&lt;/pre>
+&lt;p>Generated:&lt;/p>
+&lt;details>
+&lt;summary>hello_world.proto&lt;/summary>
+&lt;pre>&lt;code class="language-protobuf">// --snip--
+option (tableau.workbook) = {name:&amp;quot;HelloWorld.yaml&amp;quot;};
+message ItemConf {
+option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;};
+repeated int32 items = 1 [(tableau.field) = {name:&amp;quot;Items&amp;quot;}];
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;details>
+&lt;summary>ItemConf.json&lt;/summary>
+&lt;pre>&lt;code class="language-json">{
+&amp;quot;items&amp;quot;: [
+1,
+2,
+3
+]
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;h2 id="enum-list">Enum list &lt;a href="#enum-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Enum type &lt;code>FruitType&lt;/code> in &lt;em>common.proto&lt;/em> is predefined as:&lt;/p></description></item><item><title>Map</title><link>https://tableauio.github.io/en/docs/yaml/map/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/yaml/map/</guid><description>&lt;h2 id="scalar-map">Scalar map &lt;a href="#scalar-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.yaml&lt;/em>:&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># define metasheet: generate all sheets
+&amp;quot;@sheet&amp;quot;: &amp;quot;@TABLEAU&amp;quot;
+---
+# define schema
+&amp;quot;@sheet&amp;quot;: &amp;quot;@ItemConf&amp;quot;
+Items: &amp;quot;map&amp;lt;uint32, string&amp;gt;&amp;quot;
+---
+&amp;quot;@sheet&amp;quot;: ItemConf
+Items:
+1: dog
+2: bird
+3: cat
+&lt;/code>&lt;/pre>
+&lt;p>Generated:&lt;/p>
+&lt;details>
+&lt;summary>hello_world.proto&lt;/summary>
+&lt;pre>&lt;code class="language-protobuf">// --snip--
+option (tableau.workbook) = {name:&amp;quot;HelloWorld.yaml&amp;quot;};
+message ItemConf {
+option (tableau.worksheet) = {name:&amp;quot;ItemConf&amp;quot;};
+map&amp;lt;uint32, string&amp;gt; items = 1 [(tableau.field) = {name:&amp;quot;Items&amp;quot;}];
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;details>
+&lt;summary>ItemConf.json&lt;/summary>
+&lt;pre>&lt;code class="language-json">{
+&amp;quot;items&amp;quot;: {
+&amp;quot;1&amp;quot;: &amp;quot;dog&amp;quot;,
+&amp;quot;2&amp;quot;: &amp;quot;bird&amp;quot;,
+&amp;quot;3&amp;quot;: &amp;quot;cat&amp;quot;
+}
+}
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;h2 id="enum-key-map">Enum key map &lt;a href="#enum-key-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Enum type &lt;code>FruitType&lt;/code> in &lt;em>common.proto&lt;/em> is predefined as:&lt;/p></description></item><item><title>Metasheet</title><link>https://tableauio.github.io/en/docs/yaml/metasheet/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/yaml/metasheet/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>The metasheet named &amp;ldquo;@TABLEAU&amp;rdquo; is designed to specify tableau parser options.
+Go to read details about &lt;a href="https://tableauio.github.io/en/docs/excel/metasheet/">Metatsheet →&lt;/a>.&lt;/p>
+&lt;p>A YAML metasheet example:&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># define metasheet
+&amp;quot;@sheet&amp;quot;: &amp;quot;@TABLEAU&amp;quot;
+Sheet1:
+Alias: ItemConf
+OrderedMap: true
+Index: &amp;quot;(ID,Type)@Item&amp;quot;
+Sheet2:
+Alias: FruitConf
+Sep: &amp;quot;,&amp;quot;
+Subsep: &amp;quot;:&amp;quot;
+FieldPresence: true
+&lt;/code>&lt;/pre>
+&lt;h2 id="todo">TODO &lt;a href="#todo" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;blockquote>
+&lt;p>More details&amp;hellip;&lt;/p>&lt;/blockquote></description></item></channel></rss>

@@ -1,0 +1,1518 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Excel on</title><link>https://tableauio.github.io/en/docs/excel/</link><description>Recent content in Excel on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 08 Mar 2022 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/en/docs/excel/index.xml" rel="self" type="application/rss+xml"/><item><title>Scalar</title><link>https://tableauio.github.io/en/docs/excel/scalar/</link><pubDate>Sun, 04 Sep 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/scalar/</guid><description>&lt;h2 id="scalar">Scalar &lt;a href="#scalar" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>Apple&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-mljebfdhangick-116829-tab" data-bs-toggle="tab" data-bs-target="#sheet-mljebfdhangick-116829" type="button" role="tab" aria-controls="sheet-mljebfdhangick-116829" aria-selected=" active ">Apple&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-ncikhlmgebfajd-117115-tab" data-bs-toggle="tab" data-bs-target="#sheet-ncikhlmgebfajd-117115" type="button" role="tab" aria-controls="sheet-ncikhlmgebfajd-117115" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-mljebfdhangick-116829" role="tabpanel" aria-labelledby="sheet-mljebfdhangick-116829-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Desc&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>uint32&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>string&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s Name&lt;/td>
+&lt;td>Item&amp;rsquo;s Description&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;td>A kind of delicious fruit.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-ncikhlmgebfajd-117115" role="tabpanel" aria-labelledby="sheet-ncikhlmgebfajd-117115-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>In this worksheet, three scalar fields are defined:&lt;/p></description></item><item><title>Enum</title><link>https://tableauio.github.io/en/docs/excel/enum/</link><pubDate>Tue, 24 Sep 2024 14:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/enum/</guid><description>&lt;h2 id="use-predefined-enum-type">Use predefined enum type &lt;a href="#use-predefined-enum-type" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>The basic enum guide, please go to read &lt;a href="https://tableauio.github.io/en/docs/excel/enum/">Enum →&lt;/a>&lt;/p>
+&lt;p>For example, enum type &lt;code>FruitType&lt;/code> in &lt;code>common.proto&lt;/code> is defined as:&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">enum FruitType {
+FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];
+FRUIT_TYPE_APPLE = 1 [(tableau.evalue).name = &amp;quot;Apple&amp;quot;];
+FRUIT_TYPE_ORANGE = 2 [(tableau.evalue).name = &amp;quot;Orange&amp;quot;];
+FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
+}
+&lt;/code>&lt;/pre>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-bfnaecmigljhdk-130999-tab" data-bs-toggle="tab" data-bs-target="#sheet-bfnaecmigljhdk-130999" type="button" role="tab" aria-controls="sheet-bfnaecmigljhdk-130999" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-hcnfabigkdlmej-131285-tab" data-bs-toggle="tab" data-bs-target="#sheet-hcnfabigkdlmej-131285" type="button" role="tab" aria-controls="sheet-hcnfabigkdlmej-131285" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-bfnaecmigljhdk-130999" role="tabpanel" aria-labelledby="sheet-bfnaecmigljhdk-130999-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>Type&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>map&amp;lt;uint32, Item&amp;gt;&lt;/td>
+&lt;td>enum&amp;lt;.FruitType&amp;gt;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Fruit&amp;rsquo;s type&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>FRUIT_TYPE_BANANA&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-hcnfabigkdlmej-131285" role="tabpanel" aria-labelledby="sheet-hcnfabigkdlmej-131285-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>Struct</title><link>https://tableauio.github.io/en/docs/excel/struct/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/struct/</guid><description>&lt;h2 id="cross-cell-struct">Cross-cell struct &lt;a href="#cross-cell-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;strong>Syntax&lt;/strong>: &lt;code>&amp;lt;StructType&amp;gt;ColumnType&lt;/code>.&lt;/p>
+&lt;p>Each column name should be prefixed with the same struct variable name, which is just the same as struct type name by default.&lt;/p>
+&lt;p>For example, a worksheet &lt;code>ItemConf&lt;/code> in &lt;code>HelloWorld.xlsx&lt;/code>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-mdhenilgfbacjk-175953-tab" data-bs-toggle="tab" data-bs-target="#sheet-mdhenilgfbacjk-175953" type="button" role="tab" aria-controls="sheet-mdhenilgfbacjk-175953" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-hnflcjkmidbgea-176252-tab" data-bs-toggle="tab" data-bs-target="#sheet-hnflcjkmidbgea-176252" type="button" role="tab" aria-controls="sheet-hnflcjkmidbgea-176252" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-mdhenilgfbacjk-175953" role="tabpanel" aria-labelledby="sheet-mdhenilgfbacjk-175953-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">PropertyID&lt;/th>
+&lt;th style="text-align: left">PropertyName&lt;/th>
+&lt;th style="text-align: left">PropertyDesc&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">{Property}int32&lt;/td>
+&lt;td style="text-align: left">string&lt;/td>
+&lt;td style="text-align: left">string&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Property&amp;rsquo;s ID&lt;/td>
+&lt;td style="text-align: left">Property&amp;rsquo;s Name&lt;/td>
+&lt;td style="text-align: left">Property&amp;rsquo;s Description&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">Orange&lt;/td>
+&lt;td style="text-align: left">A kind of sour fruit.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-hnflcjkmidbgea-176252" role="tabpanel" aria-labelledby="sheet-hnflcjkmidbgea-176252-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Note that each column name in &lt;code>ItemConf&lt;/code> is prefixed with struct variable name &lt;strong>Property&lt;/strong> which is same as struct type name.&lt;/p></description></item><item><title>Union</title><link>https://tableauio.github.io/en/docs/excel/union/</link><pubDate>Sun, 04 Sep 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/union/</guid><description>&lt;h2 id="theory">Theory &lt;a href="#theory" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>In protoconf, &lt;code>union&lt;/code> type means the &lt;strong>tagged union&lt;/strong>: a data structure used to hold a value that could take on several different, but fixed, types. Only one of the types can be in use at any one time, and a &lt;strong>tag&lt;/strong> field explicitly indicates which one is in use. More details can be learned from wikipedia &lt;a href="https://en.wikipedia.org/wiki/Tagged_union">Tagged union&lt;/a>.&lt;/p>
+&lt;p>&lt;strong>Tagged union&lt;/strong> in different programming languages:&lt;/p>
+&lt;ul>
+&lt;li>C++: &lt;a href="https://en.cppreference.com/w/cpp/utility/variant">std::variant&lt;/a>.&lt;/li>
+&lt;li>Rust: &lt;a href="https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html">Defining an Enum&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;p>Tableau use protobuf &lt;code>message&lt;/code> to bundle &lt;code>enum&lt;/code> type and &lt;a href="https://protobuf.dev/programming-guides/proto3/#oneof">&lt;code>oneof&lt;/code>&lt;/a> type together to implement &lt;strong>tagged union&lt;/strong>. By default, each enum value (&amp;gt;0) is bound to a field with the same tag number of &lt;a href="https://protobuf.dev/programming-guides/proto3/#oneof">&lt;code>oneof&lt;/code>&lt;/a> type.&lt;/p></description></item><item><title>List</title><link>https://tableauio.github.io/en/docs/excel/list/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/list/</guid><description>&lt;h2 id="horizontal-list">Horizontal list &lt;a href="#horizontal-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>NOTE: Column name of horizontal list &lt;strong>MUST&lt;/strong> have a digit suffix which started at &lt;code>1&lt;/code>.&lt;/p>
+&lt;p>Overview of horizontal list syntax:&lt;/p>
+&lt;table class="table-striped table-hover">
+&lt;thead>
+&lt;tr>
+&lt;th>List element type&lt;/th>
+&lt;th>Syntax example&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;a href="https://tableauio.github.io/docs/excel/list/#horizontal-scalar-list">scalar&lt;/a>&lt;/td>
+&lt;td>&lt;code>[]uint32&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://tableauio.github.io/docs/excel/list/#horizontal-enum-list">enum&lt;/a>&lt;/td>
+&lt;td>&lt;code>[]enum&amp;lt;.FruiteType&amp;gt;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://tableauio.github.io/docs/excel/list/#horizontal-struct-list">struct&lt;/a>&lt;/td>
+&lt;td>&lt;code>[Item]uint32&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://tableauio.github.io/docs/excel/list/#horizontal-predefined-struct-list">predefined struct&lt;/a>&lt;/td>
+&lt;td>&lt;code>[.Item]uint32&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://tableauio.github.io/docs/excel/list/#horizontal-incell-struct-list">incell struct&lt;/a>&lt;/td>
+&lt;td>&lt;code>[]{uint32 ID, string Num}Item&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://tableauio.github.io/docs/excel/list/#horizontal-incell-predefined-struct-list">incell predefined struct&lt;/a>&lt;/td>
+&lt;td>&lt;code>[]{.Item}&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="horizontal-scalar-list">Horizontal scalar list &lt;a href="#horizontal-scalar-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-iebcgjamfdnklh-17379-tab" data-bs-toggle="tab" data-bs-target="#sheet-iebcgjamfdnklh-17379" type="button" role="tab" aria-controls="sheet-iebcgjamfdnklh-17379" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-lfbgnickejdmah-17678-tab" data-bs-toggle="tab" data-bs-target="#sheet-lfbgnickejdmah-17678" type="button" role="tab" aria-controls="sheet-lfbgnickejdmah-17678" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-iebcgjamfdnklh-17379" role="tabpanel" aria-labelledby="sheet-iebcgjamfdnklh-17379-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID1&lt;/th>
+&lt;th>ID2&lt;/th>
+&lt;th>ID3&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>[]uint32&lt;/td>
+&lt;td>uint32&lt;/td>
+&lt;td>uint32&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>ID1&amp;rsquo;s value&lt;/td>
+&lt;td>ID2&amp;rsquo;s value&lt;/td>
+&lt;td>ID3&amp;rsquo;s value&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>3&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-lfbgnickejdmah-17678" role="tabpanel" aria-labelledby="sheet-lfbgnickejdmah-17678-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>Map</title><link>https://tableauio.github.io/en/docs/excel/map/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/map/</guid><description>&lt;h2 id="horizontal-map">Horizontal map &lt;a href="#horizontal-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>There are some kinds of horizontal map:&lt;/p>
+&lt;ol>
+&lt;li>Horizontal &lt;strong>scalar&lt;/strong> map, as map value type is scalar. E.g: &lt;code>map&amp;lt;int32, int32&amp;gt;&lt;/code>.&lt;/li>
+&lt;li>Horizontal &lt;strong>struct&lt;/strong> map, as map value type is struct. E.g: &lt;code>map&amp;lt;int32, Item&amp;gt;&lt;/code>.&lt;/li>
+&lt;li>Horizontal &lt;strong>predefined-struct&lt;/strong> map, as map value type is predefined struct. E.g: &lt;code>map&amp;lt;int32, .Item&amp;gt;&lt;/code>.&lt;/li>
+&lt;/ol>
+&lt;h3 id="horizontal-scalar-map">Horizontal scalar map &lt;a href="#horizontal-scalar-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>No need to support, use this instead: &lt;code>map&amp;lt;int32, Item&amp;gt;&lt;/code>.&lt;/p>
+&lt;h3 id="horizontal-struct-map">Horizontal struct map &lt;a href="#horizontal-struct-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-cajhflnkmedgib-301364-tab" data-bs-toggle="tab" data-bs-target="#sheet-cajhflnkmedgib-301364" type="button" role="tab" aria-controls="sheet-cajhflnkmedgib-301364" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-gflmjihcbedakn-301572-tab" data-bs-toggle="tab" data-bs-target="#sheet-gflmjihcbedakn-301572" type="button" role="tab" aria-controls="sheet-gflmjihcbedakn-301572" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-cajhflnkmedgib-301364" role="tabpanel" aria-labelledby="sheet-cajhflnkmedgib-301364-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Item1ID&lt;/th>
+&lt;th>Item1Name&lt;/th>
+&lt;th>Item2ID&lt;/th>
+&lt;th>Item2Name&lt;/th>
+&lt;th>Item3ID&lt;/th>
+&lt;th>Item3Name&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>map&amp;lt;uint32, Item&amp;gt;&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>uint32&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>uint32&lt;/td>
+&lt;td>string&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item1&amp;rsquo;s ID&lt;/td>
+&lt;td>Item1&amp;rsquo;s name&lt;/td>
+&lt;td>Item2&amp;rsquo;s ID&lt;/td>
+&lt;td>Item2&amp;rsquo;s name&lt;/td>
+&lt;td>Item3&amp;rsquo;s ID&lt;/td>
+&lt;td>Item3&amp;rsquo;s name&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>Banana&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-gflmjihcbedakn-301572" role="tabpanel" aria-labelledby="sheet-gflmjihcbedakn-301572-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>KeyedList</title><link>https://tableauio.github.io/en/docs/excel/keyedlist/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/keyedlist/</guid><description>&lt;h2 id="syntax">Syntax &lt;a href="#syntax" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Keyed list is same as normal list, except that &lt;code>ColumnType&lt;/code> (first field type) is surrounded by angle brackets &lt;code>&amp;lt;&amp;gt;&lt;/code>, and is treated as map key.&lt;/p>
+&lt;p>&lt;strong>Syntax&lt;/strong>: &lt;code>[ElemType]&amp;lt;ColumnType&amp;gt;&lt;/code>&lt;/p>
+&lt;h2 id="horizontal-list">Horizontal list &lt;a href="#horizontal-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;blockquote>
+&lt;p>TODO&amp;hellip;&lt;/p>&lt;/blockquote>
+&lt;h2 id="vertical-keyedlist">Vertical KeyedList &lt;a href="#vertical-keyedlist" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="vertical-scalar-keyedlist">Vertical scalar KeyedList &lt;a href="#vertical-scalar-keyedlist" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;blockquote>
+&lt;p>It&amp;rsquo;s defined same as &lt;a href="https://tableauio.github.io/en/docs/excel/keyedlist/#incell-scalar-keyedlist">Incell scalar KeyedList&lt;/a>, but will aggregate multiple rows if provided.&lt;/p>&lt;/blockquote>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-cjfdikhabemlgn-351427-tab" data-bs-toggle="tab" data-bs-target="#sheet-cjfdikhabemlgn-351427" type="button" role="tab" aria-controls="sheet-cjfdikhabemlgn-351427" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-iejbhkfdnlmacg-351609-tab" data-bs-toggle="tab" data-bs-target="#sheet-iejbhkfdnlmacg-351609" type="button" role="tab" aria-controls="sheet-iejbhkfdnlmacg-351609" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-cjfdikhabemlgn-351427" role="tabpanel" aria-labelledby="sheet-cjfdikhabemlgn-351427-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>[]&amp;lt;uint32&amp;gt;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>ID&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1,2,3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4,5&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>6&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-iejbhkfdnlmacg-351609" role="tabpanel" aria-labelledby="sheet-iejbhkfdnlmacg-351609-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>Wellknown types</title><link>https://tableauio.github.io/en/docs/excel/wellknown-types/</link><pubDate>Tue, 24 Sep 2024 14:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/wellknown-types/</guid><description>&lt;h2 id="datetime">Datetime &lt;a href="#datetime" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="datetime-1">Datetime &lt;a href="#datetime-1" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;blockquote>
+&lt;p>See &lt;a href="https://tableauio.github.io/en/docs/basics/wellknown-types/#datetime">Basics: Datetime →&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-elinfbhjacdkmg-375516-tab" data-bs-toggle="tab" data-bs-target="#sheet-elinfbhjacdkmg-375516" type="button" role="tab" aria-controls="sheet-elinfbhjacdkmg-375516" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-mfgenkdihcbjla-375698-tab" data-bs-toggle="tab" data-bs-target="#sheet-mfgenkdihcbjla-375698" type="button" role="tab" aria-controls="sheet-mfgenkdihcbjla-375698" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-elinfbhjacdkmg-375516" role="tabpanel" aria-labelledby="sheet-elinfbhjacdkmg-375516-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>BeginDatetime&lt;/th>
+&lt;th>EndDatetime&lt;/th>
+&lt;th>Datetime&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>datetime&lt;/td>
+&lt;td>datetime&lt;/td>
+&lt;td>[]datetime&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Begin datetime&lt;/td>
+&lt;td>End datetime&lt;/td>
+&lt;td>Datetime&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2020-01-01 10:25:00&lt;/td>
+&lt;td>2022-10-10 05:10:00&lt;/td>
+&lt;td>2020-01-01 10:25:00,2022-10-10 05:10:00&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-mfgenkdihcbjla-375698" role="tabpanel" aria-labelledby="sheet-mfgenkdihcbjla-375698-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>Struct in struct</title><link>https://tableauio.github.io/en/docs/excel/struct-in-struct/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/struct-in-struct/</guid><description>&lt;h2 id="struct-in-struct">Struct in struct &lt;a href="#struct-in-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-gedhaiclbkfjnm-399592-tab" data-bs-toggle="tab" data-bs-target="#sheet-gedhaiclbkfjnm-399592" type="button" role="tab" aria-controls="sheet-gedhaiclbkfjnm-399592" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-jdflibhegkncma-399774-tab" data-bs-toggle="tab" data-bs-target="#sheet-jdflibhegkncma-399774" type="button" role="tab" aria-controls="sheet-jdflibhegkncma-399774" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-gedhaiclbkfjnm-399592" role="tabpanel" aria-labelledby="sheet-gedhaiclbkfjnm-399592-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>RewardID&lt;/th>
+&lt;th>RewardItemID&lt;/th>
+&lt;th>RewardItemNum&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>{Reward}int32&lt;/td>
+&lt;td>{Item}int32&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Reward&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s num&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>10&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-jdflibhegkncma-399774" role="tabpanel" aria-labelledby="sheet-jdflibhegkncma-399774-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>Struct in list</title><link>https://tableauio.github.io/en/docs/excel/struct-in-list/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/struct-in-list/</guid><description>&lt;h2 id="nested-in-vertical-list">Nested in vertical-list &lt;a href="#nested-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="struct-in-vertical-list">Struct in vertical-list &lt;a href="#struct-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-cmihgejkalbndf-13749-tab" data-bs-toggle="tab" data-bs-target="#sheet-cmihgejkalbndf-13749" type="button" role="tab" aria-controls="sheet-cmihgejkalbndf-13749" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-embckdnjailhfg-13918-tab" data-bs-toggle="tab" data-bs-target="#sheet-embckdnjailhfg-13918" type="button" role="tab" aria-controls="sheet-embckdnjailhfg-13918" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-cmihgejkalbndf-13749" role="tabpanel" aria-labelledby="sheet-cmihgejkalbndf-13749-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>PropID&lt;/th>
+&lt;th>PropValue&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>[Item]uint32&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>{Prop}int32&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s name&lt;/td>
+&lt;td>Prop&amp;rsquo;s ID&lt;/td>
+&lt;td>Prop&amp;rsquo;s value&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>10&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Banana&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-embckdnjailhfg-13918" role="tabpanel" aria-labelledby="sheet-embckdnjailhfg-13918-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>Struct in map</title><link>https://tableauio.github.io/en/docs/excel/struct-in-map/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/struct-in-map/</guid><description>&lt;h2 id="nested-in-vertical-map">Nested in vertical-map &lt;a href="#nested-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="struct-in-vertical-map">Struct in vertical-map &lt;a href="#struct-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-bkacimfdnhjegl-34991-tab" data-bs-toggle="tab" data-bs-target="#sheet-bkacimfdnhjegl-34991" type="button" role="tab" aria-controls="sheet-bkacimfdnhjegl-34991" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-fbcjimehglkdna-35381-tab" data-bs-toggle="tab" data-bs-target="#sheet-fbcjimehglkdna-35381" type="button" role="tab" aria-controls="sheet-fbcjimehglkdna-35381" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-bkacimfdnhjegl-34991" role="tabpanel" aria-labelledby="sheet-bkacimfdnhjegl-34991-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>ItemID&lt;/th>
+&lt;th>ItemNum&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>map&amp;lt;int32, Reward&amp;gt;&lt;/td>
+&lt;td>{Item}int32&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Reward&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s Num&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>10&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-fbcjimehglkdna-35381" role="tabpanel" aria-labelledby="sheet-fbcjimehglkdna-35381-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>List in list</title><link>https://tableauio.github.io/en/docs/excel/list-in-list/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/list-in-list/</guid><description>&lt;h2 id="nested-in-vertical-list">Nested in vertical-list &lt;a href="#nested-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="horizontal-list-in-vertical-list">Horizontal-list in vertical-list &lt;a href="#horizontal-list-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-fnhblmcaegidkj-50500-tab" data-bs-toggle="tab" data-bs-target="#sheet-fnhblmcaegidkj-50500" type="button" role="tab" aria-controls="sheet-fnhblmcaegidkj-50500" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-mljecdbakgifhn-50695-tab" data-bs-toggle="tab" data-bs-target="#sheet-mljecdbakgifhn-50695" type="button" role="tab" aria-controls="sheet-mljecdbakgifhn-50695" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-fnhblmcaegidkj-50500" role="tabpanel" aria-labelledby="sheet-fnhblmcaegidkj-50500-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Prop1ID&lt;/th>
+&lt;th>Prop1Value&lt;/th>
+&lt;th>Prop2ID&lt;/th>
+&lt;th>Prop2Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>[Item]uint32&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>[Prop]int32&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s name&lt;/td>
+&lt;td>Prop1&amp;rsquo;s ID&lt;/td>
+&lt;td>Prop1&amp;rsquo;s value&lt;/td>
+&lt;td>Prop2&amp;rsquo;s ID&lt;/td>
+&lt;td>Prop2&amp;rsquo;s value&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>10&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Banana&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-mljecdbakgifhn-50695" role="tabpanel" aria-labelledby="sheet-mljecdbakgifhn-50695-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>List in map</title><link>https://tableauio.github.io/en/docs/excel/list-in-map/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/list-in-map/</guid><description>&lt;h2 id="nested-in-vertical-map">Nested in vertical-map &lt;a href="#nested-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="horizontal-list-in-vertical-map">Horizontal-list in vertical-map &lt;a href="#horizontal-list-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-kldehncgbjifam-158426-tab" data-bs-toggle="tab" data-bs-target="#sheet-kldehncgbjifam-158426" type="button" role="tab" aria-controls="sheet-kldehncgbjifam-158426" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-hkelacjbgdfinm-158725-tab" data-bs-toggle="tab" data-bs-target="#sheet-hkelacjbgdfinm-158725" type="button" role="tab" aria-controls="sheet-hkelacjbgdfinm-158725" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-kldehncgbjifam-158426" role="tabpanel" aria-labelledby="sheet-kldehncgbjifam-158426-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Prop1ID&lt;/th>
+&lt;th>Prop1Value&lt;/th>
+&lt;th>Prop2ID&lt;/th>
+&lt;th>Prop2Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>map&amp;lt;uint32, Item&amp;gt;&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>[Prop]int32&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s name&lt;/td>
+&lt;td>Prop1&amp;rsquo;s ID&lt;/td>
+&lt;td>Prop1&amp;rsquo;s value&lt;/td>
+&lt;td>Prop2&amp;rsquo;s ID&lt;/td>
+&lt;td>Prop2&amp;rsquo;s value&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>10&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Banana&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-hkelacjbgdfinm-158725" role="tabpanel" aria-labelledby="sheet-hkelacjbgdfinm-158725-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>Map in list</title><link>https://tableauio.github.io/en/docs/excel/map-in-list/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/map-in-list/</guid><description>&lt;h2 id="nested-in-vertical-list">Nested in vertical-list &lt;a href="#nested-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="horizontal-map-in-vertical-list">Horizontal-map in vertical-list &lt;a href="#horizontal-map-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-bnemgcfakihldj-192395-tab" data-bs-toggle="tab" data-bs-target="#sheet-bnemgcfakihldj-192395" type="button" role="tab" aria-controls="sheet-bnemgcfakihldj-192395" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-dmjbahlinkefgc-192577-tab" data-bs-toggle="tab" data-bs-target="#sheet-dmjbahlinkefgc-192577" type="button" role="tab" aria-controls="sheet-dmjbahlinkefgc-192577" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-bnemgcfakihldj-192395" role="tabpanel" aria-labelledby="sheet-bnemgcfakihldj-192395-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Prop1ID&lt;/th>
+&lt;th>Prop1Value&lt;/th>
+&lt;th>Prop2ID&lt;/th>
+&lt;th>Prop2Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>[Item]uint32&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>map&amp;lt;int32, Prop&amp;gt;&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s name&lt;/td>
+&lt;td>Prop1&amp;rsquo;s ID&lt;/td>
+&lt;td>Prop1&amp;rsquo;s value&lt;/td>
+&lt;td>Prop2&amp;rsquo;s ID&lt;/td>
+&lt;td>Prop2&amp;rsquo;s value&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>10&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Banana&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-dmjbahlinkefgc-192577" role="tabpanel" aria-labelledby="sheet-dmjbahlinkefgc-192577-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>Map in map</title><link>https://tableauio.github.io/en/docs/excel/map-in-map/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/map-in-map/</guid><description>&lt;h2 id="nested-in-vertical-map">Nested in vertical-map &lt;a href="#nested-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="horizontal-map-in-vertical-map">Horizontal-map in vertical-map &lt;a href="#horizontal-map-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-kiglmncheadfjb-215249-tab" data-bs-toggle="tab" data-bs-target="#sheet-kiglmncheadfjb-215249" type="button" role="tab" aria-controls="sheet-kiglmncheadfjb-215249" aria-selected=" active ">ItemConf&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-adklfmbcgneijh-215431-tab" data-bs-toggle="tab" data-bs-target="#sheet-adklfmbcgneijh-215431" type="button" role="tab" aria-controls="sheet-adklfmbcgneijh-215431" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-kiglmncheadfjb-215249" role="tabpanel" aria-labelledby="sheet-kiglmncheadfjb-215249-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Prop1ID&lt;/th>
+&lt;th>Prop1Value&lt;/th>
+&lt;th>Prop2ID&lt;/th>
+&lt;th>Prop2Value&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>map&amp;lt;uint32, Item&amp;gt;&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>map&amp;lt;int32, Prop&amp;gt;&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s name&lt;/td>
+&lt;td>Prop1&amp;rsquo;s ID&lt;/td>
+&lt;td>Prop1&amp;rsquo;s value&lt;/td>
+&lt;td>Prop2&amp;rsquo;s ID&lt;/td>
+&lt;td>Prop2&amp;rsquo;s value&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>10&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>20&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Banana&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-adklfmbcgneijh-215431" role="tabpanel" aria-labelledby="sheet-adklfmbcgneijh-215431-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Generated:&lt;/p></description></item><item><title>Infinite nesting</title><link>https://tableauio.github.io/en/docs/excel/infinite-nesting/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/infinite-nesting/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Now, the horizontal/vertical list element&amp;rsquo;s first field can be any type, even as struct, list, and map.&lt;/p>
+&lt;ul>
+&lt;li>List element&amp;rsquo;s first field is struct: &lt;code>[Reward]{Icon}int32&lt;/code>&lt;/li>
+&lt;li>List element&amp;rsquo;s first field is predefined struct: &lt;code>[Cost]{.Item}uint32&lt;/code>&lt;/li>
+&lt;li>List element&amp;rsquo;s first field is in-cell struct: &lt;code>[Magic]{int32 Id, int32 Num}Ability&lt;/code>&lt;/li>
+&lt;li>List element&amp;rsquo;s first field is list: &lt;code>[Reward][Item]uint32&lt;/code>&lt;/li>
+&lt;li>List element&amp;rsquo;s first field is list with element as predefined struct: &lt;code>[Power][.Item]uint32&lt;/code>&lt;/li>
+&lt;li>List element&amp;rsquo;s first field is map: &lt;code>[Superpower]map&amp;lt;uint32, Ability&amp;gt;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>TODO: some clear examples.&lt;/p></description></item><item><title>Field property</title><link>https://tableauio.github.io/en/docs/excel/field-property/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/en/docs/excel/field-property/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped table-hover">
+&lt;thead>
+&lt;tr>
+&lt;th>Option&lt;/th>
+&lt;th>Type&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>unique&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>Check field uniqueness. &lt;br> Default: &lt;code>false&lt;/code>. Specially for map (or KeyedList) key, default will be auto deduced.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>range&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>Format: &lt;code>&amp;quot;left, right&amp;quot;&lt;/code>. E.g.: &lt;code>&amp;quot;1,10&amp;quot;&lt;/code>, &lt;code>&amp;quot;1,~&amp;quot;&lt;/code>, &lt;code>&amp;quot;~,10&amp;quot;&lt;/code>. &lt;br> Different interpretations of range: &lt;br> - number: value range. &lt;br> - string: count of utf-8 code point.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>refer&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>Format: &lt;code>&amp;quot;SheetName(SheetAlias).ColumnName&amp;quot;&lt;/code>.&lt;br>Ensure this field is in another sheet&amp;rsquo;s column value space. Multiple refers are comma-separated.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sequence&lt;/code>&lt;/td>
+&lt;td>int64&lt;/td>
+&lt;td>Ensure this field&amp;rsquo;s value is a sequence and begins with this value.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>default&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>Use this default value if cell is empty.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>fixed&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>Auto-detected fixed size of horizontal list/map. &lt;br> Default: &lt;code>false&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>size&lt;/code>&lt;/td>
+&lt;td>uint32&lt;/td>
+&lt;td>Specify fixed size of horizontal list/map.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>form&lt;/code>&lt;/td>
+&lt;td>Form&lt;/td>
+&lt;td>Specify cell data form of incell struct.&lt;br> - &lt;code>FORM_TEXT&lt;/code>&lt;br> - &lt;code>FORM_JSON&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>json_name&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>Specify field&amp;rsquo;s custom JSON name instead of lowerCamelCase name of proto field name.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>present&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>Must fill cell data explicitly if present is true. &lt;br> Default: &lt;code>false&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>optional&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>Whether this field is optional (field name existence).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>patch&lt;/code>&lt;/td>
+&lt;td>Patch&lt;/td>
+&lt;td>Field patch type. &lt;br> - &lt;code>PATCH_REPLACE&lt;/code> &lt;br> - &lt;code>PATCH_MERGE&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sep&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>Field-level separator.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>subsep&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>Field-level subseparator.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>cross&lt;/code>&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>Specify count of crossed nodes/cells/fields of composite types with cardinality, such as list and map.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="option-unique">Option &lt;code>unique&lt;/code> &lt;a href="#option-unique" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Option &lt;code>unique&lt;/code> can be specified as &lt;code>true&lt;/code> or &lt;code>false&lt;/code> in the field property. It can check the uniqueness of any scalar field in list/map element.&lt;/p></description></item><item><title>Metasheet</title><link>https://tableauio.github.io/en/docs/excel/metasheet/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/excel/metasheet/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Options below can be specified in the metasheet &lt;code>@TABLEAU&lt;/code> to affect the corresponding worksheet&amp;rsquo;s layout, ability, loader and so on.&lt;/p>
+&lt;table class="table-striped table-hover">
+&lt;thead>
+&lt;tr>
+&lt;th>Option&lt;/th>
+&lt;th>Type&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Sheet&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>The worksheet name to be processed. Specially, &lt;code>#&lt;/code> refers to the workbook name, so you can set workbook&amp;rsquo;s &lt;code>Alias&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Alias&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>For worksheet, alias is used as proto message name. For workbook &lt;code>#&lt;/code>, alias is used as proto file name (without file extension).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Namerow&lt;/code>&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>Exact row number of column name definition at a worksheet.&lt;br>Default: &lt;code>1&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Typerow&lt;/code>&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>Exact row number of column type definition at a worksheet.&lt;br>Default: &lt;code>2&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Noterow&lt;/code>&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>Exact row number of column note definition at a worksheet.&lt;br>Default: &lt;code>3&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Datarow&lt;/code>&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>Start row number of data at a worksheet.&lt;br>Default: &lt;code>4&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Nameline&lt;/code>&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>The line number of column name definition in a cell. &lt;code>0&lt;/code> means the whole cell.&lt;br>Default: &lt;code>0&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Typeline&lt;/code>&lt;/td>
+&lt;td>int32&lt;/td>
+&lt;td>The line number of column type definition in a cell. &lt;code>0&lt;/code> means the whole cell.&lt;br>Default: &lt;code>0&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Transpose&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>Interchanging the rows and columns of a given sheet.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Nested&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>Nested naming of the &lt;strong>namerow&lt;/strong>.&lt;br>Default: &lt;code>false&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Sep&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>Sheet-level separator.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Subsep&lt;/code>&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>Sheet-level subseparator.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Merger&lt;/code>&lt;/td>
+&lt;td>[]string&lt;/td>
+&lt;td>Merge multiple sheets (comma-separated) into one with the same structure. &lt;br> Each element can be:&lt;br> - just a workbook file path or glob path (relative to this workbook): &lt;code>&amp;lt;Workbook&amp;gt;&lt;/code>, then the sheet name is the same as this sheet.&lt;br> - a workbook file path (relative to this workbook) with a worksheet name: &lt;code>&amp;lt;Workbook&amp;gt;#&amp;lt;Worksheet&amp;gt;&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>AdjacentKey&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>Merge adjacent rows with the same key. If the key cell is not set, it will be treated the same as the nearest key above the same column.&lt;br>Default:&lt;code>false&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>FieldPresence&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>In order to track field presence of basic types (numeric, string, bytes, and enums), the generated field will be labeled &lt;code>optional&lt;/code>.&lt;br>Default:&lt;code>false&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Mode&lt;/code>&lt;/td>
+&lt;td>Mode&lt;/td>
+&lt;td>Sheet mode. &lt;br> Available modes: &lt;br> - &lt;code>MODE_ENUM_TYPE&lt;/code> &lt;br> - &lt;code>MODE_ENUM_TYPE_MULTI&lt;/code> &lt;br> - &lt;code>MODE_STRUCT_TYPE&lt;/code> &lt;br> - &lt;code>MODE_STRUCT_TYPE_MULTI&lt;/code> &lt;br> - &lt;code>MODE_UNION_TYPE&lt;/code>&lt;br> - &lt;code>MODE_UNION_TYPE_MULTI&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Scatter&lt;/code>&lt;/td>
+&lt;td>[]string&lt;/td>
+&lt;td>Convert multiple sheets separately with same schema. &lt;br> Each element can be: &lt;br> - a workbook name or Glob which is relative to this workbook: &lt;code>&amp;lt;Workbook&amp;gt;&lt;/code>, then the sheet name is the same as this sheet. &lt;br> - or a workbook name which is relative to this workbook with a worksheet name: &lt;code>&amp;lt;Workbook&amp;gt;#&amp;lt;Worksheet&amp;gt;&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Optional&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>Whether all fields in this sheet are optional (field name existence).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Patch&lt;/code>&lt;/td>
+&lt;td>Patch&lt;/td>
+&lt;td>Sheet patch type. &lt;br> - &lt;code>PATCH_REPLACE&lt;/code> &lt;br> - &lt;code>PATCH_MERGE&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>WithParentDir&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>confgen: export JSON/Bin/Text files with parent dir created.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>ScatterWithoutBookName&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>confgen(scatter): export JSON/Bin/Text filenames without book name prefix.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>OrderedMap&lt;/code>&lt;/td>
+&lt;td>bool&lt;/td>
+&lt;td>Generate OrderedMap accessers or not.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Index&lt;/code>&lt;/td>
+&lt;td>[]string&lt;/td>
+&lt;td>Generate index accessers, and multiple indexes are comma-separated. &lt;br> - Single-column index is in the forma: &lt;code>&amp;lt;ColumnName&amp;gt;[@IndexName]&lt;/code>, if &lt;code>IndexName&lt;/code> is not set, it will be this column&amp;rsquo;s parent struct type name.&lt;br> - Multi-column index (or composite index) is in the form: &lt;code>([column1, column2, column3,...])[@IndexName]&lt;/code>&lt;br>E.g.: &lt;br> - &lt;code>ID&lt;/code>&lt;br> - &lt;code>ID@Item&lt;/code>&lt;br> - &lt;code>(ID,Type)&lt;/code>&lt;br> - &lt;code>(ID,Type)@Item&lt;/code>&lt;br> - &lt;code>ID, (ID,Type)@Item&lt;/code>&lt;br> Supported: &lt;code>C++, Go&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>LangOptions&lt;/code>&lt;/td>
+&lt;td>map&amp;lt;string, string&amp;gt;&lt;/td>
+&lt;td>Specify loader language options. &lt;br> Valid keys are: &lt;code>OrderedMap&lt;/code>, &lt;code>Index&lt;/code>. &lt;br> Different kvs must be seperated by &lt;code>,&lt;/code> and one key value must be seperated by &lt;code>:&lt;/code>. &lt;br> If one key doesn&amp;rsquo;t exist in map, it means that this loader option is supported in all languages. &lt;br> Valid values are all combinations of &lt;code>cpp&lt;/code>, &lt;code>go&lt;/code> with space as seperator. &lt;br> Examples: &lt;br> - &lt;code>OrderedMap:cpp,Index:cpp go&lt;/code> // ordered map supported in cpp, index supported in cpp and go &lt;br> - &lt;code>OrderedMap:cpp&lt;/code> // ordered map supported in cpp, index supported in all languages&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="empty-tableau">Empty &lt;code>@TABLEAU&lt;/code> &lt;a href="#empty-tableau" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>If metasheet &lt;code>@TABLEAU&lt;/code> is empty, then all other worksheets in the same workbook will be processed.&lt;/p></description></item></channel></rss>

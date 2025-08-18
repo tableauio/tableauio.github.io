@@ -1,15 +1,390 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Basics on</title><link>https://tableauio.github.io/docs/basics/</link><description>Recent content in Basics on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Tableau</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/basics/index.xml" rel="self" type="application/rss+xml"/><item><title>Concepts</title><link>https://tableauio.github.io/docs/basics/concepts/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/concepts/</guid><description>Terminology # Basics # Term Definition Workbook An excel file.
-A bundle of CSV files named with the same prefix seperated by #. A XML file. A YAML file. Worksheet A sheet in a excel file. A CSV file. A root node of a XML file. A document in YAML file. Metasheet A worksheet named @TABLEAU to specify tableau parser options.</description></item><item><title>Naming convention</title><link>https://tableauio.github.io/docs/basics/naming-convention/</link><pubDate>Sat, 22 Jun 2024 23:40:00 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/naming-convention/</guid><description>All names of workbook, worksheet, column, and struct (message), should use PascalCase (with an initial capital) naming convention. So the tableau parser will treat the worksheet name as protoconf message name, and auto converts PascalCase to snake_case for protobuf message field names and file names, in order to comply with Protocol Buffers Style Guide.
-Enums # Use PascalCase (with an initial capital) for enum type names and CAPITALS_WITH_UNDERSCORES for value names:</description></item><item><title>Grammar and types</title><link>https://tableauio.github.io/docs/basics/grammar-and-types/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/grammar-and-types/</guid><description>Overview # Tableau borrows most of its syntax and types from Protocol Buffers (proto3) and Golang.
-Scalar types # Details disccused at Protocol Buffers Proto3 Scalar.
-Kind Types Default Numbers int32, uint32
-int64, uint64
-float, double 0
-0
-0.0 Booleans bool false Strings string &amp;quot;&amp;quot; Bytes bytes &amp;quot;&amp;quot; Composite types # Type Description struct A struct is mapped to a protobuf message.</description></item><item><title>Enum</title><link>https://tableauio.github.io/docs/basics/enum/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/enum/</guid><description>Enum value # The tableau parser accepts three enum value forms:
-enum value name. enum value number. enum value alias. It is another name in English, Chinese, or any other language, which can be specified by tableau.evalue by extending google.protobuf.EnumValueOptions. For example, enum type FruitType in common.proto is defined as:
-enum FruitType { FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;]; FRUIT_TYPE_APPLE = 1 [(tableau.evalue).name = &amp;quot;Apple&amp;quot;]; FRUIT_TYPE_ORANGE = 2 [(tableau.</description></item><item><title>Wellknown types</title><link>https://tableauio.github.io/docs/basics/wellknown-types/</link><pubDate>Tue, 24 Sep 2024 15:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/wellknown-types/</guid><description>Overview # For easy use, Wellknown types are built-in types in Tableau. This concept is much like Protocol Buffers Well-Known Types.
-You should include the proto files provided by Tableau and Protocol Buffers:
-tableau/protobuf/wellknown.proto google/protobuf/timestamp.proto google/protobuf/duration.proto Datetime # Type Default Description datetime 0000-00-00 00:00:00 Format: yyyy-MM-dd HH:mm:ss or RFC3339. e.g.: 2020-01-01 05:10:00
-or 2020-01-01T05:10:00+08:00. date 0000-00-00 Format: yyyy-MM-dd or yyyyMMdd. e.</description></item><item><title>Predefined types</title><link>https://tableauio.github.io/docs/basics/predefined-types/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/predefined-types/</guid><description>Overview # You can define enum, struct, or union types in a protoconf file (such as common.proto) ahead. Then use them to specify the column type or cross-cell type of a worksheet.
-Usage # Syntax: prepend a dot . to predefined CustomType (a.k.a. .CustomType) when you use it in a worksheet. Import: specify the protoFiles option of tableauc config to import the common proto files, where predefined enum, struct, union types are defined.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Basics on</title><link>https://tableauio.github.io/docs/basics/</link><description>Recent content in Basics on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/basics/index.xml" rel="self" type="application/rss+xml"/><item><title>Concepts</title><link>https://tableauio.github.io/docs/basics/concepts/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/concepts/</guid><description>&lt;h2 id="terminology">Terminology &lt;a href="#terminology" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="basics">Basics &lt;a href="#basics" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped table-hover">
+&lt;thead>
+&lt;tr>
+&lt;th>Term&lt;/th>
+&lt;th>Definition&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Workbook&lt;/code>&lt;/td>
+&lt;td>An excel file.&lt;br> A bundle of CSV files named with the same prefix seperated by &lt;code>#&lt;/code>. &lt;br>A XML file. &lt;br>A YAML file.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Worksheet&lt;/code>&lt;/td>
+&lt;td>A sheet in a excel file. &lt;br>A CSV file. &lt;br>A root node of a XML file. &lt;br>A document in YAML file.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Metasheet&lt;/code>&lt;/td>
+&lt;td>A worksheet named &lt;code>@TABLEAU&lt;/code> to specify tableau parser options.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Row&lt;/code>&lt;/td>
+&lt;td>The row in a sheet.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Column&lt;/code>&lt;/td>
+&lt;td>The column in a sheet.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Cell&lt;/code>&lt;/td>
+&lt;td>The intersection of a row and a column.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>In-cell&lt;/code>&lt;/td>
+&lt;td>The inner-side of a cell.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Cross-cell&lt;/code>&lt;/td>
+&lt;td>Continuous cells of a row or a column.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="worksheet">Worksheet &lt;a href="#worksheet" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped table-hover">
+&lt;thead>
+&lt;tr>
+&lt;th>Term&lt;/th>
+&lt;th>Definition&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Namerow&lt;/code>&lt;/td>
+&lt;td>Exact row number of column name definition at a worksheet.&lt;br>⚠️ NOTE: each column name must be unique in a worksheet!&lt;br>Default: &lt;code>1&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Typerow&lt;/code>&lt;/td>
+&lt;td>Exact row number of column type definition at a worksheet.&lt;br>Default: &lt;code>2&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Noterow&lt;/code>&lt;/td>
+&lt;td>Exact row number of column note at a worksheet.&lt;br>Default: &lt;code>3&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Datarow&lt;/code>&lt;/td>
+&lt;td>Start row number of data at a worksheet.&lt;br>Default: &lt;code>4&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Nameline&lt;/code>&lt;/td>
+&lt;td>The line number of column name definition in a cell. &lt;code>0&lt;/code> means the whole cell.&lt;br>Default: &lt;code>0&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Typeline&lt;/code>&lt;/td>
+&lt;td>The line number of column type definition in a cell. &lt;code>0&lt;/code> means the whole cell.&lt;br>Default: &lt;code>0&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Sep&lt;/code>&lt;/td>
+&lt;td>Separator for:&lt;br> 1. separating in-cell list elements. &lt;br> 2. separating in-cell map items.&lt;br>Default: &lt;code>,&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Subsep&lt;/code>&lt;/td>
+&lt;td>Subseparator for separating in-cell map Key-Value pair.&lt;br>Default: &lt;code>:&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Nested&lt;/code>&lt;/td>
+&lt;td>Nested naming of the &lt;strong>namerow&lt;/strong>.&lt;br>Default: &lt;code>false&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Layout&lt;/code>&lt;/td>
+&lt;td>Incell, vertical(cross-cell) or horizontal(cross-cell).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Transpose&lt;/code>&lt;/td>
+&lt;td>Interchanging the rows and columns of a given sheet.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="mappings-to-protoconf">Mappings to Protoconf &lt;a href="#mappings-to-protoconf" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Term&lt;/th>
+&lt;th>Protoconf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Workbook&lt;/code>&lt;/td>
+&lt;td>One protoconf(&lt;code>.proto&lt;/code>) file.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Worksheet&lt;/code>&lt;/td>
+&lt;td>One top-level &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3#simple">message&lt;/a> in a protoconf file, except the tableau metasheet named &lt;code>@TABLEAU&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>column&lt;/code>&lt;/td>
+&lt;td>One field in a &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3#simple">message&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="a-simple-mapping-example">A simple mapping example &lt;a href="#a-simple-mapping-example" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="input-an-excel-file">Input: an excel file &lt;a href="#input-an-excel-file" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>A workbook(&lt;em>HelloWorld.xlsx&lt;/em>) with two data worksheets(&lt;code>ItemConf&lt;/code> and &lt;code>ActivityConf&lt;/code>) and an empty tableau metasheet(&lt;code>@TABLEAU&lt;/code>).&lt;/p></description></item><item><title>Naming convention</title><link>https://tableauio.github.io/docs/basics/naming-convention/</link><pubDate>Sat, 22 Jun 2024 23:40:00 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/naming-convention/</guid><description>&lt;p>All names of &lt;strong>workbook&lt;/strong>, &lt;strong>worksheet&lt;/strong>, &lt;strong>column&lt;/strong>, and &lt;strong>struct&lt;/strong> (message), should use &lt;code>PascalCase&lt;/code> (with an initial capital) naming convention. So the tableau parser will treat the &lt;strong>worksheet&lt;/strong> name as protoconf message name, and auto converts &lt;code>PascalCase&lt;/code> to &lt;code>snake_case&lt;/code> for protobuf &lt;a href="https://protobuf.dev/programming-guides/style/#message-field-names">message field names&lt;/a> and file names, in order to comply with &lt;a href="https://protobuf.dev/programming-guides/style">Protocol Buffers Style Guide&lt;/a>.&lt;/p>
+&lt;h2 id="enums">Enums &lt;a href="#enums" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Use &lt;code>PascalCase&lt;/code> (with an initial capital) for enum type names and CAPITALS_WITH_UNDERSCORES for value names:&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">enum FooBar {
+FOO_BAR_UNSPECIFIED = 0;
+FOO_BAR_FIRST_VALUE = 1;
+FOO_BAR_SECOND_VALUE = 2;
+}
+&lt;/code>&lt;/pre>
+&lt;p>See &lt;a href="https://protobuf.dev/programming-guides/style/#enums">Protobuf style: enums&lt;/a>.&lt;/p></description></item><item><title>Grammar and types</title><link>https://tableauio.github.io/docs/basics/grammar-and-types/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/grammar-and-types/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Tableau borrows most of its syntax and types from &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers (proto3)&lt;/a> and &lt;a href="https://go.dev/">Golang&lt;/a>.&lt;/p>
+&lt;h2 id="scalar-types">Scalar types &lt;a href="#scalar-types" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;blockquote>
+&lt;p>Details disccused at &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3#scalar">Protocol Buffers Proto3 Scalar&lt;/a>.&lt;/p>&lt;/blockquote>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>Kind&lt;/th>
+&lt;th>Types&lt;/th>
+&lt;th>Default&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Numbers&lt;/td>
+&lt;td>&lt;code>int32&lt;/code>, &lt;code>uint32&lt;/code>&lt;br>&lt;code>int64&lt;/code>, &lt;code>uint64&lt;/code>&lt;br>&lt;code>float&lt;/code>, &lt;code>double&lt;/code>&lt;/td>
+&lt;td>&lt;code>0&lt;/code>&lt;br>&lt;code>0&lt;/code>&lt;br>&lt;code>0.0&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Booleans&lt;/td>
+&lt;td>&lt;code>bool&lt;/code>&lt;/td>
+&lt;td>&lt;code>false&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Strings&lt;/td>
+&lt;td>&lt;code>string&lt;/code>&lt;/td>
+&lt;td>&lt;code>&amp;quot;&amp;quot;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Bytes&lt;/td>
+&lt;td>&lt;code>bytes&lt;/code>&lt;/td>
+&lt;td>&lt;code>&amp;quot;&amp;quot;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="composite-types">Composite types &lt;a href="#composite-types" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>Type&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>struct&lt;/code>&lt;/td>
+&lt;td>A struct is mapped to a protobuf &lt;strong>message&lt;/strong>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>list&lt;/code>&lt;/td>
+&lt;td>A list is mapped to a protobuf &lt;strong>repeated&lt;/strong> field.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>map&lt;/code>&lt;/td>
+&lt;td>A map is mapped to a protobuf &lt;strong>map&lt;/strong> field.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="struct">struct &lt;a href="#struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>Feature&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Horizontal layout&lt;/td>
+&lt;td>Each scalar field located in one cell.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Simple incell struct&lt;/td>
+&lt;td>Each field must be &lt;strong>scalar&lt;/strong> type. &lt;br>It is a comma-separated list of fields. E.g.: &lt;code>1,test,3.0&lt;/code>. &lt;br>If the data list&amp;rsquo;s size is not same as struct&amp;rsquo;s fields, then fields will be filled in order. Fields not configured will be filled with default values due to its scalar type.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="list">list &lt;a href="#list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>Feature&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Horizontal layout&lt;/td>
+&lt;td>This is list&amp;rsquo;s default layout. &lt;br>Element type can be &lt;strong>struct&lt;/strong> or &lt;strong>scalar&lt;/strong>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Vertical layout&lt;/td>
+&lt;td>List&amp;rsquo;s element type should be &lt;strong>struct&lt;/strong>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Simple incell list&lt;/td>
+&lt;td>Element type must be &lt;strong>scalar&lt;/strong>. &lt;br>It is a comma-separated list of elements. E.g.: &lt;code>1,2,3&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Scalable&lt;/td>
+&lt;td>Scalable or dynamic list size.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Ignore empty element&lt;/td>
+&lt;td>Smart recognition of empty element at any position.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="map">map &lt;a href="#map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>Feature&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Horizontal layout&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Vertical layout&lt;/td>
+&lt;td>This is map&amp;rsquo;s default layout.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hash map&lt;/td>
+&lt;td>Implemented as unordered map or hash map.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Ordered map&lt;/td>
+&lt;td>Supported by &lt;a href="https://github.com/tableauio/loader">tableauio/loader&lt;/a>.&lt;br>- C++&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Simple incell map&lt;/td>
+&lt;td>Both key and value must be &lt;strong>scalar&lt;/strong> type. &lt;br>It is a comma-separated list of &lt;code>key:value&lt;/code> pairs. &lt;br>E.g.: &lt;code>1:10,2:20,3:30&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Scalable&lt;/td>
+&lt;td>Scalable or dynamic map size.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Ignore empty item&lt;/td>
+&lt;td>Smart recognition of empty item at any position.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="enumeration">Enumeration &lt;a href="#enumeration" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>Feature&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Three forms of enum value&lt;/td>
+&lt;td>1. Enum value number.&lt;br>2. Enum value name.&lt;br>3. Enum value alias name (with EnumValueOptions specified).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Validation&lt;/td>
+&lt;td>Auto-check legality of enum values.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="empty-value">Empty value &lt;a href="#empty-value" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>Type&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>scalar&lt;/td>
+&lt;td>Empty scalar will be emplaced with scalar type&amp;rsquo;s default value.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>struct&lt;/td>
+&lt;td>Empty struct will not be spawned if all fields are empty.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>list&lt;/td>
+&lt;td>Empty list will not be spawned if list&amp;rsquo;s size is 0.&lt;br>Empty struct will not be appended if list&amp;rsquo;s element(struct type) is empty.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>map&lt;/td>
+&lt;td>Empty map will not be spawned if map&amp;rsquo;s size is 0. Empty struct will not be inserted if map&amp;rsquo;s value(struct type) is empty.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>nesting&lt;/td>
+&lt;td>Recursively empty.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Enum</title><link>https://tableauio.github.io/docs/basics/enum/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/enum/</guid><description>&lt;h2 id="enum-value">Enum value &lt;a href="#enum-value" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>The tableau parser accepts three enum value forms:&lt;/p>
+&lt;ol>
+&lt;li>enum value &lt;strong>name&lt;/strong>.&lt;/li>
+&lt;li>enum value &lt;strong>number&lt;/strong>.&lt;/li>
+&lt;li>enum value &lt;strong>alias&lt;/strong>. It is another name in English, Chinese, or any other language, which can be specified by &lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto#L26">tableau.evalue&lt;/a> by extending &lt;a href="https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto#L669">google.protobuf.EnumValueOptions&lt;/a>.&lt;/li>
+&lt;/ol>
+&lt;p>For example, enum type &lt;code>FruitType&lt;/code> in &lt;code>common.proto&lt;/code> is defined as:&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">enum FruitType {
+FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];
+FRUIT_TYPE_APPLE = 1 [(tableau.evalue).name = &amp;quot;Apple&amp;quot;];
+FRUIT_TYPE_ORANGE = 2 [(tableau.evalue).name = &amp;quot;Orange&amp;quot;];
+FRUIT_TYPE_BANANA = 3 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
+}
+&lt;/code>&lt;/pre>
+&lt;p>Then the three forms of enum value are all accepted:&lt;/p></description></item><item><title>Wellknown types</title><link>https://tableauio.github.io/docs/basics/wellknown-types/</link><pubDate>Tue, 24 Sep 2024 15:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/wellknown-types/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>For easy use, Wellknown types are built-in types in Tableau.
+This concept is much like &lt;a href="https://protobuf.dev/reference/protobuf/google.protobuf/">Protocol Buffers Well-Known Types&lt;/a>.&lt;/p>
+&lt;p>You should include the proto files provided by Tableau and Protocol Buffers:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/wellknown.proto">tableau/protobuf/wellknown.proto&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/timestamp.proto">google/protobuf/timestamp.proto&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/duration.proto">google/protobuf/duration.proto&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="datetime">Datetime &lt;a href="#datetime" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>Type&lt;/th>
+&lt;th>Default&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>datetime&lt;/code>&lt;/td>
+&lt;td>&lt;code>0000-00-00 00:00:00&lt;/code>&lt;/td>
+&lt;td>Format: &lt;code>yyyy-MM-dd HH:mm:ss&lt;/code> or RFC3339. &lt;br>e.g.: &lt;code>2020-01-01 05:10:00&lt;/code>&lt;br>or &lt;code>2020-01-01T05:10:00+08:00&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>date&lt;/code>&lt;/td>
+&lt;td>&lt;code>0000-00-00&lt;/code>&lt;/td>
+&lt;td>Format: &lt;code>yyyy-MM-dd&lt;/code> or &lt;code>yyyyMMdd&lt;/code>. &lt;br>e.g.: &lt;code>2020-01-01&lt;/code> or &lt;code>20200101&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>time&lt;/code>&lt;/td>
+&lt;td>&lt;code>00:00:00&lt;/code>&lt;/td>
+&lt;td>Format: &lt;code>HH:mm:ss&lt;/code> or &lt;code>HHmmss&lt;/code>, &lt;code>HH:mm&lt;/code> or &lt;code>HHmm&lt;/code>. &lt;br>e.g.: &lt;code>05:10:00&lt;/code> or &lt;code>051000&lt;/code>, &lt;code>05:10&lt;/code> or &lt;code>0510&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Tips:&lt;/strong>&lt;/p></description></item><item><title>Predefined types</title><link>https://tableauio.github.io/docs/basics/predefined-types/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/docs/basics/predefined-types/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>You can define &lt;code>enum&lt;/code>, &lt;code>struct&lt;/code>, or &lt;code>union&lt;/code> types in a protoconf file (such as &lt;code>common.proto&lt;/code>) ahead. Then use them to specify the column type or cross-cell type of a worksheet.&lt;/p>
+&lt;h2 id="usage">Usage &lt;a href="#usage" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>Syntax: prepend a dot &lt;code>.&lt;/code> to predefined &lt;code>CustomType&lt;/code> (a.k.a. &lt;code>.CustomType&lt;/code>) when you use it in a worksheet.&lt;/li>
+&lt;li>Import: specify the &lt;code>protoFiles&lt;/code> option of &lt;strong>tableauc&lt;/strong> config to import the common proto files, where predefined &lt;code>enum&lt;/code>, &lt;code>struct&lt;/code>, &lt;code>union&lt;/code> types are defined. See &lt;a href="../../tutorial/config/#configyaml">Tableauc config&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;h2 id="enum">Enum &lt;a href="#enum" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>For example, enum type &lt;code>FruitType&lt;/code> in &lt;em>common.proto&lt;/em> is defined as:&lt;/p></description></item></channel></rss>
