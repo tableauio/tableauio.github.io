@@ -3,8 +3,8 @@ This website is based on [Doks](https://getdoks.org). And we choose [child-theme
 
 ## Install Requirements
 
-- Install **hugo**: https://gohugo.io/getting-started/installing/. If **go** has been installed, just run `go install github.com/gohugoio/hugo@latest`.
 - Install **nodejs**: https://nodejs.org/en/download/.
+   - macOS: `brew install nodejs`
 
 ## Quick Start
 

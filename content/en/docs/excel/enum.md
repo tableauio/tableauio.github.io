@@ -183,12 +183,6 @@ For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 | 1                    | CANARY                    | Canary     |
 | 2                    | WOODPECKER                | Woodpecker |
 | 3                    | OWL                       | Owl        |
-|                      |                           |            |
-| ColumnDisorderedEnum | ColumnDisorderedEnum note |            |
-| Alias                | Number                    | Name       |
-| Large                | 1                         | LARGE      |
-| Medium               | 2                         | MEDIUM     |
-| Small                | 3                         | SMALL      |
 
 {{< /sheet >}}
 
