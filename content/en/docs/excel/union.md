@@ -771,7 +771,10 @@ message TaskConf {
 
 ## Define union type in sheet
 
-In order to generate union type definition, you should specify `Mode` option to `MODE_UNION_TYPE` in metasheet `@TABLEAU`.
+There are two kinds of `Mode` (in metasheet `@TABLEAU`) to define union types in a sheet:
+
+- `MODE_UNION_TYPE`: define single union type in a sheet.
+- `MODE_UNION_TYPE_MULTI`: define multiple union types in a sheet.
 
 You can define each union field by following types:
 
@@ -783,6 +786,8 @@ You can define each union field by following types:
 - [Incell map →]({{< relref "map/#incell-map" >}})
 
 ### Single union type in sheet
+
+You should specify `Mode` option to `MODE_UNION_TYPE` in metasheet `@TABLEAU`.
 
 For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
@@ -855,11 +860,211 @@ message Target {
 
 ### Multiple union types in sheet
 
-> TODO...
+You should specify `Mode` option to `MODE_UNION_TYPE_MULTI` in metasheet `@TABLEAU`.
+
+For example, a worksheet `Target` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
+
+{{< sheet >}}
+
+| WishTarget   | WishTarget note   |                   |                              |                                       |
+| ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
+| Name         | Alias             | Field1            | Field2                       | Field3                                |
+| Higher       | WishHigher        | Height<br>int32   |                              |                                       |
+| Richer       | WishRicher        | ID<br>uint32      | Bank<br>map<int32, string>   |                                       |
+|              |                   |                   |                              |                                       |
+| HeroTarget   | HeroTarget note   |                   |                              |                                       |
+| Name         | Alias             | Field1            | Field2                       | Field3                                |
+| StarUp       | HeroStarUp        | ID<br>uint32      | Star<br>int32                |                                       |
+| LevelUp      | HeroLevelUp       | ID<br>[]uint32    | Level<br>int32               | Super<br>bool                         |
+|              |                   |                   |                              |                                       |
+| BattleTarget | BattleTarget note |                   |                              |                                       |
+| Name         | Alias             | Field1            | Field2                       | Field3                                |
+| PVP          | BattlePVP         | BattleID<br>int32 | Damage<br>int64              |                                       |
+| PVE          | BattlePVE         | HeroID<br>[]int32 | Dungeon<br>map<int32, int64> | Boss<br>{uint32 ID, int64 Damage}Boss |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet  | Mode                  |
+| ------ | --------------------- |
+| Target | MODE_UNION_TYPE_MULTI |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message WishTarget {
+  option (tableau.union) = {name:"UnionType" note:"WishTarget note"};
+
+  Type type = 9999 [(tableau.field) = {name:"Type"}];
+  oneof value {
+    option (tableau.oneof) = {note:"WishTarget note" field:"Field"};
+
+    Higher higher = 1; // Bound to enum value: TYPE_HIGHER.
+    Richer richer = 2; // Bound to enum value: TYPE_RICHER.
+  }
+
+  enum Type {
+    TYPE_INVALID = 0;
+    TYPE_HIGHER = 1 [(tableau.evalue).name = "WishHigher"]; // WishHigher
+    TYPE_RICHER = 2 [(tableau.evalue).name = "WishRicher"]; // WishRicher
+  }
+
+  message Higher {
+    int32 height = 1 [(tableau.field) = {name:"Height"}];
+  }
+  message Richer {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    map<int32, string> bank_map = 2 [(tableau.field) = {name:"Bank" layout:LAYOUT_INCELL}];
+  }
+}
+
+message HeroTarget {
+  option (tableau.union) = {name:"UnionType" note:"HeroTarget note"};
+
+  Type type = 9999 [(tableau.field) = {name:"Type"}];
+  oneof value {
+    option (tableau.oneof) = {note:"HeroTarget note" field:"Field"};
+
+    StarUp star_up = 1; // Bound to enum value: TYPE_STAR_UP.
+    LevelUp level_up = 2; // Bound to enum value: TYPE_LEVEL_UP.
+  }
+
+  enum Type {
+    TYPE_INVALID = 0;
+    TYPE_STAR_UP = 1 [(tableau.evalue).name = "HeroStarUp"]; // HeroStarUp
+    TYPE_LEVEL_UP = 2 [(tableau.evalue).name = "HeroLevelUp"]; // HeroLevelUp
+  }
+
+  message StarUp {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 star = 2 [(tableau.field) = {name:"Star"}];
+  }
+  message LevelUp {
+    repeated uint32 id_list = 1 [(tableau.field) = {name:"ID" layout:LAYOUT_INCELL}];
+    int32 level = 2 [(tableau.field) = {name:"Level"}];
+    bool super = 3 [(tableau.field) = {name:"Super"}];
+  }
+}
+
+message BattleTarget {
+  option (tableau.union) = {name:"UnionType" note:"BattleTarget note"};
+
+  Type type = 9999 [(tableau.field) = {name:"Type"}];
+  oneof value {
+    option (tableau.oneof) = {note:"BattleTarget note" field:"Field"};
+
+    PVP pvp = 1; // Bound to enum value: TYPE_PVP.
+    PVE pve = 2; // Bound to enum value: TYPE_PVE.
+  }
+
+  enum Type {
+    TYPE_INVALID = 0;
+    TYPE_PVP = 1 [(tableau.evalue).name = "BattlePVP"]; // BattlePVP
+    TYPE_PVE = 2 [(tableau.evalue).name = "BattlePVE"]; // BattlePVE
+  }
+
+  message PVP {
+    int32 battle_id = 1 [(tableau.field) = {name:"BattleID"}];
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+  }
+  message PVE {
+    repeated int32 hero_id_list = 1 [(tableau.field) = {name:"HeroID" layout:LAYOUT_INCELL}];
+    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
+    Boss boss = 3 [(tableau.field) = {name:"Boss" span:SPAN_INNER_CELL}];
+    message Boss {
+      uint32 id = 1 [(tableau.field) = {name:"ID"}];
+      int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
 
 ### Specify Number column
 
-> TODO...
+In `Number` column, you can specify custom unique field number and corresponding enum value number.
+
+For example, a worksheet `Target` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
+
+{{< sheet >}}
+
+| Number | Name  | Alias      | Field1                        | Field2                               | Field3                           |
+| ------ | ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
+| 1      | PVP   | AliasPVP   | ID<br>uint32<br>Note          | Damage<br>int64<br>Note              | Type<br>enum<.FruitType><br>Note |
+| 20     | PVE   | AliasPVE   | Hero<br>[]uint32<br>Note      | Dungeon<br>map<int32, int64><br>Note |                                  |
+| 30     | Skill | AliasSkill | StartTime<br>datetime<br>Note | Duration<br>duration<br>Note         |                                  |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet  | Mode            |
+| ------ | --------------- |
+| Target | MODE_UNION_TYPE |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+// Generated from sheet: Target.
+message Target {
+  option (tableau.union) = true;
+
+  Type type = 9999 [(tableau.field) = { name: "Type" }];
+  oneof value {
+    option (tableau.oneof) = {field: "Field"};
+
+    PVP pvp = 1; // Bound to enum value: TYPE_PVP.
+    PVE pve = 20; // Bound to enum value: TYPE_PVE.
+    Skill skill = 30; // Bound to enum value: TYPE_SKILL.
+  }
+  enum Type {
+    TYPE_INVALID = 0;
+    TYPE_PVP = 1 [(tableau.evalue).name = "AliasPVP"];
+    TYPE_PVE = 20 [(tableau.evalue).name = "AliasPVE"];
+    TYPE_SKILL = 30 [(tableau.evalue).name = "AliasSkill"];
+  }
+
+  message PVP {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+    protoconf.FruitType type = 3 [(tableau.field) = {name:"Type"}];
+  }
+  message PVE {
+    repeated uint32 hero_list = 1 [(tableau.field) = {name:"Hero" layout:LAYOUT_INCELL}];
+    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
+  }
+  message Skill {
+    google.protobuf.Timestamp start_time = 1 [(tableau.field) = {name:"StartTime"}];
+    google.protobuf.Duration duration = 2 [(tableau.field) = {name:"Duration"}];
+  }
+}
+```
+
+{{< /details >}}
 
 ### Complex union type in sheet
 

@@ -100,9 +100,14 @@ message ItemConf {
 
 ## Define enum type in sheet
 
-In order to generate enum type definition, you should specify `Mode` option to `MODE_ENUM_TYPE` in metasheet `@TABLEAU`.
+There are two kinds of `Mode` (in metasheet `@TABLEAU`) to define enum types in a sheet:
+
+- `MODE_ENUM_TYPE`: define single enum type in a sheet.
+- `MODE_ENUM_TYPE_MULTI`: define multiple enum types in a sheet.
 
 ### Single enum type in sheet
+
+You should specify `Mode` option to `MODE_ENUM_TYPE` in metasheet `@TABLEAU`.
 
 For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
@@ -149,7 +154,94 @@ enum ItemType {
 
 ### Multiple enum types in sheet
 
-> TODO...
+> A block defines an enum type, and it is a series of contiguous non-empty rows.
+> So different blocks are seperated by one or more empty rows.
+
+You should specify `Mode` option to `MODE_ENUM_TYPE_MULTI` in metasheet `@TABLEAU`.
+
+For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
+
+{{< sheet >}}
+
+| CatType              | CatType note              |            |
+| -------------------- | ------------------------- | ---------- |
+| Number               | Name                      | Alias      |
+| 1                    | CAT_TYPE_RAGDOLL          | Ragdoll    |
+| 2                    | CAT_TYPE_PERSIAN          | Persian    |
+| 3                    | CAT_TYPE_SPHYNX           | Sphynx     |
+|                      |                           |            |
+| DogType              | DogType note              |            |
+| Number               | Name                      | Alias      |
+| 1                    | DOG_TYPE_POODLE           | Poodle     |
+| 2                    | DOG_TYPE_BULLDOG          | Bulldog    |
+| 3                    | DOG_TYPE_DACHSHUND        | Dachshund  |
+|                      |                           |            |
+| BirdType             | BirdType note             |            |
+| Number               | Name                      | Alias      |
+| 1                    | CANARY                    | Canary     |
+| 2                    | WOODPECKER                | Woodpecker |
+| 3                    | OWL                       | Owl        |
+|                      |                           |            |
+| ColumnDisorderedEnum | ColumnDisorderedEnum note |            |
+| Alias                | Number                    | Name       |
+| Large                | 1                         | LARGE      |
+| Medium               | 2                         | MEDIUM     |
+| Small                | 3                         | SMALL      |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet    | Mode                 |
+| -------- | -------------------- |
+| ItemType | MODE_ENUM_TYPE_MULTI |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+// CatType note
+enum CatType {
+  option (tableau.etype) = {name:"EnumType" note:"CatType note"};
+
+  CAT_TYPE_INVALID = 0;
+  CAT_TYPE_RAGDOLL = 1 [(tableau.evalue).name = "Ragdoll"]; // Ragdoll
+  CAT_TYPE_PERSIAN = 2 [(tableau.evalue).name = "Persian"]; // Persian
+  CAT_TYPE_SPHYNX = 3 [(tableau.evalue).name = "Sphynx"]; // Sphynx
+}
+
+// DogType note
+enum DogType {
+  option (tableau.etype) = {name:"EnumType" note:"DogType note"};
+
+  DOG_TYPE_INVALID = 0;
+  DOG_TYPE_POODLE = 1 [(tableau.evalue).name = "Poodle"]; // Poodle
+  DOG_TYPE_BULLDOG = 2 [(tableau.evalue).name = "Bulldog"]; // Bulldog
+  DOG_TYPE_DACHSHUND = 3 [(tableau.evalue).name = "Dachshund"]; // Dachshund
+}
+
+// BirdType note
+enum BirdType {
+  option (tableau.etype) = {name:"EnumType" note:"BirdType note"};
+
+  BIRD_TYPE_INVALID = 0;
+  BIRD_TYPE_CANARY = 1 [(tableau.evalue).name = "Canary"]; // Canary
+  BIRD_TYPE_WOODPECKER = 2 [(tableau.evalue).name = "Woodpecker"]; // Woodpecker
+  BIRD_TYPE_OWL = 3 [(tableau.evalue).name = "Owl"]; // Owl
+}
+```
+
+{{< /details >}}
 
 ### Specify Number column
 

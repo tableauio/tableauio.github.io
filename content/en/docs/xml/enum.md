@@ -10,7 +10,7 @@ weight: 5001
 toc: true
 ---
 
-## Enum
+## Use predefined enum type
 
 Enum type `FruitType` in *common.proto* is predefined as:
 

@@ -33,7 +33,7 @@ toc: true
 
 ## Option `unique`
 
-Option `unique` can be specified as `true` or `false` in the field property.
+Option `unique` can be specified as `true` or `false` in the field property. It can check the uniqueness of any scalar field in list/map element.
 
 - If you set `unique` to `true` explicitly, then tableau will report an error if a duplicate key is appeared.
 - If you set `unique` to `false` explicitly, no check will be performed.
@@ -77,12 +77,13 @@ For example:
 
 ## Option `sequence`
 
-Option `sequence` is used to ensure this field’s value is a sequence and begins with this value,
-and mainly used for map key and list element.
+Option `sequence` is used to ensure this field’s value is a sequence and begins with this value.
+It can be used for any fields even in nested list/map.
 
 For example:
 
 - `map<uint32, Item>|{sequence:1}`: this map key must follow the sequence rule which begins with value `1`.
+- `int32|{sequence:1}`: the parent list/map elements must follow the sequence rule which begins with value `1`.
 
 ## Option `default`
 

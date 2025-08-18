@@ -182,6 +182,113 @@ message ItemConf {
 
 {{< /details >}}
 
+## Predefined struct
+
+For example, struct type `Prop` in *common.proto* is defined as:
+
+```protobuf
+message Prop {
+  int32 id = 1 [(tableau.field).name = "ID"];
+  int32 value = 2 [(tableau.field).name = "Value"];
+}
+```
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                | Prop1ID      | Prop1Value    | Prop2ID    | Prop2Value    |
+| ----------------- | ------------ | ------------- | ---------- | ------------- |
+| map<uint32, Item> | [.Prop]int32 | int32         | int32      | int32         |
+| Item's ID         | Prop1's ID   | Prop1's value | Prop2's ID | Prop2's value |
+| 1                 | 1            | 100           | 2          | 200           |
+| 2                 | 3            | 300           | 4          | 400           |
+| 3                 | 5            | 500           |            |               |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+import "common.proto";
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    repeated Prop prop_list = 2 [(tableau.field) = {name:"Prop" layout:LAYOUT_HORIZONTAL}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemMap":  {
+        "1":  {
+            "id":  1,
+            "propList":  [
+                {
+                    "id":  1,
+                    "value":  100
+                },
+                {
+                    "id":  2,
+                    "value":  200
+                }
+            ]
+        },
+        "2":  {
+            "id":  2,
+            "propList":  [
+                {
+                    "id":  3,
+                    "value":  300
+                },
+                {
+                    "id":  4,
+                    "value":  400
+                }
+            ]
+        },
+        "3":  {
+            "id":  3,
+            "propList":  [
+                {
+                    "id":  5,
+                    "value":  500
+                }
+            ]
+        }
+    }
+}
+```
+
+{{< /details >}}
+
 ## Predefined incell struct
 
 Each field type of the predefined struct should be scalar type.
@@ -482,9 +589,14 @@ message ItemConf {
 
 ## Define struct type in sheet
 
+There are two kinds of `Mode` (in metasheet `@TABLEAU`) to define struct types in a sheet:
+
+- `MODE_STRUCT_TYPE`: define single struct type in a sheet.
+- `MODE_STRUCT_TYPE_MULTI`: define multiple struct types in a sheet.
+
 ### Single struct type in sheet
 
-In order to generate struct type definition, you should specify `Mode` option to `MODE_STRUCT_TYPE` in metasheet `@TABLEAU`.
+You should specify `Mode` option to `MODE_STRUCT_TYPE` in metasheet `@TABLEAU`.
 
 For example, a worksheet `Item` in *HelloWorld.xlsx*:
 
@@ -541,8 +653,119 @@ message Item {
 
 ### Multiple struct types in sheet
 
-> TODO...
+> A block defines a struct type, and it is a series of contiguous non-empty rows.
+> So different blocks are seperated by one or more empty rows.
+
+You should specify `Mode` option to `MODE_STRUCT_TYPE_MULTI` in metasheet `@TABLEAU`.
+
+For example, a worksheet `Item` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
+
+{{< sheet >}}
+
+| Tree      | Tree note          |
+| --------- | ------------------ |
+| Name      | Type               |
+| ID        | uint32             |
+| Num       | int32              |
+|           |                    |
+| Pet       | Pet note           |
+| Name      | Type               |
+| Kind      | int32              |
+| Tip       | []string           |
+|           |                    |
+| FruitShop | FruitShop note     |
+| Name      | Type               |
+| FruitType | enum<.FruitType>   |
+| Prop      | map<int32, string> |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet | Mode                   |
+| ----- | ---------------------- |
+| Item  | MODE_STRUCT_TYPE_MULTI |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+message Tree {
+  option (tableau.struct) = {name:"StructType" note:"Tree note"};
+
+  uint32 id = 1 [(tableau.field) = {name:"ID"}];
+  int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+
+message Pet {
+  option (tableau.struct) = {name:"StructType" note:"Pet note"};
+
+  int32 kind = 1 [(tableau.field) = {name:"Kind"}];
+  repeated string tip_list = 2 [(tableau.field) = {name:"Tip" layout:LAYOUT_INCELL}];
+}
+
+message FruitShop {
+  option (tableau.struct) = {name:"StructType" note:"FruitShop note"};
+
+  protoconf.FruitType fruit_type = 1 [(tableau.field) = {name:"FruitType"}];
+  map<int32, string> prop_map = 2 [(tableau.field) = {name:"Prop" layout:LAYOUT_INCELL}];
+}
+```
+
+{{< /details >}}
 
 ### Specify Number column
 
-> TODO...
+In `Number` column, you can specify custom unique field number.
+
+For example, a worksheet `Item` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
+
+{{< sheet >}}
+
+| Number | Name      | Type             |
+| ------ | --------- | ---------------- |
+| 1      | ID        | uint32           |
+| 20     | Num       | int32            |
+| 30     | FruitType | enum<.FruitType> |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet | Mode             |
+| ----- | ---------------- |
+| Item  | MODE_STRUCT_TYPE |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx"};
+
+// Generated from sheet: Item.
+message Item {
+  uint32 id = 1 [(tableau.field) = {name:"ID"}];
+  int32 num = 20 [(tableau.field) = {name:"Num"}];
+  protoconf.FruitType fruit_type = 30 [(tableau.field) = {name:"FruitType"}];
+}
+```
+
+{{< /details >}}

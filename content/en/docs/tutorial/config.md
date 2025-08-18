@@ -104,6 +104,10 @@ proto:
     #  - "normal": parse based on all config files.
     #  - "advanced": parse based on all previous generated proto files.
     firstPassMode: ""
+    # Specify the name pattern for messager(regexp supported). If the generated
+    # messager name does not match this pattern, an error will be reported.
+    # Example: "Conf$"
+    messagerPattern: ""
   output:
     # Specify subdir (relative to output dir) for generated proto files.
     subdir: ""
