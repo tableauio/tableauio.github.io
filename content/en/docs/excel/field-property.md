@@ -36,7 +36,7 @@ toc: true
 
 Option `unique` can be specified as `true` or `false` in the field property. It can check the uniqueness of any scalar field in list/map element.
 
-- If you set `unique` to `true` explicitly, then tableau will report an error if a duplicate key is appeared.
+- If you set `unique` to `true` explicitly, tableau will report an error if a duplicate key appears.
 - If you set `unique` to `false` explicitly, no check will be performed.
 
 ### Map (or KeyedList) key

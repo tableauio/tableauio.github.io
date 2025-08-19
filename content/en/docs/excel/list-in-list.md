@@ -199,6 +199,97 @@ message ItemConf {
 
 {{< /details >}}
 
+### Vertical-keyed-list in vertical-keyed-list
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                    | Desc        | PropID           | PropNum    |
+| --------------------- | ----------- | ---------------- | ---------- |
+| [KeyedItem]\<uint32\> | string      | [Prop]\<uint32\> | int32      |
+| Item's ID             | Item's desc | Prop's ID        | Prop's num |
+| 1                     | Apple       | 10               | 100        |
+| 1                     | Banana      | 11               | 110        |
+| 2                     | Orange      | 20               | 200        |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated KeyedItem keyed_item_list = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message KeyedItem {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string desc = 2 [(tableau.field) = {name:"Desc"}];
+    repeated Prop prop_list = 3 [(tableau.field) = {key:"PropID" layout:LAYOUT_VERTICAL}];
+    message Prop {
+      uint32 prop_id = 1 [(tableau.field) = {name:"PropID"}];
+      int32 prop_num = 2 [(tableau.field) = {name:"PropNum"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "keyedItemList": [
+        {
+            "id": 1,
+            "desc": "Apple",
+            "propList": [
+                {
+                    "propId": 10,
+                    "propNum": 100
+                },
+                {
+                    "propId": 11,
+                    "propNum": 110
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "desc": "Orange",
+            "propList": [
+                {
+                    "propId": 20,
+                    "propNum": 200
+                }
+            ]
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
 ### Incell-list in vertical-keyed-list
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
@@ -282,7 +373,91 @@ message ItemConf {
 
 {{< /details >}}
 
-## First-field in horizontal-list
+### Incell-keyed-list in vertical-keyed-list
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                                    | Desc        | Tip          |
+| ------------------------------------- | ----------- | ------------ |
+| [KeyedItem]\<uint32\>\|{unique:false} | string      | []\<uint32\> |
+| Item's ID                             | Item's desc | Item's tip   |
+| 1                                     | Apple       | 1,2,3        |
+| 1                                     | Banana      | 4,5          |
+| 2                                     | Orange      | 1,2          |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+We want the parent struct keyed-list to aggreate incell keyed-list, so need to set the field property `unique` to `false`.
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated KeyedItem keyed_item_list = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message KeyedItem {
+    uint32 id = 1 [(tableau.field) = {name:"ID" prop:{unique:false}}];
+    string desc = 2 [(tableau.field) = {name:"Desc"}];
+    repeated uint32 tip_list = 3 [(tableau.field) = {name:"Tip" key:"Tip" layout:LAYOUT_INCELL}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "keyedItemList": [
+        {
+            "id": 1,
+            "desc": "Apple",
+            "tipList": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        {
+            "id": 2,
+            "desc": "Orange",
+            "tipList": [
+                1,
+                2
+            ]
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+## Nested in horizontal-list
 
 ### Horizontal-list in horizontal-list
 
@@ -455,6 +630,84 @@ message ItemConf {
                 }
             ],
             "name": "Super Lotto"
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### Incell-list in horizontal-list
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Task1Param    | Task2Param | Task3Param |
+| ------------- | ---------- | ---------- |
+| [Task][]int32 | []int32    | []int32    |
+| Task1         | Task2      | Task3      |
+| 1,2           | 3,4        | 5,6,7      |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated Task task_list = 1 [(tableau.field) = {name:"Task" layout:LAYOUT_HORIZONTAL}];
+  message Task {
+    repeated int32 param_list = 1 [(tableau.field) = {name:"Param" layout:LAYOUT_INCELL}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "taskList": [
+        {
+            "paramList": [
+                1,
+                2
+            ]
+        },
+        {
+            "paramList": [
+                3,
+                4
+            ]
+        },
+        {
+            "paramList": [
+                5,
+                6,
+                7
+            ]
         }
     ]
 }

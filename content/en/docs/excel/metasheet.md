@@ -544,7 +544,7 @@ Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 
 ### Single-column index
 
-Format: `Column<ColumnX,ColumnY,...>[@IndexName]`.
+Format: `Column<ColumnX,ColumnY,...>@IndexName`.
 
 The sign `@` is the separator between column name and index name. if `IndexName` is not set, it will be this column’s parent struct type name. One or more indexes can be specified by comma-separated rule. The columns in the angle brackets `<>` specify the sorting columns which the index sort by.
 
@@ -552,14 +552,14 @@ Examples:
 
 - `ID`
 - `ID@Item`
-- `ID<ID>@Item`: sort index by ID
-- `ID<Type,Priority>@Item`: sort index by Type and Priority
+- `ID<ID>@Item`: sort index by ID.
+- `ID<Type,Priority>@Item`: sort index by Type and Priority.
 - `ID, Name@AwardItem`
 - `ID@Item, Name@AwardItem`
 
 ### Multi-column index
 
-Format: ``.
+Format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.
 
 Multi-column index (or composite index) is composed of **multiple columns in the same struct** (in list or map) to increase query speed.
 
@@ -567,10 +567,10 @@ The sign `@` is the separator between enclosed column names by parentheses and i
 
 Examples:
 
-- `(ID,Name)`
+- `(ID,Name)`: index name not set, then determined by parent struct type name.
 - `(ID,Name)@AwardItem`
-- `(ID,Name)<ID>@AwardItem`: sort index by ID
-- `(ID,Type)<Type,Priority>@Item`: sort index by Type and Priority
+- `(ID,Name)<ID>`: sort index by ID.
+- `(ID,Type)<Type,Priority>@Item`: sort index by Type and Priority.
 - `ID@Item, (ID,Name)@AwardItem`: one single-column index and one multi-column index.
 
 ## Option `Patch`
