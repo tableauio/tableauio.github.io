@@ -478,6 +478,8 @@ It is supposed to generate three different config files (name pattern: `<BookNam
 
 ## Option `OrderedMap`
 
+> 📢 It only applies to each level message’s first map field.
+
 If you set `OrderedMap` to `true`, then tableau loader plugins will generate ordered map APIs:
 
 - [C++: OrderedMap API](../../api/loader/cpp/#orderedmap)
@@ -485,8 +487,10 @@ If you set `OrderedMap` to `true`, then tableau loader plugins will generate ord
 
 ## Option `Index`
 
-Option `Index` can be specified to generate index accessers, and multiple indexes are comma-separated.
-There are two kinds of indexes in tableau: one is **single-column index**, and another is **multi-column index** (aka composite index).
+Option `Index` can be specified to generate index accessers, and multiple
+indexes are comma-separated. There are two kinds of indexes in tableau:
+one is **single-column index**, and another is **multi-column index**
+(aka composite index).
 
 If you set `Index` appropriately, then tableau loader plugins will generate index APIs:
 
@@ -546,7 +550,11 @@ Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 
 Format: `Column<ColumnX,ColumnY,...>@IndexName`.
 
-The sign `@` is the separator between column name and index name. if `IndexName` is not set, it will be this column’s parent struct type name. One or more indexes can be specified by comma-separated rule. The columns in the angle brackets `<>` specify the sorting columns which the index sort by.
+The sign `@` is the separator between column name and index name. if
+`IndexName` is not set, it will be this column’s parent struct type name.
+One or more indexes can be specified by comma-separated rule. The columns in
+the angle brackets `<>` specify the sorting columns, which the **result array**
+of same index key sort by.
 
 Examples:
 
@@ -563,7 +571,11 @@ Format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.
 
 Multi-column index (or composite index) is composed of **multiple columns in the same struct** (in list or map) to increase query speed.
 
-The sign `@` is the separator between enclosed column names by parentheses and index name. if `IndexName` is not set, it will be this column’s parent struct type name. One or more indexes can be specified by comma-separated rule. The columns in the angle brackets `<>` specify the sorting columns which the index sort by.
+The sign `@` is the separator between enclosed column names by parentheses and
+index name. If `IndexName` is not set, it will be this column’s parent struct
+type name. One or more indexes can be specified by comma-separated rule. The
+columns in the angle brackets `<>` specify the sorting columns, which the
+**result array** of same index key sort by.
 
 Examples:
 
