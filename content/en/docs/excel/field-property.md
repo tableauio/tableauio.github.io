@@ -29,6 +29,7 @@ toc: true
 | `sep`       | string | Field-level separator.                                                                                                                                                     |
 | `subsep`    | string | Field-level subseparator.                                                                                                                                                  |
 | `cross`     | int32  | Specify count of crossed nodes/cells/fields of composite types with cardinality, such as list and map.                                                                     |
+| `pattern`     | string  | Specify the pattern of scalar, list element, and map value.                                                                     |
 {.table-striped .table-hover}
 
 ## Option `unique`
@@ -194,6 +195,8 @@ cardinality, such as list and map.
 
 ### union list field
 
+> TODO: example illustrated.
+
 Specify the count of union fields the list will cross and occupy
 (one list element for each field). It will also change this list
 field's layout from incell to horizontal.
@@ -202,5 +205,16 @@ field's layout from incell to horizontal.
 - Value > 0 means it is a horizontal list occupying N fields.
 - Value < 0 means it is a horizontal list occupying all following fields.
 
-> TODO: example illustrated.
+## Option `pattern`
+
+Specify the pattern of scalar field, list element, and map value.
+
+### Wellknown version field
+
+> For use cases, see [Excel wellknown types: Version →]({{< relref "../excel/wellknown-types/#version" >}})
+
+Specify the dotted-decimal pattern of current cell. Each decimal
+number ranges from 0 to the corresponding part (MAX) of pattern.
+
+Default pattern: `255.255.255`.
   

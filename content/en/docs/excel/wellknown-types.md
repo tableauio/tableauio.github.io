@@ -447,3 +447,126 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+## Version
+
+> See [Basics: Version →]({{< relref "../basics/wellknown-types/#version" >}})
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored>}}
+
+| Version         | CustomVersion  | IncellVersion                    | HorizontalVersion1  | HorizontalVersion2      | HorizontalVersion3  |
+| --------------- | -------------- | -------------------------------- | ------------------- | ----------------------- | ------------------- |
+| version         | version        | {pattern:"99.999.99.999.99.999"} | []version           | {pattern:"999.999.999"} | []version           | {pattern:"999.999.999"} | version | version |
+| default version | custom version | incell version                   | horizontal version1 | horizontal version2     | horizontal version3 |
+| 1.0.3           | 1.2.3.4.5.6    | 1.2.3,4.5.6                      | 1.0.0               | 1.2.3                   | 2.0.3               |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  tableau.Version version = 1 [(tableau.field) = {name:"Version"}]; // default version
+  tableau.Version custom_version = 2 [(tableau.field) = {name:"CustomVersion" prop:{pattern:"99.999.99.999.99.999"}}]; // custom version
+  repeated tableau.Version incell_version_list = 3 [(tableau.field) = {name:"IncellVersion" layout:LAYOUT_INCELL prop:{pattern:"999.999.999"}}]; // incell version
+  repeated tableau.Version horizontal_version_list = 4 [(tableau.field) = {name:"HorizontalVersion" layout:LAYOUT_HORIZONTAL prop:{pattern:"999.999.999"}}]; // horizontal version
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "version": {
+        "str": "1.0.3",
+        "val": "65539",
+        "major": 1,
+        "minor": 0,
+        "patch": 3,
+        "others": []
+    },
+    "customVersion": {
+        "str": "1.2.3.4.5.6",
+        "val": "10020300405006",
+        "major": 1,
+        "minor": 2,
+        "patch": 3,
+        "others": [
+            4,
+            5,
+            6
+        ]
+    },
+    "incellVersionList": [
+        {
+            "str": "1.2.3",
+            "val": "1002003",
+            "major": 1,
+            "minor": 2,
+            "patch": 3,
+            "others": []
+        },
+        {
+            "str": "4.5.6",
+            "val": "4005006",
+            "major": 4,
+            "minor": 5,
+            "patch": 6,
+            "others": []
+        }
+    ],
+    "horizontalVersionList": [
+        {
+            "str": "1.0.0",
+            "val": "1000000",
+            "major": 1,
+            "minor": 0,
+            "patch": 0,
+            "others": []
+        },
+        {
+            "str": "1.2.3",
+            "val": "1002003",
+            "major": 1,
+            "minor": 2,
+            "patch": 3,
+            "others": []
+        },
+        {
+            "str": "2.0.3",
+            "val": "2000003",
+            "major": 2,
+            "minor": 0,
+            "patch": 3,
+            "others": []
+        }
+    ]
+}
+```
+
+{{< /details >}}
