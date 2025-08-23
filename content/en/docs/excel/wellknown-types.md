@@ -452,17 +452,19 @@ message ItemConf {
 
 > See [Basics: Version →]({{< relref "../basics/wellknown-types/#version" >}})
 
+Default `pattern` is: `255.255.255`.
+
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
 {{< sheet colored>}}
 
-| Version         | CustomVersion  | IncellVersion                    | HorizontalVersion1  | HorizontalVersion2      | HorizontalVersion3  |
-| --------------- | -------------- | -------------------------------- | ------------------- | ----------------------- | ------------------- |
-| version         | version        | {pattern:"99.999.99.999.99.999"} | []version           | {pattern:"999.999.999"} | []version           | {pattern:"999.999.999"} | version | version |
-| default version | custom version | incell version                   | horizontal version1 | horizontal version2     | horizontal version3 |
-| 1.0.3           | 1.2.3.4.5.6    | 1.2.3,4.5.6                      | 1.0.0               | 1.2.3                   | 2.0.3               |
+| Version         | CustomVersion                             | IncellVersion                      | HorizontalVersion1                 | HorizontalVersion2  | HorizontalVersion3  |
+| --------------- | ----------------------------------------- | ---------------------------------- | ---------------------------------- | ------------------- | ------------------- |
+| version         | version\|{pattern:"99.999.99.999.99.999"} | []version\|{pattern:"999.999.999"} | []version\|{pattern:"999.999.999"} | version             | version             |
+| default version | custom version                            | incell version                     | horizontal version1                | horizontal version2 | horizontal version3 |
+| 1.0.3           | 1.2.3.4.5.6                               | 1.2.3,4.5.6                        | 1.0.0                              | 1.2.3               | 2.0.3               |
 
 {{< /sheet >}}
 
