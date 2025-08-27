@@ -38,8 +38,8 @@ Options below can be specified in the metasheet `@TABLEAU` to affect the corresp
 | `WithParentDir`          | bool                | confgen: export JSON/Bin/Text files with parent dir created.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `ScatterWithoutBookName` | bool                | confgen(scatter): export JSON/Bin/Text filenames without book name prefix.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | `OrderedMap`             | bool                | Generate OrderedMap accessers or not.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `Index`                  | []string            | Generate index accessers. <br> - Single-column index format: `Column<ColumnX,ColumnY,...>@IndexName`.<br> - Multi-column index format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.                                                                                                                                                                                                                                                                                                                                                                         |
-| `OrderedIndex`           | []string            | Generate ordered index accessers. <br> - Single-column ordered index format: `Column<ColumnX,ColumnY,...>@IndexName`.<br> - Multi-column ordered index format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.                                                                                                                                                                                                                                                                                                                                                 |
+| `Index`                  | []string            | Generate index accessers. <br> - Single-column Index format: `Column<ColumnX,ColumnY,...>@IndexName`.<br> - Multi-column Index format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.                                                                                                                                                                                                                                                                                                                                                                         |
+| `OrderedIndex`           | []string            | Generate OrderedIndex accessers. <br> - Single-column OrderedIndex format: `Column<ColumnX,ColumnY,...>@IndexName`.<br> - Multi-column OrderedIndex format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.                                                                                                                                                                                                                                                                                                                                                    |
 | `LangOptions`            | map<string, string> | Specify loader language options. <br> Valid keys are: `OrderedMap`, `Index`. <br> Different kvs must be seperated by `,` and one key value must be seperated by `:`. <br> If one key doesn't exist in map, it means that this loader option is supported in all languages. <br> Valid values are all combinations of `cpp`, `go` with space as seperator. <br> Examples: <br> - `OrderedMap:cpp,Index:cpp go` // ordered map supported in cpp, index supported in cpp and go <br> - `OrderedMap:cpp` // ordered map supported in cpp, index supported in all languages |
 {.table-striped .table-hover}
 
@@ -488,10 +488,11 @@ If you set `OrderedMap` to `true`, then tableau loader plugins will generate ord
 
 ## Option `Index`
 
-Option `Index` can be specified to generate index accessers, and multiple
-indexes are comma-separated. There are two kinds of indexes in tableau:
-one is **single-column index**, and another is **multi-column index**
-(aka composite index).
+Option `Index` can be specified to generate index accessers.
+There are two kinds of indexes:
+
+1. **Single-column Index**
+2. **Multi-column Index** (aka Composite Index).
 
 If you set `Index` appropriately, then tableau loader plugins will generate index APIs:
 
@@ -547,7 +548,7 @@ Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 
 {{< /spreadsheet >}}
 
-### Single-column index
+### Single-column Index
 
 Format: `Column<ColumnX,ColumnY,...>@IndexName`.
 
@@ -566,11 +567,11 @@ Examples:
 - `ID, Name@AwardItem`
 - `ID@Item, Name@AwardItem`
 
-### Multi-column index
+### Multi-column Index
 
 Format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.
 
-Multi-column index (or composite index) is composed of **multiple columns in the same struct** (in list or map) to increase query speed.
+Multi-column Index (aka Composite Index) is composed of **multiple columns in the same struct** (in list or map) to increase query speed.
 
 The sign `@` is the separator between enclosed column names by parentheses and
 index name. If `IndexName` is not set, it will be this column’s parent struct
@@ -588,17 +589,18 @@ Examples:
 
 ## Option `OrderedIndex`
 
-Option `OrderedIndex` can be specified to generate ordered index accessers, and multiple
-ordered indexes are comma-separated. There are two kinds of ordered indexes in tableau:
-one is **single-column ordered index**, and another is **multi-column ordered index**
-(aka composite ordered index).
+Option `OrderedIndex` can be specified to generate ordered index accessers.
+There are two kinds of ordered indexes:
+
+1. **Single-column OrderedIndex**
+2. **Multi-column OrderedIndex** (aka Composite OrderedIndex).
 
 If you set `OrderedIndex` appropriately, then tableau loader plugins will generate index APIs:
 
 - [C++: Index API](../../api/loader/cpp/#orderedindex)
 - [Go: Index API](../../api/loader/go/#orderedindex)
 
-### Single-column ordered index
+### Single-column OrderedIndex
 
 Format: `Column<ColumnX,ColumnY,...>@IndexName`.
 
@@ -617,7 +619,7 @@ Examples:
 - `ID, Name@AwardItem`
 - `ID@Item, Name@AwardItem`
 
-### Multi-column ordered index
+### Multi-column OrderedIndex
 
 > ⚠️ Not supported yet.
 
