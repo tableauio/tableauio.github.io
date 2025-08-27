@@ -3,14 +3,16 @@
 &lt;thead>
 &lt;tr>
 &lt;th>Lang&lt;/th>
-&lt;th>Get (Map)&lt;/th>
-&lt;th>GetOrderedMap&lt;/th>
-&lt;th>Find (Index)&lt;/th>
+&lt;th>Map&lt;/th>
+&lt;th>OrderedMap&lt;/th>
+&lt;th>Index&lt;/th>
+&lt;th>OrderedMap&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;a href="../cpp">C++&lt;/a>&lt;/td>
+&lt;td>✔️&lt;/td>
 &lt;td>✔️&lt;/td>
 &lt;td>✔️&lt;/td>
 &lt;td>✔️&lt;/td>
@@ -20,9 +22,11 @@
 &lt;td>✔️&lt;/td>
 &lt;td>✔️&lt;/td>
 &lt;td>✔️&lt;/td>
+&lt;td>✔️&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;a href="../csharp">C#&lt;/a>&lt;/td>
+&lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
@@ -32,9 +36,11 @@
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
+&lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;a href="../lua">Lua&lt;/a>&lt;/td>
+&lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
