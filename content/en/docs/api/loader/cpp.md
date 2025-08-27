@@ -43,8 +43,21 @@ Get the `N`th-level ordered map value. Be aware that only applies to each level 
 
 If index name is `Chapter`, then the accessers are:
 
-- `const vector<ParentType>* FindChapter(k1 KEY1, k2 KEY2...) const`
-- `const ParentType* FindFirstChapter(k1 KEY1, k2 KEY2...) const`
+- `const Index_ChapterMap& FindChapter() const`: Gets the whole hash map.
+- `const vector<ParentType>* FindChapter(k1 KEY1, k2 KEY2...) const`: Finds values by key. One key may correspond to multiple values, which are returned by a vector.
+- `const ParentType* FindFirstChapter(k1 KEY1, k2 KEY2...) const`: Finds the first value by key.
+
+### OrderedIndex
+
+> Prerequisite: You need to set metatsheet option `OrderedIndex` appropriately.
+>
+> See [metatsheet option: OrderedIndex](../../../excel/metasheet/#option-orderedindex).
+
+If ordered index name is `Chapter`, then the accessers are:
+
+- `const OrderedIndex_ChapterMap& FindChapter() const`: Gets the whole ordered map.
+- `const vector<ParentType>* FindChapter(k1 KEY1, k2 KEY2...) const`: Finds values by key. One key may correspond to multiple values, which are returned by a vector.
+- `const ParentType* FindFirstChapter(k1 KEY1, k2 KEY2...) const`: Finds the first value by key.
 
 ## Custom messager
 

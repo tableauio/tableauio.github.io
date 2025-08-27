@@ -38,7 +38,8 @@ Options below can be specified in the metasheet `@TABLEAU` to affect the corresp
 | `WithParentDir`          | bool                | confgen: export JSON/Bin/Text files with parent dir created.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `ScatterWithoutBookName` | bool                | confgen(scatter): export JSON/Bin/Text filenames without book name prefix.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | `OrderedMap`             | bool                | Generate OrderedMap accessers or not.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `Index`                  | []string            | Generate index accessers, and multiple indexes are comma-separated. <br> - Single-column index is in the forma: `<ColumnName>[@IndexName]`, if `IndexName` is not set, it will be this column's parent struct type name.<br> - Multi-column index (or composite index) is in the form: `([column1, column2, column3,...])[@IndexName]`<br>E.g.: <br> - `ID`<br> - `ID@Item`<br> - `(ID,Type)`<br> - `(ID,Type)@Item`<br> - `ID, (ID,Type)@Item`<br> Supported: `C++, Go`.                                                                                              |
+| `Index`                  | []string            | Generate index accessers. <br> - Single-column index format: `Column<ColumnX,ColumnY,...>@IndexName`.<br> - Multi-column index format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.                                                                                                                                                                                                                                                                                                                                                                         |
+| `OrderedIndex`           | []string            | Generate ordered index accessers. <br> - Single-column ordered index format: `Column<ColumnX,ColumnY,...>@IndexName`.<br> - Multi-column ordered index format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.                                                                                                                                                                                                                                                                                                                                                 |
 | `LangOptions`            | map<string, string> | Specify loader language options. <br> Valid keys are: `OrderedMap`, `Index`. <br> Different kvs must be seperated by `,` and one key value must be seperated by `:`. <br> If one key doesn't exist in map, it means that this loader option is supported in all languages. <br> Valid values are all combinations of `cpp`, `go` with space as seperator. <br> Examples: <br> - `OrderedMap:cpp,Index:cpp go` // ordered map supported in cpp, index supported in cpp and go <br> - `OrderedMap:cpp` // ordered map supported in cpp, index supported in all languages |
 {.table-striped .table-hover}
 
@@ -560,8 +561,8 @@ Examples:
 
 - `ID`
 - `ID@Item`
-- `ID<ID>@Item`: sort index by ID.
-- `ID<Type,Priority>@Item`: sort index by Type and Priority.
+- `ID<ID>@Item`: result array by ID.
+- `ID<Type,Priority>@Item`: result array by Type and Priority.
 - `ID, Name@AwardItem`
 - `ID@Item, Name@AwardItem`
 
@@ -581,9 +582,44 @@ Examples:
 
 - `(ID,Name)`: index name not set, then determined by parent struct type name.
 - `(ID,Name)@AwardItem`
-- `(ID,Name)<ID>`: sort index by ID.
-- `(ID,Type)<Type,Priority>@Item`: sort index by Type and Priority.
+- `(ID,Name)<ID>`: result array by ID.
+- `(ID,Type)<Type,Priority>@Item`: result array by Type and Priority.
 - `ID@Item, (ID,Name)@AwardItem`: one single-column index and one multi-column index.
+
+## Option `OrderedIndex`
+
+Option `OrderedIndex` can be specified to generate ordered index accessers, and multiple
+ordered indexes are comma-separated. There are two kinds of ordered indexes in tableau:
+one is **single-column ordered index**, and another is **multi-column ordered index**
+(aka composite ordered index).
+
+If you set `OrderedIndex` appropriately, then tableau loader plugins will generate index APIs:
+
+- [C++: Index API](../../api/loader/cpp/#orderedindex)
+- [Go: Index API](../../api/loader/go/#orderedindex)
+
+### Single-column ordered index
+
+Format: `Column<ColumnX,ColumnY,...>@IndexName`.
+
+The sign `@` is the separator between column name and index name. if
+`IndexName` is not set, it will be this column’s parent struct type name.
+One or more indexes can be specified by comma-separated rule. The columns in
+the angle brackets `<>` specify the sorting columns, which the **result array**
+of same index key sort by.
+
+Examples:
+
+- `ID`
+- `ID@Item`
+- `ID<ID>@Item`: sort result array by ID.
+- `ID<Type,Priority>@Item`: sort result array by Type and Priority.
+- `ID, Name@AwardItem`
+- `ID@Item, Name@AwardItem`
+
+### Multi-column ordered index
+
+> ⚠️ Not supported yet.
 
 ## Option `Patch`
 

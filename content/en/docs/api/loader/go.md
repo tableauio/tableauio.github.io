@@ -42,8 +42,21 @@ Get the `N`th-level ordered map value. Be aware that only applies to each level 
 
 If index name is `Chapter`, then the accessers are:
 
-- `func FindChapter(k1 KEY1, k2 KEY2...) []*ParentType`
-- `func FindFirstChapter(k1 KEY1, k2 KEY2...) *ParentType`
+- `func FindChapterMap() *Index_ChapterMap`: Gets the whole hash map.
+- `func FindChapter(k1 KEY1, k2 KEY2...) []*ParentType` Finds values by key. One key may correspond to multiple values, which are returned by a slice.
+- `func FindFirstChapter(k1 KEY1, k2 KEY2...) *ParentType`: Finds the first value by key.
+
+### OrderedIndex
+
+> Prerequisite: You need to set metatsheet option `OrderedIndex` appropriately.
+>
+> See [metatsheet option: OrderedIndex](../../../excel/metasheet/#option-orderedindex).
+
+If ordered index name is `Chapter`, then the accessers are:
+
+- `func FindChapterMap() *OrderedIndex_ChapterMap`: Gets the whole ordered map.
+- `func FindChapter(k1 KEY1, k2 KEY2...) []*ParentType` Finds values by key. One key may correspond to multiple values, which are returned by a slice.
+- `func FindFirstChapter(k1 KEY1, k2 KEY2...) *ParentType`: Finds the first value by key.
 
 ## Custom messager
 
