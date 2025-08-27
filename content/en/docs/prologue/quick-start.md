@@ -21,13 +21,13 @@ Select the appropriate tableauc (aka Tableau Compiler) to download:
         </p>
         <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.windows.amd64.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.2/tableauc.v0.14.2.windows.amd64.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> Windows x64
             </a>
         </p>
         <!-- <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.windows.386.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.2/tableauc.v0.14.2.windows.386.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> Windows x86
             </a>
         </p> -->
@@ -38,13 +38,13 @@ Select the appropriate tableauc (aka Tableau Compiler) to download:
         </p>
         <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.linux.amd64.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.2/tableauc.v0.14.2.linux.amd64.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> Linux x64
             </a>
         </p>
         <!-- <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.linux.386.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.2/tableauc.v0.14.2.linux.386.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> Linux x86
             </a>
         </p> -->
@@ -55,13 +55,13 @@ Select the appropriate tableauc (aka Tableau Compiler) to download:
         </p>
         <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.darwin.amd64.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.2/tableauc.v0.14.2.darwin.amd64.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> macOS x64
             </a>
         </p>
         <p>
             <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.1/tableauc.v0.14.1.darwin.arm64.tar.gz">
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.14.2/tableauc.v0.14.2.darwin.arm64.tar.gz">
                 <image height="25px" src="/images/download_blue.svg" alt="Download" /> macOS arm64
             </a>
         </p>
