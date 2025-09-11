@@ -82,7 +82,6 @@ proto:
     protoFiles: []
     # Specify input file formats to be parsed. It will recognize all formats
     # if not set.
-    #
     # Available formats: "xlsx", "csv", "xml", and "yaml".
     formats: [xlsx]
     # Specify only these subdirs (relative to input dir) to be processed.
@@ -146,7 +145,6 @@ conf:
     excludedProtoFiles: []
     # Specify input file formats to be parsed. It will recognize all formats
     # if not set.
-    #
     # Available formats: "xlsx", "csv", "xml", and "yaml".
     formats: [xlsx]
     # Specify only these subdirs (relative to workbook name option in proto file).
@@ -157,7 +155,8 @@ conf:
     # Specify subdir (relative to output dir) for generated configuration files.
     subdir: ""
     # Specify generated conf file formats. It will generate all formats if not set.
-    # Available formats: "xlsx", "csv", "xml", and "yaml".
+    # Refer: https://protobuf.dev/programming-guides/techniques/#suffixes
+    # Available formats: "json", "binpb", and "txtpb".
     formats: [json]
     # Whether to output pretty format of JSON, with multiline and indent.
     pretty: true
