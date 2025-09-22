@@ -1068,7 +1068,14 @@ message Target {
 
 ### Specify Type column
 
-In `Type` column, you can specify custom unique field type. Each field of union is message type by default with the name specified by `Name` column.
+By default, each union's oneof field is a message type with the name specified by `Name` column.
+Now, you can add `Type` column and specify custom oneof field type:
+
+- scalar
+- enum
+- global predefined struct
+- custom named struct
+- local predefined struct in the same level
 
 For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
@@ -1076,15 +1083,15 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
-| Name    | Alias   | Type             | Field1             | Field2            |
-| ------- | ------- | ---------------- | ------------------ | ----------------- |
-| Fruit   | Fruit   | enum<.FruitType> |                    |                   |
-| Point   | Point   | int32            |                    |                   |
-| Item    | Item    | .Item            |                    |                   |
-| Player  | Player  |                  | ID <br> uint32     | Name <br> string  |
-| Friend  | Friend  | Player           |                    |                   |
-| Monster | Monster | CustomMonster    | Health <br> uint32 | Attack <br> int32 |
-| Boss    | Boss    | CustomMonster    |                    |                   |
+| Name    | Alias   | Type             | Field1             | Field2            | #Note                                               |
+| ------- | ------- | ---------------- | ------------------ | ----------------- | --------------------------------------------------- |
+| Fruit   | Fruit   | enum<.FruitType> |                    |                   | Bound to enum                                       |
+| Point   | Point   | int32            |                    |                   | Bound to scalar                                     |
+| Item    | Item    | .Item            |                    |                   | Bound to global predefined struct                   |
+| Player  | Player  |                  | ID <br> uint32     | Name <br> string  | Bound to local defined struct                       |
+| Friend  | Friend  | Player           |                    |                   | Bound to local predefined in the same level         |
+| Monster | Monster | CustomMonster    | Health <br> uint32 | Attack <br> int32 | Bound to local defined struct with custom type name |
+| Boss    | Boss    | CustomMonster    |                    |                   | Bound to local predefined struct in the same level  |
 
 {{< /sheet >}}
 
