@@ -502,9 +502,9 @@ If you set `Index` appropriately, then tableau loader plugins will generate inde
 Each column type can be:
 
 - **scalar**: numbers, booleans, strings, and bytes.
-- **enum**: e.g.: `enum<.FruiteType>`
+- **enum**: e.g.: `enum<.FruitType>`
 - **incell scalar list**: e.g: `[]int32`
-- **incell enum list**: e.g: `[]enum<.FruiteType>`
+- **incell enum list**: e.g: `[]enum<.FruitType>`
 
 Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 

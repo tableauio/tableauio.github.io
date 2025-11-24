@@ -278,7 +278,7 @@ Use [RFC 3339](https://tools.ietf.org/html/rfc3339) , which is following [ISO 86
 ### Validation
 
 - [x] unique: check map key uniqueness.
-- [x] range: `[left, right]`.
+- [x] range: `[left,right]`.
 - [ ] refer: `XXXConf.ID`. To be supported by [tableauio/loader](https://github.com/tableauio/loader).
 
 ### Error Message

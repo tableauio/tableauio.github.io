@@ -58,9 +58,9 @@ You should include the proto files provided by Tableau and Protocol Buffers:
 
 A fraction represents a part of a whole or, more generally, any number of equal parts. See [wiki: Fraction](https://en.wikipedia.org/wiki/Fraction) for more details.
 
-| Type       | Default | Description                                                                                                                                                                                                                  |
-| ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `fraction` | `0`     | Format:  <br>- `N%`: percentage, e.g.: `10%` <br>- `N‰`: per thounsand, e.g.: `10‰` <br>- `N‱`: per ten thounsand, e.g.: `10‱`<br>- `N/D`: simple fraction, e.g.: `3/4`<br>- `N`: only numerator, e.g.: `3` is same to `3/1` |
+| Type       | Default | Description                                                                                                                                                                                                                                                                                      |
+| ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `fraction` | `0`     | Format:  <br>- `N%`: percentage, e.g.: `10%` <br>- `N‰`: per thounsand, e.g.: `10‰` <br>- `N‱`: per ten thounsand, e.g.: `10‱`<br>- `N/D`: simple fraction, e.g.: `3/4`<br>- `N`: only numerator, e.g.: `3` is same to `3/1`<br>- `N`: floating-point numerator, e.g.: `0.01` is same to `1/100` |
 
 ```protobuf
 message Fraction {

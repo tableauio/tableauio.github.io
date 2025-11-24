@@ -15,7 +15,7 @@ toc: true
 | Option      | Type   | Description                                                                                                                                                                |
 | ----------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `unique`    | bool   | Check field uniqueness. <br> Default: `false`. Specially for map (or KeyedList) key, default will be auto deduced.                                                         |
-| `range`     | string | Format: `"left, right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point. |
+| `range`     | string | Format: `"left,right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point. |
 | `refer`     | string | Format: `"SheetName(SheetAlias).ColumnName"`.<br>Ensure this field is in another sheet's column value space. Multiple refers are comma-separated.                          |
 | `sequence`  | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                        |
 | `default`   | string | Use this default value if cell is empty.                                                                                                                                   |
@@ -55,7 +55,7 @@ If you specify a general scalar field's property `unique` as true, then tableau 
 
 {{< alert icon="⚠️️" context="warning" text="This check option will not be applied if cell data is empty (not present). So if you still want to check even if cell data is empty, then you should set option `present` to true." />}}
 
-Option `range` can be specified as format: `"left, right"` (left and right are both inclusive).
+Option `range` can be specified as format: `"left,right"` (left and right are both inclusive).
 
 Different interpretations of `range`:
 
