@@ -1,0 +1,432 @@
+---
+title: "列表中的结构体"
+description: "Excel 列表中结构体指南。"
+lead: "Excel 列表中结构体的嵌套规范。"
+date: 2022-02-26T08:48:57+08:00
+lastmod: 2022-02-26T08:48:57+08:00
+draft: false
+images: []
+weight: 7202
+toc: true
+---
+
+## 垂直列表中的嵌套
+
+### 垂直列表中的结构体
+
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID           | Name        | PropID      | PropValue    |
+| ------------ | ----------- | ----------- | ------------ |
+| [Item]uint32 | string      | {Prop}int32 | int64        |
+| Item 的 ID   | Item 的名称 | Prop 的 ID  | Prop 的值    |
+| 1            | Apple       | 1           | 10           |
+| 2            | Orange      | 2           | 20           |
+| 3            | Banana      |             |              |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+生成结果：
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated Item item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    Prop prop = 3 [(tableau.field) = {name:"Prop"}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int64 value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "name": "Apple",
+            "prop": {
+                "id": 1,
+                "value": "10"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Orange",
+            "prop": {
+                "id": 2,
+                "value": "20"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Banana",
+            "prop": null
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### 垂直列表中的单元格内结构体
+
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID           | Name        | PropID                     |
+| ------------ | ----------- | -------------------------- |
+| [Item]uint32 | string      | {int32 ID,int64 Value}Prop |
+| Item 的 ID   | Item 的名称 | Prop 的 ID                 |
+| 1            | Apple       | 1,100                      |
+| 2            | Orange      | 2,200                      |
+| 3            | Banana      |                            |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+生成结果：
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated Item item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    Prop prop_id = 3 [(tableau.field) = {name:"PropID" span:SPAN_INNER_CELL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int64 value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemList": [
+        {
+            "id": 1,
+            "name": "Apple",
+            "propId": {
+                "id": 1,
+                "value": "100"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Orange",
+            "propId": {
+                "id": 2,
+                "value": "200"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Banana",
+            "propId": null
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+## 水平列表中的首字段
+
+### 水平列表中的结构体
+
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Reward1ItemID       | Reward1ItemNum | Reward1Name   | Reward2ItemID | Reward2ItemNum | Reward2Name   |
+| ------------------- | -------------- | ------------- | ------------- | -------------- | ------------- |
+| [Reward]{Item}int32 | int32          | string        | int32         | int32          | string        |
+| Item1 的 ID         | Item1 的数量   | 奖励的名称    | Item1 的 ID   | Item1 的数量   | 奖励的名称    |
+| 1                   | 10             | Lotto         | 10            | 100            | Super Lotto   |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+生成结果：
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated Reward reward_list = 1 [(tableau.field) = {name:"Reward" layout:LAYOUT_HORIZONTAL}];
+  message Reward {
+    Item item = 1 [(tableau.field) = {name:"Item"}];
+    message Item {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
+    }
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "rewardList": [
+        {
+            "item": {
+                "id": 1,
+                "num": 10
+            },
+            "name": "Lotto"
+        },
+        {
+            "item": {
+                "id": 10,
+                "num": 100
+            },
+            "name": "Super Lotto"
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### 水平列表中的预定义结构体
+
+*common.proto* 中预定义的 `Item`：
+
+```protobuf
+message Item {
+    int32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 num = 2 [(tableau.field) = {name:"Num"}];
+}
+```
+
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Reward1ItemID        | Reward1ItemNum | Reward1Name   | Reward2ItemID | Reward2ItemNum | Reward2Name   |
+| -------------------- | -------------- | ------------- | ------------- | -------------- | ------------- |
+| [Reward]{.Item}int32 | int32          | string        | int32         | int32          | string        |
+| Item1 的 ID          | Item1 的数量   | 奖励的名称    | Item1 的 ID   | Item1 的数量   | 奖励的名称    |
+| 1                    | 10             | Lotto         | 10            | 100            | Super Lotto   |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+生成结果：
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "common.proto";
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated Reward reward_list = 1 [(tableau.field) = {name:"Reward" layout:LAYOUT_HORIZONTAL}];
+  message Reward {
+    protoconf.Item item = 1 [(tableau.field) = {name:"Item"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "rewardList": [
+        {
+            "item": {
+                "id": 1,
+                "num": 10
+            },
+            "name": "Lotto"
+        },
+        {
+            "item": {
+                "id": 10,
+                "num": 100
+            },
+            "name": "Super Lotto"
+        }
+    ]
+}
+```
+
+{{< /details >}}
+
+### 水平列表中的单元格内结构体
+
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| Reward1Item                       | Reward1Name   | Reward2Item    | Reward2Name   |
+| --------------------------------- | ------------- | -------------- | ------------- |
+| [Reward]{int32 ID, int32 Num}Item | string        | Item           | string        |
+| Reward1 的物品                    | 奖励的名称    | Reward2 的物品 | 奖励的名称    |
+| 1,10                              | Lotto         | 2,20           | Super Lotto   |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+生成结果：
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  repeated Item item_list = 1 [(tableau.field) = {layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    Prop prop_id = 3 [(tableau.field) = {name:"PropID" span:SPAN_INNER_CELL}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int64 value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "rewardList": [
+        {
+            "item": {
+                "id": 1,
+                "num": 10
+            },
+            "name": "Lotto"
+        },
+        {
+            "item": {
+                "id": 2,
+                "num": 20
+            },
+            "name": "Super Lotto"
+        }
+    ]
+}
+```
+
+{{< /details >}}

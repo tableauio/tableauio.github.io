@@ -4,11 +4,11 @@
   identifier = "prologue"
   url = "/docs/prologue/"
 
-[[docs]]
-  name = "帮助"
-  weight = 60
-  identifier = "help"
-  url = "/docs/help/"
+# [[docs]]
+#   name = "帮助"
+#   weight = 60
+#   identifier = "help"
+#   url = "/docs/help/"
 
 [[main]]
   name = "文档"
@@ -17,9 +17,29 @@
   weight = 10
 
 [[main]]
+  name = "教程"
+  weight = 20
+  identifier = "tutorial"
+  url = "/docs/prologue/introduction/"
+
+[[main]]
+  name = "简介"
+  weight = 310
+  identifier = "introduction"
+  url = "/docs/prologue/introduction/"
+  parent = "tutorial"
+
+[[main]]
+  name = "快速开始"
+  weight = 320
+  identifier = "quick-start"
+  url = "/docs/prologue/quick-start/"
+  parent = "tutorial"
+
+[[main]]
   name = "博客"
   url = "/blog/"
-  weight = 20
+  weight = 30
 
 [[social]]
   name = "GitHub"
