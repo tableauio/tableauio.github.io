@@ -793,7 +793,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name  | Alias      | Field1                        | Field2                               | Field3                           |
 | ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
@@ -866,10 +866,9 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
-| WishTarget   | WishTarget note   |                   |                              |                                       |
-| ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
+| WishTarget   | WishTarget note   || ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
 | Name         | Alias             | Field1            | Field2                       | Field3                                |
 | Higher       | WishHigher        | Height<br>int32   |                              |                                       |
 | Richer       | WishRicher        | ID<br>uint32      | Bank<br>map<int32, string>   |                                       |
@@ -1001,7 +1000,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Number | Name  | Alias      | Field1                        | Field2                               | Field3                           |
 | ------ | ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
@@ -1081,7 +1080,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name    | Alias   | Type             | Field1             | Field2            | #Note                                               |
 | ------- | ------- | ---------------- | ------------------ | ----------------- | --------------------------------------------------- |
@@ -1160,7 +1159,7 @@ For example, two worksheets `Target` and `TaskConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target TaskConf "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name  | Alias      | Field1                                                      | Field2                                        | Field3                                                      |
 | ----- | ---------- | ----------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------- |
