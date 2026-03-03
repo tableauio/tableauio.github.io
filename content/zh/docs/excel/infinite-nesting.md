@@ -65,7 +65,7 @@ enum ServerType {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet      | Nested |
 | ---------- | ------ |

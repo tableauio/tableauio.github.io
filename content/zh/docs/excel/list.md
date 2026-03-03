@@ -42,7 +42,7 @@ toc: true
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -108,7 +108,7 @@ enum FruitType {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -164,7 +164,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -236,7 +236,7 @@ message Item {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -296,7 +296,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -368,7 +368,7 @@ message Item {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -436,7 +436,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -506,7 +506,7 @@ enum FruitType {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -567,7 +567,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -642,7 +642,7 @@ message Item {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -703,7 +703,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -776,7 +776,7 @@ message Item {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -849,7 +849,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -917,7 +917,7 @@ enum FruitType {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -977,7 +977,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1049,7 +1049,7 @@ message Item {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1120,7 +1120,7 @@ List 大小由名称行中最大存在的 list 元素数量自动确定。
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1187,7 +1187,7 @@ List 大小由 field property `size` 显式设置。
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1253,7 +1253,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |

@@ -83,7 +83,7 @@ toc: true
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |

@@ -140,7 +140,7 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |

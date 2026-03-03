@@ -30,7 +30,7 @@ toc: true
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -107,7 +107,7 @@ struct 的每个字段类型应为标量类型。
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -209,7 +209,7 @@ message Prop {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -319,7 +319,7 @@ message Property {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -419,7 +419,7 @@ message Item {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -514,7 +514,7 @@ message Vector3 {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -591,7 +591,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet | Mode             |
 | ----- | ---------------- |
@@ -658,7 +658,7 @@ message Item {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet | Mode                   |
 | ----- | ---------------------- |
@@ -718,7 +718,7 @@ message FruitShop {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet | Mode             |
 | ----- | ---------------- |

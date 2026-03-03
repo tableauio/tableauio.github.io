@@ -67,7 +67,7 @@ toc: true
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Alias    | Sep | OrderedMap |
 | ------ | -------- | --- | ---------- |
@@ -97,7 +97,7 @@ toc: true
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Alias       |
 | ------ | ----------- |
@@ -165,7 +165,7 @@ Sheet mode 定义了 tableauc（protogen）解析 sheet 的方式：数据或类
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Transpose |
 | -------- | --------- |
@@ -235,7 +235,7 @@ message HeroConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Merger       |
 | -------- | ------------ |
@@ -344,7 +344,7 @@ message ZoneConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Scatter       |
 | -------- | ------------- |
@@ -462,7 +462,7 @@ message ZoneConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Index                                          |     |
 | -------- | ---------------------------------------------- | --- |
@@ -555,7 +555,7 @@ message ZoneConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | OrderedIndex                                   |     |
 | -------- | ---------------------------------------------- | --- |

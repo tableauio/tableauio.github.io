@@ -19,7 +19,7 @@ toc: true
 - C++: [std::variant](https://en.cppreference.com/w/cpp/utility/variant)
 - Rust: [Defining an Enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html)
 
-Tableau 使用 protobuf `message` 将 [enum](https://protobuf.dev/programming-guides/proto3/#enum) 类型和 [oneof](https://protobuf.dev/programming-guides/proto3/#oneof) 类型捆绑在一起，以实现 **tagged union**。默认情况下，每个枚举值（>0）与 [`oneof`](https://protobuf.dev/programming-guides/proto3/#oneof) 类型中具有相同 tag 编号的字段绑定。
+Tableau 使用 protobuf `message` 将 [enum](https://protobuf.dev/programming-guides/proto3/#enum) 类型和 [oneof](https://protobuf.dev/programming-guides/proto3/#oneof) 类型绑定在一起，以实现 **tagged union**。默认情况下，每个枚举值（>0）与 `oneof` 类型中具有相同 tag 编号的字段绑定。
 
 ## Union 定义
 
@@ -100,7 +100,7 @@ message Target {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -192,7 +192,7 @@ message TaskConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -261,7 +261,7 @@ message TaskConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -320,7 +320,7 @@ message TaskConf {
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name  | Alias      | Field1                        | Field2                               | Field3                           |
 | ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
@@ -330,7 +330,7 @@ message TaskConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -393,10 +393,9 @@ message Target {
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
-| WishTarget   | WishTarget note   |                   |                              |                                       |
-| ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
+| WishTarget   | WishTarget note   || ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
 | Name         | Alias             | Field1            | Field2                       | Field3                                |
 | Higher       | WishHigher        | Height<br>int32   |                              |                                       |
 | Richer       | WishRicher        | ID<br>uint32      | Bank<br>map<int32, string>   |                                       |
@@ -413,7 +412,7 @@ message Target {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode                  |
 | ------ | --------------------- |
@@ -457,7 +456,7 @@ message BattleTarget {
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Number | Name  | Alias      | Field1                        | Field2                               | Field3                           |
 | ------ | ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
@@ -467,7 +466,7 @@ message BattleTarget {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -524,7 +523,7 @@ message Target {
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name    | Alias   | Type             | Field1             | Field2            | #Note                                               |
 | ------- | ------- | ---------------- | ------------------ | ----------------- | --------------------------------------------------- |
@@ -538,7 +537,7 @@ message Target {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -603,7 +602,7 @@ message Target {
 
 {{< spreadsheet "HelloWorld.xlsx" Target TaskConf "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name  | Alias      | Field1                                                      | Field2                                        | Field3                                                      |
 | ----- | ---------- | ----------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------- |
@@ -631,13 +630,12 @@ message Target {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
 | Target | MODE_UNION_TYPE |
 | Task   |                 |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}

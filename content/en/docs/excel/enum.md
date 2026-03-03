@@ -41,7 +41,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -123,7 +123,7 @@ For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Mode           |
 | -------- | -------------- |
@@ -165,28 +165,28 @@ For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< sheet >}}
 
-| CatType              | CatType note              |            |
-| -------------------- | ------------------------- | ---------- |
-| Number               | Name                      | Alias      |
-| 1                    | CAT_TYPE_RAGDOLL          | Ragdoll    |
-| 2                    | CAT_TYPE_PERSIAN          | Persian    |
-| 3                    | CAT_TYPE_SPHYNX           | Sphynx     |
-|                      |                           |            |
-| DogType              | DogType note              |            |
-| Number               | Name                      | Alias      |
-| 1                    | DOG_TYPE_POODLE           | Poodle     |
-| 2                    | DOG_TYPE_BULLDOG          | Bulldog    |
-| 3                    | DOG_TYPE_DACHSHUND        | Dachshund  |
-|                      |                           |            |
-| BirdType             | BirdType note             |            |
-| Number               | Name                      | Alias      |
-| 1                    | CANARY                    | Canary     |
-| 2                    | WOODPECKER                | Woodpecker |
-| 3                    | OWL                       | Owl        |
+| CatType  | CatType note       |            |
+| -------- | ------------------ | ---------- |
+| Number   | Name               | Alias      |
+| 1        | CAT_TYPE_RAGDOLL   | Ragdoll    |
+| 2        | CAT_TYPE_PERSIAN   | Persian    |
+| 3        | CAT_TYPE_SPHYNX    | Sphynx     |
+|          |                    |            |
+| DogType  | DogType note       |            |
+| Number   | Name               | Alias      |
+| 1        | DOG_TYPE_POODLE    | Poodle     |
+| 2        | DOG_TYPE_BULLDOG   | Bulldog    |
+| 3        | DOG_TYPE_DACHSHUND | Dachshund  |
+|          |                    |            |
+| BirdType | BirdType note      |            |
+| Number   | Name               | Alias      |
+| 1        | CANARY             | Canary     |
+| 2        | WOODPECKER         | Woodpecker |
+| 3        | OWL                | Owl        |
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Mode                 |
 | -------- | -------------------- |
@@ -258,7 +258,7 @@ For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Mode           |
 | -------- | -------------- |
@@ -315,7 +315,7 @@ For example, two worksheets `ItemType` and `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Mode           |
 | -------- | -------------- |

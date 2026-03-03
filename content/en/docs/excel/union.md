@@ -19,7 +19,7 @@ In protoconf, `union` type means the **tagged union**: a data structure used to 
 - C++: [std::variant](https://en.cppreference.com/w/cpp/utility/variant).
 - Rust: [Defining an Enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html).
 
-Tableau use protobuf `message` to bundle [enum](https://protobuf.dev/programming-guides/proto3/#enum) and [oneof](https://protobuf.dev/programming-guides/proto3/#oneof) together to implement **tagged union**. By default, each enum value (>0) is bound to a field with the same tag number of [`oneof`](https://protobuf.dev/programming-guides/proto3/#oneof) type.
+Tableau use protobuf `message` to bundle [enum](https://protobuf.dev/programming-guides/proto3/#enum) and [oneof](https://protobuf.dev/programming-guides/proto3/#oneof) together to implement **tagged union**. By default, each enum value (>0) is bound to a field with the same tag number of `oneof` type.
 
 ## Union definition
 
@@ -100,7 +100,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -330,7 +330,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -583,7 +583,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -793,7 +793,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name  | Alias      | Field1                        | Field2                               | Field3                           |
 | ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
@@ -803,7 +803,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -866,10 +866,9 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
-| WishTarget   | WishTarget note   |                   |                              |                                       |
-| ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
+| WishTarget   | WishTarget note   || ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
 | Name         | Alias             | Field1            | Field2                       | Field3                                |
 | Higher       | WishHigher        | Height<br>int32   |                              |                                       |
 | Richer       | WishRicher        | ID<br>uint32      | Bank<br>map<int32, string>   |                                       |
@@ -886,7 +885,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode                  |
 | ------ | --------------------- |
@@ -1001,7 +1000,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Number | Name  | Alias      | Field1                        | Field2                               | Field3                           |
 | ------ | ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
@@ -1011,7 +1010,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -1081,7 +1080,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name    | Alias   | Type             | Field1             | Field2            | #Note                                               |
 | ------- | ------- | ---------------- | ------------------ | ----------------- | --------------------------------------------------- |
@@ -1095,7 +1094,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -1160,7 +1159,7 @@ For example, two worksheets `Target` and `TaskConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Target TaskConf "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name  | Alias      | Field1                                                      | Field2                                        | Field3                                                      |
 | ----- | ---------- | ----------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------- |
@@ -1188,13 +1187,12 @@ For example, two worksheets `Target` and `TaskConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
 | Target | MODE_UNION_TYPE |
 | Task   |                 |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}

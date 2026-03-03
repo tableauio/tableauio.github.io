@@ -30,7 +30,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -94,7 +94,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -158,7 +158,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -222,7 +222,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -286,7 +286,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -369,7 +369,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -472,7 +472,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |

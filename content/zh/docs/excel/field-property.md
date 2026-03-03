@@ -138,7 +138,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |

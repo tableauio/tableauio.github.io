@@ -68,7 +68,7 @@ So the metasheet `@TABLEAU` in *HelloWorld.xlsx* should be configured as:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Alias    | Sep | OrderedMap |
 | ------ | -------- | --- | ---------- |
@@ -98,7 +98,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Alias       |
 | ------ | ----------- |
@@ -166,7 +166,7 @@ A worksheet `HeroConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Transpose |
 | -------- | --------- |
@@ -241,7 +241,7 @@ The first (main) workbook: a worksheet `ZoneConf` in *MergerMain.xlsx* (with `@T
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Merger       |
 | -------- | ------------ |
@@ -363,7 +363,7 @@ The first (main) workbook: a worksheet `ZoneConf` in *Scatter1.xlsx* (with `@TAB
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Scatter       |
 | -------- | ------------- |
@@ -537,7 +537,7 @@ Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Index                                          |     |
 | -------- | ---------------------------------------------- | --- |
@@ -638,7 +638,7 @@ Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | OrderedIndex                                   |     |
 | -------- | ---------------------------------------------- | --- |
