@@ -1,18 +1,18 @@
 ---
-title: "Tableauc config"
-description: "Tableauc config details"
+title: "Tableauc 配置"
+description: "Tableauc 配置详解"
 lead: ""
 date: 2020-11-16T13:59:39+08:00
 lastmod: 2020-11-16T13:59:39+08:00
 draft: false
 images: []
-weight: 9801
+weight: 9903
 toc: true
 ---
 
 ## config.yaml
 
-Create a file named *config.yaml*, and copy configurations below to it:
+创建名为 *config.yaml* 的文件，并将以下配置复制到其中：
 
 ```yaml
 # locale BCP 47 language tags: en, zh.
@@ -190,30 +190,30 @@ conf:
     dryRun: ""
 ```
 
-### proto.input.header.seq
+### proto.input.header.sep
 
-Default: `,`
+默认值：`,`
 
-**Global-level** separator for separating:
+**全局级别**的分隔符，用于分隔：
 
-- incell list elements (scalar or struct).
-- incell map items.
+- in-cell list 的元素（标量或 struct）。
+- in-cell map 的条目。
 
-**Sheet-level** and **field-level** separator options are also supported:
+同时也支持 **sheet 级别**和**字段级别**的分隔符选项：
 
-- [Sheet-level separator in metasheet](../../excel/metasheet/#option-sep)
-- [Field-level separator in field property](../../excel/field-property/#option-sep)
+- [Metasheet 中的 sheet 级别分隔符](../../excel/metasheet/#option-sep)
+- [字段属性中的字段级别分隔符](../../excel/field-property/#option-sep)
 
-### proto.input.header.subseq
+### proto.input.header.subsep
 
-Default: `:`
+默认值：`:`
 
-Global-level subseparator for separating:
+全局级别的子分隔符，用于分隔：
 
-- key-value pair of each incell map item.
-- struct fields of each incell struct list element.
+- in-cell map 每个条目的 key-value 对。
+- in-cell struct list 每个元素的 struct 字段。
 
-**Sheet-level** and **field-level** subseparator options are also supported:
+同时也支持 **sheet 级别**和**字段级别**的子分隔符选项：
 
-- [Sheet-level subseparator in metasheet](../../excel/metasheet/#option-subsep)
-- [Field-level subseparator in field property](../../excel/field-property/#option-subsep)
+- [Metasheet 中的 sheet 级别子分隔符](../../excel/metasheet/#option-subsep)
+- [字段属性中的字段级别子分隔符](../../excel/field-property/#option-subsep)
