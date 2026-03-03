@@ -100,7 +100,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -330,7 +330,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -583,7 +583,7 @@ A worksheet `TaskConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -803,7 +803,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -886,7 +886,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode                  |
 | ------ | --------------------- |
@@ -1011,7 +1011,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -1095,7 +1095,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -1188,13 +1188,14 @@ For example, two worksheets `Target` and `TaskConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
+
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
 | Target | MODE_UNION_TYPE |
 | Task   |                 |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}

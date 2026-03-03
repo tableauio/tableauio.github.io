@@ -41,7 +41,7 @@ enum FruitType {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -114,7 +114,7 @@ message ItemConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Mode           |
 | -------- | -------------- |
@@ -177,7 +177,7 @@ enum ItemType {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Mode                 |
 | -------- | -------------------- |
@@ -249,7 +249,7 @@ enum BirdType {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Mode           |
 | -------- | -------------- |
@@ -306,7 +306,7 @@ enum ItemType {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet    | Mode           |
 | -------- | -------------- |

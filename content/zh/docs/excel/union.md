@@ -100,7 +100,7 @@ message Target {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -192,7 +192,7 @@ message TaskConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -261,7 +261,7 @@ message TaskConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -330,7 +330,7 @@ message TaskConf {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -413,7 +413,7 @@ message Target {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode                  |
 | ------ | --------------------- |
@@ -467,7 +467,7 @@ message BattleTarget {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -538,7 +538,7 @@ message Target {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
@@ -631,13 +631,14 @@ message Target {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
+
+{{< sheet colored1 >}}
 
 | Sheet  | Mode            |
 | ------ | --------------- |
 | Target | MODE_UNION_TYPE |
 | Task   |                 |
-
 {{< /sheet >}}
 
 {{< /spreadsheet >}}

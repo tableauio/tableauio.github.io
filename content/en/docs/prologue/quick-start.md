@@ -91,7 +91,7 @@ Add **HelloWorld.xlsx** with two sheets:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |

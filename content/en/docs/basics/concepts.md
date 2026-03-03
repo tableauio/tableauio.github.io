@@ -83,7 +83,7 @@ A workbook(*HelloWorld.xlsx*) with two data worksheets(`ItemConf` and `ActivityC
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |

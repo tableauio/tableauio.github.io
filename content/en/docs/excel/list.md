@@ -20,7 +20,7 @@ Overview of horizontal list syntax:
 | List element type                                                     | Syntax example                  |
 | --------------------------------------------------------------------- | ------------------------------- |
 | [scalar](#horizontal-scalar-list)                                     | `[]uint32`                      |
-| [enum](#horizontal-enum-list)                                         | `[]enum<.FruitType>`           |
+| [enum](#horizontal-enum-list)                                         | `[]enum<.FruitType>`            |
 | [struct](#horizontal-struct-list)                                     | `[Item]uint32`                  |
 | [predefined struct](#horizontal-predefined-struct-list)               | `[.Item]uint32`                 |
 | [incell struct](#horizontal-incell-struct-list)                       | `[]{uint32 ID, string Num}Item` |
@@ -43,7 +43,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -113,7 +113,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -173,7 +173,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -254,7 +254,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -323,7 +323,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -404,7 +404,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -485,7 +485,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -562,7 +562,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -626,7 +626,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -713,7 +713,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -783,7 +783,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -865,7 +865,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -951,7 +951,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1026,7 +1026,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1090,7 +1090,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1171,7 +1171,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1251,7 +1251,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*.
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1327,7 +1327,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |
@@ -1399,7 +1399,7 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 |     |     |     |
 | --- | --- | --- |

@@ -49,7 +49,7 @@ enum ServerType {
 {{< sheet colored >}}
 
 | ServerType                     | ServerConfType          | ServerConfConditionType | ServerConfConditionValue |
-|--------------------------------|-------------------------|-------------------------|--------------------------|
+| ------------------------------ | ----------------------- | ----------------------- | ------------------------ |
 | map<enum<.ServerType>, Server> | [Conf]<enum<.ConfType>> | [Condition]<int32>      | int32                    |
 | Server name                    | Sheet name              | Condition type          | Condition value          |
 |                                |                         |                         |                          |
@@ -65,10 +65,10 @@ enum ServerType {
 
 {{< /sheet >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Sheet      | Nested |
-|------------|--------|
+| ---------- | ------ |
 | LoaderConf | true   |
 
 {{< /sheet >}}
