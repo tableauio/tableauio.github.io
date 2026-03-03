@@ -1,0 +1,219 @@
+---
+title: "Tableauc 配置"
+description: "Tableauc 配置详解"
+lead: ""
+date: 2020-11-16T13:59:39+08:00
+lastmod: 2020-11-16T13:59:39+08:00
+draft: false
+images: []
+weight: 9801
+toc: true
+---
+
+## config.yaml
+
+创建名为 *config.yaml* 的文件，并将以下配置复制到其中：
+
+```yaml
+# locale BCP 47 language tags: en, zh.
+lang: en
+# Location represents the collection of time offsets in use in a geographical area.
+#  - If the name is "" or "UTC", LoadLocation returns UTC.
+#  - If the name is "Local", LoadLocation returns Local.
+#  - Otherwise, the name is taken to be a location name corresponding to a file in the
+#    IANA Time Zone database, such as "America/New_York", "Asia/Shanghai", and so on.
+#
+# See https://go.dev/src/time/zoneinfo_abbrs_windows.go.
+locationName: Local
+# Configure your custom acronyms. Out of the box, "ID" -> "id" is auto configured.
+# For example, if you configure K8s -> k8s, then the field name in PascalCase "InK8s"
+# will be converted to snake_case "in_k8s" but not "in_k_8_s".
+acronyms: {}
+# Log options.
+log:
+  # Log mode: SIMPLE, FULL.
+  mode: SIMPLE
+  # Log level: DEBUG, INFO, WARN, ERROR.
+  level: INFO
+  # Log filename: set this if you want to write log messages to files.
+  filename: ""
+  # Log sink: CONSOLE, FILE, and MULTI.
+  sink: CONSOLE
+# Options for generating proto files.
+proto:
+  input:
+    # Header options for worksheet and workbook.
+    header:
+      # Exact row number of column name definition at a worksheet.
+      namerow: 1
+      # Exact row number of column type definition at a worksheet.
+      typerow: 2
+      # Exact row number of column note at a worksheet.
+      noterow: 3
+      # Start row number of data at a worksheet.
+      datarow: 4
+      # The line number of column name definition in a cell.
+      # Value 0 means the whole cell.
+      nameline: 0
+      # The line number of column type definition in a cell.
+      # Value 0 means the whole cell.
+      typeline: 0
+      # The line number of column note definition in a cell.
+      # Value 0 means the whole cell.
+      noteline: 0
+      # Separator for separating:
+      #  - incell list elements (scalar or struct).
+      #  - incell map items.
+      #
+      # Default: ","
+      sep: ""
+      # Subseparator for separating:
+      #  - key-value pair of each incell map item.
+      #  - struct fields of each incell struct list element.
+      #
+      # Default: ":"
+      subsep: ""
+    # The proto paths are used to search for dependencies that are referenced in import
+    # statements in proto source files. If no import paths are provided then
+    # "." (current directory) is assumed to be the only import path.
+    protoPaths: [.]
+    # The enums and messages in protoFiles can be used in Excel/CSV/XML/YAML as
+    # common types.
+    protoFiles: []
+    # Specify input file formats to be parsed. It will recognize all formats
+    # if not set.
+    # Available formats: "xlsx", "csv", "xml", and "yaml".
+    formats: [xlsx]
+    # Specify only these subdirs (relative to input dir) to be processed.
+    subdirs: []
+    # Specify rewrite subdir path (relative to input dir).
+    subdirRewrites: {}
+    # Whether to follow the symbolic links when traversing directories recursively.
+    # WARN: be careful to use this option, it may lead to infinite loop.
+    followSymlink: false
+    # Specify metasheet name.
+    metasheetName: "@TABLEAU"
+    # Specify the first-pass mode to parse predefined types when generate
+    # specified config files. Under the hood, the parsed predefined types will
+    # be recognized and used in the second-pass.
+    #
+    # The first-pass mode can be:
+    #
+    #  - "": default mode, parse based on specified config files.
+    #  - "normal": parse based on all config files.
+    #  - "advanced": parse based on all previous generated proto files.
+    firstPassMode: ""
+    # Specify the name pattern for messager(regexp supported). If the generated
+    # messager name does not match this pattern, an error will be reported.
+    # Example: "Conf$"
+    messagerPattern: ""
+  output:
+    # Specify subdir (relative to output dir) for generated proto files.
+    subdir: ""
+    # Dir separator `/` or `\`  in filename is replaced by "__".
+    filenameWithSubdirPrefix: false
+    # Append suffix to each generated proto filename.
+    filenameSuffix: ""
+    # Specify proto file options.
+    # Example: go_package, csharp_namespace...
+    fileOptions: {}
+    # Whether to prepend prefix "UPPER_SNAKE_CASE of EnumType" to each enum value name.
+    #
+    # If set, the enum value name is prepended with "ENUM_TYPE_". For example:
+    # enum ItemType has a value "EQUIP", then converted to "ITEM_TYPE_EQUIP".
+    # If the enum value name is already prefixed with "ENUM_TYPE_", then it will
+    # not be prefixed again.
+    enumValueWithPrefix: false
+# Options for generating conf files.
+conf:
+  input:
+    # The proto paths are used to search for dependencies that are referenced in import
+    # statements in proto source files. If no import paths are provided then
+    # "." (current directory) is assumed to be the only import path.
+    protoPaths: [.]
+    # The files to be parsed to generate configurations.
+    #
+    # NOTE:
+    #  - Recognize "*.proto" pattern if not set.
+    #  - Glob patterns is supported, which can specify sets
+    #    of filenames with wildcard characters.
+    protoFiles: ["*.proto"]
+    # The files not to be parsed to generate configurations.
+    #
+    # NOTE: Glob patterns is supported, which can specify sets
+    # of filenames with wildcard characters.
+    excludedProtoFiles: []
+    # Specify input file formats to be parsed. It will recognize all formats
+    # if not set.
+    # Available formats: "xlsx", "csv", "xml", and "yaml".
+    formats: [xlsx]
+    # Specify only these subdirs (relative to workbook name option in proto file).
+    subdirs: []
+    # Specify rewrite subdir path (relative to workbook name option in proto file).
+    subdirRewrites: {}
+  output:
+    # Specify subdir (relative to output dir) for generated configuration files.
+    subdir: ""
+    # Specify generated conf file formats. It will generate all formats if not set.
+    # Refer: https://protobuf.dev/programming-guides/techniques/#suffixes
+    # Available formats: "json", "binpb", and "txtpb".
+    formats: [json]
+    # Whether to output pretty format of JSON, with multiline and indent.
+    pretty: true
+    # EmitUnpopulated specifies whether to emit unpopulated fields. It does not
+    # emit unpopulated oneof fields or unpopulated extension fields.
+    # The JSON value emitted for unpopulated fields are as follows:
+    #  ╔═══════╤════════════════════════════╗
+    #  ║ JSON  │ Protobuf field             ║
+    #  ╠═══════╪════════════════════════════╣
+    #  ║ false │ proto3 boolean fields      ║
+    #  ║ 0     │ proto3 numeric fields      ║
+    #  ║ ""    │ proto3 string/bytes fields ║
+    #  ║ null  │ proto2 scalar fields       ║
+    #  ║ null  │ message fields             ║
+    #  ║ []    │ list fields                ║
+    #  ║ {}    │ map fields                 ║
+    #  ╚═══════╧════════════════════════════╝
+    #
+    # NOTE: worksheet with FieldPresence set as true ignore this option.
+    #
+    # Refer: https://github.com/protocolbuffers/protobuf/blob/main/docs/field_presence.md
+    emitUnpopulated: false
+    # Whether to emit timestamp in string format with timezones (as indicated by an offset).
+    emitTimezones: false
+    # Whether to use proto field name instead of lowerCamelCase name in JSON field names.
+    useProtoNames: false
+    # Whether to emit enum values as numbers.
+    useEnumNumbers: false
+    # Specify dry run mode:
+    #  - "patch": if sheet options are specified: Patch (PATCH_MERGE) and Scatter
+    dryRun: ""
+```
+
+### proto.input.header.sep
+
+默认值：`,`
+
+**全局级别**的分隔符，用于分隔：
+
+- in-cell list 的元素（标量或 struct）。
+- in-cell map 的条目。
+
+同时也支持 **sheet 级别**和**字段级别**的分隔符选项：
+
+- [Metasheet 中的 sheet 级别分隔符](../../excel/metasheet/#option-sep)
+- [字段属性中的字段级别分隔符](../../excel/field-property/#option-sep)
+
+### proto.input.header.subsep
+
+默认值：`:`
+
+全局级别的子分隔符，用于分隔：
+
+- in-cell map 每个条目的 key-value 对。
+- in-cell struct list 每个元素的 struct 字段。
+
+同时也支持 **sheet 级别**和**字段级别**的子分隔符选项：
+
+- [Metasheet 中的 sheet 级别子分隔符](../../excel/metasheet/#option-subsep)
+- [字段属性中的字段级别子分隔符](../../excel/field-property/#option-subsep)
