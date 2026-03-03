@@ -1,7 +1,7 @@
 ---
 title: "Wellknown types"
 description: "Wellknown types 使用指南。"
-lead: "本文演示 wellknown types 的各种特性。"
+lead: "本文说明 wellknown types 的各种特性。"
 date: 2024-09-24T14:00:00+08:00
 lastmod: 2024-09-24T14:00:00+08:00
 draft: false

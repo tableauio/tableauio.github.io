@@ -32,7 +32,7 @@ enum FruitType {
 }
 ```
 
-以下示例演示如何使用预定义枚举类型：
+以下示例说明如何使用预定义枚举类型：
 
 - Excel/CSV：[使用预定义枚举类型](../../excel/enum/#use-predefined-enum-type)。
 - XML：[使用预定义枚举类型](../../xml/enum/#use-predefined-enum-type)
@@ -49,7 +49,7 @@ message Prop {
 }
 ```
 
-以下示例演示如何使用预定义 struct 类型：
+以下示例说明如何使用预定义 struct 类型：
 
 - Excel/CSV
   - `struct`：[Predefined-struct](../../excel/struct/#predefined-struct)
@@ -127,7 +127,7 @@ message Target {
 }
 ```
 
-以下示例演示如何使用预定义 union 类型：
+以下示例说明如何使用预定义 union 类型：
 
 - Excel/CSV
   - `list`：[Predefined union in list](../../excel/union/#predefined-union-in-list)

@@ -1,7 +1,7 @@
 ---
 title: "Map"
 description: "Excel map 使用指南。"
-lead: "本文演示 Excel map 类型的各种特性。"
+lead: "本文说明 Excel map 类型的各种特性。"
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2022-02-26T13:59:39+08:00
 draft: false
