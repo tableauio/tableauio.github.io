@@ -517,6 +517,55 @@ message ZoneConf {
 - [C++: Index API](../../api/loader/cpp/#orderedindex)
 - [Go: Index API](../../api/loader/go/#orderedindex)
 
+每列类型可以是：
+
+- **scalar**：数值、布尔值、字符串和 bytes。
+- **enum**：例如：`enum<.FruitType>`
+- **incell scalar list**：例如：`[]int32`
+- **incell enum list**：例如：`[]enum<.FruitType>`
+
+示例：*HelloWorld.xlsx* 中的两个 worksheet *ItemConf* 和 *ShopConf*：
+
+- *ItemConf*：对 **map value** 同一 struct 的列建立 ordered index。
+- *ShopConf*：对 **list element** 同一 struct 的列建立 ordered index。
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID               | Name        | Desc                          |
+| ---------------- | ----------- | ----------------------------- |
+| map<int32, Item> | string      | string                        |
+| Item's ID        | Item's name | Item's desc                   |
+| 1                | Apple       | A kind of delicious fruit.    |
+| 2                | Orange      | A kind of sour fruit.         |
+| 3                | Banana      | A kind of calorie-rich fruit. |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID          | Type        | Desc          |
+| ----------- | ----------- | ------------- |
+| [Shop]int32 | int32       | string        |
+| Shop's ID   | Shop's type | Shop's desc   |
+| 1           | 1           | Shoes shop.   |
+| 2           | 1           | T-Shirt shop. |
+| 3           | 2           | Fruite shop.  |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet    | OrderedIndex                                   |     |
+| -------- | ---------------------------------------------- | --- |
+| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem |     |
+| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
 ### 单列 OrderedIndex
 
 格式：`Column<ColumnX,ColumnY,...>@IndexName`。

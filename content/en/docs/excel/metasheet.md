@@ -563,7 +563,7 @@ Examples:
 - `ID`
 - `ID@Item`
 - `ID<ID>@Item`: result array by ID.
-- `ID<Type,Priority>@Item`: result array by Type and Priority.
+- `ID<Type,Priority>@Item`: sort result array by Type and Priority.
 - `ID, Name@AwardItem`
 - `ID@Item, Name@AwardItem`
 
@@ -584,7 +584,7 @@ Examples:
 - `(ID,Name)`: index name not set, then determined by parent struct type name.
 - `(ID,Name)@AwardItem`
 - `(ID,Name)<ID>`: result array by ID.
-- `(ID,Type)<Type,Priority>@Item`: result array by Type and Priority.
+- `(ID,Type)<Type,Priority>@Item`: sort result array by Type and Priority.
 - `ID@Item, (ID,Name)@AwardItem`: one single-column index and one multi-column index.
 
 ## Option `OrderedIndex`
@@ -599,6 +599,55 @@ If you set `OrderedIndex` appropriately, then tableau loader plugins will genera
 
 - [C++: Index API](../../api/loader/cpp/#orderedindex)
 - [Go: Index API](../../api/loader/go/#orderedindex)
+
+Each column type can be:
+
+- **scalar**: numbers, booleans, strings, and bytes.
+- **enum**: e.g.: `enum<.FruitType>`
+- **incell scalar list**: e.g: `[]int32`
+- **incell enum list**: e.g: `[]enum<.FruitType>`
+
+Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
+
+- *ItemConf*: ordered index on columns of the same struct as **map value**.
+- *ShopConf*: ordered index on columns of the same struct as **list element**.
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID               | Name        | Desc                          |
+| ---------------- | ----------- | ----------------------------- |
+| map<int32, Item> | string      | string                        |
+| Item's ID        | Item's name | Item's desc                   |
+| 1                | Apple       | A kind of delicious fruit.    |
+| 2                | Orange      | A kind of sour fruit.         |
+| 3                | Banana      | A kind of calorie-rich fruit. |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID          | Type        | Desc          |
+| ----------- | ----------- | ------------- |
+| [Shop]int32 | int32       | string        |
+| Shop's ID   | Shop's type | Shop's desc   |
+| 1           | 1           | Shoes shop.   |
+| 2           | 1           | T-Shirt shop. |
+| 3           | 2           | Fruite shop.  |
+
+{{< /sheet >}}
+
+{{< sheet >}}
+
+| Sheet    | OrderedIndex                                   |     |
+| -------- | ---------------------------------------------- | --- |
+| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem |     |
+| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 ### Single-column OrderedIndex
 
