@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>基础 on</title><link>https://tableauio.github.io/zh/docs/basics/</link><description>Recent content in 基础 on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/basics/index.xml" rel="self" type="application/rss+xml"/><item><title>核心概念</title><link>https://tableauio.github.io/zh/docs/basics/concepts/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/basics/concepts/</guid><description>&lt;h2 id="术语">术语 &lt;a href="#%e6%9c%af%e8%af%ad" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="基础术语">基础术语 &lt;a href="#%e5%9f%ba%e7%a1%80%e6%9c%af%e8%af%ad" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped table-hover">
+&lt;thead>
+&lt;tr>
+&lt;th>术语&lt;/th>
+&lt;th>定义&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Workbook&lt;/code>&lt;/td>
+&lt;td>一个 Excel 文件；或一组以相同前缀命名、用 &lt;code>#&lt;/code> 分隔的 CSV 文件；或一个 XML 文件；或一个 YAML 文件。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Worksheet&lt;/code>&lt;/td>
+&lt;td>Excel 文件中的一个 sheet；或一个 CSV 文件；或 XML 文件的根节点；或 YAML 文件中的一个文档。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Metasheet&lt;/code>&lt;/td>
+&lt;td>名为 &lt;code>@TABLEAU&lt;/code> 的特殊 worksheet，用于指定 tableau 解析器选项。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Row&lt;/code>&lt;/td>
+&lt;td>sheet 中的一行。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Column&lt;/code>&lt;/td>
+&lt;td>sheet 中的一列。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Cell&lt;/code>&lt;/td>
+&lt;td>行与列的交叉点（单元格）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>In-cell&lt;/code>&lt;/td>
+&lt;td>单元格内部。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Cross-cell&lt;/code>&lt;/td>
+&lt;td>一行或一列中连续的多个单元格。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="worksheet-相关术语">Worksheet 相关术语 &lt;a href="#worksheet-%e7%9b%b8%e5%85%b3%e6%9c%af%e8%af%ad" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped table-hover">
+&lt;thead>
+&lt;tr>
+&lt;th>术语&lt;/th>
+&lt;th>定义&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Namerow&lt;/code>&lt;/td>
+&lt;td>worksheet 中列名定义所在的行号。&lt;br>⚠️ 注意：同一 worksheet 中每个列名必须唯一！&lt;br>默认值：&lt;code>1&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Typerow&lt;/code>&lt;/td>
+&lt;td>worksheet 中列类型定义所在的行号。&lt;br>默认值：&lt;code>2&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Noterow&lt;/code>&lt;/td>
+&lt;td>worksheet 中列注释所在的行号。&lt;br>默认值：&lt;code>3&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Datarow&lt;/code>&lt;/td>
+&lt;td>worksheet 中数据起始行号。&lt;br>默认值：&lt;code>4&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Nameline&lt;/code>&lt;/td>
+&lt;td>单元格内列名定义所在的行号，&lt;code>0&lt;/code> 表示整个单元格。&lt;br>默认值：&lt;code>0&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Typeline&lt;/code>&lt;/td>
+&lt;td>单元格内列类型定义所在的行号，&lt;code>0&lt;/code> 表示整个单元格。&lt;br>默认值：&lt;code>0&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Sep&lt;/code>&lt;/td>
+&lt;td>分隔符，用于：&lt;br> 1. 分隔 in-cell list 的元素。&lt;br> 2. 分隔 in-cell map 的条目。&lt;br>默认值：&lt;code>,&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Subsep&lt;/code>&lt;/td>
+&lt;td>子分隔符，用于分隔 in-cell map 的 Key-Value 对。&lt;br>默认值：&lt;code>:&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Nested&lt;/code>&lt;/td>
+&lt;td>&lt;strong>namerow&lt;/strong> 的嵌套命名方式。&lt;br>默认值：&lt;code>false&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Layout&lt;/code>&lt;/td>
+&lt;td>Incell（单元格内）、vertical（跨单元格纵向）或 horizontal（跨单元格横向）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Transpose&lt;/code>&lt;/td>
+&lt;td>对指定 sheet 进行行列转置。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="与-protoconf-的映射关系">与 Protoconf 的映射关系 &lt;a href="#%e4%b8%8e-protoconf-%e7%9a%84%e6%98%a0%e5%b0%84%e5%85%b3%e7%b3%bb" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>术语&lt;/th>
+&lt;th>Protoconf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Workbook&lt;/code>&lt;/td>
+&lt;td>一个 protoconf（&lt;code>.proto&lt;/code>）文件。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Worksheet&lt;/code>&lt;/td>
+&lt;td>protoconf 文件中的一个顶层 &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3#simple">message&lt;/a>（名为 &lt;code>@TABLEAU&lt;/code> 的 metasheet 除外）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>column&lt;/code>&lt;/td>
+&lt;td>&lt;a href="https://developers.google.com/protocol-buffers/docs/proto3#simple">message&lt;/a> 中的一个字段。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="简单映射示例">简单映射示例 &lt;a href="#%e7%ae%80%e5%8d%95%e6%98%a0%e5%b0%84%e7%a4%ba%e4%be%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="输入一个-excel-文件">输入：一个 Excel 文件 &lt;a href="#%e8%be%93%e5%85%a5%e4%b8%80%e4%b8%aa-excel-%e6%96%87%e4%bb%b6" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>一个工作簿（&lt;em>HelloWorld.xlsx&lt;/em>），包含两个数据 worksheet（&lt;code>ItemConf&lt;/code> 和 &lt;code>ActivityConf&lt;/code>）以及一个空的 tableau metasheet（&lt;code>@TABLEAU&lt;/code>）。&lt;/p></description></item><item><title>命名规范</title><link>https://tableauio.github.io/zh/docs/basics/naming-convention/</link><pubDate>Sat, 22 Jun 2024 23:40:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/basics/naming-convention/</guid><description>&lt;p>&lt;strong>workbook&lt;/strong>、&lt;strong>worksheet&lt;/strong>、&lt;strong>column&lt;/strong> 和 &lt;strong>struct&lt;/strong>（message）的所有名称，均应使用 &lt;code>PascalCase&lt;/code>（首字母大写）命名规范。tableau 解析器会将 &lt;strong>worksheet&lt;/strong> 名称作为 protoconf 的 message 名称，并自动将 &lt;code>PascalCase&lt;/code> 转换为 &lt;code>snake_case&lt;/code>，用于 protobuf 的 &lt;a href="https://protobuf.dev/programming-guides/style/#message-field-names">message 字段名&lt;/a>和文件名，以符合 &lt;a href="https://protobuf.dev/programming-guides/style">Protocol Buffers 风格指南&lt;/a>。&lt;/p>
+&lt;h2 id="枚举enums">枚举（Enums） &lt;a href="#%e6%9e%9a%e4%b8%beenums" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>枚举类型名使用 &lt;code>PascalCase&lt;/code>（首字母大写），枚举值名使用 &lt;code>CAPITALS_WITH_UNDERSCORES&lt;/code>（全大写加下划线）：&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">enum FooBar {
+FOO_BAR_UNSPECIFIED = 0;
+FOO_BAR_FIRST_VALUE = 1;
+FOO_BAR_SECOND_VALUE = 2;
+}
+&lt;/code>&lt;/pre>
+&lt;p>参考 &lt;a href="https://protobuf.dev/programming-guides/style/#enums">Protobuf 风格：枚举&lt;/a>。&lt;/p>
+&lt;h2 id="示例">示例 &lt;a href="#%e7%a4%ba%e4%be%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>名称&lt;/th>
+&lt;th>风格&lt;/th>
+&lt;th>示例&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>workbook&lt;/td>
+&lt;td>&lt;code>PascalCase&lt;/code>&lt;/td>
+&lt;td>HelloWorld.xlsx&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>worksheet&lt;/td>
+&lt;td>&lt;code>PascalCase&lt;/code>&lt;/td>
+&lt;td>HelloWorld&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>struct (message)&lt;/td>
+&lt;td>&lt;code>PascalCase&lt;/code>&lt;/td>
+&lt;td>HelloWorld&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>field (column)&lt;/td>
+&lt;td>&lt;code>PascalCase&lt;/code>&lt;/td>
+&lt;td>HelloWorld&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>语法与类型</title><link>https://tableauio.github.io/zh/docs/basics/grammar-and-types/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/basics/grammar-and-types/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Tableau 的大部分语法和类型借鉴自 &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers (proto3)&lt;/a> 和 &lt;a href="https://go.dev/">Golang&lt;/a>。&lt;/p>
+&lt;h2 id="标量类型scalar-types">标量类型（Scalar types） &lt;a href="#%e6%a0%87%e9%87%8f%e7%b1%bb%e5%9e%8bscalar-types" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;blockquote>
+&lt;p>详细说明请参考 &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3#scalar">Protocol Buffers Proto3 Scalar&lt;/a>。&lt;/p>&lt;/blockquote>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>类别&lt;/th>
+&lt;th>类型&lt;/th>
+&lt;th>默认值&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>数值&lt;/td>
+&lt;td>&lt;code>int32&lt;/code>, &lt;code>uint32&lt;/code>&lt;br>&lt;code>int64&lt;/code>, &lt;code>uint64&lt;/code>&lt;br>&lt;code>float&lt;/code>, &lt;code>double&lt;/code>&lt;/td>
+&lt;td>&lt;code>0&lt;/code>&lt;br>&lt;code>0&lt;/code>&lt;br>&lt;code>0.0&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>布尔值&lt;/td>
+&lt;td>&lt;code>bool&lt;/code>&lt;/td>
+&lt;td>&lt;code>false&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>字符串&lt;/td>
+&lt;td>&lt;code>string&lt;/code>&lt;/td>
+&lt;td>&lt;code>&amp;quot;&amp;quot;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>字节&lt;/td>
+&lt;td>&lt;code>bytes&lt;/code>&lt;/td>
+&lt;td>&lt;code>&amp;quot;&amp;quot;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="复合类型composite-types">复合类型（Composite types） &lt;a href="#%e5%a4%8d%e5%90%88%e7%b1%bb%e5%9e%8bcomposite-types" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>类型&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>struct&lt;/code>&lt;/td>
+&lt;td>struct 映射为 protobuf 的 &lt;strong>message&lt;/strong>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>list&lt;/code>&lt;/td>
+&lt;td>list 映射为 protobuf 的 &lt;strong>repeated&lt;/strong> 字段。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>map&lt;/code>&lt;/td>
+&lt;td>map 映射为 protobuf 的 &lt;strong>map&lt;/strong> 字段。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="struct">struct &lt;a href="#struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>特性&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>横向布局（Horizontal layout）&lt;/td>
+&lt;td>每个标量字段占一个单元格。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>简单 in-cell struct&lt;/td>
+&lt;td>每个字段必须是&lt;strong>标量&lt;/strong>类型。&lt;br>以逗号分隔的字段列表，例如：&lt;code>1,test,3.0&lt;/code>。&lt;br>若数据列表长度与 struct 字段数不一致，则按顺序填充，未配置的字段使用标量类型的默认值。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="list">list &lt;a href="#list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>特性&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>横向布局（Horizontal layout）&lt;/td>
+&lt;td>list 的默认布局。&lt;br>元素类型可以是 &lt;strong>struct&lt;/strong> 或&lt;strong>标量&lt;/strong>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>纵向布局（Vertical layout）&lt;/td>
+&lt;td>list 的元素类型应为 &lt;strong>struct&lt;/strong>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>简单 in-cell list&lt;/td>
+&lt;td>元素类型必须是&lt;strong>标量&lt;/strong>。&lt;br>以逗号分隔的元素列表，例如：&lt;code>1,2,3&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>可扩展（Scalable）&lt;/td>
+&lt;td>支持动态大小的 list。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>忽略空元素&lt;/td>
+&lt;td>智能识别任意位置的空元素。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="map">map &lt;a href="#map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>特性&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>横向布局（Horizontal layout）&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>纵向布局（Vertical layout）&lt;/td>
+&lt;td>map 的默认布局。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hash map&lt;/td>
+&lt;td>实现为无序 map 或 hash map。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Ordered map&lt;/td>
+&lt;td>由 &lt;a href="https://github.com/tableauio/loader">tableauio/loader&lt;/a> 支持。&lt;br>- C++&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>简单 in-cell map&lt;/td>
+&lt;td>key 和 value 都必须是&lt;strong>标量&lt;/strong>类型。&lt;br>以逗号分隔的 &lt;code>key:value&lt;/code> 对列表，例如：&lt;code>1:10,2:20,3:30&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>可扩展（Scalable）&lt;/td>
+&lt;td>支持动态大小的 map。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>忽略空条目&lt;/td>
+&lt;td>智能识别任意位置的空条目。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="枚举enumeration">枚举（Enumeration） &lt;a href="#%e6%9e%9a%e4%b8%beenumeration" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>特性&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>三种枚举值形式&lt;/td>
+&lt;td>1. 枚举值编号（number）。&lt;br>2. 枚举值名称（name）。&lt;br>3. 枚举值别名（alias，通过 EnumValueOptions 指定）。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>校验&lt;/td>
+&lt;td>自动检查枚举值的合法性。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="空值empty-value">空值（Empty value） &lt;a href="#%e7%a9%ba%e5%80%bcempty-value" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>类型&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>scalar&lt;/td>
+&lt;td>空标量将使用该标量类型的默认值填充。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>struct&lt;/td>
+&lt;td>若所有字段均为空，则不会生成该 struct。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>list&lt;/td>
+&lt;td>若 list 大小为 0，则不会生成该 list。&lt;br>若 list 的元素（struct 类型）为空，则不会追加该元素。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>map&lt;/td>
+&lt;td>若 map 大小为 0，则不会生成该 map。若 map 的 value（struct 类型）为空，则不会插入该条目。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>nesting&lt;/td>
+&lt;td>递归地判断是否为空。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>枚举（Enum）</title><link>https://tableauio.github.io/zh/docs/basics/enum/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/basics/enum/</guid><description>&lt;h2 id="枚举值">枚举值 &lt;a href="#%e6%9e%9a%e4%b8%be%e5%80%bc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>tableau 解析器支持三种枚举值形式：&lt;/p>
+&lt;ol>
+&lt;li>枚举值&lt;strong>名称&lt;/strong>（name）。&lt;/li>
+&lt;li>枚举值&lt;strong>编号&lt;/strong>（number）。&lt;/li>
+&lt;li>枚举值&lt;strong>别名&lt;/strong>（alias）。别名可以是英文、中文或其他任意语言，通过 &lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto#L26">tableau.evalue&lt;/a> 扩展 &lt;a href="https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto#L669">google.protobuf.EnumValueOptions&lt;/a> 来指定。&lt;/li>
+&lt;/ol>
+&lt;p>例如，&lt;code>common.proto&lt;/code> 中定义的枚举类型 &lt;code>FruitType&lt;/code>：&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">enum FruitType {
+FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];
+FRUIT_TYPE_APPLE = 1 [(tableau.evalue).name = &amp;quot;Apple&amp;quot;];
+FRUIT_TYPE_ORANGE = 2 [(tableau.evalue).name = &amp;quot;Orange&amp;quot;];
+FRUIT_TYPE_BANANA = 3 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
+}
+&lt;/code>&lt;/pre>
+&lt;p>以上三种枚举值形式均被接受：&lt;/p>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>枚举值编号&lt;/th>
+&lt;th>枚举值名称&lt;/th>
+&lt;th>枚举值别名&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>0&lt;/td>
+&lt;td>FRUIT_TYPE_UNKNOWN&lt;/td>
+&lt;td>Unknown&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>FRUIT_TYPE_APPLE&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>FRUIT_TYPE_ORANGE&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>FRUIT_TYPE_BANANA&lt;/td>
+&lt;td>Banana&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>注意：枚举类型必须预先定义。&lt;/p>&lt;/blockquote>
+&lt;p>了解预定义 &lt;strong>Enum&lt;/strong> 类型的详细信息：&lt;a href="https://tableauio.github.io/zh/docs/basics/predefined-types/">预定义类型 →&lt;/a>。&lt;/p>
+&lt;h2 id="校验">校验 &lt;a href="#%e6%a0%a1%e9%aa%8c" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>由于枚举类型是预先定义的，tableau 解析器会自动校验枚举值的合法性。&lt;/p></description></item><item><title>Wellknown 类型</title><link>https://tableauio.github.io/zh/docs/basics/wellknown-types/</link><pubDate>Tue, 24 Sep 2024 15:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/basics/wellknown-types/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>为方便使用，Wellknown 类型是 Tableau 的内置类型，类似于 &lt;a href="https://protobuf.dev/reference/protobuf/google.protobuf/">Protocol Buffers Well-Known Types&lt;/a>。&lt;/p>
+&lt;p>使用时需要引入 Tableau 和 Protocol Buffers 提供的 proto 文件：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/wellknown.proto">tableau/protobuf/wellknown.proto&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/timestamp.proto">google/protobuf/timestamp.proto&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/duration.proto">google/protobuf/duration.proto&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="datetime日期时间">Datetime（日期时间） &lt;a href="#datetime%e6%97%a5%e6%9c%9f%e6%97%b6%e9%97%b4" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;blockquote>
+&lt;p>使用示例请参考 &lt;a href="https://tableauio.github.io/zh/docs/excel/wellknown-types/#datetime">Excel wellknown 类型：Datetime →&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;table class="table-striped">
+&lt;thead>
+&lt;tr>
+&lt;th>类型&lt;/th>
+&lt;th>默认值&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>datetime&lt;/code>&lt;/td>
+&lt;td>&lt;code>0000-00-00 00:00:00&lt;/code>&lt;/td>
+&lt;td>格式：&lt;code>yyyy-MM-dd HH:mm:ss&lt;/code> 或 RFC3339。&lt;br>例如：&lt;code>2020-01-01 05:10:00&lt;/code>&lt;br>或 &lt;code>2020-01-01T05:10:00+08:00&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>date&lt;/code>&lt;/td>
+&lt;td>&lt;code>0000-00-00&lt;/code>&lt;/td>
+&lt;td>格式：&lt;code>yyyy-MM-dd&lt;/code> 或 &lt;code>yyyyMMdd&lt;/code>。&lt;br>例如：&lt;code>2020-01-01&lt;/code> 或 &lt;code>20200101&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>time&lt;/code>&lt;/td>
+&lt;td>&lt;code>00:00:00&lt;/code>&lt;/td>
+&lt;td>格式：&lt;code>HH:mm:ss&lt;/code> 或 &lt;code>HHmmss&lt;/code>，&lt;code>HH:mm&lt;/code> 或 &lt;code>HHmm&lt;/code>。&lt;br>例如：&lt;code>05:10:00&lt;/code> 或 &lt;code>051000&lt;/code>，&lt;code>05:10&lt;/code> 或 &lt;code>0510&lt;/code>。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>提示：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>datetime&lt;/code> 和 &lt;code>date&lt;/code> 基于 &lt;a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp">&lt;strong>google.protobuf.Timestamp&lt;/strong>&lt;/a>，参考 &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3#json">JSON 映射&lt;/a>。&lt;/li>
+&lt;li>&lt;code>time&lt;/code> 基于 &lt;a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration">&lt;strong>google.protobuf.Duration&lt;/strong>&lt;/a>，参考 &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3#json">JSON 映射&lt;/a>。&lt;/li>
+&lt;li>&lt;a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC 3339: 互联网日期和时间戳&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="duration时长">Duration（时长） &lt;a href="#duration%e6%97%b6%e9%95%bf" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;blockquote>
+&lt;p>使用示例请参考 &lt;a href="https://tableauio.github.io/zh/docs/excel/wellknown-types/#duration">Excel wellknown 类型：Duration →&lt;/a>&lt;/p></description></item><item><title>预定义类型</title><link>https://tableauio.github.io/zh/docs/basics/predefined-types/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/basics/predefined-types/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>你可以在 protoconf 文件（如 &lt;code>common.proto&lt;/code>）中预先定义 &lt;code>enum&lt;/code>、&lt;code>struct&lt;/code> 或 &lt;code>union&lt;/code> 类型，然后在 worksheet 中将其用作列类型或跨单元格类型。&lt;/p>
+&lt;h2 id="使用方式">使用方式 &lt;a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>语法：在 worksheet 中使用预定义的 &lt;code>CustomType&lt;/code> 时，需在前面加一个点 &lt;code>.&lt;/code>（即 &lt;code>.CustomType&lt;/code>）。&lt;/li>
+&lt;li>导入：在 &lt;strong>tableauc&lt;/strong> 配置的 &lt;code>protoFiles&lt;/code> 选项中指定公共 proto 文件，这些文件中定义了预定义的 &lt;code>enum&lt;/code>、&lt;code>struct&lt;/code>、&lt;code>union&lt;/code> 类型。参考 &lt;a href="../../tutorial/config/#configyaml">Tableauc 配置&lt;/a>。&lt;/li>
+&lt;/ul>
+&lt;h2 id="enum">Enum &lt;a href="#enum" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>例如，&lt;code>common.proto&lt;/code> 中定义的枚举类型 &lt;code>FruitType&lt;/code>：&lt;/p>
+&lt;pre>&lt;code class="language-protobuf">enum FruitType {
+FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];
+FRUIT_TYPE_APPLE = 1 [(tableau.evalue).name = &amp;quot;Apple&amp;quot;];
+FRUIT_TYPE_ORANGE = 2 [(tableau.evalue).name = &amp;quot;Orange&amp;quot;];
+FRUIT_TYPE_BANANA = 3 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
+}
+&lt;/code>&lt;/pre>
+&lt;p>以下示例说明如何使用预定义枚举类型：&lt;/p>
+&lt;ul>
+&lt;li>Excel/CSV：&lt;a href="../../excel/enum/#use-predefined-enum-type">使用预定义枚举类型&lt;/a>。&lt;/li>
+&lt;li>XML：&lt;a href="../../xml/enum/#use-predefined-enum-type">使用预定义枚举类型&lt;/a>&lt;/li>
+&lt;li>YAML：&lt;a href="../../yaml/enum/#use-predefined-enum-type">使用预定义枚举类型&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="struct">Struct &lt;a href="#struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>例如，&lt;code>common.proto&lt;/code> 中定义的 struct 类型 &lt;code>Prop&lt;/code>：&lt;/p></description></item></channel></rss>

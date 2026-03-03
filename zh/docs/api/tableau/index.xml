@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tableau on</title><link>https://tableauio.github.io/zh/docs/api/tableau/</link><description>Recent content in Tableau on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Thu, 10 Mar 2022 08:00:00 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/api/tableau/index.xml" rel="self" type="application/rss+xml"/><item><title>指南</title><link>https://tableauio.github.io/zh/docs/api/tableau/guide/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/tableau/guide/</guid><description>&lt;h2 id="前置条件">前置条件 &lt;a href="#%e5%89%8d%e7%bd%ae%e6%9d%a1%e4%bb%b6" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://golang.org/">Go&lt;/a>，任意&lt;strong>最新三个主要版本&lt;/strong>之一，参考 &lt;a href="https://golang.org/doc/devel/release.html">Go 发布记录&lt;/a>。
+&lt;ul>
+&lt;li>安装说明请参考 Go 的 &lt;a href="https://golang.org/doc/install">Getting Started&lt;/a> 指南。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="https://developers.google.com/protocol-buffers">Protocol buffer&lt;/a> 编译器 &lt;code>protoc&lt;/code>，&lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">版本 3&lt;/a>。
+&lt;ul>
+&lt;li>安装说明请参考 &lt;a href="https://grpc.io/docs/protoc-installation/">Protocol Buffer Compiler Installation&lt;/a>。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>协议编译器的 &lt;strong>Go 插件&lt;/strong>：
+&lt;ol>
+&lt;li>
+&lt;p>使用以下命令安装 Go 的协议编译器插件：&lt;/p>
+&lt;pre>&lt;code class="language-bash">go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>更新 PATH，使 protoc 编译器能找到插件：&lt;/p>
+&lt;pre>&lt;code class="language-bash">export PATH=&amp;quot;$PATH:$(go env GOPATH)/bin&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="获取示例代码">获取示例代码 &lt;a href="#%e8%8e%b7%e5%8f%96%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>示例代码位于 &lt;a href="https://github.com/tableauio/demo">tableau/demo&lt;/a> 仓库。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/tableauio/demo/archive/refs/heads/master.zip">下载仓库 zip 包&lt;/a> 并解压，或克隆仓库：&lt;/p>
+&lt;pre>&lt;code class="language-bash">git clone https://github.com/tableauio/demo
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>切换到快速开始示例目录：&lt;/p>
+&lt;pre>&lt;code class="language-bash">cd demo/examples/helloworld
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="运行示例">运行示例 &lt;a href="#%e8%bf%90%e8%a1%8c%e7%a4%ba%e4%be%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>在 &lt;code>examples/helloworld&lt;/code> 目录下：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>切换到 &lt;strong>excel2proto&lt;/strong> 目录，编译并执行：&lt;/p>
+&lt;pre>&lt;code class="language-bash">go run main.go
+&lt;/code>&lt;/pre>
+&lt;p>proto 文件将生成到 &lt;code>examples/helloworld/proto&lt;/code>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>切换到 &lt;strong>excel2conf&lt;/strong> 目录，生成 &lt;code>*.pb.go&lt;/code> 后编译并执行：&lt;/p></description></item></channel></rss>

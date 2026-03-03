@@ -1,58 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>前言 on</title><link>https://tableauio.github.io/zh/docs/prologue/</link><description>Recent content in 前言 on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/prologue/index.xml" rel="self" type="application/rss+xml"/><item><title>快速开始</title><link>https://tableauio.github.io/zh/docs/prologue/quick-start/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>https://tableauio.github.io/zh/docs/prologue/quick-start/</guid><description>&lt;h2 id="prerequisites">Prerequisites &lt;a href="#prerequisites" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://golang.org/">Go&lt;/a>, any one of the &lt;strong>three latest major&lt;/strong> &lt;a href="https://golang.org/doc/devel/release.html">releases of Go&lt;/a>.
-&lt;ul>
-&lt;li>For installation instructions, see Go’s &lt;a href="https://golang.org/doc/install">Getting Started&lt;/a> guide.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;a href="https://developers.google.com/protocol-buffers">Protocol buffer&lt;/a> compiler, &lt;code>protoc&lt;/code>, &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">version 3&lt;/a>.
-&lt;ul>
-&lt;li>For installation instructions, see &lt;a href="https://grpc.io/docs/protoc-installation/">Protocol Buffer Compiler Installation&lt;/a>.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Go plugins&lt;/strong> for the protocol compiler:
-&lt;ol>
-&lt;li>
-&lt;p>Install the protocol compiler plugins for Go using the following commands:&lt;/p>
-&lt;pre>&lt;code class="language-bash">go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
-&lt;/code>&lt;/pre>
-&lt;/li>
-&lt;li>
-&lt;p>Update your PATH so that the protoc compiler can find the plugins:&lt;/p>
-&lt;pre>&lt;code class="language-bash">export PATH=&amp;quot;$PATH:$(go env GOPATH)/bin&amp;quot;
-&lt;/code>&lt;/pre>
-&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;/ul>
-&lt;h2 id="get-the-example-code">Get the example code &lt;a href="#get-the-example-code" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>The example code is part of the &lt;a href="https://github.com/tableauio/demo">tableau/demo&lt;/a> repo.&lt;/p></description></item><item><title>简介</title><link>https://tableauio.github.io/zh/docs/prologue/introduction/</link><pubDate>Tue, 06 Oct 2020 08:48:57 +0000</pubDate><guid>https://tableauio.github.io/zh/docs/prologue/introduction/</guid><description>&lt;h2 id="tableauc">tableauc &lt;a href="#tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>tableau命令行工具 &lt;code>tableauc&lt;/code> 是 tableau 转换器（tableau converter）的缩写，主要由以下两个转换模块组成：&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>protogen&lt;/strong>：分析 Excel/CSV/XML/YAML 文件，提取文件结构信息，转换为 Protoconf 文件。&lt;/li>
-&lt;li>&lt;strong>confgen&lt;/strong>：分析 Excel/CSV/XML/YAML 文件和对应的元信息文件 Protoconf，提取文件数据信息，转换为 JSON/Text/Bin 文件。&lt;/li>
-&lt;/ol>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>前言 on</title><link>https://tableauio.github.io/zh/docs/prologue/</link><description>Recent content in 前言 on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0000</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/prologue/index.xml" rel="self" type="application/rss+xml"/><item><title>简介</title><link>https://tableauio.github.io/zh/docs/prologue/introduction/</link><pubDate>Tue, 06 Oct 2020 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/prologue/introduction/</guid><description>&lt;h2 id="tableauc">tableauc &lt;a href="#tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;code>tableauc&lt;/code> 是 &lt;strong>Tableau Compiler&lt;/strong>（Tableau 编译器），内置 &lt;strong>protogen&lt;/strong> 和 &lt;strong>confgen&lt;/strong> 两个模块。&lt;/p>
 &lt;h3 id="protogen">protogen &lt;a href="#protogen" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;code>protogen&lt;/code> convert &lt;strong>Excel/CSV/XML/YAML&lt;/strong> files to &lt;strong>Protoconf&lt;/strong> files.
-&lt;strong>Protoconf&lt;/strong> is a dialect of &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers (proto3)&lt;/a> extended with &lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto">tableau options&lt;/a>, aimed to define the structure of Excel/CSV/XML/YAML.&lt;/p>
+&lt;p>&lt;code>protogen&lt;/code> 将 &lt;strong>Excel/CSV/XML/YAML&lt;/strong> 文件转换为 &lt;strong>Protoconf&lt;/strong> 文件。
+&lt;strong>Protoconf&lt;/strong> 是 &lt;a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers (proto3)&lt;/a> 的一种方言，通过 &lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto">tableau options&lt;/a> 进行扩展，用于描述 Excel/CSV/XML/YAML 的结构。&lt;/p>
 &lt;pre>&lt;code class="language-mermaid">flowchart LR
 subgraph Input
 direction RL
 I1(Excel)
 I2(CSV)
 I3(XML)
+I4(YAML)
 end
 Input --&amp;gt; B
 B((protogen)):::orangecalss --&amp;gt; C(Protoconf)
 classDef orangecalss fill:#f96;
 &lt;/code>&lt;/pre>
 &lt;h3 id="confgen">confgen &lt;a href="#confgen" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>confgen&lt;/code> 将 &lt;strong>Excel/CSV/XML/YAML&lt;/strong> 与 &lt;strong>Protoconf&lt;/strong> 文件一起转换为 &lt;strong>JSON/Text/Bin&lt;/strong> 文件。&lt;/p>
 &lt;pre>&lt;code class="language-mermaid">flowchart LR
 subgraph Input
 direction RL
 I1(Excel)
 I2(CSV)
 I3(XML)
+I4(YAML)
 end
 Input --&amp;gt; B
 A(Protoconf) --&amp;gt; B
@@ -64,4 +35,328 @@ O1(&amp;quot;JSON&amp;quot;)
 O2(&amp;quot;Text&amp;quot;)
 O3(&amp;quot;Bin&amp;quot;)
 end
-&lt;/code>&lt;/pre></description></item></channel></rss>
+&lt;/code>&lt;/pre></description></item><item><title>快速开始</title><link>https://tableauio.github.io/zh/docs/prologue/quick-start/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/prologue/quick-start/</guid><description>&lt;h2 id="1-下载-tableauc">1. 下载 tableauc &lt;a href="#1-%e4%b8%8b%e8%bd%bd-tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>选择合适的 tableauc（即 Tableau Compiler）下载：&lt;/p>
+&lt;div class="row">
+&lt;div class="col-lg-5 col-xl-5 col-sm-6 text-center">
+&lt;p>
+&lt;img height="100px" src="https://tableauio.github.io/images/logo/windows-logo.png" alt="Windows" />
+&lt;/p>
+&lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.windows.amd64.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Windows x64
+&lt;/a>
+&lt;/p>
+&lt;!-- &lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.windows.386.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Windows x86
+&lt;/a>
+&lt;/p> -->
+&lt;/div>
+&lt;div class="col-lg-5 col-xl-5 col-sm-6 text-center">
+&lt;p>
+&lt;img height="100px" src="https://tableauio.github.io/images/logo/linux-logo.png" alt="Linux" />
+&lt;/p>
+&lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.linux.amd64.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Linux x64
+&lt;/a>
+&lt;/p>
+&lt;!-- &lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.linux.386.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Linux x86
+&lt;/a>
+&lt;/p> -->
+&lt;/div>
+&lt;div class="col-lg-5 col-xl-5 col-sm-6 text-center">
+&lt;p>
+&lt;img height="100px" src="https://tableauio.github.io/images/logo/apple-logo.svg" alt="Apple" />
+&lt;/p>
+&lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.darwin.amd64.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> macOS x64
+&lt;/a>
+&lt;/p>
+&lt;p>
+&lt;a class="btn btn-outline-info btn-lg" role="button"
+href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.darwin.arm64.tar.gz">
+&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> macOS arm64
+&lt;/a>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;blockquote>
+&lt;p>更多平台版本请访问 &lt;a href="https://github.com/tableauio/tableau/releases">tableau releases →&lt;/a>。&lt;/p>&lt;/blockquote>
+&lt;h2 id="2-添加工作簿">2. 添加工作簿 &lt;a href="#2-%e6%b7%bb%e5%8a%a0%e5%b7%a5%e4%bd%9c%e7%b0%bf" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>添加 &lt;strong>HelloWorld.xlsx&lt;/strong>，包含两个 sheet：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Item&lt;/code>：将下方数据复制到此 worksheet。&lt;/li>
+&lt;li>&lt;code>@TABLEAU&lt;/code>：暂时留空。这是 tableau 的 &lt;a href="https://tableauio.github.io/zh/docs/excel/metasheet/">metasheet →&lt;/a>，用于指定解析器选项。&lt;/li>
+&lt;/ul>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-ndklegiajmhbcf-197328-tab" data-bs-toggle="tab" data-bs-target="#sheet-ndklegiajmhbcf-197328" type="button" role="tab" aria-controls="sheet-ndklegiajmhbcf-197328" aria-selected=" active ">Item&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-blamcfikghjend-197614-tab" data-bs-toggle="tab" data-bs-target="#sheet-blamcfikghjend-197614" type="button" role="tab" aria-controls="sheet-blamcfikghjend-197614" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-ndklegiajmhbcf-197328" role="tabpanel" aria-labelledby="sheet-ndklegiajmhbcf-197328-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Desc&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>map&amp;lt;int32, Item&amp;gt;&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>string&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item&amp;rsquo;s ID&lt;/td>
+&lt;td>Item&amp;rsquo;s name&lt;/td>
+&lt;td>Item&amp;rsquo;s description&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;td>A kind of delicious fruit.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;td>A kind of sour fruit.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Banana&lt;/td>
+&lt;td>A kind of calorie-rich fruit.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-blamcfikghjend-197614" role="tabpanel" aria-labelledby="sheet-blamcfikghjend-197614-tab">
+&lt;div class="table-responsive text-nowrap sheet">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="3-运行-tableauc">3. 运行 tableauc &lt;a href="#3-%e8%bf%90%e8%a1%8c-tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>执行命令：&lt;code>./tableauc HelloWorld.xlsx&lt;/code>&lt;/p></description></item><item><title>Tableauc 配置</title><link>https://tableauio.github.io/zh/docs/prologue/config/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/prologue/config/</guid><description>&lt;h2 id="configyaml">config.yaml &lt;a href="#configyaml" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>创建名为 &lt;em>config.yaml&lt;/em> 的文件，并将以下配置复制到其中：&lt;/p>
+&lt;pre>&lt;code class="language-yaml"># locale BCP 47 language tags: en, zh.
+lang: en
+# Location represents the collection of time offsets in use in a geographical area.
+# - If the name is &amp;quot;&amp;quot; or &amp;quot;UTC&amp;quot;, LoadLocation returns UTC.
+# - If the name is &amp;quot;Local&amp;quot;, LoadLocation returns Local.
+# - Otherwise, the name is taken to be a location name corresponding to a file in the
+# IANA Time Zone database, such as &amp;quot;America/New_York&amp;quot;, &amp;quot;Asia/Shanghai&amp;quot;, and so on.
+#
+# See https://go.dev/src/time/zoneinfo_abbrs_windows.go.
+locationName: Local
+# Configure your custom acronyms. Out of the box, &amp;quot;ID&amp;quot; -&amp;gt; &amp;quot;id&amp;quot; is auto configured.
+# For example, if you configure K8s -&amp;gt; k8s, then the field name in PascalCase &amp;quot;InK8s&amp;quot;
+# will be converted to snake_case &amp;quot;in_k8s&amp;quot; but not &amp;quot;in_k_8_s&amp;quot;.
+acronyms: {}
+# Log options.
+log:
+# Log mode: SIMPLE, FULL.
+mode: SIMPLE
+# Log level: DEBUG, INFO, WARN, ERROR.
+level: INFO
+# Log filename: set this if you want to write log messages to files.
+filename: &amp;quot;&amp;quot;
+# Log sink: CONSOLE, FILE, and MULTI.
+sink: CONSOLE
+# Options for generating proto files.
+proto:
+input:
+# Header options for worksheet and workbook.
+header:
+# Exact row number of column name definition at a worksheet.
+namerow: 1
+# Exact row number of column type definition at a worksheet.
+typerow: 2
+# Exact row number of column note at a worksheet.
+noterow: 3
+# Start row number of data at a worksheet.
+datarow: 4
+# The line number of column name definition in a cell.
+# Value 0 means the whole cell.
+nameline: 0
+# The line number of column type definition in a cell.
+# Value 0 means the whole cell.
+typeline: 0
+# The line number of column note definition in a cell.
+# Value 0 means the whole cell.
+noteline: 0
+# Separator for separating:
+# - incell list elements (scalar or struct).
+# - incell map items.
+#
+# Default: &amp;quot;,&amp;quot;
+sep: &amp;quot;&amp;quot;
+# Subseparator for separating:
+# - key-value pair of each incell map item.
+# - struct fields of each incell struct list element.
+#
+# Default: &amp;quot;:&amp;quot;
+subsep: &amp;quot;&amp;quot;
+# The proto paths are used to search for dependencies that are referenced in import
+# statements in proto source files. If no import paths are provided then
+# &amp;quot;.&amp;quot; (current directory) is assumed to be the only import path.
+protoPaths: [.]
+# The enums and messages in protoFiles can be used in Excel/CSV/XML/YAML as
+# common types.
+protoFiles: []
+# Specify input file formats to be parsed. It will recognize all formats
+# if not set.
+# Available formats: &amp;quot;xlsx&amp;quot;, &amp;quot;csv&amp;quot;, &amp;quot;xml&amp;quot;, and &amp;quot;yaml&amp;quot;.
+formats: [xlsx]
+# Specify only these subdirs (relative to input dir) to be processed.
+subdirs: []
+# Specify rewrite subdir path (relative to input dir).
+subdirRewrites: {}
+# Whether to follow the symbolic links when traversing directories recursively.
+# WARN: be careful to use this option, it may lead to infinite loop.
+followSymlink: false
+# Specify metasheet name.
+metasheetName: &amp;quot;@TABLEAU&amp;quot;
+# Specify the first-pass mode to parse predefined types when generate
+# specified config files. Under the hood, the parsed predefined types will
+# be recognized and used in the second-pass.
+#
+# The first-pass mode can be:
+#
+# - &amp;quot;&amp;quot;: default mode, parse based on specified config files.
+# - &amp;quot;normal&amp;quot;: parse based on all config files.
+# - &amp;quot;advanced&amp;quot;: parse based on all previous generated proto files.
+firstPassMode: &amp;quot;&amp;quot;
+# Specify the name pattern for messager(regexp supported). If the generated
+# messager name does not match this pattern, an error will be reported.
+# Example: &amp;quot;Conf$&amp;quot;
+messagerPattern: &amp;quot;&amp;quot;
+output:
+# Specify subdir (relative to output dir) for generated proto files.
+subdir: &amp;quot;&amp;quot;
+# Dir separator `/` or `\` in filename is replaced by &amp;quot;__&amp;quot;.
+filenameWithSubdirPrefix: false
+# Append suffix to each generated proto filename.
+filenameSuffix: &amp;quot;&amp;quot;
+# Specify proto file options.
+# Example: go_package, csharp_namespace...
+fileOptions: {}
+# Whether to prepend prefix &amp;quot;UPPER_SNAKE_CASE of EnumType&amp;quot; to each enum value name.
+#
+# If set, the enum value name is prepended with &amp;quot;ENUM_TYPE_&amp;quot;. For example:
+# enum ItemType has a value &amp;quot;EQUIP&amp;quot;, then converted to &amp;quot;ITEM_TYPE_EQUIP&amp;quot;.
+# If the enum value name is already prefixed with &amp;quot;ENUM_TYPE_&amp;quot;, then it will
+# not be prefixed again.
+enumValueWithPrefix: false
+# Options for generating conf files.
+conf:
+input:
+# The proto paths are used to search for dependencies that are referenced in import
+# statements in proto source files. If no import paths are provided then
+# &amp;quot;.&amp;quot; (current directory) is assumed to be the only import path.
+protoPaths: [.]
+# The files to be parsed to generate configurations.
+#
+# NOTE:
+# - Recognize &amp;quot;*.proto&amp;quot; pattern if not set.
+# - Glob patterns is supported, which can specify sets
+# of filenames with wildcard characters.
+protoFiles: [&amp;quot;*.proto&amp;quot;]
+# The files not to be parsed to generate configurations.
+#
+# NOTE: Glob patterns is supported, which can specify sets
+# of filenames with wildcard characters.
+excludedProtoFiles: []
+# Specify input file formats to be parsed. It will recognize all formats
+# if not set.
+# Available formats: &amp;quot;xlsx&amp;quot;, &amp;quot;csv&amp;quot;, &amp;quot;xml&amp;quot;, and &amp;quot;yaml&amp;quot;.
+formats: [xlsx]
+# Specify only these subdirs (relative to workbook name option in proto file).
+subdirs: []
+# Specify rewrite subdir path (relative to workbook name option in proto file).
+subdirRewrites: {}
+output:
+# Specify subdir (relative to output dir) for generated configuration files.
+subdir: &amp;quot;&amp;quot;
+# Specify generated conf file formats. It will generate all formats if not set.
+# Refer: https://protobuf.dev/programming-guides/techniques/#suffixes
+# Available formats: &amp;quot;json&amp;quot;, &amp;quot;binpb&amp;quot;, and &amp;quot;txtpb&amp;quot;.
+formats: [json]
+# Whether to output pretty format of JSON, with multiline and indent.
+pretty: true
+# EmitUnpopulated specifies whether to emit unpopulated fields. It does not
+# emit unpopulated oneof fields or unpopulated extension fields.
+# The JSON value emitted for unpopulated fields are as follows:
+# ╔═══════╤════════════════════════════╗
+# ║ JSON │ Protobuf field ║
+# ╠═══════╪════════════════════════════╣
+# ║ false │ proto3 boolean fields ║
+# ║ 0 │ proto3 numeric fields ║
+# ║ &amp;quot;&amp;quot; │ proto3 string/bytes fields ║
+# ║ null │ proto2 scalar fields ║
+# ║ null │ message fields ║
+# ║ [] │ list fields ║
+# ║ {} │ map fields ║
+# ╚═══════╧════════════════════════════╝
+#
+# NOTE: worksheet with FieldPresence set as true ignore this option.
+#
+# Refer: https://github.com/protocolbuffers/protobuf/blob/main/docs/field_presence.md
+emitUnpopulated: false
+# Whether to emit timestamp in string format with timezones (as indicated by an offset).
+emitTimezones: false
+# Whether to use proto field name instead of lowerCamelCase name in JSON field names.
+useProtoNames: false
+# Whether to emit enum values as numbers.
+useEnumNumbers: false
+# Specify dry run mode:
+# - &amp;quot;patch&amp;quot;: if sheet options are specified: Patch (PATCH_MERGE) and Scatter
+dryRun: &amp;quot;&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h3 id="protoinputheadersep">proto.input.header.sep &lt;a href="#protoinputheadersep" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>默认值：&lt;code>,&lt;/code>&lt;/p></description></item></channel></rss>
