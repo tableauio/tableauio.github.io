@@ -19,7 +19,7 @@ toc: true
 - C++: [std::variant](https://en.cppreference.com/w/cpp/utility/variant)
 - Rust: [Defining an Enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html)
 
-Tableau 使用 protobuf `message` 将 [enum](https://protobuf.dev/programming-guides/proto3/#enum) 类型和 [oneof](https://protobuf.dev/programming-guides/proto3/#oneof) 类型捆绑在一起，以实现 **tagged union**。默认情况下，每个枚举值（>0）与 [`oneof`](https://protobuf.dev/programming-guides/proto3/#oneof) 类型中具有相同 tag 编号的字段绑定。
+Tableau 使用 protobuf `message` 将 [enum](https://protobuf.dev/programming-guides/proto3/#enum) 类型和 [oneof](https://protobuf.dev/programming-guides/proto3/#oneof) 类型绑定在一起，以实现 **tagged union**。默认情况下，每个枚举值（>0）与 `oneof` 类型中具有相同 tag 编号的字段绑定。
 
 ## Union 定义
 
@@ -630,8 +630,6 @@ message Target {
 | 6                | AliasEmpty                  |                            |                     |                            |          |
 
 {{< /sheet >}}
-
-{{< sheet colored1 >}}
 
 {{< sheet colored1 >}}
 

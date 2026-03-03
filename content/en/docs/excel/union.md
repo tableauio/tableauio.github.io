@@ -19,7 +19,7 @@ In protoconf, `union` type means the **tagged union**: a data structure used to 
 - C++: [std::variant](https://en.cppreference.com/w/cpp/utility/variant).
 - Rust: [Defining an Enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html).
 
-Tableau use protobuf `message` to bundle [enum](https://protobuf.dev/programming-guides/proto3/#enum) and [oneof](https://protobuf.dev/programming-guides/proto3/#oneof) together to implement **tagged union**. By default, each enum value (>0) is bound to a field with the same tag number of [`oneof`](https://protobuf.dev/programming-guides/proto3/#oneof) type.
+Tableau use protobuf `message` to bundle [enum](https://protobuf.dev/programming-guides/proto3/#enum) and [oneof](https://protobuf.dev/programming-guides/proto3/#oneof) together to implement **tagged union**. By default, each enum value (>0) is bound to a field with the same tag number of `oneof` type.
 
 ## Union definition
 
@@ -1187,8 +1187,6 @@ For example, two worksheets `Target` and `TaskConf` in *HelloWorld.xlsx*:
 | 6                | AliasEmpty                  |                            |                     |                            |          |
 
 {{< /sheet >}}
-
-{{< sheet colored1 >}}
 
 {{< sheet colored1 >}}
 
