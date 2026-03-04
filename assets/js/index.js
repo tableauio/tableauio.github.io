@@ -1,58 +1,76 @@
 var suggestions = document.getElementById('suggestions');
 var search = document.getElementById('search');
+var searchModal = document.getElementById('search-modal');
+var searchToggle = document.getElementById('search-toggle');
+var searchModalClose = document.getElementById('search-modal-close');
+
+function openSearchModal() {
+  if (!searchModal) return;
+  searchModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  setTimeout(function() { if (search) search.focus(); }, 50);
+}
+
+function closeSearchModal() {
+  if (!searchModal) return;
+  searchModal.style.display = 'none';
+  document.body.style.overflow = '';
+  if (search) { search.value = ''; }
+  if (suggestions) { suggestions.innerHTML = ''; }
+}
+
+if (searchToggle) {
+  searchToggle.addEventListener('click', openSearchModal);
+}
+
+if (searchModalClose) {
+  searchModalClose.addEventListener('click', closeSearchModal);
+}
+
+// Close on backdrop click
+if (searchModal) {
+  searchModal.addEventListener('click', function(e) {
+    if (e.target === searchModal || e.target.classList.contains('doks-search-modal__backdrop')) {
+      closeSearchModal();
+    }
+  });
+}
 
 if (search !== null) {
   document.addEventListener('keydown', inputFocus);
 }
 
 function inputFocus(e) {
-  if (e.ctrlKey && e.key === '/' ) {
+  if (e.ctrlKey && e.key === '/') {
     e.preventDefault();
-    search.focus();
+    openSearchModal();
   }
-  if (e.key === 'Escape' ) {
-    search.blur();
-    suggestions.classList.add('d-none');
+  if (e.key === 'Escape') {
+    closeSearchModal();
   }
 }
 
-document.addEventListener('click', function(event) {
-
-  var isClickInsideElement = suggestions.contains(event.target);
-
-  if (!isClickInsideElement) {
-    suggestions.classList.add('d-none');
-  }
-
-});
-
-/*
-Source:
-  - https://dev.to/shubhamprakash/trap-focus-using-javascript-6a3
-*/
-
-document.addEventListener('keydown',suggestionFocus);
+document.addEventListener('keydown', suggestionFocus);
 
 function suggestionFocus(e) {
-  const suggestionsHidden = suggestions.classList.contains('d-none');
+  if (!suggestions) return;
+  const suggestionsHidden = !searchModal || searchModal.style.display === 'none';
   if (suggestionsHidden) return;
 
-  const focusableSuggestions= [...suggestions.querySelectorAll('a')];
+  const focusableSuggestions = [...suggestions.querySelectorAll('a')];
   if (focusableSuggestions.length === 0) return;
 
   const index = focusableSuggestions.indexOf(document.activeElement);
 
-  if (e.key === "ArrowUp") {
+  if (e.key === 'ArrowUp') {
     e.preventDefault();
     const nextIndex = index > 0 ? index - 1 : 0;
     focusableSuggestions[nextIndex].focus();
-  }
-  else if (e.key === "ArrowDown") {
+  } else if (e.key === 'ArrowDown') {
     e.preventDefault();
-    const nextIndex= index + 1 < focusableSuggestions.length ? index + 1 : index;
+    const nextIndex = index + 1 < focusableSuggestions.length ? index + 1 : index;
     focusableSuggestions[nextIndex].focus();
   }
-
 }
 
 /*
@@ -193,10 +211,8 @@ Source:
   function show_results(){
     var searchQuery = this.value.trim();
     suggestions.innerHTML = "";
-    suggestions.classList.remove('d-none');
 
     if (!searchQuery) {
-      suggestions.classList.add('d-none');
       return;
     }
 

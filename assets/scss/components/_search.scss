@@ -1,108 +1,182 @@
-.navbar-form {
-  position: relative;
+// Search toggle button in navbar
+.doks-search-toggle {
+  color: $body-color;
+  padding: 0.25rem 0.5rem;
+
+  &:hover {
+    color: $primary;
+  }
 }
 
-#suggestions {
-  position: absolute;
-  left: 0;
-  margin-top: 0.5rem;
-  width: calc(100vw - 3rem);
-  z-index: $zindex-dropdown;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-#suggestions a,
-.suggestion__no-results {
-  padding: 0.4rem 0.75rem;
-  margin: 0 0.5rem;
-}
-
-#suggestions a {
-  display: block;
-  text-decoration: none;
-}
-
-#suggestions a:focus {
-  background: $gray-100;
-  outline: 0;
-}
-
-#suggestions div:not(:first-child) {
-  border-top: 1px dashed $gray-200;
-}
-
-#suggestions div:first-child {
-  margin-top: 0.5rem;
-}
-
-#suggestions div:last-child {
-  margin-bottom: 0.5rem;
-}
-
-#suggestions a:hover {
-  background: $gray-100;
-}
-
-#suggestions span {
+// Search Modal overlay
+.doks-search-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1060;
   display: flex;
-  font-size: $font-size-base;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 5rem;
+
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+  }
+
+  &__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 1rem;
+    background: $white;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-height: calc(100vh - 8rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid $gray-200;
+    gap: 0.625rem;
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    color: $gray-500;
+    flex-shrink: 0;
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: transparent;
+    color: $body-color;
+    padding: 0;
+
+    &::placeholder {
+      color: $gray-400;
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    color: $gray-500;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    &:hover {
+      color: $body-color;
+      background: $gray-100;
+    }
+  }
+
+  &__results {
+    overflow-y: auto;
+    max-height: calc(100vh - 14rem);
+
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+// Suggestion items inside modal
+#suggestions {
+  a,
+  .suggestion__no-results {
+    padding: 0.5rem 1rem;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-radius: 0;
+
+    &:hover,
+    &:focus {
+      background: $gray-100;
+      outline: 0;
+    }
+  }
+
+  div:not(:first-child) {
+    border-top: 1px solid $gray-100;
+  }
+
+  div:first-child {
+    margin-top: 0.375rem;
+  }
+
+  div:last-child {
+    margin-bottom: 0.375rem;
+  }
+
+  span {
+    display: flex;
+    font-size: $font-size-base;
+  }
+
+  mark {
+    background-color: #fff3cd;
+    color: inherit;
+    padding: 0 0.1em;
+    border-radius: 2px;
+    font-weight: $headings-font-weight;
+  }
 }
 
 .suggestion__title {
   font-weight: $headings-font-weight;
   color: $black;
+  min-width: 9rem;
+  max-width: 22rem;
+  padding-right: 1rem;
+  border-right: 1px solid $gray-200;
+  flex-shrink: 0;
+  align-self: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
 }
 
-.suggestion__description,
-.suggestion__no-results {
+.suggestion__description {
+  flex: 1;
+  padding-left: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: $font-size-sm;
+  line-height: 1.4;
+  align-self: center;
   color: $gray-700;
 }
 
-// Highlight matched keywords
-#suggestions mark {
-  background-color: #fff3cd;
-  color: inherit;
-  padding: 0 0.1em;
-  border-radius: 2px;
-  font-weight: $headings-font-weight;
-}
-
-@include media-breakpoint-up(sm) {
-  #suggestions {
-    width: 80rem;
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-
-  #suggestions a {
-    display: flex;
-  }
-
-  .suggestion__title {
-    min-width: 9rem;
-    max-width: 22rem;
-    padding-right: 1rem;
-    border-right: 1px solid $gray-200;
-    display: inline-block;
-    text-align: right;
-    flex-shrink: 0;
-    align-self: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .suggestion__description {
-    flex: 1;
-    padding-left: 1rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: $font-size-sm;
-    line-height: 1.4;
-    align-self: center;
-  }
+.suggestion__no-results {
+  color: $gray-700;
+  padding: 1rem;
 }
 
 // In-page highlight for search keywords (from ?highlight= URL param)
