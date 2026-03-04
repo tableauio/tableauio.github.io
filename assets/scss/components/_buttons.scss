@@ -3,12 +3,6 @@
   padding: 0.4375rem 0;
 }
 
-#mode {
-  padding-right: 0.25rem;
-  padding-left: 0.25rem;
-  margin-right: -0.25rem;
-}
-
 .btn-link:focus {
   outline: 0;
   box-shadow: none;
@@ -19,11 +13,6 @@
 }
 
 @include media-breakpoint-up(md) {
-  #mode {
-    margin-left: 1.125rem;
-    margin-right: -0.375rem;
-  }
-
   .navbar .btn-link {
     padding: 0.5625em 0.25rem 0.5rem 0.125rem;
   }
