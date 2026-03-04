@@ -1,60 +1,10 @@
-var suggestions = document.getElementById('suggestions');
-var search = document.getElementById('search');
-var searchModal = document.getElementById('search-modal');
-var searchToggle = document.getElementById('search-toggle');
-var searchModalClose = document.getElementById('search-modal-close');
-
-function openSearchModal() {
-  if (!searchModal) return;
-  searchModal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  setTimeout(function() { if (search) search.focus(); }, 50);
-}
-
-function closeSearchModal() {
-  if (!searchModal) return;
-  searchModal.style.display = 'none';
-  document.body.style.overflow = '';
-  if (search) { search.value = ''; }
-  if (suggestions) { suggestions.innerHTML = ''; }
-}
-
-if (searchToggle) {
-  searchToggle.addEventListener('click', openSearchModal);
-}
-
-if (searchModalClose) {
-  searchModalClose.addEventListener('click', closeSearchModal);
-}
-
-// Close on backdrop click
-if (searchModal) {
-  searchModal.addEventListener('click', function(e) {
-    if (e.target === searchModal || e.target.classList.contains('doks-search-modal__backdrop')) {
-      closeSearchModal();
-    }
-  });
-}
-
-if (search !== null) {
-  document.addEventListener('keydown', inputFocus);
-}
-
-function inputFocus(e) {
-  if (e.ctrlKey && e.key === '/') {
-    e.preventDefault();
-    openSearchModal();
-  }
-  if (e.key === 'Escape') {
-    closeSearchModal();
-  }
-}
-
 document.addEventListener('keydown', suggestionFocus);
 
 function suggestionFocus(e) {
+  const suggestions = document.getElementById('suggestions');
   if (!suggestions) return;
-  const suggestionsHidden = !searchModal || searchModal.style.display === 'none';
+  const modalEl = document.getElementById('search-modal');
+  const suggestionsHidden = !modalEl || !modalEl.classList.contains('show');
   if (suggestionsHidden) return;
 
   const focusableSuggestions = [...suggestions.querySelectorAll('a')];
@@ -176,8 +126,6 @@ Source:
     {{ end -}}
   ;
 
-  search.addEventListener('input', show_results, true);
-
   // Highlight all occurrences of `query` in `text` with <mark> tags
   function highlight(text, query) {
     if (!query || !text) return escapeHtml(decodeHtmlEntities(text || ''));
@@ -208,8 +156,44 @@ Source:
     return (start > 0 ? '…' : '') + plain.slice(start, end) + (end < plain.length ? '…' : '');
   }
 
-  function show_results(){
-    var searchQuery = this.value.trim();
+// Init search modal event bindings inside IIFE so show_results is accessible
+  (function initSearchModal() {
+    var searchModalEl = document.getElementById('search-modal');
+    if (!searchModalEl) return;
+
+    // Auto-focus and bind input event when modal opens
+    searchModalEl.addEventListener('shown.bs.modal', function () {
+      var search = document.getElementById('search');
+      if (search) {
+        search.focus();
+        search.removeEventListener('input', show_results, true);
+        search.addEventListener('input', show_results, true);
+      }
+    });
+
+    // Clear content when modal closes
+    searchModalEl.addEventListener('hidden.bs.modal', function () {
+      var search = document.getElementById('search');
+      var suggestions = document.getElementById('suggestions');
+      if (search) search.value = '';
+      if (suggestions) suggestions.innerHTML = '';
+    });
+
+    // Ctrl+/ to open search modal
+    document.addEventListener('keydown', function (e) {
+      if (e.ctrlKey && e.key === '/') {
+        e.preventDefault();
+        var bsModal = bootstrap.Modal.getOrCreateInstance(searchModalEl);
+        bsModal.show();
+      }
+    });
+  })();
+
+function show_results(){
+    var search = document.getElementById('search');
+    var suggestions = document.getElementById('suggestions');
+    if (!search || !suggestions) return;
+    var searchQuery = search.value.trim();
     suggestions.innerHTML = "";
 
     if (!searchQuery) {
