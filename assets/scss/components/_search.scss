@@ -1,81 +1,144 @@
-.navbar-form {
-  position: relative;
+// Search toggle button in navbar
+.doks-search-toggle {
+  color: $body-color;
+
+  &:hover {
+    color: $primary;
+  }
 }
 
-#suggestions {
-  position: absolute;
-  left: 0;
-  margin-top: 0.5rem;
-  width: calc(100vw - 3rem);
-  z-index: $zindex-dropdown;
+// Bootstrap Modal customization for search
+// Ensure backdrop overlay is visible
+#search-modal.modal {
+  --bs-backdrop-opacity: 0.5;
 }
 
-#suggestions a,
-.suggestion__no-results {
-  padding: 0.75rem;
-  margin: 0 0.5rem;
+.modal-backdrop {
+  --bs-backdrop-opacity: 0.5;
 }
 
-#suggestions a {
-  display: block;
-  text-decoration: none;
+.doks-search-dialog {
+  max-width: 860px;
+  margin-top: 5rem;
+
+  .modal-content {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
 }
 
-#suggestions a:focus {
-  background: $gray-100;
-  outline: 0;
-}
-
-#suggestions div:not(:first-child) {
-  border-top: 1px dashed $gray-200;
-}
-
-#suggestions div:first-child {
-  margin-top: 0.5rem;
-}
-
-#suggestions div:last-child {
-  margin-bottom: 0.5rem;
-}
-
-#suggestions a:hover {
-  background: $gray-100;
-}
-
-#suggestions span {
+.doks-search-header {
   display: flex;
-  font-size: $font-size-base;
+  align-items: center;
+  padding: 0.875rem 1rem;
+  gap: 0.625rem;
+}
+
+.doks-search-icon {
+  flex-shrink: 0;
+}
+
+.doks-search-input {
+  flex: 1;
+  font-size: 1rem;
+  padding: 0;
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+// Suggestion items inside modal
+#suggestions {
+  a,
+  .suggestion__no-results {
+    padding: 0.5rem 1rem;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-radius: 0;
+
+    &:hover,
+    &:focus {
+      background: $gray-100;
+      outline: 0;
+    }
+  }
+
+  div:not(:first-child) {
+    border-top: 1px solid $gray-100;
+  }
+
+  div:first-child {
+    margin-top: 0.375rem;
+  }
+
+  div:last-child {
+    margin-bottom: 0.375rem;
+  }
+
+  span {
+    display: flex;
+    font-size: $font-size-base;
+  }
+
+  mark {
+    background-color: #fff3cd;
+    color: inherit;
+    padding: 0 0.1em;
+    border-radius: 2px;
+    font-weight: $headings-font-weight;
+  }
 }
 
 .suggestion__title {
   font-weight: $headings-font-weight;
   color: $black;
+  min-width: 9rem;
+  max-width: 16rem;
+  padding-right: 1rem;
+  border-right: 1px solid $gray-200;
+  flex-shrink: 0;
+  align-self: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
 }
 
-.suggestion__description,
-.suggestion__no-results {
+.suggestion__description {
+  flex: 1;
+  padding-left: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: $font-size-sm;
+  line-height: 1.4;
+  align-self: center;
   color: $gray-700;
 }
 
-@include media-breakpoint-up(sm) {
-  #suggestions {
-    width: 31.125rem;
-  }
+.suggestion__no-results {
+  color: $gray-700;
+  padding: 1rem;
+}
 
-  #suggestions a {
-    display: flex;
-  }
-
-  .suggestion__title {
-    width: 9rem;
-    padding-right: 1rem;
-    border-right: 1px solid $gray-200;
-    display: inline-block;
-    text-align: right;
-  }
-
-  .suggestion__description {
-    width: 19rem;
-    padding-left: 1rem;
-  }
+// In-page highlight for search keywords (from ?highlight= URL param)
+mark.search-highlight {
+  background-color: #ffe066;
+  color: inherit;
+  padding: 0.1em 0.2em;
+  border-radius: 3px;
+  font-weight: $headings-font-weight;
+  outline: 1px solid #ffc107;
 }

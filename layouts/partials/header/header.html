@@ -8,7 +8,7 @@
 
 <div class="header-bar"></div>
 
-<header class="navbar navbar-expand-md navbar-light doks-navbar">
+<header class="navbar navbar-expand-md navbar-light doks-navbar sticky-top">
   <nav class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }} flex-wrap flex-md-nowrap" aria-label="Main navigation">
     <a class="navbar-brand p-0 me-auto" href="{{ "/" | relLangURL }}" aria-label="{{ .Site.Params.Title }}">
       {{ .Site.Params.Title }}
@@ -58,51 +58,102 @@
         </ul>
         <hr class="text-black-50 my-4 d-md-none">
         <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
-        <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-2">
+        <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-2 d-md-none">
           {{ range .Site.Menus.social -}}
             <li class="nav-item">
-              <a class="nav-link ps-0 py-1" href="{{ .URL | relURL }}">{{ .Pre | safeHTML }}<small class="ms-2 d-md-none">{{ .Name | safeHTML }}</small></a>
+              <a class="nav-link ps-0 py-1" href="{{ .URL | relURL }}">{{ .Pre | safeHTML }}<small class="ms-2">{{ .Name | safeHTML }}</small></a>
             </li>
           {{ end -}}
         </ul>
+
+        {{ if eq .Site.Params.options.multilingualMode true -}}
+        <hr class="text-black-50 my-4 d-md-none">
+        <h3 class="h6 text-uppercase mb-3 d-md-none">Language</h3>
+        <ul class="nav flex-column d-md-none">
+          <li class="nav-item">
+            <a class="nav-link ps-0 py-1 active" aria-current="true" href="{{ .RelPermalink }}">{{ .Site.Language.LanguageName }}</a>
+          </li>
+          {{ if .IsTranslated -}}
+            {{ range .Translations }}
+            <li class="nav-item">
+              <a class="nav-link ps-0 py-1" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .Language.LanguageName }}</a>
+            </li>
+            {{ end -}}
+          {{ else -}}
+            {{ range .Site.Languages -}}
+              {{ if ne $.Site.Language.Lang .Lang }}
+              <li class="nav-item">
+                <a class="nav-link ps-0 py-1" rel="alternate" href="{{ .Lang | relLangURL }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .LanguageName }}</a>
+              </li>
+              {{ end -}}
+            {{ end -}}
+          {{ end -}}
+        </ul>
+        {{ end -}}
       </div>
     </div>
+
+    <div class="d-none d-md-flex align-items-center ms-auto gap-3">
+      {{ if .Site.Params.options.flexSearch -}}
+      <button class="btn btn-link doks-search-toggle" type="button" data-bs-toggle="modal" data-bs-target="#search-modal" aria-label="Open search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      {{ end -}}
+
+      {{ range .Site.Menus.social -}}
+        <a class="btn btn-link" href="{{ .URL | relURL }}" aria-label="{{ .Name | safeHTML }}">{{ .Pre | safeHTML }}</a>
+      {{ end -}}
+
+      {{ if .Site.Params.options.darkMode -}}
+      <button id="mode" class="btn btn-link" type="button" aria-label="Toggle user interface mode">
+        <span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+      </button>
+      {{ end -}}
+
+      {{ if eq .Site.Params.options.multilingualMode true -}}
+      <div class="dropdown">
+        <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          {{ .Site.Params.languageISO }}
+          <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
+
+          <li><a class="dropdown-item current" aria-current="true" href="{{ .RelPermalink }}">{{ .Site.Language.LanguageName }}</a></li>
+
+          <li><hr class="dropdown-divider"></li>
+
+        {{ if .IsTranslated -}}
+          {{ range .Translations }}
+            <li><a class="dropdown-item" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .Language.LanguageName }}</a></li>
+          {{ end -}}
+        {{ else -}}
+          {{ range .Site.Languages -}}
+            {{ if ne $.Site.Language.Lang .Lang }}
+              <li><a class="dropdown-item" rel="alternate" href="{{ .Lang | relLangURL }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .LanguageName }}</a></li>
+            {{ end -}}
+          {{ end -}}
+        {{ end -}}
+          <!--
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/docs/contributing/how-to-contribute/">Help Translate</a></li>
+          -->
+        </ul>
+      </div>
+      {{ end -}}
+    </div>
+
+    {{/* Mobile: search + darkMode buttons (social shown in offcanvas) */}}
+    {{ if .Site.Params.options.flexSearch -}}
+    <button class="btn btn-link doks-search-toggle d-md-none ms-2" type="button" data-bs-toggle="modal" data-bs-target="#search-modal" aria-label="Open search">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
+    {{ end -}}
     {{ if .Site.Params.options.darkMode -}}
-    <button id="mode" class="btn btn-link order-md-1" type="button" aria-label="Toggle user interface mode">
+    <button id="mode-mobile" class="btn btn-link d-md-none ms-2" type="button" aria-label="Toggle user interface mode" onclick="document.getElementById('mode').click()">
       <span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
       <span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
     </button>
-    {{ end -}}
-
-    {{ if eq .Site.Params.options.multilingualMode true -}}
-    <div class="dropdown order-md-2">
-      <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-        {{ .Site.Params.languageISO }}
-        <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-languages">
-
-        <li><a class="dropdown-item current" aria-current="true" href="{{ .RelPermalink }}">{{ .Site.Language.LanguageName }}</a></li>
-
-        <li><hr class="dropdown-divider"></li>
-
-      {{ if .IsTranslated -}}
-        {{ range .Translations }}
-          <li><a class="dropdown-item" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .Language.LanguageName }}</a></li>
-        {{ end -}}
-      {{ else -}}
-        {{ range .Site.Languages -}}
-          {{ if ne $.Site.Language.Lang .Lang }}
-            <li><a class="dropdown-item" rel="alternate" href="{{ .Lang | relLangURL }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .LanguageName }}</a></li>
-          {{ end -}}
-        {{ end -}}
-      {{ end -}}
-        <!--
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="/docs/contributing/how-to-contribute/">Help Translate</a></li>
-        -->
-      </ul>
-    </div>
     {{ end -}}
   </nav>
 </header>
@@ -111,41 +162,7 @@
 </div>
 {{ end -}}
 
-{{ if eq .Section "docs" -}}
-<nav class="doks-subnavbar py-2 sticky-lg-top{{ if eq .Site.Params.options.flexSearch false }} d-lg-none{{ end }}" aria-label="Secondary navigation">
-  <div class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }} d-flex align-items-md-center">
-
-    {{ if .Site.Params.options.flexSearch -}}
-    <form class="doks-search position-relative flex-grow-1 me-auto">
-      <input id="search" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
-      <div id="suggestions" class="shadow bg-white rounded d-none"></div>
-    </form>
-    {{ end -}}
-
-    {{ if eq .Site.Params.options.docsVersioning true -}}
-    <div class="dropdown ms-3">
-      <button class="btn btn-doks-light dropdown-toggle" id="doks-versions" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" aria-label="Toggle version menu">
-        <span class="d-none d-lg-inline">Doks</span> v{{ .Site.Params.docsVersion }}
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end shadow rounded border-0" aria-labelledby="doks-versions">
-        <li><a class="dropdown-item current" aria-current="true" href="/docs/{{ .Site.Params.docsVersion }}/prologue/introduction/">Latest ({{ .Site.Params.docsVersion }}.x)</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="/docs/0.2/prologue/introduction/">v0.2.x</a></li>
-        <li><a class="dropdown-item" href="/docs/0.1/prologue/introduction/">v0.1.x</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="/docs/versions/">All versions</a></li>
-      </ul>
-    </div>
-    {{ end -}}
-
-    <button class="btn doks-sidebar-toggle d-lg-none ms-3 order-3 collapsed{{ if eq .Site.Params.options.flexSearch false }} ms-auto{{ end }}" type="button" data-bs-toggle="collapse" data-bs-target="#doks-docs-nav" aria-controls="doks-docs-nav" aria-expanded="false" aria-label="Toggle documentation navigation">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
-    </button>
-
-  </div>
-</nav>
-
+{{ if or (eq .Section "docs") (ne .CurrentSection .FirstSection) -}}
 <div class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }}">
   <aside class="doks-sidebar">
     <nav id="doks-docs-nav" class="collapse d-lg-none" aria-label="Tertiary navigation">
@@ -153,23 +170,22 @@
     </nav>
   </aside>
 </div>
+{{ end -}}
 
-{{ else if ne .CurrentSection .FirstSection -}}
-<nav class="doks-subnavbar py-2 sticky-lg-top d-lg-none" aria-label="Secondary navigation">
-  <div class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }} d-flex align-items-md-center">
-    <span class="navbar-text ms-0">{{ .Section | humanize }}</span>
-    <button class="btn doks-sidebar-toggle d-lg-none ms-auto order-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#doks-docs-nav" aria-controls="doks-docs-nav" aria-expanded="false" aria-label="Toggle documentation navigation">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
-    </button>
+{{ if .Site.Params.options.flexSearch -}}
+<!-- Search Modal (Bootstrap) -->
+<div class="modal fade" id="search-modal" tabindex="-1" aria-label="Search" aria-modal="true" role="dialog">
+  <div class="modal-dialog modal-dialog-scrollable doks-search-dialog">
+    <div class="modal-content">
+      <div class="modal-header doks-search-header border-bottom">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="doks-search-icon text-muted flex-shrink-0"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input id="search" class="doks-search-input form-control border-0 shadow-none" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off" spellcheck="false">
+        <button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Close search"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div id="suggestions"></div>
+      </div>
+    </div>
   </div>
-</nav>
-
-<div class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }}">
-  <aside class="doks-sidebar">
-    <nav id="doks-docs-nav" class="collapse d-lg-none" aria-label="Tertiary navigation">
-      {{ partial "sidebar/docs-menu.html" . }}
-    </nav>
-  </aside>
 </div>
 {{ end -}}
