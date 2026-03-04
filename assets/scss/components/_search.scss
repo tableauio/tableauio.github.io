@@ -12,7 +12,7 @@
 
 #suggestions a,
 .suggestion__no-results {
-  padding: 0.75rem;
+  padding: 0.4rem 0.75rem;
   margin: 0 0.5rem;
 }
 
@@ -57,9 +57,18 @@
   color: $gray-700;
 }
 
+// Highlight matched keywords
+#suggestions mark {
+  background-color: #fff3cd;
+  color: inherit;
+  padding: 0 0.1em;
+  border-radius: 2px;
+  font-weight: $headings-font-weight;
+}
+
 @include media-breakpoint-up(sm) {
   #suggestions {
-    width: 31.125rem;
+    width: 57rem;
   }
 
   #suggestions a {
@@ -67,15 +76,37 @@
   }
 
   .suggestion__title {
-    width: 9rem;
+    min-width: 9rem;
+    max-width: 12rem;
     padding-right: 1rem;
     border-right: 1px solid $gray-200;
     display: inline-block;
     text-align: right;
+    flex-shrink: 0;
+    align-self: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .suggestion__description {
-    width: 19rem;
+    flex: 1;
     padding-left: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: $font-size-sm;
+    line-height: 1.4;
+    align-self: center;
   }
+}
+
+// In-page highlight for search keywords (from ?highlight= URL param)
+mark.search-highlight {
+  background-color: #ffe066;
+  color: inherit;
+  padding: 0.1em 0.2em;
+  border-radius: 3px;
+  font-weight: $headings-font-weight;
+  outline: 1px solid #ffc107;
 }

@@ -69,7 +69,7 @@ Source:
     document: {
       id: 'id',
       store: [
-        "href", "title", "description"
+        "href", "title", "description", "content"
       ],
       index: ["title", "description", "content"]
     }
@@ -92,23 +92,65 @@ Source:
   ];
   */
 
-  // https://discourse.gohugo.io/t/range-length-or-last-element/3803/2
-
-  {{ $list := (where .Site.Pages "Section" "docs") -}}
-  {{ $len := (len $list) -}}
-
-  index.add(
-    {{ range $index, $element := $list -}}
-      {
-        id: {{ $index }},
-        href: "{{ .RelPermalink }}",
-        title: {{ .Title | jsonify }},
-        {{ with .Description -}}
-          description: {{ . | jsonify }},
-        {{ else -}}
-          description: {{ .Summary | plainify | jsonify }},
+  // Build index: split each page into sections by h2/h3 headings,
+  // so each section becomes an independent search result with its own #anchor.
+  {{ $id := 0 -}}
+  {{ $entries := slice -}}
+  {{ range (where .Site.Pages "Section" "docs") -}}
+    {{ $page := . -}}
+    {{ $pageTitle := .Title -}}
+    {{ $permalink := .RelPermalink -}}
+    {{ $pageDesc := "" -}}
+    {{ with .Description }}{{ $pageDesc = . }}{{ else }}{{ $pageDesc = .Summary | plainify }}{{ end -}}
+    {{/* Strip code blocks from HTML content */}}
+    {{ $html := .Content | replaceRE `(?s)<pre[^>]*>.*?</pre>` "" -}}
+    {{/* Split by h2/h3 tags to get sections; use a sentinel to mark heading boundaries */}}
+    {{/* Hugo renders headings as: <h2 id=anchor-id>Text <a ...>#</a></h2> (id without quotes) */}}
+    {{ $marked := $html | replaceRE `<h[23][^>]*\sid="?([^"\s>]*)"?[^>]*>(.*?)</h[23]>` "§§§$1§§§$2§§§" -}}
+    {{ $parts := split $marked "§§§" -}}
+    {{/* parts pattern: [before_first_heading, anchor1, headingText1, content1, anchor2, ...] */}}
+    {{ $numParts := len $parts -}}
+    {{ if gt $numParts 3 -}}
+      {{/* Page has headings: generate one entry per section */}}
+      {{ range $i, $part := $parts -}}
+        {{ $mod := mod $i 3 -}}
+        {{ if eq $mod 1 -}}
+          {{/* $i=1,4,7... => anchor ID */}}
+          {{ $anchor := $part -}}
+          {{ $headingText := index $parts (add $i 1) | replaceRE `<a[^>]*class="?anchor"?[^>]*>.*?</a>` "" | plainify -}}
+          {{ $sectionContent := index $parts (add $i 2) | plainify -}}
+          {{ $entries = $entries | append (dict
+            "id" $id
+            "href" (printf "%s#%s" $permalink $anchor)
+            "title" (printf "%s / %s" $pageTitle $headingText)
+            "description" $pageDesc
+            "content" $sectionContent
+          ) -}}
+          {{ $id = add $id 1 -}}
         {{ end -}}
-        content: {{ .Plain | jsonify }}
+      {{ end -}}
+    {{ else -}}
+      {{/* No headings: one entry for the whole page */}}
+      {{ $entries = $entries | append (dict
+        "id" $id
+        "href" $permalink
+        "title" $pageTitle
+        "description" $pageDesc
+        "content" ($html | plainify)
+      ) -}}
+      {{ $id = add $id 1 -}}
+    {{ end -}}
+  {{ end -}}
+
+  {{ $len := len $entries -}}
+  index.add(
+    {{ range $index, $entry := $entries -}}
+      {
+        id: {{ $entry.id }},
+        href: {{ $entry.href | jsonify }},
+        title: {{ $entry.title | jsonify }},
+        description: {{ $entry.description | jsonify }},
+        content: {{ $entry.content | jsonify }}
       })
       {{ if ne (add $index 1) $len -}}
         .add(
@@ -118,9 +160,47 @@ Source:
 
   search.addEventListener('input', show_results, true);
 
+  // Highlight all occurrences of `query` in `text` with <mark> tags
+  function highlight(text, query) {
+    if (!query || !text) return escapeHtml(decodeHtmlEntities(text || ''));
+    const plain = decodeHtmlEntities(text);
+    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return escapeHtml(plain).replace(new RegExp(escaped, 'gi'), m => `<mark>${m}</mark>`);
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // Decode HTML entities (e.g. &rsquo; &quot; &lt;) to plain text via a temporary element
+  function decodeHtmlEntities(str) {
+    const el = document.createElement('textarea');
+    el.innerHTML = str;
+    return el.value;
+  }
+
+  // Extract a short snippet around the first match of `query` in `text`
+  function getSnippet(text, query, maxLen = 180) {
+    if (!text) return '';
+    const plain = decodeHtmlEntities(text);
+    const idx = plain.toLowerCase().indexOf(query.toLowerCase());
+    if (idx === -1) return plain.slice(0, maxLen);
+    const start = Math.max(0, idx - 30);
+    const end = Math.min(plain.length, start + maxLen);
+    return (start > 0 ? '…' : '') + plain.slice(start, end) + (end < plain.length ? '…' : '');
+  }
+
   function show_results(){
-    const maxResult = 5;
-    var searchQuery = this.value;
+    const maxResult = 8;
+    var searchQuery = this.value.trim();
+    suggestions.innerHTML = "";
+    suggestions.classList.remove('d-none');
+
+    if (!searchQuery) {
+      suggestions.classList.add('d-none');
+      return;
+    }
+
     var results = index.search(searchQuery, {limit: maxResult, enrich: true});
 
     // flatten results since index.search() returns results for each indexed field
@@ -130,40 +210,37 @@ Source:
       flatResults.set(result.doc.href, result.doc);
     }
 
-    suggestions.innerHTML = "";
-    suggestions.classList.remove('d-none');
-
     // inform user that no results were found
-    if (flatResults.size === 0 && searchQuery) {
-      const noResultsMessage = document.createElement('div')
-      noResultsMessage.innerHTML = `No results for "<strong>${searchQuery}</strong>"`
+    if (flatResults.size === 0) {
+      const noResultsMessage = document.createElement('div');
+      noResultsMessage.innerHTML = `No results for "<strong>${escapeHtml(searchQuery)}</strong>"`;
       noResultsMessage.classList.add("suggestion__no-results");
       suggestions.appendChild(noResultsMessage);
       return;
     }
 
     // construct a list of suggestions
-    for(const [href, doc] of flatResults) {
-        const entry = document.createElement('div');
-        suggestions.appendChild(entry);
+    for (const [href, doc] of flatResults) {
+      const entry = document.createElement('div');
 
-        const a = document.createElement('a');
-        a.href = href;
-        entry.appendChild(a);
+      const a = document.createElement('a');
+      // Ensure ?highlight= comes before #anchor so URLSearchParams can parse it correctly
+      const [hrefPath, hrefHash] = href.split('#');
+      a.href = hrefPath + '?highlight=' + encodeURIComponent(searchQuery) + (hrefHash ? '#' + hrefHash : '');
 
-        const title = document.createElement('span');
-        title.textContent = doc.title;
-        title.classList.add("suggestion__title");
-        a.appendChild(title);
+      const title = document.createElement('span');
+      title.innerHTML = highlight(doc.title, searchQuery);
+      title.classList.add("suggestion__title");
+      a.appendChild(title);
 
-        const description = document.createElement('span');
-        description.textContent = doc.description;
-        description.classList.add("suggestion__description");
-        a.appendChild(description);
+      const snippetText = getSnippet(doc.content || doc.description, searchQuery);
+      const description = document.createElement('span');
+      description.innerHTML = highlight(snippetText, searchQuery);
+      description.classList.add("suggestion__description");
+      a.appendChild(description);
 
-        suggestions.appendChild(entry);
-
-        if(suggestions.childElementCount == maxResult) break;
+      entry.appendChild(a);
+      suggestions.appendChild(entry);
     }
   }
 }());
