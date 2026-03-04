@@ -191,7 +191,6 @@ Source:
   }
 
   function show_results(){
-    const maxResult = 8;
     var searchQuery = this.value.trim();
     suggestions.innerHTML = "";
     suggestions.classList.remove('d-none');
@@ -201,17 +200,33 @@ Source:
       return;
     }
 
-    var results = index.search(searchQuery, {limit: maxResult, enrich: true});
+    // Use a large limit per field to collect all matching results before dedup.
+    var results = index.search(searchQuery, {limit: 100, enrich: true});
 
-    // flatten results since index.search() returns results for each indexed field
+    // Flatten and dedupe results across all indexed fields (title/description/content).
+    // NOTE: do NOT break early — the same doc may appear in multiple fields,
+    // causing premature termination before all unique results are collected.
     const flatResults = new Map(); // keyed by href to dedupe results
     for (const result of results.flatMap(r => r.result)) {
       if (flatResults.has(result.doc.href)) continue;
       flatResults.set(result.doc.href, result.doc);
     }
+    // Sort results: group by page title (the part before " / ") so same-page entries are adjacent,
+    // then sort by section key (the part after " / ") within the same page.
+    const splitTitle = t => {
+      const sep = t.indexOf(' / ');
+      return sep === -1 ? { page: t, sec: '' } : { page: t.slice(0, sep), sec: t.slice(sep + 3) };
+    };
+    const sortedResults = [...flatResults.values()].sort((a, b) => {
+      const ta = splitTitle(a.title);
+      const tb = splitTitle(b.title);
+      const pageCmp = ta.page.localeCompare(tb.page);
+      if (pageCmp !== 0) return pageCmp;
+      return ta.sec.localeCompare(tb.sec);
+    });
 
     // inform user that no results were found
-    if (flatResults.size === 0) {
+    if (sortedResults.length === 0) {
       const noResultsMessage = document.createElement('div');
       noResultsMessage.innerHTML = `No results for "<strong>${escapeHtml(searchQuery)}</strong>"`;
       noResultsMessage.classList.add("suggestion__no-results");
@@ -220,7 +235,8 @@ Source:
     }
 
     // construct a list of suggestions
-    for (const [href, doc] of flatResults) {
+    for (const doc of sortedResults) {
+      const href = doc.href;
       const entry = document.createElement('div');
 
       const a = document.createElement('a');
@@ -242,5 +258,16 @@ Source:
       entry.appendChild(a);
       suggestions.appendChild(entry);
     }
+
+    // Unify the width of all title columns to the widest one (auto-fit).
+    // Temporarily remove any previously set width so we can measure natural widths.
+    const titleEls = suggestions.querySelectorAll('.suggestion__title');
+    titleEls.forEach(el => { el.style.width = ''; });
+    let maxTitleWidth = 0;
+    titleEls.forEach(el => {
+      const w = el.getBoundingClientRect().width;
+      if (w > maxTitleWidth) maxTitleWidth = w;
+    });
+    titleEls.forEach(el => { el.style.width = maxTitleWidth + 'px'; });
   }
 }());
