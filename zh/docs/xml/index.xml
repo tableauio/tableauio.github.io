@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>XML on</title><link>https://tableauio.github.io/zh/docs/xml/</link><description>Recent content in XML on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/xml/index.xml" rel="self" type="application/rss+xml"/><item><title>Scalar</title><link>https://tableauio.github.io/zh/docs/xml/scalar/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/xml/scalar/</guid><description>&lt;h2 id="scalar">Scalar &lt;a href="#scalar" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>XML on</title><link>https://tableauio.github.io/zh/docs/xml/</link><description>Recent content in XML on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 06 Oct 2020 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/xml/index.xml" rel="self" type="application/rss+xml"/><item><title>Scalar（标量）</title><link>https://tableauio.github.io/zh/docs/xml/scalar/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/xml/scalar/</guid><description>&lt;h2 id="scalar">Scalar &lt;a href="#scalar" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;!--
@@ -62,7 +62,7 @@ bool ok = 9 [(tableau.field) = {name:&amp;quot;OK&amp;quot;}];
 &amp;quot;ok&amp;quot;: true
 }
 &lt;/code>&lt;/pre>
-&lt;/details></description></item><item><title>Enum</title><link>https://tableauio.github.io/zh/docs/xml/enum/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/xml/enum/</guid><description>&lt;h2 id="使用预定义枚举类型">使用预定义枚举类型 &lt;a href="#%e4%bd%bf%e7%94%a8%e9%a2%84%e5%ae%9a%e4%b9%89%e6%9e%9a%e4%b8%be%e7%b1%bb%e5%9e%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;/details></description></item><item><title>Enum（枚举）</title><link>https://tableauio.github.io/zh/docs/xml/enum/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/xml/enum/</guid><description>&lt;h2 id="使用预定义枚举类型">使用预定义枚举类型 &lt;a href="#%e4%bd%bf%e7%94%a8%e9%a2%84%e5%ae%9a%e4%b9%89%e6%9e%9a%e4%b8%be%e7%b1%bb%e5%9e%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>&lt;em>common.proto&lt;/em> 中预定义的枚举类型 &lt;code>FruitType&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">enum FruitType {
 FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];
@@ -111,7 +111,7 @@ string desc = 3 [(tableau.field) = {name:&amp;quot;Desc&amp;quot;}];
 &amp;quot;desc&amp;quot;: &amp;quot;A kind of delicious fruit.&amp;quot;
 }
 &lt;/code>&lt;/pre>
-&lt;/details></description></item><item><title>Struct</title><link>https://tableauio.github.io/zh/docs/xml/struct/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/xml/struct/</guid><description>&lt;h2 id="通用-struct">通用 struct &lt;a href="#%e9%80%9a%e7%94%a8-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;/details></description></item><item><title>Struct（结构体）</title><link>https://tableauio.github.io/zh/docs/xml/struct/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/xml/struct/</guid><description>&lt;h2 id="通用-struct">通用 struct &lt;a href="#%e9%80%9a%e7%94%a8-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;!--
@@ -175,7 +175,7 @@ string name = 2 [(tableau.field) = {name:&amp;quot;Name&amp;quot;}];
 &lt;/code>&lt;/pre>
 &lt;/details>
 &lt;h2 id="复用同级-struct">复用同级 struct &lt;a href="#%e5%a4%8d%e7%94%a8%e5%90%8c%e7%ba%a7-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p></description></item><item><title>Union</title><link>https://tableauio.github.io/zh/docs/xml/union/</link><pubDate>Mon, 02 Sep 2024 19:21:01 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/xml/union/</guid><description>&lt;h2 id="union-定义">Union 定义 &lt;a href="#union-%e5%ae%9a%e4%b9%89" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p></description></item><item><title>Union（联合体）</title><link>https://tableauio.github.io/zh/docs/xml/union/</link><pubDate>Mon, 02 Sep 2024 19:21:01 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/xml/union/</guid><description>&lt;h2 id="union-定义">Union 定义 &lt;a href="#union-%e5%ae%9a%e4%b9%89" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>例如，&lt;em>common.proto&lt;/em> 中预定义的 union 类型 &lt;code>Target&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">// Predefined union type.
 message Target {
@@ -229,7 +229,7 @@ int64 damage = 2; // scalar
 }
 &lt;/code>&lt;/pre>
 &lt;h2 id="predefined-union">Predefined union &lt;a href="#predefined-union" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p></description></item><item><title>List</title><link>https://tableauio.github.io/zh/docs/xml/list/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/xml/list/</guid><description>&lt;h2 id="scalar-list">Scalar list &lt;a href="#scalar-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p></description></item><item><title>List（列表）</title><link>https://tableauio.github.io/zh/docs/xml/list/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/xml/list/</guid><description>&lt;h2 id="scalar-list">Scalar list &lt;a href="#scalar-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;!--
@@ -273,7 +273,7 @@ FRUIT_TYPE_ORANGE = 3 [(tableau.evalue).name = &amp;quot;Orange&amp;quot;];
 FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 }
 &lt;/code>&lt;/pre>
-&lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p></description></item><item><title>Map</title><link>https://tableauio.github.io/zh/docs/xml/map/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/xml/map/</guid><description>&lt;h2 id="incell-scalar-map">Incell scalar map &lt;a href="#incell-scalar-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p></description></item><item><title>Map（映射）</title><link>https://tableauio.github.io/zh/docs/xml/map/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/xml/map/</guid><description>&lt;h2 id="incell-scalar-map">Incell scalar map &lt;a href="#incell-scalar-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>&lt;em>HelloWorld.xml&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;!--
@@ -307,7 +307,7 @@ map&amp;lt;uint32, string&amp;gt; item_map = 1 [(tableau.field) = {name:&amp;quo
 &lt;/code>&lt;/pre>
 &lt;/details>
 &lt;h2 id="incell-enum-map">Incell enum map &lt;a href="#incell-enum-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>&lt;em>common.proto&lt;/em> 中预定义的枚举类型 &lt;code>FruitType&lt;/code> 和 &lt;code>FruitFlavor&lt;/code>：&lt;/p></description></item><item><title>Metasheet</title><link>https://tableauio.github.io/zh/docs/xml/metasheet/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/xml/metasheet/</guid><description>&lt;h2 id="xml-中的-metasheet-是什么">XML 中的 metasheet 是什么？ &lt;a href="#xml-%e4%b8%ad%e7%9a%84-metasheet-%e6%98%af%e4%bb%80%e4%b9%88" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;em>common.proto&lt;/em> 中预定义的枚举类型 &lt;code>FruitType&lt;/code> 和 &lt;code>FruitFlavor&lt;/code>：&lt;/p></description></item><item><title>Metasheet（元表）</title><link>https://tableauio.github.io/zh/docs/xml/metasheet/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/xml/metasheet/</guid><description>&lt;h2 id="xml-中的-metasheet-是什么">XML 中的 metasheet 是什么？ &lt;a href="#xml-%e4%b8%ad%e7%9a%84-metasheet-%e6%98%af%e4%bb%80%e4%b9%88" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>&lt;strong>metasheet&lt;/strong> 是通常写在 XML 文件开头的注释块，必须以关键字 &lt;code>@TABLEAU&lt;/code> 开头，并在后续行中定义节点属性的类型。例如：&lt;/p>
 &lt;pre>&lt;code class="language-XML">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;!--
