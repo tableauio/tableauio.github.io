@@ -17,7 +17,7 @@ You can define `enum`, `struct`, or `union` types in a protoconf file (such as `
 ## Usage
 
 - Syntax: prepend a dot `.` to predefined `CustomType` (a.k.a. `.CustomType`) when you use it in a worksheet.
-- Import: specify the `protoFiles` option of **tableauc** config to import the common proto files, where predefined `enum`, `struct`, `union` types are defined. See [Tableauc config](../../tutorial/config/#configyaml).
+- Import: specify the `protoFiles` option of **tableauc** config to import the common proto files, where predefined `enum`, `struct`, `union` types are defined. See [Tableauc config](../../prologue/config/#configyaml).
 
 ## Enum
 

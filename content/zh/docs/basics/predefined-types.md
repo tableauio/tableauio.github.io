@@ -17,7 +17,7 @@ toc: true
 ## 使用方式
 
 - 语法：在 worksheet 中使用预定义的 `CustomType` 时，需在前面加一个点 `.`（即 `.CustomType`）。
-- 导入：在 **tableauc** 配置的 `protoFiles` 选项中指定公共 proto 文件，这些文件中定义了预定义的 `enum`、`struct`、`union` 类型。参考 [Tableauc 配置](../../tutorial/config/#configyaml)。
+- 导入：在 **tableauc** 配置的 `protoFiles` 选项中指定公共 proto 文件，这些文件中定义了预定义的 `enum`、`struct`、`union` 类型。参考 [Tableauc 配置](../../prologue/config/#configyaml)。
 
 ## Enum
 

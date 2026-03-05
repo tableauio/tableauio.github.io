@@ -612,9 +612,9 @@ enum Patch {
 **工作表**的分隔符，用于分隔：
 
 - incell list 元素（scalar 或 struct）。
-- incell map 条目。
+- incell map 元素。
 
-如果未设置，将使用 tableauc [yaml.config](../../tutorial/config/#confinputseq) 中的**全局级别** sep（默认：`,`）。
+如果未设置，将使用 [Tableauc 配置](../../prologue/config/#protoinputheadersep) 中的**全局级别**分隔符（默认：`,`）。
 
 ## 选项 `Subsep`
 
@@ -623,4 +623,4 @@ enum Patch {
 - 每个 incell map 元素的键值对。
 - 每个 incell struct list 元素的结构体字段。
 
-如果未设置，将使用 tableauc [yaml.config](../../tutorial/config/#confinputseq) 中的**全局级别** subsep（默认：`:`）。
+如果未设置，将使用 [Tableauc 配置](../../prologue/config/#protoinputheadersubsep) 中的**全局级别**子分隔符（默认：`:`）。

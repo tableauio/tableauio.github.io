@@ -172,7 +172,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 **字段级**分隔符，用于分隔：
 
 - incell list 元素（scalar 或 struct）。
-- incell map 条目。
+- incell map 元素
 
 如果未设置，将使用 [metasheet](../metasheet/#选项-sep) 中的**sheet 级** sep。
 
@@ -180,8 +180,8 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 **字段级**子分隔符，用于分隔：
 
-- 每个 incell map 条目的 key-value 对。
-- 每个 incell struct list 元素的 struct 字段。
+- 每个 incell map 元素的键值对。
+- 每个 incell struct list 元素的结构体字段。
 
 如果未设置，将使用 [metasheet](../metasheet/#选项-subsep) 中的**sheet 级** subsep。
 
