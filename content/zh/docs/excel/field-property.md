@@ -1,5 +1,5 @@
 ---
-title: "Field property"
+title: "Field property（字段属性）"
 description: "Tableau field property 使用指南。"
 lead: "Tableau field property 使用指南。"
 date: 2020-10-13T15:21:01+02:00

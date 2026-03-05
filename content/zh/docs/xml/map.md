@@ -1,5 +1,5 @@
 ---
-title: "Map"
+title: "Map（映射）"
 description: "XML map 使用指南。"
 lead: "XML map 使用指南。"
 date: 2020-10-13T15:21:01+02:00

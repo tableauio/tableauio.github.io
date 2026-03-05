@@ -1,5 +1,5 @@
 ---
-title: "Metasheet"
+title: "Metasheet（元表）"
 description: "YAML metasheet @TABLEAU 使用指南。"
 lead: "YAML metasheet \"@TABLEAU\" 使用指南。"
 date: 2024-06-22T10:00:00+08:00

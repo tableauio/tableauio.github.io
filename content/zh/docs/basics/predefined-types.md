@@ -1,5 +1,5 @@
 ---
-title: "预定义类型"
+title: "Predefined types（预定义类型）"
 description: "预定义类型。"
 lead: "Tableau 支持导入预定义类型，然后在 Excel/CSV/XML/YAML 中使用。"
 date: 2022-02-26T08:48:57+08:00

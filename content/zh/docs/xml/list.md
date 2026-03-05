@@ -1,5 +1,5 @@
 ---
-title: "List"
+title: "List（列表）"
 description: "XML list 使用指南。"
 lead: "XML list 使用指南。"
 date: 2020-10-13T15:21:01+02:00

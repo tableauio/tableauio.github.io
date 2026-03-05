@@ -1,5 +1,5 @@
 ---
-title: "Scalar"
+title: "Scalar（标量）"
 description: "Excel scalar 使用指南。"
 lead: "本文说明 Excel scalar 类型的各种特性。"
 date: 2022-09-04T13:59:39+08:00

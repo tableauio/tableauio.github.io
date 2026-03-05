@@ -1,5 +1,5 @@
 ---
-title: "Struct in list"
+title: "List 嵌套 Struct"
 description: "Excel struct in list 使用指南。"
 lead: "Excel list 中嵌套 struct 的规范说明。"
 date: 2022-02-26T08:48:57+08:00

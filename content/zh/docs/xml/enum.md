@@ -1,5 +1,5 @@
 ---
-title: "Enum"
+title: "Enum（枚举）"
 description: "XML enum 使用指南。"
 lead: "XML enum 使用指南。"
 date: 2024-08-23T11:21:01+08:00

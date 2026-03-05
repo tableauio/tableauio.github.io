@@ -1,5 +1,5 @@
 ---
-title: "Infinite nesting"
+title: "Infinite nesting（无限嵌套）"
 description: "Excel 无限嵌套使用指南。"
 lead: "Excel 复合类型的无限嵌套特性。"
 date: 2022-02-26T08:48:57+08:00

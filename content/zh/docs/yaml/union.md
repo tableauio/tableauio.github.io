@@ -1,5 +1,5 @@
 ---
-title: "Union"
+title: "Union（联合体）"
 description: "YAML union 使用指南。"
 lead: "YAML union 使用指南。"
 date: 2024-09-02T19:21:01+08:00

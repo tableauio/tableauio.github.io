@@ -1,5 +1,5 @@
 ---
-title: "Union"
+title: "Union（联合体）"
 description: "Excel union 使用指南。"
 lead: "本文说明 Excel union 类型的各种特性。"
 date: 2022-09-04T13:59:39+08:00

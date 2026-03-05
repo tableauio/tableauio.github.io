@@ -1,5 +1,5 @@
 ---
-title: "Map in list"
+title: "List 嵌套 Map"
 description: "Excel map in list 使用指南。"
 lead: "Excel list 中嵌套 map 的规范说明。"
 date: 2022-02-26T08:48:57+08:00

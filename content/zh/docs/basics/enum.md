@@ -1,5 +1,5 @@
 ---
-title: "枚举（Enum）"
+title: "Enum（枚举）"
 description: "枚举基础。"
 lead: "本文介绍枚举类型的基础知识。"
 date: 2022-02-26T13:59:39+08:00

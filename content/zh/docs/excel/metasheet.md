@@ -1,5 +1,5 @@
 ---
-title: "Metasheet"
+title: "Metasheet（元表）"
 description: "Excel metasheet @TABLEAU 使用指南。"
 lead: "Metasheet 是一个名为 \"@TABLEAU\" 的 worksheet，用于指定 tableau 解析器的 sheet 级别选项。"
 date: 2022-02-26T13:59:39+08:00

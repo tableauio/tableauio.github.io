@@ -1,5 +1,5 @@
 ---
-title: "Scalar"
+title: "Scalar（标量）"
 description: "XML scalar 使用指南。"
 lead: "XML scalar 使用指南。"
 date: 2024-08-23T11:21:01+08:00

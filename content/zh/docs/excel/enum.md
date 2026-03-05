@@ -1,5 +1,5 @@
 ---
-title: "Enum"
+title: "Enum（枚举）"
 description: "Excel enum 使用指南。"
 lead: "本文说明 Excel enum 类型的各种特性。"
 date: 2024-09-24T14:00:00+08:00
@@ -12,7 +12,7 @@ toc: true
 
 ## 使用预定义枚举类型
 
-枚举基础知识请参考 [枚举（Enum）→]({{< relref "../basics/enum" >}})
+枚举基础知识请参考 [Enum（枚举）→]({{< relref "../basics/enum" >}})
 
 例如，`common.proto` 中定义的枚举类型 `FruitType`：
 

@@ -1,5 +1,5 @@
 ---
-title: "KeyedList"
+title: "KeyedList（键控列表）"
 description: "Excel keyed list 使用指南。"
 lead: "本文说明 Excel keyed list 类型的各种特性。"
 date: 2022-02-26T13:59:39+08:00

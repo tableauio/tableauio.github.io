@@ -1,5 +1,5 @@
 ---
-title: "Struct"
+title: "Struct（结构体）"
 description: "XML struct 使用指南。"
 lead: "XML struct 使用指南。"
 date: 2020-10-13T15:21:01+02:00

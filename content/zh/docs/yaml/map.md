@@ -1,5 +1,5 @@
 ---
-title: "Map"
+title: "Map（映射）"
 description: "YAML map 使用指南。"
 lead: "YAML map 使用指南。"
 date: 2024-06-22T10:00:00+08:00

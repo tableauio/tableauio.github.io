@@ -1,5 +1,5 @@
 ---
-title: "Wellknown 类型"
+title: "Wellknown types（知名类型）"
 description: "Wellknown 类型。"
 lead: "Wellknown 类型是 Tableau 生态系统中广泛使用的内置通用类型。"
 date: 2024-09-24T15:59:39+08:00
