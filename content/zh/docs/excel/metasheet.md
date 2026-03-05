@@ -136,12 +136,12 @@ Sheet mode 定义了 tableauc（protogen）解析 sheet 的方式：数据或类
 可用模式：
 
 - `MODE_DEFAULT`：默认模式，定义 sheet 的数据结构。
-- `MODE_ENUM_TYPE`：在一个 sheet 中定义单个枚举类型，参见 [示例](../enum/#single-enum-type-in-sheet)。
-- `MODE_ENUM_TYPE_MULTI`：在一个 sheet 中定义多个枚举类型，参见 [示例](../enum/#multiple-enum-types-in-sheet)。
-- `MODE_STRUCT_TYPE`：在一个 sheet 中定义单个 struct 类型，参见 [示例](../struct/#single-struct-type-in-sheet)。
-- `MODE_STRUCT_TYPE_MULTI`：在一个 sheet 中定义多个 struct 类型，参见 [示例](../struct/#multiple-struct-types-in-sheet)。
-- `MODE_UNION_TYPE`：在一个 sheet 中定义单个 union 类型，参见 [示例](../union/#single-union-type-in-sheet)。
-- `MODE_UNION_TYPE_MULTI`：在一个 sheet 中定义多个 union 类型，参见 [示例](../union/#multiple-union-types-in-sheet)。
+- `MODE_ENUM_TYPE`：在一个 sheet 中定义单个枚举类型，参见 [示例](../enum/#单个枚举类型)。
+- `MODE_ENUM_TYPE_MULTI`：在一个 sheet 中定义多个枚举类型，参见 [示例](../enum/#多个枚举类型)。
+- `MODE_STRUCT_TYPE`：在一个 sheet 中定义单个 struct 类型，参见 [示例](../struct/#单个-struct-类型)。
+- `MODE_STRUCT_TYPE_MULTI`：在一个 sheet 中定义多个 struct 类型，参见 [示例](../struct/#多个-struct-类型)。
+- `MODE_UNION_TYPE`：在一个 sheet 中定义单个 union 类型，参见 [示例](../union/#单个-union-类型)。
+- `MODE_UNION_TYPE_MULTI`：在一个 sheet 中定义多个 union 类型，参见 [示例](../union/#多个-union-类型)。
 
 ## 选项 `Transpose`
 

@@ -85,7 +85,6 @@ message Target {
 
 > 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
 
-
 *HelloWorld.xlsx* 中的 worksheet `TaskConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
@@ -176,7 +175,6 @@ message TaskConf {
 
 > 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
 
-
 *HelloWorld.xlsx* 中的 worksheet `TaskConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
@@ -247,7 +245,6 @@ message TaskConf {
 ## Map 中的 predefined incell union
 
 > 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
-
 
 *HelloWorld.xlsx* 中的 worksheet `TaskConf`：
 

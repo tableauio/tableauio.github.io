@@ -34,9 +34,9 @@ enum FruitType {
 
 以下示例说明如何使用预定义枚举类型：
 
-- Excel/CSV：[使用预定义枚举类型](../../excel/enum/#use-predefined-enum-type)。
-- XML：[使用预定义枚举类型](../../xml/enum/#use-predefined-enum-type)
-- YAML：[使用预定义枚举类型](../../yaml/enum/#use-predefined-enum-type)
+- Excel/CSV：[使用预定义枚举类型](../../excel/enum/#使用预定义枚举类型)。
+- XML：[使用预定义枚举类型](../../xml/enum/#使用预定义枚举类型)
+- YAML：[使用预定义枚举类型](../../yaml/enum/#使用预定义枚举类型)
 
 ## Struct
 
@@ -53,8 +53,8 @@ message Prop {
 
 - Excel/CSV
   - `struct`：[Predefined-struct](../../excel/struct/#predefined-struct)
-  - `list`：[Vertical predefined-struct list](../../excel/list/#vertical-predefined-struct-list)
-  - `map`：[Vertical predefined-struct map](../../excel/map/#vertical-predefined-struct-map)
+  - `list`：[Vertical predefined-struct list](../../excel/list/#垂直-predefined-struct-list)
+  - `map`：[Vertical predefined-struct map](../../excel/map/#垂直-predefined-struct-map)
 - XML
   - `struct`：[Predefined-struct](../../xml/struct/#predefined-struct)
   - `list`：[Predefined struct list](../../xml/list/#predefined-struct-list)
@@ -130,8 +130,8 @@ message Target {
 以下示例说明如何使用预定义 union 类型：
 
 - Excel/CSV
-  - `list`：[Predefined union in list](../../excel/union/#predefined-union-in-list)
-  - `map`：[Predefined union in map](../../excel/union/#predefined-union-in-map)
+  - `list`：[Predefined union in list](../../excel/union/#list-中的-predefined-union)
+  - `map`：[Predefined union in map](../../excel/union/#map-中的-predefined-union)
 - XML
   - `union`：[Predefined union](../../xml/union/#predefined-union)
   - `list`：[Predefined union list](../../xml/union/#predefined-union-list)

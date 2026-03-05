@@ -19,6 +19,23 @@
   height: 30px !important;
 }
 
+div.sheet-colored1 > table {
+  @extend .table;
+  @extend .table-sm;
+  @extend .table-light;
+  @extend .table-bordered;
+}
+
+div.sheet-colored1 > table > thead > tr > th {
+  font-weight: normal !important;
+}
+
+div.sheet-colored1 > table > thead > tr {
+  background-color: #f5c242 !important;
+
+  --bs-table-bg: #f5c242 !important;
+}
+
 div.sheet-colored > table {
   @extend .table;
   @extend .table-sm;
@@ -46,21 +63,4 @@ div.sheet-colored > table > tbody > tr:nth-child(2) {
   background-color: #b1cf95 !important;
 
   --bs-table-bg: #b1cf95 !important;
-}
-
-div.sheet-colored1 > table {
-  @extend .table;
-  @extend .table-sm;
-  @extend .table-light;
-  @extend .table-bordered;
-}
-
-div.sheet-colored1 > table > thead > tr > th {
-  font-weight: normal !important;
-}
-
-div.sheet-colored1 > table > thead > tr {
-  background-color: #f5c242 !important;
-
-  --bs-table-bg: #f5c242 !important;
 }

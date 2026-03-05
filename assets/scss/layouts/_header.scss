@@ -226,15 +226,11 @@
     width: auto !important;
   }
 
-  .algolia-autocomplete
-    .algolia-docsearch-suggestion
-    .algolia-docsearch-suggestion--subcategory-column {
+  .algolia-autocomplete .algolia-docsearch-suggestion .algolia-docsearch-suggestion--subcategory-column {
     font-weight: normal;
   }
 
-  .algolia-autocomplete
-    .algolia-docsearch-suggestion
-    .algolia-docsearch-suggestion--subcategory-column::after {
+  .algolia-autocomplete .algolia-docsearch-suggestion .algolia-docsearch-suggestion--subcategory-column::after {
     content: "/";
     margin-right: 0.25rem;
   }

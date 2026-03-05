@@ -13,7 +13,7 @@ toc: true
 
 ## Horizontal list
 
-NOTE: Column name of horizontal list **MUST** have a digit suffix which started at `1`.
+NOTE: Each column name of horizontal list **MUST** have a digit suffix which started at `1`.
 
 Overview of horizontal list syntax:
 
@@ -459,11 +459,17 @@ message ItemConf {
 
 ## Vertical list
 
-NOTE: Column name of horizontal list **MUST NOT** have a digit suffix which started at `1`.
+Overview of vertical list syntax:
 
-Overview of horizontal list syntax:
-
-> TODO: table form
+| List element type                                                   | Syntax example               |
+| ------------------------------------------------------------------- | ---------------------------- |
+| [scalar](#vertical-scalar-list)                                     | `[]uint32`                   |
+| [enum](#vertical-enum-list)                                         | `[]enum<.FruitType>`         |
+| [struct](#vertical-struct-list)                                     | `[Item]uint32`               |
+| [predefined struct](#vertical-predefined-struct-list)               | `[.Item]int32`               |
+| [incell struct](#vertical-incell-struct-list)                       | `[]{int32 ID,int32 Num}Item` |
+| [incell predefined struct](#vertical-incell-predefined-struct-list) | `[]{.Item}`                  |
+{.table-striped .table-hover}
 
 ### Vertical scalar list
 
@@ -920,18 +926,15 @@ message ItemConf {
 
 ## Incell list
 
-NOTE: Column name of horizontal list **MUST NOT** have a digit suffix which started at `1`.
-
 Overview of incell list syntax:
 
-> TODO: table form
-
-There are 4 kinds of incell list:
-
-1. Incell **scalar** list, each element type is scalar. E.g: `[]int32`.
-2. Incell **enum** list, each element type is enum. E.g: `[]enum<.FruitType>`.
-3. Incell **struct** list, each element type is struct. E.g: `[]{int32 ID,int32 Num}Item`.
-4. Incell **predefined-struct** list, each element type is predefined struct. E.g.: `[]{.Item}`.
+| List element type                                          | Syntax example               |
+| ---------------------------------------------------------- | ---------------------------- |
+| [scalar](#incell-scalar-list)                              | `[]int32`                    |
+| [enum](#incell-enum-list)                                  | `[]enum<.FruitType>`         |
+| [incell struct](#incell-struct-list)                       | `[]{int32 ID,int32 Num}Item` |
+| [incell predefined struct](#incell-predefined-struct-list) | `[]{.Item}`                  |
+{.table-striped .table-hover}
 
 ### Incell scalar list
 

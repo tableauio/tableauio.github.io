@@ -201,8 +201,8 @@ conf:
 
 同时也支持 **sheet 级别**和**字段级别**的分隔符选项：
 
-- [Metasheet 中的 sheet 级别分隔符](../../excel/metasheet/#option-sep)
-- [字段属性中的字段级别分隔符](../../excel/field-property/#option-sep)
+- [Metasheet 中的 sheet 级别分隔符](../../excel/metasheet/#选项-sep)
+- [字段属性中的字段级别分隔符](../../excel/field-property/#选项-sep)
 
 ### proto.input.header.subsep
 
@@ -215,5 +215,5 @@ conf:
 
 同时也支持 **sheet 级别**和**字段级别**的子分隔符选项：
 
-- [Metasheet 中的 sheet 级别子分隔符](../../excel/metasheet/#option-subsep)
-- [字段属性中的字段级别子分隔符](../../excel/field-property/#option-subsep)
+- [Metasheet 中的 sheet 级别子分隔符](../../excel/metasheet/#选项-subsep)
+- [字段属性中的字段级别子分隔符](../../excel/field-property/#选项-subsep)

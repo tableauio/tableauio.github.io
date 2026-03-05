@@ -16,14 +16,14 @@ toc: true
 
 水平 list 语法概览：
 
-| List 元素类型                                                         | 语法示例                        |
-| --------------------------------------------------------------------- | ------------------------------- |
-| [scalar](#horizontal-scalar-list)                                     | `[]uint32`                      |
-| [enum](#horizontal-enum-list)                                         | `[]enum<.FruitType>`            |
-| [struct](#horizontal-struct-list)                                     | `[Item]uint32`                  |
-| [predefined struct](#horizontal-predefined-struct-list)               | `[.Item]uint32`                 |
-| [incell struct](#horizontal-incell-struct-list)                       | `[]{uint32 ID, string Num}Item` |
-| [incell predefined struct](#horizontal-incell-predefined-struct-list) | `[]{.Item}`                     |
+| List 元素类型                                                   | 语法示例                        |
+| --------------------------------------------------------------- | ------------------------------- |
+| [scalar](#水平-scalar-list)                                     | `[]uint32`                      |
+| [enum](#水平-enum-list)                                         | `[]enum<.FruitType>`            |
+| [struct](#水平-struct-list)                                     | `[Item]uint32`                  |
+| [predefined struct](#水平-predefined-struct-list)               | `[.Item]uint32`                 |
+| [incell struct](#水平-incell-struct-list)                       | `[]{uint32 ID, string Num}Item` |
+| [incell predefined struct](#水平-incell-predefined-struct-list) | `[]{.Item}`                     |
 {.table-striped .table-hover}
 
 ### 水平 scalar list
@@ -414,7 +414,17 @@ message ItemConf {
 
 ## 垂直 list（Vertical list）
 
-注意：垂直 list 的列名**不能**带有从 `1` 开始的数字后缀。
+垂直 list 语法概览：
+
+| List 元素类型                                                   | 语法示例                     |
+| --------------------------------------------------------------- | ---------------------------- |
+| [scalar](#垂直-scalar-list)                                     | `[]uint32`                   |
+| [enum](#垂直-enum-list)                                         | `[]enum<.FruitType>`         |
+| [struct](#垂直-struct-list)                                     | `[Item]uint32`               |
+| [predefined struct](#垂直-predefined-struct-list)               | `[.Item]int32`               |
+| [incell struct](#垂直-incell-struct-list)                       | `[]{int32 ID,int32 Num}Item` |
+| [incell predefined struct](#垂直-incell-predefined-struct-list) | `[]{.Item}`                  |
+{.table-striped .table-hover}
 
 ### 垂直 scalar list
 
@@ -822,14 +832,15 @@ message ItemConf {
 
 ## Incell list
 
-注意：incell list 的列名**不能**带有从 `1` 开始的数字后缀。
+Incell list 语法概览：
 
-共有 4 种 incell list：
-
-1. Incell **scalar** list，每个元素类型为 scalar。例如：`[]int32`。
-2. Incell **enum** list，每个元素类型为 enum。例如：`[]enum<.FruitType>`。
-3. Incell **struct** list，每个元素类型为 struct。例如：`[]{int32 ID,int32 Num}Item`。
-4. Incell **predefined-struct** list，每个元素类型为 predefined struct。例如：`[]{.Item}`。
+| List 元素类型                                              | 语法示例                     |
+| ---------------------------------------------------------- | ---------------------------- |
+| [scalar](#incell-scalar-list)                              | `[]int32`                    |
+| [enum](#incell-enum-list)                                  | `[]enum<.FruitType>`         |
+| [incell struct](#incell-struct-list)                       | `[]{int32 ID,int32 Num}Item` |
+| [incell predefined struct](#incell-predefined-struct-list) | `[]{.Item}`                  |
+{.table-striped .table-hover}
 
 ### Incell scalar list
 

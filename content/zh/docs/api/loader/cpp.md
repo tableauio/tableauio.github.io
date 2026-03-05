@@ -28,7 +28,7 @@ toc: true
 
 > 前提条件：需要在 metasheet 中将 `OrderedMap` 选项设置为 `true`。
 >
-> 参考 [metasheet 选项：OrderedMap](../../../excel/metasheet/#option-orderedmap)。
+> 参考 [metasheet 选项：OrderedMap](../../../excel/metasheet/#选项-orderedmap)。
 
 `const OrderedMapValueType* GetOrderedMap(k1 KEY1, k2 KEY2...) const`
 
@@ -38,7 +38,7 @@ toc: true
 
 > 前提条件：需要在 metasheet 中适当设置 `Index` 选项。
 >
-> 参考 [metasheet 选项：Index](../../../excel/metasheet/#option-index)。
+> 参考 [metasheet 选项：Index](../../../excel/metasheet/#选项-index)。
 
 如果 index 名称为 `Chapter`，则访问器为：
 
@@ -50,7 +50,7 @@ toc: true
 
 > 前提条件：需要在 metasheet 中适当设置 `OrderedIndex` 选项。
 >
-> 参考 [metasheet 选项：OrderedIndex](../../../excel/metasheet/#option-orderedindex)。
+> 参考 [metasheet 选项：OrderedIndex](../../../excel/metasheet/#选项-orderedindex)。
 
 如果有序 index 名称为 `Chapter`，则访问器为：
 
