@@ -56,13 +56,13 @@
 &lt;h3 id="orderedmap">OrderedMap &lt;a href="#orderedmap" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>前提条件：需要在 metasheet 中将 &lt;code>OrderedMap&lt;/code> 选项设置为 &lt;code>true&lt;/code>。&lt;/p>
-&lt;p>参考 &lt;a href="../../../excel/metasheet/#option-orderedmap">metasheet 选项：OrderedMap&lt;/a>。&lt;/p>&lt;/blockquote>
+&lt;p>参考 &lt;a href="../../../excel/metasheet/#%E9%80%89%E9%A1%B9-orderedmap">metasheet 选项：OrderedMap&lt;/a>。&lt;/p>&lt;/blockquote>
 &lt;p>&lt;code>const OrderedMapValueType* GetOrderedMap(k1 KEY1, k2 KEY2...) const&lt;/code>&lt;/p>
 &lt;p>获取第 &lt;code>N&lt;/code> 层有序 map 的值。注意：仅适用于每层 message 的&lt;strong>第一个 map 字段&lt;/strong>。&lt;/p>
 &lt;h3 id="index">Index &lt;a href="#index" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>前提条件：需要在 metasheet 中适当设置 &lt;code>Index&lt;/code> 选项。&lt;/p>
-&lt;p>参考 &lt;a href="../../../excel/metasheet/#option-index">metasheet 选项：Index&lt;/a>。&lt;/p>&lt;/blockquote>
+&lt;p>参考 &lt;a href="../../../excel/metasheet/#%E9%80%89%E9%A1%B9-index">metasheet 选项：Index&lt;/a>。&lt;/p>&lt;/blockquote>
 &lt;p>如果 index 名称为 &lt;code>Chapter&lt;/code>，则访问器为：&lt;/p></description></item><item><title>Go</title><link>https://tableauio.github.io/zh/docs/api/loader/go/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/go/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>&lt;code>func Data() *ProtobufMessage&lt;/code>&lt;/p>
@@ -73,13 +73,13 @@
 &lt;h3 id="orderedmap">OrderedMap &lt;a href="#orderedmap" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>前置条件：需要在 metasheet 中将 &lt;code>OrderedMap&lt;/code> 选项设置为 &lt;code>true&lt;/code>。&lt;/p>
-&lt;p>参考 &lt;a href="../../../excel/metasheet/#option-orderedmap">metasheet 选项：OrderedMap&lt;/a>。&lt;/p>&lt;/blockquote>
+&lt;p>参考 &lt;a href="../../../excel/metasheet/#%E9%80%89%E9%A1%B9-orderedmap">metasheet 选项：OrderedMap&lt;/a>。&lt;/p>&lt;/blockquote>
 &lt;p>&lt;code>func GetOrderedMapN(k1 KEY1, k2 KEY2...) (*OrderedMapValueType, error)&lt;/code>&lt;/p>
 &lt;p>获取第 &lt;code>N&lt;/code> 层有序 map 的值。注意：仅适用于每层 message 的&lt;strong>第一个 map 字段&lt;/strong>。&lt;/p>
 &lt;h3 id="index">Index &lt;a href="#index" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>前置条件：需要在 metasheet 中适当设置 &lt;code>Index&lt;/code> 选项。&lt;/p>
-&lt;p>参考 &lt;a href="../../../excel/metasheet/#option-index">metasheet 选项：Index&lt;/a>。&lt;/p>&lt;/blockquote>
+&lt;p>参考 &lt;a href="../../../excel/metasheet/#%E9%80%89%E9%A1%B9-index">metasheet 选项：Index&lt;/a>。&lt;/p>&lt;/blockquote>
 &lt;p>若 index 名称为 &lt;code>Chapter&lt;/code>，则访问器为：&lt;/p></description></item><item><title>C#</title><link>https://tableauio.github.io/zh/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/csharp/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>TODO：参考 &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>。&lt;/p></description></item><item><title>TypeScript</title><link>https://tableauio.github.io/zh/docs/api/loader/ts/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/ts/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>TODO：参考 &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>。&lt;/p></description></item><item><title>Lua</title><link>https://tableauio.github.io/zh/docs/api/loader/lua/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/lua/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>

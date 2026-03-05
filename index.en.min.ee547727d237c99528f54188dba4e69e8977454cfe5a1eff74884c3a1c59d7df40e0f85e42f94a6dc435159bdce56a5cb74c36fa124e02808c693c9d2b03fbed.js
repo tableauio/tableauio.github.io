@@ -365,7 +365,7 @@ uint32
 Note Damage
 int64
 Note Empty AliasEmpty ID TargetType TargetField1 TargetField2 TargetField3 Progress map&lt;int32, Task&gt; {.Target}enum&lt;.Target.Type&gt; union union union int32 ID Target&rsquo;s type Target&rsquo;s field1 Target&rsquo;s field2 Target&rsquo;s field3 Progress 1 AliasPVP 1 10 Apple,Orange,Banana 3 2 AliasPVE 1,Equip 1,2,3 1:10,2:20,3:30 10 3 AliasStory 1001,10 1:Apple,2:Orange Fragrant:Apple,Sour:Orange 10 4 AliasHobby Fragrant:Apple,Sour:Orange 2023-06-01 10:00:00 22s 12 5 AliasSkill 1 200 8 6 AliasEmpty Sheet Mode Target MODE_UNION_TYPE Task Generated:
-hello_world.proto TaskConf.json `}).add({id:161,href:"/docs/excel/list/#horizontal-list",title:"List / Horizontal list ",description:"Excel list guide.",content:` NOTE: Column name of horizontal list MUST have a digit suffix which started at 1.
+hello_world.proto TaskConf.json `}).add({id:161,href:"/docs/excel/list/#horizontal-list",title:"List / Horizontal list ",description:"Excel list guide.",content:` NOTE: Each column name of horizontal list MUST have a digit suffix which started at 1.
 Overview of horizontal list syntax:
 List element type Syntax example scalar []uint32 enum []enum&lt;.FruitType&gt; struct [Item]uint32 predefined struct [.Item]uint32 incell struct []{uint32 ID, string Num}Item incell predefined struct []{.Item} `}).add({id:162,href:"/docs/excel/list/#horizontal-scalar-list",title:"List / Horizontal scalar list ",description:"Excel list guide.",content:` A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID1 ID2 ID3 []uint32 uint32 uint32 ID1&rsquo;s value ID2&rsquo;s value ID3&rsquo;s value 1 2 3 Generated:
@@ -382,10 +382,8 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item1 Item2 Item3 []{int32 ID, string Na
 hello_world.proto ItemConf.json `}).add({id:167,href:"/docs/excel/list/#horizontal-incell-predefined-struct-list",title:"List / Horizontal incell-predefined-struct list ",description:"Excel list guide.",content:` Item in common.proto is predefined as:
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Reward1 Reward2 Reward3 []{.Item} .Item .Item Item1&rsquo;s info Item2&rsquo;s info Item3&rsquo;s info 1,100 2,200 3,300 Generated:
-hello_world.proto ItemConf.json `}).add({id:168,href:"/docs/excel/list/#vertical-list",title:"List / Vertical list ",description:"Excel list guide.",content:` NOTE: Column name of horizontal list MUST NOT have a digit suffix which started at 1.
-Overview of horizontal list syntax:
-TODO: table form
-`}).add({id:169,href:"/docs/excel/list/#vertical-scalar-list",title:"List / Vertical scalar list ",description:"Excel list guide.",content:` It&rsquo;s defined same as Incell scalar list, but will aggregate multiple rows if provided.
+hello_world.proto ItemConf.json `}).add({id:168,href:"/docs/excel/list/#vertical-list",title:"List / Vertical list ",description:"Excel list guide.",content:` Overview of vertical list syntax:
+List element type Syntax example scalar []uint32 enum []enum&lt;.FruitType&gt; struct [Item]uint32 predefined struct [.Item]int32 incell struct []{int32 ID,int32 Num}Item incell predefined struct []{.Item} `}).add({id:169,href:"/docs/excel/list/#vertical-scalar-list",title:"List / Vertical scalar list ",description:"Excel list guide.",content:` It&rsquo;s defined same as Incell scalar list, but will aggregate multiple rows if provided.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID []uint32 ID 1,2,3 1,2 1 Generated:
 hello_world.proto ItemConf.json `}).add({id:170,href:"/docs/excel/list/#vertical-enum-list",title:"List / Vertical enum list ",description:"Excel list guide.",content:` It&rsquo;s defined same as Incell enum list, but will aggregate multiple rows if provided.
@@ -402,11 +400,8 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item []{int32 ID,int32 Num}Item Item lis
 hello_world.proto ItemConf.json `}).add({id:174,href:"/docs/excel/list/#vertical-incell-predefined-struct-list",title:"List / Vertical incell-predefined-struct list ",description:"Excel list guide.",content:` Item in common.proto is predefined as:
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item []{.Item} Item&rsquo;s info 1:100 2:200,3:300 Generated:
-hello_world.proto ItemConf.json `}).add({id:175,href:"/docs/excel/list/#incell-list",title:"List / Incell list ",description:"Excel list guide.",content:` NOTE: Column name of horizontal list MUST NOT have a digit suffix which started at 1.
-Overview of incell list syntax:
-TODO: table form
-There are 4 kinds of incell list:
-Incell scalar list, each element type is scalar. E.g: []int32. Incell enum list, each element type is enum. E.g: []enum&lt;.FruitType&gt;. Incell struct list, each element type is struct. E.g: []{int32 ID,int32 Num}Item. Incell predefined-struct list, each element type is predefined struct. E.g.: []{.Item}. `}).add({id:176,href:"/docs/excel/list/#incell-scalar-list",title:"List / Incell scalar list ",description:"Excel list guide.",content:` A worksheet ItemConf in HelloWorld.xlsx:
+hello_world.proto ItemConf.json `}).add({id:175,href:"/docs/excel/list/#incell-list",title:"List / Incell list ",description:"Excel list guide.",content:` Overview of incell list syntax:
+List element type Syntax example scalar []int32 enum []enum&lt;.FruitType&gt; incell struct []{int32 ID,int32 Num}Item incell predefined struct []{.Item} `}).add({id:176,href:"/docs/excel/list/#incell-scalar-list",title:"List / Incell scalar list ",description:"Excel list guide.",content:` A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Param []int32 Param list 1,2,3 4,5 6 The Param column&rsquo;s type is incell list []int32, as the list element is scalar type int32.
 Generated:
 hello_world.proto ItemConf.json `}).add({id:177,href:"/docs/excel/list/#incell-enum-list",title:"List / Incell enum list ",description:"Excel list guide.",content:` FruitType in common.proto is predefined as:

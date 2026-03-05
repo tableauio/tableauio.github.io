@@ -474,9 +474,9 @@ FRUIT_TYPE_BANANA = 3 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;/code>&lt;/pre>
 &lt;p>以下示例说明如何使用预定义枚举类型：&lt;/p>
 &lt;ul>
-&lt;li>Excel/CSV：&lt;a href="../../excel/enum/#use-predefined-enum-type">使用预定义枚举类型&lt;/a>。&lt;/li>
-&lt;li>XML：&lt;a href="../../xml/enum/#use-predefined-enum-type">使用预定义枚举类型&lt;/a>&lt;/li>
-&lt;li>YAML：&lt;a href="../../yaml/enum/#use-predefined-enum-type">使用预定义枚举类型&lt;/a>&lt;/li>
+&lt;li>Excel/CSV：&lt;a href="../../excel/enum/#%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B">使用预定义枚举类型&lt;/a>。&lt;/li>
+&lt;li>XML：&lt;a href="../../xml/enum/#%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B">使用预定义枚举类型&lt;/a>&lt;/li>
+&lt;li>YAML：&lt;a href="../../yaml/enum/#%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B">使用预定义枚举类型&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="struct">Struct &lt;a href="#struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>例如，&lt;code>common.proto&lt;/code> 中定义的 struct 类型 &lt;code>Prop&lt;/code>：&lt;/p></description></item></channel></rss>

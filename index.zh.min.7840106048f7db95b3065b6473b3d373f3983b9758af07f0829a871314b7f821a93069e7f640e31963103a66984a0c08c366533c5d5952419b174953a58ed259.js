@@ -220,7 +220,7 @@ Worksheet Item：HelloWorld#Item.csv Worksheet Activity：HelloWorld#Activity.cs
 HelloWorld.xlsx&nbsp; Apple @TABLEAU ID Name Desc uint32 string string Item&rsquo;s ID Item&rsquo;s Name Item&rsquo;s Description 1 Apple A kind of delicious fruit. 该 worksheet 中定义了三个 scalar 字段：
 ID：uint32 Name：string Desc：string 生成结果：
 hello_world.proto Apple.json `}).add({id:132,href:"/zh/docs/excel/scalar/#说明",title:"Scalar / 说明 ",description:"Excel scalar 使用指南。",content:` Scalar 类型通常用于定义 struct 类型的字段。Struct →
-`}).add({id:133,href:"/zh/docs/excel/enum/#使用预定义枚举类型",title:"Enum / 使用预定义枚举类型 ",description:"Excel enum 使用指南。",content:` 枚举基础知识请参考 Enum →
+`}).add({id:133,href:"/zh/docs/excel/enum/#使用预定义枚举类型",title:"Enum / 使用预定义枚举类型 ",description:"Excel enum 使用指南。",content:` 枚举基础知识请参考 枚举（Enum）→
 例如，common.proto 中定义的枚举类型 FruitType：
 HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Type map&lt;uint32, Item&gt; enum&lt;.FruitType&gt; Item&rsquo;s ID Fruit&rsquo;s type 1 1 2 Orange 3 FRUIT_TYPE_BANANA 生成结果：
@@ -379,8 +379,8 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item1 Item2 Item3 []{int32 ID, string Na
 hello_world.proto ItemConf.json `}).add({id:167,href:"/zh/docs/excel/list/#水平-incell-predefined-struct-list",title:"List / 水平 incell-predefined-struct list ",description:"Excel list 使用指南。",content:` common.proto 中预定义的 Item：
 HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Reward1 Reward2 Reward3 []{.Item} .Item .Item Item1&rsquo;s info Item2&rsquo;s info Item3&rsquo;s info 1,100 2,200 3,300 生成结果：
-hello_world.proto ItemConf.json `}).add({id:168,href:"/zh/docs/excel/list/#垂直-listvertical-list",title:"List / 垂直 list（Vertical list） ",description:"Excel list 使用指南。",content:` 注意：垂直 list 的列名不能带有从 1 开始的数字后缀。
-`}).add({id:169,href:"/zh/docs/excel/list/#垂直-scalar-list",title:"List / 垂直 scalar list ",description:"Excel list 使用指南。",content:` 定义方式与 Incell scalar list 相同，但如果提供了多行数据，会聚合多行。
+hello_world.proto ItemConf.json `}).add({id:168,href:"/zh/docs/excel/list/#垂直-listvertical-list",title:"List / 垂直 list（Vertical list） ",description:"Excel list 使用指南。",content:` 垂直 list 语法概览：
+List 元素类型 语法示例 scalar []uint32 enum []enum&lt;.FruitType&gt; struct [Item]uint32 predefined struct [.Item]int32 incell struct []{int32 ID,int32 Num}Item incell predefined struct []{.Item} `}).add({id:169,href:"/zh/docs/excel/list/#垂直-scalar-list",title:"List / 垂直 scalar list ",description:"Excel list 使用指南。",content:` 定义方式与 Incell scalar list 相同，但如果提供了多行数据，会聚合多行。
 HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID []uint32 ID 1,2,3 1,2 1 生成结果：
 hello_world.proto ItemConf.json `}).add({id:170,href:"/zh/docs/excel/list/#垂直-enum-list",title:"List / 垂直 enum list ",description:"Excel list 使用指南。",content:` 定义方式与 Incell enum list 相同，但如果提供了多行数据，会聚合多行。
@@ -397,9 +397,8 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item []{int32 ID,int32 Num}Item Item lis
 hello_world.proto ItemConf.json `}).add({id:174,href:"/zh/docs/excel/list/#垂直-incell-predefined-struct-list",title:"List / 垂直 incell-predefined-struct list ",description:"Excel list 使用指南。",content:` common.proto 中预定义的 Item：
 HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item []{.Item} Item&rsquo;s info 1:100 2:200,3:300 生成结果：
-hello_world.proto ItemConf.json `}).add({id:175,href:"/zh/docs/excel/list/#incell-list",title:"List / Incell list ",description:"Excel list 使用指南。",content:` 注意：incell list 的列名不能带有从 1 开始的数字后缀。
-共有 4 种 incell list：
-Incell scalar list，每个元素类型为 scalar。例如：[]int32。 Incell enum list，每个元素类型为 enum。例如：[]enum&lt;.FruitType&gt;。 Incell struct list，每个元素类型为 struct。例如：[]{int32 ID,int32 Num}Item。 Incell predefined-struct list，每个元素类型为 predefined struct。例如：[]{.Item}。 `}).add({id:176,href:"/zh/docs/excel/list/#incell-scalar-list",title:"List / Incell scalar list ",description:"Excel list 使用指南。",content:` HelloWorld.xlsx 中的 worksheet ItemConf：
+hello_world.proto ItemConf.json `}).add({id:175,href:"/zh/docs/excel/list/#incell-list",title:"List / Incell list ",description:"Excel list 使用指南。",content:` Incell list 语法概览：
+List 元素类型 语法示例 scalar []int32 enum []enum&lt;.FruitType&gt; incell struct []{int32 ID,int32 Num}Item incell predefined struct []{.Item} `}).add({id:176,href:"/zh/docs/excel/list/#incell-scalar-list",title:"List / Incell scalar list ",description:"Excel list 使用指南。",content:` HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Param []int32 Param list 1,2,3 4,5 6 Param 列的类型为 incell list []int32，list 元素为 scalar 类型 int32。
 生成结果：
 hello_world.proto ItemConf.json `}).add({id:177,href:"/zh/docs/excel/list/#incell-enum-list",title:"List / Incell enum list ",description:"Excel list 使用指南。",content:` common.proto 中预定义的枚举类型 FruitType：
