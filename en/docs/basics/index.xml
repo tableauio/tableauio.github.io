@@ -333,7 +333,7 @@ FOO_BAR_SECOND_VALUE = 2;
 &lt;ol>
 &lt;li>enum value &lt;strong>name&lt;/strong>.&lt;/li>
 &lt;li>enum value &lt;strong>number&lt;/strong>.&lt;/li>
-&lt;li>enum value &lt;strong>alias&lt;/strong>. It is another name in English, Chinese, or any other language, which can be specified by &lt;a href="https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto#L26">tableau.evalue&lt;/a> by extending &lt;a href="https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto#L669">google.protobuf.EnumValueOptions&lt;/a>.&lt;/li>
+&lt;li>enum value &lt;strong>alias&lt;/strong>. It is another name in English, Chinese, or any other language, which can be specified by &lt;a href="https://github.com/tableauio/tableau/blob/v0.15.1/proto/tableau/protobuf/tableau.proto#L39">tableau.evalue&lt;/a> by extending &lt;a href="https://github.com/protocolbuffers/protobuf/blob/v34.0/src/google/protobuf/descriptor.proto#L904">google.protobuf.EnumValueOptions&lt;/a>.&lt;/li>
 &lt;/ol>
 &lt;p>For example, enum type &lt;code>FruitType&lt;/code> in &lt;code>common.proto&lt;/code> is defined as:&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">enum FruitType {
@@ -354,7 +354,7 @@ This concept is much like &lt;a href="https://protobuf.dev/reference/protobuf/go
 &lt;/ul>
 &lt;h2 id="datetime">Datetime &lt;a href="#datetime" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
-&lt;p>For use cases, see &lt;a href="https://tableauio.github.io/docs/excel/wellknown-types/#datetime">Excel wellknown types: Datetime →&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>For use cases, see &lt;a href="https://tableauio.github.io/docs/excel/wellknown-types/#datetime">Wellknown types: Datetime →&lt;/a>&lt;/p>&lt;/blockquote>
 &lt;table class="table-striped">
 &lt;thead>
 &lt;tr>
