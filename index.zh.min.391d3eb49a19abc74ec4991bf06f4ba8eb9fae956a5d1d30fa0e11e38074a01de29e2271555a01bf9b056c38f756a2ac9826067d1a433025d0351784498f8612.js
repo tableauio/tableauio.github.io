@@ -604,9 +604,9 @@ hello_world.proto ItemConf.json `}).add({id:264,href:"/zh/docs/excel/map-in-map/
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Reward1ID Reward1Item1ID Reward1Item1Num Reward1Item2ID Reward1Item2Num Reward2ID Reward2Item1ID Reward2Item1Num map&lt;uint32, Reward&gt; map&lt;uint32, Item&gt; int32 uint32 int32 uint32 uint32 int32 Reward1 ID Reward1 item1 ID Reward1 item1 num Reward1 item2 ID Reward1 item2 num Reward2 ID Reward2 item1 ID Reward2 item1 num 1 1 10 2 20 2 3 30 生成结果：
 hello_world.proto ItemConf.json `}).add({id:266,href:"/zh/docs/excel/map-in-map/#水平-map-中的-incell-map",title:"Map 嵌套 Map / 水平 map 中的 incell map ",description:"Excel map in map 使用指南。",content:` HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Reward1ID Reward1Item Reward2ID Reward2Item map&lt;uint32, Reward&gt; map&lt;uint32, int32&gt; uint32 map&lt;uint32, int32&gt; Reward1 ID Reward1 items Reward2 ID Reward2 items 1 1:10,2:20 2 3:30 生成结果：
-hello_world.proto ItemConf.json `}).add({id:267,href:"/zh/docs/excel/infinite-nesting/#概述",title:"Infinite nesting（无限嵌套） / 概述 ",description:"Excel 无限嵌套使用指南。",content:` 现在，水平/垂直 list 元素的第一个字段可以是任意类型，包括 struct、list 和 map。
+hello_world.proto ItemConf.json `}).add({id:267,href:"/zh/docs/excel/infinite-nesting/#概述",title:"无限嵌套 / 概述 ",description:"Excel 无限嵌套使用指南。",content:` 现在，水平/垂直 list 元素的第一个字段可以是任意类型，包括 struct、list 和 map。
 List 元素的第一个字段是 struct：[Reward]{Icon}int32 List 元素的第一个字段是 predefined struct：[Cost]{.Item}uint32 List 元素的第一个字段是 incell struct：[Magic]{int32 Id, int32 Num}Ability List 元素的第一个字段是 list：[Reward][Item]uint32 List 元素的第一个字段是元素为 predefined struct 的 list：[Power][.Item]uint32 List 元素的第一个字段是 map：[Superpower]map&lt;uint32, Ability&gt; TODO: 补充清晰的示例。
-`}).add({id:268,href:"/zh/docs/excel/infinite-nesting/#嵌套命名",title:"Infinite nesting（无限嵌套） / 嵌套命名 ",description:"Excel 无限嵌套使用指南。",content:` common.proto 中的预定义类型：
+`}).add({id:268,href:"/zh/docs/excel/infinite-nesting/#嵌套命名",title:"无限嵌套 / 嵌套命名 ",description:"Excel 无限嵌套使用指南。",content:` common.proto 中的预定义类型：
 HelloWorld.xlsx&nbsp; LoaderConf @TABLEAU ServerType ServerConfType ServerConfConditionType ServerConfConditionValue map&lt;enum&lt;.ServerType&gt;, Server&gt; [Conf]&lt;enum&lt;.ConfType&raquo; [Condition] int32 Server name Sheet name Condition type Condition value SERVER_TYPE_GAME CONF_TYPE_CLOUD 0 113 0 134 SERVER_TYPE_ACTIVITY CONF_TYPE_CLOUD 1 CONF_TYPE_LOCAL 9 34 CONF_TYPE_LOCAL 9 12 CONF_TYPE_LOCAL Remote MatchServer CONF_TYPE_UNKNOWN Sheet Nested LoaderConf true 生成结果：
 hello_world.proto loader_conf.json `}).add({id:269,href:"/zh/docs/excel/field-property/#概览",title:"Field property（字段属性） / 概览 ",description:"Tableau field property 使用指南。",content:` 选项 类型 说明 unique bool 检查字段唯一性。
 默认值：false。对于 map（或 KeyedList）的 key，默认值会自动推断。 range string 格式：&quot;left,right&quot;。例如：&quot;1,10&quot;、&quot;1,~&quot;、&quot;~,10&quot;。
@@ -643,9 +643,9 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Rarity_1 SpecialEffect_2 map&lt;int32
 如果设置为 true，则：
 表格格式（Excel/CSV）：字段的列可以缺失。 文档格式（XML/YAML）：字段名可以缺失。 `}).add({id:283,href:"/zh/docs/excel/field-property/#选项-patch",title:"Field property（字段属性） / 选项 patch ",description:"Tableau field property 使用指南。",content:` 参见 选项 Patch → 中的字段级 patch。
 `}).add({id:284,href:"/zh/docs/excel/field-property/#选项-sep",title:"Field property（字段属性） / 选项 sep ",description:"Tableau field property 使用指南。",content:` 字段级分隔符，用于分隔：
-incell list 元素（scalar 或 struct）。 incell map 条目。 如果未设置，将使用 metasheet 中的sheet 级 sep。
+incell list 元素（scalar 或 struct）。 incell map 元素 如果未设置，将使用 metasheet 中的sheet 级 sep。
 `}).add({id:285,href:"/zh/docs/excel/field-property/#选项-subsep",title:"Field property（字段属性） / 选项 subsep ",description:"Tableau field property 使用指南。",content:` 字段级子分隔符，用于分隔：
-每个 incell map 条目的 key-value 对。 每个 incell struct list 元素的 struct 字段。 如果未设置，将使用 metasheet 中的sheet 级 subsep。
+每个 incell map 元素的键值对。 每个 incell struct list 元素的结构体字段。 如果未设置，将使用 metasheet 中的sheet 级 subsep。
 `}).add({id:286,href:"/zh/docs/excel/field-property/#选项-cross",title:"Field property（字段属性） / 选项 cross ",description:"Tableau field property 使用指南。",content:` 指定具有基数的复合类型（如 list 和 map）跨越的节点/单元格/字段数量。
 `}).add({id:287,href:"/zh/docs/excel/field-property/#union-list-字段",title:"Field property（字段属性） / union list 字段 ",description:"Tableau field property 使用指南。",content:` TODO: 示例待补充。
 指定 list 将跨越并占用的 union 字段数量（每个字段对应一个 list 元素）。这也会将该 list 字段的布局从 incell 改为水平。
@@ -733,9 +733,9 @@ ID ID@Item ID&lt;ID&gt;@Item：结果数组按 ID 排序。 ID&lt;Type,Priority&
 `}).add({id:305,href:"/zh/docs/excel/metasheet/#选项-patch",title:"Metasheet（元表） / 选项 Patch ",description:"Excel metasheet @TABLEAU 使用指南。",content:`
 
 `}).add({id:306,href:"/zh/docs/excel/metasheet/#选项-sep",title:"Metasheet（元表） / 选项 Sep ",description:"Excel metasheet @TABLEAU 使用指南。",content:` 工作表的分隔符，用于分隔：
-incell list 元素（scalar 或 struct）。 incell map 条目。 如果未设置，将使用 tableauc yaml.config 中的全局级别 sep（默认：,）。
+incell list 元素（scalar 或 struct）。 incell map 元素。 如果未设置，将使用 Tableauc 配置 中的全局级别分隔符（默认：,）。
 `}).add({id:307,href:"/zh/docs/excel/metasheet/#选项-subsep",title:"Metasheet（元表） / 选项 Subsep ",description:"Excel metasheet @TABLEAU 使用指南。",content:` 工作表的子分隔符，用于分隔：
-每个 incell map 元素的键值对。 每个 incell struct list 元素的结构体字段。 如果未设置，将使用 tableauc yaml.config 中的全局级别 subsep（默认：:）。
+每个 incell map 元素的键值对。 每个 incell struct list 元素的结构体字段。 如果未设置，将使用 Tableauc 配置 中的全局级别子分隔符（默认：:）。
 `}).add({id:308,href:"/zh/docs/basics/",title:"基础",description:"Tableau 基础知识。",content:""}).add({id:309,href:"/zh/docs/basics/concepts/#术语",title:"核心概念 / 术语 ",description:"Tableau 核心概念。",content:`
 `}).add({id:310,href:"/zh/docs/basics/concepts/#基础术语",title:"核心概念 / 基础术语 ",description:"Tableau 核心概念。",content:" 术语 定义 Workbook 一个 Excel 文件；或一组以相同前缀命名、用 # 分隔的 CSV 文件；或一个 XML 文件；或一个 YAML 文件。 Worksheet Excel 文件中的一个 sheet；或一个 CSV 文件；或 XML 文件的根节点；或 YAML 文件中的一个文档。 Metasheet 名为 @TABLEAU 的特殊 worksheet，用于指定 tableau 解析器选项。 Row sheet 中的一行。 Column sheet 中的一列。 Cell 行与列的交叉点（单元格）。 In-cell 单元格内部。 Cross-cell 一行或一列中连续的多个单元格。 "}).add({id:311,href:"/zh/docs/basics/concepts/#worksheet-相关术语",title:"核心概念 / Worksheet 相关术语 ",description:"Tableau 核心概念。",content:` 术语 定义 Namerow worksheet 中列名定义所在的行号。
 ⚠️ 注意：同一 worksheet 中每个列名必须唯一！

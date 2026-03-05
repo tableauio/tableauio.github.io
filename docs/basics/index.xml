@@ -386,7 +386,7 @@ This concept is much like &lt;a href="https://protobuf.dev/reference/protobuf/go
 &lt;h2 id="usage">Usage &lt;a href="#usage" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;ul>
 &lt;li>Syntax: prepend a dot &lt;code>.&lt;/code> to predefined &lt;code>CustomType&lt;/code> (a.k.a. &lt;code>.CustomType&lt;/code>) when you use it in a worksheet.&lt;/li>
-&lt;li>Import: specify the &lt;code>protoFiles&lt;/code> option of &lt;strong>tableauc&lt;/strong> config to import the common proto files, where predefined &lt;code>enum&lt;/code>, &lt;code>struct&lt;/code>, &lt;code>union&lt;/code> types are defined. See &lt;a href="../../tutorial/config/#configyaml">Tableauc config&lt;/a>.&lt;/li>
+&lt;li>Import: specify the &lt;code>protoFiles&lt;/code> option of &lt;strong>tableauc&lt;/strong> config to import the common proto files, where predefined &lt;code>enum&lt;/code>, &lt;code>struct&lt;/code>, &lt;code>union&lt;/code> types are defined. See &lt;a href="../../prologue/config/#configyaml">Tableauc config&lt;/a>.&lt;/li>
 &lt;/ul>
 &lt;h2 id="enum">Enum &lt;a href="#enum" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>For example, enum type &lt;code>FruitType&lt;/code> in &lt;em>common.proto&lt;/em> is defined as:&lt;/p></description></item></channel></rss>

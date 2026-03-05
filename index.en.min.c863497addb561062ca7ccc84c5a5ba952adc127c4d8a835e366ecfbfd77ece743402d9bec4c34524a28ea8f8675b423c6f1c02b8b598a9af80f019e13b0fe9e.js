@@ -716,9 +716,9 @@ ID ID@Item ID&lt;ID&gt;@Item: sort result array by ID. ID&lt;Type,Priority&gt;@I
 `}).add({id:305,href:"/docs/excel/metasheet/#option-patch",title:"Metasheet / Option Patch ",description:"Excel metasheet @TABLEAU guide.",content:`
 
 `}).add({id:306,href:"/docs/excel/metasheet/#option-sep",title:"Metasheet / Option Sep ",description:"Excel metasheet @TABLEAU guide.",content:` Sheet-level separator for separating:
-incell list elements (scalar or struct). incell map items. If not set, it will use global-level seq (default: ,) in tableauc yaml.config.
+incell list elements (scalar or struct). incell map items. If not set, it will use global-level seq (default: ,) in Tableauc yaml.config.
 `}).add({id:307,href:"/docs/excel/metasheet/#option-subsep",title:"Metasheet / Option Subsep ",description:"Excel metasheet @TABLEAU guide.",content:` Sheet-level subseparator for separating:
-key-value pair of each incell map item. struct fields of each incell struct list element. If not set, it will use global-level subseq (default: :) in tableauc yaml.config.
+key-value pair of each incell map item. struct fields of each incell struct list element. If not set, it will use global-level subseq (default: :) in Tableauc yaml.config.
 `}).add({id:308,href:"/docs/basics/",title:"Basics",description:"Basics of Tableau.",content:""}).add({id:309,href:"/docs/basics/concepts/#terminology",title:"Concepts / Terminology ",description:"Core concepts of Tableau.",content:`
 `}).add({id:310,href:"/docs/basics/concepts/#basics",title:"Concepts / Basics ",description:"Core concepts of Tableau.",content:` Term Definition Workbook An excel file.
 A bundle of CSV files named with the same prefix seperated by #. A XML file. A YAML file. Worksheet A sheet in a excel file. A CSV file. A root node of a XML file. A document in YAML file. Metasheet A worksheet named @TABLEAU to specify tableau parser options. Row The row in a sheet. Column The column in a sheet. Cell The intersection of a row and a column. In-cell The inner-side of a cell. Cross-cell Continuous cells of a row or a column. `}).add({id:311,href:"/docs/basics/concepts/#worksheet",title:"Concepts / Worksheet ",description:"Core concepts of Tableau.",content:` Term Definition Namerow Exact row number of column name definition at a worksheet.

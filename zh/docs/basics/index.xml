@@ -461,7 +461,7 @@ FRUIT_TYPE_BANANA = 3 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;h2 id="使用方式">使用方式 &lt;a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;ul>
 &lt;li>语法：在 worksheet 中使用预定义的 &lt;code>CustomType&lt;/code> 时，需在前面加一个点 &lt;code>.&lt;/code>（即 &lt;code>.CustomType&lt;/code>）。&lt;/li>
-&lt;li>导入：在 &lt;strong>tableauc&lt;/strong> 配置的 &lt;code>protoFiles&lt;/code> 选项中指定公共 proto 文件，这些文件中定义了预定义的 &lt;code>enum&lt;/code>、&lt;code>struct&lt;/code>、&lt;code>union&lt;/code> 类型。参考 &lt;a href="../../tutorial/config/#configyaml">Tableauc 配置&lt;/a>。&lt;/li>
+&lt;li>导入：在 &lt;strong>tableauc&lt;/strong> 配置的 &lt;code>protoFiles&lt;/code> 选项中指定公共 proto 文件，这些文件中定义了预定义的 &lt;code>enum&lt;/code>、&lt;code>struct&lt;/code>、&lt;code>union&lt;/code> 类型。参考 &lt;a href="../../prologue/config/#configyaml">Tableauc 配置&lt;/a>。&lt;/li>
 &lt;/ul>
 &lt;h2 id="enum">Enum &lt;a href="#enum" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>例如，&lt;code>common.proto&lt;/code> 中定义的枚举类型 &lt;code>FruitType&lt;/code>：&lt;/p>
