@@ -1,7 +1,7 @@
 ---
 title: "Metasheet（元表）"
 description: "Excel metasheet @TABLEAU 使用指南。"
-lead: "Metasheet 是一个名为 \"@TABLEAU\" 的 worksheet，用于指定 tableau 解析器的 sheet 级别选项。"
+lead: "Metasheet 是一个名为 \"@TABLEAU\" 的 worksheet，用于指定 tableau 解析器的 工作表选项。"
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2024-09-03T13:59:39+08:00
 draft: false
@@ -26,8 +26,8 @@ toc: true
 | `Typeline`               | int32               | 单元格中列类型定义所在的行号。`0` 表示整个单元格。<br>默认值：`0`。                                                                                                                                                                                                                                                                                                                                                    |
 | `Transpose`              | bool                | 对指定 sheet 进行行列转置。                                                                                                                                                                                                                                                                                                                                                                                            |
 | `Nested`                 | bool                | **namerow** 的嵌套命名。<br>默认值：`false`。                                                                                                                                                                                                                                                                                                                                                                          |
-| `Sep`                    | string              | Sheet 级别的分隔符。                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `Subsep`                 | string              | Sheet 级别的子分隔符。                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `Sep`                    | string              | 工作表的分隔符。                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `Subsep`                 | string              | 工作表的子分隔符。                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `Merger`                 | []string            | 将多个具有相同结构的 sheet（逗号分隔）合并为一个。<br>每个元素可以是：<br> - 仅 workbook 文件路径或 glob 路径（相对于当前 workbook）：`<Workbook>`，此时 sheet 名称与当前 sheet 相同。<br> - workbook 文件路径（相对于当前 workbook）加 worksheet 名称：`<Workbook>#<Worksheet>`。                                                                                                                                     |
 | `AdjacentKey`            | bool                | 合并具有相同 key 的相邻行。如果 key 单元格未设置，则视为与同列上方最近的 key 相同。<br>默认值：`false`。                                                                                                                                                                                                                                                                                                               |
 | `FieldPresence`          | bool                | 为了追踪基本类型（数值、字符串、bytes 和枚举）的字段存在性，生成的字段将标记为 `optional`。<br>默认值：`false`。                                                                                                                                                                                                                                                                                                       |
@@ -588,12 +588,12 @@ message ZoneConf {
 ## 选项 `Patch`
 
 ```protobuf
-// Sheet 级别和 field 级别的 Patch 类型。
+// 工作表和字段级别的 Patch 类型。
 enum Patch {
   PATCH_NONE = 0;
-  // 1 Sheet 级别 patch 选项 "PATCH_REPLACE"
+  // 1 工作表 patch 选项 "PATCH_REPLACE"
   //   - 替换整个 message
-  // 2 顶层 field patch 选项 "PATCH_REPLACE"
+  // 2 顶层字段 patch 选项 "PATCH_REPLACE"
   //   - list：先清空字段，然后将 src 中该 list 字段的所有元素追加到 dst 对应的 list 字段。
   //   - map：先清空字段，然后将 src 中该 map 字段的所有条目复制到 dst 对应的 map 字段。
   PATCH_REPLACE = 1;
@@ -609,7 +609,7 @@ enum Patch {
 
 ## 选项 `Sep`
 
-**Sheet 级别**的分隔符，用于分隔：
+**工作表**的分隔符，用于分隔：
 
 - incell list 元素（scalar 或 struct）。
 - incell map 条目。
@@ -618,9 +618,9 @@ enum Patch {
 
 ## 选项 `Subsep`
 
-**Sheet 级别**的子分隔符，用于分隔：
+**工作表**的子分隔符，用于分隔：
 
-- 每个 incell map 条目的 key-value 对。
-- 每个 incell struct list 元素的 struct 字段。
+- 每个 incell map 元素的键值对。
+- 每个 incell struct list 元素的结构体字段。
 
 如果未设置，将使用 tableauc [yaml.config](../../tutorial/config/#confinputseq) 中的**全局级别** subsep（默认：`:`）。

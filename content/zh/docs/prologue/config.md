@@ -196,24 +196,24 @@ conf:
 
 **全局级别**的分隔符，用于分隔：
 
-- in-cell list 的元素（标量或 struct）。
+- in-cell list 的元素（标量或结构体）。
 - in-cell map 的条目。
 
-同时也支持 **sheet 级别**和**字段级别**的分隔符选项：
+同时也支持**工作表级别**和**字段级别**的分隔符选项：
 
-- [Metasheet 中的 sheet 级别分隔符](../../excel/metasheet/#选项-sep)
-- [字段属性中的字段级别分隔符](../../excel/field-property/#选项-sep)
+- [Metasheet 中的工作表级别分隔符](../../excel/metasheet/#选项-sep)
+- [Field property 中的字段级别分隔符](../../excel/field-property/#选项-sep)
 
 ### proto.input.header.subsep
 
 默认值：`:`
 
-全局级别的子分隔符，用于分隔：
+**全局级别**的子分隔符，用于分隔：
 
-- in-cell map 每个条目的 key-value 对。
-- in-cell struct list 每个元素的 struct 字段。
+- in-cell map 每个元素的键值对。
+- in-cell struct list 每个元素的结构体字段。
 
-同时也支持 **sheet 级别**和**字段级别**的子分隔符选项：
+同时也支持 **工作表级别**和**字段级别**的子分隔符选项：
 
-- [Metasheet 中的 sheet 级别子分隔符](../../excel/metasheet/#选项-subsep)
-- [字段属性中的字段级别子分隔符](../../excel/field-property/#选项-subsep)
+- [Metasheet 中的工作表级别子分隔符](../../excel/metasheet/#选项-subsep)
+- [Field property 中的字段级别子分隔符](../../excel/field-property/#选项-subsep)
