@@ -95,8 +95,8 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 示例：
 
-- [List: 隐式固定大小 →]({{< relref "list/#implicit-fixed-size" >}})
-- [Map: 隐式固定大小 →]({{< relref "map/#implicit-fixed-size" >}})
+- [List: 隐式固定大小 →]({{< relref "list/#隐式固定大小implicit-fixed-size" >}})
+- [Map: 隐式固定大小 →]({{< relref "map/#隐式固定大小implicit-fixed-size" >}})
 
 ## 选项 `size`
 
@@ -104,8 +104,8 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 示例：
 
-- [List: 显式固定大小 →]({{< relref "list/#explicit-fixed-size" >}})
-- [Map: 显式固定大小 →]({{< relref "map/#explicit-fixed-size" >}})
+- [List: 显式固定大小 →]({{< relref "list/#显式固定大小explicit-fixed-size" >}})
+- [Map: 显式固定大小 →]({{< relref "map/#显式固定大小explicit-fixed-size" >}})
 
 ## 选项 `form`
 
@@ -165,7 +165,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 ## 选项 `patch`
 
-参见 [选项 Patch →]({{< relref "metasheet/#option-patch" >}}) 中的字段级 patch。
+参见 [选项 Patch →]({{< relref "metasheet/#选项-patch" >}}) 中的字段级 patch。
 
 ## 选项 `sep`
 
@@ -174,7 +174,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 - incell list 元素（scalar 或 struct）。
 - incell map 条目。
 
-如果未设置，将使用 [metasheet](../metasheet/#option-sep) 中的**sheet 级** sep。
+如果未设置，将使用 [metasheet](../metasheet/#选项-sep) 中的**sheet 级** sep。
 
 ## 选项 `subsep`
 
@@ -183,7 +183,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 - 每个 incell map 条目的 key-value 对。
 - 每个 incell struct list 元素的 struct 字段。
 
-如果未设置，将使用 [metasheet](../metasheet/#option-subsep) 中的**sheet 级** subsep。
+如果未设置，将使用 [metasheet](../metasheet/#选项-subsep) 中的**sheet 级** subsep。
 
 ## 选项 `cross`
 

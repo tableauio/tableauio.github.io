@@ -341,7 +341,7 @@ Incell map 有以下几种：
 `Item` 列的类型为 incell map `map<uint32, string>`，map value 为 scalar 类型 `string`。
 
 > ⚠️ 注意：如果希望使用显式模式 `[Key:Value]...`，请将 field property `present` 设置为 true。
-> 参见 [选项 `present` →]({{< relref "field-property/#option-present" >}})。
+> 参见 [选项 `present` →]({{< relref "field-property/#选项-present" >}})。
 
 生成结果：
 

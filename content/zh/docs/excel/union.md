@@ -83,7 +83,8 @@ message Target {
 
 ## List 中的 predefined union
 
-> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-definition" >}})。
+> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
+
 
 *HelloWorld.xlsx* 中的 worksheet `TaskConf`：
 
@@ -173,7 +174,8 @@ message TaskConf {
 
 ## Map 中的 predefined union
 
-> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-definition" >}})。
+> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
+
 
 *HelloWorld.xlsx* 中的 worksheet `TaskConf`：
 
@@ -244,7 +246,8 @@ message TaskConf {
 
 ## Map 中的 predefined incell union
 
-> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-definition" >}})。
+> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
+
 
 *HelloWorld.xlsx* 中的 worksheet `TaskConf`：
 
@@ -306,7 +309,7 @@ message TaskConf {
 每个 union 字段可以使用以下类型定义：
 
 - [Scalar →]({{< relref "scalar" >}})
-- [Enum →]({{< relref "enum" >}})
+- [Enum →]({{< relref "../basics/enum" >}})
 - [Wellknown types →]({{< relref "wellknown-types" >}})
 - [Incell struct →]({{< relref "struct/#incell-struct" >}})
 - [Incell list →]({{< relref "list/#incell-list" >}})

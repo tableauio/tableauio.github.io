@@ -12,7 +12,7 @@ toc: true
 
 ## 使用预定义枚举类型
 
-枚举基础知识请参考 [Enum →]({{< relref "enum" >}})
+枚举基础知识请参考 [枚举（Enum）→]({{< relref "../basics/enum" >}})
 
 例如，`common.proto` 中定义的枚举类型 `FruitType`：
 
