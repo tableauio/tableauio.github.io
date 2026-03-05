@@ -211,7 +211,7 @@ Specify the pattern of scalar field, list element, and map value.
 
 ### Wellknown version field
 
-> For use cases, see [Excel wellknown types: Version →]({{< relref "../excel/wellknown-types/#version" >}})
+> For use cases, see [Wellknown types: Version →]({{< relref "../excel/wellknown-types/#version" >}})
 
 Specify the dotted-decimal pattern of current cell. Each decimal
 number ranges from 0 to the corresponding part (MAX) of pattern.

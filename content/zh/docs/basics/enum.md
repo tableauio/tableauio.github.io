@@ -16,7 +16,7 @@ tableau 解析器支持三种枚举值形式：
 
   1. 枚举值**名称**（name）。
   2. 枚举值**编号**（number）。
-  3. 枚举值**别名**（alias）。别名可以是英文、中文或其他任意语言，通过 [tableau.evalue](https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto#L26) 扩展 [google.protobuf.EnumValueOptions](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto#L669) 来指定。
+  3. 枚举值**别名**（alias）。别名可以是英文、中文或其他任意语言，通过 [tableau.evalue](https://github.com/tableauio/tableau/blob/v0.15.1/proto/tableau/protobuf/tableau.proto#L39) 扩展 [google.protobuf.EnumValueOptions](https://github.com/protocolbuffers/protobuf/blob/v34.0/src/google/protobuf/descriptor.proto#L904) 来指定。
 
 例如，`common.proto` 中定义的枚举类型 `FruitType`：
 

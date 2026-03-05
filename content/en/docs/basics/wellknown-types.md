@@ -23,7 +23,7 @@ You should include the proto files provided by Tableau and Protocol Buffers:
 
 ## Datetime
 
-> For use cases, see [Excel wellknown types: Datetime →]({{< relref "../excel/wellknown-types/#datetime" >}})
+> For use cases, see [Wellknown types: Datetime →]({{< relref "../excel/wellknown-types/#datetime" >}})
 
 | Type       | Default               | Description                                                                                                  |
 | ---------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -40,7 +40,7 @@ You should include the proto files provided by Tableau and Protocol Buffers:
 
 ## Duration
 
-> For use cases, see [Excel wellknown types: Duration →]({{< relref "../excel/wellknown-types/#duration" >}})
+> For use cases, see [Wellknown types: Duration →]({{< relref "../excel/wellknown-types/#duration" >}})
 
 | Type       | Default | Description                                                                                                                                                                                                                                               |
 | ---------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,7 +54,7 @@ You should include the proto files provided by Tableau and Protocol Buffers:
 
 ## Fraction
 
-> For use cases, see [Excel wellknown types: Fraction →]({{< relref "../excel/wellknown-types/#fraction" >}})
+> For use cases, see [Wellknown types: Fraction →]({{< relref "../excel/wellknown-types/#fraction" >}})
 
 A fraction represents a part of a whole or, more generally, any number of equal parts. See [wiki: Fraction](https://en.wikipedia.org/wiki/Fraction) for more details.
 
@@ -71,7 +71,7 @@ message Fraction {
 
 ## Comparator
 
-> For use cases, see [Excel wellknown types: Comparator →]({{< relref "../excel/wellknown-types/#comparator" >}})
+> For use cases, see [Wellknown types: Comparator →]({{< relref "../excel/wellknown-types/#comparator" >}})
 
 A comparator holds a `sign` and a fraction `value`. Any number or fraction can compare with it.
 
@@ -97,7 +97,7 @@ message Comparator {
 
 ## Version
 
-> For use cases, see [Excel wellknown types: Version →]({{< relref "../excel/wellknown-types/#version" >}})
+> For use cases, see [Wellknown types: Version →]({{< relref "../excel/wellknown-types/#version" >}})
 
 A version represents the version number in [dot-decimal notation](https://en.wikipedia.org/wiki/Dot-decimal_notation).
 Version form is: `<MAJOR>.<MINOR>.<PATCH>[.<OTHER>]...`.

@@ -16,7 +16,7 @@ The tableau parser accepts three enum value forms:
 
   1. enum value **name**.
   2. enum value **number**.
-  3. enum value **alias**. It is another name in English, Chinese, or any other language, which can be specified by [tableau.evalue](https://github.com/tableauio/tableau/blob/master/proto/tableau/protobuf/tableau.proto#L26) by extending [google.protobuf.EnumValueOptions](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto#L669).
+  3. enum value **alias**. It is another name in English, Chinese, or any other language, which can be specified by [tableau.evalue](https://github.com/tableauio/tableau/blob/v0.15.1/proto/tableau/protobuf/tableau.proto#L39) by extending [google.protobuf.EnumValueOptions](https://github.com/protocolbuffers/protobuf/blob/v34.0/src/google/protobuf/descriptor.proto#L904).
 
 For example, enum type `FruitType` in `common.proto` is defined as:
 
