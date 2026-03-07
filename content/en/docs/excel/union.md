@@ -28,7 +28,7 @@ For example, union type `Target` in *common.proto* is predefined as:
 ```protobuf
 // Predefined union type.
 message Target {
-  option (tableau.union) = true;
+  option (tableau.union) = {name:"Target"};
 
   Type type = 9999 [(tableau.field) = { name: "Type" }];
   oneof value {
@@ -823,7 +823,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 // Generated from sheet: Target.
 message Target {
-  option (tableau.union) = true;
+  option (tableau.union) = {name:"Target"};
 
   Type type = 9999 [(tableau.field) = { name: "Type" }];
   oneof value {
@@ -1030,7 +1030,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 // Generated from sheet: Target.
 message Target {
-  option (tableau.union) = true;
+  option (tableau.union) = {name:"Target"};
 
   Type type = 9999 [(tableau.field) = { name: "Type" }];
   oneof value {
@@ -1114,7 +1114,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 // Generated from sheet: Target.
 message Target {
-  option (tableau.union) = true;
+  option (tableau.union) = {name:"Target"};
 
   Type type = 9999 [(tableau.field) = {name:"Type"}];
   oneof value {
@@ -1207,7 +1207,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 
 // Generated from sheet: Target.
 message Target {
-  option (tableau.union) = true;
+  option (tableau.union) = {name:"Target"};
 
   Type type = 9999 [(tableau.field) = { name: "Type" }];
   oneof value {

@@ -17,7 +17,7 @@ For example, union type `Target` in *common.proto* is predefined as:
 ```protobuf
 // Predefined union type.
 message Target {
-  option (tableau.union) = true;
+  option (tableau.union) = {name:"Target"};
 
   Type type = 9999 [(tableau.field) = { name: "Type" }];
   oneof value {

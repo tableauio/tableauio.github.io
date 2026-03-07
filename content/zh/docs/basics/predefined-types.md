@@ -74,7 +74,7 @@ message Prop {
 ```protobuf
 // 预定义 union 类型。
 message Target {
-  option (tableau.union) = true;
+  option (tableau.union) = {name:"Target"};
 
   Type type = 9999 [(tableau.field) = { name: "Type" }];
   oneof value {
