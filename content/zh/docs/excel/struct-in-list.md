@@ -10,9 +10,9 @@ weight: 7202
 toc: true
 ---
 
-## 垂直 list 中的嵌套
+## 纵向 list 中的嵌套
 
-### 垂直 list 中的 struct
+### 纵向 list 中的 struct
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -82,7 +82,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 list 中的 incell struct
+### 纵向 list 中的 incell struct
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -152,9 +152,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## 水平 list 的第一个字段
+## 横向 list 的第一个字段
 
-### 水平 list 中的 struct
+### 横向 list 中的 struct
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -220,7 +220,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 list 中的 predefined struct
+### 横向 list 中的 predefined struct
 
 *common.proto* 中预定义的 `Item`：
 
@@ -292,7 +292,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 list 中的 incell struct
+### 横向 list 中的 incell struct
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 

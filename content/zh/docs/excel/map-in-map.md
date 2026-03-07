@@ -10,9 +10,9 @@ weight: 7402
 toc: true
 ---
 
-## 垂直 map 中的嵌套
+## 纵向 map 中的嵌套
 
-### 垂直 map 中的水平 map
+### 纵向 map 中的横向 map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -82,7 +82,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 map 中的垂直 map
+### 纵向 map 中的纵向 map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -151,7 +151,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 map 中的 incell map
+### 纵向 map 中的 incell map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -216,9 +216,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## 水平 map 中的嵌套
+## 横向 map 中的嵌套
 
-### 水平 map 中的水平 map
+### 横向 map 中的横向 map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -284,7 +284,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 map 中的 incell map
+### 横向 map 中的 incell map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 

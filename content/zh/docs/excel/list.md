@@ -10,23 +10,23 @@ weight: 7105
 toc: true
 ---
 
-## 水平 list（Horizontal list）
+## 横向 list（Horizontal list）
 
-注意：水平 list 的列名**必须**带有从 `1` 开始的数字后缀。
+注意：横向 list 的列名**必须**带有从 `1` 开始的数字后缀。
 
-水平 list 语法概览：
+横向 list 语法概览：
 
 | List 元素类型                                                   | 语法示例                        |
 | --------------------------------------------------------------- | ------------------------------- |
-| [scalar](#水平-scalar-list)                                     | `[]uint32`                      |
-| [enum](#水平-enum-list)                                         | `[]enum<.FruitType>`            |
-| [struct](#水平-struct-list)                                     | `[Item]uint32`                  |
-| [predefined struct](#水平-predefined-struct-list)               | `[.Item]uint32`                 |
-| [incell struct](#水平-incell-struct-list)                       | `[]{uint32 ID, string Num}Item` |
-| [incell predefined struct](#水平-incell-predefined-struct-list) | `[]{.Item}`                     |
+| [scalar](#横向-scalar-list)                                     | `[]uint32`                      |
+| [enum](#横向-enum-list)                                         | `[]enum<.FruitType>`            |
+| [struct](#横向-struct-list)                                     | `[Item]uint32`                  |
+| [predefined struct](#横向-predefined-struct-list)               | `[.Item]uint32`                 |
+| [incell struct](#横向-incell-struct-list)                       | `[]{uint32 ID, string Num}Item` |
+| [incell predefined struct](#横向-incell-predefined-struct-list) | `[]{.Item}`                     |
 {.table-striped .table-hover}
 
-### 水平 scalar list
+### 横向 scalar list
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -81,7 +81,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 enum list
+### 横向 enum list
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -148,7 +148,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 struct list
+### 横向 struct list
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -211,7 +211,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 predefined-struct list
+### 横向 predefined-struct list
 
 *common.proto* 中预定义的 `Item`：
 
@@ -280,7 +280,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 incell-struct list
+### 横向 incell-struct list
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -343,7 +343,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 incell-predefined-struct list
+### 横向 incell-predefined-struct list
 
 *common.proto* 中预定义的 `Item`：
 
@@ -412,21 +412,21 @@ message ItemConf {
 
 {{< /details >}}
 
-## 垂直 list（Vertical list）
+## 纵向 list（Vertical list）
 
-垂直 list 语法概览：
+纵向 list 语法概览：
 
 | List 元素类型                                                   | 语法示例                     |
 | --------------------------------------------------------------- | ---------------------------- |
-| [scalar](#垂直-scalar-list)                                     | `[]uint32`                   |
-| [enum](#垂直-enum-list)                                         | `[]enum<.FruitType>`         |
-| [struct](#垂直-struct-list)                                     | `[Item]uint32`               |
-| [predefined struct](#垂直-predefined-struct-list)               | `[.Item]int32`               |
-| [incell struct](#垂直-incell-struct-list)                       | `[]{int32 ID,int32 Num}Item` |
-| [incell predefined struct](#垂直-incell-predefined-struct-list) | `[]{.Item}`                  |
+| [scalar](#纵向-scalar-list)                                     | `[]uint32`                   |
+| [enum](#纵向-enum-list)                                         | `[]enum<.FruitType>`         |
+| [struct](#纵向-struct-list)                                     | `[Item]uint32`               |
+| [predefined struct](#纵向-predefined-struct-list)               | `[.Item]int32`               |
+| [incell struct](#纵向-incell-struct-list)                       | `[]{int32 ID,int32 Num}Item` |
+| [incell predefined struct](#纵向-incell-predefined-struct-list) | `[]{.Item}`                  |
 {.table-striped .table-hover}
 
-### 垂直 scalar list
+### 纵向 scalar list
 
 > 定义方式与 [Incell scalar list](#incell-scalar-list) 相同，但如果提供了多行数据，会聚合多行。
 
@@ -485,7 +485,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 enum list
+### 纵向 enum list
 
 > 定义方式与 [Incell enum list](#incell-enum-list) 相同，但如果提供了多行数据，会聚合多行。
 
@@ -559,7 +559,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 struct list
+### 纵向 struct list
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -625,7 +625,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 predefined-struct list
+### 纵向 predefined-struct list
 
 *common.proto* 中预定义的 `Item`：
 
@@ -696,7 +696,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 incell-struct list
+### 纵向 incell-struct list
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -760,7 +760,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 incell-predefined-struct list
+### 纵向 incell-predefined-struct list
 
 *common.proto* 中预定义的 `Item`：
 
@@ -1103,7 +1103,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## 水平 list 大小
+## 横向 list 大小
 
 ### 动态大小
 
@@ -1246,7 +1246,7 @@ message ItemConf {
 
 ## 高级特性
 
-### 水平跳列 list（Horizontal column-skipped list）
+### 横向跳列 list（Horizontal column-skipped list）
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 

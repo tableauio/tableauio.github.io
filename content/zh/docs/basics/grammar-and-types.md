@@ -48,7 +48,7 @@ Tableau 的大部分语法和类型借鉴自 [Protocol Buffers (proto3)](https:/
 | 特性                          | 说明                                                              |
 | ----------------------------- | ----------------------------------------------------------------- |
 | 横向布局（Horizontal layout） | list 的默认布局。<br>元素类型可以是 **struct** 或**标量**。       |
-| 垂直布局（Vertical layout）   | list 的元素类型应为 **struct**。                                  |
+| 纵向布局（Vertical layout）   | list 的元素类型应为 **struct**。                                  |
 | 简单 in-cell list             | 元素类型必须是**标量**。<br>以逗号分隔的元素列表，例如：`1,2,3`。 |
 | 可扩展（Scalable）            | 支持动态大小的 list。                                             |
 | 忽略空元素                    | 智能识别任意位置的空元素。                                        |
@@ -59,7 +59,7 @@ Tableau 的大部分语法和类型借鉴自 [Protocol Buffers (proto3)](https:/
 | 特性                          | 说明                                                                                             |
 | ----------------------------- | ------------------------------------------------------------------------------------------------ |
 | 横向布局（Horizontal layout） |                                                                                                  |
-| 垂直布局（Vertical layout）   | map 的默认布局。                                                                                 |
+| 纵向布局（Vertical layout）   | map 的默认布局。                                                                                 |
 | Hash map                      | 实现为无序 map 或 hash map。                                                                     |
 | Ordered map                   | 由 [tableauio/loader](https://github.com/tableauio/loader) 支持。<br>- C++                       |
 | 简单 in-cell map              | key 和 value 都必须是**标量**类型。<br>以逗号分隔的 `key:value` 对列表，例如：`1:10,2:20,3:30`。 |

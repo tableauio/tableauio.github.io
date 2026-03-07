@@ -10,19 +10,19 @@ weight: 7106
 toc: true
 ---
 
-## 水平 map（Horizontal map）
+## 横向 map（Horizontal map）
 
-水平 map 有以下几种：
+横向 map 有以下几种：
 
-1. 水平 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
-2. 水平 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
-3. 水平 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
+1. 横向 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
+2. 横向 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
+3. 横向 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
 
-### 水平 scalar map
+### 横向 scalar map
 
 无需单独支持，请使用 `map<int32, Item>` 代替。
 
-### 水平 struct map
+### 横向 struct map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -85,7 +85,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 predefined-struct map
+### 横向 predefined-struct map
 
 *common.proto* 中预定义的 `Item`：
 
@@ -154,19 +154,19 @@ message ItemConf {
 
 {{< /details >}}
 
-## 垂直 map（Vertical map）
+## 纵向 map（Vertical map）
 
-垂直 map 有以下几种：
+纵向 map 有以下几种：
 
-1. 垂直 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
-2. 垂直 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
-3. 垂直 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
+1. 纵向 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
+2. 纵向 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
+3. 纵向 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
 
-### 垂直 scalar map
+### 纵向 scalar map
 
 无需单独支持，请使用 `map<int32, Item>` 代替。
 
-### 垂直 struct map
+### 纵向 struct map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -232,7 +232,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 predefined-struct map
+### 纵向 predefined-struct map
 
 *common.proto* 中预定义的 `Item`：
 
@@ -636,7 +636,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## 水平 map 大小
+## 横向 map 大小
 
 ### 动态大小
 
@@ -783,7 +783,7 @@ message ItemConf {
 
 ## 高级特性
 
-### 水平跳列 map（Horizontal column-skipped map）
+### 横向跳列 map（Horizontal column-skipped map）
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 

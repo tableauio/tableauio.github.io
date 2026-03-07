@@ -19,8 +19,8 @@ toc: true
 | `refer`     | string | 格式：`"SheetName(SheetAlias).ColumnName"`。<br>确保该字段的值在另一个 sheet 的列值空间中。多个 refer 用逗号分隔。                   |
 | `sequence`  | int64  | 确保该字段的值是一个从指定值开始的序列。                                                                                             |
 | `default`   | string | 如果单元格为空，则使用此默认值。                                                                                                     |
-| `fixed`     | bool   | 自动检测水平 list/map 的固定大小。<br> 默认值：`false`。                                                                             |
-| `size`      | uint32 | 指定水平 list/map 的固定大小。                                                                                                       |
+| `fixed`     | bool   | 自动检测横向 list/map 的固定大小。<br> 默认值：`false`。                                                                             |
+| `size`      | uint32 | 指定横向 list/map 的固定大小。                                                                                                       |
 | `form`      | Form   | 指定 incell struct 的单元格数据格式。<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                            |
 | `json_name` | string | 指定字段的自定义 JSON 名称，替代 proto 字段名的 lowerCamelCase 形式。                                                                |
 | `present`   | bool   | 如果 present 为 true，则必须显式填写单元格数据。<br> 默认值：`false`。                                                               |
@@ -43,7 +43,7 @@ toc: true
 
 Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
-**规则是**：如果 map 的 value 类型（或 KeyedList 元素类型）没有相同布局（垂直/水平）的子 map/list 字段，则 key 必须唯一。
+**规则是**：如果 map 的 value 类型（或 KeyedList 元素类型）没有相同布局（纵向/横向）的子 map/list 字段，则 key 必须唯一。
 
 因此大多数情况下不需要显式配置。
 
@@ -91,7 +91,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 ## 选项 `fixed`
 
-如果将选项 `fixed` 设置为 `true`，则自动检测水平 list/map 的固定大小。
+如果将选项 `fixed` 设置为 `true`，则自动检测横向 list/map 的固定大小。
 
 示例：
 
@@ -100,7 +100,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 ## 选项 `size`
 
-选项 `size` 用于指定水平 list/map 的固定大小。
+选项 `size` 用于指定横向 list/map 的固定大小。
 
 示例：
 
@@ -193,11 +193,11 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 > TODO: 示例待补充。
 
-指定 list 将跨越并占用的 union 字段数量（每个字段对应一个 list 元素）。这也会将该 list 字段的布局从 incell 改为水平。
+指定 list 将跨越并占用的 union 字段数量（每个字段对应一个 list 元素）。这也会将该 list 字段的布局从 incell 改为横向。
 
 - 值为 0 表示是 incell list。
-- 值 > 0 表示是占用 N 个字段的水平 list。
-- 值 < 0 表示是占用所有后续字段的水平 list。
+- 值 > 0 表示是占用 N 个字段的横向 list。
+- 值 < 0 表示是占用所有后续字段的横向 list。
 
 ## 选项 `pattern`
 

@@ -12,7 +12,7 @@ toc: true
 
 ## 概述
 
-现在，水平/垂直 list 元素的第一个字段可以是任意类型，包括 struct、list 和 map。
+现在，横向/纵向 list 元素的第一个字段可以是任意类型，包括 struct、list 和 map。
 
 - List 元素的第一个字段是 struct：`[Reward]{Icon}int32`
 - List 元素的第一个字段是 predefined struct：`[Cost]{.Item}uint32`
