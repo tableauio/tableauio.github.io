@@ -10,9 +10,9 @@ weight: 7108
 toc: true
 ---
 
-## Datetime
+## Datetime（日期时间）
 
-### Datetime
+### Datetime（日期时间）
 
 > 参考 [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
 
@@ -76,7 +76,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### Date
+### Date（日期）
 
 > 参考 [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
 
@@ -140,7 +140,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### Time
+### Time（时间）
 
 > 参考 [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
 
@@ -204,7 +204,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Duration
+## Duration（时长）
 
 > 参考 [Basics: Duration →]({{< relref "../basics/wellknown-types/#duration" >}})
 
@@ -268,7 +268,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Fraction
+## Fraction（分数）
 
 > 参考 [Basics: Fraction →]({{< relref "../basics/wellknown-types/#fraction" >}})
 
@@ -333,7 +333,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Comparator
+## Comparator（比较器）
 
 > 参考 [Basics: Comparator →]({{< relref "../basics/wellknown-types/#comparator" >}})
 
@@ -401,7 +401,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Version
+## Version（版本号）
 
 > 参考 [Basics: Version →]({{< relref "../basics/wellknown-types/#version" >}})
 
