@@ -140,7 +140,7 @@ google.protobuf.Duration expiry = 3 [(tableau.field) = {name:&amp;quot;Expiry&am
 &lt;p>例如，&lt;em>common.proto&lt;/em> 中预定义的 union 类型 &lt;code>Target&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">// Predefined union type.
 message Target {
-option (tableau.union) = true;
+option (tableau.union) = {name:&amp;quot;Target&amp;quot;};
 Type type = 9999 [(tableau.field) = { name: &amp;quot;Type&amp;quot; }];
 oneof value {
 option (tableau.oneof) = {
