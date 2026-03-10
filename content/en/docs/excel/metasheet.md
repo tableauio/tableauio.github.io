@@ -225,7 +225,13 @@ Each element can be:
 
 {{< alert icon="ⓘ" context="info" text="Glob pattern usually should not match the main workbook. If matched, then tableauc will auto eliminate it." />}}
 
-For example:
+### Merging multiple workbooks
+
+For example, there are three workbooks, each containing a worksheet `ZoneConf` with the same schema:
+
+- **MergerMain.xlsx** (main): contains `@TABLEAU` metasheet with a Glob pattern `Merger*.xlsx` in the `Merger` column to match all sub workbooks.
+- **Merger2.xlsx** (sub): contains only the data worksheet, no `@TABLEAU` metasheet needed.
+- **Merger3.xlsx** (sub): contains only the data worksheet, no `@TABLEAU` metasheet needed.
 
 The first (main) workbook: a worksheet `ZoneConf` in *MergerMain.xlsx* (with `@TABLEAU`):
 
@@ -306,6 +312,108 @@ message ZoneConf {
 {{< /details >}}
 
 {{< details "HeroConf.json" >}}
+
+```json
+{
+    "zoneMap": {
+        "1": {
+            "id": 1,
+            "name": "Infinity",
+            "difficulty": 100
+        },
+        "2": {
+            "id": 2,
+            "name": "Desert",
+            "difficulty": 200
+        },
+        "3": {
+            "id": 3,
+            "name": "Snowfield",
+            "difficulty": 300
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+### Merging multiple sheets in same workbook
+
+For example, there are three worksheets with the same schema in the same workbook *Merger.xlsx*:
+
+- `ZoneConf` (main sheet, with `@TABLEAU`)
+- `ZoneConf2` (sub sheet)
+- `ZoneConf3` (sub sheet)
+
+The main workbook: worksheets `ZoneConf`, `ZoneConf2`, `ZoneConf3`, and `@TABLEAU` in *Merger.xlsx*:
+
+{{< spreadsheet "Merger.xlsx" ZoneConf ZoneConf2 ZoneConf3 "@TABLEAU" >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+| ----------------- | ----------- | ----------------- |
+| map<uint32, Zone> | string      | int32             |
+| Zone's ID         | Zone's name | Zone's difficulty |
+| 1                 | Infinity    | 100               |
+
+{{< /sheet >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+| ----------------- | ----------- | ----------------- |
+| map<uint32, Zone> | string      | int32             |
+| Zone's ID         | Zone's name | Zone's difficulty |
+| 2                 | Desert      | 200               |
+
+{{< /sheet >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+| ----------------- | ----------- | ----------------- |
+| map<uint32, Zone> | string      | int32             |
+| Zone's ID         | Zone's name | Zone's difficulty |
+| 3                 | Snowfield   | 300               |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | Merger                                      |
+| -------- | ------------------------------------------- |
+| ZoneConf | Merger.xlsx#ZoneConf2,Merger.xlsx#ZoneConf3 |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+{{< alert icon="ⓘ" context="info" text="Use <code>&lt;Workbook&gt;#&lt;Worksheet&gt;</code> to refer to a specific sheet in a workbook." />}}
+
+Generated:
+
+{{< details "merger_same.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"Merger.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ZoneConf {
+  option (tableau.worksheet) = {name:"ZoneConf" merger:"Merger.xlsx#ZoneConf2,Merger.xlsx#ZoneConf3"};
+
+  map<uint32, Zone> zone_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Zone {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    int32 difficulty = 3 [(tableau.field) = {name:"Difficulty"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ZoneConf.json" >}}
 
 ```json
 {

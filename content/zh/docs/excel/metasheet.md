@@ -219,7 +219,13 @@ message HeroConf {
 
 {{< alert icon="ⓘ" context="info" text="Glob 模式通常不应匹配主 workbook。如果匹配，tableauc 会自动排除它。" />}}
 
-例如：
+### 合并多个 workbook
+
+例如，有三个 workbook，每个都包含一个具有相同 schema 的 worksheet `ZoneConf`：
+
+- **MergerMain.xlsx**（主）：包含 `@TABLEAU` metasheet，在 `Merger` 列中使用 Glob 模式 `Merger*.xlsx` 匹配所有子 workbook。
+- **Merger2.xlsx**（子）：仅包含数据 worksheet，无需 `@TABLEAU` metasheet。
+- **Merger3.xlsx**（子）：仅包含数据 worksheet，无需 `@TABLEAU` metasheet。
 
 第一个（主）workbook：*MergerMain.xlsx* 中的 worksheet `ZoneConf`（含 `@TABLEAU`）：
 
@@ -307,6 +313,108 @@ message ZoneConf {
         "1": {"id": 1, "name": "Infinity", "difficulty": 100},
         "2": {"id": 2, "name": "Desert", "difficulty": 200},
         "3": {"id": 3, "name": "Snowfield", "difficulty": 300}
+    }
+}
+```
+
+{{< /details >}}
+
+### 合并同一 workbook 中的多个 sheet
+
+例如，同一 workbook *Merger.xlsx* 中有三个具有相同 schema 的 worksheet：
+
+- `ZoneConf`（主 sheet，含 `@TABLEAU`）
+- `ZoneConf2`（子 sheet）
+- `ZoneConf3`（子 sheet）
+
+主（也是唯一的）workbook：*Merger.xlsx* 中的 worksheet `ZoneConf`、`ZoneConf2`、`ZoneConf3` 和 `@TABLEAU`：
+
+{{< spreadsheet "Merger.xlsx" ZoneConf ZoneConf2 ZoneConf3 "@TABLEAU" >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+| ----------------- | ----------- | ----------------- |
+| map<uint32, Zone> | string      | int32             |
+| Zone's ID         | Zone's name | Zone's difficulty |
+| 1                 | Infinity    | 100               |
+
+{{< /sheet >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+| ----------------- | ----------- | ----------------- |
+| map<uint32, Zone> | string      | int32             |
+| Zone's ID         | Zone's name | Zone's difficulty |
+| 2                 | Desert      | 200               |
+
+{{< /sheet >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+| ----------------- | ----------- | ----------------- |
+| map<uint32, Zone> | string      | int32             |
+| Zone's ID         | Zone's name | Zone's difficulty |
+| 3                 | Snowfield   | 300               |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | Merger                                      |
+| -------- | ------------------------------------------- |
+| ZoneConf | Merger.xlsx#ZoneConf2,Merger.xlsx#ZoneConf3 |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+{{< alert icon="ⓘ" context="info" text="使用 <code>&lt;Workbook&gt;#&lt;Worksheet&gt;</code> 引用 workbook 中的特定 sheet。" />}}
+
+生成结果：
+
+{{< details "merger_same.proto" open >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"Merger.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ZoneConf {
+  option (tableau.worksheet) = {name:"ZoneConf" merger:"Merger.xlsx#ZoneConf2,Merger.xlsx#ZoneConf3"};
+
+  map<uint32, Zone> zone_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Zone {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    int32 difficulty = 3 [(tableau.field) = {name:"Difficulty"}];
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ZoneConf.json" >}}
+
+```json
+{
+    "zoneMap": {
+        "1": {
+            "id": 1,
+            "name": "Infinity",
+            "difficulty": 100
+        },
+        "2": {
+            "id": 2,
+            "name": "Desert",
+            "difficulty": 200
+        },
+        "3": {
+            "id": 3,
+            "name": "Snowfield",
+            "difficulty": 300
+        }
     }
 }
 ```
