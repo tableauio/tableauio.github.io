@@ -48,16 +48,19 @@
 &lt;/tbody>
 &lt;/table></description></item><item><title>C++</title><link>https://tableauio.github.io/en/docs/api/loader/cpp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/api/loader/cpp/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;code>const ProtobufMessage&amp;amp; Data()&lt;/code>&lt;/p>
+&lt;p>&lt;code>const ProtobufMessage&amp;amp; Data() const&lt;/code>&lt;/p>
 &lt;p>Get the internal protobuf message data.&lt;/p>
 &lt;h3 id="map">Map &lt;a href="#map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;code>const MapValueType* Get(k1 KEY1, k2 KEY2...) const&lt;/code>&lt;/p>
-&lt;p>Get the &lt;code>N&lt;/code>th-level map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p>
+&lt;p>&lt;code>const MapValueType* Get(KEY1 k1, KEY2 k2...) const&lt;/code>&lt;/p>
+&lt;p>Get the &lt;code>N&lt;/code>th-level map value. Returns &lt;code>nullptr&lt;/code> if the key is not found. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p>
 &lt;h3 id="orderedmap">OrderedMap &lt;a href="#orderedmap" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>Prerequisite: You need to set metasheet option &lt;code>OrderedMap&lt;/code> to &lt;code>true&lt;/code>.&lt;/p>
 &lt;p>See &lt;a href="../../../excel/metasheet/#option-orderedmap">metatsheet option: OrderedMap&lt;/a>.&lt;/p>&lt;/blockquote>
-&lt;p>&lt;code>const OrderedMapValueType* GetOrderedMap(k1 KEY1, k2 KEY2...) const&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>const OrderedMapMap* GetOrderedMap() const&lt;/code>: Gets the whole ordered map.&lt;/li>
+&lt;li>&lt;code>const OrderedMapValueType* GetOrderedMap(KEY1 k1) const&lt;/code>: Gets the 2nd-level ordered map value. Returns &lt;code>nullptr&lt;/code> if the key is not found.&lt;/li>
+&lt;/ul>
 &lt;p>Get the &lt;code>N&lt;/code>th-level ordered map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p></description></item><item><title>Go</title><link>https://tableauio.github.io/en/docs/api/loader/go/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/api/loader/go/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>&lt;code>func Data() *ProtobufMessage&lt;/code>&lt;/p>
@@ -70,7 +73,16 @@
 &lt;p>Prerequisite: You need to set metasheet option &lt;code>OrderedMap&lt;/code> to &lt;code>true&lt;/code>.&lt;/p>
 &lt;p>See &lt;a href="../../../excel/metasheet/#option-orderedmap">metatsheet option: OrderedMap&lt;/a>.&lt;/p>&lt;/blockquote>
 &lt;p>&lt;code>func GetOrderedMapN(k1 KEY1, k2 KEY2...) (*OrderedMapValueType, error)&lt;/code>&lt;/p>
-&lt;p>Get the &lt;code>N&lt;/code>th-level ordered map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p></description></item><item><title>C#</title><link>https://tableauio.github.io/en/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/api/loader/csharp/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>TODO: refer &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>.&lt;/p></description></item><item><title>TypeScript</title><link>https://tableauio.github.io/en/docs/api/loader/ts/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/api/loader/ts/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Get the &lt;code>N&lt;/code>th-level ordered map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p></description></item><item><title>C#</title><link>https://tableauio.github.io/en/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/api/loader/csharp/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>public ref readonly ProtobufMessage Data()&lt;/code>&lt;/p>
+&lt;p>Get the internal protobuf message data.&lt;/p>
+&lt;h3 id="map">Map &lt;a href="#map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>public MapValueType? Get1(KEY1 k1)&lt;/code>: Gets the 1st-level map value. Returns &lt;code>null&lt;/code> if the key is not found.&lt;/li>
+&lt;li>&lt;code>public MapValueType? Get2(KEY1 k1, KEY2 k2)&lt;/code>: Gets the 2nd-level map value. Returns &lt;code>null&lt;/code> if the key is not found.&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;p>Get the &lt;code>N&lt;/code>th-level map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p></description></item><item><title>TypeScript</title><link>https://tableauio.github.io/en/docs/api/loader/ts/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/api/loader/ts/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>TODO: refer &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>.&lt;/p></description></item><item><title>Lua</title><link>https://tableauio.github.io/en/docs/api/loader/lua/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/api/loader/lua/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>TODO: refer &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>.&lt;/p></description></item></channel></rss>

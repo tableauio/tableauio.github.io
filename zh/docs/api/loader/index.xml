@@ -48,22 +48,20 @@
 &lt;/tbody>
 &lt;/table></description></item><item><title>C++</title><link>https://tableauio.github.io/zh/docs/api/loader/cpp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/cpp/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;code>const ProtobufMessage&amp;amp; Data()&lt;/code>&lt;/p>
+&lt;p>&lt;code>const ProtobufMessage&amp;amp; Data() const&lt;/code>&lt;/p>
 &lt;p>获取内部 protobuf message 数据。&lt;/p>
 &lt;h3 id="map">Map &lt;a href="#map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;code>const MapValueType* Get(k1 KEY1, k2 KEY2...) const&lt;/code>&lt;/p>
-&lt;p>获取第 &lt;code>N&lt;/code> 层 map 的值。注意：仅适用于每层 message 的&lt;strong>第一个 map 字段&lt;/strong>。&lt;/p>
+&lt;p>&lt;code>const MapValueType* Get(KEY1 k1, KEY2 k2...) const&lt;/code>&lt;/p>
+&lt;p>获取第 &lt;code>N&lt;/code> 层 map 的值。找不到 key 时返回 &lt;code>nullptr&lt;/code>。注意：仅适用于每层 message 的&lt;strong>第一个 map 字段&lt;/strong>。&lt;/p>
 &lt;h3 id="orderedmap">OrderedMap &lt;a href="#orderedmap" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>前提条件：需要在 metasheet 中将 &lt;code>OrderedMap&lt;/code> 选项设置为 &lt;code>true&lt;/code>。&lt;/p>
 &lt;p>参考 &lt;a href="../../../excel/metasheet/#%E9%80%89%E9%A1%B9-orderedmap">metasheet 选项：OrderedMap&lt;/a>。&lt;/p>&lt;/blockquote>
-&lt;p>&lt;code>const OrderedMapValueType* GetOrderedMap(k1 KEY1, k2 KEY2...) const&lt;/code>&lt;/p>
-&lt;p>获取第 &lt;code>N&lt;/code> 层有序 map 的值。注意：仅适用于每层 message 的&lt;strong>第一个 map 字段&lt;/strong>。&lt;/p>
-&lt;h3 id="index">Index &lt;a href="#index" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;blockquote>
-&lt;p>前提条件：需要在 metasheet 中适当设置 &lt;code>Index&lt;/code> 选项。&lt;/p>
-&lt;p>参考 &lt;a href="../../../excel/metasheet/#%E9%80%89%E9%A1%B9-index">metasheet 选项：Index&lt;/a>。&lt;/p>&lt;/blockquote>
-&lt;p>如果 index 名称为 &lt;code>Chapter&lt;/code>，则访问器为：&lt;/p></description></item><item><title>Go</title><link>https://tableauio.github.io/zh/docs/api/loader/go/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/go/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>const OrderedMapMap* GetOrderedMap() const&lt;/code>：获取整个有序 map。&lt;/li>
+&lt;li>&lt;code>const OrderedMapValueType* GetOrderedMap(KEY1 k1) const&lt;/code>：获取第 2 层有序 map 的值。找不到 key 时返回 &lt;code>nullptr&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;p>获取第 &lt;code>N&lt;/code> 层有序 map 的值。注意：仅适用于每层 message 的&lt;strong>第一个 map 字段&lt;/strong>。&lt;/p></description></item><item><title>Go</title><link>https://tableauio.github.io/zh/docs/api/loader/go/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/go/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>&lt;code>func Data() *ProtobufMessage&lt;/code>&lt;/p>
 &lt;p>获取内部 protobuf message 数据。&lt;/p>
@@ -80,7 +78,26 @@
 &lt;blockquote>
 &lt;p>前置条件：需要在 metasheet 中适当设置 &lt;code>Index&lt;/code> 选项。&lt;/p>
 &lt;p>参考 &lt;a href="../../../excel/metasheet/#%E9%80%89%E9%A1%B9-index">metasheet 选项：Index&lt;/a>。&lt;/p>&lt;/blockquote>
-&lt;p>若 index 名称为 &lt;code>Chapter&lt;/code>，则访问器为：&lt;/p></description></item><item><title>C#</title><link>https://tableauio.github.io/zh/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/csharp/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>TODO：参考 &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>。&lt;/p></description></item><item><title>TypeScript</title><link>https://tableauio.github.io/zh/docs/api/loader/ts/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/ts/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>若 index 名称为 &lt;code>Chapter&lt;/code>，则访问器为：&lt;/p></description></item><item><title>C#</title><link>https://tableauio.github.io/zh/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/csharp/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;code>public ref readonly ProtobufMessage Data()&lt;/code>&lt;/p>
+&lt;p>获取内部 protobuf message 数据。&lt;/p>
+&lt;h3 id="map">Map &lt;a href="#map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>public MapValueType? Get1(KEY1 k1)&lt;/code>：获取第 1 层 map 的值。找不到 key 时返回 &lt;code>null&lt;/code>。&lt;/li>
+&lt;li>&lt;code>public MapValueType? Get2(KEY1 k1, KEY2 k2)&lt;/code>：获取第 2 层 map 的值。找不到 key 时返回 &lt;code>null&lt;/code>。&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;p>获取第 &lt;code>N&lt;/code> 层 map 的值。注意：仅适用于每层 message 的&lt;strong>第一个 map 字段&lt;/strong>。&lt;/p>
+&lt;h3 id="orderedmap">OrderedMap &lt;a href="#orderedmap" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;blockquote>
+&lt;p>前提条件：需要在 metasheet 中将 &lt;code>OrderedMap&lt;/code> 选项设置为 &lt;code>true&lt;/code>。&lt;/p>
+&lt;p>参考 &lt;a href="../../../excel/metasheet/#%E9%80%89%E9%A1%B9-orderedmap">metasheet 选项：OrderedMap&lt;/a>。&lt;/p>&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>public ref readonly OrderedMapMap GetOrderedMap()&lt;/code>：获取整个有序 map。&lt;/li>
+&lt;li>&lt;code>public OrderedMapValueType? GetOrderedMap1(KEY1 k1)&lt;/code>：获取第 1 层有序 map 的值。找不到 key 时返回 &lt;code>null&lt;/code>。&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;p>获取第 &lt;code>N&lt;/code> 层有序 map 的值。注意：仅适用于每层 message 的&lt;strong>第一个 map 字段&lt;/strong>。&lt;/p></description></item><item><title>TypeScript</title><link>https://tableauio.github.io/zh/docs/api/loader/ts/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/ts/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>TODO：参考 &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>。&lt;/p></description></item><item><title>Lua</title><link>https://tableauio.github.io/zh/docs/api/loader/lua/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/lua/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>TODO：参考 &lt;a href="https://github.com/tableauio/loader">Tableau loader&lt;/a>。&lt;/p></description></item></channel></rss>
