@@ -3,7 +3,7 @@ title: "C++"
 description: "C++ loader 使用指南。"
 lead: "C++ loader 使用指南。"
 date: 2022-03-10T08:00:00+08:00
-lastmod: 2022-03-10T08:00:00+08:00
+lastmod: 2026-03-16T08:00:00+08:00
 draft: false
 images: []
 weight: 3220
@@ -14,15 +14,15 @@ toc: true
 
 ### Data
 
-`const ProtobufMessage& Data()`
+`const ProtobufMessage& Data() const`
 
 获取内部 protobuf message 数据。
 
 ### Map
 
-`const MapValueType* Get(k1 KEY1, k2 KEY2...) const`
+`const MapValueType* Get(KEY1 k1, KEY2 k2...) const`
 
-获取第 `N` 层 map 的值。注意：仅适用于每层 message 的**第一个 map 字段**。
+获取第 `N` 层 map 的值。找不到 key 时返回 `nullptr`。注意：仅适用于每层 message 的**第一个 map 字段**。
 
 ### OrderedMap
 
@@ -30,7 +30,8 @@ toc: true
 >
 > 参考 [metasheet 选项：OrderedMap](../../../excel/metasheet/#选项-orderedmap)。
 
-`const OrderedMapValueType* GetOrderedMap(k1 KEY1, k2 KEY2...) const`
+- `const OrderedMapMap* GetOrderedMap() const`：获取整个有序 map。
+- `const OrderedMapValueType* GetOrderedMap(KEY1 k1) const`：获取第 2 层有序 map 的值。找不到 key 时返回 `nullptr`。
 
 获取第 `N` 层有序 map 的值。注意：仅适用于每层 message 的**第一个 map 字段**。
 
@@ -42,9 +43,10 @@ toc: true
 
 如果 index 名称为 `Chapter`，则访问器为：
 
-- `const Index_ChapterMap& FindChapter() const`：获取整个 hash map。
-- `const vector<ParentType>* FindChapter(k1 KEY1, k2 KEY2...) const`：按 key 查找值。一个 key 可能对应多个值，以 vector 形式返回。
-- `const ParentType* FindFirstChapter(k1 KEY1, k2 KEY2...) const`：按 key 查找第一个值。
+- `const Index_ChapterMap& FindChapterMap() const`：获取整个 hash map。
+- `const Index_ChapterMap* FindChapterMap(KEY1 k1, KEY2 k2...) const`：获取由指定 key 限定的上层第 `N` 层 map 范围内的 hash map。
+- `const vector<ParentType>* FindChapter(KEY1 k1, KEY2 k2...) const`：按 key 查找值。一个 key 可能对应多个值，以 vector 形式返回。
+- `const ParentType* FindFirstChapter(KEY1 k1, KEY2 k2...) const`：按 key 查找第一个值，找不到时返回 `nullptr`。
 
 ### OrderedIndex
 
@@ -54,9 +56,10 @@ toc: true
 
 如果有序 index 名称为 `Chapter`，则访问器为：
 
-- `const OrderedIndex_ChapterMap& FindChapter() const`：获取整个有序 map。
-- `const vector<ParentType>* FindChapter(k1 KEY1, k2 KEY2...) const`：按 key 查找值。一个 key 可能对应多个值，以 vector 形式返回。
-- `const ParentType* FindFirstChapter(k1 KEY1, k2 KEY2...) const`：按 key 查找第一个值。
+- `const OrderedIndex_ChapterMap& FindChapterMap() const`：获取整个有序 map。
+- `const OrderedIndex_ChapterMap* FindChapterMap(KEY1 k1, KEY2 k2...) const`：获取由指定 key 限定的上层第 `N` 层 map 范围内的有序 map。
+- `const vector<ParentType>* FindChapter(KEY1 k1, KEY2 k2...) const`：按 key 查找值。一个 key 可能对应多个值，以 vector 形式返回。
+- `const ParentType* FindFirstChapter(KEY1 k1, KEY2 k2...) const`：按 key 查找第一个值，找不到时返回 `nullptr`。
 
 ## 自定义 messager
 
@@ -72,9 +75,9 @@ toc: true
 #include "protoconf/xxx_conf.pc.h"
 class CustomXXXConf : public tableau::Messager {
  public:
-  static const std::string& Name() { return kCustomName; };
-  virtual bool Load(const std::string& dir, tableau::Format fmt,
-                    const tableau::LoadOptions* options = nullptr) override {
+  static const std::string& Name() { return kCustomName; }
+  virtual bool Load(const std::filesystem::path&, tableau::Format,
+                    std::shared_ptr<const tableau::load::MessagerOptions> options = nullptr) override {
     return true;
   }
   virtual bool ProcessAfterLoadAll(const tableau::Hub& hub) override;
@@ -92,7 +95,7 @@ class CustomXXXConf : public tableau::Messager {
 
 const std::string CustomXXXConf::kCustomName = "CustomXXXConf";
 
-bool CustomItemConf::ProcessAfterLoadAll(const tableau::Hub& hub) {
+bool CustomXXXConf::ProcessAfterLoadAll(const tableau::Hub& hub) {
   // TODO: 在此实现。
   return true;
 }

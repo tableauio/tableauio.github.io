@@ -3,7 +3,7 @@ title: "Go"
 description: "Go loader 使用指南。"
 lead: "Go loader 使用指南。"
 date: 2022-03-10T08:00:00+08:00
-lastmod: 2022-03-10T08:00:00+08:00
+lastmod: 2026-03-16T08:00:00+08:00
 draft: false
 images: []
 weight: 3230
