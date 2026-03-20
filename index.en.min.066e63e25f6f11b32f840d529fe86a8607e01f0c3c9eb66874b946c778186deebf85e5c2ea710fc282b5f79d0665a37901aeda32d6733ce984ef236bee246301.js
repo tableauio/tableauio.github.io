@@ -248,7 +248,7 @@ hello_world.proto ItemConf.json `}).add({id:142,href:"/docs/excel/enum/#define-e
 MODE_ENUM_TYPE: define single enum type in a sheet. MODE_ENUM_TYPE_MULTI: define multiple enum types in a sheet. `}).add({id:143,href:"/docs/excel/enum/#single-enum-type-in-sheet",title:"Enum / Single enum type in sheet ",description:"Excel enum guide.",content:` You should specify Mode option to MODE_ENUM_TYPE in metasheet @TABLEAU.
 For example, a worksheet ItemType in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemType @TABLEAU Name Alias ITEM_TYPE_FRUIT Fruit ITEM_TYPE_EQUIP Equip ITEM_TYPE_BOX Box Sheet Mode ItemType MODE_ENUM_TYPE Generated:
-hello_world.proto `}).add({id:144,href:"/docs/excel/enum/#multiple-enum-types-in-sheet",title:"Enum / Multiple enum types in sheet ",description:"Excel enum guide.",content:` A block defines an enum type, and it is a series of contiguous non-empty rows. So different blocks are seperated by one or more empty rows.
+hello_world.proto `}).add({id:144,href:"/docs/excel/enum/#multiple-enum-types-in-sheet",title:"Enum / Multiple enum types in sheet ",description:"Excel enum guide.",content:` [!IMPORTANT] A block defines an enum type, and it is a series of contiguous non-empty rows. So different blocks are seperated by one or more empty rows.
 You should specify Mode option to MODE_ENUM_TYPE_MULTI in metasheet @TABLEAU.
 For example, a worksheet Enum in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Enum @TABLEAU CatType CatType note Number Name Alias 1 CAT_TYPE_RAGDOLL Ragdoll 2 CAT_TYPE_PERSIAN Persian 3 CAT_TYPE_SPHYNX Sphynx DogType DogType note Number Name Alias 1 DOG_TYPE_POODLE Poodle 2 DOG_TYPE_BULLDOG Bulldog 3 DOG_TYPE_DACHSHUND Dachshund BirdType BirdType note Number Name Alias 1 CANARY Canary 2 WOODPECKER Woodpecker 3 OWL Owl Sheet Mode Enum MODE_ENUM_TYPE_MULTI Generated:
@@ -290,7 +290,7 @@ hello_world.proto ItemConf.json `}).add({id:154,href:"/docs/excel/struct/#define
 MODE_STRUCT_TYPE: define single struct type in a sheet. MODE_STRUCT_TYPE_MULTI: define multiple struct types in a sheet. `}).add({id:155,href:"/docs/excel/struct/#single-struct-type-in-sheet",title:"Struct / Single struct type in sheet ",description:"Excel struct guide.",content:` You should specify Mode option to MODE_STRUCT_TYPE in metasheet @TABLEAU.
 For example, a worksheet Item in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Item @TABLEAU Name Type ID uint32 Num int32 FruitType enum&lt;.FruitType&gt; Feature []int32 Prop map&lt;int32, string&gt; Detail {enum&lt;.ItemType&gt; Type, string Name, string Desc}Detail Sheet Mode Item MODE_STRUCT_TYPE Generated:
-hello_world.proto `}).add({id:156,href:"/docs/excel/struct/#multiple-struct-types-in-sheet",title:"Struct / Multiple struct types in sheet ",description:"Excel struct guide.",content:` A block defines a struct type, and it is a series of contiguous non-empty rows. So different blocks are seperated by one or more empty rows.
+hello_world.proto `}).add({id:156,href:"/docs/excel/struct/#multiple-struct-types-in-sheet",title:"Struct / Multiple struct types in sheet ",description:"Excel struct guide.",content:` [!IMPORTANT] A block defines a struct type, and it is a series of contiguous non-empty rows. So different blocks are seperated by one or more empty rows.
 You should specify Mode option to MODE_STRUCT_TYPE_MULTI in metasheet @TABLEAU.
 For example, a worksheet Struct in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Struct @TABLEAU Tree Tree note Name Type ID uint32 Num int32 Pet Pet note Name Type Kind int32 Tip []string FruitShop FruitShop note Name Type FruitType enum&lt;.FruitType&gt; Prop map&lt;int32, string&gt; Sheet Mode Struct MODE_STRUCT_TYPE_MULTI Generated:
@@ -301,13 +301,13 @@ hello_world.proto `}).add({id:158,href:"/docs/excel/union/#theory",title:"Union 
 Tagged union in different programming languages:
 C++: std::variant. Rust: Defining an Enum. Tableau use protobuf message to bundle enum and oneof together to implement tagged union. By default, each enum value (&gt;0) is bound to a field with the same tag number of oneof type.
 `}).add({id:159,href:"/docs/excel/union/#union-definition",title:"Union / Union definition ",description:"Excel union guide.",content:` For example, union type Target in common.proto is predefined as:
-`}).add({id:160,href:"/docs/excel/union/#predefined-union-in-list",title:"Union / Predefined union in list ",description:"Excel union guide.",content:` Based on predefined union type Target.
+`}).add({id:160,href:"/docs/excel/union/#predefined-union-in-list",title:"Union / Predefined union in list ",description:"Excel union guide.",content:` [!NOTE] Based on predefined union type Target.
 A worksheet TaskConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Apple @TABLEAU ID Target1Type Target1Field1 Target1Field2 Target1Field3 Target2Type Target2Field1 Target2Field2 Target2Field3 map&lt;int32, Task&gt; [.Target]enum&lt;.Target.Type&gt; union union union enum&lt;.Target.Type&gt; union union union ID Target1&rsquo;s type Target1&rsquo;s field1 Target1&rsquo;s field2 Target1&rsquo;s field3 Target2&rsquo;s type Target2&rsquo;s field1 Target2&rsquo;s field2 Target2&rsquo;s field3 1 PVP 1 10 Apple,Orange,Banana PVE 1,100,999 1,2,3 1:10,2:20,3:30 2 Story 1001,10 1:Apple,2:Orange Fragrant:1,Sour:2 Skill 1 2 Generated:
-hello_world.proto TaskConf.json TaskConf.txt `}).add({id:161,href:"/docs/excel/union/#predefined-union-in-map",title:"Union / Predefined union in map ",description:"Excel union guide.",content:` Based on predefined union type Target.
+hello_world.proto TaskConf.json TaskConf.txt `}).add({id:161,href:"/docs/excel/union/#predefined-union-in-map",title:"Union / Predefined union in map ",description:"Excel union guide.",content:` [!NOTE] Based on predefined union type Target.
 A worksheet TaskConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Apple @TABLEAU ID TargetType TargetField1 TargetField2 TargetField3 Progress map&lt;int32, Task&gt; {.Target}enum&lt;.Target.Type&gt; union union union int32 ID Target&rsquo;s type Target&rsquo;s field1 Target&rsquo;s field2 Target&rsquo;s field3 Progress 1 PVP 1 10 Apple,Orange,Banana 3 2 PVE 1,100,999 1,2,3 1:10,2:20,3:30 10 3 Story 1001,10 1:Apple,2:Orange Fragrant:1,Sour:2 10 4 Skill 1 2 8 Generated:
-hello_world.proto TaskConf.json TaskConf.txt `}).add({id:162,href:"/docs/excel/union/#predefined-incell-union-in-map",title:"Union / Predefined incell union in map ",description:"Excel union guide.",content:` Based on predefined union type Target.
+hello_world.proto TaskConf.json TaskConf.txt `}).add({id:162,href:"/docs/excel/union/#predefined-incell-union-in-map",title:"Union / Predefined incell union in map ",description:"Excel union guide.",content:` [!NOTE] Based on predefined union type Target.
 A worksheet TaskConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Apple @TABLEAU ID Target1 Target2 Progress map&lt;int32, Task&gt; {.Target}|{form:FORM_TEXT} {.Target}|{form:FORM_JSON} int32 ID Target1 Target2 Progress 1 type:TYPE_PVP pvp:{type:1 damage:10 types:FRUIT_TYPE_APPLE types:FRUIT_TYPE_ORANGE types:FRUIT_TYPE_BANANA} {&ldquo;type&rdquo;:&ldquo;TYPE_PVP&rdquo;,&ldquo;pvp&rdquo;:{&ldquo;type&rdquo;:1,&ldquo;damage&rdquo;:&ldquo;10&rdquo;,&ldquo;types&rdquo;:[&ldquo;FRUIT_TYPE_APPLE&rdquo;,&ldquo;FRUIT_TYPE_ORANGE&rdquo;,&ldquo;FRUIT_TYPE_BANANA&rdquo;]}} 3 2 type:TYPE_PVE pve:{mission:{id:1 level:100 damage:999} heros:1 heros:2 heros:3 dungeons:{key:1 value:10} dungeons:{key:2 value:20} dungeons:{key:3 value:30}} {&ldquo;type&rdquo;:&ldquo;TYPE_PVE&rdquo;,&ldquo;pve&rdquo;:{&ldquo;mission&rdquo;:{&ldquo;id&rdquo;:1,&ldquo;level&rdquo;:100,&ldquo;damage&rdquo;:&ldquo;999&rdquo;},&ldquo;heros&rdquo;:[1,2,3],&ldquo;dungeons&rdquo;:{&ldquo;1&rdquo;:&ldquo;10&rdquo;,&ldquo;2&rdquo;:&ldquo;20&rdquo;,&ldquo;3&rdquo;:&ldquo;30&rdquo;}}} 10 3 type:TYPE_STORY story:{cost:{id:1001 num:10} fruits:{key:1 value:FRUIT_TYPE_APPLE} fruits:{key:2 value:FRUIT_TYPE_ORANGE} flavors:{key:1 value:{key:FRUIT_FLAVOR_FRAGRANT value:1}} flavors:{key:2 value:{key:FRUIT_FLAVOR_SOUR value:2}}} {&ldquo;type&rdquo;:&ldquo;TYPE_STORY&rdquo;,&ldquo;story&rdquo;:{&ldquo;cost&rdquo;:{&ldquo;id&rdquo;:1001,&ldquo;num&rdquo;:10},&ldquo;fruits&rdquo;:{&ldquo;1&rdquo;:&ldquo;FRUIT_TYPE_APPLE&rdquo;,&ldquo;2&rdquo;:&ldquo;FRUIT_TYPE_ORANGE&rdquo;},&ldquo;flavors&rdquo;:{&ldquo;1&rdquo;:{&ldquo;key&rdquo;:&ldquo;FRUIT_FLAVOR_FRAGRANT&rdquo;,&ldquo;value&rdquo;:1},&ldquo;2&rdquo;:{&ldquo;key&rdquo;:&ldquo;FRUIT_FLAVOR_SOUR&rdquo;,&ldquo;value&rdquo;:2}}}} 10 4 type:TYPE_SKILL skill:{id:1 damage:2} {&ldquo;type&rdquo;:&ldquo;TYPE_SKILL&rdquo;,&ldquo;skill&rdquo;:{&ldquo;id&rdquo;:1,&ldquo;damage&rdquo;:&ldquo;2&rdquo;}} 8 Generated:
 hello_world.proto TaskConf.json `}).add({id:163,href:"/docs/excel/union/#define-union-type-in-sheet",title:"Union / Define union type in sheet ",description:"Excel union guide.",content:` There are two kinds of Mode (in metasheet @TABLEAU) to define union types in a sheet:
@@ -329,7 +329,8 @@ datetime
 Note Duration
 duration
 Note Sheet Mode Target MODE_UNION_TYPE Generated:
-hello_world.proto `}).add({id:165,href:"/docs/excel/union/#multiple-union-types-in-sheet",title:"Union / Multiple union types in sheet ",description:"Excel union guide.",content:` You should specify Mode option to MODE_UNION_TYPE_MULTI in metasheet @TABLEAU.
+hello_world.proto `}).add({id:165,href:"/docs/excel/union/#multiple-union-types-in-sheet",title:"Union / Multiple union types in sheet ",description:"Excel union guide.",content:` [!IMPORTANT] A block defines an union type, and it is a series of contiguous non-empty rows. So different blocks are seperated by one or more empty rows.
+You should specify Mode option to MODE_UNION_TYPE_MULTI in metasheet @TABLEAU.
 For example, a worksheet Union in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Union @TABLEAU WishTarget WishTarget note Name Alias Field1 Field2 Field3 Higher WishHigher Height
 int32 Richer WishRicher ID
@@ -413,10 +414,10 @@ hello_world.proto ItemConf.json `}).add({id:175,href:"/docs/excel/list/#horizont
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Reward1 Reward2 Reward3 []{.Item} .Item .Item Item1&rsquo;s info Item2&rsquo;s info Item3&rsquo;s info 1,100 2,200 3,300 Generated:
 hello_world.proto ItemConf.json `}).add({id:176,href:"/docs/excel/list/#vertical-list",title:"List / Vertical list ",description:"Excel list guide.",content:` Overview of vertical list syntax:
-List element type Syntax example scalar []uint32 enum []enum&lt;.FruitType&gt; struct [Item]uint32 predefined struct [.Item]int32 incell struct []{int32 ID,int32 Num}Item incell predefined struct []{.Item} `}).add({id:177,href:"/docs/excel/list/#vertical-scalar-list",title:"List / Vertical scalar list ",description:"Excel list guide.",content:` It&rsquo;s defined same as Incell scalar list, but will aggregate multiple rows if provided.
+List element type Syntax example scalar []uint32 enum []enum&lt;.FruitType&gt; struct [Item]uint32 predefined struct [.Item]int32 incell struct []{int32 ID,int32 Num}Item incell predefined struct []{.Item} `}).add({id:177,href:"/docs/excel/list/#vertical-scalar-list",title:"List / Vertical scalar list ",description:"Excel list guide.",content:` [!NOTE] It&rsquo;s defined same as Incell scalar list, but will aggregate multiple rows if provided.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID []uint32 ID 1,2,3 1,2 1 Generated:
-hello_world.proto ItemConf.json `}).add({id:178,href:"/docs/excel/list/#vertical-enum-list",title:"List / Vertical enum list ",description:"Excel list guide.",content:` It&rsquo;s defined same as Incell enum list, but will aggregate multiple rows if provided.
+hello_world.proto ItemConf.json `}).add({id:178,href:"/docs/excel/list/#vertical-enum-list",title:"List / Vertical enum list ",description:"Excel list guide.",content:` [!NOTE] It&rsquo;s defined same as Incell enum list, but will aggregate multiple rows if provided.
 FruitType in common.proto is predefined as:
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Type []enum&lt;.FruitType&gt; Type Apple,Orange,Banana FRUIT_TYPE_APPLE,FRUIT_TYPE_ORANGE 1 Generated:
@@ -474,7 +475,7 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Num map&lt;int32, .Item&gt; int32 Ite
 hello_world.proto ItemConf.json `}).add({id:201,href:"/docs/excel/map/#incell-map",title:"Map / Incell map ",description:"Excel map guide.",content:` There are some kinds of in-cell map:
 in-cell scalar map, as map value type is scalar. E.g: map&lt;int32, int32&gt;. in-cell struct map, as map value type is struct. E.g: map&lt;int32, Item&gt;. `}).add({id:202,href:"/docs/excel/map/#incell-scalar-map",title:"Map / Incell scalar map ",description:"Excel map guide.",content:` A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item map&lt;uint32, string&gt; Item key-value pairs 1:Apple,2:Orange,3:Banana,4,:Peach The Item column&rsquo;s type is in-cell map map&lt;uint32, string&gt;, as the map value is scalar type string.
-⚠️ NOTE: If you want explicit pattern like: [Key:Value]..., then set the field property present as true. See Option present →.
+[!TIP] If you want explicit pattern like: [Key:Value]..., then set the field property present as true. See Option present →.
 Generated:
 hello_world.proto ItemConf.json `}).add({id:203,href:"/docs/excel/map/#incell-enum-map",title:"Map / Incell enum map ",description:"Excel map guide.",content:` For incell map, both the key and value can be enum types.
 For example, predefined enum types FruitType and FruitFlavor in common.proto are:
@@ -510,7 +511,7 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Name map&lt;uint32, Item&gt; string I
 Syntax: [ElemType]&lt;ColumnType&gt;
 `}).add({id:213,href:"/docs/excel/keyedlist/#horizontal-list",title:"KeyedList / Horizontal list ",description:"Excel keyed list guide.",content:` TODO&hellip;
 `}).add({id:214,href:"/docs/excel/keyedlist/#vertical-keyedlist",title:"KeyedList / Vertical KeyedList ",description:"Excel keyed list guide.",content:`
-`}).add({id:215,href:"/docs/excel/keyedlist/#vertical-scalar-keyedlist",title:"KeyedList / Vertical scalar KeyedList ",description:"Excel keyed list guide.",content:` It&rsquo;s defined same as Incell scalar KeyedList, but will aggregate multiple rows if provided.
+`}).add({id:215,href:"/docs/excel/keyedlist/#vertical-scalar-keyedlist",title:"KeyedList / Vertical scalar KeyedList ",description:"Excel keyed list guide.",content:` [!NOTE] It&rsquo;s defined same as Incell scalar KeyedList, but will aggregate multiple rows if provided.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID []&lt;uint32&gt; ID 1,2,3 4,5 6 Generated:
 hello_world.proto ItemConf.json `}).add({id:216,href:"/docs/excel/keyedlist/#vertical-enum-keyedlist",title:"KeyedList / Vertical enum KeyedList ",description:"Excel keyed list guide.",content:` It&rsquo;s defined same as Incell enum keyedList, but will aggregate multiple rows if provided.
@@ -527,25 +528,25 @@ A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Param []enum&lt;.FruitType&gt; Param list 1,FRUIT_TYPE_ORANGE,Banana The Param column&rsquo;s type is incell list []enum&lt;.FruitType&gt;, as the list element is the predefined enum type FruitType.
 Generated:
 hello_world.proto ItemConf.json `}).add({id:221,href:"/docs/excel/wellknown-types/#datetime",title:"Wellknown types / Datetime ",description:"Wellknown guide.",content:`
-`}).add({id:222,href:"/docs/excel/wellknown-types/#datetime-1",title:"Wellknown types / Datetime ",description:"Wellknown guide.",content:` See Basics: Datetime →
+`}).add({id:222,href:"/docs/excel/wellknown-types/#datetime-1",title:"Wellknown types / Datetime ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Datetime → for more details.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU BeginDatetime EndDatetime Datetime datetime datetime []datetime Begin datetime End datetime Datetime 2020-01-01 10:25:00 2022-10-10 05:10:00 2020-01-01 10:25:00,2022-10-10 05:10:00 Generated:
-hello_world.proto ItemConf.json `}).add({id:223,href:"/docs/excel/wellknown-types/#date",title:"Wellknown types / Date ",description:"Wellknown guide.",content:` See Basics: Datetime →
+hello_world.proto ItemConf.json `}).add({id:223,href:"/docs/excel/wellknown-types/#date",title:"Wellknown types / Date ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Datetime →
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU BeginDate EndDate Date date date []date Begin date End date Date 2020-01-01 20221010 2020-01-01,20221010 Generated:
-hello_world.proto ItemConf.json `}).add({id:224,href:"/docs/excel/wellknown-types/#time",title:"Wellknown types / Time ",description:"Wellknown guide.",content:` See Basics: Datetime →
+hello_world.proto ItemConf.json `}).add({id:224,href:"/docs/excel/wellknown-types/#time",title:"Wellknown types / Time ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Datetime →
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU BeginTime EndTime Time time time []time Begin time End time Time 10:25:00 1125 10:25:00,1125 Generated:
-hello_world.proto ItemConf.json `}).add({id:225,href:"/docs/excel/wellknown-types/#duration",title:"Wellknown types / Duration ",description:"Wellknown guide.",content:` See Basics: Duration →
+hello_world.proto ItemConf.json `}).add({id:225,href:"/docs/excel/wellknown-types/#duration",title:"Wellknown types / Duration ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Duration →
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Duration1 Duration2 Duration duration duration []duration Duration 1 Duration 2 Duration 1h2m3s 4ms5us6ns 1h2m3s,4ms5us6ns Generated:
-hello_world.proto ItemConf.json `}).add({id:226,href:"/docs/excel/wellknown-types/#fraction",title:"Wellknown types / Fraction ",description:"Wellknown guide.",content:` See Basics: Fraction →
+hello_world.proto ItemConf.json `}).add({id:226,href:"/docs/excel/wellknown-types/#fraction",title:"Wellknown types / Fraction ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Fraction →
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU MinRatio Ratio1 Ratio2 Ratio3 Ratio4 Ratio5 fraction []fraction fraction fraction fraction fraction min ratio ratio1 ratio 2 ratio 3 ratio 4 ratio 5 1/4 10% 10‰ 10‱ 10 0.01 Generated:
-hello_world.proto ItemConf.json `}).add({id:227,href:"/docs/excel/wellknown-types/#comparator",title:"Wellknown types / Comparator ",description:"Wellknown guide.",content:` See Basics: Comparator →
+hello_world.proto ItemConf.json `}).add({id:227,href:"/docs/excel/wellknown-types/#comparator",title:"Wellknown types / Comparator ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Comparator →
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU MinRatio Ratio1 Ratio2 Ratio3 Ratio4 Ratio5 comparator []comparator comparator comparator comparator comparator min ratio ratio1 ratio 2 ratio 3 ratio 4 ratio 5 !=1/4 &lt;10% &lt;=10‰ &gt;10‱ &gt;=10 ==3/5 Generated:
-hello_world.proto ItemConf.json `}).add({id:228,href:"/docs/excel/wellknown-types/#version",title:"Wellknown types / Version ",description:"Wellknown guide.",content:` See Basics: Version →
+hello_world.proto ItemConf.json `}).add({id:228,href:"/docs/excel/wellknown-types/#version",title:"Wellknown types / Version ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Version →
 Default pattern is: 255.255.255.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Version CustomVersion IncellVersion HorizontalVersion1 HorizontalVersion2 HorizontalVersion3 version version|{pattern:&ldquo;99.999.99.999.99.999&rdquo;} []version|{pattern:&ldquo;999.999.999&rdquo;} []version|{pattern:&ldquo;999.999.999&rdquo;} version version default version custom version incell version horizontal version1 horizontal version2 horizontal version3 1.0.3 1.2.3.4.5.6 1.2.3,4.5.6 1.0.0 1.2.3 2.0.3 Generated:
@@ -725,7 +726,7 @@ Scatter1.xlsx&nbsp; ZoneConf @TABLEAU ID Name Difficulty map&lt;uint32, Zone&gt;
 Scatter2.xlsx&nbsp; ZoneConf ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone’s ID Zone’s name Zone’s difficulty 2 Desert 200 The third (sub) workbook: a worksheet ZoneConf in Scatter3.xlsx (without @TABLEAU):
 Scatter3.xlsx&nbsp; ZoneConf ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone’s ID Zone’s name Zone’s difficulty 3 Snowfield 300 Generated protoconf:
 scatter_1.proto It is supposed to generate three different config files (name pattern: &lt;BookName&gt;_&lt;SheetName&gt;):
-Scatter1_ZoneConf.json Scatter2_ZoneConf.json Scatter3_ZoneConf.json `}).add({id:308,href:"/docs/excel/metasheet/#option-orderedmap",title:"Metasheet / Option OrderedMap ",description:"Excel metasheet @TABLEAU guide.",content:` 📢 It only applies to each level message’s first map field.
+Scatter1_ZoneConf.json Scatter2_ZoneConf.json Scatter3_ZoneConf.json `}).add({id:308,href:"/docs/excel/metasheet/#option-orderedmap",title:"Metasheet / Option OrderedMap ",description:"Excel metasheet @TABLEAU guide.",content:` [!IMPORTANT] It only applies to each level message’s first map field.
 If you set OrderedMap to true, then tableau loader plugins will generate ordered map APIs:
 C++: OrderedMap API Go: OrderedMap API `}).add({id:309,href:"/docs/excel/metasheet/#option-index",title:"Metasheet / Option Index ",description:"Excel metasheet @TABLEAU guide.",content:` Option Index can be specified to generate index accessers. There are two kinds of indexes:
 Single-column Index Multi-column Index (aka Composite Index). If you set Index appropriately, then tableau loader plugins will generate index APIs:
