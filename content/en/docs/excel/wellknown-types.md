@@ -14,7 +14,8 @@ toc: true
 
 ### Datetime
 
-> See [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
+> [!NOTE]
+> See [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}}) for more details.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -78,6 +79,7 @@ message ItemConf {
 
 ### Date
 
+> [!NOTE]
 > See [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
@@ -142,6 +144,7 @@ message ItemConf {
 
 ### Time
 
+> [!NOTE]
 > See [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
@@ -206,6 +209,7 @@ message ItemConf {
 
 ## Duration
 
+> [!NOTE]
 > See [Basics: Duration →]({{< relref "../basics/wellknown-types/#duration" >}})
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
@@ -270,6 +274,7 @@ message ItemConf {
 
 ## Fraction
 
+> [!NOTE]
 > See [Basics: Fraction →]({{< relref "../basics/wellknown-types/#fraction" >}})
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
@@ -353,6 +358,7 @@ message ItemConf {
 
 ## Comparator
 
+> [!NOTE]
 > See [Basics: Comparator →]({{< relref "../basics/wellknown-types/#comparator" >}})
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
@@ -454,6 +460,7 @@ message ItemConf {
 
 ## Version
 
+> [!NOTE]
 > See [Basics: Version →]({{< relref "../basics/wellknown-types/#version" >}})
 
 Default `pattern` is: `255.255.255`.

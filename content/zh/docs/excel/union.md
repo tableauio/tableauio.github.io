@@ -83,6 +83,7 @@ message Target {
 
 ## List 中的 predefined union
 
+> [!NOTE]
 > 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
 
 *HelloWorld.xlsx* 中的 worksheet `TaskConf`：
@@ -311,6 +312,7 @@ task_map: {
 
 ## Map 中的 predefined union
 
+> [!NOTE]
 > 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
 
 *HelloWorld.xlsx* 中的 worksheet `TaskConf`：
@@ -564,6 +566,7 @@ task_map:  {
 
 ## Map 中的 predefined incell union
 
+> [!NOTE]
 > 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
 
 *HelloWorld.xlsx* 中的 worksheet `TaskConf`：
@@ -859,6 +862,10 @@ message Target {
 {{< /details >}}
 
 ### 多个 union 类型
+
+> [!IMPORTANT]
+> 一个 block 定义一个 union 类型，由一系列连续的非空行组成。
+> 不同的 block 之间由**一行或多行空行分隔**。
 
 需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_UNION_TYPE_MULTI`。
 

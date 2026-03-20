@@ -14,7 +14,8 @@ toc: true
 
 ### Datetime（日期时间）
 
-> 参考 [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
+> [!NOTE]
+> 参考 [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime日期时间" >}})
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -78,7 +79,8 @@ message ItemConf {
 
 ### Date（日期）
 
-> 参考 [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
+> [!NOTE]
+> 参考 [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime日期时间" >}})
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -142,7 +144,8 @@ message ItemConf {
 
 ### Time（时间）
 
-> 参考 [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
+> [!NOTE]
+> 参考 [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime日期时间" >}})
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -206,7 +209,8 @@ message ItemConf {
 
 ## Duration（时长）
 
-> 参考 [Basics: Duration →]({{< relref "../basics/wellknown-types/#duration" >}})
+> [!NOTE]
+> 参考 [Basics: Duration →]({{< relref "../basics/wellknown-types/#duration时长" >}})
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -270,7 +274,8 @@ message ItemConf {
 
 ## Fraction（分数）
 
-> 参考 [Basics: Fraction →]({{< relref "../basics/wellknown-types/#fraction" >}})
+> [!NOTE]
+> 参考 [Basics: Fraction →]({{< relref "../basics/wellknown-types/#fraction分数" >}})
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -335,7 +340,8 @@ message ItemConf {
 
 ## Comparator（比较器）
 
-> 参考 [Basics: Comparator →]({{< relref "../basics/wellknown-types/#comparator" >}})
+> [!NOTE]
+> 参考 [Basics: Comparator →]({{< relref "../basics/wellknown-types/#comparator比较器" >}})
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -403,7 +409,8 @@ message ItemConf {
 
 ## Version（版本号）
 
-> 参考 [Basics: Version →]({{< relref "../basics/wellknown-types/#version" >}})
+> [!NOTE]
+> 参考 [Basics: Version →]({{< relref "../basics/wellknown-types/#version版本号" >}})
 
 默认 `pattern` 为：`255.255.255`。
 

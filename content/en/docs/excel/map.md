@@ -379,7 +379,8 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 The `Item` column's type is in-cell map `map<uint32, string>`, as the map value is scalar type `string`.
 
-> ⚠️ NOTE: If you want explicit pattern like: `[Key:Value]...`, then set the field property `present` as true.
+> [!TIP]
+> If you want explicit pattern like: `[Key:Value]...`, then set the field property `present` as true.
 > See [Option `present` →]({{< relref "field-property/#option-present" >}}).
 
 Generated:

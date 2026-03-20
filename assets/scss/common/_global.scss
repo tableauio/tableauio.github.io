@@ -122,7 +122,7 @@ body {
     border-right: 1px solid $gray-200;
   }
 
-  @supports ((position:-webkit-sticky) or (position:sticky)) {
+  @supports ((position: -webkit-sticky) or (position: sticky)) {
     .docs-sidebar {
       position: -webkit-sticky;
       position: sticky;
@@ -165,7 +165,7 @@ body {
   order: 2;
 }
 
-@supports ((position:-webkit-sticky) or (position:sticky)) {
+@supports ((position: -webkit-sticky) or (position: sticky)) {
   .docs-toc {
     position: -webkit-sticky;
     position: sticky;
@@ -178,6 +178,77 @@ body {
 .docs-content {
   padding-bottom: 3rem;
   order: 1;
+  line-height: 1.6;
+
+  // Inline code
+  code:not([class]) {
+    padding: 0.2em 0.4em;
+    font-size: 85%;
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: 6px;
+    font-family: $font-family-monospace;
+  }
+
+  // Blockquote (non-GFM-alert)
+  blockquote {
+    padding: 0 1em;
+    color: $gray-600;
+    border-left: 0.25em solid $gray-300;
+    margin: 0 0 1rem;
+
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Horizontal rule
+  hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 1.5rem 0;
+    background-color: $gray-200;
+    border: 0;
+  }
+
+  // Headings — GitHub style sizes & weights
+  h1 {
+    font-size: 2em;
+    font-weight: 600;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid $gray-200;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid $gray-200;
+  }
+
+  h3 {
+    font-size: 1.25em;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: 0.875em;
+    font-weight: 600;
+  }
+
+  h6 {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: $gray-600;
+  }
 }
 
 .docs-navigation {

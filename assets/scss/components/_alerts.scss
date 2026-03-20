@@ -162,3 +162,121 @@
   color: $black;
   padding: 0.25rem 0.5rem;
 }
+
+// GFM-style alerts (GitHub Flavored Markdown alerts)
+// Supports: NOTE, TIP, IMPORTANT, WARNING, CAUTION
+.gfm-alert {
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+  border-radius: 0 6px 6px 0;
+
+  .gfm-alert-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+
+  .gfm-alert-content {
+    > p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.gfm-alert-note {
+  border-left-color: #0969da;
+  background-color: #ddf4ff;
+
+  .gfm-alert-title {
+    color: #0969da;
+  }
+}
+
+.gfm-alert-tip {
+  border-left-color: #1a7f37;
+  background-color: #dafbe1;
+
+  .gfm-alert-title {
+    color: #1a7f37;
+  }
+}
+
+.gfm-alert-important {
+  border-left-color: #8250df;
+  background-color: #fbefff;
+
+  .gfm-alert-title {
+    color: #8250df;
+  }
+}
+
+.gfm-alert-warning {
+  border-left-color: #9a6700;
+  background-color: #fff8c5;
+
+  .gfm-alert-title {
+    color: #9a6700;
+  }
+}
+
+.gfm-alert-caution {
+  border-left-color: #cf222e;
+  background-color: #ffebe9;
+
+  .gfm-alert-title {
+    color: #cf222e;
+  }
+}
+
+// Dark mode overrides for GFM alerts
+[data-dark-mode] body .gfm-alert-note {
+  border-left-color: #4493f8;
+  background-color: #0d1117;
+
+  .gfm-alert-title {
+    color: #4493f8;
+  }
+}
+
+[data-dark-mode] body .gfm-alert-tip {
+  border-left-color: #3fb950;
+  background-color: #0d1117;
+
+  .gfm-alert-title {
+    color: #3fb950;
+  }
+}
+
+[data-dark-mode] body .gfm-alert-important {
+  border-left-color: #a371f7;
+  background-color: #0d1117;
+
+  .gfm-alert-title {
+    color: #a371f7;
+  }
+}
+
+[data-dark-mode] body .gfm-alert-warning {
+  border-left-color: #d29922;
+  background-color: #0d1117;
+
+  .gfm-alert-title {
+    color: #d29922;
+  }
+}
+
+[data-dark-mode] body .gfm-alert-caution {
+  border-left-color: #f85149;
+  background-color: #0d1117;
+
+  .gfm-alert-title {
+    color: #f85149;
+  }
+}

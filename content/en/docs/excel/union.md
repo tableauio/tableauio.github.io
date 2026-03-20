@@ -83,6 +83,7 @@ message Target {
 
 ## Predefined union in list
 
+> [!NOTE]
 > Based on [predefined union type `Target`]({{< relref "union/#union-definition" >}}).
 
 A worksheet `TaskConf` in *HelloWorld.xlsx*:
@@ -311,6 +312,7 @@ task_map: {
 
 ## Predefined union in map
 
+> [!NOTE]
 > Based on [predefined union type `Target`]({{< relref "union/#union-definition" >}}).
 
 A worksheet `TaskConf` in *HelloWorld.xlsx*:
@@ -564,6 +566,7 @@ task_map:  {
 
 ## Predefined incell union in map
 
+> [!NOTE]
 > Based on [predefined union type `Target`]({{< relref "union/#union-definition" >}}).
 
 A worksheet `TaskConf` in *HelloWorld.xlsx*:
@@ -859,6 +862,10 @@ message Target {
 {{< /details >}}
 
 ### Multiple union types in sheet
+
+> [!IMPORTANT]
+> A block defines an union type, and it is a series of contiguous non-empty rows.
+> So different blocks are seperated by **one or more empty rows**.
 
 You should specify `Mode` option to `MODE_UNION_TYPE_MULTI` in metasheet `@TABLEAU`.
 

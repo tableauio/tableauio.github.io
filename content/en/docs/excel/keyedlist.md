@@ -24,6 +24,7 @@ Keyed list is same as normal list, except that `ColumnType` (first field type) i
 
 ### Vertical scalar KeyedList
 
+> [!NOTE]
 > It's defined same as [Incell scalar KeyedList](#incell-scalar-keyedlist), but will aggregate multiple rows if provided.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:

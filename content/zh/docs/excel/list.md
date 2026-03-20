@@ -474,6 +474,7 @@ message ItemConf {
 
 ### 纵向 scalar list
 
+> [!NOTE]
 > 定义方式与 [Incell scalar list](#incell-scalar-list) 相同，但如果提供了多行数据，会聚合多行。
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
@@ -540,6 +541,7 @@ message ItemConf {
 
 ### 纵向 enum list
 
+> [!NOTE]
 > 定义方式与 [Incell enum list](#incell-enum-list) 相同，但如果提供了多行数据，会聚合多行。
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
@@ -1078,6 +1080,7 @@ message ItemConf {
 
 ### Incell struct list
 
+> [!NOTE]
 > 更高级的 incell 数据解析，请参考 [高级 predefined incell struct →]({{< relref "struct/#advanced-predefined-incell-struct" >}})。
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：

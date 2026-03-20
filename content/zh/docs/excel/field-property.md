@@ -205,6 +205,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 ### Wellknown version 字段
 
+> [!NOTE]
 > 使用案例请参考 [Wellknown types: Version →]({{< relref "../excel/wellknown-types/#version" >}})
 
 指定当前单元格的点分十进制模式。每个十进制数的范围从 0 到模式对应部分的最大值（MAX）。

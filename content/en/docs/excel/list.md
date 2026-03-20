@@ -473,6 +473,7 @@ Overview of vertical list syntax:
 
 ### Vertical scalar list
 
+> [!NOTE]
 > It's defined same as [Incell scalar list](#incell-scalar-list), but will aggregate multiple rows if provided.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
@@ -539,6 +540,7 @@ message ItemConf {
 
 ### Vertical enum list
 
+> [!NOTE]
 > It's defined same as [Incell enum list](#incell-enum-list), but will aggregate multiple rows if provided.
 
 `FruitType` in *common.proto* is predefined as:

@@ -587,7 +587,8 @@ It is supposed to generate three different config files (name pattern: `<BookNam
 
 ## Option `OrderedMap`
 
-> 📢 It only applies to each level message’s first map field.
+> [!IMPORTANT]
+> It only applies to each level message’s first map field.
 
 If you set `OrderedMap` to `true`, then tableau loader plugins will generate ordered map APIs:
 

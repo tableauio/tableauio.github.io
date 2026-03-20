@@ -584,7 +584,8 @@ message ZoneConf {
 
 ## 选项 `OrderedMap`
 
-> 📢 仅适用于每个层级 message 的第一个 map 字段。
+> [!IMPORTANT]
+> 仅适用于每个层级 message 的第一个 map 字段。
 
 如果将 `OrderedMap` 设置为 `true`，则 tableau loader 插件将生成 ordered map API：
 
