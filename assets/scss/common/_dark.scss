@@ -40,13 +40,24 @@ $navbar-dark-active-color: $link-color-dark;
 }
 
 [data-dark-mode] body .btn-primary {
-  @include button-variant($button-color-dark, $button-color-dark);
+  @include button-variant(
+    $button-color-dark,
+    $button-color-dark,
+    $color: $body-bg-dark,
+    $hover-color: $body-bg-dark,
+    $active-color: $body-bg-dark,
+    $disabled-color: $body-bg-dark
+  );
 
   color: $body-bg-dark !important;
 }
 
 [data-dark-mode] body .btn-outline-primary {
-  @include button-outline-variant($button-color-dark, $button-color-dark);
+  @include button-outline-variant(
+    $button-color-dark,
+    $color-hover: $body-bg-dark,
+    $active-color: $body-bg-dark
+  );
 
   color: $link-color-dark;
 }

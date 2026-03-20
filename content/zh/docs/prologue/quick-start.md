@@ -1,7 +1,7 @@
 ---
 title: "快速开始"
 description: "快速开始"
-lead: "一页概览：如何使用 tableauc 将工作簿文件转换为 proto 和 JSON 文件。"
+lead: "使用 tableauc 将工作簿文件转换为 proto 和 JSON 文件。"
 date: 2020-11-16T13:59:39+08:00
 lastmod: 2020-11-16T13:59:39+08:00
 draft: false
@@ -14,57 +14,40 @@ toc: true
 
 选择合适的 tableauc（即 Tableau Compiler）下载：
 
-<div class="row">
-    <div class="col-lg-5 col-xl-5 col-sm-6 text-center">
-        <p>
-            <img height="100px" src="/images/logo/windows-logo.png" alt="Windows" />
-        </p>
-        <p>
-            <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.windows.amd64.tar.gz">
-                <image height="25px" src="/images/download_blue.svg" alt="Download" /> Windows x64
+<div class="download-section">
+    <div class="download-card">
+        <img class="download-card__logo" src="/images/logo/windows-logo.png" alt="Windows" />
+        <span class="download-card__title">Windows</span>
+        <div class="download-card__buttons">
+            <a class="btn-download" role="button"
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{{< tableauc-version >}}/tableauc.{{< tableauc-version >}}.windows.amd64.tar.gz">
+                <img src="/images/download.svg" aria-hidden="true" /><span>x64</span>
             </a>
-        </p>
-        <!-- <p>
-            <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.windows.386.tar.gz">
-                <image height="25px" src="/images/download_blue.svg" alt="Download" /> Windows x86
-            </a>
-        </p> -->
+        </div>
     </div>
-    <div class="col-lg-5 col-xl-5 col-sm-6 text-center">
-        <p>
-            <img height="100px" src="/images/logo/linux-logo.png" alt="Linux" />
-        </p>
-        <p>
-            <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.linux.amd64.tar.gz">
-                <image height="25px" src="/images/download_blue.svg" alt="Download" /> Linux x64
+    <div class="download-card">
+        <img class="download-card__logo" src="/images/logo/linux-logo.png" alt="Linux" />
+        <span class="download-card__title">Linux</span>
+        <div class="download-card__buttons">
+            <a class="btn-download" role="button"
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{{< tableauc-version >}}/tableauc.{{< tableauc-version >}}.linux.amd64.tar.gz">
+                <img src="/images/download.svg" aria-hidden="true" /><span>x64</span>
             </a>
-        </p>
-        <!-- <p>
-            <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.linux.386.tar.gz">
-                <image height="25px" src="/images/download_blue.svg" alt="Download" /> Linux x86
-            </a>
-        </p> -->
+        </div>
     </div>
-    <div class="col-lg-5 col-xl-5 col-sm-6 text-center">
-        <p>
-            <img height="100px" src="/images/logo/apple-logo.svg" alt="Apple" />
-        </p>
-        <p>
-            <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.darwin.amd64.tar.gz">
-                <image height="25px" src="/images/download_blue.svg" alt="Download" /> macOS x64
+    <div class="download-card">
+        <img class="download-card__logo" src="/images/logo/apple-logo.svg" alt="macOS" />
+        <span class="download-card__title">macOS</span>
+        <div class="download-card__buttons">
+            <a class="btn-download" role="button"
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{{< tableauc-version >}}/tableauc.{{< tableauc-version >}}.darwin.amd64.tar.gz">
+                <img src="/images/download.svg" aria-hidden="true" /><span>x64</span>
             </a>
-        </p>
-        <p>
-            <a class="btn btn-outline-info btn-lg" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.darwin.arm64.tar.gz">
-                <image height="25px" src="/images/download_blue.svg" alt="Download" /> macOS arm64
+            <a class="btn-download" role="button"
+                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{{< tableauc-version >}}/tableauc.{{< tableauc-version >}}.darwin.arm64.tar.gz">
+                <img src="/images/download.svg" aria-hidden="true" /><span>arm64</span>
             </a>
-        </p>
+        </div>
     </div>
 </div>
 

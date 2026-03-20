@@ -1,0 +1,163 @@
+// Download section styles
+
+$download-btn-color: #0969da;
+
+.download-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.download-card {
+  flex: 1 1 200px;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1.25rem 1.25rem;
+  border: 1px solid $gray-200;
+  border-radius: 0.75rem;
+  background: $white;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: $gray-400;
+    transform: translateY(-2px);
+  }
+}
+
+.download-card__logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
+
+.download-card__title {
+  font-size: $font-size-base;
+  font-weight: $headings-font-weight;
+  color: $body-color;
+  margin-bottom: 0.75rem;
+}
+
+.download-card__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.45rem 0.875rem;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border-radius: 0.5rem;
+  border: 1.5px solid $download-btn-color;
+  color: $download-btn-color;
+  background: transparent;
+  text-decoration: none !important;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  img,
+  svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    transition: filter 0.15s ease;
+  }
+
+  span {
+    color: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+  }
+
+  &:hover,
+  &:focus {
+    background: $download-btn-color;
+    border-color: $download-btn-color;
+    color: #fff !important;
+    text-decoration: none !important;
+    outline: none;
+    opacity: 1;
+
+    span {
+      color: #fff;
+    }
+
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &:active {
+    background: darken($download-btn-color, 8%);
+    border-color: darken($download-btn-color, 8%);
+    color: $white;
+
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+// Dark mode
+[data-dark-mode] body .download-card {
+  background: $body-overlay-dark;
+  border-color: $border-dark;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    border-color: $gray-600;
+  }
+}
+
+[data-dark-mode] body .download-card__title {
+  color: $body-color-dark;
+}
+
+[data-dark-mode] body .btn-download {
+  border-color: $link-color-dark;
+  color: $link-color-dark;
+
+  &:hover,
+  &:focus {
+    background: $link-color-dark;
+    color: $body-bg-dark;
+    border-color: $link-color-dark;
+
+    span {
+      color: $body-bg-dark;
+    }
+
+    img {
+      filter: brightness(0);
+    }
+  }
+
+  &:active {
+    background: darken($link-color-dark, 8%);
+    border-color: darken($link-color-dark, 8%);
+    color: $body-bg-dark;
+
+    img {
+      filter: brightness(0);
+    }
+  }
+}
