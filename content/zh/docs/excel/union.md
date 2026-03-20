@@ -144,11 +144,35 @@ message TaskConf {
             "targetList": [
                 {
                     "type": "TYPE_PVP",
-                    "pvp": {"type": 1, "damage": "10", "types": ["FRUIT_TYPE_APPLE", "FRUIT_TYPE_ORANGE", "FRUIT_TYPE_BANANA"]}
+                    "pvp": {
+                        "type": 1,
+                        "damage": "10",
+                        "types": [
+                            "FRUIT_TYPE_APPLE",
+                            "FRUIT_TYPE_ORANGE",
+                            "FRUIT_TYPE_BANANA"
+                        ]
+                    }
                 },
                 {
                     "type": "TYPE_PVE",
-                    "pve": {"mission": {"id": 1, "level": 100, "damage": "999"}, "heros": [1, 2, 3], "dungeons": {"1": "10", "2": "20", "3": "30"}}
+                    "pve": {
+                        "mission": {
+                            "id": 1,
+                            "level": 100,
+                            "damage": "999"
+                        },
+                        "heros": [
+                            1,
+                            2,
+                            3
+                        ],
+                        "dungeons": {
+                            "1": "10",
+                            "2": "20",
+                            "3": "30"
+                        }
+                    }
                 }
             ]
         },
@@ -157,15 +181,129 @@ message TaskConf {
             "targetList": [
                 {
                     "type": "TYPE_STORY",
-                    "story": {"cost": {"id": 1001, "num": 10}, "fruits": {"1": "FRUIT_TYPE_APPLE", "2": "FRUIT_TYPE_ORANGE"}, "flavors": {"1": {"key": "FRUIT_FLAVOR_FRAGRANT", "value": 1}, "2": {"key": "FRUIT_FLAVOR_SOUR", "value": 2}}}
+                    "story": {
+                        "cost": {
+                            "id": 1001,
+                            "num": 10
+                        },
+                        "fruits": {
+                            "1": "FRUIT_TYPE_APPLE",
+                            "2": "FRUIT_TYPE_ORANGE"
+                        },
+                        "flavors": {
+                            "1": {
+                                "key": "FRUIT_FLAVOR_FRAGRANT",
+                                "value": 1
+                            },
+                            "2": {
+                                "key": "FRUIT_FLAVOR_SOUR",
+                                "value": 2
+                            }
+                        }
+                    }
                 },
                 {
                     "type": "TYPE_SKILL",
-                    "skill": {"id": 1, "damage": "2"}
+                    "skill": {
+                        "id": 1,
+                        "damage": "2"
+                    }
                 }
             ]
         }
     }
+}
+```
+
+{{< /details >}}
+
+{{< details "TaskConf.txt" >}}
+
+```prototxt
+task_map: {
+  key: 1
+  value: {
+    id: 1
+    target_list: {
+      type: TYPE_PVP
+      pvp: {
+        type: 1
+        damage: 10
+        types: FRUIT_TYPE_APPLE
+        types: FRUIT_TYPE_ORANGE
+        types: FRUIT_TYPE_BANANA
+      }
+    }
+    target_list: {
+      type: TYPE_PVE
+      pve: {
+        mission: {
+          id: 1
+          level: 100
+          damage: 999
+        }
+        heros: 1
+        heros: 2
+        heros: 3
+        dungeons: {
+          key: 1
+          value: 10
+        }
+        dungeons: {
+          key: 2
+          value: 20
+        }
+        dungeons: {
+          key: 3
+          value: 30
+        }
+      }
+    }
+  }
+}
+task_map: {
+  key: 2
+  value: {
+    id: 2
+    target_list: {
+      type: TYPE_STORY
+      story: {
+        cost: {
+          id: 1001
+          num: 10
+        }
+        fruits: {
+          key: 1
+          value: FRUIT_TYPE_APPLE
+        }
+        fruits: {
+          key: 2
+          value: FRUIT_TYPE_ORANGE
+        }
+        flavors: {
+          key: 1
+          value: {
+            key: FRUIT_FLAVOR_FRAGRANT
+            value: 1
+          }
+        }
+        flavors: {
+          key: 2
+          value: {
+            key: FRUIT_FLAVOR_SOUR
+            value: 2
+          }
+        }
+      }
+    }
+    target_list: {
+      type: TYPE_SKILL
+      skill: {
+        id: 1
+        damage: 2
+      }
+    }
+  }
 }
 ```
 
@@ -231,11 +369,193 @@ message TaskConf {
 
 ```json
 {
-    "taskMap": {
-        "1": {"id": 1, "target": {"type": "TYPE_PVP", "pvp": {"type": 1, "damage": "10", "types": ["FRUIT_TYPE_APPLE", "FRUIT_TYPE_ORANGE", "FRUIT_TYPE_BANANA"]}}, "progress": 3},
-        "2": {"id": 2, "target": {"type": "TYPE_PVE", "pve": {"mission": {"id": 1, "level": 100, "damage": "999"}, "heros": [1, 2, 3], "dungeons": {"1": "10", "2": "20", "3": "30"}}}, "progress": 10},
-        "3": {"id": 3, "target": {"type": "TYPE_STORY", "story": {"cost": {"id": 1001, "num": 10}, "fruits": {"1": "FRUIT_TYPE_APPLE", "2": "FRUIT_TYPE_ORANGE"}, "flavors": {"1": {"key": "FRUIT_FLAVOR_FRAGRANT", "value": 1}, "2": {"key": "FRUIT_FLAVOR_SOUR", "value": 2}}}}, "progress": 10},
-        "4": {"id": 4, "target": {"type": "TYPE_SKILL", "skill": {"id": 1, "damage": "2"}}, "progress": 8}
+    "taskMap":  {
+        "1":  {
+            "id":  1,
+            "target":  {
+                "type":  "TYPE_PVP",
+                "pvp":  {
+                    "type":  1,
+                    "damage":  "10",
+                    "types":  [
+                        "FRUIT_TYPE_APPLE",
+                        "FRUIT_TYPE_ORANGE",
+                        "FRUIT_TYPE_BANANA"
+                    ]
+                }
+            },
+            "progress":  3
+        },
+        "2":  {
+            "id":  2,
+            "target":  {
+                "type":  "TYPE_PVE",
+                "pve":  {
+                    "mission":  {
+                        "id":  1,
+                        "level":  100,
+                        "damage":  "999"
+                    },
+                    "heros":  [
+                        1,
+                        2,
+                        3
+                    ],
+                    "dungeons":  {
+                        "1":  "10",
+                        "2":  "20",
+                        "3":  "30"
+                    }
+                }
+            },
+            "progress":  10
+        },
+        "3":  {
+            "id":  3,
+            "target":  {
+                "type":  "TYPE_STORY",
+                "story":  {
+                    "cost":  {
+                        "id":  1001,
+                        "num":  10
+                    },
+                    "fruits":  {
+                        "1":  "FRUIT_TYPE_APPLE",
+                        "2":  "FRUIT_TYPE_ORANGE"
+                    },
+                    "flavors":  {
+                        "1":  {
+                            "key":  "FRUIT_FLAVOR_FRAGRANT",
+                            "value":  1
+                        },
+                        "2":  {
+                            "key":  "FRUIT_FLAVOR_SOUR",
+                            "value":  2
+                        }
+                    }
+                }
+            },
+            "progress":  10
+        },
+        "4":  {
+            "id":  4,
+            "target":  {
+                "type":  "TYPE_SKILL",
+                "skill":  {
+                    "id":  1,
+                    "damage":  "2"
+                }
+            },
+            "progress":  8
+        }
+    }
+}
+```
+
+{{< /details >}}
+
+{{< details "TaskConf.txt" >}}
+
+```prototxt
+task_map:  {
+    key:  1
+    value:  {
+        id:  1
+        target:  {
+            type:  TYPE_PVP
+            pvp:  {
+                type:  1
+                damage:  10
+                types:  FRUIT_TYPE_APPLE
+                types:  FRUIT_TYPE_ORANGE
+                types:  FRUIT_TYPE_BANANA
+            }
+        }
+        progress:  3
+    }
+}
+task_map:  {
+    key:  2
+    value:  {
+        id:  2
+        target:  {
+            type:  TYPE_PVE
+            pve:  {
+                mission:  {
+                    id:  1
+                    level:  100
+                    damage:  999
+                }
+                heros:  1
+                heros:  2
+                heros:  3
+                dungeons:  {
+                    key:  1
+                    value:  10
+                }
+                dungeons:  {
+                    key:  2
+                    value:  20
+                }
+                dungeons:  {
+                    key:  3
+                    value:  30
+                }
+            }
+        }
+        progress:  10
+    }
+}
+task_map:  {
+    key:  3
+    value:  {
+        id:  3
+        target:  {
+            type:  TYPE_STORY
+            story:  {
+                cost:  {
+                    id:  1001
+                    num:  10
+                }
+                fruits:  {
+                    key:  1
+                    value:  FRUIT_TYPE_APPLE
+                }
+                fruits:  {
+                    key:  2
+                    value:  FRUIT_TYPE_ORANGE
+                }
+                flavors:  {
+                    key:  1
+                    value:  {
+                        key:  FRUIT_FLAVOR_FRAGRANT
+                        value:  1
+                    }
+                }
+                flavors:  {
+                    key:  2
+                    value:  {
+                        key:  FRUIT_FLAVOR_SOUR
+                        value:  2
+                    }
+                }
+            }
+        }
+        progress:  10
+    }
+}
+task_map:  {
+    key:  4
+    value:  {
+        id:  4
+        target:  {
+            type:  TYPE_SKILL
+            skill:  {
+                id:  1
+                damage:  2
+            }
+        }
+        progress:  8
     }
 }
 ```
@@ -252,12 +572,14 @@ message TaskConf {
 
 {{< sheet colored>}}
 
-| ID               | Target1                                                                                                                                                       | Target2                                                                                                                           | Progress |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| map<int32, Task> | {.Target}\|{form:FORM_TEXT}                                                                                                                                   | {.Target}\|{form:FORM_JSON}                                                                                                       | int32    |
-| ID               | Target1                                                                                                                                                       | Target2                                                                                                                           | Progress |
-| 1                | type:TYPE_PVP pvp:{type:1 damage:10 types:FRUIT_TYPE_APPLE types:FRUIT_TYPE_ORANGE types:FRUIT_TYPE_BANANA}                                                   | {"type":"TYPE_PVP","pvp":{"type":1,"damage":"10","types":["FRUIT_TYPE_APPLE","FRUIT_TYPE_ORANGE","FRUIT_TYPE_BANANA"]}}           | 3        |
-| 2                | type:TYPE_PVE pve:{mission:{id:1 level:100 damage:999} heros:1 heros:2 heros:3 dungeons:{key:1 value:10} dungeons:{key:2 value:20} dungeons:{key:3 value:30}} | {"type":"TYPE_PVE","pve":{"mission":{"id":1,"level":100,"damage":"999"},"heros":[1,2,3],"dungeons":{"1":"10","2":"20","3":"30"}}} | 10       |
+| ID               | Target1                                                                                                                                                                                                                                    | Target2                                                                                                                                                                                                                   | Progress |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| map<int32, Task> | {.Target}\|{form:FORM_TEXT}                                                                                                                                                                                                                | {.Target}\|{form:FORM_JSON}                                                                                                                                                                                               | int32    |
+| ID               | Target1                                                                                                                                                                                                                                    | Target2                                                                                                                                                                                                                   | Progress |
+| 1                | type:TYPE_PVP pvp:{type:1 damage:10 types:FRUIT_TYPE_APPLE types:FRUIT_TYPE_ORANGE types:FRUIT_TYPE_BANANA}                                                                                                                                | {"type":"TYPE_PVP","pvp":{"type":1,"damage":"10","types":["FRUIT_TYPE_APPLE","FRUIT_TYPE_ORANGE","FRUIT_TYPE_BANANA"]}}                                                                                                   | 3        |
+| 2                | type:TYPE_PVE pve:{mission:{id:1 level:100 damage:999} heros:1 heros:2 heros:3 dungeons:{key:1 value:10} dungeons:{key:2 value:20} dungeons:{key:3 value:30}}                                                                              | {"type":"TYPE_PVE","pve":{"mission":{"id":1,"level":100,"damage":"999"},"heros":[1,2,3],"dungeons":{"1":"10","2":"20","3":"30"}}}                                                                                         | 10       |
+| 3                | type:TYPE_STORY story:{cost:{id:1001 num:10} fruits:{key:1 value:FRUIT_TYPE_APPLE} fruits:{key:2 value:FRUIT_TYPE_ORANGE} flavors:{key:1 value:{key:FRUIT_FLAVOR_FRAGRANT value:1}} flavors:{key:2 value:{key:FRUIT_FLAVOR_SOUR value:2}}} | {"type":"TYPE_STORY","story":{"cost":{"id":1001,"num":10},"fruits":{"1":"FRUIT_TYPE_APPLE","2":"FRUIT_TYPE_ORANGE"},"flavors":{"1":{"key":"FRUIT_FLAVOR_FRAGRANT","value":1},"2":{"key":"FRUIT_FLAVOR_SOUR","value":2}}}} | 10       |
+| 4                | type:TYPE_SKILL skill:{id:1 damage:2}                                                                                                                                                                                                      | {"type":"TYPE_SKILL","skill":{"id":1,"damage":"2"}}                                                                                                                                                                       | 8        |
 
 {{< /sheet >}}
 
@@ -291,6 +613,157 @@ message TaskConf {
     protoconf.Target target_2 = 3 [(tableau.field) = {name:"Target2" span:SPAN_INNER_CELL prop:{form:FORM_JSON}}];
     int32 progress = 4 [(tableau.field) = {name:"Progress"}];
   }
+}
+```
+
+{{< /details >}}
+
+{{< details "TaskConf.json" >}}
+
+```json
+{
+    "taskMap":  {
+        "1":  {
+            "id":  1,
+            "target1":  {
+                "type":  "TYPE_PVP",
+                "pvp":  {
+                    "type":  1,
+                    "damage":  "10",
+                    "types":  [
+                        "FRUIT_TYPE_APPLE",
+                        "FRUIT_TYPE_ORANGE",
+                        "FRUIT_TYPE_BANANA"
+                    ]
+                }
+            },
+            "target2":  {
+                "type":  "TYPE_PVP",
+                "pvp":  {
+                    "type":  1,
+                    "damage":  "10",
+                    "types":  [
+                        "FRUIT_TYPE_APPLE",
+                        "FRUIT_TYPE_ORANGE",
+                        "FRUIT_TYPE_BANANA"
+                    ]
+                }
+            },
+            "progress":  3
+        },
+        "2":  {
+            "id":  2,
+            "target1":  {
+                "type":  "TYPE_PVE",
+                "pve":  {
+                    "mission":  {
+                        "id":  1,
+                        "level":  100,
+                        "damage":  "999"
+                    },
+                    "heros":  [
+                        1,
+                        2,
+                        3
+                    ],
+                    "dungeons":  {
+                        "1":  "10",
+                        "2":  "20",
+                        "3":  "30"
+                    }
+                }
+            },
+            "target2":  {
+                "type":  "TYPE_PVE",
+                "pve":  {
+                    "mission":  {
+                        "id":  1,
+                        "level":  100,
+                        "damage":  "999"
+                    },
+                    "heros":  [
+                        1,
+                        2,
+                        3
+                    ],
+                    "dungeons":  {
+                        "1":  "10",
+                        "2":  "20",
+                        "3":  "30"
+                    }
+                }
+            },
+            "progress":  10
+        },
+        "3":  {
+            "id":  3,
+            "target1":  {
+                "type":  "TYPE_STORY",
+                "story":  {
+                    "cost":  {
+                        "id":  1001,
+                        "num":  10
+                    },
+                    "fruits":  {
+                        "1":  "FRUIT_TYPE_APPLE",
+                        "2":  "FRUIT_TYPE_ORANGE"
+                    },
+                    "flavors":  {
+                        "1":  {
+                            "key":  "FRUIT_FLAVOR_FRAGRANT",
+                            "value":  1
+                        },
+                        "2":  {
+                            "key":  "FRUIT_FLAVOR_SOUR",
+                            "value":  2
+                        }
+                    }
+                }
+            },
+            "target2":  {
+                "type":  "TYPE_STORY",
+                "story":  {
+                    "cost":  {
+                        "id":  1001,
+                        "num":  10
+                    },
+                    "fruits":  {
+                        "1":  "FRUIT_TYPE_APPLE",
+                        "2":  "FRUIT_TYPE_ORANGE"
+                    },
+                    "flavors":  {
+                        "1":  {
+                            "key":  "FRUIT_FLAVOR_FRAGRANT",
+                            "value":  1
+                        },
+                        "2":  {
+                            "key":  "FRUIT_FLAVOR_SOUR",
+                            "value":  2
+                        }
+                    }
+                }
+            },
+            "progress":  10
+        },
+        "4":  {
+            "id":  4,
+            "target1":  {
+                "type":  "TYPE_SKILL",
+                "skill":  {
+                    "id":  1,
+                    "damage":  "2"
+                }
+            },
+            "target2":  {
+                "type":  "TYPE_SKILL",
+                "skill":  {
+                    "id":  1,
+                    "damage":  "2"
+                }
+            },
+            "progress":  8
+        }
+    }
 }
 ```
 
@@ -395,7 +868,8 @@ message Target {
 
 {{< sheet colored1 >}}
 
-| WishTarget   | WishTarget note   || ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
+| WishTarget   | WishTarget note   |                   |                              |                                       |
+| ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
 | Name         | Alias             | Field1            | Field2                       | Field3                                |
 | Higher       | WishHigher        | Height<br>int32   |                              |                                       |
 | Richer       | WishRicher        | ID<br>uint32      | Bank<br>map<int32, string>   |                                       |
@@ -424,7 +898,7 @@ message Target {
 
 生成结果：
 
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
@@ -432,17 +906,88 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
 message WishTarget {
   option (tableau.union) = {name:"UnionType" note:"WishTarget note"};
-  // ...
+
+  Type type = 9999 [(tableau.field) = {name:"Type"}];
+  oneof value {
+    option (tableau.oneof) = {note:"WishTarget note" field:"Field"};
+
+    Higher higher = 1; // Bound to enum value: TYPE_HIGHER.
+    Richer richer = 2; // Bound to enum value: TYPE_RICHER.
+  }
+
+  enum Type {
+    TYPE_INVALID = 0;
+    TYPE_HIGHER = 1 [(tableau.evalue).name = "WishHigher"]; // WishHigher
+    TYPE_RICHER = 2 [(tableau.evalue).name = "WishRicher"]; // WishRicher
+  }
+
+  message Higher {
+    int32 height = 1 [(tableau.field) = {name:"Height"}];
+  }
+  message Richer {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    map<int32, string> bank_map = 2 [(tableau.field) = {name:"Bank" layout:LAYOUT_INCELL}];
+  }
 }
 
 message HeroTarget {
   option (tableau.union) = {name:"UnionType" note:"HeroTarget note"};
-  // ...
+
+  Type type = 9999 [(tableau.field) = {name:"Type"}];
+  oneof value {
+    option (tableau.oneof) = {note:"HeroTarget note" field:"Field"};
+
+    StarUp star_up = 1; // Bound to enum value: TYPE_STAR_UP.
+    LevelUp level_up = 2; // Bound to enum value: TYPE_LEVEL_UP.
+  }
+
+  enum Type {
+    TYPE_INVALID = 0;
+    TYPE_STAR_UP = 1 [(tableau.evalue).name = "HeroStarUp"]; // HeroStarUp
+    TYPE_LEVEL_UP = 2 [(tableau.evalue).name = "HeroLevelUp"]; // HeroLevelUp
+  }
+
+  message StarUp {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int32 star = 2 [(tableau.field) = {name:"Star"}];
+  }
+  message LevelUp {
+    repeated uint32 id_list = 1 [(tableau.field) = {name:"ID" layout:LAYOUT_INCELL}];
+    int32 level = 2 [(tableau.field) = {name:"Level"}];
+    bool super = 3 [(tableau.field) = {name:"Super"}];
+  }
 }
 
 message BattleTarget {
   option (tableau.union) = {name:"UnionType" note:"BattleTarget note"};
-  // ...
+
+  Type type = 9999 [(tableau.field) = {name:"Type"}];
+  oneof value {
+    option (tableau.oneof) = {note:"BattleTarget note" field:"Field"};
+
+    PVP pvp = 1; // Bound to enum value: TYPE_PVP.
+    PVE pve = 2; // Bound to enum value: TYPE_PVE.
+  }
+
+  enum Type {
+    TYPE_INVALID = 0;
+    TYPE_PVP = 1 [(tableau.evalue).name = "BattlePVP"]; // BattlePVP
+    TYPE_PVE = 2 [(tableau.evalue).name = "BattlePVE"]; // BattlePVE
+  }
+
+  message PVP {
+    int32 battle_id = 1 [(tableau.field) = {name:"BattleID"}];
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+  }
+  message PVE {
+    repeated int32 hero_id_list = 1 [(tableau.field) = {name:"HeroID" layout:LAYOUT_INCELL}];
+    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
+    Boss boss = 3 [(tableau.field) = {name:"Boss" span:SPAN_INNER_CELL}];
+    message Boss {
+      uint32 id = 1 [(tableau.field) = {name:"ID"}];
+      int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+    }
+  }
 }
 ```
 
@@ -478,7 +1023,7 @@ message BattleTarget {
 
 生成结果：
 
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
@@ -492,8 +1037,8 @@ message Target {
   oneof value {
     option (tableau.oneof) = {field: "Field"};
 
-    PVP pvp = 1;    // Bound to enum value: TYPE_PVP.
-    PVE pve = 20;   // Bound to enum value: TYPE_PVE.
+    PVP pvp = 1; // Bound to enum value: TYPE_PVP.
+    PVE pve = 20; // Bound to enum value: TYPE_PVE.
     Skill skill = 30; // Bound to enum value: TYPE_SKILL.
   }
   enum Type {
@@ -502,7 +1047,20 @@ message Target {
     TYPE_PVE = 20 [(tableau.evalue).name = "AliasPVE"];
     TYPE_SKILL = 30 [(tableau.evalue).name = "AliasSkill"];
   }
-  // ...
+
+  message PVP {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+    protoconf.FruitType type = 3 [(tableau.field) = {name:"Type"}];
+  }
+  message PVE {
+    repeated uint32 hero_list = 1 [(tableau.field) = {name:"Hero" layout:LAYOUT_INCELL}];
+    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
+  }
+  message Skill {
+    google.protobuf.Timestamp start_time = 1 [(tableau.field) = {name:"StartTime"}];
+    google.protobuf.Duration duration = 2 [(tableau.field) = {name:"Duration"}];
+  }
 }
 ```
 
@@ -549,7 +1107,7 @@ message Target {
 
 生成结果：
 
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
@@ -656,12 +1214,12 @@ message Target {
   oneof value {
     option (tableau.oneof) = {field: "Field"};
 
-    PVP pvp = 1;
-    PVE pve = 2;
-    Story story = 3;
-    Hobby hobby = 4;
-    Skill skill = 5;
-    Empty empty = 6;
+    PVP pvp = 1; // Bound to enum value: TYPE_PVP.
+    PVE pve = 2; // Bound to enum value: TYPE_PVE.
+    Story story = 3; // Bound to enum value: TYPE_STORY.
+    Hobby hobby = 4; // Bound to enum value: TYPE_HOBBY.
+    Skill skill = 5; // Bound to enum value: TYPE_SKILL.
+    Empty empty = 6; // Bound to enum value: TYPE_EMPTY.
   }
   enum Type {
     TYPE_INVALID = 0;
@@ -672,7 +1230,45 @@ message Target {
     TYPE_SKILL = 5 [(tableau.evalue).name = "AliasSkill"];
     TYPE_EMPTY = 6 [(tableau.evalue).name = "AliasEmpty"];
   }
-  // ... message definitions omitted for brevity
+
+  message PVP {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+    repeated protoconf.FruitType type_list = 3 [(tableau.field) = {name:"Type" layout:LAYOUT_INCELL}];
+  }
+  message PVE {
+    Mission mission = 1 [(tableau.field) = {name:"Mission" span:SPAN_INNER_CELL}];
+    message Mission {
+      uint32 id = 1 [(tableau.field) = {name:"ID"}];
+      protoconf.ItemType type = 2 [(tableau.field) = {name:"Type"}];
+    }
+    repeated uint32 hero_list = 2 [(tableau.field) = {name:"Hero" layout:LAYOUT_INCELL}];
+    map<int32, int64> dungeon_map = 3 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
+  }
+  message Story {
+    protoconf.Item cost = 1 [(tableau.field) = {name:"Cost" span:SPAN_INNER_CELL}];
+    map<int32, protoconf.FruitType> fruit_map = 2 [(tableau.field) = {name:"Fruit" layout:LAYOUT_INCELL}];
+    map<int32, Flavor> flavor_map = 3 [(tableau.field) = {name:"Flavor" key:"Key" layout:LAYOUT_INCELL}];
+    message Flavor {
+      protoconf.FruitFlavor key = 1 [(tableau.field) = {name:"Key"}];
+      protoconf.FruitType value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+  message Hobby {
+    map<int32, Flavor> flavor_map = 1 [(tableau.field) = {name:"Flavor" key:"Key" layout:LAYOUT_INCELL}];
+    message Flavor {
+      protoconf.FruitFlavor key = 1 [(tableau.field) = {name:"Key"}];
+      protoconf.FruitType value = 2 [(tableau.field) = {name:"Value"}];
+    }
+    google.protobuf.Timestamp start_time = 2 [(tableau.field) = {name:"StartTime"}];
+    google.protobuf.Duration duration = 3 [(tableau.field) = {name:"Duration"}];
+  }
+  message Skill {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+  }
+  message Empty {
+  }
 }
 
 message TaskConf {
@@ -684,6 +1280,123 @@ message TaskConf {
     protoconf.Target target = 2 [(tableau.field) = {name:"Target"}];
     int32 progress = 3 [(tableau.field) = {name:"Progress"}];
   }
+}
+```
+
+{{< /details >}}
+
+{{< details "TaskConf.json" >}}
+
+```json
+{
+    "taskMap": {
+        "1": {
+            "id": 1,
+            "target": {
+                "type": "TYPE_PVP",
+                "pvp": {
+                    "id": 1,
+                    "damage": "10",
+                    "typeList": [
+                        "FRUIT_TYPE_APPLE",
+                        "FRUIT_TYPE_ORANGE",
+                        "FRUIT_TYPE_BANANA"
+                    ]
+                }
+            },
+            "progress": 3
+        },
+        "2": {
+            "id": 2,
+            "target": {
+                "type": "TYPE_PVE",
+                "pve": {
+                    "mission": {
+                        "id": 1,
+                        "type": "ITEM_TYPE_EQUIP"
+                    },
+                    "heroList": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "dungeonMap": {
+                        "1": "10",
+                        "2": "20",
+                        "3": "30"
+                    }
+                }
+            },
+            "progress": 10
+        },
+        "3": {
+            "id": 3,
+            "target": {
+                "type": "TYPE_STORY",
+                "story": {
+                    "cost": {
+                        "id": 1001,
+                        "num": 10
+                    },
+                    "fruitMap": {
+                        "1": "FRUIT_TYPE_APPLE",
+                        "2": "FRUIT_TYPE_ORANGE"
+                    },
+                    "flavorMap": {
+                        "1": {
+                            "key": "FRUIT_FLAVOR_FRAGRANT",
+                            "value": "FRUIT_TYPE_APPLE"
+                        },
+                        "2": {
+                            "key": "FRUIT_FLAVOR_SOUR",
+                            "value": "FRUIT_TYPE_ORANGE"
+                        }
+                    }
+                }
+            },
+            "progress": 10
+        },
+        "4": {
+            "id": 4,
+            "target": {
+                "type": "TYPE_HOBBY",
+                "hobby": {
+                    "flavorMap": {
+                        "1": {
+                            "key": "FRUIT_FLAVOR_FRAGRANT",
+                            "value": "FRUIT_TYPE_APPLE"
+                        },
+                        "2": {
+                            "key": "FRUIT_FLAVOR_SOUR",
+                            "value": "FRUIT_TYPE_ORANGE"
+                        }
+                    },
+                    "startTime": "2023-06-01T02:00:00Z",
+                    "duration": "22s"
+                }
+            },
+            "progress": 12
+        },
+        "5": {
+            "id": 5,
+            "target": {
+                "type": "TYPE_SKILL",
+                "skill": {
+                    "id": 1,
+                    "damage": "200"
+                }
+            },
+            "progress": 8
+        },
+        "6": {
+            "id": 6,
+            "target": {
+                "type": "TYPE_EMPTY",
+                "empty": {}
+            },
+            "progress": 0
+        }
+    }
 }
 ```
 

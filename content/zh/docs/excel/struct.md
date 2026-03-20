@@ -549,14 +549,38 @@ message ItemConf {
 ```json
 {
     "transform1":  {
-        "position":  {"x":  1, "y":  2, "z":  3},
-        "rotation":  {"x":  4, "y":  5, "z":  6},
-        "scale":  {"x":  7, "y":  8, "z":  9}
+        "position":  {
+            "x":  1,
+            "y":  2,
+            "z":  3
+        },
+        "rotation":  {
+            "x":  4,
+            "y":  5,
+            "z":  6
+        },
+        "scale":  {
+            "x":  7,
+            "y":  8,
+            "z":  9
+        }
     },
     "transform2":  {
-        "position":  {"x":  1, "y":  2, "z":  3},
-        "rotation":  {"x":  4, "y":  5, "z":  6},
-        "scale":  {"x":  7, "y":  8, "z":  9}
+        "position":  {
+            "x":  1,
+            "y":  2,
+            "z":  3
+        },
+        "rotation":  {
+            "x":  4,
+            "y":  5,
+            "z":  6
+        },
+        "scale":  {
+            "x":  7,
+            "y":  8,
+            "z":  9
+        }
     }
 }
 ```
@@ -578,7 +602,7 @@ message ItemConf {
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name      | Type                                                   |
 | --------- | ------------------------------------------------------ |
@@ -638,7 +662,7 @@ message Item {
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Tree      | Tree note          |
 | --------- | ------------------ |
@@ -708,7 +732,7 @@ message FruitShop {
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Number | Name      | Type             |
 | ------ | --------- | ---------------- |

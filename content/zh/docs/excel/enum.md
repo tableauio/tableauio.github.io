@@ -80,9 +80,18 @@ message ItemConf {
 ```json
 {
     "itemMap":  {
-        "1":  {"id":  1, "type":  "FRUIT_TYPE_APPLE"},
-        "2":  {"id":  3, "type":  "FRUIT_TYPE_ORANGE"},
-        "3":  {"id":  2, "type":  "FRUIT_TYPE_BANANA"}
+        "1":  {
+            "id":  1,
+            "type":  "FRUIT_TYPE_APPLE"
+        },
+        "2":  {
+            "id":  3,
+            "type":  "FRUIT_TYPE_ORANGE"
+        }
+        "3":  {
+            "id":  2,
+            "type":  "FRUIT_TYPE_BANANA"
+        },
     }
 }
 ```
@@ -104,7 +113,7 @@ message ItemConf {
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name            | Alias |
 | --------------- | ----- |
@@ -154,7 +163,7 @@ enum ItemType {
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | CatType  | CatType note       |            |
 | -------- | ------------------ | ---------- |
@@ -200,9 +209,9 @@ enum CatType {
   option (tableau.etype) = {name:"EnumType" note:"CatType note"};
 
   CAT_TYPE_INVALID = 0;
-  CAT_TYPE_RAGDOLL = 1 [(tableau.evalue).name = "Ragdoll"];
-  CAT_TYPE_PERSIAN = 2 [(tableau.evalue).name = "Persian"];
-  CAT_TYPE_SPHYNX = 3 [(tableau.evalue).name = "Sphynx"];
+  CAT_TYPE_RAGDOLL = 1 [(tableau.evalue).name = "Ragdoll"]; // Ragdoll
+  CAT_TYPE_PERSIAN = 2 [(tableau.evalue).name = "Persian"]; // Persian
+  CAT_TYPE_SPHYNX = 3 [(tableau.evalue).name = "Sphynx"]; // Sphynx
 }
 
 // DogType note
@@ -210,9 +219,9 @@ enum DogType {
   option (tableau.etype) = {name:"EnumType" note:"DogType note"};
 
   DOG_TYPE_INVALID = 0;
-  DOG_TYPE_POODLE = 1 [(tableau.evalue).name = "Poodle"];
-  DOG_TYPE_BULLDOG = 2 [(tableau.evalue).name = "Bulldog"];
-  DOG_TYPE_DACHSHUND = 3 [(tableau.evalue).name = "Dachshund"];
+  DOG_TYPE_POODLE = 1 [(tableau.evalue).name = "Poodle"]; // Poodle
+  DOG_TYPE_BULLDOG = 2 [(tableau.evalue).name = "Bulldog"]; // Bulldog
+  DOG_TYPE_DACHSHUND = 3 [(tableau.evalue).name = "Dachshund"]; // Dachshund
 }
 
 // BirdType note
@@ -220,9 +229,9 @@ enum BirdType {
   option (tableau.etype) = {name:"EnumType" note:"BirdType note"};
 
   BIRD_TYPE_INVALID = 0;
-  BIRD_TYPE_CANARY = 1 [(tableau.evalue).name = "Canary"];
-  BIRD_TYPE_WOODPECKER = 2 [(tableau.evalue).name = "Woodpecker"];
-  BIRD_TYPE_OWL = 3 [(tableau.evalue).name = "Owl"];
+  BIRD_TYPE_CANARY = 1 [(tableau.evalue).name = "Canary"]; // Canary
+  BIRD_TYPE_WOODPECKER = 2 [(tableau.evalue).name = "Woodpecker"]; // Woodpecker
+  BIRD_TYPE_OWL = 3 [(tableau.evalue).name = "Owl"]; // Owl
 }
 ```
 
@@ -238,7 +247,7 @@ enum BirdType {
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Number | Name              | Alias   |
 | ------ | ----------------- | ------- |
@@ -284,7 +293,7 @@ enum ItemType {
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType ItemConf "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Number | Name            | Alias |
 | ------ | --------------- | ----- |
@@ -323,7 +332,6 @@ enum ItemType {
 
 ```protobuf
 // --snip--
-import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 // Generated from sheet: ItemType.
@@ -354,9 +362,24 @@ message ItemConf {
 ```json
 {
     "itemMap": {
-        "1": {"id": 1, "type": "ITEM_TYPE_FRUIT", "name": "Apple", "price": 40},
-        "2": {"id": 2, "type": "ITEM_TYPE_FRUIT", "name": "Orange", "price": 20},
-        "3": {"id": 3, "type": "ITEM_TYPE_EQUIP", "name": "Sword", "price": 10}
+        "1": {
+            "id": 1,
+            "type": "ITEM_TYPE_FRUIT",
+            "name": "Apple",
+            "price": 40
+        },
+        "2": {
+            "id": 2,
+            "type": "ITEM_TYPE_FRUIT",
+            "name": "Orange",
+            "price": 20
+        },
+        "3": {
+            "id": 3,
+            "type": "ITEM_TYPE_EQUIP",
+            "name": "Sword",
+            "price": 10
+        }
     }
 }
 ```

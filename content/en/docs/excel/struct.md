@@ -602,7 +602,7 @@ For example, a worksheet `Item` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name      | Type                                                   |
 | --------- | ------------------------------------------------------ |
@@ -662,7 +662,7 @@ For example, a worksheet `Item` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Tree      | Tree note          |
 | --------- | ------------------ |
@@ -732,7 +732,7 @@ For example, a worksheet `Item` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Number | Name      | Type             |
 | ------ | --------- | ---------------- |

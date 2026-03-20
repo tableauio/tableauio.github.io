@@ -202,7 +202,11 @@ message HeroConf {
     "id": 123,
     "name": "Robin",
     "desc": "A big hero!",
-    "skillList": [100, 101, 102]
+    "skillList": [
+        100,
+        101,
+        102
+    ]
 }
 ```
 
@@ -310,9 +314,21 @@ message ZoneConf {
 ```json
 {
     "zoneMap": {
-        "1": {"id": 1, "name": "Infinity", "difficulty": 100},
-        "2": {"id": 2, "name": "Desert", "difficulty": 200},
-        "3": {"id": 3, "name": "Snowfield", "difficulty": 300}
+        "1": {
+            "id": 1,
+            "name": "Infinity",
+            "difficulty": 100
+        },
+        "2": {
+            "id": 2,
+            "name": "Desert",
+            "difficulty": 200
+        },
+        "3": {
+            "id": 3,
+            "name": "Snowfield",
+            "difficulty": 300
+        }
     }
 }
 ```
@@ -462,6 +478,38 @@ message ZoneConf {
 
 {{< /spreadsheet >}}
 
+第二个（子）workbook：*Scatter2.xlsx* 中的 worksheet `ZoneConf`（不含 `@TABLEAU`）：
+
+{{< spreadsheet "Scatter2.xlsx" ZoneConf >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+| ----------------- | ----------- | ----------------- |
+| map<uint32, Zone> | string      | int32             |
+| Zone's ID         | Zone's name | Zone's difficulty |
+| 2                 | Desert      | 200               |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+第三个（子）workbook：*Scatter3.xlsx* 中的 worksheet `ZoneConf`（不含 `@TABLEAU`）：
+
+{{< spreadsheet "Scatter3.xlsx" ZoneConf >}}
+
+{{< sheet colored>}}
+
+| ID                | Name        | Difficulty        |
+| ----------------- | ----------- | ----------------- |
+| map<uint32, Zone> | string      | int32             |
+| Zone's ID         | Zone's name | Zone's difficulty |
+| 3                 | Snowfield   | 300               |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
 生成的 protoconf：
 
 {{< details "scatter_1.proto" open >}}
@@ -489,7 +537,15 @@ message ZoneConf {
 {{< details "Scatter1_ZoneConf.json" >}}
 
 ```json
-{"zoneMap": {"1": {"id": 1, "name": "Infinity", "difficulty": 100}}}
+{
+    "zoneMap": {
+        "1": {
+            "id": 1,
+            "name": "Infinity",
+            "difficulty": 100
+        }
+    }
+}
 ```
 
 {{< /details >}}
@@ -497,7 +553,15 @@ message ZoneConf {
 {{< details "Scatter2_ZoneConf.json" >}}
 
 ```json
-{"zoneMap": {"2": {"id": 2, "name": "Desert", "difficulty": 200}}}
+{
+    "zoneMap": {
+        "2": {
+            "id": 2,
+            "name": "Desert",
+            "difficulty": 200
+        }
+    }
+}
 ```
 
 {{< /details >}}
@@ -505,7 +569,15 @@ message ZoneConf {
 {{< details "Scatter3_ZoneConf.json" >}}
 
 ```json
-{"zoneMap": {"3": {"id": 3, "name": "Snowfield", "difficulty": 300}}}
+{
+    "zoneMap": {
+        "3": {
+            "id": 3,
+            "name": "Snowfield",
+            "difficulty": 300
+        }
+    }
+}
 ```
 
 {{< /details >}}

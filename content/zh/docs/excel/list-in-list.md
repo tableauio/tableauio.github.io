@@ -76,12 +76,26 @@ message ItemConf {
         {
             "id": 1,
             "name": "Apple",
-            "propList": [{"id": 1, "value": "10"}, {"id": 2, "value": "20"}]
+            "propList": [
+                {
+                    "id": 1,
+                    "value": "10"
+                },
+                {
+                    "id": 2,
+                    "value": "20"
+                }
+            ]
         },
         {
             "id": 2,
             "name": "Orange",
-            "propList": [{"id": 3, "value": "30"}]
+            "propList": [
+                {
+                    "id": 3,
+                    "value": "30"
+                }
+            ]
         },
         {
             "id": 3,
@@ -158,12 +172,26 @@ message ItemConf {
         {
             "id": 1,
             "name": "Apple",
-            "propList": [{"propId": 1, "propValue": "10"}]
+            "propList": [
+                {
+                    "propId": 1,
+                    "propValue": "10"
+                }
+            ]
         },
         {
             "id": 2,
             "name": "Orange",
-            "propList": [{"propId": 1, "propValue": "20"}, {"propId": 2, "propValue": "30"}]
+            "propList": [
+                {
+                    "propId": 1,
+                    "propValue": "20"
+                },
+                {
+                    "propId": 2,
+                    "propValue": "30"
+                }
+            ]
         }
     ]
 }
@@ -235,12 +263,26 @@ message ItemConf {
         {
             "id": 1,
             "desc": "Apple",
-            "propList": [{"propId": 10, "propNum": 100}, {"propId": 11, "propNum": 110}]
+            "propList": [
+                {
+                    "propId": 10,
+                    "propNum": 100
+                },
+                {
+                    "propId": 11,
+                    "propNum": 110
+                }
+            ]
         },
         {
             "id": 2,
             "desc": "Orange",
-            "propList": [{"propId": 20, "propNum": 200}]
+            "propList": [
+                {
+                    "propId": 20,
+                    "propNum": 200
+                }
+            ]
         }
     ]
 }
@@ -304,9 +346,27 @@ message ItemConf {
 ```json
 {
     "itemList": [
-        {"id": 1, "propList": [10, 20, 30]},
-        {"id": 2, "propList": [10, 20]},
-        {"id": 3, "propList": [10]}
+        {
+            "id": 1,
+            "propList": [
+                10,
+                20,
+                30
+            ]
+        },
+        {
+            "id": 2,
+            "propList": [
+                10,
+                20
+            ]
+        },
+        {
+            "id": 3,
+            "propList": [
+                10
+            ]
+        }
     ]
 }
 ```
@@ -372,8 +432,25 @@ message ItemConf {
 ```json
 {
     "keyedItemList": [
-        {"id": 1, "desc": "Apple", "tipList": [1, 2, 3, 4, 5]},
-        {"id": 2, "desc": "Orange", "tipList": [1, 2]}
+        {
+            "id": 1,
+            "desc": "Apple",
+            "tipList": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        {
+            "id": 2,
+            "desc": "Orange",
+            "tipList": [
+                1,
+                2
+            ]
+        }
     ]
 }
 ```
@@ -440,8 +517,28 @@ message ItemConf {
 ```json
 {
     "rewardList": [
-        {"itemList": [{"id": 1, "num": 10}, {"id": 2, "num": 20}], "name": "Lotto"},
-        {"itemList": [{"id": 10, "num": 100}], "name": "Super Lotto"}
+        {
+            "itemList": [
+                {
+                    "id": 1,
+                    "num": 10
+                },
+                {
+                    "id": 2,
+                    "num": 20
+                }
+            ],
+            "name": "Lotto"
+        },
+        {
+            "itemList": [
+                {
+                    "id": 10,
+                    "num": 100
+                }
+            ],
+            "name": "Super Lotto"
+        }
     ]
 }
 ```
@@ -512,8 +609,28 @@ message ItemConf {
 ```json
 {
     "rewardList": [
-        {"itemList": [{"id": 1, "num": 10}, {"id": 2, "num": 20}], "name": "Lotto"},
-        {"itemList": [{"id": 10, "num": 100}], "name": "Super Lotto"}
+        {
+            "itemList": [
+                {
+                    "id": 1,
+                    "num": 10
+                },
+                {
+                    "id": 2,
+                    "num": 20
+                }
+            ],
+            "name": "Lotto"
+        },
+        {
+            "itemList": [
+                {
+                    "id": 10,
+                    "num": 100
+                }
+            ],
+            "name": "Super Lotto"
+        }
     ]
 }
 ```
@@ -573,9 +690,25 @@ message ItemConf {
 ```json
 {
     "taskList": [
-        {"paramList": [1, 2]},
-        {"paramList": [3, 4]},
-        {"paramList": [5, 6, 7]}
+        {
+            "paramList": [
+                1,
+                2
+            ]
+        },
+        {
+            "paramList": [
+                3,
+                4
+            ]
+        },
+        {
+            "paramList": [
+                5,
+                6,
+                7
+            ]
+        }
     ]
 }
 ```

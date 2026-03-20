@@ -75,7 +75,11 @@ message ItemConf {
 
 ```json
 {
-    "idList": [1, 2, 3]
+    "idList": [
+        1,
+        2,
+        3
+    ]
 }
 ```
 
@@ -142,7 +146,11 @@ message ItemConf {
 
 ```json
 {
-    "paramList": ["FRUIT_TYPE_APPLE", "FRUIT_TYPE_ORANGE", "FRUIT_TYPE_BANANA"]
+    "paramList": [
+        "FRUIT_TYPE_APPLE",
+        "FRUIT_TYPE_ORANGE",
+        "FRUIT_TYPE_BANANA"
+    ]
 }
 ```
 
@@ -202,9 +210,18 @@ message ItemConf {
 ```json
 {
     "itemList": [
-        {"id": 1, "name": "Apple"},
-        {"id": 2, "name": "Orange"},
-        {"id": 3, "name": "Banana"}
+        {
+            "id": 1,
+            "name": "Apple"
+        },
+        {
+            "id": 2,
+            "name": "Orange"
+        },
+        {
+            "id": 3,
+            "name": "Banana"
+        }
     ]
 }
 ```
@@ -270,10 +287,19 @@ message ItemConf {
 
 ```json
 {
-    "itemList": [
-        {"id": 1, "num": 100},
-        {"id": 2, "num": 200},
-        {"id": 3, "num": 300}
+    "ItemList": [
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
     ]
 }
 ```
@@ -334,9 +360,18 @@ message ItemConf {
 ```json
 {
     "itemList": [
-        {"id": 1, "name": "Apple"},
-        {"id": 2, "name": "Orange"},
-        {"id": 3, "name": "Banana"}
+        {
+            "id": 1,
+            "name": "Apple"
+        },
+        {
+            "id": 2,
+            "name": "Orange"
+        },
+        {
+            "id": 3,
+            "name": "Banana"
+        }
     ]
 }
 ```
@@ -403,14 +438,25 @@ message ItemConf {
 ```json
 {
     "rewardList": [
-        {"id": 1, "num": 100},
-        {"id": 2, "num": 200},
-        {"id": 3, "num": 300}
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
     ]
 }
 ```
 
 {{< /details >}}
+
+## 纵向 list
 
 ## 纵向 list（Vertical list）
 
@@ -479,7 +525,14 @@ message ItemConf {
 
 ```json
 {
-    "idList": [1, 2, 3, 1, 2, 1]
+    "idList": [
+        1,
+        2,
+        3,
+        1,
+        2,
+        1
+    ]
 }
 ```
 
@@ -550,8 +603,11 @@ message ItemConf {
 ```json
 {
     "typeList": [
-        "FRUIT_TYPE_APPLE", "FRUIT_TYPE_ORANGE", "FRUIT_TYPE_BANANA",
-        "FRUIT_TYPE_APPLE", "FRUIT_TYPE_ORANGE",
+        "FRUIT_TYPE_APPLE",
+        "FRUIT_TYPE_ORANGE",
+        "FRUIT_TYPE_BANANA",
+        "FRUIT_TYPE_APPLE",
+        "FRUIT_TYPE_ORANGE",
         "FRUIT_TYPE_APPLE"
     ]
 }
@@ -616,9 +672,21 @@ message ItemConf {
 ```json
 {
     "itemList": [
-        {"id": 1, "name": "Apple", "desc": "A kind of delicious fruit."},
-        {"id": 2, "name": "Orange", "desc": "A kind of sour fruit."},
-        {"id": 3, "name": "Banana", "desc": "A kind of calorie-rich fruit."}
+        {
+            "id": 1,
+            "name": "Apple",
+            "desc": "A kind of delicious fruit."
+        },
+        {
+            "id": 2,
+            "name": "Orange",
+            "desc": "A kind of sour fruit."
+        },
+        {
+            "id": 3,
+            "name": "Banana",
+            "desc": "A kind of calorie-rich fruit."
+        }
     ]
 }
 ```
@@ -686,10 +754,19 @@ message ItemConf {
 
 ```json
 {
-    "itemList": [
-        {"id": 1, "num": 100},
-        {"id": 2, "num": 200},
-        {"id": 3, "num": 300}
+    "ItemList": [
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
     ]
 }
 ```
@@ -751,9 +828,18 @@ message ItemConf {
 ```json
 {
     "itemList": [
-        {"id": 1, "num": 100},
-        {"id": 2, "num": 200},
-        {"id": 3, "num": 300}
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
     ]
 }
 ```
@@ -821,9 +907,18 @@ message ItemConf {
 ```json
 {
     "itemList": [
-        {"id": 1, "num": 100},
-        {"id": 2, "num": 200},
-        {"id": 3, "num": 300}
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
     ]
 }
 ```
@@ -895,7 +990,14 @@ message ItemConf {
 
 ```json
 {
-    "paramList": [1, 2, 3, 4, 5, 6]
+    "paramList": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ]
 }
 ```
 
@@ -964,7 +1066,11 @@ message ItemConf {
 
 ```json
 {
-    "paramList": ["FRUIT_TYPE_APPLE", "FRUIT_TYPE_ORANGE", "FRUIT_TYPE_BANANA"]
+    "paramList": [
+        "FRUIT_TYPE_APPLE",
+        "FRUIT_TYPE_ORANGE",
+        "FRUIT_TYPE_BANANA"
+    ]
 }
 ```
 
@@ -1026,9 +1132,18 @@ message ItemConf {
 ```json
 {
     "itemList": [
-        {"id": 1, "num": 100},
-        {"id": 2, "num": 200},
-        {"id": 3, "num": 300}
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
     ]
 }
 ```
@@ -1094,9 +1209,18 @@ message ItemConf {
 ```json
 {
     "itemList": [
-        {"id": 1, "num": 100},
-        {"id": 2, "num": 200},
-        {"id": 3, "num": 300}
+        {
+            "id": 1,
+            "num": 100
+        },
+        {
+            "id": 2,
+            "num": 200
+        },
+        {
+            "id": 3,
+            "num": 300
+        }
     ]
 }
 ```
@@ -1168,15 +1292,26 @@ message ItemConf {
 
 ```json
 {
-    "itemList": [
-        {"id": 1, "name": "Apple"},
-        {"id": 0, "name": ""},
-        {"id": 3, "name": "Banana"}
+    "itemList":  [
+        {
+            "id":  1,
+            "name":  "Apple"
+        },
+        {
+            "id":  0,
+            "name":  ""
+        },
+        {
+            "id":  3,
+            "name":  "Banana"
+        }
     ]
 }
 ```
 
 {{< /details >}}
+
+#### 显式固定大小
 
 #### 显式固定大小（Explicit fixed size）
 
@@ -1235,9 +1370,15 @@ message ItemConf {
 
 ```json
 {
-    "itemList": [
-        {"id": 1, "name": "Apple"},
-        {"id": 0, "name": ""}
+    "itemList":  [
+        {
+            "id":  1,
+            "name":  "Apple"
+        },
+        {
+            "id":  0,
+            "name":  ""
+        }
     ]
 }
 ```
@@ -1308,15 +1449,38 @@ message ItemConf {
     "itemMap": {
         "1": {
             "id": 1,
-            "propList": [{"id": 1, "value": 100}, {"id": 2, "value": 200}]
+            "propList": [
+                {
+                    "id": 1,
+                    "value": 100
+                },
+                {
+                    "id": 2,
+                    "value": 200
+                }
+            ]
         },
         "2": {
             "id": 2,
-            "propList": [{"id": 3, "value": 300}, {"id": 4, "value": 400}]
+            "propList": [
+                {
+                    "id": 3,
+                    "value": 300
+                },
+                {
+                    "id": 4,
+                    "value": 400
+                }
+            ]
         },
         "3": {
             "id": 3,
-            "propList": [{"id": 5, "value": 500}]
+            "propList": [
+                {
+                    "id": 5,
+                    "value": 500
+                }
+            ]
         }
     }
 }

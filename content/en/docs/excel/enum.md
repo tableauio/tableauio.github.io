@@ -113,7 +113,7 @@ For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Name            | Alias |
 | --------------- | ----- |
@@ -163,7 +163,7 @@ For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | CatType  | CatType note       |            |
 | -------- | ------------------ | ---------- |
@@ -247,7 +247,7 @@ For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Number | Name              | Alias   |
 | ------ | ----------------- | ------- |
@@ -293,7 +293,7 @@ For example, two worksheets `ItemType` and `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType ItemConf "@TABLEAU" >}}
 
-{{< sheet >}}
+{{< sheet colored1 >}}
 
 | Number | Name            | Alias |
 | ------ | --------------- | ----- |
@@ -332,7 +332,6 @@ Generated:
 
 ```protobuf
 // --snip--
-import "common.proto";
 option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
 
 // Generated from sheet: ItemType.

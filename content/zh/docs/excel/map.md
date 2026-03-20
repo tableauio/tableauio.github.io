@@ -76,9 +76,18 @@ message ItemConf {
 ```json
 {
     "itemMap": {
-        "1": {"id": 1, "name": "Apple"},
-        "2": {"id": 2, "name": "Orange"},
-        "3": {"id": 3, "name": "Banana"}
+        "1": {
+            "id": 1,
+            "name": "Apple"
+        },
+        "2": {
+            "id": 2,
+            "name": "Orange"
+        },
+        "3": {
+            "id": 3,
+            "name": "Banana"
+        }
     }
 }
 ```
@@ -145,9 +154,18 @@ message ItemConf {
 ```json
 {
     "itemMap": {
-        "1": {"id": 1, "num": 100},
-        "2": {"id": 2, "num": 200},
-        "3": {"id": 3, "num": 300}
+        "1": {
+            "id": 1,
+            "num": 100
+        },
+        "2": {
+            "id": 2,
+            "num": 200
+        },
+        "3": {
+            "id": 3,
+            "num": 300
+        }
     }
 }
 ```
@@ -223,9 +241,21 @@ message ItemConf {
 ```json
 {
     "itemMap": {
-        "1": {"id": 1, "name": "Apple", "desc": "A kind of delicious fruit."},
-        "2": {"id": 2, "name": "Orange", "desc": "A kind of sour fruit."},
-        "3": {"id": 3, "name": "Banana", "desc": "A kind of calorie-rich fruit."}
+        "1": {
+            "id": 1,
+            "name": "Apple",
+            "desc": "A kind of delicious fruit."
+        },
+        "2": {
+            "id": 2,
+            "name": "Orange",
+            "desc": "A kind of sour fruit."
+        },
+        "3": {
+            "id": 3,
+            "name": "Banana",
+            "desc": "A kind of calorie-rich fruit."
+        }
     }
 }
 ```
@@ -294,9 +324,18 @@ message ItemConf {
 ```json
 {
     "itemMap": {
-        "1": {"id": 1, "num": 100},
-        "2": {"id": 2, "num": 200},
-        "3": {"id": 3, "num": 300}
+        "1": {
+            "id": 1,
+            "num": 100
+        },
+        "2": {
+            "id": 2,
+            "num": 200
+        },
+        "3": {
+            "id": 3,
+            "num": 300
+        }
     }
 }
 ```
@@ -457,16 +496,28 @@ message ItemConf {
 ```json
 {
     "fruitMap": {
-        "1": {"key": "FRUIT_TYPE_APPLE", "value": "1"},
-        "3": {"key": "FRUIT_TYPE_ORANGE", "value": "2"}
+        "1": {
+            "key": "FRUIT_TYPE_APPLE",
+            "value": "1"
+        },
+        "3": {
+            "key": "FRUIT_TYPE_ORANGE",
+            "value": "2"
+        }
     },
     "flavorMap": {
         "1": "FRUIT_FLAVOR_FRAGRANT",
         "2": "FRUIT_FLAVOR_SWEET"
     },
     "itemMap": {
-        "1": {"key": "FRUIT_TYPE_APPLE", "value": "FRUIT_FLAVOR_FRAGRANT"},
-        "3": {"key": "FRUIT_TYPE_ORANGE", "value": "FRUIT_FLAVOR_SOUR"}
+        "1": {
+            "key": "FRUIT_TYPE_APPLE",
+            "value": "FRUIT_FLAVOR_FRAGRANT"
+        },
+        "3": {
+            "key": "FRUIT_TYPE_ORANGE",
+            "value": "FRUIT_FLAVOR_SOUR"
+        }
     }
 }
 ```
@@ -531,9 +582,18 @@ message ItemConf {
 ```json
 {
     "itemMap": {
-        "0": {"id": 0, "desc": "Orange"},
-        "1": {"id": 1, "desc": "Apple"},
-        "3": {"id": 3, "desc": "Banana"}
+        "0": {
+            "id": 0,
+            "desc": "Orange"
+        },
+        "1": {
+            "id": 1,
+            "desc": "Apple"
+        },
+        "3": {
+            "id": 3,
+            "desc": "Banana"
+        }
     }
 }
 ```
@@ -627,9 +687,18 @@ message ItemConf {
 ```json
 {
     "itemMap": {
-        "1": {"type": "FRUIT_TYPE_APPLE", "price": 100},
-        "3": {"type": "FRUIT_TYPE_ORANGE", "price": 200},
-        "4": {"type": "FRUIT_TYPE_BANANA", "price": 300}
+        "1": {
+            "type": "FRUIT_TYPE_APPLE",
+            "price": 100
+        },
+        "3": {
+            "type": "FRUIT_TYPE_ORANGE",
+            "price": 200
+        },
+        "4": {
+            "type": "FRUIT_TYPE_BANANA",
+            "price": 300
+        }
     }
 }
 ```
@@ -704,9 +773,18 @@ message ItemConf {
 ```json
 {
     "itemMap": {
-        "0": {"id": 0, "name": ""},
-        "1": {"id": 1, "name": "Apple"},
-        "3": {"id": 3, "name": "Banana"}
+        "0": {
+            "id": 0,
+            "name": ""
+        },
+        "1": {
+            "id": 1,
+            "name": "Apple"
+        },
+        "3": {
+            "id": 3,
+            "name": "Banana"
+        }
     }
 }
 ```
@@ -773,8 +851,14 @@ message ItemConf {
 ```json
 {
     "itemMap": {
-        "0": {"id": 0, "name": ""},
-        "1": {"id": 1, "name": "Apple"}
+        "0": {
+            "id": 0,
+            "name": ""
+        },
+        "1": {
+            "id": 1,
+            "name": "Apple"
+        }
     }
 }
 ```
@@ -846,21 +930,36 @@ message ItemConf {
         "1": {
             "id": 1,
             "propMap": {
-                "1": {"id": 1, "value": 100},
-                "2": {"id": 2, "value": 200}
+                "1": {
+                    "id": 1,
+                    "value": 100
+                },
+                "2": {
+                    "id": 2,
+                    "value": 200
+                }
             }
         },
         "2": {
             "id": 2,
             "propMap": {
-                "3": {"id": 3, "value": 300},
-                "4": {"id": 4, "value": 400}
+                "3": {
+                    "id": 3,
+                    "value": 300
+                },
+                "4": {
+                    "id": 4,
+                    "value": 400
+                }
             }
         },
         "3": {
             "id": 3,
             "propMap": {
-                "5": {"id": 5, "value": 500}
+                "5": {
+                    "id": 5,
+                    "value": 500
+                }
             }
         }
     }
