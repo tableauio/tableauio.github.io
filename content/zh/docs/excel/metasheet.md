@@ -221,7 +221,8 @@ message HeroConf {
 1. 仅 workbook 文件路径或 [Glob](https://pkg.go.dev/path/filepath#Glob) 路径（相对于当前 workbook）：`<Workbook>`，此时 sheet 名称与当前 sheet 相同。
 2. workbook 文件路径（相对于当前 workbook）加 worksheet 名称：`<Workbook>#<Worksheet>`。
 
-{{< alert icon="ⓘ" context="info" text="Glob 模式通常不应匹配主 workbook。如果匹配，tableauc 会自动排除它。" />}}
+> [!NOTE]
+> Glob 模式通常不应匹配主 workbook。如果匹配，`tableauc` 会自动排除它。
 
 ### 合并多个 workbook
 
@@ -387,7 +388,8 @@ message ZoneConf {
 
 {{< /spreadsheet >}}
 
-{{< alert icon="ⓘ" context="info" text="使用 <code>&lt;Workbook&gt;#&lt;Worksheet&gt;</code> 引用 workbook 中的特定 sheet。" />}}
+> [!NOTE]
+> 使用 `<Workbook>#<Worksheet>` 引用 workbook 中的特定 sheet。
 
 生成结果：
 
@@ -446,7 +448,8 @@ message ZoneConf {
 1. 仅 workbook 文件路径或 [Glob](https://pkg.go.dev/path/filepath#Glob) 路径（相对于当前 workbook）：`<Workbook>`，此时 sheet 名称与当前 sheet 相同。
 2. workbook 文件路径（相对于当前 workbook）加 worksheet 名称：`<Workbook>#<Worksheet>`。
 
-{{< alert icon="ⓘ" context="info" text="Glob 模式通常不应匹配主 workbook。如果匹配，tableauc 会自动排除它。" />}}
+> [!NOTE]
+> Glob 模式通常不应匹配主 workbook。如果匹配，`tableauc` 会自动排除它。
 
 例如，有三个 workbook（每个具有相同的 sheet schema，*Scatter1.xlsx* 为主 workbook）：
 

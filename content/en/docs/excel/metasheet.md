@@ -223,7 +223,8 @@ Each element can be:
    then the sheet name is the same as this sheet.
 2. a workbook file path (relative to this workbook) with a worksheet name: `<Workbook>#<Worksheet>`.
 
-{{< alert icon="ⓘ" context="info" text="Glob pattern usually should not match the main workbook. If matched, then tableauc will auto eliminate it." />}}
+> [!NOTE]
+> The glob pattern should not match the main workbook. If it does, `tableauc` will automatically exclude it.
 
 ### Merging multiple workbooks
 
@@ -389,7 +390,8 @@ The main workbook: worksheets `ZoneConf`, `ZoneConf2`, `ZoneConf3`, and `@TABLEA
 
 {{< /spreadsheet >}}
 
-{{< alert icon="ⓘ" context="info" text="Use <code>&lt;Workbook&gt;#&lt;Worksheet&gt;</code> to refer to a specific sheet in a workbook." />}}
+> [!NOTE]
+> Use `<Workbook>#<Worksheet>` to refer to a specific sheet in a workbook.
 
 Generated:
 
@@ -449,7 +451,8 @@ Each element can be:
    then the sheet name is the same as this sheet.
 2. a workbook file path (relative to this workbook) with a worksheet name: `<Workbook>#<Worksheet>`.
 
-{{< alert icon="ⓘ" context="info" text="Glob pattern usually should not match the main workbook. If matched, then tableauc will auto eliminate it." />}}
+> [!NOTE]
+> The glob pattern should not match the main workbook. If it does, `tableauc` will automatically exclude it.
 
 For example, there are three workbooks (each with same sheet schema, and *Scatter1.xlsx* is the main workbook):
 

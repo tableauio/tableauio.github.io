@@ -728,7 +728,8 @@ The map size is auto resolved by the max map items present in name row.
 
 In this example below, though the second map item **Item2** is empty, it is legal as the field property `fixed` is set `true`. Besides, **Item2** will also be generated as an empty map item. You can see it in the generated file *ItemConf.json*.
 
-{{< alert icon="👉" context="info" text="If more than one empty map items are inserted into map, then only one empty map item is really generated. Because all the empty map items's keys are same. This is different from list, you should pay special attention to it." />}}
+> [!CAUTION]
+> If multiple empty map items are inserted, only one is actually generated — because all empty map items share the same key. This differs from list behavior, so pay special attention.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -806,7 +807,8 @@ The map size is explicitly set by field property `size`.
 
 In this example below, field property `size` is set as 2, then map items after the second item **Item2** will all be truncated. Besides, **Item2** will also be generated as an empty map item. You can see it in the generated file *ItemConf.json*.
 
-{{< alert icon="👉" context="info" text="If more than one empty map items are inserted into map, then only one empty map item is really generated. Because all the empty map items's keys are same. This is different from list, you should pay special attention to it." />}}
+> [!CAUTION]
+> If multiple empty map items are inserted, only one is actually generated — because all empty map items share the same key. This differs from list behavior, so pay special attention.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 

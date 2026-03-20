@@ -12,7 +12,8 @@ toc: true
 
 ## Use predefined enum type
 
-The basic enum guide, please go to read [Enum]({{< relref "enum" >}})
+> [!NOTE]
+> See [basics/enum]({{< relref "../basics/enum" >}}) for more details.
 
 For example, enum type `FruitType` in `common.proto` is defined as:
 
@@ -155,8 +156,7 @@ enum ItemType {
 ### Multiple enum types in sheet
 
 > [!IMPORTANT]
-> A block defines an enum type, and it is a series of contiguous non-empty rows.
-> So different blocks are seperated by **one or more empty rows**.
+> A **block** defines an enum type as a series of contiguous non-empty rows, separated by **one or more empty rows**.
 
 You should specify `Mode` option to `MODE_ENUM_TYPE_MULTI` in metasheet `@TABLEAU`.
 
@@ -242,7 +242,8 @@ enum BirdType {
 
 In `Number` column, you can specify custom unique enum value number.
 
-{{< alert icon="ⓘ" context="info" text="If you not specify default enum value \"0\", it will be auto generated. And the default enum value name pattern is: \"{ENUM_TYPE}_INVALID\"." />}}
+> [!IMPORTANT]
+> If you does not specify default enum value **0**, it will be auto generated. And the default enum value name pattern is: `{ENUM_TYPE}_INVALID`.
 
 For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 

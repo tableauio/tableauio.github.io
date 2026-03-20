@@ -654,8 +654,7 @@ message Item {
 ### Multiple struct types in sheet
 
 > [!IMPORTANT]
-> A block defines a struct type, and it is a series of contiguous non-empty rows.
-> So different blocks are seperated by **one or more empty rows**.
+> A **block** defines a struct type as a series of contiguous non-empty rows, separated by **one or more empty rows**.
 
 You should specify `Mode` option to `MODE_STRUCT_TYPE_MULTI` in metasheet `@TABLEAU`.
 

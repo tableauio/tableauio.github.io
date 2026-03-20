@@ -18,7 +18,7 @@ toc: true
 | `range`     | string | Format: `"left,right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point. |
 | `refer`     | string | Format: `"SheetName(SheetAlias).ColumnName"`.<br>Ensure this field is in another sheet's column value space. Multiple refers are comma-separated.                         |
 | `sequence`  | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                       |
-| `default`   | string | Use this default value if cell is empty.                                                                                                                                  |
+| `default`   | string | Use this default value if cell is empty (not present).                                                                                                                    |
 | `fixed`     | bool   | Auto-detected fixed size of horizontal list/map. <br> Default: `false`.                                                                                                   |
 | `size`      | uint32 | Specify fixed size of horizontal list/map.                                                                                                                                |
 | `form`      | Form   | Specify cell data form of incell struct.<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                              |
@@ -53,7 +53,8 @@ If you specify a general scalar field's property `unique` as true, then tableau 
 
 ## Option `range`
 
-{{< alert icon="⚠️️" context="warning" text="This check option will not be applied if cell data is empty (not present). So if you still want to check even if cell data is empty, please set option `present` to true." />}}
+> [!WARNING]
+> This check option is skipped when cell data is empty (not present). To enforce the check even on empty cells, set option `present` to `true`.
 
 Option `range` can be specified as format: `"left,right"` (left and right are both inclusive).
 
@@ -66,7 +67,7 @@ Different interpretations of `range`:
 
 ## Option `refer`
 
-Option `refer` is some like the **FOREIGN KEY** constraint in SQL to prevent actions that would destroy links between tables. However, tableau `refer` can refer to any sheet's column even if it is not map key column, and **multiple refers** (comma-separated) are also supported. It is used to ensure this field is at least in one of the other sheets' column value space (aka message's field value space).
+Option `refer` is similar to the **FOREIGN KEY** constraint in SQL, preventing actions that would break links between tables. Unlike SQL foreign keys, it can reference any sheet's column — not just map key columns — and supports **multiple refers** (comma-separated). It ensures this field's value exists in at least one of the referenced columns (i.e., the field value space of another sheet).
 
 Format: `"SheetName(SheetAlias).ColumnName[,SheetName(SheetAlias).ColumnName]..."`.
 
@@ -88,7 +89,7 @@ For example:
 
 ## Option `default`
 
-If option `default` is set, then use it as default value if cell is empty.
+If option `default` is set, then use it as default value if cell is empty (not present).
 
 ## Option `fixed`
 
