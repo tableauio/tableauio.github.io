@@ -159,11 +159,11 @@ enum ItemType {
 
 需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_ENUM_TYPE_MULTI`。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `ItemType`：
+例如，*HelloWorld.xlsx* 中的 worksheet `Enum`：
 
-{{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
+{{< spreadsheet "HelloWorld.xlsx" Enum "@TABLEAU" >}}
 
-{{< sheet colored1 >}}
+{{< sheet multicolored2 >}}
 
 | CatType  | CatType note       |            |
 | -------- | ------------------ | ---------- |
@@ -188,9 +188,9 @@ enum ItemType {
 
 {{< sheet colored1 >}}
 
-| Sheet    | Mode                 |
-| -------- | -------------------- |
-| ItemType | MODE_ENUM_TYPE_MULTI |
+| Sheet | Mode                 |
+| ----- | -------------------- |
+| Enum  | MODE_ENUM_TYPE_MULTI |
 
 {{< /sheet >}}
 

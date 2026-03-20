@@ -36,6 +36,35 @@ div.sheet-colored1 > table > thead > tr {
   --bs-table-bg: #f5c242 !important;
 }
 
+div.sheet-multicolored2 > table {
+  @extend .table;
+  @extend .table-sm;
+  @extend .table-light;
+  @extend .table-bordered;
+}
+
+div.sheet-multicolored2 > table > thead > tr > th {
+  font-weight: normal !important;
+}
+
+div.sheet-multicolored2 > table > thead > tr {
+  background-color: #87cefa !important;
+
+  --bs-table-bg: #87cefa !important;
+}
+
+div.sheet-multicolored2 > table > tbody > tr.block-row-1 {
+  background-color: #87cefa !important;
+
+  --bs-table-bg: #87cefa !important;
+}
+
+div.sheet-multicolored2 > table > tbody > tr.block-row-2 {
+  background-color: #f5c242 !important;
+
+  --bs-table-bg: #f5c242 !important;
+}
+
 div.sheet-colored > table {
   @extend .table;
   @extend .table-sm;
@@ -63,4 +92,35 @@ div.sheet-colored > table > tbody > tr:nth-child(2) {
   background-color: #b1cf95 !important;
 
   --bs-table-bg: #b1cf95 !important;
+}
+
+// Dark mode overrides
+[data-bs-theme="dark"] {
+  div.sheet-multicolored2 > table > thead > tr,
+  div.sheet-multicolored2 > table > tbody > tr.block-row-1 {
+    background-color: #04111e !important;
+    color: #1a3a52 !important;
+
+    --bs-table-bg: #04111e !important;
+    --bs-table-color: #1a3a52 !important;
+  }
+
+  div.sheet-colored1 > table > thead > tr,
+  div.sheet-colored > table > thead > tr,
+  div.sheet-colored > table > tbody > tr:first-child,
+  div.sheet-multicolored2 > table > tbody > tr.block-row-2 {
+    background-color: #1a1200 !important;
+    color: #4a3510 !important;
+
+    --bs-table-bg: #1a1200 !important;
+    --bs-table-color: #4a3510 !important;
+  }
+
+  div.sheet-colored > table > tbody > tr:nth-child(2) {
+    background-color: #0a1a05 !important;
+    color: #2e4a18 !important;
+
+    --bs-table-bg: #0a1a05 !important;
+    --bs-table-color: #2e4a18 !important;
+  }
 }

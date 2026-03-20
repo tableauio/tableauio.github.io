@@ -658,11 +658,11 @@ message Item {
 
 需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_STRUCT_TYPE_MULTI`。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `Item`：
+例如，*HelloWorld.xlsx* 中的 worksheet `Struct`：
 
-{{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
+{{< spreadsheet "HelloWorld.xlsx" Struct "@TABLEAU" >}}
 
-{{< sheet colored1 >}}
+{{< sheet multicolored2 >}}
 
 | Tree      | Tree note          |
 | --------- | ------------------ |
@@ -684,9 +684,9 @@ message Item {
 
 {{< sheet colored1 >}}
 
-| Sheet | Mode                   |
-| ----- | ---------------------- |
-| Item  | MODE_STRUCT_TYPE_MULTI |
+| Sheet  | Mode                   |
+| ------ | ---------------------- |
+| Struct | MODE_STRUCT_TYPE_MULTI |
 
 {{< /sheet >}}
 

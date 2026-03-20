@@ -862,11 +862,11 @@ message Target {
 
 You should specify `Mode` option to `MODE_UNION_TYPE_MULTI` in metasheet `@TABLEAU`.
 
-For example, a worksheet `Target` in *HelloWorld.xlsx*:
+For example, a worksheet `Union` in *HelloWorld.xlsx*:
 
-{{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
+{{< spreadsheet "HelloWorld.xlsx" Union "@TABLEAU" >}}
 
-{{< sheet colored1 >}}
+{{< sheet multicolored2 >}}
 
 | WishTarget   | WishTarget note   |                   |                              |
 | ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
@@ -888,9 +888,9 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< sheet colored1 >}}
 
-| Sheet  | Mode                  |
-| ------ | --------------------- |
-| Target | MODE_UNION_TYPE_MULTI |
+| Sheet | Mode                  |
+| ----- | --------------------- |
+| Union | MODE_UNION_TYPE_MULTI |
 
 {{< /sheet >}}
 

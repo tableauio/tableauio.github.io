@@ -159,11 +159,11 @@ enum ItemType {
 
 You should specify `Mode` option to `MODE_ENUM_TYPE_MULTI` in metasheet `@TABLEAU`.
 
-For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
+For example, a worksheet `Enum` in *HelloWorld.xlsx*:
 
-{{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
+{{< spreadsheet "HelloWorld.xlsx" Enum "@TABLEAU" >}}
 
-{{< sheet colored1 >}}
+{{< sheet multicolored2 >}}
 
 | CatType  | CatType note       |            |
 | -------- | ------------------ | ---------- |
@@ -188,9 +188,9 @@ For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< sheet colored1 >}}
 
-| Sheet    | Mode                 |
-| -------- | -------------------- |
-| ItemType | MODE_ENUM_TYPE_MULTI |
+| Sheet | Mode                 |
+| ----- | -------------------- |
+| Enum  | MODE_ENUM_TYPE_MULTI |
 
 {{< /sheet >}}
 

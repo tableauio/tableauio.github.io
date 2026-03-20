@@ -51,6 +51,43 @@
   });
 })();
 
+// Apply block-row coloring for sheet-multicolored2 tables.
+// A block is a series of contiguous non-empty rows; blocks are separated by empty rows.
+// The top 2 rows of each block get class "block-row-1" and "block-row-2" respectively.
+// Note: Markdown renders the first row as <thead>, which is already styled as block-row-1
+// via CSS. So for the first block, tbody rows start counting from 2.
+document.addEventListener('DOMContentLoaded', function () {
+  var containers = document.querySelectorAll('div.sheet-multicolored2');
+  containers.forEach(function (container) {
+    var table = container.querySelector('table');
+    if (!table) return;
+    var tbody = table.querySelector('tbody');
+    if (!tbody) return;
+
+    // thead counts as the first row of the first block
+    var thead = table.querySelector('thead');
+    var blockRowIndex = thead ? 1 : 0;
+
+    var rows = tbody.querySelectorAll('tr');
+    rows.forEach(function (row) {
+      var cells = row.querySelectorAll('td');
+      var isEmpty = Array.from(cells).every(function (td) {
+        return td.textContent.trim() === '';
+      });
+      if (isEmpty) {
+        blockRowIndex = 0;
+      } else {
+        blockRowIndex++;
+        if (blockRowIndex === 1) {
+          row.classList.add('block-row-1');
+        } else if (blockRowIndex === 2) {
+          row.classList.add('block-row-2');
+        }
+      }
+    });
+  });
+});
+
 // Adds scroll position lock for default docs sidebar
 
 if (document.querySelector('#sidebar-default') !== null) {
