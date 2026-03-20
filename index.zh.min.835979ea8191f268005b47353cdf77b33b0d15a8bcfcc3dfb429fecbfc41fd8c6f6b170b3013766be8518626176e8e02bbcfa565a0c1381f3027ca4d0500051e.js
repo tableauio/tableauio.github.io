@@ -854,7 +854,7 @@ Excel/CSV list：Predefined union in list map：Predefined union in map XML unio
 `}).add({id:352,href:"/zh/docs/prologue/introduction/#protogen",title:"简介 / protogen ",description:"Tableau 简介。",content:` protogen 将 Excel/CSV/XML/YAML 文件转换为 Protoconf 文件。 Protoconf 是 Protocol Buffers (proto3) 的一种方言，通过 tableau options 进行扩展，用于描述 Excel/CSV/XML/YAML 的结构。
 `}).add({id:353,href:"/zh/docs/prologue/introduction/#confgen",title:"简介 / confgen ",description:"Tableau 简介。",content:` confgen 将 Excel/CSV/XML/YAML 与 Protoconf 文件一起转换为 JSON/Text/Bin 文件。
 `}).add({id:354,href:"/zh/docs/prologue/quick-start/#1-下载-tableauc",title:"快速开始 / 1. 下载 tableauc ",description:"快速开始",content:` 选择合适的 tableauc（即 Tableau Compiler）下载：
-Windows x64 Linux x64 macOS x64 macOS arm64 更多平台版本请访问 tableau releases 。
+Windows x64 Linux x64 macOS x64 arm64 更多平台版本请访问 tableau releases 。
 `}).add({id:355,href:"/zh/docs/prologue/quick-start/#2-添加工作簿",title:"快速开始 / 2. 添加工作簿 ",description:"快速开始",content:` 添加 HelloWorld.xlsx，包含两个 sheet：
 Item：将下方数据复制到此 worksheet。 @TABLEAU：暂时留空。这是 tableau 的 metasheet，用于指定解析器选项。 HelloWorld.xlsx&nbsp; Item @TABLEAU ID Name Desc map&lt;int32, Item&gt; string string Item&rsquo;s ID Item&rsquo;s name Item&rsquo;s description 1 Apple A kind of delicious fruit. 2 Orange A kind of sour fruit. 3 Banana A kind of calorie-rich fruit. `}).add({id:356,href:"/zh/docs/prologue/quick-start/#3-运行-tableauc",title:"快速开始 / 3. 运行 tableauc ",description:"快速开始",content:` 执行命令：./tableauc HelloWorld.xlsx
 随后会生成 hello_world.proto 和 Item.json：

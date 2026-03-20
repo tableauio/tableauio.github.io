@@ -18,63 +18,135 @@ classDef orangecalss fill:#f96;
 &lt;h3 id="confgen">confgen &lt;a href="#confgen" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>&lt;code>confgen&lt;/code> converts &lt;strong>Excel/CSV/XML/YAML&lt;/strong> with &lt;strong>Protoconf&lt;/strong> files to &lt;strong>JSON/Text/Bin&lt;/strong> files.&lt;/p></description></item><item><title>Quick Start</title><link>https://tableauio.github.io/en/docs/prologue/quick-start/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/prologue/quick-start/</guid><description>&lt;h2 id="1-download-tableauc">1. Download tableauc &lt;a href="#1-download-tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>Select the appropriate tableauc (aka Tableau Compiler) to download:&lt;/p>
-&lt;div class="row">
-&lt;div class="col-lg-5 col-xl-5 col-sm-6 text-center">
-&lt;p>
-&lt;img height="100px" src="https://tableauio.github.io/images/logo/windows-logo.png" alt="Windows" />
-&lt;/p>
-&lt;p>
-&lt;a class="btn btn-outline-info btn-lg" role="button"
+&lt;div class="download-section">
+&lt;div class="download-card">
+&lt;img class="download-card__logo" src="https://tableauio.github.io/images/logo/windows-logo.png" alt="Windows" />
+&lt;span class="download-card__title">Windows&lt;/span>
+&lt;div class="download-card__buttons">
+&lt;a class="btn-download" role="button"
 href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.windows.amd64.tar.gz">
-&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Windows x64
+&lt;img src="https://tableauio.github.io/images/download.svg" aria-hidden="true" />&lt;span>x64&lt;/span>
 &lt;/a>
-&lt;/p>
-&lt;!-- &lt;p>
-&lt;a class="btn btn-outline-info btn-lg" role="button"
-href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.windows.386.tar.gz">
-&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Windows x86
-&lt;/a>
-&lt;/p> -->
 &lt;/div>
-&lt;div class="col-lg-5 col-xl-5 col-sm-6 text-center">
-&lt;p>
-&lt;img height="100px" src="https://tableauio.github.io/images/logo/linux-logo.png" alt="Linux" />
-&lt;/p>
-&lt;p>
-&lt;a class="btn btn-outline-info btn-lg" role="button"
+&lt;/div>
+&lt;div class="download-card">
+&lt;img class="download-card__logo" src="https://tableauio.github.io/images/logo/linux-logo.png" alt="Linux" />
+&lt;span class="download-card__title">Linux&lt;/span>
+&lt;div class="download-card__buttons">
+&lt;a class="btn-download" role="button"
 href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.linux.amd64.tar.gz">
-&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Linux x64
+&lt;img src="https://tableauio.github.io/images/download.svg" aria-hidden="true" />&lt;span>x64&lt;/span>
 &lt;/a>
-&lt;/p>
-&lt;!-- &lt;p>
-&lt;a class="btn btn-outline-info btn-lg" role="button"
-href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.linux.386.tar.gz">
-&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> Linux x86
-&lt;/a>
-&lt;/p> -->
 &lt;/div>
-&lt;div class="col-lg-5 col-xl-5 col-sm-6 text-center">
-&lt;p>
-&lt;img height="100px" src="https://tableauio.github.io/images/logo/apple-logo.svg" alt="Apple" />
-&lt;/p>
-&lt;p>
-&lt;a class="btn btn-outline-info btn-lg" role="button"
+&lt;/div>
+&lt;div class="download-card">
+&lt;img class="download-card__logo" src="https://tableauio.github.io/images/logo/apple-logo.svg" alt="macOS" />
+&lt;span class="download-card__title">macOS&lt;/span>
+&lt;div class="download-card__buttons">
+&lt;a class="btn-download" role="button"
 href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.darwin.amd64.tar.gz">
-&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> macOS x64
+&lt;img src="https://tableauio.github.io/images/download.svg" aria-hidden="true" />&lt;span>x64&lt;/span>
 &lt;/a>
-&lt;/p>
-&lt;p>
-&lt;a class="btn btn-outline-info btn-lg" role="button"
+&lt;a class="btn-download" role="button"
 href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0.15.1/tableauc.v0.15.1.darwin.arm64.tar.gz">
-&lt;image height="25px" src="https://tableauio.github.io/images/download_blue.svg" alt="Download" /> macOS arm64
+&lt;img src="https://tableauio.github.io/images/download.svg" aria-hidden="true" />&lt;span>arm64&lt;/span>
 &lt;/a>
-&lt;/p>
+&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;blockquote>
-&lt;p>More platforms are available on &lt;a href="https://github.com/tableauio/tableau/releases">tableau releases&lt;/a>.&lt;/p>&lt;/blockquote>
+&lt;p>More platforms are available on &lt;a href="https://github.com/tableauio/tableau/releases">tableau releases&lt;/a> .&lt;/p>&lt;/blockquote>
 &lt;h2 id="2-add-a-workbook">2. Add a workbook &lt;a href="#2-add-a-workbook" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>Add &lt;strong>HelloWorld.xlsx&lt;/strong> with two sheets:&lt;/p></description></item><item><title>Tableauc config</title><link>https://tableauio.github.io/en/docs/prologue/config/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/prologue/config/</guid><description>&lt;h2 id="configyaml">config.yaml &lt;a href="#configyaml" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Add &lt;strong>HelloWorld.xlsx&lt;/strong> with two sheets:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Item&lt;/code>: Copy data below to this worksheet.&lt;/li>
+&lt;li>&lt;code>@TABLEAU&lt;/code>: Just leave it empty now. It is the tableau &lt;a href="https://tableauio.github.io/en/docs/excel/metasheet/">metasheet&lt;/a> for specifying parser options.&lt;/li>
+&lt;/ul>
+&lt;div class="table-responsive spreadsheet">
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;ul class="nav nav-tabs" role="tablist">
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link active " id="sheet-clhfigmbajdnek-29651-tab" data-bs-toggle="tab" data-bs-target="#sheet-clhfigmbajdnek-29651" type="button" role="tab" aria-controls="sheet-clhfigmbajdnek-29651" aria-selected=" active ">Item&lt;/button>
+&lt;/li>
+&lt;li class="nav-item" role="presentation">
+&lt;button class="nav-link " id="sheet-fegmdnjcibklha-30041-tab" data-bs-toggle="tab" data-bs-target="#sheet-fegmdnjcibklha-30041" type="button" role="tab" aria-controls="sheet-fegmdnjcibklha-30041" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;/li>
+&lt;/ul>
+&lt;div class="tab-content">
+&lt;div class="tab-pane fade active show " id="sheet-clhfigmbajdnek-29651" role="tabpanel" aria-labelledby="sheet-clhfigmbajdnek-29651-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ID&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Desc&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>map&amp;lt;int32, Item&amp;gt;&lt;/td>
+&lt;td>string&lt;/td>
+&lt;td>string&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Item’s ID&lt;/td>
+&lt;td>Item’s name&lt;/td>
+&lt;td>Item’s description&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Apple&lt;/td>
+&lt;td>A kind of delicious fruit.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Orange&lt;/td>
+&lt;td>A kind of sour fruit.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Banana&lt;/td>
+&lt;td>A kind of calorie-rich fruit.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade " id="sheet-fegmdnjcibklha-30041" role="tabpanel" aria-labelledby="sheet-fegmdnjcibklha-30041-tab">
+&lt;div class="table-responsive text-nowrap sheet sheet-colored1">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="3-run-tableauc">3. Run tableauc &lt;a href="#3-run-tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Run command: &lt;code>./tableauc HelloWorld.xlsx&lt;/code>&lt;/p></description></item><item><title>Tableauc config</title><link>https://tableauio.github.io/en/docs/prologue/config/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/prologue/config/</guid><description>&lt;h2 id="configyaml">config.yaml &lt;a href="#configyaml" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>Create a file named &lt;em>config.yaml&lt;/em>, and copy configurations below to it:&lt;/p>
 &lt;pre>&lt;code class="language-yaml"># locale BCP 47 language tags: en, zh.
 lang: en
