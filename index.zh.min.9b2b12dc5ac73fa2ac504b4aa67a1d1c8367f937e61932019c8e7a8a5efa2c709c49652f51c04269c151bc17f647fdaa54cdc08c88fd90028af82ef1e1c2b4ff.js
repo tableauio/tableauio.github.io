@@ -393,7 +393,8 @@ uint32
 Note Damage
 int64
 Note Empty AliasEmpty ID TargetType TargetField1 TargetField2 TargetField3 Progress map&lt;int32, Task&gt; {.Target}enum&lt;.Target.Type&gt; union union union int32 ID Target&rsquo;s type Target&rsquo;s field1 Target&rsquo;s field2 Target&rsquo;s field3 Progress 1 AliasPVP 1 10 Apple,Orange,Banana 3 2 AliasPVE 1,Equip 1,2,3 1:10,2:20,3:30 10 3 AliasStory 1001,10 1:Apple,2:Orange Fragrant:Apple,Sour:Orange 10 4 AliasHobby Fragrant:Apple,Sour:Orange 2023-06-01 10:00:00 22s 12 5 AliasSkill 1 200 8 6 AliasEmpty Sheet Mode Target MODE_UNION_TYPE Task 生成结果：
-hello_world.proto TaskConf.json `}).add({id:169,href:"/zh/docs/excel/list/#横向-listhorizontal-list",title:"List（列表） / 横向 list（Horizontal list） ",description:"Excel list 使用指南。",content:` 注意：横向 list 的列名必须带有从 1 开始的数字后缀。
+hello_world.proto TaskConf.json `}).add({id:169,href:"/zh/docs/excel/list/#横向-listhorizontal-list",title:"List（列表） / 横向 list（Horizontal list） ",description:"Excel list 使用指南。",content:` [!IMPORTANT] 横向 list 的列名中，列表元素名必须带有从 1 开始的数字后缀。
+例如：Item1ID、Item2ID、Item3ID（struct list，元素名：Item）；ID1、ID2、ID3（scalar list，元素名：ID）。
 横向 list 语法概览：
 List 元素类型 语法示例 scalar []uint32 enum []enum&lt;.FruitType&gt; struct [Item]uint32 predefined struct [.Item]uint32 incell struct []{uint32 ID, string Num}Item incell predefined struct []{.Item} `}).add({id:170,href:"/zh/docs/excel/list/#横向-scalar-list",title:"List（列表） / 横向 scalar list ",description:"Excel list 使用指南。",content:` HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID1 ID2 ID3 []uint32 uint32 uint32 ID1&rsquo;s value ID2&rsquo;s value ID3&rsquo;s value 1 2 3 生成结果：
@@ -456,7 +457,9 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item1ID Item1Name Item2ID Item2Name Item
 hello_world.proto ItemConf.json `}).add({id:192,href:"/zh/docs/excel/list/#高级特性",title:"List（列表） / 高级特性 ",description:"Excel list 使用指南。",content:`
 `}).add({id:193,href:"/zh/docs/excel/list/#横向跳列-listhorizontal-column-skipped-list",title:"List（列表） / 横向跳列 list（Horizontal column-skipped list） ",description:"Excel list 使用指南。",content:` HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU D Prop1ID Prop1Value Prop2ID Prop2Value map&lt;uint32, Item&gt; [Prop]int32 int32 int32 int32 Item&rsquo;s ID Prop1&rsquo;s ID Prop1&rsquo;s name Prop1&rsquo;s value Prop2&rsquo;s ID Prop2&rsquo;s name Prop2&rsquo;s value 1 1 Apple 100 2 Orange 200 2 3 Banana 300 4 Pomelo 400 3 5 Watermelon 500 生成结果：
-hello_world.proto ItemConf.json `}).add({id:194,href:"/zh/docs/excel/map/#横向-maphorizontal-map",title:"Map（映射） / 横向 map（Horizontal map） ",description:"Excel map 使用指南。",content:` 横向 map 有以下几种：
+hello_world.proto ItemConf.json `}).add({id:194,href:"/zh/docs/excel/map/#横向-maphorizontal-map",title:"Map（映射） / 横向 map（Horizontal map） ",description:"Excel map 使用指南。",content:` [!IMPORTANT] 横向 map 的列名中，map 元素名必须带有从 1 开始的数字后缀。
+例如：Item1ID、Item1Name、Item2ID、Item2Name（struct map，元素名：Item）。
+横向 map 有以下几种：
 横向 scalar map，map value 类型为 scalar。例如：map&lt;int32, int32&gt;。 横向 struct map，map value 类型为 struct。例如：map&lt;int32, Item&gt;。 横向 predefined-struct map，map value 类型为 predefined struct。例如：map&lt;int32, .Item&gt;。 `}).add({id:195,href:"/zh/docs/excel/map/#横向-scalar-map",title:"Map（映射） / 横向 scalar map ",description:"Excel map 使用指南。",content:` 无需单独支持，请使用 map&lt;int32, Item&gt; 代替。
 `}).add({id:196,href:"/zh/docs/excel/map/#横向-struct-map",title:"Map（映射） / 横向 struct map ",description:"Excel map 使用指南。",content:` HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item1ID Item1Name Item2ID Item2Name Item3ID Item3Name map&lt;uint32, Item&gt; string uint32 string uint32 string Item1&rsquo;s ID Item1&rsquo;s name Item2&rsquo;s ID Item2&rsquo;s name Item3&rsquo;s ID Item3&rsquo;s name 1 Apple 2 Orange 3 Banana 生成结果：

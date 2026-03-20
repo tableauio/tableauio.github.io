@@ -396,7 +396,8 @@ uint32
 Note Damage
 int64
 Note Empty AliasEmpty ID TargetType TargetField1 TargetField2 TargetField3 Progress map&lt;int32, Task&gt; {.Target}enum&lt;.Target.Type&gt; union union union int32 ID Target&rsquo;s type Target&rsquo;s field1 Target&rsquo;s field2 Target&rsquo;s field3 Progress 1 AliasPVP 1 10 Apple,Orange,Banana 3 2 AliasPVE 1,Equip 1,2,3 1:10,2:20,3:30 10 3 AliasStory 1001,10 1:Apple,2:Orange Fragrant:Apple,Sour:Orange 10 4 AliasHobby Fragrant:Apple,Sour:Orange 2023-06-01 10:00:00 22s 12 5 AliasSkill 1 200 8 6 AliasEmpty Sheet Mode Target MODE_UNION_TYPE Task Generated:
-hello_world.proto TaskConf.json `}).add({id:169,href:"/docs/excel/list/#horizontal-list",title:"List / Horizontal list ",description:"Excel list guide.",content:` NOTE: Each column name of horizontal list MUST have a digit suffix which started at 1.
+hello_world.proto TaskConf.json `}).add({id:169,href:"/docs/excel/list/#horizontal-list",title:"List / Horizontal list ",description:"Excel list guide.",content:` [!IMPORTANT] In a horizontal list, the list element name in each column name MUST carry a digit suffix starting at 1.
+For example: Item1ID, Item2ID, Item3ID (struct list, element name: Item), or ID1, ID2, ID3 (scalar list, element name: ID).
 Overview of horizontal list syntax:
 List element type Syntax example scalar []uint32 enum []enum&lt;.FruitType&gt; struct [Item]uint32 predefined struct [.Item]uint32 incell struct []{uint32 ID, string Num}Item incell predefined struct []{.Item} `}).add({id:170,href:"/docs/excel/list/#horizontal-scalar-list",title:"List / Horizontal scalar list ",description:"Excel list guide.",content:` A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID1 ID2 ID3 []uint32 uint32 uint32 ID1&rsquo;s value ID2&rsquo;s value ID3&rsquo;s value 1 2 3 Generated:
@@ -458,7 +459,9 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item1ID Item1Name Item2ID Item2Name Item
 hello_world.proto ItemConf.json `}).add({id:191,href:"/docs/excel/list/#advanced-features",title:"List / Advanced features ",description:"Excel list guide.",content:`
 `}).add({id:192,href:"/docs/excel/list/#horizontal-column-skipped-list",title:"List / Horizontal column-skipped list ",description:"Excel list guide.",content:` A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU D Prop1ID Prop1Value Prop2ID Prop2Value map&lt;uint32, Item&gt; [Prop]int32 int32 int32 int32 Item&rsquo;s ID Prop1’s ID Prop1’s name Prop1’s value Prop2’s ID Prop2’s name Prop2’s value 1 1 Apple 100 2 Orange 200 2 3 Banana 300 4 Pomelo 400 3 5 Watermelon 500 Generated:
-hello_world.proto HeroConf.json `}).add({id:193,href:"/docs/excel/map/#horizontal-map",title:"Map / Horizontal map ",description:"Excel map guide.",content:` There are some kinds of horizontal map:
+hello_world.proto HeroConf.json `}).add({id:193,href:"/docs/excel/map/#horizontal-map",title:"Map / Horizontal map ",description:"Excel map guide.",content:` [!IMPORTANT] In a horizontal map, the map element name in each column name MUST carry a digit suffix starting at 1.
+For example: Item1ID, Item1Name, Item2ID, Item2Name (struct map, element name: Item).
+There are some kinds of horizontal map:
 Horizontal scalar map, as map value type is scalar. E.g: map&lt;int32, int32&gt;. Horizontal struct map, as map value type is struct. E.g: map&lt;int32, Item&gt;. Horizontal predefined-struct map, as map value type is predefined struct. E.g: map&lt;int32, .Item&gt;. `}).add({id:194,href:"/docs/excel/map/#horizontal-scalar-map",title:"Map / Horizontal scalar map ",description:"Excel map guide.",content:` No need to support, use this instead: map&lt;int32, Item&gt;.
 `}).add({id:195,href:"/docs/excel/map/#horizontal-struct-map",title:"Map / Horizontal struct map ",description:"Excel map guide.",content:` A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item1ID Item1Name Item2ID Item2Name Item3ID Item3Name map&lt;uint32, Item&gt; string uint32 string uint32 string Item1&rsquo;s ID Item1&rsquo;s name Item2&rsquo;s ID Item2&rsquo;s name Item3&rsquo;s ID Item3&rsquo;s name 1 Apple 2 Orange 3 Banana Generated:
