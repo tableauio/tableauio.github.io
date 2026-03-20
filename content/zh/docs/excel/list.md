@@ -12,7 +12,10 @@ toc: true
 
 ## 横向 list（Horizontal list）
 
-注意：横向 list 的列名**必须**带有从 `1` 开始的数字后缀。
+> [!IMPORTANT]
+> 横向 list 的列名中，列表元素名**必须**带有从 `1` 开始的数字后缀。
+>
+> 例如：`Item1ID`、`Item2ID`、`Item3ID`（struct list，元素名：`Item`）；`ID1`、`ID2`、`ID3`（scalar list，元素名：`ID`）。
 
 横向 list 语法概览：
 

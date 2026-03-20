@@ -6,10 +6,11 @@ $spreadsheet | js.Build -}} {{ $highlight := resources.Get "js/highlight.js" -}}
 {{ $highlight := $highlight | js.Build -}} {{ $katex := resources.Get
 "js/vendor/katex/dist/katex.js" -}} {{ $katexAutoRender := resources.Get
 "js/vendor/katex/dist/contrib/auto-render.js" -}} {{ $mermaid := resources.Get
-"js/mermaid.js" | js.Build -}} {{ $app := resources.Get "js/app.js" -}} {{
-$slice := slice $app -}} {{ if .Site.Params.options.lazySizes -}} {{ $lazySizes
-:= resources.Get "js/lazysizes.js" -}} {{ $lazySizes := $lazySizes | js.Build
--}} {{ $slice = $slice | append $lazySizes -}} {{ end -}} {{ if
+"js/mermaid.js" | js.Build -}} {{ $githubRelease := resources.Get
+"js/github-release.js" | js.Build -}} {{ $app := resources.Get "js/app.js" -}}
+{{ $slice := slice $app -}} {{ if .Site.Params.options.lazySizes -}} {{
+$lazySizes := resources.Get "js/lazysizes.js" -}} {{ $lazySizes := $lazySizes |
+js.Build -}} {{ $slice = $slice | append $lazySizes -}} {{ end -}} {{ if
 .Site.Params.options.clipBoard -}} {{ $clipBoard := resources.Get
 "js/clipboard.js" -}} {{ $clipBoard := $clipBoard | js.Build -}} {{ $slice =
 $slice | append $clipBoard -}} {{ end -}} {{ if .Site.Params.options.instantPage
@@ -45,12 +46,15 @@ $slice | resources.Concat "main.js" -}} {{ if eq (hugo.Environment)
 <script src="{{ $mermaid.RelPermalink }}" defer></script>
 {{ end -}} {{ if and (.Site.Params.options.flexSearch) (eq .Section "docs") -}}
 <script src="{{ $index.RelPermalink }}" defer></script>
+{{ end -}} {{ if .Params.githubRelease -}}
+<script src="{{ $githubRelease.RelPermalink }}" defer></script>
 {{ end -}} {{ else -}} {{ $js := $js | minify | fingerprint "sha512" -}} {{
 $index := $index | minify | fingerprint "sha512" -}} {{ $bs := $bs | minify |
 fingerprint "sha512" -}} {{ $highlight := $highlight | minify | fingerprint
 "sha512" -}} {{ $katex := $katex | minify | fingerprint "sha512" -}} {{
 $katexAutoRender := $katexAutoRender | minify | fingerprint "sha512" -}} {{
-$mermaid := $mermaid | minify | fingerprint "sha512" -}} {{ if
+$mermaid := $mermaid | minify | fingerprint "sha512" -}} {{ $githubRelease :=
+$githubRelease | minify | fingerprint "sha512" -}} {{ if
 .Site.Params.options.spreadsheetJS -}}
 <script src="{{ $spreadsheet.RelPermalink }}" defer></script>
 {{ end -}} {{ if .Site.Params.options.bootStrapJs -}}
@@ -98,6 +102,13 @@ $mermaid := $mermaid | minify | fingerprint "sha512" -}} {{ if
 <script
   src="{{ $index.Permalink }}"
   integrity="{{ $index.Data.Integrity }}"
+  crossorigin="anonymous"
+  defer
+></script>
+{{ end -}} {{ if .Params.githubRelease -}}
+<script
+  src="{{ $githubRelease.RelPermalink }}"
+  integrity="{{ $githubRelease.Data.Integrity }}"
   crossorigin="anonymous"
   defer
 ></script>

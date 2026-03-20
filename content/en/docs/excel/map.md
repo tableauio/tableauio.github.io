@@ -12,6 +12,11 @@ toc: true
 
 ## Horizontal map
 
+> [!IMPORTANT]
+> In a horizontal map, the map element name in each column name **MUST** carry a digit suffix starting at `1`.
+>
+> For example: `Item1ID`, `Item1Name`, `Item2ID`, `Item2Name` (struct map, element name: `Item`).
+
 There are some kinds of horizontal map:
 
 1. Horizontal **scalar** map, as map value type is scalar. E.g: `map<int32, int32>`.

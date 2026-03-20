@@ -13,7 +13,10 @@ toc: true
 
 ## Horizontal list
 
-NOTE: Each column name of horizontal list **MUST** have a digit suffix which started at `1`.
+> [!IMPORTANT]
+> In a horizontal list, the list element name in each column name **MUST** carry a digit suffix starting at `1`.
+>
+> For example: `Item1ID`, `Item2ID`, `Item3ID` (struct list, element name: `Item`), or `ID1`, `ID2`, `ID3` (scalar list, element name: `ID`).
 
 Overview of horizontal list syntax:
 

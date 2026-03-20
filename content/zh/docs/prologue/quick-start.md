@@ -8,19 +8,24 @@ draft: false
 images: []
 weight: 9902
 toc: true
+githubRelease: true
 ---
 
 ## 1. 下载 tableauc
 
 选择合适的 tableauc（即 Tableau Compiler）下载：
 
-<div class="download-section">
+<div class="download-section"
+    data-github-release
+    data-repo="tableauio/tableau"
+    data-tag-prefix="cmd/tableauc/"
+    data-url-template="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{ver}/tableauc.{ver}.{platform}.tar.gz"
+    data-default-ver="{{< tableauc-version >}}">
     <div class="download-card">
         <img class="download-card__logo" src="/images/logo/windows-logo.png" alt="Windows" />
         <span class="download-card__title">Windows</span>
         <div class="download-card__buttons">
-            <a class="btn-download" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{{< tableauc-version >}}/tableauc.{{< tableauc-version >}}.windows.amd64.tar.gz">
+            <a class="btn-download" role="button" data-platform="windows.amd64">
                 <img src="/images/download.svg" aria-hidden="true" /><span>x64</span>
             </a>
         </div>
@@ -29,8 +34,7 @@ toc: true
         <img class="download-card__logo" src="/images/logo/linux-logo.png" alt="Linux" />
         <span class="download-card__title">Linux</span>
         <div class="download-card__buttons">
-            <a class="btn-download" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{{< tableauc-version >}}/tableauc.{{< tableauc-version >}}.linux.amd64.tar.gz">
+            <a class="btn-download" role="button" data-platform="linux.amd64">
                 <img src="/images/download.svg" aria-hidden="true" /><span>x64</span>
             </a>
         </div>
@@ -39,12 +43,10 @@ toc: true
         <img class="download-card__logo" src="/images/logo/apple-logo.svg" alt="macOS" />
         <span class="download-card__title">macOS</span>
         <div class="download-card__buttons">
-            <a class="btn-download" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{{< tableauc-version >}}/tableauc.{{< tableauc-version >}}.darwin.amd64.tar.gz">
+            <a class="btn-download" role="button" data-platform="darwin.amd64">
                 <img src="/images/download.svg" aria-hidden="true" /><span>x64</span>
             </a>
-            <a class="btn-download" role="button"
-                href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{{< tableauc-version >}}/tableauc.{{< tableauc-version >}}.darwin.arm64.tar.gz">
+            <a class="btn-download" role="button" data-platform="darwin.arm64">
                 <img src="/images/download.svg" aria-hidden="true" /><span>arm64</span>
             </a>
         </div>

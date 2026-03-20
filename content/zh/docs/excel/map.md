@@ -12,6 +12,11 @@ toc: true
 
 ## 横向 map（Horizontal map）
 
+> [!IMPORTANT]
+> 横向 map 的列名中，map 元素名**必须**带有从 `1` 开始的数字后缀。
+>
+> 例如：`Item1ID`、`Item1Name`、`Item2ID`、`Item2Name`（struct map，元素名：`Item`）。
+
 横向 map 有以下几种：
 
 1. 横向 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
