@@ -237,7 +237,7 @@ Worksheet Item：HelloWorld#Item.csv Worksheet Activity：HelloWorld#Activity.cs
 HelloWorld.xlsx&nbsp; Apple @TABLEAU ID Name Desc uint32 string string Item&rsquo;s ID Item&rsquo;s Name Item&rsquo;s Description 1 Apple A kind of delicious fruit. 该 worksheet 中定义了三个 scalar 字段：
 ID：uint32 Name：string Desc：string 生成结果：
 hello_world.proto Apple.json `}).add({id:140,href:"/zh/docs/excel/scalar/#说明",title:"Scalar（标量） / 说明 ",description:"Excel scalar 使用指南。",content:` Scalar 类型通常用于定义 struct 类型的字段。Struct
-`}).add({id:141,href:"/zh/docs/excel/enum/#使用预定义枚举类型",title:"Enum（枚举） / 使用预定义枚举类型 ",description:"Excel enum 使用指南。",content:` 枚举基础知识请参考 Enum（枚举）
+`}).add({id:141,href:"/zh/docs/excel/enum/#使用预定义枚举类型",title:"Enum（枚举） / 使用预定义枚举类型 ",description:"Excel enum 使用指南。",content:` [!NOTE] 枚举基础知识请参考 Enum（枚举） 。
 例如，common.proto 中定义的枚举类型 FruitType：
 HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Type map&lt;uint32, Item&gt; enum&lt;.FruitType&gt; Item&rsquo;s ID Fruit&rsquo;s type 1 1 2 Orange 3 FRUIT_TYPE_BANANA 生成结果：
@@ -287,7 +287,7 @@ hello_world.proto ItemConf.json `}).add({id:154,href:"/zh/docs/excel/struct/#在
 MODE_STRUCT_TYPE：在一个 sheet 中定义单个 struct 类型。 MODE_STRUCT_TYPE_MULTI：在一个 sheet 中定义多个 struct 类型。 `}).add({id:155,href:"/zh/docs/excel/struct/#单个-struct-类型",title:"Struct（结构体） / 单个 struct 类型 ",description:"Excel struct 使用指南。",content:` 需要在 metasheet @TABLEAU 中将 Mode 选项设置为 MODE_STRUCT_TYPE。
 例如，HelloWorld.xlsx 中的 worksheet Item：
 HelloWorld.xlsx&nbsp; Item @TABLEAU Name Type ID uint32 Num int32 FruitType enum&lt;.FruitType&gt; Feature []int32 Prop map&lt;int32, string&gt; Detail {enum&lt;.ItemType&gt; Type, string Name, string Desc}Detail Sheet Mode Item MODE_STRUCT_TYPE 生成结果：
-hello_world.proto `}).add({id:156,href:"/zh/docs/excel/struct/#多个-struct-类型",title:"Struct（结构体） / 多个 struct 类型 ",description:"Excel struct 使用指南。",content:` [!IMPORTANT] 一个 block 定义一个 struct 类型，由一系列连续的非空行组成。 不同的 block 之间由一行或多行空行分隔。
+hello_world.proto `}).add({id:156,href:"/zh/docs/excel/struct/#多个-struct-类型",title:"Struct（结构体） / 多个 struct 类型 ",description:"Excel struct 使用指南。",content:` [!IMPORTANT] 一个 block 定义一个 struct 类型，由一系列连续的非空行组成，不同的 block 之间由一行或多行空行分隔。
 需要在 metasheet @TABLEAU 中将 Mode 选项设置为 MODE_STRUCT_TYPE_MULTI。
 例如，HelloWorld.xlsx 中的 worksheet Struct：
 HelloWorld.xlsx&nbsp; Struct @TABLEAU Tree Tree note Name Type ID uint32 Num int32 Pet Pet note Name Type Kind int32 Tip []string FruitShop FruitShop note Name Type FruitType enum&lt;.FruitType&gt; Prop map&lt;int32, string&gt; Sheet Mode Struct MODE_STRUCT_TYPE_MULTI 生成结果：
@@ -326,7 +326,7 @@ datetime
 Note Duration
 duration
 Note Sheet Mode Target MODE_UNION_TYPE 生成结果：
-hello_world.proto `}).add({id:165,href:"/zh/docs/excel/union/#多个-union-类型",title:"Union（联合体） / 多个 union 类型 ",description:"Excel union 使用指南。",content:` [!IMPORTANT] 一个 block 定义一个 union 类型，由一系列连续的非空行组成。 不同的 block 之间由一行或多行空行分隔。
+hello_world.proto `}).add({id:165,href:"/zh/docs/excel/union/#多个-union-类型",title:"Union（联合体） / 多个 union 类型 ",description:"Excel union 使用指南。",content:` [!IMPORTANT] 一个 block 定义一个 union 类型，由一系列连续的非空行组成，不同的 block 之间由一行或多行空行分隔。
 需要在 metasheet @TABLEAU 中将 Mode 选项设置为 MODE_UNION_TYPE_MULTI。
 例如，HelloWorld.xlsx 中的 worksheet Union：
 HelloWorld.xlsx&nbsp; Union @TABLEAU WishTarget WishTarget note Name Alias Field1 Field2 Field3 Higher WishHigher Height
@@ -733,17 +733,20 @@ HelloWorld.xlsx 中的 worksheet HeroConf：
 HelloWorld.xlsx&nbsp; HeroConf @TABLEAU ID int32 Hero&rsquo;s ID 123 Name string Hero&rsquo;s name Robin Desc string Hero&rsquo;s description A big hero! Skill []int32 Hero&rsquo;s skills 100,101,102 Sheet Transpose HeroConf true 生成结果：
 hello_world.proto HeroConf.json `}).add({id:305,href:"/zh/docs/excel/metasheet/#选项-merger",title:"Metasheet（元表） / 选项 Merger ",description:"Excel metasheet @TABLEAU 使用指南。",content:` Merger 选项用于将多个具有相同 schema 的 sheet（逗号分隔）合并为一个。
 每个元素可以是：
-仅 workbook 文件路径或 Glob 路径（相对于当前 workbook）：&lt;Workbook&gt;，此时 sheet 名称与当前 sheet 相同。 workbook 文件路径（相对于当前 workbook）加 worksheet 名称：&lt;Workbook&gt;#&lt;Worksheet&gt;。 ⓘ Glob 模式通常不应匹配主 workbook。如果匹配，tableauc 会自动排除它。 `}).add({id:306,href:"/zh/docs/excel/metasheet/#合并多个-workbook",title:"Metasheet（元表） / 合并多个 workbook ",description:"Excel metasheet @TABLEAU 使用指南。",content:` 例如，有三个 workbook，每个都包含一个具有相同 schema 的 worksheet ZoneConf：
+仅 workbook 文件路径或 Glob 路径（相对于当前 workbook）：&lt;Workbook&gt;，此时 sheet 名称与当前 sheet 相同。 workbook 文件路径（相对于当前 workbook）加 worksheet 名称：&lt;Workbook&gt;#&lt;Worksheet&gt;。 [!NOTE] Glob 模式通常不应匹配主 workbook。如果匹配，tableauc 会自动排除它。
+`}).add({id:306,href:"/zh/docs/excel/metasheet/#合并多个-workbook",title:"Metasheet（元表） / 合并多个 workbook ",description:"Excel metasheet @TABLEAU 使用指南。",content:` 例如，有三个 workbook，每个都包含一个具有相同 schema 的 worksheet ZoneConf：
 MergerMain.xlsx（主）：包含 @TABLEAU metasheet，在 Merger 列中使用 Glob 模式 Merger*.xlsx 匹配所有子 workbook。 Merger2.xlsx（子）：仅包含数据 worksheet，无需 @TABLEAU metasheet。 Merger3.xlsx（子）：仅包含数据 worksheet，无需 @TABLEAU metasheet。 第一个（主）workbook：MergerMain.xlsx 中的 worksheet ZoneConf（含 @TABLEAU）：
 MergerMain.xlsx&nbsp; ZoneConf @TABLEAU ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 1 Infinity 100 Sheet Merger ZoneConf Merger*.xlsx 第二个（子）workbook：Merger2.xlsx 中的 worksheet ZoneConf（不含 @TABLEAU）：
 Merger2.xlsx&nbsp; ZoneConf ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 2 Desert 200 第三个（子）workbook：Merger3.xlsx 中的 worksheet ZoneConf（不含 @TABLEAU）：
 Merger3.xlsx&nbsp; ZoneConf ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 3 Snowfield 300 生成结果：
 merger_main.proto ZoneConf.json `}).add({id:307,href:"/zh/docs/excel/metasheet/#合并同一-workbook-中的多个-sheet",title:"Metasheet（元表） / 合并同一 workbook 中的多个 sheet ",description:"Excel metasheet @TABLEAU 使用指南。",content:` 例如，同一 workbook Merger.xlsx 中有三个具有相同 schema 的 worksheet：
 ZoneConf（主 sheet，含 @TABLEAU） ZoneConf2（子 sheet） ZoneConf3（子 sheet） 主（也是唯一的）workbook：Merger.xlsx 中的 worksheet ZoneConf、ZoneConf2、ZoneConf3 和 @TABLEAU：
-Merger.xlsx&nbsp; ZoneConf ZoneConf2 ZoneConf3 @TABLEAU ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 1 Infinity 100 ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 2 Desert 200 ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 3 Snowfield 300 Sheet Merger ZoneConf Merger.xlsx#ZoneConf2,Merger.xlsx#ZoneConf3 ⓘ 使用 &lt;Workbook&gt;#&lt;Worksheet&gt; 引用 workbook 中的特定 sheet。 生成结果：
+Merger.xlsx&nbsp; ZoneConf ZoneConf2 ZoneConf3 @TABLEAU ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 1 Infinity 100 ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 2 Desert 200 ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 3 Snowfield 300 Sheet Merger ZoneConf Merger.xlsx#ZoneConf2,Merger.xlsx#ZoneConf3 [!NOTE] 使用 &lt;Workbook&gt;#&lt;Worksheet&gt; 引用 workbook 中的特定 sheet。
+生成结果：
 merger_same.proto ZoneConf.json `}).add({id:308,href:"/zh/docs/excel/metasheet/#选项-scatter",title:"Metasheet（元表） / 选项 Scatter ",description:"Excel metasheet @TABLEAU 使用指南。",content:` Scatter 选项用于将多个具有相同 schema 的 sheet（逗号分隔）分别转换为不同的配置文件。
 每个元素可以是：
-仅 workbook 文件路径或 Glob 路径（相对于当前 workbook）：&lt;Workbook&gt;，此时 sheet 名称与当前 sheet 相同。 workbook 文件路径（相对于当前 workbook）加 worksheet 名称：&lt;Workbook&gt;#&lt;Worksheet&gt;。 ⓘ Glob 模式通常不应匹配主 workbook。如果匹配，tableauc 会自动排除它。 例如，有三个 workbook（每个具有相同的 sheet schema，Scatter1.xlsx 为主 workbook）：
+仅 workbook 文件路径或 Glob 路径（相对于当前 workbook）：&lt;Workbook&gt;，此时 sheet 名称与当前 sheet 相同。 workbook 文件路径（相对于当前 workbook）加 worksheet 名称：&lt;Workbook&gt;#&lt;Worksheet&gt;。 [!NOTE] Glob 模式通常不应匹配主 workbook。如果匹配，tableauc 会自动排除它。
+例如，有三个 workbook（每个具有相同的 sheet schema，Scatter1.xlsx 为主 workbook）：
 Scatter1.xlsx Scatter2.xlsx Scatter3.xlsx 第一个（主）workbook：Scatter1.xlsx 中的 worksheet ZoneConf（含 @TABLEAU）：
 Scatter1.xlsx&nbsp; ZoneConf @TABLEAU ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 1 Infinity 100 Sheet Scatter ZoneConf Scatter*.xlsx 第二个（子）workbook：Scatter2.xlsx 中的 worksheet ZoneConf（不含 @TABLEAU）：
 Scatter2.xlsx&nbsp; ZoneConf ID Name Difficulty map&lt;uint32, Zone&gt; string int32 Zone&rsquo;s ID Zone&rsquo;s name Zone&rsquo;s difficulty 2 Desert 200 第三个（子）workbook：Scatter3.xlsx 中的 worksheet ZoneConf（不含 @TABLEAU）：
