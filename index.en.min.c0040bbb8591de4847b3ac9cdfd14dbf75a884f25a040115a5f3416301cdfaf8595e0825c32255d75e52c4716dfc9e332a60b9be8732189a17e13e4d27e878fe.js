@@ -27,7 +27,7 @@ IncellMap # Syntax: map&lt;Type,Type&gt; Type: any scalar type Value: comma sepe
 IncellMessageList # TODO&hellip;
 IncellMessageMap # TODO&hellip;
 Output # Incell message: comma seperated sequence: {TYPE [NAME],TYPE [NAME]}, NAME is optional, and will be auto generated as field + &lt;tagid&gt; if not specified. Incell list: []TYPE, TYPE must be scalar type. Incell map: map[KEY]VALUE, KEY and VALUE must be scalar types. Incell message list: []TYPE, TYPE must be message type. Incell message map: map[KEY]VALUE, KEY is scalar, and VALUE must be message type. `}).add({id:37,href:"/docs/design/metadata/#protoconf---workbook",title:"Metadata / Protoconf -&gt; Workbook ",description:"An IDL called Protoconf to describe config's structure (metadata), based on Protobuf.",content:` TODO&hellip;
-`}).add({id:38,href:"/docs/api/tableau/",title:"Tableau",description:"Tableau guide.",content:""}).add({id:39,href:"/docs/api/loader/",title:"Loader",description:"Loader guide.",content:""}).add({id:40,href:"/docs/api/loader/overview/#supported-apis",title:"Overview / Supported APIs ",description:"Overview of tableau loader API.",content:" Lang Map OrderedMap Index OrderedIndex C++ ✔️ ✔️ ✔️ ✔️ Go ✔️ ✔️ ✔️ ✔️ C# TypeScript Lua "}).add({id:41,href:"/docs/api/loader/cpp/#api",title:"C++ / API ",description:"C++ loader guide.",content:`
+`}).add({id:38,href:"/docs/api/tableau/",title:"Tableau",description:"Tableau guide.",content:""}).add({id:39,href:"/docs/api/loader/",title:"Loader",description:"Loader guide.",content:""}).add({id:40,href:"/docs/api/loader/overview/#supported-apis",title:"Overview / Supported APIs ",description:"Overview of tableau loader API.",content:" Lang Map OrderedMap Index OrderedIndex C++ ✔️ ✔️ ✔️ ✔️ Go ✔️ ✔️ ✔️ ✔️ C# ✔️ ✔️ ✔️ ✔️ TypeScript Lua "}).add({id:41,href:"/docs/api/loader/cpp/#api",title:"C++ / API ",description:"C++ loader guide.",content:`
 `}).add({id:42,href:"/docs/api/loader/cpp/#data",title:"C++ / Data ",description:"C++ loader guide.",content:` const ProtobufMessage&amp; Data() const
 Get the internal protobuf message data.
 `}).add({id:43,href:"/docs/api/loader/cpp/#map",title:"C++ / Map ",description:"C++ loader guide.",content:` const MapValueType* Get(KEY1 k1, KEY2 k2...) const
@@ -331,7 +331,20 @@ duration
 Note Sheet Mode Target MODE_UNION_TYPE Generated:
 hello_world.proto `}).add({id:165,href:"/docs/excel/union/#multiple-union-types-in-sheet",title:"Union / Multiple union types in sheet ",description:"Excel union guide.",content:` You should specify Mode option to MODE_UNION_TYPE_MULTI in metasheet @TABLEAU.
 For example, a worksheet Target in HelloWorld.xlsx:
-HelloWorld.xlsx&nbsp; Target @TABLEAU Sheet Mode Target MODE_UNION_TYPE_MULTI Generated:
+HelloWorld.xlsx&nbsp; Target @TABLEAU WishTarget WishTarget note Name Alias Field1 Field2 Field3 Higher WishHigher Height
+int32 Richer WishRicher ID
+uint32 Bank
+map&lt;int32, string&gt; HeroTarget HeroTarget note Name Alias Field1 Field2 Field3 StarUp HeroStarUp ID
+uint32 Star
+int32 LevelUp HeroLevelUp ID
+[]uint32 Level
+int32 Super
+bool BattleTarget BattleTarget note Name Alias Field1 Field2 Field3 PVP BattlePVP BattleID
+int32 Damage
+int64 PVE BattlePVE HeroID
+[]int32 Dungeon
+map&lt;int32, int64&gt; Boss
+{uint32 ID, int64 Damage}Boss Sheet Mode Target MODE_UNION_TYPE_MULTI Generated:
 hello_world.proto `}).add({id:166,href:"/docs/excel/union/#specify-number-column",title:"Union / Specify Number column ",description:"Excel union guide.",content:` In Number column, you can specify custom unique field number and corresponding enum value number.
 For example, a worksheet Target in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Target @TABLEAU Number Name Alias Field1 Field2 Field3 1 PVP AliasPVP ID
