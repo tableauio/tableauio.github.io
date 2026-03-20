@@ -72,7 +72,7 @@ href="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2Fv0
 &lt;/div>
 &lt;/div>
 &lt;blockquote>
-&lt;p>More platforms are available on &lt;a href="https://github.com/tableauio/tableau/releases">tableau releases →&lt;/a>.&lt;/p>&lt;/blockquote>
+&lt;p>More platforms are available on &lt;a href="https://github.com/tableauio/tableau/releases">tableau releases&lt;/a>.&lt;/p>&lt;/blockquote>
 &lt;h2 id="2-add-a-workbook">2. Add a workbook &lt;a href="#2-add-a-workbook" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>Add &lt;strong>HelloWorld.xlsx&lt;/strong> with two sheets:&lt;/p></description></item><item><title>Tableauc config</title><link>https://tableauio.github.io/en/docs/prologue/config/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/en/docs/prologue/config/</guid><description>&lt;h2 id="configyaml">config.yaml &lt;a href="#configyaml" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>Create a file named &lt;em>config.yaml&lt;/em>, and copy configurations below to it:&lt;/p>

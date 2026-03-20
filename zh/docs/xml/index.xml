@@ -135,8 +135,8 @@ string desc = 3 [(tableau.field) = {name:&amp;quot;Desc&amp;quot;}];
 &lt;blockquote>
 &lt;p>提示&lt;/p>
 &lt;ul>
-&lt;li>Wellknown 类型：&lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#datetime">datetime →&lt;/a>&lt;/li>
-&lt;li>Wellknown 类型：&lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#duration">duration →&lt;/a>&lt;/li>
+&lt;li>Wellknown 类型：&lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#datetime">datetime&lt;/a>&lt;/li>
+&lt;li>Wellknown 类型：&lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#duration">duration&lt;/a>&lt;/li>
 &lt;/ul>&lt;/blockquote>
 &lt;p>生成结果：&lt;/p>
 &lt;details>

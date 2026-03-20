@@ -105,8 +105,8 @@ Expiry: 1h
 &lt;blockquote>
 &lt;p>提示&lt;/p>
 &lt;ul>
-&lt;li>Wellknown 类型：&lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#datetime">datetime →&lt;/a>&lt;/li>
-&lt;li>Wellknown 类型：&lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#duration">duration →&lt;/a>&lt;/li>
+&lt;li>Wellknown 类型：&lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#datetime">datetime&lt;/a>&lt;/li>
+&lt;li>Wellknown 类型：&lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#duration">duration&lt;/a>&lt;/li>
 &lt;/ul>&lt;/blockquote>
 &lt;p>生成结果：&lt;/p>
 &lt;details>
@@ -256,7 +256,7 @@ map&amp;lt;uint32, string&amp;gt; items = 1 [(tableau.field) = {name:&amp;quot;I
 &lt;h2 id="enum-key-map">Enum key map &lt;a href="#enum-key-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>&lt;em>common.proto&lt;/em> 中预定义的枚举类型 &lt;code>FruitType&lt;/code>：&lt;/p></description></item><item><title>Metasheet（元表）</title><link>https://tableauio.github.io/zh/docs/yaml/metasheet/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/yaml/metasheet/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>名为 &amp;ldquo;@TABLEAU&amp;rdquo; 的 metasheet 用于指定 tableau 解析器选项。
-详细信息请参考 &lt;a href="https://tableauio.github.io/zh/docs/excel/metasheet/">Metasheet →&lt;/a>。&lt;/p>
+详细信息请参考 &lt;a href="https://tableauio.github.io/zh/docs/excel/metasheet/">Metasheet&lt;/a>。&lt;/p>
 &lt;p>YAML metasheet 示例：&lt;/p>
 &lt;pre>&lt;code class="language-yaml"># define metasheet
 &amp;quot;@sheet&amp;quot;: &amp;quot;@TABLEAU&amp;quot;

@@ -105,8 +105,8 @@ Expiry: 1h
 &lt;blockquote>
 &lt;p>Tips&lt;/p>
 &lt;ul>
-&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/en/docs/basics/wellknown-types/#datetime">datetime →&lt;/a>&lt;/li>
-&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/en/docs/basics/wellknown-types/#duration">duration →&lt;/a>&lt;/li>
+&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/en/docs/basics/wellknown-types/#datetime">datetime&lt;/a>&lt;/li>
+&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/en/docs/basics/wellknown-types/#duration">duration&lt;/a>&lt;/li>
 &lt;/ul>&lt;/blockquote>
 &lt;p>Generated:&lt;/p>
 &lt;details>
@@ -265,7 +265,7 @@ map&amp;lt;uint32, string&amp;gt; items = 1 [(tableau.field) = {name:&amp;quot;I
 &lt;h2 id="enum-key-map">Enum key map &lt;a href="#enum-key-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>Enum type &lt;code>FruitType&lt;/code> in &lt;em>common.proto&lt;/em> is predefined as:&lt;/p></description></item><item><title>Metasheet</title><link>https://tableauio.github.io/en/docs/yaml/metasheet/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/yaml/metasheet/</guid><description>&lt;h2 id="overview">Overview &lt;a href="#overview" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>The metasheet named &amp;ldquo;@TABLEAU&amp;rdquo; is designed to specify tableau parser options.
-Go to read details about &lt;a href="https://tableauio.github.io/en/docs/excel/metasheet/">Metatsheet →&lt;/a>.&lt;/p>
+Go to read details about &lt;a href="https://tableauio.github.io/en/docs/excel/metasheet/">Metatsheet&lt;/a>.&lt;/p>
 &lt;p>A YAML metasheet example:&lt;/p>
 &lt;pre>&lt;code class="language-yaml"># define metasheet
 &amp;quot;@sheet&amp;quot;: &amp;quot;@TABLEAU&amp;quot;

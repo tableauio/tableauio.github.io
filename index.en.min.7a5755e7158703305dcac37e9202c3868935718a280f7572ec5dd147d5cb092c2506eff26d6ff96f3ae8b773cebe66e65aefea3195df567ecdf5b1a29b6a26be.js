@@ -106,7 +106,7 @@ Then *.pb.go files will be generated to examples/helloworld/protoconf, and JSON 
 Congratulations! You’ve just run a modern configuration converter application with Tableau.
 `}).add({id:77,href:"/docs/yaml/struct/#general-struct",title:"Struct / General struct ",description:"YAML struct guide.",content:` A worksheet ItemConf in HelloWorld.yaml:
 Tips
-Well-known type: datetime → Well-known type: duration → Generated:
+Well-known type: datetime Well-known type: duration Generated:
 hello_world.proto ItemConf.json `}).add({id:78,href:"/docs/yaml/struct/#reuse-same-level-struct",title:"Struct / Reuse same-level struct ",description:"YAML struct guide.",content:` A worksheet ItemConf in HelloWorld.yaml:
 Generated:
 hello_world.proto ItemConf.json `}).add({id:79,href:"/docs/yaml/struct/#predefined-struct",title:"Struct / Predefined struct ",description:"YAML struct guide.",content:` Item in common.proto is predefined as:
@@ -169,7 +169,7 @@ hello_world.proto ItemConf.json `}).add({id:103,href:"/docs/yaml/map/#list-in-ma
 Generated:
 hello_world.proto ItemConf.json `}).add({id:104,href:"/docs/yaml/map/#map-in-map",title:"Map / Map in map ",description:"YAML map guide.",content:` A worksheet ItemConf in HelloWorld.yaml:
 Generated:
-hello_world.proto ItemConf.json `}).add({id:105,href:"/docs/yaml/metasheet/#overview",title:"Metasheet / Overview ",description:"YAML metasheet @TABLEAU guide.",content:` The metasheet named &ldquo;@TABLEAU&rdquo; is designed to specify tableau parser options. Go to read details about Metatsheet →.
+hello_world.proto ItemConf.json `}).add({id:105,href:"/docs/yaml/metasheet/#overview",title:"Metasheet / Overview ",description:"YAML metasheet @TABLEAU guide.",content:` The metasheet named &ldquo;@TABLEAU&rdquo; is designed to specify tableau parser options. Go to read details about Metatsheet.
 A YAML metasheet example:
 `}).add({id:106,href:"/docs/yaml/metasheet/#todo",title:"Metasheet / TODO ",description:"YAML metasheet @TABLEAU guide.",content:` More details&hellip;
 `}).add({id:107,href:"/docs/xml/scalar/#scalar",title:"Scalar / Scalar ",description:"XML scalar guide.",content:` A worksheet ItemConf in HelloWorld.xml:
@@ -179,7 +179,7 @@ A worksheet ItemConf in HelloWorld.xml:
 Generated:
 hello_world.proto ItemConf.json `}).add({id:110,href:"/docs/xml/struct/#general-struct",title:"Struct / General struct ",description:"XML struct guide.",content:` A worksheet ItemConf in HelloWorld.xml:
 Tips
-Well-known type: datetime → Well-known type: duration → Generated:
+Well-known type: datetime Well-known type: duration Generated:
 hello_world.proto ItemConf.json `}).add({id:111,href:"/docs/xml/struct/#reuse-same-level-struct",title:"Struct / Reuse same-level struct ",description:"XML struct guide.",content:` A worksheet ItemConf in HelloWorld.xml:
 Generated:
 hello_world.proto ItemConf.json `}).add({id:112,href:"/docs/xml/struct/#predefined-struct",title:"Struct / Predefined struct ",description:"XML struct guide.",content:` Item in common.proto is predefined as:
@@ -235,12 +235,12 @@ hello_world.proto ItemConf.json `}).add({id:133,href:"/docs/xml/metasheet/#what-
 `}).add({id:135,href:"/docs/csv/",title:"CSV",description:"CSV guide.",content:""}).add({id:136,href:"/docs/csv/overview/#concepts",title:"Overview / Concepts ",description:"CSV overview.",content:` As Tableau recognizes the pattern &lt;BookName&gt;#&lt;SheetName&gt;.csv, so a CSV workbook (Glob Pattern) &lt;BookName&gt;#*.csv is composed of multiple CSV worksheets (files) in the same directory.
 E.g.:
 A CSV workbook HelloWorld#*.csv is composed of three CSV worksheets:
-Worksheet Item: HelloWorld#Item.csv Worksheet Activity: HelloWorld#Activity.csv Worksheet @TABLEAU: HelloWorld#@TABLEAU.csv `}).add({id:137,href:"/docs/csv/overview/#guide",title:"Overview / Guide ",description:"CSV overview.",content:` As the CSV worksheet is same as the Excel worksheet, so just read Excel Guide →
+Worksheet Item: HelloWorld#Item.csv Worksheet Activity: HelloWorld#Activity.csv Worksheet @TABLEAU: HelloWorld#@TABLEAU.csv `}).add({id:137,href:"/docs/csv/overview/#guide",title:"Overview / Guide ",description:"CSV overview.",content:` As the CSV worksheet is same as the Excel worksheet, so just read Excel Guide
 `}).add({id:138,href:"/docs/excel/",title:"Excel",description:"Excel guide.",content:""}).add({id:139,href:"/docs/excel/scalar/#scalar",title:"Scalar / Scalar ",description:"Excel scalar guide.",content:` A worksheet Apple in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Apple @TABLEAU ID Name Desc uint32 string string Item&rsquo;s ID Item&rsquo;s Name Item&rsquo;s Description 1 Apple A kind of delicious fruit. In this worksheet, three scalar fields are defined:
 ID: uint32 Name: string Desc: string Generated:
-hello_world.proto Apple.json `}).add({id:140,href:"/docs/excel/scalar/#note",title:"Scalar / Note ",description:"Excel scalar guide.",content:` Scalar type is usually used to define fields of struct type. Struct →
-`}).add({id:141,href:"/docs/excel/enum/#use-predefined-enum-type",title:"Enum / Use predefined enum type ",description:"Excel enum guide.",content:` The basic enum guide, please go to read Enum →
+hello_world.proto Apple.json `}).add({id:140,href:"/docs/excel/scalar/#note",title:"Scalar / Note ",description:"Excel scalar guide.",content:` Scalar type is usually used to define fields of struct type. Struct
+`}).add({id:141,href:"/docs/excel/enum/#use-predefined-enum-type",title:"Enum / Use predefined enum type ",description:"Excel enum guide.",content:` The basic enum guide, please go to read Enum
 For example, enum type FruitType in common.proto is defined as:
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Type map&lt;uint32, Item&gt; enum&lt;.FruitType&gt; Item&rsquo;s ID Fruit&rsquo;s type 1 1 2 Orange 3 FRUIT_TYPE_BANANA Generated:
@@ -263,7 +263,7 @@ For example, a worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU PropertyID PropertyName PropertyDesc {Property}int32 string string Property&rsquo;s ID Property&rsquo;s Name Property&rsquo;s Description 1 Orange A kind of sour fruit. Note that each column name in ItemConf is prefixed with struct variable name Property which is same as struct type name.
 Generated:
 hello_world.proto ItemConf.json `}).add({id:148,href:"/docs/excel/struct/#note",title:"Struct / Note ",description:"Excel struct guide.",content:` Cross-cell struct is usually used together with:
-cross-cell horizontal/vertical map, as map value type. Map → cross-cell horizontal/vertical list, as list element type. List → `}).add({id:149,href:"/docs/excel/struct/#incell-struct",title:"Struct / Incell struct ",description:"Excel struct guide.",content:` Each field type of the struct should be scalar type.
+cross-cell horizontal/vertical map, as map value type. Map cross-cell horizontal/vertical list, as list element type. List `}).add({id:149,href:"/docs/excel/struct/#incell-struct",title:"Struct / Incell struct ",description:"Excel struct guide.",content:` Each field type of the struct should be scalar type.
 For example, a worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Prop map&lt;int32, Item&gt; {int32 ID,string Name,string Desc}Property Item&rsquo;s ID Item&rsquo;s property. 1 1,Orange,A good fruit. 2 2,Apple 3 3 The Property column&rsquo;s type is in-cell struct {int32 ID,string Name,string Desc}Property.
 Generated:
@@ -312,7 +312,7 @@ A worksheet TaskConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Apple @TABLEAU ID Target1 Target2 Progress map&lt;int32, Task&gt; {.Target}|{form:FORM_TEXT} {.Target}|{form:FORM_JSON} int32 ID Target1 Target2 Progress 1 type:TYPE_PVP pvp:{type:1 damage:10 types:FRUIT_TYPE_APPLE types:FRUIT_TYPE_ORANGE types:FRUIT_TYPE_BANANA} {&ldquo;type&rdquo;:&ldquo;TYPE_PVP&rdquo;,&ldquo;pvp&rdquo;:{&ldquo;type&rdquo;:1,&ldquo;damage&rdquo;:&ldquo;10&rdquo;,&ldquo;types&rdquo;:[&ldquo;FRUIT_TYPE_APPLE&rdquo;,&ldquo;FRUIT_TYPE_ORANGE&rdquo;,&ldquo;FRUIT_TYPE_BANANA&rdquo;]}} 3 2 type:TYPE_PVE pve:{mission:{id:1 level:100 damage:999} heros:1 heros:2 heros:3 dungeons:{key:1 value:10} dungeons:{key:2 value:20} dungeons:{key:3 value:30}} {&ldquo;type&rdquo;:&ldquo;TYPE_PVE&rdquo;,&ldquo;pve&rdquo;:{&ldquo;mission&rdquo;:{&ldquo;id&rdquo;:1,&ldquo;level&rdquo;:100,&ldquo;damage&rdquo;:&ldquo;999&rdquo;},&ldquo;heros&rdquo;:[1,2,3],&ldquo;dungeons&rdquo;:{&ldquo;1&rdquo;:&ldquo;10&rdquo;,&ldquo;2&rdquo;:&ldquo;20&rdquo;,&ldquo;3&rdquo;:&ldquo;30&rdquo;}}} 10 3 type:TYPE_STORY story:{cost:{id:1001 num:10} fruits:{key:1 value:FRUIT_TYPE_APPLE} fruits:{key:2 value:FRUIT_TYPE_ORANGE} flavors:{key:1 value:{key:FRUIT_FLAVOR_FRAGRANT value:1}} flavors:{key:2 value:{key:FRUIT_FLAVOR_SOUR value:2}}} {&ldquo;type&rdquo;:&ldquo;TYPE_STORY&rdquo;,&ldquo;story&rdquo;:{&ldquo;cost&rdquo;:{&ldquo;id&rdquo;:1001,&ldquo;num&rdquo;:10},&ldquo;fruits&rdquo;:{&ldquo;1&rdquo;:&ldquo;FRUIT_TYPE_APPLE&rdquo;,&ldquo;2&rdquo;:&ldquo;FRUIT_TYPE_ORANGE&rdquo;},&ldquo;flavors&rdquo;:{&ldquo;1&rdquo;:{&ldquo;key&rdquo;:&ldquo;FRUIT_FLAVOR_FRAGRANT&rdquo;,&ldquo;value&rdquo;:1},&ldquo;2&rdquo;:{&ldquo;key&rdquo;:&ldquo;FRUIT_FLAVOR_SOUR&rdquo;,&ldquo;value&rdquo;:2}}}} 10 4 type:TYPE_SKILL skill:{id:1 damage:2} {&ldquo;type&rdquo;:&ldquo;TYPE_SKILL&rdquo;,&ldquo;skill&rdquo;:{&ldquo;id&rdquo;:1,&ldquo;damage&rdquo;:&ldquo;2&rdquo;}} 8 Generated:
 hello_world.proto TaskConf.json `}).add({id:163,href:"/docs/excel/union/#define-union-type-in-sheet",title:"Union / Define union type in sheet ",description:"Excel union guide.",content:` There are two kinds of Mode (in metasheet @TABLEAU) to define union types in a sheet:
 MODE_UNION_TYPE: define single union type in a sheet. MODE_UNION_TYPE_MULTI: define multiple union types in a sheet. You can define each union field by following types:
-Scalar → Enum → Wellknown types → Incell struct → Incell list → Incell map → `}).add({id:164,href:"/docs/excel/union/#single-union-type-in-sheet",title:"Union / Single union type in sheet ",description:"Excel union guide.",content:` You should specify Mode option to MODE_UNION_TYPE in metasheet @TABLEAU.
+Scalar Enum Wellknown types Incell struct Incell list Incell map `}).add({id:164,href:"/docs/excel/union/#single-union-type-in-sheet",title:"Union / Single union type in sheet ",description:"Excel union guide.",content:` You should specify Mode option to MODE_UNION_TYPE in metasheet @TABLEAU.
 For example, a worksheet Target in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Target @TABLEAU Name Alias Field1 Field2 Field3 PVP AliasPVP ID
 uint32
@@ -439,7 +439,7 @@ hello_world.proto ItemConf.json `}).add({id:185,href:"/docs/excel/list/#incell-e
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Param []enum&lt;.FruitType&gt; Param list 1,FRUIT_TYPE_ORANGE,Banana The Param column&rsquo;s type is incell list []enum&lt;.FruitType&gt;, as the list element is the predefined enum type FruitType.
 Generated:
-hello_world.proto ItemConf.json `}).add({id:186,href:"/docs/excel/list/#incell-struct-list",title:"List / Incell struct list ",description:"Excel list guide.",content:` For more advanced incell data parsing, see Advanced predefined incell struct →.
+hello_world.proto ItemConf.json `}).add({id:186,href:"/docs/excel/list/#incell-struct-list",title:"List / Incell struct list ",description:"Excel list guide.",content:` For more advanced incell data parsing, see Advanced predefined incell struct.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item []{int32 ID,int32 Num}Item Item&rsquo;s info 1:100,2:200,3:300 Generated:
 hello_world.proto ItemConf.json `}).add({id:187,href:"/docs/excel/list/#incell-predefined-struct-list",title:"List / Incell predefined-struct list ",description:"Excel list guide.",content:` Item in common.proto is predefined as:
@@ -475,13 +475,13 @@ HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Num map&lt;int32, .Item&gt; int32 Ite
 hello_world.proto ItemConf.json `}).add({id:201,href:"/docs/excel/map/#incell-map",title:"Map / Incell map ",description:"Excel map guide.",content:` There are some kinds of in-cell map:
 in-cell scalar map, as map value type is scalar. E.g: map&lt;int32, int32&gt;. in-cell struct map, as map value type is struct. E.g: map&lt;int32, Item&gt;. `}).add({id:202,href:"/docs/excel/map/#incell-scalar-map",title:"Map / Incell scalar map ",description:"Excel map guide.",content:` A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item map&lt;uint32, string&gt; Item key-value pairs 1:Apple,2:Orange,3:Banana,4,:Peach The Item column&rsquo;s type is in-cell map map&lt;uint32, string&gt;, as the map value is scalar type string.
-[!TIP] If you want explicit pattern like: [Key:Value]..., then set the field property present as true. See Option present →.
+[!TIP] If you want explicit pattern like: [Key:Value]..., then set the field property present as true. See Option present.
 Generated:
 hello_world.proto ItemConf.json `}).add({id:203,href:"/docs/excel/map/#incell-enum-map",title:"Map / Incell enum map ",description:"Excel map guide.",content:` For incell map, both the key and value can be enum types.
 For example, predefined enum types FruitType and FruitFlavor in common.proto are:
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Fruit Flavor Item map&lt;enum&lt;.FruitType&gt;, int64&gt; map&lt;int64, enum&lt;.FruitFlavor&raquo; map&lt;enum&lt;.FruitType&gt;, enum&lt;.FruitFlavor&raquo; Fruits Flavors Items Apple:1,Orange:2 1:Fragrant,2:Sweet Apple:Fragrant,Orange:Sour Generated:
-hello_world.proto ItemConf.json `}).add({id:204,href:"/docs/excel/map/#empty-key-map",title:"Map / Empty key map ",description:"Excel map guide.",content:` If map key is not configured, then it will be treated as default value of map key type. Default value is illustrated at Scalar types →.
+hello_world.proto ItemConf.json `}).add({id:204,href:"/docs/excel/map/#empty-key-map",title:"Map / Empty key map ",description:"Excel map guide.",content:` If map key is not configured, then it will be treated as default value of map key type. Default value is illustrated at Scalar types.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Desc map&lt;uint32, Item&gt; string Item&rsquo;s ID Item&rsquo;s name 1 Apple Orange 3 Banana Generated:
 hello_world.proto ItemConf.json `}).add({id:205,href:"/docs/excel/map/#enum-key-map",title:"Map / Enum key map ",description:"Excel map guide.",content:` As the protobuf documents the restrictions of map key type:
@@ -506,7 +506,7 @@ hello_world.proto ItemConf.json `}).add({id:209,href:"/docs/excel/map/#advanced-
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU D Prop1ID Prop1Value Prop2ID Prop2Value map&lt;uint32, Item&gt; map&lt;int32, Prop&gt; int32 int32 int32 Item&rsquo;s ID Prop1’s ID Prop1’s name Prop1’s value Prop2’s ID Prop2’s name Prop2’s value 1 1 Apple 100 2 Orange 200 2 3 Banana 300 4 Pomelo 400 3 5 Watermelon 500 Generated:
 hello_world.proto HeroConf.json `}).add({id:211,href:"/docs/excel/map/#ordered-map",title:"Map / Ordered-map ",description:"Excel map guide.",content:` In the metasheet @TABLEAU, set the OrderedMap option to true, then ordered map accessers will be generated. This feature is powered by tableauio/loader. Currently supported programming languages are:
 C++ Go C# JS/TS Example # If we want ItemConf to generate ordered map accessers, then set OrderedMap option to true of metasheet @TABLEAU:
-HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Name map&lt;uint32, Item&gt; string Item&rsquo;s ID Item&rsquo;s Name 1 Apple 2 Orange 3 Banana Sheet OrderedMap ItemConf true More useful options are illustrated at metasheet chapter. Metasheet @TABLEAU →
+HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Name map&lt;uint32, Item&gt; string Item&rsquo;s ID Item&rsquo;s Name 1 Apple 2 Orange 3 Banana Sheet OrderedMap ItemConf true More useful options are illustrated at metasheet chapter. Metasheet @TABLEAU
 `}).add({id:212,href:"/docs/excel/keyedlist/#syntax",title:"KeyedList / Syntax ",description:"Excel keyed list guide.",content:` Keyed list is same as normal list, except that ColumnType (first field type) is surrounded by angle brackets &lt;&gt;, and is treated as map key.
 Syntax: [ElemType]&lt;ColumnType&gt;
 `}).add({id:213,href:"/docs/excel/keyedlist/#horizontal-list",title:"KeyedList / Horizontal list ",description:"Excel keyed list guide.",content:` TODO&hellip;
@@ -528,25 +528,25 @@ A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Param []enum&lt;.FruitType&gt; Param list 1,FRUIT_TYPE_ORANGE,Banana The Param column&rsquo;s type is incell list []enum&lt;.FruitType&gt;, as the list element is the predefined enum type FruitType.
 Generated:
 hello_world.proto ItemConf.json `}).add({id:221,href:"/docs/excel/wellknown-types/#datetime",title:"Wellknown types / Datetime ",description:"Wellknown guide.",content:`
-`}).add({id:222,href:"/docs/excel/wellknown-types/#datetime-1",title:"Wellknown types / Datetime ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Datetime → for more details.
+`}).add({id:222,href:"/docs/excel/wellknown-types/#datetime-1",title:"Wellknown types / Datetime ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Datetime for more details.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU BeginDatetime EndDatetime Datetime datetime datetime []datetime Begin datetime End datetime Datetime 2020-01-01 10:25:00 2022-10-10 05:10:00 2020-01-01 10:25:00,2022-10-10 05:10:00 Generated:
-hello_world.proto ItemConf.json `}).add({id:223,href:"/docs/excel/wellknown-types/#date",title:"Wellknown types / Date ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Datetime →
+hello_world.proto ItemConf.json `}).add({id:223,href:"/docs/excel/wellknown-types/#date",title:"Wellknown types / Date ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Datetime for more details.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU BeginDate EndDate Date date date []date Begin date End date Date 2020-01-01 20221010 2020-01-01,20221010 Generated:
-hello_world.proto ItemConf.json `}).add({id:224,href:"/docs/excel/wellknown-types/#time",title:"Wellknown types / Time ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Datetime →
+hello_world.proto ItemConf.json `}).add({id:224,href:"/docs/excel/wellknown-types/#time",title:"Wellknown types / Time ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Datetime for more details.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU BeginTime EndTime Time time time []time Begin time End time Time 10:25:00 1125 10:25:00,1125 Generated:
-hello_world.proto ItemConf.json `}).add({id:225,href:"/docs/excel/wellknown-types/#duration",title:"Wellknown types / Duration ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Duration →
+hello_world.proto ItemConf.json `}).add({id:225,href:"/docs/excel/wellknown-types/#duration",title:"Wellknown types / Duration ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Duration for more details.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Duration1 Duration2 Duration duration duration []duration Duration 1 Duration 2 Duration 1h2m3s 4ms5us6ns 1h2m3s,4ms5us6ns Generated:
-hello_world.proto ItemConf.json `}).add({id:226,href:"/docs/excel/wellknown-types/#fraction",title:"Wellknown types / Fraction ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Fraction →
+hello_world.proto ItemConf.json `}).add({id:226,href:"/docs/excel/wellknown-types/#fraction",title:"Wellknown types / Fraction ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Fraction for more details.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU MinRatio Ratio1 Ratio2 Ratio3 Ratio4 Ratio5 fraction []fraction fraction fraction fraction fraction min ratio ratio1 ratio 2 ratio 3 ratio 4 ratio 5 1/4 10% 10‰ 10‱ 10 0.01 Generated:
-hello_world.proto ItemConf.json `}).add({id:227,href:"/docs/excel/wellknown-types/#comparator",title:"Wellknown types / Comparator ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Comparator →
+hello_world.proto ItemConf.json `}).add({id:227,href:"/docs/excel/wellknown-types/#comparator",title:"Wellknown types / Comparator ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Comparator for more details.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU MinRatio Ratio1 Ratio2 Ratio3 Ratio4 Ratio5 comparator []comparator comparator comparator comparator comparator min ratio ratio1 ratio 2 ratio 3 ratio 4 ratio 5 !=1/4 &lt;10% &lt;=10‰ &gt;10‱ &gt;=10 ==3/5 Generated:
-hello_world.proto ItemConf.json `}).add({id:228,href:"/docs/excel/wellknown-types/#version",title:"Wellknown types / Version ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Version →
+hello_world.proto ItemConf.json `}).add({id:228,href:"/docs/excel/wellknown-types/#version",title:"Wellknown types / Version ",description:"Wellknown guide.",content:` [!NOTE] See Basics: Version for more details.
 Default pattern is: 255.255.255.
 A worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Version CustomVersion IncellVersion HorizontalVersion1 HorizontalVersion2 HorizontalVersion3 version version|{pattern:&ldquo;99.999.99.999.99.999&rdquo;} []version|{pattern:&ldquo;999.999.999&rdquo;} []version|{pattern:&ldquo;999.999.999&rdquo;} version version default version custom version incell version horizontal version1 horizontal version2 horizontal version3 1.0.3 1.2.3.4.5.6 1.2.3,4.5.6 1.0.0 1.2.3 2.0.3 Generated:
@@ -658,17 +658,17 @@ For example:
 map&lt;uint32, Item&gt;|{sequence:1}: this map key must follow the sequence rule which begins with value 1. int32|{sequence:1}: the parent list/map elements must follow the sequence rule which begins with value 1. `}).add({id:284,href:"/docs/excel/field-property/#option-default",title:"Field property / Option default ",description:"Tableau field property guide.",content:` If option default is set, then use it as default value if cell is empty.
 `}).add({id:285,href:"/docs/excel/field-property/#option-fixed",title:"Field property / Option fixed ",description:"Tableau field property guide.",content:` If option fixed is set as true, then auto-detect fixed size of horizontal list/map.
 For example:
-List: implicit fixed size → Map: implicit fixed size → `}).add({id:286,href:"/docs/excel/field-property/#option-size",title:"Field property / Option size ",description:"Tableau field property guide.",content:` Option size is used to specify fixed size of horizontal list/map.
+List: implicit fixed size Map: implicit fixed size `}).add({id:286,href:"/docs/excel/field-property/#option-size",title:"Field property / Option size ",description:"Tableau field property guide.",content:` Option size is used to specify fixed size of horizontal list/map.
 For example:
-List: explicit fixed size → Map: explicit fixed size → `}).add({id:287,href:"/docs/excel/field-property/#option-form",title:"Field property / Option form ",description:"Tableau field property guide.",content:` Option form is used to specify cell data form of incell struct.
+List: explicit fixed size Map: explicit fixed size `}).add({id:287,href:"/docs/excel/field-property/#option-form",title:"Field property / Option form ",description:"Tableau field property guide.",content:` Option form is used to specify cell data form of incell struct.
 Two kinds of form can be specified:
-FORM_TEXT: protobuf text format. FORM_JSON: protobuf JSON format. For detailed demos, see Advanced predefined incell struct →.
+FORM_TEXT: protobuf text format. FORM_JSON: protobuf JSON format. For detailed demos, see Advanced predefined incell struct.
 `}).add({id:288,href:"/docs/excel/field-property/#option-json_name",title:"Field property / Option json_name ",description:"Tableau field property guide.",content:` By default, JSON name is deduced from the field&rsquo;s proto name by converting it to camelCase. Now you can explicitly specify it by json_name prop option.
 For example, a worksheet ItemConf in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU ID Rarity_1 SpecialEffect_2 map&lt;int32, Item&gt; int32|{json_name:&ldquo;rarity_1&rdquo;} int32|{json_name:&ldquo;specialEffect_2&rdquo;} Item&rsquo;s ID Item&rsquo;s rarity. Item&rsquo;s special effect. 1 10 101 2 20 102 3 30 103 `}).add({id:289,href:"/docs/excel/field-property/#option-present",title:"Field property / Option present ",description:"Tableau field property guide.",content:` If option present is set as true, then cell data cannot be empty and must be filled explicitly. Otherwise an error will be reported.
 `}).add({id:290,href:"/docs/excel/field-property/#option-optional",title:"Field property / Option optional ",description:"Tableau field property guide.",content:` Specify whether this field is optional (field name existence).
 If set to true, then:
-table formats (Excel/CSV): field&rsquo;s column can be absent. document formats (XML/YAML): field&rsquo;s name can be absent. `}).add({id:291,href:"/docs/excel/field-property/#option-patch",title:"Field property / Option patch ",description:"Tableau field property guide.",content:` See field-level patch in Option Patch →.
+table formats (Excel/CSV): field&rsquo;s column can be absent. document formats (XML/YAML): field&rsquo;s name can be absent. `}).add({id:291,href:"/docs/excel/field-property/#option-patch",title:"Field property / Option patch ",description:"Tableau field property guide.",content:` See field-level patch in Option Patch.
 `}).add({id:292,href:"/docs/excel/field-property/#option-sep",title:"Field property / Option sep ",description:"Tableau field property guide.",content:` Field-level separator for separating:
 incell list elements (scalar or struct). incell map items. If not set, it will use sheet-level seq in metasheet.
 `}).add({id:293,href:"/docs/excel/field-property/#option-subsep",title:"Field property / Option subsep ",description:"Tableau field property guide.",content:` Field-level subseparator for separating:
@@ -677,7 +677,7 @@ key-value pair of each incell map item. struct fields of each incell struct list
 `}).add({id:295,href:"/docs/excel/field-property/#union-list-field",title:"Field property / union list field ",description:"Tableau field property guide.",content:` TODO: example illustrated.
 Specify the count of union fields the list will cross and occupy (one list element for each field). It will also change this list field&rsquo;s layout from incell to horizontal.
 Value 0 means it is an incell list. Value &gt; 0 means it is a horizontal list occupying N fields. Value &lt; 0 means it is a horizontal list occupying all following fields. `}).add({id:296,href:"/docs/excel/field-property/#option-pattern",title:"Field property / Option pattern ",description:"Tableau field property guide.",content:` Specify the pattern of scalar field, list element, and map value.
-`}).add({id:297,href:"/docs/excel/field-property/#wellknown-version-field",title:"Field property / Wellknown version field ",description:"Tableau field property guide.",content:` For use cases, see Wellknown types: Version →
+`}).add({id:297,href:"/docs/excel/field-property/#wellknown-version-field",title:"Field property / Wellknown version field ",description:"Tableau field property guide.",content:` For use cases, see Wellknown types: Version
 Specify the dotted-decimal pattern of current cell. Each decimal number ranges from 0 to the corresponding part (MAX) of pattern.
 Default pattern: 255.255.255.
 `}).add({id:298,href:"/docs/excel/metasheet/#overview",title:"Metasheet / Overview ",description:"Excel metasheet @TABLEAU guide.",content:` Options below can be specified in the metasheet @TABLEAU to affect the corresponding worksheet&rsquo;s layout, ability, loader and so on.
@@ -785,23 +785,23 @@ Empty struct will not be appended if list&rsquo;s element(struct type) is empty.
 enum value name. enum value number. enum value alias. It is another name in English, Chinese, or any other language, which can be specified by tableau.evalue by extending google.protobuf.EnumValueOptions. For example, enum type FruitType in common.proto is defined as:
 Then the three forms of enum value are all accepted:
 Enum value number Enum value name Enum value alias 0 FRUIT_TYPE_UNKNOWN Unknown 1 FRUIT_TYPE_APPLE Apple 2 FRUIT_TYPE_ORANGE Orange 3 FRUIT_TYPE_BANANA Banana NOTE: Enum type must be predefined.
-Go to read details about predefiend Enum type: Predefined types →.
+Go to read details about predefiend Enum type: Predefined types.
 `}).add({id:337,href:"/docs/basics/enum/#validation",title:"Enum / Validation ",description:"Enum basics.",content:` As enum type is predefined, so the tableau parser will auto validate the enum value.
 `}).add({id:338,href:"/docs/basics/wellknown-types/#overview",title:"Wellknown types / Overview ",description:"Wellknown types.",content:` For easy use, Wellknown types are built-in types in Tableau. This concept is much like Protocol Buffers Well-Known Types.
 You should include the proto files provided by Tableau and Protocol Buffers:
-tableau/protobuf/wellknown.proto google/protobuf/timestamp.proto google/protobuf/duration.proto `}).add({id:339,href:"/docs/basics/wellknown-types/#datetime",title:"Wellknown types / Datetime ",description:"Wellknown types.",content:` For use cases, see Wellknown types: Datetime →
+tableau/protobuf/wellknown.proto google/protobuf/timestamp.proto google/protobuf/duration.proto `}).add({id:339,href:"/docs/basics/wellknown-types/#datetime",title:"Wellknown types / Datetime ",description:"Wellknown types.",content:` See Wellknown types: Datetime for use cases.
 Type Default Description datetime 0000-00-00 00:00:00 Format: yyyy-MM-dd HH:mm:ss or RFC3339. e.g.: 2020-01-01 05:10:00
 or 2020-01-01T05:10:00+08:00. date 0000-00-00 Format: yyyy-MM-dd or yyyyMMdd. e.g.: 2020-01-01 or 20200101. time 00:00:00 Format: HH:mm:ss or HHmmss, HH:mm or HHmm. e.g.: 05:10:00 or 051000, 05:10 or 0510. Tips:
-datetime and date are based on google.protobuf.Timestamp, see JSON mapping. time is based on google.protobuf.Duration, see JSON mapping. RFC 3339: Date and Time on the Internet: Timestamps `}).add({id:340,href:"/docs/basics/wellknown-types/#duration",title:"Wellknown types / Duration ",description:"Wellknown types.",content:` For use cases, see Wellknown types: Duration →
+datetime and date are based on google.protobuf.Timestamp, see JSON mapping. time is based on google.protobuf.Duration, see JSON mapping. RFC 3339: Date and Time on the Internet: Timestamps `}).add({id:340,href:"/docs/basics/wellknown-types/#duration",title:"Wellknown types / Duration ",description:"Wellknown types.",content:` See Wellknown types: Duration for use cases.
 Type Default Description duration 0s Format like: 72h3m0.5s. A duration string is a possibly signed sequence of decimal numbers, each with optional fraction and a unit suffix, such as 300ms, -1.5h or 2h45m. Valid time units are ns, us (or µs), ms, s, m, h. Tips:
-duration is based on google.protobuf.Duration, see JSON mapping. golang duration string form. golang ParseDuration. `}).add({id:341,href:"/docs/basics/wellknown-types/#fraction",title:"Wellknown types / Fraction ",description:"Wellknown types.",content:` For use cases, see Wellknown types: Fraction →
+duration is based on google.protobuf.Duration, see JSON mapping. golang duration string form. golang ParseDuration. `}).add({id:341,href:"/docs/basics/wellknown-types/#fraction",title:"Wellknown types / Fraction ",description:"Wellknown types.",content:` See Wellknown types: Fraction for use cases.
 A fraction represents a part of a whole or, more generally, any number of equal parts. See wiki: Fraction for more details.
 Type Default Description fraction 0 Format: - N%: percentage, e.g.: 10% - N‰: per thounsand, e.g.: 10‰ - N‱: per ten thounsand, e.g.: 10‱
 - N/D: simple fraction, e.g.: 3/4
 - N: only numerator, e.g.: 3 is same to 3/1
-- N: floating-point numerator, e.g.: 0.01 is same to 1/100 `}).add({id:342,href:"/docs/basics/wellknown-types/#comparator",title:"Wellknown types / Comparator ",description:"Wellknown types.",content:` For use cases, see Wellknown types: Comparator →
+- N: floating-point numerator, e.g.: 0.01 is same to 1/100 `}).add({id:342,href:"/docs/basics/wellknown-types/#comparator",title:"Wellknown types / Comparator ",description:"Wellknown types.",content:` See Wellknown types: Comparator for use cases.
 A comparator holds a sign and a fraction value. Any number or fraction can compare with it.
-Type Default Description comparator ==0 Format: &lt;Sign&gt;&lt;Fraction&gt;. e.g.: ==10, !=1/2, &lt;10%, &lt;=10‰, &gt;10%, &gt;=10‱ `}).add({id:343,href:"/docs/basics/wellknown-types/#version",title:"Wellknown types / Version ",description:"Wellknown types.",content:` For use cases, see Wellknown types: Version →
+Type Default Description comparator ==0 Format: &lt;Sign&gt;&lt;Fraction&gt;. e.g.: ==10, !=1/2, &lt;10%, &lt;=10‰, &gt;10%, &gt;=10‱ `}).add({id:343,href:"/docs/basics/wellknown-types/#version",title:"Wellknown types / Version ",description:"Wellknown types.",content:` See Wellknown types: Version for use cases.
 A version represents the version number in dot-decimal notation. Version form is: &lt;MAJOR&gt;.&lt;MINOR&gt;.&lt;PATCH&gt;[.&lt;OTHER&gt;]....
 A version field holds three forms of representation for easy use:
 string version: str integer version: val integer version parts: major, minor, patch, others You can specify the version pattern (a field property) as &lt;MAJOR_MAX&gt;.&lt;MINOR_MAX&gt;.&lt;PATCH_MAX&gt;[.&lt;OTHER_MAX&gt;]....
@@ -818,9 +818,9 @@ Excel/CSV list: Predefined union in list map: Predefined union in map XML union:
 `}).add({id:351,href:"/docs/prologue/introduction/#protogen",title:"Introduction / protogen ",description:"Intro to Tableau.",content:` protogen converts Excel/CSV/XML/YAML files to Protoconf files. Protoconf is a dialect of Protocol Buffers (proto3) extended with tableau options, aimed to define the structure of Excel/CSV/XML/YAML.
 `}).add({id:352,href:"/docs/prologue/introduction/#confgen",title:"Introduction / confgen ",description:"Intro to Tableau.",content:` confgen converts Excel/CSV/XML/YAML with Protoconf files to JSON/Text/Bin files.
 `}).add({id:353,href:"/docs/prologue/quick-start/#1-download-tableauc",title:"Quick Start / 1. Download tableauc ",description:"Quick Start",content:` Select the appropriate tableauc (aka Tableau Compiler) to download:
-Windows x64 Linux x64 macOS x64 macOS arm64 More platforms are available on tableau releases →.
+Windows x64 Linux x64 macOS x64 macOS arm64 More platforms are available on tableau releases.
 `}).add({id:354,href:"/docs/prologue/quick-start/#2-add-a-workbook",title:"Quick Start / 2. Add a workbook ",description:"Quick Start",content:` Add HelloWorld.xlsx with two sheets:
-Item: Copy data below to this worksheet. @TABLEAU: Just leave it empty now. It is the tableau metasheet → for specifying parser options. HelloWorld.xlsx&nbsp; Item @TABLEAU ID Name Desc map&lt;int32, Item&gt; string string Item’s ID Item’s name Item’s description 1 Apple A kind of delicious fruit. 2 Orange A kind of sour fruit. 3 Banana A kind of calorie-rich fruit. `}).add({id:355,href:"/docs/prologue/quick-start/#3-run-tableauc",title:"Quick Start / 3. Run tableauc ",description:"Quick Start",content:` Run command: ./tableauc HelloWorld.xlsx
+Item: Copy data below to this worksheet. @TABLEAU: Just leave it empty now. It is the tableau metasheet for specifying parser options. HelloWorld.xlsx&nbsp; Item @TABLEAU ID Name Desc map&lt;int32, Item&gt; string string Item’s ID Item’s name Item’s description 1 Apple A kind of delicious fruit. 2 Orange A kind of sour fruit. 3 Banana A kind of calorie-rich fruit. `}).add({id:355,href:"/docs/prologue/quick-start/#3-run-tableauc",title:"Quick Start / 3. Run tableauc ",description:"Quick Start",content:` Run command: ./tableauc HelloWorld.xlsx
 Then hello_world.proto and Item.json are generated:
 hello_world.proto Item.json Congratulations! You’ve just run the tableauc to convert a workbook to proto and JSON files.
 `}).add({id:356,href:"/docs/prologue/config/#configyaml",title:"Tableauc config / config.yaml ",description:"Tableauc config details",content:` Create a file named config.yaml, and copy configurations below to it:

@@ -113,8 +113,8 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;blockquote>
 &lt;p>Tips&lt;/p>
 &lt;ul>
-&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetime">datetime →&lt;/a>&lt;/li>
-&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#duration">duration →&lt;/a>&lt;/li>
+&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetime">datetime&lt;/a>&lt;/li>
+&lt;li>Well-known type: &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#duration">duration&lt;/a>&lt;/li>
 &lt;/ul>&lt;/blockquote>
 &lt;p>Generated:&lt;/p>
 &lt;details>

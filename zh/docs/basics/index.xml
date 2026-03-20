@@ -409,7 +409,7 @@ FRUIT_TYPE_BANANA = 3 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;/table>
 &lt;blockquote>
 &lt;p>注意：枚举类型必须预先定义。&lt;/p>&lt;/blockquote>
-&lt;p>了解预定义 &lt;strong>Enum&lt;/strong> 类型的详细信息：&lt;a href="https://tableauio.github.io/zh/docs/basics/predefined-types/">预定义类型 →&lt;/a>。&lt;/p>
+&lt;p>了解预定义 &lt;strong>Enum&lt;/strong> 类型的详细信息：&lt;a href="https://tableauio.github.io/zh/docs/basics/predefined-types/">预定义类型&lt;/a>。&lt;/p>
 &lt;h2 id="校验">校验 &lt;a href="#%e6%a0%a1%e9%aa%8c" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>由于枚举类型是预先定义的，tableau 解析器会自动校验枚举值的合法性。&lt;/p></description></item><item><title>Wellknown types（知名类型）</title><link>https://tableauio.github.io/zh/docs/basics/wellknown-types/</link><pubDate>Tue, 24 Sep 2024 15:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/basics/wellknown-types/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>为方便使用，Wellknown 类型是 Tableau 的内置类型，类似于 &lt;a href="https://protobuf.dev/reference/protobuf/google.protobuf/">Protocol Buffers Well-Known Types&lt;/a>。&lt;/p>
@@ -422,7 +422,7 @@ FRUIT_TYPE_BANANA = 3 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;h2 id="datetime日期时间">Datetime（日期时间） &lt;a href="#datetime%e6%97%a5%e6%9c%9f%e6%97%b6%e9%97%b4" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
 &lt;p>[!NOTE]
-使用示例请参考 &lt;a href="https://tableauio.github.io/zh/docs/excel/wellknown-types/#datetime日期时间">Wellknown 类型：Datetime →&lt;/a>&lt;/p>&lt;/blockquote>
+使用示例请参考 &lt;a href="https://tableauio.github.io/zh/docs/excel/wellknown-types/#datetime日期时间">Wellknown 类型：Datetime&lt;/a> 。&lt;/p>&lt;/blockquote>
 &lt;table class="table-striped">
 &lt;thead>
 &lt;tr>
@@ -458,7 +458,7 @@ FRUIT_TYPE_BANANA = 3 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;h2 id="duration时长">Duration（时长） &lt;a href="#duration%e6%97%b6%e9%95%bf" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
 &lt;p>[!NOTE]
-使用示例请参考 &lt;a href="https://tableauio.github.io/zh/docs/excel/wellknown-types/#duration时长">Wellknown 类型：Duration →&lt;/a>&lt;/p></description></item><item><title>Predefined types（预定义类型）</title><link>https://tableauio.github.io/zh/docs/basics/predefined-types/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/basics/predefined-types/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+使用示例请参考 &lt;a href="https://tableauio.github.io/zh/docs/excel/wellknown-types/#duration时长">Wellknown 类型：Duration&lt;/a> 。&lt;/p></description></item><item><title>Predefined types（预定义类型）</title><link>https://tableauio.github.io/zh/docs/basics/predefined-types/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/basics/predefined-types/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>你可以在 protoconf 文件（如 &lt;code>common.proto&lt;/code>）中预先定义 &lt;code>enum&lt;/code>、&lt;code>struct&lt;/code> 或 &lt;code>union&lt;/code> 类型，然后在 worksheet 中将其用作列类型或跨单元格类型。&lt;/p>
 &lt;h2 id="使用方式">使用方式 &lt;a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;ul>

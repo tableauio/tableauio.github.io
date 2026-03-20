@@ -354,7 +354,7 @@ This concept is much like &lt;a href="https://protobuf.dev/reference/protobuf/go
 &lt;/ul>
 &lt;h2 id="datetime">Datetime &lt;a href="#datetime" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
-&lt;p>For use cases, see &lt;a href="https://tableauio.github.io/docs/excel/wellknown-types/#datetime">Wellknown types: Datetime →&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>See &lt;a href="https://tableauio.github.io/docs/excel/wellknown-types/#datetime">Wellknown types: Datetime&lt;/a> for use cases.&lt;/p>&lt;/blockquote>
 &lt;table class="table-striped">
 &lt;thead>
 &lt;tr>
