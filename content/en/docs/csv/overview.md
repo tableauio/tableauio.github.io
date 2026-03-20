@@ -24,4 +24,4 @@ A CSV workbook `HelloWorld#*.csv` is composed of three CSV worksheets:
 
 ## Guide
 
-As the CSV worksheet is same as the Excel worksheet, so just read [Excel Guide →]({{< relref "../Excel" >}})
+As the CSV worksheet is same as the Excel worksheet, so just read [Excel Guide]({{< relref "../Excel" >}})

@@ -68,14 +68,14 @@ toc: true
     </div>
 </div>
 
-> 更多平台版本请访问 [tableau releases →](https://github.com/tableauio/tableau/releases)。
+> 更多平台版本请访问 [tableau releases](https://github.com/tableauio/tableau/releases) 。
 
 ## 2. 添加工作簿
 
 添加 **HelloWorld.xlsx**，包含两个 sheet：
 
 - `Item`：将下方数据复制到此 worksheet。
-- `@TABLEAU`：暂时留空。这是 tableau 的 [metasheet →]({{< relref "../excel/metasheet" >}})，用于指定解析器选项。
+- `@TABLEAU`：暂时留空。这是 tableau 的 [metasheet]({{< relref "../excel/metasheet" >}})，用于指定解析器选项。
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 

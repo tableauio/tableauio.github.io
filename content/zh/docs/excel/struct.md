@@ -84,8 +84,8 @@ message ItemConf {
 
 Cross-cell struct 通常与以下类型配合使用：
 
-- cross-cell 横向/纵向 map，作为 map 的 value 类型。[Map →]({{< relref "map" >}})
-- cross-cell 横向/纵向 list，作为 list 的元素类型。[List →]({{< relref "list" >}})
+- cross-cell 横向/纵向 map，作为 map 的 value 类型。[Map]({{< relref "map" >}})
+- cross-cell 横向/纵向 list，作为 list 的元素类型。[List]({{< relref "list" >}})
 
 ## Incell struct
 

@@ -781,12 +781,12 @@ There are two kinds of `Mode` (in metasheet `@TABLEAU`) to define union types in
 
 You can define each union field by following types:
 
-- [Scalar →]({{< relref "scalar" >}})
-- [Enum →]({{< relref "enum" >}})
-- [Wellknown types →]({{< relref "wellknown-types" >}})
-- [Incell struct →]({{< relref "struct/#incell-struct" >}})
-- [Incell list →]({{< relref "list/#incell-list" >}})
-- [Incell map →]({{< relref "map/#incell-map" >}})
+- [Scalar]({{< relref "scalar" >}})
+- [Enum]({{< relref "enum" >}})
+- [Wellknown types]({{< relref "wellknown-types" >}})
+- [Incell struct]({{< relref "struct/#incell-struct" >}})
+- [Incell list]({{< relref "list/#incell-list" >}})
+- [Incell map]({{< relref "map/#incell-map" >}})
 
 ### Single union type in sheet
 

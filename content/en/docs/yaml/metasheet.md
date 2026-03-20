@@ -13,7 +13,7 @@ toc: true
 ## Overview
 
 The metasheet named "@TABLEAU" is designed to specify tableau parser options.
-Go to read details about [Metatsheet →]({{< relref "../excel/metasheet" >}}).
+Go to read details about [Metatsheet]({{< relref "../excel/metasheet" >}}).
 
 A YAML metasheet example:
 

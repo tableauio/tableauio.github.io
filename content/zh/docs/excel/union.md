@@ -781,12 +781,12 @@ message TaskConf {
 
 每个 union 字段可以使用以下类型定义：
 
-- [Scalar →]({{< relref "scalar" >}})
-- [Enum →]({{< relref "../basics/enum" >}})
-- [Wellknown types →]({{< relref "wellknown-types" >}})
-- [Incell struct →]({{< relref "struct/#incell-struct" >}})
-- [Incell list →]({{< relref "list/#incell-list" >}})
-- [Incell map →]({{< relref "map/#incell-map" >}})
+- [Scalar]({{< relref "scalar" >}})
+- [Enum]({{< relref "../basics/enum" >}})
+- [Wellknown types]({{< relref "wellknown-types" >}})
+- [Incell struct]({{< relref "struct/#incell-struct" >}})
+- [Incell list]({{< relref "list/#incell-list" >}})
+- [Incell map]({{< relref "map/#incell-map" >}})
 
 ### 单个 union 类型
 

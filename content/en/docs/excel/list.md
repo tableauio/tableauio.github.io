@@ -1079,7 +1079,7 @@ message ItemConf {
 
 ### Incell struct list
 
-> For more advanced incell data parsing, see [Advanced predefined incell struct →]({{< relref "struct/#advanced-predefined-incell-struct" >}}).
+> For more advanced incell data parsing, see [Advanced predefined incell struct]({{< relref "struct/#advanced-predefined-incell-struct" >}}).
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 

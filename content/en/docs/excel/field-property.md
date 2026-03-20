@@ -96,8 +96,8 @@ If option `fixed` is set as `true`, then auto-detect fixed size of horizontal li
 
 For example:
 
-- [List: implicit fixed size →]({{< relref "list/#implicit-fixed-size" >}})
-- [Map: implicit fixed size →]({{< relref "map/#implicit-fixed-size" >}})
+- [List: implicit fixed size]({{< relref "list/#implicit-fixed-size" >}})
+- [Map: implicit fixed size]({{< relref "map/#implicit-fixed-size" >}})
 
 ## Option `size`
 
@@ -105,8 +105,8 @@ Option `size` is used to specify fixed size of horizontal list/map.
 
 For example:
 
-- [List: explicit fixed size →]({{< relref "list/#explicit-fixed-size" >}})
-- [Map: explicit fixed size →]({{< relref "map/#explicit-fixed-size" >}})
+- [List: explicit fixed size]({{< relref "list/#explicit-fixed-size" >}})
+- [Map: explicit fixed size]({{< relref "map/#explicit-fixed-size" >}})
 
 ## Option `form`
 
@@ -117,7 +117,7 @@ Two kinds of form can be specified:
 - `FORM_TEXT`: protobuf [text format](https://developers.google.com/protocol-buffers/docs/text-format-spec).
 - `FORM_JSON`: protobuf [JSON format](https://developers.google.com/protocol-buffers/docs/proto3#json).
 
-For detailed demos, see [Advanced predefined incell struct →]({{< relref "struct/#advanced-predefined-incell-struct" >}}).
+For detailed demos, see [Advanced predefined incell struct]({{< relref "struct/#advanced-predefined-incell-struct" >}}).
 
 ## Option `json_name`
 
@@ -168,7 +168,7 @@ If set to true, then:
 
 ## Option `patch`
 
-See field-level patch in [Option Patch →]({{< relref "metasheet/#option-patch" >}}).
+See field-level patch in [Option Patch]({{< relref "metasheet/#option-patch" >}}).
 
 ## Option `sep`
 
@@ -211,7 +211,7 @@ Specify the pattern of scalar field, list element, and map value.
 
 ### Wellknown version field
 
-> For use cases, see [Wellknown types: Version →]({{< relref "../excel/wellknown-types/#version" >}})
+> For use cases, see [Wellknown types: Version]({{< relref "../excel/wellknown-types/#version" >}})
 
 Specify the dotted-decimal pattern of current cell. Each decimal
 number ranges from 0 to the corresponding part (MAX) of pattern.

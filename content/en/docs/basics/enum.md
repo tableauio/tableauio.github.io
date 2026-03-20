@@ -41,7 +41,7 @@ Then the three forms of enum value are all accepted:
 
 > NOTE: Enum type must be predefined.
 
-Go to read details about predefiend **Enum** type: [Predefined types →]({{< relref "predefined-types" >}}).
+Go to read details about predefiend **Enum** type: [Predefined types]({{< relref "predefined-types" >}}).
 
 ## Validation
 

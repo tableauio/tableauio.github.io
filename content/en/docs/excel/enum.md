@@ -12,7 +12,7 @@ toc: true
 
 ## Use predefined enum type
 
-The basic enum guide, please go to read [Enum →]({{< relref "enum" >}})
+The basic enum guide, please go to read [Enum]({{< relref "enum" >}})
 
 For example, enum type `FruitType` in `common.proto` is defined as:
 

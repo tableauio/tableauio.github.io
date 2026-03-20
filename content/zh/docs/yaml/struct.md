@@ -36,8 +36,8 @@ Item:
 
 > 提示
 >
-> - Wellknown 类型：[datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
-> - Wellknown 类型：[duration →]({{< relref "../basics/wellknown-types/#duration" >}})
+> - Wellknown 类型：[datetime]({{< relref "../basics/wellknown-types/#datetime" >}})
+> - Wellknown 类型：[duration]({{< relref "../basics/wellknown-types/#duration" >}})
 
 生成结果：
 

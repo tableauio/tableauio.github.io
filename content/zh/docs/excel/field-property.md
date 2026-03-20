@@ -95,8 +95,8 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 示例：
 
-- [List: 隐式固定大小 →]({{< relref "list/#隐式固定大小implicit-fixed-size" >}})
-- [Map: 隐式固定大小 →]({{< relref "map/#隐式固定大小implicit-fixed-size" >}})
+- [List: 隐式固定大小]({{< relref "list/#隐式固定大小implicit-fixed-size" >}})
+- [Map: 隐式固定大小]({{< relref "map/#隐式固定大小implicit-fixed-size" >}})
 
 ## 选项 `size`
 
@@ -104,8 +104,8 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 示例：
 
-- [List: 显式固定大小 →]({{< relref "list/#显式固定大小explicit-fixed-size" >}})
-- [Map: 显式固定大小 →]({{< relref "map/#显式固定大小explicit-fixed-size" >}})
+- [List: 显式固定大小]({{< relref "list/#显式固定大小explicit-fixed-size" >}})
+- [Map: 显式固定大小]({{< relref "map/#显式固定大小explicit-fixed-size" >}})
 
 ## 选项 `form`
 
@@ -116,7 +116,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 - `FORM_TEXT`：protobuf [text format](https://developers.google.com/protocol-buffers/docs/text-format-spec)。
 - `FORM_JSON`：protobuf [JSON format](https://developers.google.com/protocol-buffers/docs/proto3#json)。
 
-详细示例请参考 [高级 predefined incell struct →]({{< relref "struct/#advanced-predefined-incell-struct" >}})。
+详细示例请参考 [高级 predefined incell struct]({{< relref "struct/#advanced-predefined-incell-struct" >}})。
 
 ## 选项 `json_name`
 
@@ -165,7 +165,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 ## 选项 `patch`
 
-参见 [选项 Patch →]({{< relref "metasheet/#选项-patch" >}}) 中的字段级 patch。
+参见 [选项 Patch]({{< relref "metasheet/#选项-patch" >}}) 中的字段级 patch。
 
 ## 选项 `sep`
 
@@ -206,7 +206,7 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 ### Wellknown version 字段
 
 > [!NOTE]
-> 使用案例请参考 [Wellknown types: Version →]({{< relref "../excel/wellknown-types/#version" >}})
+> 使用案例请参考 [Wellknown types: Version]({{< relref "../excel/wellknown-types/#version" >}})
 
 指定当前单元格的点分十进制模式。每个十进制数的范围从 0 到模式对应部分的最大值（MAX）。
 

@@ -24,4 +24,4 @@ CSV workbook `HelloWorld#*.csv` 由三个 CSV worksheet 组成：
 
 ## 指南
 
-由于 CSV worksheet 与 Excel worksheet 相同，请直接阅读 [Excel 指南 →]({{< relref "../Excel" >}})
+由于 CSV worksheet 与 Excel worksheet 相同，请直接阅读 [Excel 指南]({{< relref "../Excel" >}})

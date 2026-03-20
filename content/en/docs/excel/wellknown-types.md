@@ -15,7 +15,7 @@ toc: true
 ### Datetime
 
 > [!NOTE]
-> See [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}}) for more details.
+> See [Basics: Datetime]({{< relref "../basics/wellknown-types/#datetime" >}}) for more details.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -80,7 +80,7 @@ message ItemConf {
 ### Date
 
 > [!NOTE]
-> See [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
+> See [Basics: Datetime]({{< relref "../basics/wellknown-types/#datetime" >}}) for more details.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -145,7 +145,7 @@ message ItemConf {
 ### Time
 
 > [!NOTE]
-> See [Basics: Datetime →]({{< relref "../basics/wellknown-types/#datetime" >}})
+> See [Basics: Datetime]({{< relref "../basics/wellknown-types/#datetime" >}}) for more details.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -210,7 +210,7 @@ message ItemConf {
 ## Duration
 
 > [!NOTE]
-> See [Basics: Duration →]({{< relref "../basics/wellknown-types/#duration" >}})
+> See [Basics: Duration]({{< relref "../basics/wellknown-types/#duration" >}}) for more details.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -275,7 +275,7 @@ message ItemConf {
 ## Fraction
 
 > [!NOTE]
-> See [Basics: Fraction →]({{< relref "../basics/wellknown-types/#fraction" >}})
+> See [Basics: Fraction]({{< relref "../basics/wellknown-types/#fraction" >}}) for more details.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -359,7 +359,7 @@ message ItemConf {
 ## Comparator
 
 > [!NOTE]
-> See [Basics: Comparator →]({{< relref "../basics/wellknown-types/#comparator" >}})
+> See [Basics: Comparator]({{< relref "../basics/wellknown-types/#comparator" >}}) for more details.
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -461,7 +461,7 @@ message ItemConf {
 ## Version
 
 > [!NOTE]
-> See [Basics: Version →]({{< relref "../basics/wellknown-types/#version" >}})
+> See [Basics: Version]({{< relref "../basics/wellknown-types/#version" >}}) for more details.
 
 Default `pattern` is: `255.255.255`.
 

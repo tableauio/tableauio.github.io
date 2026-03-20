@@ -13,7 +13,7 @@ toc: true
 ## 概述
 
 名为 "@TABLEAU" 的 metasheet 用于指定 tableau 解析器选项。
-详细信息请参考 [Metasheet →]({{< relref "../excel/metasheet" >}})。
+详细信息请参考 [Metasheet]({{< relref "../excel/metasheet" >}})。
 
 YAML metasheet 示例：
 

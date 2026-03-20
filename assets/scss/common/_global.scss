@@ -180,6 +180,13 @@ body {
   order: 1;
   line-height: 1.6;
 
+  // Links — GitHub style
+  a {
+    color: #0969da;
+    text-decoration: underline solid #0969da;
+    text-underline-offset: 25%;
+  }
+
   // Inline code
   code:not([class]) {
     padding: 0.2em 0.4em;
@@ -270,6 +277,12 @@ body {
   .docs-navigation a {
     font-size: $font-size-base;
   }
+}
+
+.docs-content a:hover,
+.docs-content a:focus {
+  color: #0550ae;
+  text-decoration-color: #0550ae;
 }
 
 .navbar a:hover,

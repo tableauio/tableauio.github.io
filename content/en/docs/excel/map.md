@@ -381,7 +381,7 @@ The `Item` column's type is in-cell map `map<uint32, string>`, as the map value 
 
 > [!TIP]
 > If you want explicit pattern like: `[Key:Value]...`, then set the field property `present` as true.
-> See [Option `present` →]({{< relref "field-property/#option-present" >}}).
+> See [Option `present`]({{< relref "field-property/#option-present" >}}).
 
 Generated:
 
@@ -527,7 +527,7 @@ message ItemConf {
 
 ## Empty key map
 
-If map key is not configured, then it will be treated as default value of map key type. Default value is illustrated at [Scalar types →]({{< relref "../basics/grammar-and-types/#scalar-types" >}}).
+If map key is not configured, then it will be treated as default value of map key type. Default value is illustrated at [Scalar types]({{< relref "../basics/grammar-and-types/#scalar-types" >}}).
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -1014,4 +1014,4 @@ If we want `ItemConf` to generate ordered map accessers, then set
 
 {{< /spreadsheet >}}
 
-More useful options are illustrated at metasheet chapter. [Metasheet @TABLEAU →]({{< relref "metasheet" >}})
+More useful options are illustrated at metasheet chapter. [Metasheet @TABLEAU]({{< relref "metasheet" >}})

@@ -77,4 +77,4 @@ message Apple {
 
 ### Note
 
-Scalar type is usually used to define fields of struct type. [Struct →]({{< relref "struct" >}})
+Scalar type is usually used to define fields of struct type. [Struct]({{< relref "struct" >}})

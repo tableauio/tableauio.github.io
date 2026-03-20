@@ -68,14 +68,14 @@ Select the appropriate tableauc (aka Tableau Compiler) to download:
     </div>
 </div>
 
-> More platforms are available on [tableau releases →](https://github.com/tableauio/tableau/releases).
+> More platforms are available on [tableau releases](https://github.com/tableauio/tableau/releases).
 
 ## 2. Add a workbook
 
 Add **HelloWorld.xlsx** with two sheets:
 
 - `Item`: Copy data below to this worksheet.
-- `@TABLEAU`: Just leave it empty now. It is the tableau [metasheet →]({{< relref "../excel/metasheet" >}}) for specifying parser options.
+- `@TABLEAU`: Just leave it empty now. It is the tableau [metasheet]({{< relref "../excel/metasheet" >}}) for specifying parser options.
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 

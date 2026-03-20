@@ -23,7 +23,7 @@ toc: true
 ## Datetime（日期时间）
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Datetime →]({{< relref "../excel/wellknown-types/#datetime日期时间" >}})
+> 使用示例请参考 [Wellknown 类型：Datetime]({{< relref "../excel/wellknown-types/#datetime日期时间" >}}) 。
 
 | 类型       | 默认值                | 说明                                                                                                        |
 | ---------- | --------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -41,7 +41,7 @@ toc: true
 ## Duration（时长）
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Duration →]({{< relref "../excel/wellknown-types/#duration时长" >}})
+> 使用示例请参考 [Wellknown 类型：Duration]({{< relref "../excel/wellknown-types/#duration时长" >}}) 。
 
 | 类型       | 默认值 | 说明                                                                                                                                                                                                 |
 | ---------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -56,7 +56,7 @@ toc: true
 ## Fraction（分数）
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Fraction →]({{< relref "../excel/wellknown-types/#fraction分数" >}})
+> 使用示例请参考 [Wellknown 类型：Fraction]({{< relref "../excel/wellknown-types/#fraction分数" >}}) 。
 
 分数表示整体的一部分，或更广泛地说，任意数量的等份。详见 [wiki: Fraction](https://en.wikipedia.org/wiki/Fraction)。
 
@@ -74,7 +74,7 @@ message Fraction {
 ## Comparator（比较器）
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Comparator →]({{< relref "../excel/wellknown-types/#comparator比较器" >}})
+> 使用示例请参考 [Wellknown 类型：Comparator]({{< relref "../excel/wellknown-types/#comparator比较器" >}}) 。
 
 comparator 包含一个 `sign`（符号）和一个分数 `value`（值），任意数字或分数均可与之比较。
 
@@ -101,7 +101,7 @@ message Comparator {
 ## Version（版本号）
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Version →]({{< relref "../excel/wellknown-types/#version版本号" >}})
+> 使用示例请参考 [Wellknown 类型：Version]({{< relref "../excel/wellknown-types/#version版本号" >}}) 。
 
 version 表示[点分十进制表示法](https://en.wikipedia.org/wiki/Dot-decimal_notation)的版本号。
 版本格式为：`<MAJOR>.<MINOR>.<PATCH>[.<OTHER>]...`。

@@ -84,8 +84,8 @@ message ItemConf {
 
 Cross-cell struct is usually used together with:
 
-- cross-cell horizontal/vertical map, as map value type. [Map →]({{< relref "map" >}})
-- cross-cell horizontal/vertical list, as list element type. [List →]({{< relref "list" >}})
+- cross-cell horizontal/vertical map, as map value type. [Map]({{< relref "map" >}})
+- cross-cell horizontal/vertical list, as list element type. [List]({{< relref "list" >}})
 
 ## Incell struct
 

@@ -381,7 +381,7 @@ Incell map 有以下几种：
 
 > [!IMPORTANT]
 > 如果希望使用显式模式 `[Key:Value]...`，请将 field property `present` 设置为 true。
-> 参见 [选项 `present` →]({{< relref "field-property/#选项-present" >}})。
+> 参见 [选项 `present`]({{< relref "field-property/#选项-present" >}})。
 
 生成结果：
 
@@ -527,7 +527,7 @@ message ItemConf {
 
 ## 空 key map
 
-如果 map key 未配置，则视为 map key 类型的默认值。默认值参见 [Scalar types →]({{< relref "../basics/grammar-and-types/#scalar-types" >}})。
+如果 map key 未配置，则视为 map key 类型的默认值。默认值参见 [Scalar types]({{< relref "../basics/grammar-and-types/#scalar-types" >}})。
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -1006,4 +1006,4 @@ message ItemConf {
 
 {{< /spreadsheet >}}
 
-更多有用的选项请参考 metasheet 章节。[Metasheet @TABLEAU →]({{< relref "metasheet" >}})
+更多有用的选项请参考 metasheet 章节。[Metasheet @TABLEAU]({{< relref "metasheet" >}})

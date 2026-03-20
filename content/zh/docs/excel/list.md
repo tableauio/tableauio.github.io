@@ -1081,7 +1081,7 @@ message ItemConf {
 ### Incell struct list
 
 > [!NOTE]
-> 更高级的 incell 数据解析，请参考 [高级 predefined incell struct →]({{< relref "struct/#advanced-predefined-incell-struct" >}})。
+> 更高级的 incell 数据解析，请参考 [高级 predefined incell struct]({{< relref "struct/#advanced-predefined-incell-struct" >}})。
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 

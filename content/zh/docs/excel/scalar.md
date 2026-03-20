@@ -77,4 +77,4 @@ message Apple {
 
 ### 说明
 
-Scalar 类型通常用于定义 struct 类型的字段。[Struct →]({{< relref "struct" >}})
+Scalar 类型通常用于定义 struct 类型的字段。[Struct]({{< relref "struct" >}})

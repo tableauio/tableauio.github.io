@@ -41,7 +41,7 @@ enum FruitType {
 
 > 注意：枚举类型必须预先定义。
 
-了解预定义 **Enum** 类型的详细信息：[预定义类型 →]({{< relref "predefined-types" >}})。
+了解预定义 **Enum** 类型的详细信息：[预定义类型]({{< relref "predefined-types" >}})。
 
 ## 校验
 
