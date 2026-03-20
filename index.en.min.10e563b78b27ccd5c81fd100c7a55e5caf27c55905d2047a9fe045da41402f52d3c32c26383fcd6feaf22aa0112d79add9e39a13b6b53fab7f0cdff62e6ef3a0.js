@@ -250,8 +250,8 @@ For example, a worksheet ItemType in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemType @TABLEAU Name Alias ITEM_TYPE_FRUIT Fruit ITEM_TYPE_EQUIP Equip ITEM_TYPE_BOX Box Sheet Mode ItemType MODE_ENUM_TYPE Generated:
 hello_world.proto `}).add({id:144,href:"/docs/excel/enum/#multiple-enum-types-in-sheet",title:"Enum / Multiple enum types in sheet ",description:"Excel enum guide.",content:` A block defines an enum type, and it is a series of contiguous non-empty rows. So different blocks are seperated by one or more empty rows.
 You should specify Mode option to MODE_ENUM_TYPE_MULTI in metasheet @TABLEAU.
-For example, a worksheet ItemType in HelloWorld.xlsx:
-HelloWorld.xlsx&nbsp; ItemType @TABLEAU CatType CatType note Number Name Alias 1 CAT_TYPE_RAGDOLL Ragdoll 2 CAT_TYPE_PERSIAN Persian 3 CAT_TYPE_SPHYNX Sphynx DogType DogType note Number Name Alias 1 DOG_TYPE_POODLE Poodle 2 DOG_TYPE_BULLDOG Bulldog 3 DOG_TYPE_DACHSHUND Dachshund BirdType BirdType note Number Name Alias 1 CANARY Canary 2 WOODPECKER Woodpecker 3 OWL Owl Sheet Mode ItemType MODE_ENUM_TYPE_MULTI Generated:
+For example, a worksheet Enum in HelloWorld.xlsx:
+HelloWorld.xlsx&nbsp; Enum @TABLEAU CatType CatType note Number Name Alias 1 CAT_TYPE_RAGDOLL Ragdoll 2 CAT_TYPE_PERSIAN Persian 3 CAT_TYPE_SPHYNX Sphynx DogType DogType note Number Name Alias 1 DOG_TYPE_POODLE Poodle 2 DOG_TYPE_BULLDOG Bulldog 3 DOG_TYPE_DACHSHUND Dachshund BirdType BirdType note Number Name Alias 1 CANARY Canary 2 WOODPECKER Woodpecker 3 OWL Owl Sheet Mode Enum MODE_ENUM_TYPE_MULTI Generated:
 hello_world.proto `}).add({id:145,href:"/docs/excel/enum/#specify-number-column",title:"Enum / Specify Number column ",description:"Excel enum guide.",content:` In Number column, you can specify custom unique enum value number.
 ⓘ If you not specify default enum value "0", it will be auto generated. And the default enum value name pattern is: "{ENUM_TYPE}_INVALID". For example, a worksheet ItemType in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemType @TABLEAU Number Name Alias 0 ITEM_TYPE_UNKNOWN Unknown 10 ITEM_TYPE_FRUIT Fruit 20 ITEM_TYPE_EQUIP Equip 30 ITEM_TYPE_BOX Box Sheet Mode ItemType MODE_ENUM_TYPE Generated:
@@ -292,8 +292,8 @@ For example, a worksheet Item in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Item @TABLEAU Name Type ID uint32 Num int32 FruitType enum&lt;.FruitType&gt; Feature []int32 Prop map&lt;int32, string&gt; Detail {enum&lt;.ItemType&gt; Type, string Name, string Desc}Detail Sheet Mode Item MODE_STRUCT_TYPE Generated:
 hello_world.proto `}).add({id:156,href:"/docs/excel/struct/#multiple-struct-types-in-sheet",title:"Struct / Multiple struct types in sheet ",description:"Excel struct guide.",content:` A block defines a struct type, and it is a series of contiguous non-empty rows. So different blocks are seperated by one or more empty rows.
 You should specify Mode option to MODE_STRUCT_TYPE_MULTI in metasheet @TABLEAU.
-For example, a worksheet Item in HelloWorld.xlsx:
-HelloWorld.xlsx&nbsp; Item @TABLEAU Tree Tree note Name Type ID uint32 Num int32 Pet Pet note Name Type Kind int32 Tip []string FruitShop FruitShop note Name Type FruitType enum&lt;.FruitType&gt; Prop map&lt;int32, string&gt; Sheet Mode Item MODE_STRUCT_TYPE_MULTI Generated:
+For example, a worksheet Struct in HelloWorld.xlsx:
+HelloWorld.xlsx&nbsp; Struct @TABLEAU Tree Tree note Name Type ID uint32 Num int32 Pet Pet note Name Type Kind int32 Tip []string FruitShop FruitShop note Name Type FruitType enum&lt;.FruitType&gt; Prop map&lt;int32, string&gt; Sheet Mode Struct MODE_STRUCT_TYPE_MULTI Generated:
 hello_world.proto `}).add({id:157,href:"/docs/excel/struct/#specify-number-column",title:"Struct / Specify Number column ",description:"Excel struct guide.",content:` In Number column, you can specify custom unique field number.
 For example, a worksheet Item in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Item @TABLEAU Number Name Type 1 ID uint32 20 Num int32 30 FruitType enum&lt;.FruitType&gt; Sheet Mode Item MODE_STRUCT_TYPE Generated:
@@ -330,8 +330,8 @@ Note Duration
 duration
 Note Sheet Mode Target MODE_UNION_TYPE Generated:
 hello_world.proto `}).add({id:165,href:"/docs/excel/union/#multiple-union-types-in-sheet",title:"Union / Multiple union types in sheet ",description:"Excel union guide.",content:` You should specify Mode option to MODE_UNION_TYPE_MULTI in metasheet @TABLEAU.
-For example, a worksheet Target in HelloWorld.xlsx:
-HelloWorld.xlsx&nbsp; Target @TABLEAU WishTarget WishTarget note Name Alias Field1 Field2 Field3 Higher WishHigher Height
+For example, a worksheet Union in HelloWorld.xlsx:
+HelloWorld.xlsx&nbsp; Union @TABLEAU WishTarget WishTarget note Name Alias Field1 Field2 Field3 Higher WishHigher Height
 int32 Richer WishRicher ID
 uint32 Bank
 map&lt;int32, string&gt; HeroTarget HeroTarget note Name Alias Field1 Field2 Field3 StarUp HeroStarUp ID
@@ -344,7 +344,7 @@ int32 Damage
 int64 PVE BattlePVE HeroID
 []int32 Dungeon
 map&lt;int32, int64&gt; Boss
-{uint32 ID, int64 Damage}Boss Sheet Mode Target MODE_UNION_TYPE_MULTI Generated:
+{uint32 ID, int64 Damage}Boss Sheet Mode Union MODE_UNION_TYPE_MULTI Generated:
 hello_world.proto `}).add({id:166,href:"/docs/excel/union/#specify-number-column",title:"Union / Specify Number column ",description:"Excel union guide.",content:` In Number column, you can specify custom unique field number and corresponding enum value number.
 For example, a worksheet Target in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Target @TABLEAU Number Name Alias Field1 Field2 Field3 1 PVP AliasPVP ID
