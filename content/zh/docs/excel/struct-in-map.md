@@ -10,9 +10,9 @@ weight: 7203
 toc: true
 ---
 
-## 纵向 map 中的嵌套
+## 垂直 map 中的嵌套
 
-### 纵向 map 中的 struct
+### 垂直 map 中的 struct
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -81,7 +81,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 纵向 map 中的 predefined struct
+### 垂直 map 中的 predefined struct
 
 *common.proto* 中预定义的 `Item`：
 
@@ -156,7 +156,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 纵向 map 中的 incell struct
+### 垂直 map 中的 incell struct
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 

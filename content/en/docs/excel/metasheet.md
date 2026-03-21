@@ -674,7 +674,7 @@ Examples:
 
 - `ID`
 - `ID@Item`
-- `ID<ID>@Item`: result array by ID.
+- `ID<ID>@Item`: sort result array by ID.
 - `ID<Type,Priority>@Item`: sort result array by Type and Priority.
 - `ID, Name@AwardItem`
 - `ID@Item, Name@AwardItem`
@@ -695,7 +695,7 @@ Examples:
 
 - `(ID,Name)`: index name not set, then determined by parent struct type name.
 - `(ID,Name)@AwardItem`
-- `(ID,Name)<ID>`: result array by ID.
+- `(ID,Name)<ID>`: sort result array by ID.
 - `(ID,Type)<Type,Priority>@Item`: sort result array by Type and Priority.
 - `ID@Item, (ID,Name)@AwardItem`: one single-column index and one multi-column index.
 

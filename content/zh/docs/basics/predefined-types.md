@@ -53,8 +53,8 @@ message Prop {
 
 - Excel/CSV
   - `struct`：[Predefined-struct](../../excel/struct/#predefined-struct)
-  - `list`：[Vertical predefined-struct list](../../excel/list/#纵向-predefined-struct-list)
-  - `map`：[Vertical predefined-struct map](../../excel/map/#纵向-predefined-struct-map)
+  - `list`：[Vertical predefined-struct list](../../excel/list/#垂直-predefined-struct-list)
+  - `map`：[Vertical predefined-struct map](../../excel/map/#垂直-predefined-struct-map)
 - XML
   - `struct`：[Predefined-struct](../../xml/struct/#predefined-struct)
   - `list`：[Predefined struct list](../../xml/list/#predefined-struct-list)

@@ -39,7 +39,7 @@ toc: true
 | `Sep`       | 分隔符，用于：<br>    1. 分隔 in-cell list 的元素。<br>    2. 分隔 in-cell map 的条目。<br>默认值：`,`。 |
 | `Subsep`    | 子分隔符，用于分隔 in-cell map 的 Key-Value 对。<br>默认值：`:`。                                        |
 | `Nested`    | **namerow** 的嵌套命名方式。<br>默认值：`false`。                                                        |
-| `Layout`    | Incell（单元格内）、vertical（跨单元格纵向）或 horizontal（跨单元格横向）。                              |
+| `Layout`    | Incell（单元格内）、vertical（跨单元格垂直）或 horizontal（跨单元格水平）。                              |
 | `Transpose` | 对指定 sheet 进行行列转置。                                                                              |
 {.table-striped .table-hover}
 

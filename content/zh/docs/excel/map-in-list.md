@@ -10,9 +10,9 @@ weight: 7401
 toc: true
 ---
 
-## 纵向 list 中的嵌套
+## 垂直 list 中的嵌套
 
-### 纵向 list 中的横向 map
+### 垂直 list 中的水平 map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -82,7 +82,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 纵向 keyed-list 中的纵向 map
+### 垂直 keyed-list 中的垂直 map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -151,7 +151,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 纵向 list 中的 incell map
+### 垂直 list 中的 incell map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -216,9 +216,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## 横向 list 的第一个字段
+## 水平 list 的第一个字段
 
-### 横向 list 中的横向 map
+### 水平 list 中的水平 map
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -284,7 +284,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 横向 list 中的 predefined struct map
+### 水平 list 中的 predefined struct map
 
 *common.proto* 中预定义的 `Item`：
 

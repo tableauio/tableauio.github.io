@@ -1,7 +1,7 @@
 ---
 title: "Map（映射）"
-description: "Excel map 使用指南。"
-lead: "本文说明 Excel map 类型的各种特性。"
+description: "映射使用指南。"
+lead: "Map (映射）表示一种“键值对”（Key-Value Pair）的数据结构，键（Key）必须唯一，用于快速检索。"
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2022-02-26T13:59:39+08:00
 draft: false
@@ -10,24 +10,24 @@ weight: 7106
 toc: true
 ---
 
-## 横向 map（Horizontal map）
+## 水平映射（Horizontal map）
 
 > [!IMPORTANT]
-> 横向 map 的列名中，map 元素名**必须**带有从 `1` 开始的数字后缀。
+> 水平映射的列名中，map 元素名**必须**带有从 `1` 开始的数字后缀。
 >
 > 例如：`Item1ID`、`Item1Name`、`Item2ID`、`Item2Name`（struct map，元素名：`Item`）。
 
-横向 map 有以下几种：
+水平 map 有以下几种：
 
-1. 横向 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
-2. 横向 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
-3. 横向 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
+1. 水平 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
+2. 水平 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
+3. 水平 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
 
-### 横向 scalar map
+### 水平标量映射
 
 无需单独支持，请使用 `map<int32, Item>` 代替。
 
-### 横向 struct map
+### 水平结构体映射
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -99,7 +99,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 横向 predefined-struct map
+### 水平预定义结构体映射
 
 *common.proto* 中预定义的 `Item`：
 
@@ -177,19 +177,19 @@ message ItemConf {
 
 {{< /details >}}
 
-## 纵向 map（Vertical map）
+## 垂直映射（Vertical map）
 
-纵向 map 有以下几种：
+垂直映射有以下几种：
 
-1. 纵向 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
-2. 纵向 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
-3. 纵向 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
+1. 垂直 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
+2. 垂直 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
+3. 垂直 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
 
-### 纵向 scalar map
+### 垂直标量映射
 
 无需单独支持，请使用 `map<int32, Item>` 代替。
 
-### 纵向 struct map
+### 垂直结构体映射
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -267,7 +267,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 纵向 predefined-struct map
+### 垂直预定义结构体映射
 
 *common.proto* 中预定义的 `Item`：
 
@@ -347,14 +347,14 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell map
+## 单元格内映射（Incell map）
 
-Incell map 有以下几种：
+单元格内映射有以下几种：
 
 1. Incell **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
 2. Incell **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
 
-### Incell scalar map
+### 单元格内标量映射
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -421,7 +421,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### Incell enum map
+### 单元格内枚举映射
 
 对于 incell map，key 和 value 都可以是枚举类型。
 
@@ -530,7 +530,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## 空 key map
+## 空键映射（Empty key map）
 
 如果 map key 未配置，则视为 map key 类型的默认值。默认值参见 [Scalar types]({{< relref "../basics/grammar-and-types/#scalar-types" >}})。
 
@@ -606,7 +606,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Enum key map
+## 枚举键映射（Enum key map）
 
 根据 protobuf 文档对 [map key type](https://developers.google.com/protocol-buffers/docs/proto3#maps) 的限制：
 
@@ -711,7 +711,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## 横向 map 大小
+## 水平映射大小
 
 ### 动态大小
 
@@ -719,7 +719,7 @@ message ItemConf {
 
 ### 固定大小
 
-#### 隐式固定大小（Implicit fixed size）
+#### 隐式固定大小
 
 Map 大小由名称行中最大存在的 map 条目数量自动确定。
 
@@ -873,7 +873,7 @@ message ItemConf {
 
 ## 高级特性
 
-### 横向跳列 map（Horizontal column-skipped map）
+### 水平跳列映射
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -973,42 +973,3 @@ message ItemConf {
 ```
 
 {{< /details >}}
-
-### Ordered-map
-
-在 metasheet `@TABLEAU` 中将 `OrderedMap` 选项设置为 `true`，则会生成 ordered map 访问器。此功能由 [tableauio/loader](https://github.com/tableauio/loader) 提供支持。目前支持的编程语言：
-
-- [x] C++
-- [x] Go
-- [ ] C#
-- [ ] JS/TS
-
-#### 示例
-
-如果希望 `ItemConf` 生成 ordered map 访问器，则在 metasheet `@TABLEAU` 中将 `OrderedMap` 选项设置为 `true`：
-
-{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
-
-{{< sheet colored >}}
-
-| ID                | Name        |
-| ----------------- | ----------- |
-| map<uint32, Item> | string      |
-| Item's ID         | Item's Name |
-| 1                 | Apple       |
-| 2                 | Orange      |
-| 3                 | Banana      |
-
-{{< /sheet >}}
-
-{{< sheet colored1 >}}
-
-| Sheet    | OrderedMap |
-| -------- | ---------- |
-| ItemConf | true       |
-
-{{< /sheet >}}
-
-{{< /spreadsheet >}}
-
-更多有用的选项请参考 metasheet 章节。[Metasheet @TABLEAU]({{< relref "metasheet" >}})
