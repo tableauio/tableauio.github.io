@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 8.4 180 180" width="512" height="512">
+  <defs>
+    <!-- Modern Blue Gradient -->
+    <linearGradient id="mainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4285f4" />
+      <stop offset="100%" stop-color="#1967d2" />
+    </linearGradient>
+
+    <!-- Drop Shadow for the 3D Overlap Effect -->
+    <filter id="dropShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#000000" flood-opacity="0.8" />
+    </filter>
+
+    <!-- Radial gradient to fade shadow away from the center crossing -->
+    <radialGradient id="centerFade" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="white" />
+      <stop offset="40%" stop-color="white" />
+      <stop offset="100%" stop-color="black" />
+    </radialGradient>
+
+    <!-- Mask to restrict shadow to the stroke itself and fade it from center -->
+    <mask id="fadeMask">
+      <rect x="0" y="0" width="200" height="200" fill="black" />
+      <path d="M 100 149 
+               C 120 116, 166 116, 166 149 
+               C 166 182, 120 182, 100 149 
+               C 80 116, 34 116, 34 149 
+               C 34 182, 80 182, 100 149 Z" 
+            fill="none" stroke="url(#centerFade)" stroke-width="14" stroke-linejoin="round" />
+    </mask>
+  </defs>
+
+  <!-- Document Fill -->
+  <path d="M 50 122 L 50 32 C 50 25.4 55.4 20 62 20 L 114 20 L 150 56 L 150 122 L 100 145 Z" fill="#ffffff" />
+  
+  <!-- Document Outline -->
+  <path d="M 50 122 L 50 32 C 50 25.4 55.4 20 62 20 L 114 20 L 150 56 L 150 122" fill="none" stroke="#757575" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Document Fold -->
+  <path d="M 114 20 L 114 44 C 114 50.6 119.4 56 126 56 L 150 56" fill="none" stroke="#757575" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Document Lines -->
+  <line x1="74" y1="78" x2="126" y2="78" stroke="#757575" stroke-width="8" stroke-linecap="round" />
+  <line x1="74" y1="100" x2="106" y2="100" stroke="#757575" stroke-width="8" stroke-linecap="round" />
+
+  <!-- Infinity Symbol: Full Continuous Base -->
+  <!-- Draws the entire figure 8 smoothly to ensure perfect connections at the ends -->
+  <path d="M 100 149 
+           C 120 116, 166 116, 166 149 
+           C 166 182, 120 182, 100 149 
+           C 80 116, 34 116, 34 149 
+           C 34 182, 80 182, 100 149 Z" 
+        fill="none" stroke="url(#mainGrad)" stroke-width="14" stroke-linejoin="round" />
+
+  <!-- Infinity Symbol: Overlapping Top Layer -->
+  <!-- This layer sits on top and casts a shadow, masked to only show at the center crossing -->
+  <path d="M 34 149 
+           C 34 182, 80 182, 100 149 
+           C 120 116, 166 116, 166 149" 
+        fill="none" stroke="url(#mainGrad)" stroke-width="14" stroke-linecap="round" filter="url(#dropShadow)" mask="url(#fadeMask)" />
+</svg>

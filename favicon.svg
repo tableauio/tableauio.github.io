@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="27 76 146 146" width="512" height="512">
+  <defs>
+    <!-- Modern Blue Gradient -->
+    <linearGradient id="mainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4285f4" />
+      <stop offset="100%" stop-color="#1967d2" />
+    </linearGradient>
+
+    <!-- Drop Shadow for the 3D Overlap Effect -->
+    <filter id="dropShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#000000" flood-opacity="0.8" />
+    </filter>
+
+    <!-- Radial gradient to fade shadow away from the center crossing -->
+    <radialGradient id="centerFade" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="white" />
+      <stop offset="40%" stop-color="white" />
+      <stop offset="100%" stop-color="black" />
+    </radialGradient>
+
+    <!-- Mask to restrict shadow to the stroke itself and fade it from center -->
+    <mask id="fadeMask">
+      <rect x="0" y="0" width="200" height="200" fill="black" />
+      <path d="M 100 149 
+               C 120 116, 166 116, 166 149 
+               C 166 182, 120 182, 100 149 
+               C 80 116, 34 116, 34 149 
+               C 34 182, 80 182, 100 149 Z" 
+            fill="none" stroke="url(#centerFade)" stroke-width="14" stroke-linejoin="round" />
+    </mask>
+  </defs>
+
+  <!-- Infinity Symbol: Full Continuous Base -->
+  <path d="M 100 149 
+           C 120 116, 166 116, 166 149 
+           C 166 182, 120 182, 100 149 
+           C 80 116, 34 116, 34 149 
+           C 34 182, 80 182, 100 149 Z" 
+        fill="none" stroke="url(#mainGrad)" stroke-width="14" stroke-linejoin="round" />
+
+  <!-- Infinity Symbol: Overlapping Top Layer -->
+  <path d="M 34 149 
+           C 34 182, 80 182, 100 149 
+           C 120 116, 166 116, 166 149" 
+        fill="none" stroke="url(#mainGrad)" stroke-width="14" stroke-linecap="round" filter="url(#dropShadow)" mask="url(#fadeMask)" />
+</svg>
