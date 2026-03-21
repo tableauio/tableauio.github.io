@@ -13,7 +13,7 @@ description = "Tableau can convert Excel/CSV/XML/YAML to multiple formats: JSON,
 tableaucVersion = "v0.15.1"
 
 ## Open Graph
-images = ["tableau-logo.png"]
+images = ["tableau-logo.svg"]
 ogLocale = "en_US"
 domainTLD = "tableauio.github.io"
 titleHome = "Tableau"
@@ -31,10 +31,10 @@ schemaAuthorTwitter = "https://twitter.com/wenchyzhu"
 schemaAuthorLinkedIn = "https://www.linkedin.com/in/wenchyzhu/"
 schemaAuthorGitHub = "https://github.com/wenchyzhu"
 schemaLocale = "en-US"
-schemaLogo = "tableau-logo.png"
+schemaLogo = "tableau-logo.svg"
 schemaLogoWidth = 512
 schemaLogoHeight = 512
-schemaImage = "tableau-logo.png"
+schemaImage = "tableau-logo.svg"
 schemaImageWidth = 1280
 schemaImageHeight = 640
 schemaTwitter = "https://twitter.com/tableauio"
