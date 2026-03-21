@@ -89,7 +89,7 @@
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Layout&lt;/code>&lt;/td>
-&lt;td>Incell（单元格内）、vertical（跨单元格纵向）或 horizontal（跨单元格横向）。&lt;/td>
+&lt;td>Incell（单元格内）、vertical（跨单元格垂直）或 horizontal（跨单元格水平）。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Transpose&lt;/code>&lt;/td>
@@ -232,7 +232,7 @@ FOO_BAR_SECOND_VALUE = 2;
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>横向布局（Horizontal layout）&lt;/td>
+&lt;td>水平布局（Horizontal layout）&lt;/td>
 &lt;td>每个标量字段占一个单元格。&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -251,11 +251,11 @@ FOO_BAR_SECOND_VALUE = 2;
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>横向布局（Horizontal layout）&lt;/td>
+&lt;td>水平布局（Horizontal layout）&lt;/td>
 &lt;td>list 的默认布局。&lt;br>元素类型可以是 &lt;strong>struct&lt;/strong> 或&lt;strong>标量&lt;/strong>。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>纵向布局（Vertical layout）&lt;/td>
+&lt;td>垂直布局（Vertical layout）&lt;/td>
 &lt;td>list 的元素类型应为 &lt;strong>struct&lt;/strong>。&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -282,11 +282,11 @@ FOO_BAR_SECOND_VALUE = 2;
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>横向布局（Horizontal layout）&lt;/td>
+&lt;td>水平布局（Horizontal layout）&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>纵向布局（Vertical layout）&lt;/td>
+&lt;td>垂直布局（Vertical layout）&lt;/td>
 &lt;td>map 的默认布局。&lt;/td>
 &lt;/tr>
 &lt;tr>
