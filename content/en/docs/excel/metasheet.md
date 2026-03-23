@@ -752,10 +752,53 @@ Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 
 {{< sheet colored1 >}}
 
-| Sheet    | OrderedIndex                                   |     |
-| -------- | ---------------------------------------------- | --- |
-| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem |     |
-| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |     |
+| Sheet    | OrderedIndex                                                         |     |
+| -------- | -------------------------------------------------------------------- | --- |
+| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem                       |     |
+| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop, (ID,Type)<Type>@Shop |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Example with sorting: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx,
+with sorted result arrays using `<>` syntax:
+
+- *ItemConf*: ordered index sorted by `Name` column.
+- *ShopConf*: ordered index sorted by `Type` and `ID` columns.
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID               | Name        | Desc                          |
+| ---------------- | ----------- | ----------------------------- |
+| map<int32, Item> | string      | string                        |
+| Item's ID        | Item's name | Item's desc                   |
+| 1                | Apple       | A kind of delicious fruit.    |
+| 2                | Orange      | A kind of sour fruit.         |
+| 3                | Banana      | A kind of calorie-rich fruit. |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID          | Type        | Desc          |
+| ----------- | ----------- | ------------- |
+| [Shop]int32 | int32       | string        |
+| Shop's ID   | Shop's type | Shop's desc   |
+| 1           | 1           | Shoes shop.   |
+| 2           | 1           | T-Shirt shop. |
+| 3           | 2           | Fruite shop.  |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedIndex                                                           |     |
+| -------- | ---------------------------------------------------------------------- | --- |
+| ItemConf | ID<Name>@Item, (ID,Name)<Name>@SpecialItem                             |     |
+| ShopConf | ID<Type,ID>@Shop, (ID,Type)<Type,ID>@SpecialShop, (ID,Type)<Type>@Shop |     |
 
 {{< /sheet >}}
 
@@ -780,9 +823,131 @@ Examples:
 - `ID, Name@AwardItem`
 - `ID@Item, Name@AwardItem`
 
+Example with sorting: a worksheet *ItemConf* in HelloWorld.xlsx, with sorted
+result array using `<>` syntax:
+
+- `ID<Name>@Item`: single-column ordered index on `ID`, result array sorted by `Name`.
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID               | Name        | Desc                          |
+| ---------------- | ----------- | ----------------------------- |
+| map<int32, Item> | string      | string                        |
+| Item's ID        | Item's name | Item's desc                   |
+| 1                | Apple       | A kind of delicious fruit.    |
+| 2                | Orange      | A kind of sour fruit.         |
+| 3                | Banana      | A kind of calorie-rich fruit. |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedIndex  |
+| -------- | ------------- |
+| ItemConf | ID<Name>@Item |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
 ### Multi-column OrderedIndex
 
-> ⚠️ Not supported yet.
+Format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.
+
+Multi-column OrderedIndex (aka Composite OrderedIndex) is composed of **multiple columns in the same struct** (in list or map) to increase query speed, and the result is returned as an **ordered array**.
+
+The sign `@` is the separator between enclosed column names by parentheses and
+index name. If `IndexName` is not set, it will be this column's parent struct
+type name. One or more indexes can be specified by comma-separated rule. The
+columns in the angle brackets `<>` specify the sorting columns, which the
+**result array** of same index key sort by.
+
+Examples:
+
+- `(ID,Name)`: index name not set, then determined by parent struct type name.
+- `(ID,Name)@AwardItem`
+- `(ID,Name)<ID>`: sort result array by ID.
+- `(ID,Type)<Type>@Shop`: sort result array by Type.
+- `(ID,Type)<Type,Priority>@Item`: sort result array by Type and Priority.
+- `ID@Item, (ID,Name)@AwardItem`: one single-column ordered index and one multi-column ordered index.
+
+#### Example: Multi-column OrderedIndex
+
+Two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
+
+- *ItemConf*: multi-column ordered index on columns of the same struct as **map value**.
+- *ShopConf*: multi-column ordered index on columns of the same struct as **list element**.
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID               | Name        | Desc                          |
+| ---------------- | ----------- | ----------------------------- |
+| map<int32, Item> | string      | string                        |
+| Item's ID        | Item's name | Item's desc                   |
+| 1                | Apple       | A kind of delicious fruit.    |
+| 2                | Orange      | A kind of sour fruit.         |
+| 3                | Banana      | A kind of calorie-rich fruit. |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID          | Type        | Desc          |
+| ----------- | ----------- | ------------- |
+| [Shop]int32 | int32       | string        |
+| Shop's ID   | Shop's type | Shop's desc   |
+| 1           | 1           | Shoes shop.   |
+| 2           | 1           | T-Shirt shop. |
+| 3           | 2           | Fruite shop.  |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedIndex                                |
+| -------- | ------------------------------------------- |
+| ItemConf | (ID,Name)@SpecialItem                       |
+| ShopConf | (ID,Type)@SpecialShop, (ID,Type)<Type>@Shop |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+#### Example: Multi-column OrderedIndex with `<>` syntax
+
+A worksheet *ShopConf* in HelloWorld.xlsx, with sorted
+result array using `<>` syntax:
+
+- `(ID,Type)<Type>@Shop`: multi-column ordered index on `(ID, Type)`, result array sorted by `Type`.
+- `(ID,Type)<Type,ID>@SpecialShop`: multi-column ordered index on `(ID, Type)`, result array sorted by `Type` then `ID`.
+
+{{< spreadsheet "HelloWorld.xlsx" ShopConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID          | Type        | Desc          |
+| ----------- | ----------- | ------------- |
+| [Shop]int32 | int32       | string        |
+| Shop's ID   | Shop's type | Shop's desc   |
+| 1           | 1           | Shoes shop.   |
+| 2           | 1           | T-Shirt shop. |
+| 3           | 2           | Fruite shop.  |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedIndex                                         |
+| -------- | ---------------------------------------------------- |
+| ShopConf | (ID,Type)<Type>@Shop, (ID,Type)<Type,ID>@SpecialShop |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 ## Option `Patch`
 

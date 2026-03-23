@@ -741,10 +741,53 @@ message ZoneConf {
 
 {{< sheet colored1 >}}
 
-| Sheet    | OrderedIndex                                   |     |
-| -------- | ---------------------------------------------- | --- |
-| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem |     |
-| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |     |
+| Sheet    | OrderedIndex                                                         |     |
+| -------- | -------------------------------------------------------------------- | --- |
+| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem                       |     |
+| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop, (ID,Type)<Type>@Shop |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+带排序的示例：*HelloWorld.xlsx* 中的两个 worksheet *ItemConf* 和 *ShopConf*，
+使用 `<>` 语法对结果数组进行排序：
+
+- *ItemConf*：ordered index 结果按 `Name` 列排序。
+- *ShopConf*：ordered index 结果按 `Type` 和 `ID` 列排序。
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID               | Name        | Desc                          |
+| ---------------- | ----------- | ----------------------------- |
+| map<int32, Item> | string      | string                        |
+| Item's ID        | Item's name | Item's desc                   |
+| 1                | Apple       | A kind of delicious fruit.    |
+| 2                | Orange      | A kind of sour fruit.         |
+| 3                | Banana      | A kind of calorie-rich fruit. |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID          | Type        | Desc          |
+| ----------- | ----------- | ------------- |
+| [Shop]int32 | int32       | string        |
+| Shop's ID   | Shop's type | Shop's desc   |
+| 1           | 1           | Shoes shop.   |
+| 2           | 1           | T-Shirt shop. |
+| 3           | 2           | Fruite shop.  |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedIndex                                                           |     |
+| -------- | ---------------------------------------------------------------------- | --- |
+| ItemConf | ID<Name>@Item, (ID,Name)<Name>@SpecialItem                             |     |
+| ShopConf | ID<Type,ID>@Shop, (ID,Type)<Type,ID>@SpecialShop, (ID,Type)<Type>@Shop |     |
 
 {{< /sheet >}}
 
@@ -765,9 +808,125 @@ message ZoneConf {
 - `ID, Name@AwardItem`
 - `ID@Item, Name@AwardItem`
 
+带排序的示例：*HelloWorld.xlsx* 中的 worksheet *ItemConf*，使用 `<>` 语法对结果数组进行排序：
+
+- `ID<Name>@Item`：对 `ID` 列建立单列 ordered index，结果数组按 `Name` 排序。
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID               | Name        | Desc                          |
+| ---------------- | ----------- | ----------------------------- |
+| map<int32, Item> | string      | string                        |
+| Item's ID        | Item's name | Item's desc                   |
+| 1                | Apple       | A kind of delicious fruit.    |
+| 2                | Orange      | A kind of sour fruit.         |
+| 3                | Banana      | A kind of calorie-rich fruit. |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedIndex  |
+| -------- | ------------- |
+| ItemConf | ID<Name>@Item |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
 ### 多列 OrderedIndex
 
-> ⚠️ 暂不支持。
+格式：`(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`。
+
+多列 OrderedIndex（又称 Composite OrderedIndex）由同一 struct（list 或 map 中）的**多列**组成，以提高查询速度，查询结果以**有序数组**形式返回。
+
+`@` 是括号内列名和 index 名之间的分隔符。如果未设置 `IndexName`，则使用该列的父 struct 类型名。可以用逗号分隔指定一个或多个 index。尖括号 `<>` 中的列指定排序列，**结果数组**按相同 index key 排序。
+
+示例：
+
+- `(ID,Name)`：未设置 index 名，由父 struct 类型名决定。
+- `(ID,Name)@AwardItem`
+- `(ID,Name)<ID>`：结果数组按 ID 排序。
+- `(ID,Type)<Type>@Shop`：结果数组按 Type 排序。
+- `(ID,Type)<Type,Priority>@Item`：结果数组按 Type 和 Priority 排序。
+- `ID@Item, (ID,Name)@AwardItem`：一个单列 ordered index 和一个多列 ordered index。
+
+#### 示例：多列 OrderedIndex
+
+*HelloWorld.xlsx* 中的两个 worksheet *ItemConf* 和 *ShopConf*：
+
+- *ItemConf*：对 **map value** 同一 struct 的列建立多列 ordered index。
+- *ShopConf*：对 **list element** 同一 struct 的列建立多列 ordered index。
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID               | Name        | Desc                          |
+| ---------------- | ----------- | ----------------------------- |
+| map<int32, Item> | string      | string                        |
+| Item's ID        | Item's name | Item's desc                   |
+| 1                | Apple       | A kind of delicious fruit.    |
+| 2                | Orange      | A kind of sour fruit.         |
+| 3                | Banana      | A kind of calorie-rich fruit. |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID          | Type        | Desc          |
+| ----------- | ----------- | ------------- |
+| [Shop]int32 | int32       | string        |
+| Shop's ID   | Shop's type | Shop's desc   |
+| 1           | 1           | Shoes shop.   |
+| 2           | 1           | T-Shirt shop. |
+| 3           | 2           | Fruite shop.  |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedIndex                                |
+| -------- | ------------------------------------------- |
+| ItemConf | (ID,Name)@SpecialItem                       |
+| ShopConf | (ID,Type)@SpecialShop, (ID,Type)<Type>@Shop |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+#### 示例：多列 OrderedIndex 使用 `<>` 语法
+
+*HelloWorld.xlsx* 中的 worksheet *ShopConf*，使用 `<>` 语法对结果数组进行排序：
+
+- `(ID,Type)<Type>@Shop`：对 `(ID, Type)` 列建立多列 ordered index，结果数组按 `Type` 排序。
+- `(ID,Type)<Type,ID>@SpecialShop`：对 `(ID, Type)` 列建立多列 ordered index，结果数组按 `Type` 然后 `ID` 排序。
+
+{{< spreadsheet "HelloWorld.xlsx" ShopConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID          | Type        | Desc          |
+| ----------- | ----------- | ------------- |
+| [Shop]int32 | int32       | string        |
+| Shop's ID   | Shop's type | Shop's desc   |
+| 1           | 1           | Shoes shop.   |
+| 2           | 1           | T-Shirt shop. |
+| 3           | 2           | Fruite shop.  |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedIndex                                         |
+| -------- | ---------------------------------------------------- |
+| ShopConf | (ID,Type)<Type>@Shop, (ID,Type)<Type,ID>@SpecialShop |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
 
 ## 选项 `Patch`
 
