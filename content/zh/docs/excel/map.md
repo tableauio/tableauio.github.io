@@ -725,7 +725,8 @@ Map 大小由名称行中最大存在的 map 条目数量自动确定。
 
 在下面的示例中，虽然第二个 map 条目 **Item2** 为空，但由于 field property `fixed` 设置为 `true`，这是合法的。此外，**Item2** 也会作为空 map 条目生成，可以在生成的 *ItemConf.json* 文件中看到。
 
-{{< alert icon="👉" context="info" text="如果向 map 中插入多个空 map 条目，实际上只会生成一个空 map 条目，因为所有空 map 条目的 key 相同。这与 list 不同，请特别注意。" />}}
+> [!CAUTION]
+> 若插入多个空 map 条目，实际上只会生成一个——因为所有空 map 条目的 key 相同。这与 list 的行为不同，请特别注意。
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -803,7 +804,8 @@ Map 大小由 field property `size` 显式设置。
 
 在下面的示例中，field property `size` 设置为 2，则第二个 map 条目 **Item2** 之后的所有 map 条目都会被截断。此外，**Item2** 也会作为空 map 条目生成，可以在生成的 *ItemConf.json* 文件中看到。
 
-{{< alert icon="👉" context="info" text="如果向 map 中插入多个空 map 条目，实际上只会生成一个空 map 条目，因为所有空 map 条目的 key 相同。这与 list 不同，请特别注意。" />}}
+> [!CAUTION]
+> 若插入多个空 map 条目，实际上只会生成一个——因为所有空 map 条目的 key 相同。这与 list 的行为不同，请特别注意。
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 

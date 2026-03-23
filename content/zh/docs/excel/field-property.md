@@ -53,7 +53,8 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 ## 选项 `range`
 
-{{< alert icon="⚠️️" context="warning" text="如果单元格数据为空（未填写），此检查选项将不会生效。如果希望在单元格为空时也进行检查，请将选项 `present` 设置为 true。" />}}
+> [!WARNING]
+> 当单元格数据为空（未填写）时，此检查将被跳过。若需对空单元格也强制执行检查，请将选项 `present` 设置为 `true`。
 
 选项 `range` 的格式为：`"left,right"`（左右均为闭区间）。
 

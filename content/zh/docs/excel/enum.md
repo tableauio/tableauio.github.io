@@ -243,7 +243,8 @@ enum BirdType {
 
 在 `Number` 列中，可以指定自定义的唯一枚举值编号。
 
-{{< alert icon="ⓘ" context="info" text="如果未指定默认枚举值 \"0\"，将自动生成。默认枚举值名称模式为：\"{ENUM_TYPE}_INVALID\"。" />}}
+> [!IMPORTANT]
+> 如果未指定默认枚举值 **0**，将自动生成，其名称模式为：`{ENUM_TYPE}_INVALID`。
 
 例如，*HelloWorld.xlsx* 中的 worksheet `ItemType`：
 
