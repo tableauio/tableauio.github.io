@@ -250,7 +250,8 @@ hello_world.proto `}).add({id:144,href:"/zh/docs/excel/enum/#多个枚举类型"
 例如，HelloWorld.xlsx 中的 worksheet Enum：
 HelloWorld.xlsx&nbsp; Enum @TABLEAU CatType CatType note Number Name Alias 1 CAT_TYPE_RAGDOLL Ragdoll 2 CAT_TYPE_PERSIAN Persian 3 CAT_TYPE_SPHYNX Sphynx DogType DogType note Number Name Alias 1 DOG_TYPE_POODLE Poodle 2 DOG_TYPE_BULLDOG Bulldog 3 DOG_TYPE_DACHSHUND Dachshund BirdType BirdType note Number Name Alias 1 CANARY Canary 2 WOODPECKER Woodpecker 3 OWL Owl Sheet Mode Enum MODE_ENUM_TYPE_MULTI 生成结果：
 hello_world.proto `}).add({id:145,href:"/zh/docs/excel/enum/#指定-number-列",title:"Enum（枚举） / 指定 Number 列 ",description:"Excel enum 使用指南。",content:` 在 Number 列中，可以指定自定义的唯一枚举值编号。
-ⓘ 如果未指定默认枚举值 "0"，将自动生成。默认枚举值名称模式为："{ENUM_TYPE}_INVALID"。 例如，HelloWorld.xlsx 中的 worksheet ItemType：
+[!IMPORTANT] 如果未指定默认枚举值 0，将自动生成，其名称模式为：{ENUM_TYPE}_INVALID。
+例如，HelloWorld.xlsx 中的 worksheet ItemType：
 HelloWorld.xlsx&nbsp; ItemType @TABLEAU Number Name Alias 0 ITEM_TYPE_UNKNOWN Unknown 10 ITEM_TYPE_FRUIT Fruit 20 ITEM_TYPE_EQUIP Equip 30 ITEM_TYPE_BOX Box Sheet Mode ItemType MODE_ENUM_TYPE 生成结果：
 hello_world.proto `}).add({id:146,href:"/zh/docs/excel/enum/#在-sheet-中定义并使用枚举类型",title:"Enum（枚举） / 在 sheet 中定义并使用枚举类型 ",description:"Excel enum 使用指南。",content:` 例如，HelloWorld.xlsx 中的两个 worksheet ItemType 和 ItemConf：
 HelloWorld.xlsx&nbsp; ItemType ItemConf @TABLEAU Number Name Alias 1 ITEM_TYPE_FRUIT Fruit 2 ITEM_TYPE_EQUIP Equip 3 ITEM_TYPE_BOX Box ID Type Name Price map&lt;int32, Item&gt; enum&lt;.ItemType&gt; string int32 Item&rsquo;s ID Item&rsquo;s type Item&rsquo;s name Item&rsquo;s price 1 Fruit Apple 40 2 Fruit Orange 20 3 Equip Sword 10 Sheet Mode ItemType MODE_ENUM_TYPE ItemConf 生成结果：
@@ -495,11 +496,13 @@ hello_world.proto ItemConf.json `}).add({id:206,href:"/zh/docs/excel/map/#水平
 `}).add({id:207,href:"/zh/docs/excel/map/#动态大小",title:"Map（映射） / 动态大小 ",description:"映射使用指南。",content:` 默认情况下，所有 map 都是动态大小类型。Map 条目应连续存在，否则如果中间存在空条目会报错。
 `}).add({id:208,href:"/zh/docs/excel/map/#固定大小",title:"Map（映射） / 固定大小 ",description:"映射使用指南。",content:` 隐式固定大小 # Map 大小由名称行中最大存在的 map 条目数量自动确定。
 在下面的示例中，虽然第二个 map 条目 Item2 为空，但由于 field property fixed 设置为 true，这是合法的。此外，Item2 也会作为空 map 条目生成，可以在生成的 ItemConf.json 文件中看到。
-👉 如果向 map 中插入多个空 map 条目，实际上只会生成一个空 map 条目，因为所有空 map 条目的 key 相同。这与 list 不同，请特别注意。 HelloWorld.xlsx 中的 worksheet ItemConf：
+[!CAUTION] 若插入多个空 map 条目，实际上只会生成一个——因为所有空 map 条目的 key 相同。这与 list 的行为不同，请特别注意。
+HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item1ID Item1Name Item2ID Item2Name Item3ID Item3Name map&lt;uint32, Item&gt;|{fixed:true} string uint32 string uint32 string Item1&rsquo;s ID Item1&rsquo;s name Item2&rsquo;s ID Item2&rsquo;s name Item3&rsquo;s ID Item3&rsquo;s name 1 Apple 3 Banana 生成结果：
 hello_world.proto ItemConf.json 显式固定大小（Explicit fixed size） # Map 大小由 field property size 显式设置。
 在下面的示例中，field property size 设置为 2，则第二个 map 条目 Item2 之后的所有 map 条目都会被截断。此外，Item2 也会作为空 map 条目生成，可以在生成的 ItemConf.json 文件中看到。
-👉 如果向 map 中插入多个空 map 条目，实际上只会生成一个空 map 条目，因为所有空 map 条目的 key 相同。这与 list 不同，请特别注意。 HelloWorld.xlsx 中的 worksheet ItemConf：
+[!CAUTION] 若插入多个空 map 条目，实际上只会生成一个——因为所有空 map 条目的 key 相同。这与 list 的行为不同，请特别注意。
+HelloWorld.xlsx 中的 worksheet ItemConf：
 HelloWorld.xlsx&nbsp; ItemConf @TABLEAU Item1ID Item1Name Item2ID Item2Name Item3ID Item3Name map&lt;uint32, Item&gt;|{size:2} string uint32 string uint32 string Item1&rsquo;s ID Item1&rsquo;s name Item2&rsquo;s ID Item2&rsquo;s name Item3&rsquo;s ID Item3&rsquo;s name 1 Apple 3 Banana 生成结果：
 hello_world.proto ItemConf.json `}).add({id:209,href:"/zh/docs/excel/map/#高级特性",title:"Map（映射） / 高级特性 ",description:"映射使用指南。",content:`
 `}).add({id:210,href:"/zh/docs/excel/map/#水平跳列映射",title:"Map（映射） / 水平跳列映射 ",description:"映射使用指南。",content:` HelloWorld.xlsx 中的 worksheet ItemConf：
@@ -654,7 +657,10 @@ range 的不同含义：
 规则是：如果 map 的 value 类型（或 KeyedList 元素类型）没有相同布局（垂直/水平）的子 map/list 字段，则 key 必须唯一。
 因此大多数情况下不需要显式配置。
 `}).add({id:279,href:"/zh/docs/excel/field-property/#通用-scalar-字段",title:"Field property（字段属性） / 通用 scalar 字段 ",description:"Tableau field property 使用指南。",content:` 如果将通用 scalar 字段的属性 unique 指定为 true，则 tableau 会检查该字段在 map 或 list 中的唯一性。
-`}).add({id:280,href:"/zh/docs/excel/field-property/#选项-range",title:"Field property（字段属性） / 选项 range ",description:"Tableau field property 使用指南。",content:" ⚠️️ 如果单元格数据为空（未填写），此检查选项将不会生效。如果希望在单元格为空时也进行检查，请将选项 `present` 设置为 true。 选项 range 的格式为：&quot;left,right&quot;（左右均为闭区间）。\nrange 的不同含义：\n数字：值范围，例如：&quot;1,10&quot;、&quot;1,~&quot;、&quot;~,10&quot;。 字符串：UTF-8 码点数量。 list：list 的长度。 map：map 的长度。 "}).add({id:281,href:"/zh/docs/excel/field-property/#选项-refer",title:"Field property（字段属性） / 选项 refer ",description:"Tableau field property 使用指南。",content:` 选项 refer 类似于 SQL 中的外键（FOREIGN KEY）约束，用于防止破坏表之间关联的操作。但 tableau 的 refer 可以引用任意 sheet 的列（不限于 map key 列），并且支持多个 refer（逗号分隔）。它用于确保该字段的值至少在其他某个 sheet 的列值空间（即 message 的字段值空间）中存在。
+`}).add({id:280,href:"/zh/docs/excel/field-property/#选项-range",title:"Field property（字段属性） / 选项 range ",description:"Tableau field property 使用指南。",content:` [!WARNING] 当单元格数据为空（未填写）时，此检查将被跳过。若需对空单元格也强制执行检查，请将选项 present 设置为 true。
+选项 range 的格式为：&quot;left,right&quot;（左右均为闭区间）。
+range 的不同含义：
+数字：值范围，例如：&quot;1,10&quot;、&quot;1,~&quot;、&quot;~,10&quot;。 字符串：UTF-8 码点数量。 list：list 的长度。 map：map 的长度。 `}).add({id:281,href:"/zh/docs/excel/field-property/#选项-refer",title:"Field property（字段属性） / 选项 refer ",description:"Tableau field property 使用指南。",content:` 选项 refer 类似于 SQL 中的外键（FOREIGN KEY）约束，用于防止破坏表之间关联的操作。但 tableau 的 refer 可以引用任意 sheet 的列（不限于 map key 列），并且支持多个 refer（逗号分隔）。它用于确保该字段的值至少在其他某个 sheet 的列值空间（即 message 的字段值空间）中存在。
 格式：&quot;SheetName(SheetAlias).ColumnName[,SheetName(SheetAlias).ColumnName]...&quot;。
 示例：
 map&lt;uint32, Reward&gt;|{refer:&quot;ItemConf.ID&quot;}：无别名的单 refer，sheet 名即为生成的 protobuf message 名。 map&lt;uint32, Reward&gt;|{refer:&quot;ItemConf.ID,EquipConf.ID&quot;}：无别名的多 refer，sheet 别名即为生成的 protobuf message 名。 map&lt;uint32, Reward&gt;|{refer:&quot;Sheet1(ItemConf).ID&quot;}：有别名的单 refer，sheet 别名即为生成的 protobuf message 名。 `}).add({id:282,href:"/zh/docs/excel/field-property/#选项-sequence",title:"Field property（字段属性） / 选项 sequence ",description:"Tableau field property 使用指南。",content:` 选项 sequence 用于确保该字段的值是一个从指定值开始的序列，可用于任意字段，包括嵌套 list/map 中的字段。
