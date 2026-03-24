@@ -63,9 +63,9 @@ footer = "Powered by <a class=\"text-muted\" href=\"https://github.com/tableauio
 copyRight = "Copyright (c) 2020-2021 Tableau IO"
 
 # Alert
-alert = true
-alertDismissable = true
-alertText = "🆕📢 YAML is supported now, <a class='alert-link stretched-link' href='https://tableauio.github.io/docs/yaml/scalar/'>Learn More</a>!"
+# alert = true
+# alertDismissable = true
+# alertText = "🆕📢 YAML is supported now, <a class='alert-link stretched-link' href='https://tableauio.github.io/docs/yaml/scalar/'>Learn More</a>!"
 
 # Edit Page
 # repoHost [Github | Gitea | GitLab] is used for building the edit link based on git hoster
