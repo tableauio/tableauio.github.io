@@ -236,8 +236,8 @@ Each scalar type's default value is same as protobuf.
 
 ### Merge
 
-- [ ] merge multiple workbooks
-- [ ] merge multiple worksheets
+- [x] merge multiple workbooks with the same sheet name
+- [x] merge multiple worksheets in the same workbook
 
 ### Workbook meta
 

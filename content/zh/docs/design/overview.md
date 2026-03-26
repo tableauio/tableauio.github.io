@@ -214,8 +214,8 @@ flowchart TD
 
 ### 合并
 
-- [ ] 合并多个 workbook
-- [ ] 合并多个 worksheet
+- [x] 合并具有相同 sheet 名称的多个 workbook
+- [x] 合并同一 workbook 中的多个 worksheet
 
 ### Workbook meta
 
