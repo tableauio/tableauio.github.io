@@ -790,6 +790,9 @@ You can define each union field by following types:
 
 ### Single union type in sheet
 
+> [!Note]
+> The `Number` column is optional, used to specify field numbers and their corresponding enum value numbers. If omitted, they auto-increment starting from `1`.
+
 You should specify `Mode` option to `MODE_UNION_TYPE` in metasheet `@TABLEAU`.
 
 For example, a worksheet `Target` in *HelloWorld.xlsx*:
@@ -798,11 +801,11 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 {{< sheet colored1 >}}
 
-| Name  | Alias      | Field1                        | Field2                               | Field3                           |
-| ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
-| PVP   | AliasPVP   | ID<br>uint32<br>Note          | Damage<br>int64<br>Note              | Type<br>enum<.FruitType><br>Note |
-| PVE   | AliasPVE   | Hero<br>[]uint32<br>Note      | Dungeon<br>map<int32, int64><br>Note |                                  |
-| Skill | AliasSkill | StartTime<br>datetime<br>Note | Duration<br>duration<br>Note         |                                  |
+| Number | Name  | Alias      | Field1                        | Field2                               | Field3                           |
+| ------ | ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
+| 1      | PVP   | AliasPVP   | ID<br>uint32<br>Note          | Damage<br>int64<br>Note              | Type<br>enum<.FruitType><br>Note |
+| 2      | PVE   | AliasPVE   | Hero<br>[]uint32<br>Note      | Dungeon<br>map<int32, int64><br>Note |                                  |
+| 3      | Skill | AliasSkill | StartTime<br>datetime<br>Note | Duration<br>duration<br>Note         |                                  |
 
 {{< /sheet >}}
 
@@ -818,7 +821,7 @@ For example, a worksheet `Target` in *HelloWorld.xlsx*:
 
 Generated:
 
-{{< details "hello_world.proto" open >}}
+{{< details "hello_world.proto" >}}
 
 ```protobuf
 // --snip--
@@ -838,19 +841,19 @@ message Target {
   }
   enum Type {
     TYPE_INVALID = 0;
-    TYPE_PVP = 1 [(tableau.evalue).name = "AliasPVP"];
-    TYPE_PVE = 2 [(tableau.evalue).name = "AliasPVE"];
-    TYPE_SKILL = 3 [(tableau.evalue).name = "AliasSkill"];
+    TYPE_PVP = 1 [(tableau.evalue).name = "AliasPVP"]; // AliasPVP
+    TYPE_PVE = 2 [(tableau.evalue).name = "AliasPVE"]; // AliasPVE
+    TYPE_SKILL = 3 [(tableau.evalue).name = "AliasSkill"]; // AliasSkill
   }
 
   message PVP {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
-    protoconf.FruitType type = 3 [(tableau.field) = {name:"Type"}];
+    uint32 id = 1 [(tableau.field) = {name:"ID"}]; // Note
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}]; // Note
+    protoconf.FruitType type = 3 [(tableau.field) = {name:"Type"}]; // Note
   }
   message PVE {
-    repeated uint32 hero_list = 1 [(tableau.field) = {name:"Hero" layout:LAYOUT_INCELL}];
-    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
+    repeated uint32 hero_list = 1 [(tableau.field) = {name:"Hero" layout:LAYOUT_INCELL}]; // Note
+    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}]; // Note
   }
   message Skill {
     google.protobuf.Timestamp start_time = 1 [(tableau.field) = {name:"StartTime"}];
@@ -874,21 +877,16 @@ For example, a worksheet `Union` in *HelloWorld.xlsx*:
 
 {{< sheet multicolored2 >}}
 
-| WishTarget   | WishTarget note   |                   |                              |
-| ------------ | ----------------- | ----------------- | ---------------------------- | ------------------------------------- |
-| Name         | Alias             | Field1            | Field2                       | Field3                                |
-| Higher       | WishHigher        | Height<br>int32   |                              |                                       |
-| Richer       | WishRicher        | ID<br>uint32      | Bank<br>map<int32, string>   |                                       |
-|              |                   |                   |                              |                                       |
-| HeroTarget   | HeroTarget note   |                   |                              |                                       |
-| Name         | Alias             | Field1            | Field2                       | Field3                                |
-| StarUp       | HeroStarUp        | ID<br>uint32      | Star<br>int32                |                                       |
-| LevelUp      | HeroLevelUp       | ID<br>[]uint32    | Level<br>int32               | Super<br>bool                         |
-|              |                   |                   |                              |                                       |
-| BattleTarget | BattleTarget note |                   |                              |                                       |
-| Name         | Alias             | Field1            | Field2                       | Field3                                |
-| PVP          | BattlePVP         | BattleID<br>int32 | Damage<br>int64              |                                       |
-| PVE          | BattlePVE         | HeroID<br>[]int32 | Dungeon<br>map<int32, int64> | Boss<br>{uint32 ID, int64 Damage}Boss |
+| HeroTarget   | HeroTarget note   |             |                           |                                      |                                               |
+| ------------ | ----------------- | ----------- | ------------------------- | ------------------------------------ | --------------------------------------------- |
+| Number       | Name              | Alias       | Field1                    | Field2                               | Field3                                        |
+| 1            | StarUp            | HeroStarUp  | ID<br>uint32<br>Note      | Star<br>int32 <br>Note               |                                               |
+| 2            | LevelUp           | HeroLevelUp | ID<br>uint32<br>Note      | Level<br>int32 <br>Note              | Super<br>bool<br>Note                         |
+|              |                   |             |                           |                                      |                                               |
+| BattleTarget | BattleTarget note |             |                           |                                      |                                               |
+| Number       | Name              | Alias       | Field1                    | Field2                               | Field3                                        |
+| 1            | PVP               | BattlePVP   | BattleID<br>int32<br>Note | Damage<br>int64<br>Note              |                                               |
+| 2            | PVE               | BattlePVE   | HeroID<br>[]int32<br>Note | Dungeon<br>map<int32, int64><br>Note | Boss<br>{uint32 ID, int64 Damage}Boss<br>Note |
 
 {{< /sheet >}}
 
@@ -910,32 +908,6 @@ Generated:
 // --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
-message WishTarget {
-  option (tableau.union) = {name:"UnionType" note:"WishTarget note"};
-
-  Type type = 9999 [(tableau.field) = {name:"Type"}];
-  oneof value {
-    option (tableau.oneof) = {note:"WishTarget note" field:"Field"};
-
-    Higher higher = 1; // Bound to enum value: TYPE_HIGHER.
-    Richer richer = 2; // Bound to enum value: TYPE_RICHER.
-  }
-
-  enum Type {
-    TYPE_INVALID = 0;
-    TYPE_HIGHER = 1 [(tableau.evalue).name = "WishHigher"]; // WishHigher
-    TYPE_RICHER = 2 [(tableau.evalue).name = "WishRicher"]; // WishRicher
-  }
-
-  message Higher {
-    int32 height = 1 [(tableau.field) = {name:"Height"}];
-  }
-  message Richer {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    map<int32, string> bank_map = 2 [(tableau.field) = {name:"Bank" layout:LAYOUT_INCELL}];
-  }
-}
-
 message HeroTarget {
   option (tableau.union) = {name:"UnionType" note:"HeroTarget note"};
 
@@ -954,13 +926,13 @@ message HeroTarget {
   }
 
   message StarUp {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    int32 star = 2 [(tableau.field) = {name:"Star"}];
+    uint32 id = 1 [(tableau.field) = {name:"ID"}]; // Note
+    int32 star = 2 [(tableau.field) = {name:"Star"}]; // Note
   }
   message LevelUp {
-    repeated uint32 id_list = 1 [(tableau.field) = {name:"ID" layout:LAYOUT_INCELL}];
-    int32 level = 2 [(tableau.field) = {name:"Level"}];
-    bool super = 3 [(tableau.field) = {name:"Super"}];
+    uint32 id = 1 [(tableau.field) = {name:"ID"}]; // Note
+    int32 level = 2 [(tableau.field) = {name:"Level"}]; // Note
+    bool super = 3 [(tableau.field) = {name:"Super"}]; // Note
   }
 }
 
@@ -982,90 +954,17 @@ message BattleTarget {
   }
 
   message PVP {
-    int32 battle_id = 1 [(tableau.field) = {name:"BattleID"}];
-    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
+    int32 battle_id = 1 [(tableau.field) = {name:"BattleID"}]; // Note
+    int64 damage = 2 [(tableau.field) = {name:"Damage"}]; // Note
   }
   message PVE {
-    repeated int32 hero_id_list = 1 [(tableau.field) = {name:"HeroID" layout:LAYOUT_INCELL}];
-    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
-    Boss boss = 3 [(tableau.field) = {name:"Boss" span:SPAN_INNER_CELL}];
+    repeated int32 hero_id_list = 1 [(tableau.field) = {name:"HeroID" layout:LAYOUT_INCELL}]; // Note
+    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}]; // Note
+    Boss boss = 3 [(tableau.field) = {name:"Boss" span:SPAN_INNER_CELL}]; // Note
     message Boss {
       uint32 id = 1 [(tableau.field) = {name:"ID"}];
       int64 damage = 2 [(tableau.field) = {name:"Damage"}];
     }
-  }
-}
-```
-
-{{< /details >}}
-
-### Specify Number column
-
-In `Number` column, you can specify custom unique field number and corresponding enum value number.
-
-For example, a worksheet `Target` in *HelloWorld.xlsx*:
-
-{{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
-
-{{< sheet colored1 >}}
-
-| Number | Name  | Alias      | Field1                        | Field2                               | Field3                           |
-| ------ | ----- | ---------- | ----------------------------- | ------------------------------------ | -------------------------------- |
-| 1      | PVP   | AliasPVP   | ID<br>uint32<br>Note          | Damage<br>int64<br>Note              | Type<br>enum<.FruitType><br>Note |
-| 20     | PVE   | AliasPVE   | Hero<br>[]uint32<br>Note      | Dungeon<br>map<int32, int64><br>Note |                                  |
-| 30     | Skill | AliasSkill | StartTime<br>datetime<br>Note | Duration<br>duration<br>Note         |                                  |
-
-{{< /sheet >}}
-
-{{< sheet colored1 >}}
-
-| Sheet  | Mode            |
-| ------ | --------------- |
-| Target | MODE_UNION_TYPE |
-
-{{< /sheet >}}
-
-{{< /spreadsheet >}}
-
-Generated:
-
-{{< details "hello_world.proto" >}}
-
-```protobuf
-// --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-// Generated from sheet: Target.
-message Target {
-  option (tableau.union) = {name:"Target"};
-
-  Type type = 9999 [(tableau.field) = { name: "Type" }];
-  oneof value {
-    option (tableau.oneof) = {field: "Field"};
-
-    PVP pvp = 1; // Bound to enum value: TYPE_PVP.
-    PVE pve = 20; // Bound to enum value: TYPE_PVE.
-    Skill skill = 30; // Bound to enum value: TYPE_SKILL.
-  }
-  enum Type {
-    TYPE_INVALID = 0;
-    TYPE_PVP = 1 [(tableau.evalue).name = "AliasPVP"];
-    TYPE_PVE = 20 [(tableau.evalue).name = "AliasPVE"];
-    TYPE_SKILL = 30 [(tableau.evalue).name = "AliasSkill"];
-  }
-
-  message PVP {
-    uint32 id = 1 [(tableau.field) = {name:"ID"}];
-    int64 damage = 2 [(tableau.field) = {name:"Damage"}];
-    protoconf.FruitType type = 3 [(tableau.field) = {name:"Type"}];
-  }
-  message PVE {
-    repeated uint32 hero_list = 1 [(tableau.field) = {name:"Hero" layout:LAYOUT_INCELL}];
-    map<int32, int64> dungeon_map = 2 [(tableau.field) = {name:"Dungeon" layout:LAYOUT_INCELL}];
-  }
-  message Skill {
-    google.protobuf.Timestamp start_time = 1 [(tableau.field) = {name:"StartTime"}];
-    google.protobuf.Duration duration = 2 [(tableau.field) = {name:"Duration"}];
   }
 }
 ```
