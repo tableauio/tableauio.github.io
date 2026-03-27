@@ -156,8 +156,7 @@ enum ItemType {
 ### 多个枚举类型
 
 > [!IMPORTANT]
-> 一个 **block** 定义一个枚举类型，由一系列连续的非空行组成。
-> 不同的 block 之间由**一行或多行空行分隔**。
+> 每个枚举类型由一个 **block** 定义，即一系列连续的非空行。不同的 block 之间由**一行或多行空行**分隔。
 
 需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_ENUM_TYPE_MULTI`。
 

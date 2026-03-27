@@ -69,20 +69,20 @@ div.sheet-multicolored2 > table > thead > tr > th {
 }
 
 div.sheet-multicolored2 > table > thead > tr {
-  background-color: #87cefa !important;
-  color: #0a3060 !important;
+  background-color: #9dc3e6 !important;
+  color: #000 !important;
 
-  --bs-table-bg: #87cefa !important;
-  --bs-table-color: #0a3060 !important;
+  --bs-table-bg: #9dc3e6 !important;
+  --bs-table-color: #000 !important;
 }
 
 div.sheet-multicolored2 > table > tbody > tr.block-row-1 {
-  background-color: #87cefa !important;
-  color: #0a3060 !important;
+  background-color: #9dc3e6 !important;
+  color: #000 !important;
   font-weight: 600 !important;
 
-  --bs-table-bg: #87cefa !important;
-  --bs-table-color: #0a3060 !important;
+  --bs-table-bg: #9dc3e6 !important;
+  --bs-table-color: #000 !important;
 }
 
 div.sheet-multicolored2 > table > tbody > tr.block-row-2 {
@@ -175,15 +175,15 @@ div.sheet-colored > table > tbody > tr:nth-child(2) {
     }
   }
 
-  // Light blue headers/rows → dark muted blue
+  // Light blue headers (multicolored2 type-name rows) → dark muted blue
   div.sheet-multicolored2 > table > thead > tr,
   div.sheet-multicolored2 > table > tbody > tr.block-row-1 {
-    background-color: #1a3a52 !important;
-    color: #c8dce8 !important;
+    background-color: #1a3550 !important;
+    color: #b8d4e8 !important;
     font-weight: 600 !important;
 
-    --bs-table-bg: #1a3a52 !important;
-    --bs-table-color: #c8dce8 !important;
+    --bs-table-bg: #1a3550 !important;
+    --bs-table-color: #b8d4e8 !important;
   }
 
   // Yellow headers/rows → dark muted amber

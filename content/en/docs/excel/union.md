@@ -864,7 +864,7 @@ message Target {
 ### Multiple union types in sheet
 
 > [!IMPORTANT]
-> A **block** defines an union type as a series of contiguous non-empty rows, separated by **one or more empty rows**.
+> Each union type is defined by a **block** — a series of contiguous non-empty rows. Blocks are separated by **one or more empty rows**.
 
 You should specify `Mode` option to `MODE_UNION_TYPE_MULTI` in metasheet `@TABLEAU`.
 

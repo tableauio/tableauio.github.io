@@ -156,7 +156,7 @@ enum ItemType {
 ### Multiple enum types in sheet
 
 > [!IMPORTANT]
-> A **block** defines an enum type as a series of contiguous non-empty rows, separated by **one or more empty rows**.
+> Each enum type is defined by a **block** — a series of contiguous non-empty rows. Blocks are separated by **one or more empty rows**.
 
 You should specify `Mode` option to `MODE_ENUM_TYPE_MULTI` in metasheet `@TABLEAU`.
 
