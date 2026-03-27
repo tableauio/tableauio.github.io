@@ -4,7 +4,12 @@
   @extend .table-light;
   @extend .table-bordered;
 
-  border-color: #808080 !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+
+  > thead > tr > th,
+  > tbody > tr > td {
+    border-color: rgba(0, 0, 0, 0.15) !important;
+  }
 }
 
 .sheet > table > tbody {
@@ -24,16 +29,25 @@ div.sheet-colored1 > table {
   @extend .table-sm;
   @extend .table-light;
   @extend .table-bordered;
+
+  border-color: rgba(0, 0, 0, 0.2) !important;
+
+  > thead > tr > th,
+  > tbody > tr > td {
+    border-color: rgba(0, 0, 0, 0.15) !important;
+  }
 }
 
 div.sheet-colored1 > table > thead > tr > th {
-  font-weight: normal !important;
+  font-weight: 600 !important;
 }
 
 div.sheet-colored1 > table > thead > tr {
   background-color: #f5c242 !important;
+  color: #3d2e00 !important;
 
   --bs-table-bg: #f5c242 !important;
+  --bs-table-color: #3d2e00 !important;
 }
 
 div.sheet-multicolored2 > table {
@@ -41,28 +55,43 @@ div.sheet-multicolored2 > table {
   @extend .table-sm;
   @extend .table-light;
   @extend .table-bordered;
+
+  border-color: rgba(0, 0, 0, 0.2) !important;
+
+  > thead > tr > th,
+  > tbody > tr > td {
+    border-color: rgba(0, 0, 0, 0.15) !important;
+  }
 }
 
 div.sheet-multicolored2 > table > thead > tr > th {
-  font-weight: normal !important;
+  font-weight: 600 !important;
 }
 
 div.sheet-multicolored2 > table > thead > tr {
   background-color: #87cefa !important;
+  color: #0a3060 !important;
 
   --bs-table-bg: #87cefa !important;
+  --bs-table-color: #0a3060 !important;
 }
 
 div.sheet-multicolored2 > table > tbody > tr.block-row-1 {
   background-color: #87cefa !important;
+  color: #0a3060 !important;
+  font-weight: 600 !important;
 
   --bs-table-bg: #87cefa !important;
+  --bs-table-color: #0a3060 !important;
 }
 
 div.sheet-multicolored2 > table > tbody > tr.block-row-2 {
   background-color: #f5c242 !important;
+  color: #3d2e00 !important;
+  font-weight: 600 !important;
 
   --bs-table-bg: #f5c242 !important;
+  --bs-table-color: #3d2e00 !important;
 }
 
 div.sheet-colored > table {
@@ -70,57 +99,113 @@ div.sheet-colored > table {
   @extend .table-sm;
   @extend .table-light;
   @extend .table-bordered;
+
+  border-color: rgba(0, 0, 0, 0.2) !important;
+
+  > thead > tr > th,
+  > tbody > tr > td {
+    border-color: rgba(0, 0, 0, 0.15) !important;
+  }
 }
 
 div.sheet-colored > table > thead > tr > th {
-  font-weight: normal !important;
+  font-weight: 600 !important;
 }
 
 div.sheet-colored > table > thead > tr {
   background-color: #f5c242 !important;
+  color: #3d2e00 !important;
 
   --bs-table-bg: #f5c242 !important;
+  --bs-table-color: #3d2e00 !important;
 }
 
 div.sheet-colored > table > tbody > tr:first-child {
   background-color: #f5c242 !important;
+  color: #3d2e00 !important;
+  font-weight: 600 !important;
 
   --bs-table-bg: #f5c242 !important;
+  --bs-table-color: #3d2e00 !important;
 }
 
 div.sheet-colored > table > tbody > tr:nth-child(2) {
   background-color: #b1cf95 !important;
+  color: #1a3a0a !important;
+  font-weight: 600 !important;
 
   --bs-table-bg: #b1cf95 !important;
+  --bs-table-color: #1a3a0a !important;
+}
+
+// Spreadsheet download button
+.spreadsheet-download-btn {
+  color: #495057;
+  border: none;
+  border-radius: 0.25rem;
+  font-weight: 300;
+  font-style: italic;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.15s ease;
+
+  &:hover,
+  &:focus {
+    color: #0d6efd;
+    background-color: transparent;
+  }
+
+  svg {
+    vertical-align: -0.125em;
+  }
 }
 
 // Dark mode overrides
-[data-bs-theme="dark"] {
-  div.sheet-multicolored2 > table > thead > tr,
-  div.sheet-multicolored2 > table > tbody > tr.block-row-1 {
-    background-color: #04111e !important;
-    color: #1a3a52 !important;
+// Use [data-dark-mode] to match the site's dark mode toggle mechanism
+[data-dark-mode] {
+  // Semi-transparent borders for dark mode — lighter to provide subtle separation
+  .sheet > table,
+  div.sheet-colored1 > table,
+  div.sheet-multicolored2 > table,
+  div.sheet-colored > table {
+    border-color: rgba(255, 255, 255, 0.15) !important;
 
-    --bs-table-bg: #04111e !important;
-    --bs-table-color: #1a3a52 !important;
+    > thead > tr > th,
+    > tbody > tr > td {
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
   }
 
+  // Light blue headers/rows → dark muted blue
+  div.sheet-multicolored2 > table > thead > tr,
+  div.sheet-multicolored2 > table > tbody > tr.block-row-1 {
+    background-color: #1a3a52 !important;
+    color: #c8dce8 !important;
+    font-weight: 600 !important;
+
+    --bs-table-bg: #1a3a52 !important;
+    --bs-table-color: #c8dce8 !important;
+  }
+
+  // Yellow headers/rows → dark muted amber
   div.sheet-colored1 > table > thead > tr,
   div.sheet-colored > table > thead > tr,
   div.sheet-colored > table > tbody > tr:first-child,
   div.sheet-multicolored2 > table > tbody > tr.block-row-2 {
-    background-color: #1a1200 !important;
-    color: #4a3510 !important;
+    background-color: #4a3510 !important;
+    color: #e8d5a8 !important;
+    font-weight: 600 !important;
 
-    --bs-table-bg: #1a1200 !important;
-    --bs-table-color: #4a3510 !important;
+    --bs-table-bg: #4a3510 !important;
+    --bs-table-color: #e8d5a8 !important;
   }
 
+  // Green rows → dark muted green
   div.sheet-colored > table > tbody > tr:nth-child(2) {
-    background-color: #0a1a05 !important;
-    color: #2e4a18 !important;
+    background-color: #2e4a18 !important;
+    color: #c8e0a8 !important;
+    font-weight: 600 !important;
 
-    --bs-table-bg: #0a1a05 !important;
-    --bs-table-color: #2e4a18 !important;
+    --bs-table-bg: #2e4a18 !important;
+    --bs-table-color: #c8e0a8 !important;
   }
 }

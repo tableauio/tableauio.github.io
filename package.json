@@ -64,5 +64,8 @@
   },
   "otherDependencies": {
     "hugo": "0.148.2"
+  },
+  "dependencies": {
+    "playwright": "^1.58.2"
   }
 }

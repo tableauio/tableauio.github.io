@@ -130,6 +130,35 @@ $navbar-dark-active-color: $link-color-dark;
   color: $navbar-dark-color;
 }
 
+// Spreadsheet sheet-name tabs dark mode
+[data-dark-mode] body .spreadsheet .nav-tabs {
+  border-bottom-color: $border-dark;
+}
+
+[data-dark-mode] body .spreadsheet .nav-tabs .nav-link {
+  color: $body-color-dark !important;
+
+  &:hover,
+  &:focus {
+    border-color: $border-dark $border-dark $border-dark;
+  }
+
+  &.active {
+    background-color: $body-bg-dark;
+    color: $link-color-dark !important;
+    border-color: $border-dark $border-dark $body-bg-dark;
+  }
+}
+
+[data-dark-mode] body .spreadsheet .spreadsheet-download-btn {
+  color: $body-color-dark;
+
+  &:hover,
+  &:focus {
+    color: $link-color-dark;
+  }
+}
+
 [data-dark-mode] body .navbar-light .navbar-nav .nav-link:hover,
 [data-dark-mode] body .navbar-light .navbar-nav .nav-link:focus {
   color: $navbar-dark-hover-color;
@@ -177,6 +206,18 @@ $navbar-dark-active-color: $link-color-dark;
 
 [data-dark-mode] body .showcase-meta a {
   color: $body-color-dark;
+}
+
+// In-page search highlight (must come before higher-specificity :hover and link selectors)
+[data-dark-mode] body mark.search-highlight {
+  background-color: rgba(255, 224, 102, 0.3);
+  color: $body-color-dark;
+  outline-color: rgba(255, 193, 7, 0.5);
+}
+
+[data-dark-mode] body mark.search-highlight a,
+[data-dark-mode] body a mark.search-highlight {
+  color: $link-color-dark;
 }
 
 [data-dark-mode] body .showcase-meta a:hover,
@@ -581,4 +622,41 @@ $navbar-dark-active-color: $link-color-dark;
 
 [data-dark-mode] details summary::before {
   content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28222, 226, 230, 0.75%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+}
+
+/** Search dark mode styles */
+
+// Search suggestion mark in modal
+[data-dark-mode] body #suggestions mark {
+  background-color: rgba(255, 243, 205, 0.2);
+  color: $body-color-dark;
+}
+
+// Search modal dark mode
+[data-dark-mode] body .doks-search-dialog .modal-content {
+  background-color: $body-bg-dark;
+  border: 1px solid $border-dark;
+}
+
+[data-dark-mode] body .doks-search-input {
+  color: $body-color-dark;
+  background-color: transparent;
+}
+
+[data-dark-mode] body #suggestions a:hover,
+[data-dark-mode] body #suggestions a:focus {
+  background: $body-overlay-dark;
+}
+
+[data-dark-mode] body #suggestions div:not(:first-child) {
+  border-top-color: $border-dark;
+}
+
+[data-dark-mode] body .suggestion__title {
+  color: $body-color-dark;
+  border-right-color: $border-dark;
+}
+
+[data-dark-mode] body .suggestion__description {
+  color: darken($body-color-dark, 15%);
 }
