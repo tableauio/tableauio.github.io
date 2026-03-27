@@ -245,7 +245,7 @@ hello_world.proto ItemConf.json `}).add({id:142,href:"/zh/docs/excel/enum/#在-s
 MODE_ENUM_TYPE：在一个 sheet 中定义单个枚举类型。 MODE_ENUM_TYPE_MULTI：在一个 sheet 中定义多个枚举类型。 `}).add({id:143,href:"/zh/docs/excel/enum/#单个枚举类型",title:"Enum（枚举） / 单个枚举类型 ",description:"Excel enum 使用指南。",content:` 需要在 metasheet @TABLEAU 中将 Mode 选项设置为 MODE_ENUM_TYPE。
 例如，HelloWorld.xlsx 中的 worksheet ItemType：
 HelloWorld.xlsx&nbsp; ItemType @TABLEAU Name Alias ITEM_TYPE_FRUIT Fruit ITEM_TYPE_EQUIP Equip ITEM_TYPE_BOX Box Sheet Mode ItemType MODE_ENUM_TYPE 生成结果：
-hello_world.proto `}).add({id:144,href:"/zh/docs/excel/enum/#多个枚举类型",title:"Enum（枚举） / 多个枚举类型 ",description:"Excel enum 使用指南。",content:` [!IMPORTANT] 一个 block 定义一个枚举类型，由一系列连续的非空行组成。 不同的 block 之间由一行或多行空行分隔。
+hello_world.proto `}).add({id:144,href:"/zh/docs/excel/enum/#多个枚举类型",title:"Enum（枚举） / 多个枚举类型 ",description:"Excel enum 使用指南。",content:` [!IMPORTANT] 每个枚举类型由一个 block 定义，即一系列连续的非空行。不同的 block 之间由一行或多行空行分隔。
 需要在 metasheet @TABLEAU 中将 Mode 选项设置为 MODE_ENUM_TYPE_MULTI。
 例如，HelloWorld.xlsx 中的 worksheet Enum：
 HelloWorld.xlsx&nbsp; Enum @TABLEAU CatType CatType note Number Name Alias 1 CAT_TYPE_RAGDOLL Ragdoll 2 CAT_TYPE_PERSIAN Persian 3 CAT_TYPE_SPHYNX Sphynx DogType DogType note Number Name Alias 1 DOG_TYPE_POODLE Poodle 2 DOG_TYPE_BULLDOG Bulldog 3 DOG_TYPE_DACHSHUND Dachshund BirdType BirdType note Number Name Alias 1 CANARY Canary 2 WOODPECKER Woodpecker 3 OWL Owl Sheet Mode Enum MODE_ENUM_TYPE_MULTI 生成结果：
@@ -288,7 +288,7 @@ hello_world.proto ItemConf.json `}).add({id:154,href:"/zh/docs/excel/struct/#在
 MODE_STRUCT_TYPE：在一个 sheet 中定义单个 struct 类型。 MODE_STRUCT_TYPE_MULTI：在一个 sheet 中定义多个 struct 类型。 `}).add({id:155,href:"/zh/docs/excel/struct/#单个-struct-类型",title:"Struct（结构体） / 单个 struct 类型 ",description:"Excel struct 使用指南。",content:` 需要在 metasheet @TABLEAU 中将 Mode 选项设置为 MODE_STRUCT_TYPE。
 例如，HelloWorld.xlsx 中的 worksheet Item：
 HelloWorld.xlsx&nbsp; Item @TABLEAU Name Type ID uint32 Num int32 FruitType enum&lt;.FruitType&gt; Feature []int32 Prop map&lt;int32, string&gt; Detail {enum&lt;.ItemType&gt; Type, string Name, string Desc}Detail Sheet Mode Item MODE_STRUCT_TYPE 生成结果：
-hello_world.proto `}).add({id:156,href:"/zh/docs/excel/struct/#多个-struct-类型",title:"Struct（结构体） / 多个 struct 类型 ",description:"Excel struct 使用指南。",content:` [!IMPORTANT] 一个 block 定义一个 struct 类型，由一系列连续的非空行组成，不同的 block 之间由一行或多行空行分隔。
+hello_world.proto `}).add({id:156,href:"/zh/docs/excel/struct/#多个-struct-类型",title:"Struct（结构体） / 多个 struct 类型 ",description:"Excel struct 使用指南。",content:` [!IMPORTANT] 每个 struct 类型由一个 block 定义，即一系列连续的非空行。不同的 block 之间由一行或多行空行分隔。
 需要在 metasheet @TABLEAU 中将 Mode 选项设置为 MODE_STRUCT_TYPE_MULTI。
 例如，HelloWorld.xlsx 中的 worksheet Struct：
 HelloWorld.xlsx&nbsp; Struct @TABLEAU Tree Tree note Name Type ID uint32 Num int32 Pet Pet note Name Type Kind int32 Tip []string FruitShop FruitShop note Name Type FruitType enum&lt;.FruitType&gt; Prop map&lt;int32, string&gt; Sheet Mode Struct MODE_STRUCT_TYPE_MULTI 生成结果：
@@ -327,7 +327,7 @@ datetime
 Note Duration
 duration
 Note Sheet Mode Target MODE_UNION_TYPE 生成结果：
-hello_world.proto `}).add({id:165,href:"/zh/docs/excel/union/#多个-union-类型",title:"Union（联合体） / 多个 union 类型 ",description:"Excel union 使用指南。",content:` [!IMPORTANT] 一个 block 定义一个 union 类型，由一系列连续的非空行组成，不同的 block 之间由一行或多行空行分隔。
+hello_world.proto `}).add({id:165,href:"/zh/docs/excel/union/#多个-union-类型",title:"Union（联合体） / 多个 union 类型 ",description:"Excel union 使用指南。",content:` [!IMPORTANT] 每个 union 类型由一个 block 定义，即一系列连续的非空行。不同的 block 之间由一行或多行空行分隔。
 需要在 metasheet @TABLEAU 中将 Mode 选项设置为 MODE_UNION_TYPE_MULTI。
 例如，HelloWorld.xlsx 中的 worksheet Union：
 HelloWorld.xlsx&nbsp; Union @TABLEAU WishTarget WishTarget note Name Alias Field1 Field2 Field3 Higher WishHigher Height

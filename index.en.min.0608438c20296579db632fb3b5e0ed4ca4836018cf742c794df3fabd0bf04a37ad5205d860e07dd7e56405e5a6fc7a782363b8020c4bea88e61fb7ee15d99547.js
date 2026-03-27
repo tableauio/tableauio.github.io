@@ -248,7 +248,7 @@ hello_world.proto ItemConf.json `}).add({id:142,href:"/docs/excel/enum/#define-e
 MODE_ENUM_TYPE: define single enum type in a sheet. MODE_ENUM_TYPE_MULTI: define multiple enum types in a sheet. `}).add({id:143,href:"/docs/excel/enum/#single-enum-type-in-sheet",title:"Enum / Single enum type in sheet ",description:"Excel enum guide.",content:` You should specify Mode option to MODE_ENUM_TYPE in metasheet @TABLEAU.
 For example, a worksheet ItemType in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; ItemType @TABLEAU Name Alias ITEM_TYPE_FRUIT Fruit ITEM_TYPE_EQUIP Equip ITEM_TYPE_BOX Box Sheet Mode ItemType MODE_ENUM_TYPE Generated:
-hello_world.proto `}).add({id:144,href:"/docs/excel/enum/#multiple-enum-types-in-sheet",title:"Enum / Multiple enum types in sheet ",description:"Excel enum guide.",content:` [!IMPORTANT] A block defines an enum type as a series of contiguous non-empty rows, separated by one or more empty rows.
+hello_world.proto `}).add({id:144,href:"/docs/excel/enum/#multiple-enum-types-in-sheet",title:"Enum / Multiple enum types in sheet ",description:"Excel enum guide.",content:` [!IMPORTANT] Each enum type is defined by a block — a series of contiguous non-empty rows. Blocks are separated by one or more empty rows.
 You should specify Mode option to MODE_ENUM_TYPE_MULTI in metasheet @TABLEAU.
 For example, a worksheet Enum in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Enum @TABLEAU CatType CatType note Number Name Alias 1 CAT_TYPE_RAGDOLL Ragdoll 2 CAT_TYPE_PERSIAN Persian 3 CAT_TYPE_SPHYNX Sphynx DogType DogType note Number Name Alias 1 DOG_TYPE_POODLE Poodle 2 DOG_TYPE_BULLDOG Bulldog 3 DOG_TYPE_DACHSHUND Dachshund BirdType BirdType note Number Name Alias 1 CANARY Canary 2 WOODPECKER Woodpecker 3 OWL Owl Sheet Mode Enum MODE_ENUM_TYPE_MULTI Generated:
@@ -291,7 +291,7 @@ hello_world.proto ItemConf.json `}).add({id:154,href:"/docs/excel/struct/#define
 MODE_STRUCT_TYPE: define single struct type in a sheet. MODE_STRUCT_TYPE_MULTI: define multiple struct types in a sheet. `}).add({id:155,href:"/docs/excel/struct/#single-struct-type-in-sheet",title:"Struct / Single struct type in sheet ",description:"Excel struct guide.",content:` You should specify Mode option to MODE_STRUCT_TYPE in metasheet @TABLEAU.
 For example, a worksheet Item in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Item @TABLEAU Name Type ID uint32 Num int32 FruitType enum&lt;.FruitType&gt; Feature []int32 Prop map&lt;int32, string&gt; Detail {enum&lt;.ItemType&gt; Type, string Name, string Desc}Detail Sheet Mode Item MODE_STRUCT_TYPE Generated:
-hello_world.proto `}).add({id:156,href:"/docs/excel/struct/#multiple-struct-types-in-sheet",title:"Struct / Multiple struct types in sheet ",description:"Excel struct guide.",content:` [!IMPORTANT] A block defines a struct type as a series of contiguous non-empty rows, separated by one or more empty rows.
+hello_world.proto `}).add({id:156,href:"/docs/excel/struct/#multiple-struct-types-in-sheet",title:"Struct / Multiple struct types in sheet ",description:"Excel struct guide.",content:` [!IMPORTANT] Each struct type is defined by a block — a series of contiguous non-empty rows. Blocks are separated by one or more empty rows.
 You should specify Mode option to MODE_STRUCT_TYPE_MULTI in metasheet @TABLEAU.
 For example, a worksheet Struct in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Struct @TABLEAU Tree Tree note Name Type ID uint32 Num int32 Pet Pet note Name Type Kind int32 Tip []string FruitShop FruitShop note Name Type FruitType enum&lt;.FruitType&gt; Prop map&lt;int32, string&gt; Sheet Mode Struct MODE_STRUCT_TYPE_MULTI Generated:
@@ -330,7 +330,7 @@ datetime
 Note Duration
 duration
 Note Sheet Mode Target MODE_UNION_TYPE Generated:
-hello_world.proto `}).add({id:165,href:"/docs/excel/union/#multiple-union-types-in-sheet",title:"Union / Multiple union types in sheet ",description:"Excel union guide.",content:` [!IMPORTANT] A block defines an union type as a series of contiguous non-empty rows, separated by one or more empty rows.
+hello_world.proto `}).add({id:165,href:"/docs/excel/union/#multiple-union-types-in-sheet",title:"Union / Multiple union types in sheet ",description:"Excel union guide.",content:` [!IMPORTANT] Each union type is defined by a block — a series of contiguous non-empty rows. Blocks are separated by one or more empty rows.
 You should specify Mode option to MODE_UNION_TYPE_MULTI in metasheet @TABLEAU.
 For example, a worksheet Union in HelloWorld.xlsx:
 HelloWorld.xlsx&nbsp; Union @TABLEAU WishTarget WishTarget note Name Alias Field1 Field2 Field3 Higher WishHigher Height
