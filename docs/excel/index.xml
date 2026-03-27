@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Excel on</title><link>https://tableauio.github.io/docs/excel/</link><description>Recent content in Excel on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 08 Mar 2022 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/docs/excel/index.xml" rel="self" type="application/rss+xml"/><item><title>Scalar</title><link>https://tableauio.github.io/docs/excel/scalar/</link><pubDate>Sun, 04 Sep 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/excel/scalar/</guid><description>&lt;h2 id="scalar">Scalar &lt;a href="#scalar" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>A worksheet &lt;code>Apple&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-lichmfadejgknb-226812-tab" data-bs-toggle="tab" data-bs-target="#sheet-lichmfadejgknb-226812" type="button" role="tab" aria-controls="sheet-lichmfadejgknb-226812" aria-selected=" active ">Apple&lt;/button>
+&lt;button class="nav-link active " id="sheet-ejidlcanbmhfkg-269600-tab" data-bs-toggle="tab" data-bs-target="#sheet-ejidlcanbmhfkg-269600" type="button" role="tab" aria-controls="sheet-ejidlcanbmhfkg-269600" aria-selected=" active ">Apple&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-lbcemdifkgnahj-227007-tab" data-bs-toggle="tab" data-bs-target="#sheet-lbcemdifkgnahj-227007" type="button" role="tab" aria-controls="sheet-lbcemdifkgnahj-227007" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-emhajklncfdibg-269834-tab" data-bs-toggle="tab" data-bs-target="#sheet-emhajklncfdibg-269834" type="button" role="tab" aria-controls="sheet-emhajklncfdibg-269834" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-lichmfadejgknb-226812" role="tabpanel" aria-labelledby="sheet-lichmfadejgknb-226812-tab">
+&lt;div class="tab-pane fade active show " id="sheet-ejidlcanbmhfkg-269600" role="tabpanel" aria-labelledby="sheet-ejidlcanbmhfkg-269600-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -41,7 +41,7 @@
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-lbcemdifkgnahj-227007" role="tabpanel" aria-labelledby="sheet-lbcemdifkgnahj-227007-tab">
+&lt;div class="tab-pane fade " id="sheet-emhajklncfdibg-269834" role="tabpanel" aria-labelledby="sheet-emhajklncfdibg-269834-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -87,17 +87,17 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;/code>&lt;/pre>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-danehmljkgifbc-235964-tab" data-bs-toggle="tab" data-bs-target="#sheet-danehmljkgifbc-235964" type="button" role="tab" aria-controls="sheet-danehmljkgifbc-235964" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-fhkndcigbmaelj-278947-tab" data-bs-toggle="tab" data-bs-target="#sheet-fhkndcigbmaelj-278947" type="button" role="tab" aria-controls="sheet-fhkndcigbmaelj-278947" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-bcgfkmdahjilen-236146-tab" data-bs-toggle="tab" data-bs-target="#sheet-bcgfkmdahjilen-236146" type="button" role="tab" aria-controls="sheet-bcgfkmdahjilen-236146" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-embakdficlngjh-279142-tab" data-bs-toggle="tab" data-bs-target="#sheet-embakdficlngjh-279142" type="button" role="tab" aria-controls="sheet-embakdficlngjh-279142" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-danehmljkgifbc-235964" role="tabpanel" aria-labelledby="sheet-danehmljkgifbc-235964-tab">
+&lt;div class="tab-pane fade active show " id="sheet-fhkndcigbmaelj-278947" role="tabpanel" aria-labelledby="sheet-fhkndcigbmaelj-278947-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -131,7 +131,7 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-bcgfkmdahjilen-236146" role="tabpanel" aria-labelledby="sheet-bcgfkmdahjilen-236146-tab">
+&lt;div class="tab-pane fade " id="sheet-embakdficlngjh-279142" role="tabpanel" aria-labelledby="sheet-embakdficlngjh-279142-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -168,17 +168,17 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;p>Each column name should be prefixed with the same struct variable name, which is just the same as struct type name by default.&lt;/p>
 &lt;p>For example, a worksheet &lt;code>ItemConf&lt;/code> in &lt;code>HelloWorld.xlsx&lt;/code>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-kgcladinebfjmh-266488-tab" data-bs-toggle="tab" data-bs-target="#sheet-kgcladinebfjmh-266488" type="button" role="tab" aria-controls="sheet-kgcladinebfjmh-266488" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-jcdfablhimgnek-308990-tab" data-bs-toggle="tab" data-bs-target="#sheet-jcdfablhimgnek-308990" type="button" role="tab" aria-controls="sheet-jcdfablhimgnek-308990" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-abdifjlneckmhg-266670-tab" data-bs-toggle="tab" data-bs-target="#sheet-abdifjlneckmhg-266670" type="button" role="tab" aria-controls="sheet-abdifjlneckmhg-266670" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-emkidlnbacjgfh-309172-tab" data-bs-toggle="tab" data-bs-target="#sheet-emkidlnbacjgfh-309172" type="button" role="tab" aria-controls="sheet-emkidlnbacjgfh-309172" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-kgcladinebfjmh-266488" role="tabpanel" aria-labelledby="sheet-kgcladinebfjmh-266488-tab">
+&lt;div class="tab-pane fade active show " id="sheet-jcdfablhimgnek-308990" role="tabpanel" aria-labelledby="sheet-jcdfablhimgnek-308990-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -208,7 +208,7 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-abdifjlneckmhg-266670" role="tabpanel" aria-labelledby="sheet-abdifjlneckmhg-266670-tab">
+&lt;div class="tab-pane fade " id="sheet-emkidlnbacjgfh-309172" role="tabpanel" aria-labelledby="sheet-emkidlnbacjgfh-309172-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -313,17 +313,17 @@ In a horizontal map, the map element name in each column name &lt;strong>MUST&lt
 It&amp;rsquo;s defined same as &lt;a href="https://tableauio.github.io/docs/excel/keyedlist/#incell-scalar-keyedlist">Incell scalar KeyedList&lt;/a>, but will aggregate multiple rows if provided.&lt;/p>&lt;/blockquote>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-ldceibfkjhgnam-189434-tab" data-bs-toggle="tab" data-bs-target="#sheet-ldceibfkjhgnam-189434" type="button" role="tab" aria-controls="sheet-ldceibfkjhgnam-189434" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-kjdnhemcgiabfl-163491-tab" data-bs-toggle="tab" data-bs-target="#sheet-kjdnhemcgiabfl-163491" type="button" role="tab" aria-controls="sheet-kjdnhemcgiabfl-163491" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-lgcmfedabjhkni-189876-tab" data-bs-toggle="tab" data-bs-target="#sheet-lgcmfedabjhkni-189876" type="button" role="tab" aria-controls="sheet-lgcmfedabjhkni-189876" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-klibdhmegancfj-163699-tab" data-bs-toggle="tab" data-bs-target="#sheet-klibdhmegancfj-163699" type="button" role="tab" aria-controls="sheet-klibdhmegancfj-163699" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-ldceibfkjhgnam-189434" role="tabpanel" aria-labelledby="sheet-ldceibfkjhgnam-189434-tab">
+&lt;div class="tab-pane fade active show " id="sheet-kjdnhemcgiabfl-163491" role="tabpanel" aria-labelledby="sheet-kjdnhemcgiabfl-163491-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -351,7 +351,7 @@ It&amp;rsquo;s defined same as &lt;a href="https://tableauio.github.io/docs/exce
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-lgcmfedabjhkni-189876" role="tabpanel" aria-labelledby="sheet-lgcmfedabjhkni-189876-tab">
+&lt;div class="tab-pane fade " id="sheet-klibdhmegancfj-163699" role="tabpanel" aria-labelledby="sheet-klibdhmegancfj-163699-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -390,17 +390,17 @@ It&amp;rsquo;s defined same as &lt;a href="https://tableauio.github.io/docs/exce
 See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetime">Basics: Datetime&lt;/a> for more details.&lt;/p>&lt;/blockquote>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-eifgabmldchjkn-230670-tab" data-bs-toggle="tab" data-bs-target="#sheet-eifgabmldchjkn-230670" type="button" role="tab" aria-controls="sheet-eifgabmldchjkn-230670" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-cbdlmnjekihfag-190128-tab" data-bs-toggle="tab" data-bs-target="#sheet-cbdlmnjekihfag-190128" type="button" role="tab" aria-controls="sheet-cbdlmnjekihfag-190128" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-bhlamjgkfiecnd-230878-tab" data-bs-toggle="tab" data-bs-target="#sheet-bhlamjgkfiecnd-230878" type="button" role="tab" aria-controls="sheet-bhlamjgkfiecnd-230878" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-inegalhjbfcmdk-190310-tab" data-bs-toggle="tab" data-bs-target="#sheet-inegalhjbfcmdk-190310" type="button" role="tab" aria-controls="sheet-inegalhjbfcmdk-190310" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-eifgabmldchjkn-230670" role="tabpanel" aria-labelledby="sheet-eifgabmldchjkn-230670-tab">
+&lt;div class="tab-pane fade active show " id="sheet-cbdlmnjekihfag-190128" role="tabpanel" aria-labelledby="sheet-cbdlmnjekihfag-190128-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -430,7 +430,7 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-bhlamjgkfiecnd-230878" role="tabpanel" aria-labelledby="sheet-bhlamjgkfiecnd-230878-tab">
+&lt;div class="tab-pane fade " id="sheet-inegalhjbfcmdk-190310" role="tabpanel" aria-labelledby="sheet-inegalhjbfcmdk-190310-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -465,17 +465,17 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;p>Generated:&lt;/p></description></item><item><title>Struct in struct</title><link>https://tableauio.github.io/docs/excel/struct-in-struct/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/docs/excel/struct-in-struct/</guid><description>&lt;h2 id="struct-in-struct">Struct in struct &lt;a href="#struct-in-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-caekbglmdjhnfi-263456-tab" data-bs-toggle="tab" data-bs-target="#sheet-caekbglmdjhnfi-263456" type="button" role="tab" aria-controls="sheet-caekbglmdjhnfi-263456" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-gcefkdbilnhmja-221965-tab" data-bs-toggle="tab" data-bs-target="#sheet-gcefkdbilnhmja-221965" type="button" role="tab" aria-controls="sheet-gcefkdbilnhmja-221965" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-dangebimckfjlh-263651-tab" data-bs-toggle="tab" data-bs-target="#sheet-dangebimckfjlh-263651" type="button" role="tab" aria-controls="sheet-dangebimckfjlh-263651" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-abejdcnmkhilgf-222160-tab" data-bs-toggle="tab" data-bs-target="#sheet-abejdcnmkhilgf-222160" type="button" role="tab" aria-controls="sheet-abejdcnmkhilgf-222160" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-caekbglmdjhnfi-263456" role="tabpanel" aria-labelledby="sheet-caekbglmdjhnfi-263456-tab">
+&lt;div class="tab-pane fade active show " id="sheet-gcefkdbilnhmja-221965" role="tabpanel" aria-labelledby="sheet-gcefkdbilnhmja-221965-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -505,7 +505,7 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-dangebimckfjlh-263651" role="tabpanel" aria-labelledby="sheet-dangebimckfjlh-263651-tab">
+&lt;div class="tab-pane fade " id="sheet-abejdcnmkhilgf-222160" role="tabpanel" aria-labelledby="sheet-abejdcnmkhilgf-222160-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -541,17 +541,17 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;h3 id="struct-in-vertical-list">Struct in vertical-list &lt;a href="#struct-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-gfhnciljemdabk-278172-tab" data-bs-toggle="tab" data-bs-target="#sheet-gfhnciljemdabk-278172" type="button" role="tab" aria-controls="sheet-gfhnciljemdabk-278172" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-jdlebfkgachmni-235433-tab" data-bs-toggle="tab" data-bs-target="#sheet-jdlebfkgachmni-235433" type="button" role="tab" aria-controls="sheet-jdlebfkgachmni-235433" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-cfbhnaldmegjki-278367-tab" data-bs-toggle="tab" data-bs-target="#sheet-cfbhnaldmegjki-278367" type="button" role="tab" aria-controls="sheet-cfbhnaldmegjki-278367" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-ebkchdjanifglm-235602-tab" data-bs-toggle="tab" data-bs-target="#sheet-ebkchdjanifglm-235602" type="button" role="tab" aria-controls="sheet-ebkchdjanifglm-235602" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-gfhnciljemdabk-278172" role="tabpanel" aria-labelledby="sheet-gfhnciljemdabk-278172-tab">
+&lt;div class="tab-pane fade active show " id="sheet-jdlebfkgachmni-235433" role="tabpanel" aria-labelledby="sheet-jdlebfkgachmni-235433-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -597,7 +597,7 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-cfbhnaldmegjki-278367" role="tabpanel" aria-labelledby="sheet-cfbhnaldmegjki-278367-tab">
+&lt;div class="tab-pane fade " id="sheet-ebkchdjanifglm-235602" role="tabpanel" aria-labelledby="sheet-ebkchdjanifglm-235602-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -633,17 +633,17 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;h3 id="struct-in-vertical-map">Struct in vertical-map &lt;a href="#struct-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-flgenajicmdkhb-300272-tab" data-bs-toggle="tab" data-bs-target="#sheet-flgenajicmdkhb-300272" type="button" role="tab" aria-controls="sheet-flgenajicmdkhb-300272" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-amdibfcghejlnk-258690-tab" data-bs-toggle="tab" data-bs-target="#sheet-amdibfcghejlnk-258690" type="button" role="tab" aria-controls="sheet-amdibfcghejlnk-258690" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-idmcbefakhjnlg-300454-tab" data-bs-toggle="tab" data-bs-target="#sheet-idmcbefakhjnlg-300454" type="button" role="tab" aria-controls="sheet-idmcbefakhjnlg-300454" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-gckilmjbfdnahe-258872-tab" data-bs-toggle="tab" data-bs-target="#sheet-gckilmjbfdnahe-258872" type="button" role="tab" aria-controls="sheet-gckilmjbfdnahe-258872" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-flgenajicmdkhb-300272" role="tabpanel" aria-labelledby="sheet-flgenajicmdkhb-300272-tab">
+&lt;div class="tab-pane fade active show " id="sheet-amdibfcghejlnk-258690" role="tabpanel" aria-labelledby="sheet-amdibfcghejlnk-258690-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -683,7 +683,7 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-idmcbefakhjnlg-300454" role="tabpanel" aria-labelledby="sheet-idmcbefakhjnlg-300454-tab">
+&lt;div class="tab-pane fade " id="sheet-gckilmjbfdnahe-258872" role="tabpanel" aria-labelledby="sheet-gckilmjbfdnahe-258872-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -719,17 +719,17 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;h3 id="horizontal-list-in-vertical-list">Horizontal-list in vertical-list &lt;a href="#horizontal-list-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-dagemkncfjhbil-317055-tab" data-bs-toggle="tab" data-bs-target="#sheet-dagemkncfjhbil-317055" type="button" role="tab" aria-controls="sheet-dagemkncfjhbil-317055" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-gbdknelajmichf-274108-tab" data-bs-toggle="tab" data-bs-target="#sheet-gbdknelajmichf-274108" type="button" role="tab" aria-controls="sheet-gbdknelajmichf-274108" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-nkecmblgidahjf-317237-tab" data-bs-toggle="tab" data-bs-target="#sheet-nkecmblgidahjf-317237" type="button" role="tab" aria-controls="sheet-nkecmblgidahjf-317237" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-lfgidajmbekchn-274303-tab" data-bs-toggle="tab" data-bs-target="#sheet-lfgidajmbekchn-274303" type="button" role="tab" aria-controls="sheet-lfgidajmbekchn-274303" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-dagemkncfjhbil-317055" role="tabpanel" aria-labelledby="sheet-dagemkncfjhbil-317055-tab">
+&lt;div class="tab-pane fade active show " id="sheet-gbdknelajmichf-274108" role="tabpanel" aria-labelledby="sheet-gbdknelajmichf-274108-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -787,7 +787,7 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-nkecmblgidahjf-317237" role="tabpanel" aria-labelledby="sheet-nkecmblgidahjf-317237-tab">
+&lt;div class="tab-pane fade " id="sheet-lfgidajmbekchn-274303" role="tabpanel" aria-labelledby="sheet-lfgidajmbekchn-274303-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -823,17 +823,17 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;h3 id="horizontal-list-in-vertical-map">Horizontal-list in vertical-map &lt;a href="#horizontal-list-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-gchkalfejdibmn-352129-tab" data-bs-toggle="tab" data-bs-target="#sheet-gchkalfejdibmn-352129" type="button" role="tab" aria-controls="sheet-gchkalfejdibmn-352129" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-cghkafeimljbdn-306361-tab" data-bs-toggle="tab" data-bs-target="#sheet-cghkafeimljbdn-306361" type="button" role="tab" aria-controls="sheet-cghkafeimljbdn-306361" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-mhfagbejidclnk-352311-tab" data-bs-toggle="tab" data-bs-target="#sheet-mhfagbejidclnk-352311" type="button" role="tab" aria-controls="sheet-mhfagbejidclnk-352311" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-fgikdmelnjacbh-306530-tab" data-bs-toggle="tab" data-bs-target="#sheet-fgikdmelnjacbh-306530" type="button" role="tab" aria-controls="sheet-fgikdmelnjacbh-306530" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-gchkalfejdibmn-352129" role="tabpanel" aria-labelledby="sheet-gchkalfejdibmn-352129-tab">
+&lt;div class="tab-pane fade active show " id="sheet-cghkafeimljbdn-306361" role="tabpanel" aria-labelledby="sheet-cghkafeimljbdn-306361-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -891,7 +891,7 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-mhfagbejidclnk-352311" role="tabpanel" aria-labelledby="sheet-mhfagbejidclnk-352311-tab">
+&lt;div class="tab-pane fade " id="sheet-fgikdmelnjacbh-306530" role="tabpanel" aria-labelledby="sheet-fgikdmelnjacbh-306530-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -927,17 +927,17 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;h3 id="horizontal-map-in-vertical-list">Horizontal-map in vertical-list &lt;a href="#horizontal-map-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-ecnjidgfamhklb-379689-tab" data-bs-toggle="tab" data-bs-target="#sheet-ecnjidgfamhklb-379689" type="button" role="tab" aria-controls="sheet-ecnjidgfamhklb-379689" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-jbhginkfmaecdl-335442-tab" data-bs-toggle="tab" data-bs-target="#sheet-jbhginkfmaecdl-335442" type="button" role="tab" aria-controls="sheet-jbhginkfmaecdl-335442" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-lkhacgimfbdnej-379871-tab" data-bs-toggle="tab" data-bs-target="#sheet-lkhacgimfbdnej-379871" type="button" role="tab" aria-controls="sheet-lkhacgimfbdnej-379871" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-kaejilbhndcmgf-335624-tab" data-bs-toggle="tab" data-bs-target="#sheet-kaejilbhndcmgf-335624" type="button" role="tab" aria-controls="sheet-kaejilbhndcmgf-335624" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-ecnjidgfamhklb-379689" role="tabpanel" aria-labelledby="sheet-ecnjidgfamhklb-379689-tab">
+&lt;div class="tab-pane fade active show " id="sheet-jbhginkfmaecdl-335442" role="tabpanel" aria-labelledby="sheet-jbhginkfmaecdl-335442-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -995,7 +995,7 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-lkhacgimfbdnej-379871" role="tabpanel" aria-labelledby="sheet-lkhacgimfbdnej-379871-tab">
+&lt;div class="tab-pane fade " id="sheet-kaejilbhndcmgf-335624" role="tabpanel" aria-labelledby="sheet-kaejilbhndcmgf-335624-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -1031,17 +1031,17 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;h3 id="horizontal-map-in-vertical-map">Horizontal-map in vertical-map &lt;a href="#horizontal-map-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>A worksheet &lt;code>ItemConf&lt;/code> in &lt;em>HelloWorld.xlsx&lt;/em>:&lt;/p>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-agblnfekmhdcji-4909-tab" data-bs-toggle="tab" data-bs-target="#sheet-agblnfekmhdcji-4909" type="button" role="tab" aria-controls="sheet-agblnfekmhdcji-4909" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-ldhfmiebjckagn-360415-tab" data-bs-toggle="tab" data-bs-target="#sheet-ldhfmiebjckagn-360415" type="button" role="tab" aria-controls="sheet-ldhfmiebjckagn-360415" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-edakclhnjfgimb-5091-tab" data-bs-toggle="tab" data-bs-target="#sheet-edakclhnjfgimb-5091" type="button" role="tab" aria-controls="sheet-edakclhnjfgimb-5091" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-lkbdfgnjeacihm-361000-tab" data-bs-toggle="tab" data-bs-target="#sheet-lkbdfgnjeacihm-361000" type="button" role="tab" aria-controls="sheet-lkbdfgnjeacihm-361000" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-agblnfekmhdcji-4909" role="tabpanel" aria-labelledby="sheet-agblnfekmhdcji-4909-tab">
+&lt;div class="tab-pane fade active show " id="sheet-ldhfmiebjckagn-360415" role="tabpanel" aria-labelledby="sheet-ldhfmiebjckagn-360415-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -1099,7 +1099,7 @@ See &lt;a href="https://tableauio.github.io/docs/basics/wellknown-types/#datetim
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-edakclhnjfgimb-5091" role="tabpanel" aria-labelledby="sheet-edakclhnjfgimb-5091-tab">
+&lt;div class="tab-pane fade " id="sheet-lkbdfgnjeacihm-361000" role="tabpanel" aria-labelledby="sheet-lkbdfgnjeacihm-361000-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>

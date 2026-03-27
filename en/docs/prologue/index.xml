@@ -64,17 +64,17 @@ data-default-ver="v0.15.1">
 &lt;li>&lt;code>@TABLEAU&lt;/code>: Just leave it empty now. It is the tableau &lt;a href="https://tableauio.github.io/en/docs/excel/metasheet/">metasheet&lt;/a> for specifying parser options.&lt;/li>
 &lt;/ul>
 &lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm btn-outline-success fw-light fst-italic border-0 border-bottom">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;img height="14px" src="https://tableauio.github.io/images/download_black.svg" alt="Download" />&lt;/button>&lt;/div>
+&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-ncjfeblakdihmg-261509-tab" data-bs-toggle="tab" data-bs-target="#sheet-ncjfeblakdihmg-261509" type="button" role="tab" aria-controls="sheet-ncjfeblakdihmg-261509" aria-selected=" active ">Item&lt;/button>
+&lt;button class="nav-link active " id="sheet-klinegmjhfbadc-399181-tab" data-bs-toggle="tab" data-bs-target="#sheet-klinegmjhfbadc-399181" type="button" role="tab" aria-controls="sheet-klinegmjhfbadc-399181" aria-selected=" active ">Item&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-ifkcjbemndlhga-261834-tab" data-bs-toggle="tab" data-bs-target="#sheet-ifkcjbemndlhga-261834" type="button" role="tab" aria-controls="sheet-ifkcjbemndlhga-261834" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-jicnbgmlkdahfe-399493-tab" data-bs-toggle="tab" data-bs-target="#sheet-jicnbgmlkdahfe-399493" type="button" role="tab" aria-controls="sheet-jicnbgmlkdahfe-399493" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-ncjfeblakdihmg-261509" role="tabpanel" aria-labelledby="sheet-ncjfeblakdihmg-261509-tab">
+&lt;div class="tab-pane fade active show " id="sheet-klinegmjhfbadc-399181" role="tabpanel" aria-labelledby="sheet-klinegmjhfbadc-399181-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -114,7 +114,7 @@ data-default-ver="v0.15.1">
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-ifkcjbemndlhga-261834" role="tabpanel" aria-labelledby="sheet-ifkcjbemndlhga-261834-tab">
+&lt;div class="tab-pane fade " id="sheet-jicnbgmlkdahfe-399493" role="tabpanel" aria-labelledby="sheet-jicnbgmlkdahfe-399493-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
