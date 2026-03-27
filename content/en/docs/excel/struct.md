@@ -596,6 +596,9 @@ There are two kinds of `Mode` (in metasheet `@TABLEAU`) to define struct types i
 
 ### Single struct type in sheet
 
+> [!Note]
+> The `Number` column is optional, used to specify field numbers. If omitted, they auto-increment starting from `1`.
+
 You should specify `Mode` option to `MODE_STRUCT_TYPE` in metasheet `@TABLEAU`.
 
 For example, a worksheet `Item` in *HelloWorld.xlsx*:
@@ -604,14 +607,14 @@ For example, a worksheet `Item` in *HelloWorld.xlsx*:
 
 {{< sheet colored1 >}}
 
-| Name      | Type                                                   |
-| --------- | ------------------------------------------------------ |
-| ID        | uint32                                                 |
-| Num       | int32                                                  |
-| FruitType | enum<.FruitType>                                       |
-| Feature   | []int32                                                |
-| Prop      | map<int32, string>                                     |
-| Detail    | {enum<.ItemType> Type, string Name, string Desc}Detail |
+| Number | Name      | Type                                                   |
+| ------ | --------- | ------------------------------------------------------ |
+| 1      | ID        | uint32                                                 |
+| 2      | Num       | int32                                                  |
+| 3      | FruitType | enum<.FruitType>                                       |
+| 4      | Feature   | []int32                                                |
+| 5      | Prop      | map<int32, string>                                     |
+| 6      | Detail    | {enum<.ItemType> Type, string Name, string Desc}Detail |
 
 {{< /sheet >}}
 
@@ -664,21 +667,21 @@ For example, a worksheet `Struct` in *HelloWorld.xlsx*:
 
 {{< sheet multicolored2 >}}
 
-| Tree      | Tree note          |
-| --------- | ------------------ |
-| Name      | Type               |
-| ID        | uint32             |
-| Num       | int32              |
-|           |                    |
-| Pet       | Pet note           |
-| Name      | Type               |
-| Kind      | int32              |
-| Tip       | []string           |
-|           |                    |
-| FruitShop | FruitShop note     |
-| Name      | Type               |
-| FruitType | enum<.FruitType>   |
-| Prop      | map<int32, string> |
+| Tree      | Tree note      |                    |
+| --------- | -------------- | ------------------ |
+| Number    | Name           | Type               |
+| 1         | ID             | uint32             |
+| 2         | Num            | int32              |
+|           |                |                    |
+| Pet       | Pet note       |                    |
+| Number    | Name           | Type               |
+| 1         | Kind           | int32              |
+| 2         | Tip            | []string           |
+|           |                |                    |
+| FruitShop | FruitShop note |                    |
+| Number    | Name           | Type               |
+| 1         | FruitType      | enum<.FruitType>   |
+| 2         | Prop           | map<int32, string> |
 
 {{< /sheet >}}
 
@@ -719,52 +722,6 @@ message FruitShop {
 
   protoconf.FruitType fruit_type = 1 [(tableau.field) = {name:"FruitType"}];
   map<int32, string> prop_map = 2 [(tableau.field) = {name:"Prop" layout:LAYOUT_INCELL}];
-}
-```
-
-{{< /details >}}
-
-### Specify Number column
-
-In `Number` column, you can specify custom unique field number.
-
-For example, a worksheet `Item` in *HelloWorld.xlsx*:
-
-{{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
-
-{{< sheet colored1 >}}
-
-| Number | Name      | Type             |
-| ------ | --------- | ---------------- |
-| 1      | ID        | uint32           |
-| 20     | Num       | int32            |
-| 30     | FruitType | enum<.FruitType> |
-
-{{< /sheet >}}
-
-{{< sheet colored1 >}}
-
-| Sheet | Mode             |
-| ----- | ---------------- |
-| Item  | MODE_STRUCT_TYPE |
-
-{{< /sheet >}}
-
-{{< /spreadsheet >}}
-
-Generated:
-
-{{< details "hello_world.proto" open >}}
-
-```protobuf
-// --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-// Generated from sheet: Item.
-message Item {
-  uint32 id = 1 [(tableau.field) = {name:"ID"}];
-  int32 num = 20 [(tableau.field) = {name:"Num"}];
-  protoconf.FruitType fruit_type = 30 [(tableau.field) = {name:"FruitType"}];
 }
 ```
 

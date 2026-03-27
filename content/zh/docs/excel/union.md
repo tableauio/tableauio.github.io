@@ -791,7 +791,7 @@ message TaskConf {
 ### 单个 union 类型
 
 > [!Note]
-> `Number` 列是可选的，用于自定义字段编号及对应的枚举值编号。省略时从 `1` 开始自动递增。
+> `Number` 列是可选的，用于指定字段编号及对应的枚举值编号。省略时从 `1` 开始自动递增。
 
 需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_UNION_TYPE`。
 

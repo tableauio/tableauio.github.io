@@ -108,6 +108,11 @@ message ItemConf {
 
 ### 单个枚举类型
 
+> [!Note]
+>
+> 1. `Number` 列是可选的，用于指定枚举值编号。省略时从 `1` 开始自动递增。
+> 2. 如果未显式定义默认枚举值 `0`，则会自动生成，命名模式为 `{ENUM_TYPE}_INVALID`。
+
 需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_ENUM_TYPE`。
 
 例如，*HelloWorld.xlsx* 中的 worksheet `ItemType`：
@@ -116,11 +121,11 @@ message ItemConf {
 
 {{< sheet colored1 >}}
 
-| Name            | Alias |
-| --------------- | ----- |
-| ITEM_TYPE_FRUIT | Fruit |
-| ITEM_TYPE_EQUIP | Equip |
-| ITEM_TYPE_BOX   | Box   |
+| Number | Name            | Alias |
+| ------ | --------------- | ----- |
+| 1      | ITEM_TYPE_FRUIT | 水果  |
+| 2      | ITEM_TYPE_EQUIP | 装备  |
+| 3      | ITEM_TYPE_BOX   | 箱子  |
 
 {{< /sheet >}}
 
@@ -145,9 +150,9 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 // Generated from sheet: ItemType.
 enum ItemType {
   ITEM_TYPE_INVALID = 0;
-  ITEM_TYPE_FRUIT = 1 [(tableau.evalue).name = "Fruit"];
-  ITEM_TYPE_EQUIP = 2 [(tableau.evalue).name = "Equip"];
-  ITEM_TYPE_BOX = 3 [(tableau.evalue).name = "Box"];
+  ITEM_TYPE_FRUIT = 1 [(tableau.evalue).name = "水果"]; // 水果
+  ITEM_TYPE_EQUIP = 2 [(tableau.evalue).name = "装备"]; // 装备
+  ITEM_TYPE_BOX = 3 [(tableau.evalue).name = "箱子"]; // 箱子
 }
 ```
 
@@ -166,24 +171,24 @@ enum ItemType {
 
 {{< sheet multicolored2 >}}
 
-| CatType  | CatType note       |            |
-| -------- | ------------------ | ---------- |
-| Number   | Name               | Alias      |
-| 1        | CAT_TYPE_RAGDOLL   | Ragdoll    |
-| 2        | CAT_TYPE_PERSIAN   | Persian    |
-| 3        | CAT_TYPE_SPHYNX    | Sphynx     |
-|          |                    |            |
-| DogType  | DogType note       |            |
-| Number   | Name               | Alias      |
-| 1        | DOG_TYPE_POODLE    | Poodle     |
-| 2        | DOG_TYPE_BULLDOG   | Bulldog    |
-| 3        | DOG_TYPE_DACHSHUND | Dachshund  |
-|          |                    |            |
-| BirdType | BirdType note      |            |
-| Number   | Name               | Alias      |
-| 1        | CANARY             | Canary     |
-| 2        | WOODPECKER         | Woodpecker |
-| 3        | OWL                | Owl        |
+| CatType  | 猫类                 |        |
+| -------- | -------------------- | ------ |
+| Number   | Name                 | Alias  |
+| 1        | CAT_TYPE_RAGDOLL     | 布偶猫 |
+| 2        | CAT_TYPE_PERSIAN     | 波斯猫 |
+| 3        | CAT_TYPE_SPHYNX      | 无毛猫 |
+|          |                      |        |
+| DogType  | 犬类                 |        |
+| Number   | Name                 | Alias  |
+| 1        | DOG_TYPE_POODLE      | 贵宾犬 |
+| 2        | DOG_TYPE_BULLDOG     | 牛头犬 |
+| 3        | DOG_TYPE_DACHSHUND   | 腊肠犬 |
+|          |                      |        |
+| BirdType | 鸟类                 |        |
+| Number   | Name                 | Alias  |
+| 1        | BIRD_TYPE_CANARY     | 金丝雀 |
+| 2        | BIRD_TYPE_WOODPECKER | 啄木鸟 |
+| 3        | BIRD_TYPE_OWL        | 猫头鹰 |
 
 {{< /sheet >}}
 
@@ -205,85 +210,34 @@ enum ItemType {
 // --snip--
 option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 
-// CatType note
+// 猫类
 enum CatType {
-  option (tableau.etype) = {name:"EnumType" note:"CatType note"};
+  option (tableau.etype) = {name:"EnumType" note:"猫类"};
 
   CAT_TYPE_INVALID = 0;
-  CAT_TYPE_RAGDOLL = 1 [(tableau.evalue).name = "Ragdoll"]; // Ragdoll
-  CAT_TYPE_PERSIAN = 2 [(tableau.evalue).name = "Persian"]; // Persian
-  CAT_TYPE_SPHYNX = 3 [(tableau.evalue).name = "Sphynx"]; // Sphynx
+  CAT_TYPE_RAGDOLL = 1 [(tableau.evalue).name = "Ragdoll"]; // 布偶猫
+  CAT_TYPE_PERSIAN = 2 [(tableau.evalue).name = "Persian"]; // 波斯猫
+  CAT_TYPE_SPHYNX = 3 [(tableau.evalue).name = "Sphynx"]; // 无毛猫
 }
 
-// DogType note
+// 犬类
 enum DogType {
-  option (tableau.etype) = {name:"EnumType" note:"DogType note"};
+  option (tableau.etype) = {name:"EnumType" note:"犬类"};
 
   DOG_TYPE_INVALID = 0;
-  DOG_TYPE_POODLE = 1 [(tableau.evalue).name = "Poodle"]; // Poodle
-  DOG_TYPE_BULLDOG = 2 [(tableau.evalue).name = "Bulldog"]; // Bulldog
-  DOG_TYPE_DACHSHUND = 3 [(tableau.evalue).name = "Dachshund"]; // Dachshund
+  DOG_TYPE_POODLE = 1 [(tableau.evalue).name = "Poodle"]; // 贵宾犬
+  DOG_TYPE_BULLDOG = 2 [(tableau.evalue).name = "Bulldog"]; // 牛头犬
+  DOG_TYPE_DACHSHUND = 3 [(tableau.evalue).name = "Dachshund"]; // 腊肠犬
 }
 
-// BirdType note
+// 鸟类
 enum BirdType {
-  option (tableau.etype) = {name:"EnumType" note:"BirdType note"};
+  option (tableau.etype) = {name:"EnumType" note:"鸟类"};
 
   BIRD_TYPE_INVALID = 0;
-  BIRD_TYPE_CANARY = 1 [(tableau.evalue).name = "Canary"]; // Canary
-  BIRD_TYPE_WOODPECKER = 2 [(tableau.evalue).name = "Woodpecker"]; // Woodpecker
-  BIRD_TYPE_OWL = 3 [(tableau.evalue).name = "Owl"]; // Owl
-}
-```
-
-{{< /details >}}
-
-### 指定 Number 列
-
-在 `Number` 列中，可以指定自定义的唯一枚举值编号。
-
-> [!IMPORTANT]
-> 如果未指定默认枚举值 **0**，将自动生成，其名称模式为：`{ENUM_TYPE}_INVALID`。
-
-例如，*HelloWorld.xlsx* 中的 worksheet `ItemType`：
-
-{{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
-
-{{< sheet colored1 >}}
-
-| Number | Name              | Alias   |
-| ------ | ----------------- | ------- |
-| 0      | ITEM_TYPE_UNKNOWN | Unknown |
-| 10     | ITEM_TYPE_FRUIT   | Fruit   |
-| 20     | ITEM_TYPE_EQUIP   | Equip   |
-| 30     | ITEM_TYPE_BOX     | Box     |
-
-{{< /sheet >}}
-
-{{< sheet colored1 >}}
-
-| Sheet    | Mode           |
-| -------- | -------------- |
-| ItemType | MODE_ENUM_TYPE |
-
-{{< /sheet >}}
-
-{{< /spreadsheet >}}
-
-生成结果：
-
-{{< details "hello_world.proto" open >}}
-
-```protobuf
-// --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-// Generated from sheet: ItemType.
-enum ItemType {
-  ITEM_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
-  ITEM_TYPE_FRUIT = 10 [(tableau.evalue).name = "Fruit"];
-  ITEM_TYPE_EQUIP = 20 [(tableau.evalue).name = "Equip"];
-  ITEM_TYPE_BOX = 30 [(tableau.evalue).name = "Box"];
+  BIRD_TYPE_CANARY = 1 [(tableau.evalue).name = "Canary"]; // 金丝雀
+  BIRD_TYPE_WOODPECKER = 2 [(tableau.evalue).name = "Woodpecker"]; // 啄木鸟
+  BIRD_TYPE_OWL = 3 [(tableau.evalue).name = "Owl"]; // 猫头鹰
 }
 ```
 

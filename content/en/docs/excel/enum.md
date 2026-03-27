@@ -108,6 +108,11 @@ There are two kinds of `Mode` (in metasheet `@TABLEAU`) to define enum types in 
 
 ### Single enum type in sheet
 
+> [!Note]
+>
+> 1. The `Number` column is optional, used to specify enum value numbers. If omitted, they auto-increment starting from `1`.
+> 2. If the default enum value `0` is not explicitly defined, it will be auto-generated with the name pattern `{ENUM_TYPE}_INVALID`.
+
 You should specify `Mode` option to `MODE_ENUM_TYPE` in metasheet `@TABLEAU`.
 
 For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
@@ -116,11 +121,11 @@ For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
 
 {{< sheet colored1 >}}
 
-| Name            | Alias |
-| --------------- | ----- |
-| ITEM_TYPE_FRUIT | Fruit |
-| ITEM_TYPE_EQUIP | Equip |
-| ITEM_TYPE_BOX   | Box   |
+| Number | Name            | Alias |
+| ------ | --------------- | ----- |
+| 1      | ITEM_TYPE_FRUIT | Fruit |
+| 2      | ITEM_TYPE_EQUIP | Equip |
+| 3      | ITEM_TYPE_BOX   | Box   |
 
 {{< /sheet >}}
 
@@ -145,9 +150,9 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx"};
 // Generated from sheet: ItemType.
 enum ItemType {
   ITEM_TYPE_INVALID = 0;
-  ITEM_TYPE_FRUIT = 1 [(tableau.evalue).name = "Fruit"];
-  ITEM_TYPE_EQUIP = 2 [(tableau.evalue).name = "Equip"];
-  ITEM_TYPE_BOX = 3 [(tableau.evalue).name = "Box"];
+  ITEM_TYPE_FRUIT = 1 [(tableau.evalue).name = "Fruit"]; // Fruit
+  ITEM_TYPE_EQUIP = 2 [(tableau.evalue).name = "Equip"]; // Equip
+  ITEM_TYPE_BOX = 3 [(tableau.evalue).name = "Box"]; // Box
 }
 ```
 
@@ -166,24 +171,24 @@ For example, a worksheet `Enum` in *HelloWorld.xlsx*:
 
 {{< sheet multicolored2 >}}
 
-| CatType  | CatType note       |            |
-| -------- | ------------------ | ---------- |
-| Number   | Name               | Alias      |
-| 1        | CAT_TYPE_RAGDOLL   | Ragdoll    |
-| 2        | CAT_TYPE_PERSIAN   | Persian    |
-| 3        | CAT_TYPE_SPHYNX    | Sphynx     |
-|          |                    |            |
-| DogType  | DogType note       |            |
-| Number   | Name               | Alias      |
-| 1        | DOG_TYPE_POODLE    | Poodle     |
-| 2        | DOG_TYPE_BULLDOG   | Bulldog    |
-| 3        | DOG_TYPE_DACHSHUND | Dachshund  |
-|          |                    |            |
-| BirdType | BirdType note      |            |
-| Number   | Name               | Alias      |
-| 1        | CANARY             | Canary     |
-| 2        | WOODPECKER         | Woodpecker |
-| 3        | OWL                | Owl        |
+| CatType  | CatType note         |            |
+| -------- | -------------------- | ---------- |
+| Number   | Name                 | Alias      |
+| 1        | CAT_TYPE_RAGDOLL     | Ragdoll    |
+| 2        | CAT_TYPE_PERSIAN     | Persian    |
+| 3        | CAT_TYPE_SPHYNX      | Sphynx     |
+|          |                      |            |
+| DogType  | DogType note         |            |
+| Number   | Name                 | Alias      |
+| 1        | DOG_TYPE_POODLE      | Poodle     |
+| 2        | DOG_TYPE_BULLDOG     | Bulldog    |
+| 3        | DOG_TYPE_DACHSHUND   | Dachshund  |
+|          |                      |            |
+| BirdType | BirdType note        |            |
+| Number   | Name                 | Alias      |
+| 1        | BIRD_TYPE_CANARY     | Canary     |
+| 2        | BIRD_TYPE_WOODPECKER | Woodpecker |
+| 3        | BIRD_TYPE_OWL        | Owl        |
 
 {{< /sheet >}}
 
@@ -233,57 +238,6 @@ enum BirdType {
   BIRD_TYPE_CANARY = 1 [(tableau.evalue).name = "Canary"]; // Canary
   BIRD_TYPE_WOODPECKER = 2 [(tableau.evalue).name = "Woodpecker"]; // Woodpecker
   BIRD_TYPE_OWL = 3 [(tableau.evalue).name = "Owl"]; // Owl
-}
-```
-
-{{< /details >}}
-
-### Specify Number column
-
-In `Number` column, you can specify custom unique enum value number.
-
-> [!IMPORTANT]
-> If you does not specify default enum value **0**, it will be auto generated. And the default enum value name pattern is: `{ENUM_TYPE}_INVALID`.
-
-For example, a worksheet `ItemType` in *HelloWorld.xlsx*:
-
-{{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
-
-{{< sheet colored1 >}}
-
-| Number | Name              | Alias   |
-| ------ | ----------------- | ------- |
-| 0      | ITEM_TYPE_UNKNOWN | Unknown |
-| 10     | ITEM_TYPE_FRUIT   | Fruit   |
-| 20     | ITEM_TYPE_EQUIP   | Equip   |
-| 30     | ITEM_TYPE_BOX     | Box     |
-
-{{< /sheet >}}
-
-{{< sheet colored1 >}}
-
-| Sheet    | Mode           |
-| -------- | -------------- |
-| ItemType | MODE_ENUM_TYPE |
-
-{{< /sheet >}}
-
-{{< /spreadsheet >}}
-
-Generated:
-
-{{< details "hello_world.proto" open >}}
-
-```protobuf
-// --snip--
-option (tableau.workbook) = {name:"HelloWorld.xlsx"};
-
-// Generated from sheet: ItemType.
-enum ItemType {
-  ITEM_TYPE_UNKNOWN = 0 [(tableau.evalue).name = "Unknown"];
-  ITEM_TYPE_FRUIT = 10 [(tableau.evalue).name = "Fruit"];
-  ITEM_TYPE_EQUIP = 20 [(tableau.evalue).name = "Equip"];
-  ITEM_TYPE_BOX = 30 [(tableau.evalue).name = "Box"];
 }
 ```
 
@@ -339,9 +293,9 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 // Generated from sheet: ItemType.
 enum ItemType {
   ITEM_TYPE_INVALID = 0;
-  ITEM_TYPE_FRUIT = 1 [(tableau.evalue).name = "Fruit"];
-  ITEM_TYPE_EQUIP = 2 [(tableau.evalue).name = "Equip"];
-  ITEM_TYPE_BOX = 3 [(tableau.evalue).name = "Box"];
+  ITEM_TYPE_FRUIT = 1 [(tableau.evalue).name = "Fruit"]; // Fruit
+  ITEM_TYPE_EQUIP = 2 [(tableau.evalue).name = "Equip"]; // Equip
+  ITEM_TYPE_BOX = 3 [(tableau.evalue).name = "Box"]; // Box
 }
 
 message ItemConf {
