@@ -78,7 +78,7 @@
 &lt;blockquote>
 &lt;p>前置条件：需要在 metasheet 中适当设置 &lt;code>Index&lt;/code> 选项。&lt;/p>
 &lt;p>参考 &lt;a href="../../../excel/metasheet/#%E9%80%89%E9%A1%B9-index">metasheet 选项：Index&lt;/a>。&lt;/p>&lt;/blockquote>
-&lt;p>若 index 名称为 &lt;code>Chapter&lt;/code>，则访问器为：&lt;/p></description></item><item><title>C#</title><link>https://tableauio.github.io/zh/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/csharp/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>若 index 名称为 &lt;code>Chapter&lt;/code>，且被索引的 key 为 &lt;code>k1, k2 ...&lt;/code>，则访问器为：&lt;/p></description></item><item><title>C#</title><link>https://tableauio.github.io/zh/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/api/loader/csharp/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>&lt;code>public ref readonly ProtobufMessage Data()&lt;/code>&lt;/p>
 &lt;p>获取内部 protobuf message 数据。&lt;/p>

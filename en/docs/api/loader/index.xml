@@ -56,7 +56,7 @@
 &lt;h3 id="orderedmap">OrderedMap &lt;a href="#orderedmap" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>Prerequisite: You need to set metasheet option &lt;code>OrderedMap&lt;/code> to &lt;code>true&lt;/code>.&lt;/p>
-&lt;p>See &lt;a href="../../../excel/metasheet/#option-orderedmap">metatsheet option: OrderedMap&lt;/a>.&lt;/p>&lt;/blockquote>
+&lt;p>See &lt;a href="../../../excel/metasheet/#option-orderedmap">metasheet option: OrderedMap&lt;/a>.&lt;/p>&lt;/blockquote>
 &lt;ul>
 &lt;li>&lt;code>const OrderedMapMap* GetOrderedMap() const&lt;/code>: Gets the whole ordered map.&lt;/li>
 &lt;li>&lt;code>const OrderedMapValueType* GetOrderedMap(KEY1 k1) const&lt;/code>: Gets the 2nd-level ordered map value. Returns &lt;code>nullptr&lt;/code> if the key is not found.&lt;/li>
@@ -71,7 +71,7 @@
 &lt;h3 id="orderedmap">OrderedMap &lt;a href="#orderedmap" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>Prerequisite: You need to set metasheet option &lt;code>OrderedMap&lt;/code> to &lt;code>true&lt;/code>.&lt;/p>
-&lt;p>See &lt;a href="../../../excel/metasheet/#option-orderedmap">metatsheet option: OrderedMap&lt;/a>.&lt;/p>&lt;/blockquote>
+&lt;p>See &lt;a href="../../../excel/metasheet/#option-orderedmap">metasheet option: OrderedMap&lt;/a>.&lt;/p>&lt;/blockquote>
 &lt;p>&lt;code>func GetOrderedMapN(k1 KEY1, k2 KEY2...) (*OrderedMapValueType, error)&lt;/code>&lt;/p>
 &lt;p>Get the &lt;code>N&lt;/code>th-level ordered map value. Be aware that only applies to each level message&amp;rsquo;s &lt;strong>first map field&lt;/strong>.&lt;/p></description></item><item><title>C#</title><link>https://tableauio.github.io/en/docs/api/loader/csharp/</link><pubDate>Thu, 10 Mar 2022 08:00:00 +0800</pubDate><guid>https://tableauio.github.io/en/docs/api/loader/csharp/</guid><description>&lt;h2 id="api">API &lt;a href="#api" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;h3 id="data">Data &lt;a href="#data" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
