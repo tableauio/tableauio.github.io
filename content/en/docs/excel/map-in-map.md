@@ -108,6 +108,10 @@ message ItemConf {
 
 {{< /details >}}
 
+### Multiple horizontal maps in vertical-map
+
+> TODO: add details and examples.
+
 ### Vertical-map in vertical-map
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:

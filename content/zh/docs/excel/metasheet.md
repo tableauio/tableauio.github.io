@@ -595,7 +595,36 @@ message ZoneConf {
 - [C++: OrderedMap API](../../api/loader/cpp/#orderedmap)
 - [Go: OrderedMap API](../../api/loader/go/#orderedmap)
 
+例如，*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                | Name        | PropID           | PropValue    |
+| ----------------- | ----------- | ---------------- | ------------ |
+| map<uint32, Item> | string      | map<int32, Prop> | int64        |
+| Item's ID         | Item's name | Prop's ID        | Prop's value |
+| 1                 | Apple       | 1                | 10           |
+| 2                 | Orange      | 1                | 20           |
+| 2                 | Orange      | 2                | 30           |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedMap |
+| -------- | ---------- |
+| ItemConf | true       |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
 ## 选项 `Index`
+
+> [!IMPORTANT]
+> 被索引的列必须是同一 struct（message）内的 scalar 或 enum。
 
 `Index` 选项可用于生成 index 访问器。
 有两种 index：
@@ -615,24 +644,9 @@ message ZoneConf {
 - **incell scalar list**：例如：`[]int32`
 - **incell enum list**：例如：`[]enum<.FruitType>`
 
-示例：*HelloWorld.xlsx* 中的两个 worksheet *ItemConf* 和 *ShopConf*：
+示例：对 *HelloWorld.xlsx* 中不同布局的 sheet 设置 index 列：
 
-- *ItemConf*：对 **map value** 同一 struct 的列建立 index。
-- *ShopConf*：对 **list element** 同一 struct 的列建立 index。
-
-{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
-
-{{< sheet colored >}}
-
-| ID               | Name        | Desc                          |
-| ---------------- | ----------- | ----------------------------- |
-| map<int32, Item> | string      | string                        |
-| Item's ID        | Item's name | Item's desc                   |
-| 1                | Apple       | A kind of delicious fruit.    |
-| 2                | Orange      | A kind of sour fruit.         |
-| 3                | Banana      | A kind of calorie-rich fruit. |
-
-{{< /sheet >}}
+{{< spreadsheet "HelloWorld.xlsx" List MapInMap ListInMap "@TABLEAU" >}}
 
 {{< sheet colored >}}
 
@@ -646,12 +660,37 @@ message ZoneConf {
 
 {{< /sheet >}}
 
+{{< sheet colored >}}
+
+| ID                | Name        | PropID           | Type        | Bonus        |
+| ----------------- | ----------- | ---------------- | ----------- | ------------ |
+| map<uint32, Item> | string      | map<int32, Prop> | int64       | int32        |
+| Item's ID         | Item's name | Prop's ID        | Prop's type | prop's bonus |
+| 1                 | Apple       | 1                | 10          | 100          |
+| 2                 | Orange      | 1                | 20          | 200          |
+| 2                 | Orange      | 2                | 30          | 300          |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID                | Name        | PropID      | Type        | Bonus        |
+| ----------------- | ----------- | ----------- | ----------- | ------------ |
+| map<uint32, Item> | string      | [Prop]int32 | int64       | int32        |
+| Item's ID         | Item's name | Prop's ID   | Prop's type | prop's bonus |
+| 1                 | Apple       | 1           | 10          | 100          |
+| 2                 | Orange      | 1           | 20          | 200          |
+| 2                 | Orange      | 2           | 30          | 300          |
+
+{{< /sheet >}}
+
 {{< sheet colored1 >}}
 
-| Sheet    | Index                                          |     |
-| -------- | ---------------------------------------------- | --- |
-| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem |     |
-| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |     |
+| Sheet     | Index                                          |
+| --------- | ---------------------------------------------- |
+| List      | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |
+| MapInMap  | Type@Prop, (PropID,Type)@SpecialProp           |
+| ListInMap | Type@Prop, (PropID,Type)@SpecialProp           |
 
 {{< /sheet >}}
 
@@ -690,6 +729,9 @@ message ZoneConf {
 
 ## 选项 `OrderedIndex`
 
+> [!IMPORTANT]
+> 被索引的列必须是同一 struct（message）内的 scalar 或 enum。
+
 `OrderedIndex` 选项可用于生成 ordered index 访问器。
 有两种 ordered index：
 
@@ -708,24 +750,9 @@ message ZoneConf {
 - **incell scalar list**：例如：`[]int32`
 - **incell enum list**：例如：`[]enum<.FruitType>`
 
-示例：*HelloWorld.xlsx* 中的两个 worksheet *ItemConf* 和 *ShopConf*：
+示例：对 *HelloWorld.xlsx* 中不同布局的 sheet 设置 OrderedIndex 列：
 
-- *ItemConf*：对 **map value** 同一 struct 的列建立 ordered index。
-- *ShopConf*：对 **list element** 同一 struct 的列建立 ordered index。
-
-{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
-
-{{< sheet colored >}}
-
-| ID               | Name        | Desc                          |
-| ---------------- | ----------- | ----------------------------- |
-| map<int32, Item> | string      | string                        |
-| Item's ID        | Item's name | Item's desc                   |
-| 1                | Apple       | A kind of delicious fruit.    |
-| 2                | Orange      | A kind of sour fruit.         |
-| 3                | Banana      | A kind of calorie-rich fruit. |
-
-{{< /sheet >}}
+{{< spreadsheet "HelloWorld.xlsx" List MapInMap ListInMap "@TABLEAU" >}}
 
 {{< sheet colored >}}
 
@@ -739,12 +766,37 @@ message ZoneConf {
 
 {{< /sheet >}}
 
+{{< sheet colored >}}
+
+| ID                | Name        | PropID           | Type        | Bonus        |
+| ----------------- | ----------- | ---------------- | ----------- | ------------ |
+| map<uint32, Item> | string      | map<int32, Prop> | int64       | int32        |
+| Item's ID         | Item's name | Prop's ID        | Prop's type | prop's bonus |
+| 1                 | Apple       | 1                | 10          | 100          |
+| 2                 | Orange      | 1                | 20          | 200          |
+| 2                 | Orange      | 2                | 30          | 300          |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID                | Name        | PropID      | Type        | Bonus        |
+| ----------------- | ----------- | ----------- | ----------- | ------------ |
+| map<uint32, Item> | string      | [Prop]int32 | int64       | int32        |
+| Item's ID         | Item's name | Prop's ID   | Prop's type | prop's bonus |
+| 1                 | Apple       | 1           | 10          | 100          |
+| 2                 | Orange      | 1           | 20          | 200          |
+| 2                 | Orange      | 2           | 30          | 300          |
+
+{{< /sheet >}}
+
 {{< sheet colored1 >}}
 
-| Sheet    | OrderedIndex                                                         |     |
-| -------- | -------------------------------------------------------------------- | --- |
-| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem                       |     |
-| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop, (ID,Type)<Type>@Shop |     |
+| Sheet     | OrderedIndex                                   |
+| --------- | ---------------------------------------------- |
+| List      | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |
+| MapInMap  | Type@Prop, (PropID,Type)@SpecialProp           |
+| ListInMap | Type@Prop, (PropID,Type)@SpecialProp           |
 
 {{< /sheet >}}
 

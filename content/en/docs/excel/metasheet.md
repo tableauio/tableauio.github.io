@@ -598,9 +598,38 @@ If you set `OrderedMap` to `true`, then tableau loader plugins will generate ord
 - [C++: OrderedMap API](../../api/loader/cpp/#orderedmap)
 - [Go: OrderedMap API](../../api/loader/go/#orderedmap)
 
+For example, a worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                | Name        | PropID           | PropValue    |
+| ----------------- | ----------- | ---------------- | ------------ |
+| map<uint32, Item> | string      | map<int32, Prop> | int64        |
+| Item's ID         | Item's name | Prop's ID        | Prop's value |
+| 1                 | Apple       | 1                | 10           |
+| 2                 | Orange      | 1                | 20           |
+| 2                 | Orange      | 2                | 30           |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | OrderedMap |
+| -------- | ---------- |
+| ItemConf | true       |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
 ## Option `Index`
 
-Option `Index` can be specified to generate index accessers.
+> [!IMPORTANT]
+> The indexed columns must be scalars or enums within the same struct (message).
+
+Option `Index` can be specified to generate index accessors.
 There are two kinds of indexes:
 
 1. **Single-column Index**
@@ -618,24 +647,9 @@ Each column type can be:
 - **incell scalar list**: e.g: `[]int32`
 - **incell enum list**: e.g: `[]enum<.FruitType>`
 
-Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
+Example: set index columns of different layout sheets in HelloWorld.xlsx:
 
-- *ItemConf*: index on columns of the same struct as **map value**.
-- *ShopConf*: index on columns of the same struct as **list element**.
-
-{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
-
-{{< sheet colored >}}
-
-| ID               | Name        | Desc                          |
-| ---------------- | ----------- | ----------------------------- |
-| map<int32, Item> | string      | string                        |
-| Item's ID        | Item's name | Item's desc                   |
-| 1                | Apple       | A kind of delicious fruit.    |
-| 2                | Orange      | A kind of sour fruit.         |
-| 3                | Banana      | A kind of calorie-rich fruit. |
-
-{{< /sheet >}}
+{{< spreadsheet "HelloWorld.xlsx" List MapInMap ListInMap "@TABLEAU" >}}
 
 {{< sheet colored >}}
 
@@ -649,12 +663,37 @@ Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 
 {{< /sheet >}}
 
+{{< sheet colored >}}
+
+| ID                | Name        | PropID           | Type        | Bonus        |
+| ----------------- | ----------- | ---------------- | ----------- | ------------ |
+| map<uint32, Item> | string      | map<int32, Prop> | int64       | int32        |
+| Item's ID         | Item's name | Prop's ID        | Prop's type | prop's bonus |
+| 1                 | Apple       | 1                | 10          | 100          |
+| 2                 | Orange      | 1                | 20          | 200          |
+| 2                 | Orange      | 2                | 30          | 300          |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID                | Name        | PropID      | Type        | Bonus        |
+| ----------------- | ----------- | ----------- | ----------- | ------------ |
+| map<uint32, Item> | string      | [Prop]int32 | int64       | int32        |
+| Item's ID         | Item's name | Prop's ID   | Prop's type | prop's bonus |
+| 1                 | Apple       | 1           | 10          | 100          |
+| 2                 | Orange      | 1           | 20          | 200          |
+| 2                 | Orange      | 2           | 30          | 300          |
+
+{{< /sheet >}}
+
 {{< sheet colored1 >}}
 
-| Sheet    | Index                                          |     |
-| -------- | ---------------------------------------------- | --- |
-| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem |     |
-| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |     |
+| Sheet     | Index                                          |
+| --------- | ---------------------------------------------- |
+| List      | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |
+| MapInMap  | Type@Prop, (PropID,Type)@SpecialProp           |
+| ListInMap | Type@Prop, (PropID,Type)@SpecialProp           |
 
 {{< /sheet >}}
 
@@ -701,6 +740,9 @@ Examples:
 
 ## Option `OrderedIndex`
 
+> [!IMPORTANT]
+> The indexed columns must be scalars or enums within the same struct (message).
+
 Option `OrderedIndex` can be specified to generate ordered index accessers.
 There are two kinds of ordered indexes:
 
@@ -719,24 +761,9 @@ Each column type can be:
 - **incell scalar list**: e.g: `[]int32`
 - **incell enum list**: e.g: `[]enum<.FruitType>`
 
-Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
+Example: set OrderedIndex columns of different layout sheets in HelloWorld.xlsx:
 
-- *ItemConf*: ordered index on columns of the same struct as **map value**.
-- *ShopConf*: ordered index on columns of the same struct as **list element**.
-
-{{< spreadsheet "HelloWorld.xlsx" ItemConf ShopConf "@TABLEAU" >}}
-
-{{< sheet colored >}}
-
-| ID               | Name        | Desc                          |
-| ---------------- | ----------- | ----------------------------- |
-| map<int32, Item> | string      | string                        |
-| Item's ID        | Item's name | Item's desc                   |
-| 1                | Apple       | A kind of delicious fruit.    |
-| 2                | Orange      | A kind of sour fruit.         |
-| 3                | Banana      | A kind of calorie-rich fruit. |
-
-{{< /sheet >}}
+{{< spreadsheet "HelloWorld.xlsx" List MapInMap ListInMap "@TABLEAU" >}}
 
 {{< sheet colored >}}
 
@@ -750,18 +777,43 @@ Example: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx:
 
 {{< /sheet >}}
 
+{{< sheet colored >}}
+
+| ID                | Name        | PropID           | Type        | Bonus        |
+| ----------------- | ----------- | ---------------- | ----------- | ------------ |
+| map<uint32, Item> | string      | map<int32, Prop> | int64       | int32        |
+| Item's ID         | Item's name | Prop's ID        | Prop's type | prop's bonus |
+| 1                 | Apple       | 1                | 10          | 100          |
+| 2                 | Orange      | 1                | 20          | 200          |
+| 2                 | Orange      | 2                | 30          | 300          |
+
+{{< /sheet >}}
+
+{{< sheet colored >}}
+
+| ID                | Name        | PropID      | Type        | Bonus        |
+| ----------------- | ----------- | ----------- | ----------- | ------------ |
+| map<uint32, Item> | string      | [Prop]int32 | int64       | int32        |
+| Item's ID         | Item's name | Prop's ID   | Prop's type | prop's bonus |
+| 1                 | Apple       | 1           | 10          | 100          |
+| 2                 | Orange      | 1           | 20          | 200          |
+| 2                 | Orange      | 2           | 30          | 300          |
+
+{{< /sheet >}}
+
 {{< sheet colored1 >}}
 
-| Sheet    | OrderedIndex                                                         |     |
-| -------- | -------------------------------------------------------------------- | --- |
-| ItemConf | ID@Item, Name@AwardItem, (ID,Name)@SpecialItem                       |     |
-| ShopConf | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop, (ID,Type)<Type>@Shop |     |
+| Sheet     | OrderedIndex                                   |
+| --------- | ---------------------------------------------- |
+| List      | ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop |
+| MapInMap  | Type@Prop, (PropID,Type)@SpecialProp           |
+| ListInMap | Type@Prop, (PropID,Type)@SpecialProp           |
 
 {{< /sheet >}}
 
 {{< /spreadsheet >}}
 
-Example with sorting: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx,
+An example with sorting: two worksheets *ItemConf* and *ShopConf* in HelloWorld.xlsx,
 with sorted result arrays using `<>` syntax:
 
 - *ItemConf*: ordered index sorted by `Name` column.

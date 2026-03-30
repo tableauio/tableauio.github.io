@@ -28,7 +28,7 @@ Get the `N`th-level map value. Be aware that only applies to each level message'
 
 > Prerequisite: You need to set metasheet option `OrderedMap` to `true`.
 >
-> See [metatsheet option: OrderedMap](../../../excel/metasheet/#option-orderedmap).
+> See [metasheet option: OrderedMap](../../../excel/metasheet/#option-orderedmap).
 
 `func GetOrderedMapN(k1 KEY1, k2 KEY2...) (*OrderedMapValueType, error)`
 
@@ -36,27 +36,39 @@ Get the `N`th-level ordered map value. Be aware that only applies to each level 
 
 ### Index
 
-> Prerequisite: You need to set metatsheet option `Index` appropriately.
+> Prerequisite: You need to set metasheet option `Index` appropriately.
 >
-> See [metatsheet option: Index](../../../excel/metasheet/#option-index).
+> See [metasheet option: Index](../../../excel/metasheet/#option-index).
 
-If index name is `Chapter`, then the accessers are:
+If index name is `Chapter`, and the indexed keys are `k1, k2 ...`, then the accessors are:
 
 - `func FindChapterMap() *Index_ChapterMap`: Gets the whole hash map.
-- `func FindChapter(k1 KEY1, k2 KEY2...) []*ParentType` Finds values by key. One key may correspond to multiple values, which are returned by a slice.
+- `func FindChapter(k1 KEY1, k2 KEY2...) []*ParentType`: Finds values by key. One key may correspond to multiple values, which are returned as a slice.
 - `func FindFirstChapter(k1 KEY1, k2 KEY2...) *ParentType`: Finds the first value by key.
+
+If the indexed struct is nested within upper-level map containers, additional APIs are generated for each upper-level map to enable fast scoped lookup. Here `N` denotes the Nth upper-level map (e.g., `1` for the immediate parent map, `2` for the grandparent map, and so on).
+
+- `func FindChapterMapN(mapKey1 MapKey1Type, mapKey2 MapKey2Type...) *Index_ChapterMap`: Gets the whole hash map scoped to the specified upper-level map keys.
+- `func FindChapterN(mapKey1 MapKey1Type, mapKey2 MapKey2Type..., k1 KEY1, k2 KEY2...) []*ParentType`: Finds values by key within the specified upper-level map. One key may correspond to multiple values, which are returned as a slice.
+- `func FindFirstChapterN(mapKey1 MapKey1Type, mapKey2 MapKey2Type..., k1 KEY1, k2 KEY2...) *ParentType`: Finds the first matching value by key within the specified upper-level map.
 
 ### OrderedIndex
 
-> Prerequisite: You need to set metatsheet option `OrderedIndex` appropriately.
+> Prerequisite: You need to set metasheet option `OrderedIndex` appropriately.
 >
-> See [metatsheet option: OrderedIndex](../../../excel/metasheet/#option-orderedindex).
+> See [metasheet option: OrderedIndex](../../../excel/metasheet/#option-orderedindex).
 
-If ordered index name is `Chapter`, then the accessers are:
+If ordered index name is `Chapter`, and the indexed keys are `k1, k2 ...`, then the accessors are:
 
 - `func FindChapterMap() *OrderedIndex_ChapterMap`: Gets the whole ordered map.
-- `func FindChapter(k1 KEY1, k2 KEY2...) []*ParentType` Finds values by key. One key may correspond to multiple values, which are returned by a slice.
+- `func FindChapter(k1 KEY1, k2 KEY2...) []*ParentType`: Finds values by key. One key may correspond to multiple values, which are returned as a slice.
 - `func FindFirstChapter(k1 KEY1, k2 KEY2...) *ParentType`: Finds the first value by key.
+
+If the indexed struct is nested within upper-level map containers, additional APIs are generated for each upper-level map to enable fast scoped lookup. Here `N` denotes the Nth upper-level map (e.g., `1` for the immediate parent map, `2` for the grandparent map, and so on).
+
+- `func FindChapterMapN(mapKey1 MapKey1Type, mapKey2 MapKey2Type...) *OrderedIndex_ChapterMap`: Gets the whole ordered map scoped to the specified upper-level map keys.
+- `func FindChapterN(mapKey1 MapKey1Type, mapKey2 MapKey2Type..., k1 KEY1, k2 KEY2...) []*ParentType`: Finds values by key within the specified upper-level map. One key may correspond to multiple values, which are returned as a slice.
+- `func FindFirstChapterN(mapKey1 MapKey1Type, mapKey2 MapKey2Type..., k1 KEY1, k2 KEY2...) *ParentType`: Finds the first matching value by key within the specified upper-level map.
 
 ## Custom messager
 

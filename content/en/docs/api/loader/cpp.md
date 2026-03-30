@@ -29,7 +29,7 @@ Get the `N`th-level map value. Returns `nullptr` if the key is not found. Be awa
 
 > Prerequisite: You need to set metasheet option `OrderedMap` to `true`.
 >
-> See [metatsheet option: OrderedMap](../../../excel/metasheet/#option-orderedmap).
+> See [metasheet option: OrderedMap](../../../excel/metasheet/#option-orderedmap).
 
 - `const OrderedMapMap* GetOrderedMap() const`: Gets the whole ordered map.
 - `const OrderedMapValueType* GetOrderedMap(KEY1 k1) const`: Gets the 2nd-level ordered map value. Returns `nullptr` if the key is not found.
@@ -38,29 +38,39 @@ Get the `N`th-level ordered map value. Be aware that only applies to each level 
 
 ### Index
 
-> Prerequisite: You need to set metatsheet option `Index` appropriately.
+> Prerequisite: You need to set metasheet option `Index` appropriately.
 >
-> See [metatsheet option: Index](../../../excel/metasheet/#option-index).
+> See [metasheet option: Index](../../../excel/metasheet/#option-index).
 
-If index name is `Chapter`, then the accessers are:
+If index name is `Chapter`, then the accessors are:
 
 - `const Index_ChapterMap& FindChapterMap() const`: Gets the whole hash map.
-- `const Index_ChapterMap* FindChapterMap(KEY1 k1, KEY2 k2...) const`: Gets the hash map scoped to the upper `N`th-level map specified by the given key(s).
 - `const vector<ParentType>* FindChapter(KEY1 k1, KEY2 k2...) const`: Finds values by key. One key may correspond to multiple values, which are returned by a vector.
 - `const ParentType* FindFirstChapter(KEY1 k1, KEY2 k2...) const`: Finds the first value by key, or `nullptr` if no value found.
+
+If the indexed struct is nested within upper-level map containers, additional APIs are generated for each upper-level map to enable fast scoped lookup. Here `N` denotes the Nth upper-level map (e.g., `1` for the immediate parent map, `2` for the grandparent map, and so on).
+
+- `const Index_ChapterMap* FindChapterMapN(MapKey1Type mapKey1, MapKey2Type mapKey2...) const`: Gets the whole hash map scoped to the specified upper-level map keys.
+- `const vector<ParentType>* FindChapterN(MapKey1Type mapKey1, MapKey2Type mapKey2..., KEY1 k1, KEY2 k2...) const`: Finds values by key within the specified upper-level map. One key may correspond to multiple values, which are returned by a vector.
+- `const ParentType* FindFirstChapterN(MapKey1Type mapKey1, MapKey2Type mapKey2..., KEY1 k1, KEY2 k2...) const`: Finds the first matching value by key within the specified upper-level map, or `nullptr` if no value found.
 
 ### OrderedIndex
 
-> Prerequisite: You need to set metatsheet option `OrderedIndex` appropriately.
+> Prerequisite: You need to set metasheet option `OrderedIndex` appropriately.
 >
-> See [metatsheet option: OrderedIndex](../../../excel/metasheet/#option-orderedindex).
+> See [metasheet option: OrderedIndex](../../../excel/metasheet/#option-orderedindex).
 
-If ordered index name is `Chapter`, then the accessers are:
+If ordered index name is `Chapter`, then the accessors are:
 
 - `const OrderedIndex_ChapterMap& FindChapterMap() const`: Gets the whole ordered map.
-- `const OrderedIndex_ChapterMap* FindChapterMap(KEY1 k1, KEY2 k2...) const`: Gets the ordered map scoped to the upper `N`th-level map specified by the given key(s).
 - `const vector<ParentType>* FindChapter(KEY1 k1, KEY2 k2...) const`: Finds values by key. One key may correspond to multiple values, which are returned by a vector.
 - `const ParentType* FindFirstChapter(KEY1 k1, KEY2 k2...) const`: Finds the first value by key, or `nullptr` if no value found.
+
+If the indexed struct is nested within upper-level map containers, additional APIs are generated for each upper-level map to enable fast scoped lookup. Here `N` denotes the Nth upper-level map (e.g., `1` for the immediate parent map, `2` for the grandparent map, and so on).
+
+- `const OrderedIndex_ChapterMap* FindChapterMapN(MapKey1Type mapKey1, MapKey2Type mapKey2...) const`: Gets the whole ordered map scoped to the specified upper-level map keys.
+- `const vector<ParentType>* FindChapterN(MapKey1Type mapKey1, MapKey2Type mapKey2..., KEY1 k1, KEY2 k2...) const`: Finds values by key within the specified upper-level map. One key may correspond to multiple values, which are returned by a vector.
+- `const ParentType* FindFirstChapterN(MapKey1Type mapKey1, MapKey2Type mapKey2..., KEY1 k1, KEY2 k2...) const`: Finds the first matching value by key within the specified upper-level map, or `nullptr` if no value found.
 
 ## Custom messager
 

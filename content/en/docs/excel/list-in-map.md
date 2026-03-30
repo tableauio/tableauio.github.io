@@ -377,6 +377,10 @@ message ItemConf {
 
 {{< /details >}}
 
+### Multiple horizontal lists in vertical-map
+
+> TODO: add details and examples.
+
 ## Nested in horizontal-map
 
 ### Horizontal-list in horizontal-map

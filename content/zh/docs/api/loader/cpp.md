@@ -41,12 +41,17 @@ toc: true
 >
 > 参考 [metasheet 选项：Index](../../../excel/metasheet/#选项-index)。
 
-如果 index 名称为 `Chapter`，则访问器为：
+如果 index 名称为 `Chapter`，且被索引的 key 为 `k1, k2 ...`，则访问器为：
 
 - `const Index_ChapterMap& FindChapterMap() const`：获取整个 hash map。
-- `const Index_ChapterMap* FindChapterMap(KEY1 k1, KEY2 k2...) const`：获取由指定 key 限定的上层第 `N` 层 map 范围内的 hash map。
 - `const vector<ParentType>* FindChapter(KEY1 k1, KEY2 k2...) const`：按 key 查找值。一个 key 可能对应多个值，以 vector 形式返回。
 - `const ParentType* FindFirstChapter(KEY1 k1, KEY2 k2...) const`：按 key 查找第一个值，找不到时返回 `nullptr`。
+
+若被索引的 struct 嵌套在上层 map 容器中，则会为每个上层 map 生成额外的 API，以支持快速范围查找。此处 `N` 表示第 N 层上层 map（例如，`1` 表示直接父级 map，`2` 表示祖父级 map，以此类推）。
+
+- `const Index_ChapterMap* FindChapterMapN(MapKey1Type mapKey1, MapKey2Type mapKey2...) const`：获取限定在指定上层 map key 范围内的整个 hash map。
+- `const vector<ParentType>* FindChapterN(MapKey1Type mapKey1, MapKey2Type mapKey2..., KEY1 k1, KEY2 k2...) const`：在指定上层 map 范围内按 key 查找值。一个 key 可能对应多个值，以 vector 形式返回。
+- `const ParentType* FindFirstChapterN(MapKey1Type mapKey1, MapKey2Type mapKey2..., KEY1 k1, KEY2 k2...) const`：在指定上层 map 范围内按 key 查找第一个匹配值，找不到时返回 `nullptr`。
 
 ### OrderedIndex
 
@@ -54,12 +59,17 @@ toc: true
 >
 > 参考 [metasheet 选项：OrderedIndex](../../../excel/metasheet/#选项-orderedindex)。
 
-如果有序 index 名称为 `Chapter`，则访问器为：
+如果有序 index 名称为 `Chapter`，且被索引的 key 为 `k1, k2 ...`，则访问器为：
 
 - `const OrderedIndex_ChapterMap& FindChapterMap() const`：获取整个有序 map。
-- `const OrderedIndex_ChapterMap* FindChapterMap(KEY1 k1, KEY2 k2...) const`：获取由指定 key 限定的上层第 `N` 层 map 范围内的有序 map。
 - `const vector<ParentType>* FindChapter(KEY1 k1, KEY2 k2...) const`：按 key 查找值。一个 key 可能对应多个值，以 vector 形式返回。
 - `const ParentType* FindFirstChapter(KEY1 k1, KEY2 k2...) const`：按 key 查找第一个值，找不到时返回 `nullptr`。
+
+若被索引的 struct 嵌套在上层 map 容器中，则会为每个上层 map 生成额外的 API，以支持快速范围查找。此处 `N` 表示第 N 层上层 map（例如，`1` 表示直接父级 map，`2` 表示祖父级 map，以此类推）。
+
+- `const OrderedIndex_ChapterMap* FindChapterMapN(MapKey1Type mapKey1, MapKey2Type mapKey2...) const`：获取限定在指定上层 map key 范围内的整个有序 map。
+- `const vector<ParentType>* FindChapterN(MapKey1Type mapKey1, MapKey2Type mapKey2..., KEY1 k1, KEY2 k2...) const`：在指定上层 map 范围内按 key 查找值。一个 key 可能对应多个值，以 vector 形式返回。
+- `const ParentType* FindFirstChapterN(MapKey1Type mapKey1, MapKey2Type mapKey2..., KEY1 k1, KEY2 k2...) const`：在指定上层 map 范围内按 key 查找第一个匹配值，找不到时返回 `nullptr`。
 
 ## 自定义 messager
 
