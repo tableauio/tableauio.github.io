@@ -1,95 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wenchy on</title><link>https://tableauio.github.io/zh/contributors/wenchy/</link><description>Recent content in Wenchy on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Mon, 30 Mar 2026 15:00:00 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/zh/contributors/wenchy/index.xml" rel="self" type="application/rss+xml"/><item><title>欢迎使用 Tableau 👋</title><link>https://tableauio.github.io/zh/blog/%E6%AC%A2%E8%BF%8E%E4%BD%BF%E7%94%A8-tableau/</link><pubDate>Sun, 09 Jan 2022 23:35:42 +0800</pubDate><guid>https://tableauio.github.io/zh/blog/%E6%AC%A2%E8%BF%8E%E4%BD%BF%E7%94%A8-tableau/</guid><description>&lt;p>TODO&amp;hellip;&lt;/p>
 &lt;p>&lt;img class="img-fluid lazyload blur-up" src="https://tableauio.github.io/zh/blog/%E6%AC%A2%E8%BF%8E%E4%BD%BF%E7%94%A8-tableau/tableau-logo_hu_ac92ca55350f13ce.png" data-src="https://tableauio.github.io/zh/blog/%E6%AC%A2%E8%BF%8E%E4%BD%BF%E7%94%A8-tableau/tableau-logo.png" width="300" height="300" alt="Image">
-&lt;/p></description></item><item><title>使用 Index 快速查询配置数据</title><link>https://tableauio.github.io/zh/blog/%E4%BD%BF%E7%94%A8-index-%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE/</link><pubDate>Mon, 30 Mar 2026 15:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/blog/%E4%BD%BF%E7%94%A8-index-%E5%BF%AB%E9%80%9F%E6%9F%A5%E8%AF%A2%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE/</guid><description>&lt;h2 id="背景">背景 &lt;a href="#%e8%83%8c%e6%99%af" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;/p></description></item><item><title>Index（索引）使用指南</title><link>https://tableauio.github.io/zh/blog/index%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Mon, 30 Mar 2026 15:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/blog/index%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="背景">背景 &lt;a href="#%e8%83%8c%e6%99%af" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>在游戏或业务配置中，我们经常需要根据&lt;strong>非主键字段&lt;/strong>快速查找数据。例如：&lt;/p>
 &lt;ul>
 &lt;li>查找所有 &lt;code>Type == 1&lt;/code> 的商店&lt;/li>
-&lt;li>查找某个道具下所有 &lt;code>PropID == 2&lt;/code> 的属性&lt;/li>
+&lt;li>查找某个道具下所有 &lt;code>Param == 2&lt;/code> 的属性&lt;/li>
 &lt;/ul>
 &lt;p>如果每次都遍历整张表，性能开销较大。Tableau 提供了 &lt;strong>Index&lt;/strong> metasheet 选项，让 loader 插件在加载时自动构建索引，实现 O(1) 的快速查询。&lt;/p>
 &lt;hr>
-&lt;h2 id="index">Index &lt;a href="#index" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;h3 id="配置方式">配置方式 &lt;a href="#%e9%85%8d%e7%bd%ae%e6%96%b9%e5%bc%8f" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>在 &lt;code>@TABLEAU&lt;/code> metasheet 中，通过 &lt;code>Index&lt;/code> 列为指定 sheet 设置索引列。&lt;/p>
-&lt;p>&lt;strong>格式：&lt;/strong>&lt;/p>
+&lt;h2 id="配置语法">配置语法 &lt;a href="#%e9%85%8d%e7%bd%ae%e8%af%ad%e6%b3%95" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>在 &lt;code>@TABLEAU&lt;/code> metasheet 中，通过 &lt;code>Index&lt;/code> 选项指定列索引。&lt;/p>
+&lt;p>&lt;strong>完整格式：&lt;/strong>&lt;/p>
 &lt;ul>
-&lt;li>单列 Index：&lt;code>Column@IndexName&lt;/code>&lt;/li>
-&lt;li>多列 Index（Composite Index）：&lt;code>(Column1,Column2)@IndexName&lt;/code>&lt;/li>
-&lt;li>多个 Index 用逗号分隔：&lt;code>Type@ThemeShop, (ID,Type)@SpecialShop&lt;/code>&lt;/li>
+&lt;li>&lt;code>Column&amp;lt;SortedCol&amp;gt;@IndexName&lt;/code>&lt;/li>
+&lt;li>&lt;code>(Column1,Column2)&amp;lt;SortedCol1,SortedCol2&amp;gt;@IndexName&lt;/code>&lt;/li>
 &lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>组成部分&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;th>是否必填&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Column&lt;/code> 或&lt;br>&lt;code>(Column1,Column2)&lt;/code>&lt;/td>
+&lt;td>索引键列（单列或多列）&lt;/td>
+&lt;td>✅ 必填&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>&amp;lt;SortedCol&amp;gt;&lt;/code>&lt;/td>
+&lt;td>对结果 slice 按指定列排序&lt;/td>
+&lt;td>可选&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>@IndexName&lt;/code>&lt;/td>
+&lt;td>自定义索引名称&lt;/td>
+&lt;td>可选（默认用 message 名）&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;blockquote>
-&lt;p>&lt;strong>注意&lt;/strong>：被索引的列必须是同一 struct（message）内的 scalar 或 enum 字段。&lt;/p>&lt;/blockquote>
-&lt;h3 id="示例">示例 &lt;a href="#%e7%a4%ba%e4%be%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 &lt;code>List&lt;/code> sheet（list 布局）以及 &lt;code>@TABLEAU&lt;/code> metasheet 配置：&lt;/p>
-&lt;div class="table-responsive spreadsheet">
-&lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
-&lt;ul class="nav nav-tabs" role="tablist">
-&lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-dhnejckaimbflg-39102-tab" data-bs-toggle="tab" data-bs-target="#sheet-dhnejckaimbflg-39102" type="button" role="tab" aria-controls="sheet-dhnejckaimbflg-39102" aria-selected=" active ">List&lt;/button>
-&lt;/li>
-&lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-bdflnagchmiejk-39349-tab" data-bs-toggle="tab" data-bs-target="#sheet-bdflnagchmiejk-39349" type="button" role="tab" aria-controls="sheet-bdflnagchmiejk-39349" aria-selected=" false ">@TABLEAU&lt;/button>
-&lt;/li>
-&lt;/ul>
-&lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-dhnejckaimbflg-39102" role="tabpanel" aria-labelledby="sheet-dhnejckaimbflg-39102-tab">
-&lt;div class="table-responsive text-nowrap sheet sheet-colored">
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>ID&lt;/th>
-&lt;th>Type&lt;/th>
-&lt;th>Desc&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>[Shop]int32&lt;/td>
-&lt;td>int32&lt;/td>
-&lt;td>string&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Shop&amp;rsquo;s ID&lt;/td>
-&lt;td>Shop&amp;rsquo;s type&lt;/td>
-&lt;td>Shop&amp;rsquo;s desc&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>Shoes shop.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>T-Shirt shop.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>2&lt;/td>
-&lt;td>Fruite shop.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;/div>
-&lt;/div>
-&lt;div class="tab-pane fade " id="sheet-bdflnagchmiejk-39349" role="tabpanel" aria-labelledby="sheet-bdflnagchmiejk-39349-tab">
-&lt;div class="table-responsive text-nowrap sheet sheet-colored1">
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Sheet&lt;/th>
-&lt;th>Index&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>List&lt;/td>
-&lt;td>ID@Shop, Type@ThemeShop, (ID,Type)@SpecialShop&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;p>这样会生成三个索引：&lt;/p></description></item></channel></rss>
+&lt;p>[!IMPORTANT]
+被索引的列必须是同一 struct（message）内的 scalar、enum 或 incell/enum list 字段。&lt;/p>&lt;/blockquote>
+&lt;h2 id="单列索引single-column-index">单列索引（Single Column Index） &lt;a href="#%e5%8d%95%e5%88%97%e7%b4%a2%e5%bc%95single-column-index" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="配置示例">配置示例 &lt;a href="#%e9%85%8d%e7%bd%ae%e7%a4%ba%e4%be%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 &lt;code>ItemConf&lt;/code> sheet（map 布局）以及 &lt;code>@TABLEAU&lt;/code> metasheet 配置：&lt;/p></description></item></channel></rss>
