@@ -476,7 +476,7 @@ message ItemConf {
 ### 垂直标量列表
 
 > [!NOTE]
-> 定义方式与 [Incell scalar list](#incell-scalar-list) 相同，但如果提供了多行数据，会聚合多行。
+> 定义方式与 [单元格内标量列表](#单元格内标量列表) 相同，但如果提供了多行数据，会聚合多行。
 
 *HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -543,7 +543,7 @@ message ItemConf {
 ### 垂直枚举列表
 
 > [!NOTE]
-> 定义方式与 [Incell enum list](#incell-enum-list) 相同，但如果提供了多行数据，会聚合多行。
+> 定义方式与 [单元格内枚举列表](#单元格内枚举列表) 相同，但如果提供了多行数据，会聚合多行。
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
