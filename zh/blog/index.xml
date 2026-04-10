@@ -27,17 +27,17 @@
 &lt;tr>
 &lt;td>&lt;code>Column&lt;/code> 或&lt;br>&lt;code>(Column1,Column2)&lt;/code>&lt;/td>
 &lt;td>索引键列（单列或多列）&lt;/td>
-&lt;td>✅ 必填&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>&amp;lt;SortedCol&amp;gt;&lt;/code>&lt;/td>
 &lt;td>对结果 slice 按指定列排序&lt;/td>
-&lt;td>可选&lt;/td>
+&lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>@IndexName&lt;/code>&lt;/td>
-&lt;td>自定义索引名称&lt;/td>
-&lt;td>可选（默认用 message 名）&lt;/td>
+&lt;td>自定义索引名称（默认用 message 名）&lt;/td>
+&lt;td>&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
