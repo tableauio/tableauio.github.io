@@ -28,11 +28,11 @@ contributors: ["Wenchy"]
 - `Column<SortedCol>@IndexName`
 - `(Column1,Column2)<SortedCol1,SortedCol2>@IndexName`
 
-| 组成部分                           | 说明                      | 是否必填                  |
-| ---------------------------------- | ------------------------- | ------------------------- |
-| `Column` 或<br>`(Column1,Column2)` | 索引键列（单列或多列）    | ✅ 必填                    |
-| `<SortedCol>`                      | 对结果 slice 按指定列排序 | 可选                      |
-| `@IndexName`                       | 自定义索引名称            | 可选（默认用 message 名） |
+| 组成部分                           | 说明                                | 是否必填 |
+| ---------------------------------- | ----------------------------------- | -------- |
+| `Column` 或<br>`(Column1,Column2)` | 索引键列（单列或多列）              | ✅        |
+| `<SortedCol>`                      | 对结果 slice 按指定列排序           |          |
+| `@IndexName`                       | 自定义索引名称（默认用 message 名） |          |
 
 > [!IMPORTANT]
 > 被索引的列必须是同一 struct（message）内的 scalar、enum 或 incell/enum list 字段。
