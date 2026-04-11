@@ -28,7 +28,6 @@ toc: true
 | `patch`     | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                             |
 | `sep`       | string | Field-level separator.                                                                                                                                                    |
 | `subsep`    | string | Field-level subseparator.                                                                                                                                                 |
-| `cross`     | int32  | Specify count of crossed nodes/cells/fields of composite types with cardinality, such as list and map.                                                                    |
 | `pattern`   | string | Specify the pattern of scalar, list element, and map value.                                                                                                               |
 {.table-striped .table-hover}
 
@@ -188,23 +187,6 @@ If not set, it will use **sheet-level** seq in [metasheet](../metasheet/#option-
 - struct fields of each incell struct list element.
 
 If not set, it will use **sheet-level** subseq in [metasheet](../metasheet/#option-subsep).
-
-## Option `cross`
-
-Specify count of crossed nodes/cells/fields of composite types with
-cardinality, such as list and map.
-
-### union list field
-
-> TODO: example illustrated.
-
-Specify the count of union fields the list will cross and occupy
-(one list element for each field). It will also change this list
-field's layout from incell to horizontal.
-
-- Value 0 means it is an incell list.
-- Value > 0 means it is a horizontal list occupying N fields.
-- Value < 0 means it is a horizontal list occupying all following fields.
 
 ## Option `pattern`
 

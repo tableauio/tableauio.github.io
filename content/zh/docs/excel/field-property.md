@@ -28,7 +28,6 @@ toc: true
 | `patch`     | Patch  | 字段 patch 类型。<br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                         |
 | `sep`       | string | 字段级分隔符。                                                                                                                       |
 | `subsep`    | string | 字段级子分隔符。                                                                                                                     |
-| `cross`     | int32  | 指定具有基数的复合类型（如 list 和 map）跨越的节点/单元格/字段数量。                                                                 |
 | `pattern`   | string | 指定 scalar、list 元素和 map value 的模式。                                                                                          |
 {.table-striped .table-hover}
 
@@ -185,20 +184,6 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 - 每个 incell struct list 元素的结构体字段。
 
 如果未设置，将使用 [metasheet](../metasheet/#选项-subsep) 中的**sheet 级** subsep。
-
-## 选项 `cross`
-
-指定具有基数的复合类型（如 list 和 map）跨越的节点/单元格/字段数量。
-
-### union list 字段
-
-> TODO: 示例待补充。
-
-指定 list 将跨越并占用的 union 字段数量（每个字段对应一个 list 元素）。这也会将该 list 字段的布局从 incell 改为水平。
-
-- 值为 0 表示是 incell list。
-- 值 > 0 表示是占用 N 个字段的水平 list。
-- 值 < 0 表示是占用所有后续字段的水平 list。
 
 ## 选项 `pattern`
 
