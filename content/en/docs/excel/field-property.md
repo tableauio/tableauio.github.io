@@ -225,6 +225,7 @@ Examples:
 - `uint32|{validate:"uint32:{gt:0}"}`: the value must be greater than `0`.
 - `datetime|{validate:"timestamp:{lt:{seconds:1893456000}}"}`: the timestamp must be earlier than `2030-01-01T00:00:00Z` (Unix seconds `1893456000`).
 - `datetime|{validate:"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""}`: a custom CEL expression.
+- `int32|{validate:"int32:{[protoconf.is_zero]:true}"}`: a [custom rule](https://buf.build/docs/protovalidate/schemas/custom-rules/) defined as a proto extension.
 
 > [!WARNING]
 > Avoid comparing a field value against the current time (e.g.
@@ -234,7 +235,6 @@ Examples:
 > generated, making generation flaky and irreproducible. Prefer fixed boundaries
 > (absolute timestamps) or constraints between fields of the same record (e.g.
 > `start_time < end_time`).
-- `int32|{validate:"int32:{[protoconf.is_zero]:true}"}`: a [custom rule](https://buf.build/docs/protovalidate/schemas/custom-rules/) defined as a proto extension.
 
 For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 

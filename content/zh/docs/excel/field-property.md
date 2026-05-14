@@ -221,6 +221,7 @@ Tableau 集成了 [protovalidate](https://github.com/bufbuild/protovalidate)，
 - `uint32|{validate:"uint32:{gt:0}"}`：值必须大于 `0`。
 - `datetime|{validate:"timestamp:{lt:{seconds:1893456000}}"}`：时间戳必须早于 `2030-01-01T00:00:00Z`（Unix 秒数 `1893456000`）。
 - `datetime|{validate:"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""}`：自定义 CEL 表达式。
+- `int32|{validate:"int32:{[protoconf.is_zero]:true}"}`：使用通过 proto 扩展定义的 [自定义规则](https://buf.build/docs/protovalidate/schemas/custom-rules/)。
 
 > [!WARNING]
 > 避免将字段值与当前时间进行比较（例如 `timestamp:{gt_now:true}` /
@@ -228,7 +229,6 @@ Tableau 集成了 [protovalidate](https://github.com/bufbuild/protovalidate)，
 > 依赖“当前时间”的规则会因**生成时刻**不同而时而通过、时而失败，导致配置导出
 > 不稳定且不可复现。建议使用固定的边界（绝对时间戳），或在同一条记录的多个
 > 字段之间施加约束（例如 `start_time < end_time`）。
-- `int32|{validate:"int32:{[protoconf.is_zero]:true}"}`：使用通过 proto 扩展定义的 [自定义规则](https://buf.build/docs/protovalidate/schemas/custom-rules/)。
 
 例如，*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
 
@@ -310,4 +310,3 @@ message ItemConf {
 - `{Timespan}datetime|{validate_message:"cel_expression:\"this.start_time < this.end_time\""}`：每个 `Timespan` struct 都必须满足 `start_time < end_time`。
 
 CEL 表达式中的 `this` 指代被嵌套的 message 实例。
-
