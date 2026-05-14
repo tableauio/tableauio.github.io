@@ -12,26 +12,26 @@ toc: true
 
 ## 概览
 
-| 选项        | 类型   | 说明                                                                                                                                 |
-| ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `unique`    | bool   | 检查字段唯一性。<br> 默认值：`false`。对于 map（或 KeyedList）的 key，默认值会自动推断。                                             |
-| `range`     | string | 格式：`"left,right"`。例如：`"1,10"`、`"1,~"`、`"~,10"`。<br> range 的不同含义：<br> - 数字：值范围。<br> - 字符串：UTF-8 码点数量。 |
-| `refer`     | string | 格式：`"SheetName(SheetAlias).ColumnName"`。<br>确保该字段的值在另一个 sheet 的列值空间中。多个 refer 用逗号分隔。                   |
-| `sequence`  | int64  | 确保该字段的值是一个从指定值开始的序列。                                                                                             |
-| `default`   | string | 如果单元格为空，则使用此默认值。                                                                                                     |
-| `fixed`     | bool   | 自动检测水平 list/map 的固定大小。<br> 默认值：`false`。                                                                             |
-| `size`      | uint32 | 指定水平 list/map 的固定大小。                                                                                                       |
-| `form`      | Form   | 指定 incell struct 的单元格数据格式。<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                            |
-| `json_name` | string | 指定字段的自定义 JSON 名称，替代 proto 字段名的 lowerCamelCase 形式。                                                                |
-| `present`   | bool   | 如果 present 为 true，则必须显式填写单元格数据。<br> 默认值：`false`。                                                               |
-| `optional`  | bool   | 该字段是否为可选（字段名可缺失）。                                                                                                   |
-| `patch`     | Patch  | 字段 patch 类型。<br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                         |
-| `sep`       | string | 字段级分隔符。                                                                                                                       |
-| `subsep`    | string | 字段级子分隔符。                                                                                                                     |
-| `pattern`   | string | 指定 scalar、list 元素和 map value 的模式。                                                                                          |
+| 选项               | 类型   | 说明                                                                                                                                                                                                                                          |
+| ------------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `unique`           | bool   | 检查字段唯一性。<br> 默认值：`false`。对于 map（或 KeyedList）的 key，默认值会自动推断。                                                                                                                                                      |
+| `range`            | string | 格式：`"left,right"`。例如：`"1,10"`、`"1,~"`、`"~,10"`。<br> range 的不同含义：<br> - 数字：值范围。<br> - 字符串：UTF-8 码点数量。                                                                                                          |
+| `refer`            | string | 格式：`"SheetName(SheetAlias).ColumnName"`。<br>确保该字段的值在另一个 sheet 的列值空间中。多个 refer 用逗号分隔。                                                                                                                            |
+| `sequence`         | int64  | 确保该字段的值是一个从指定值开始的序列。                                                                                                                                                                                                      |
+| `default`          | string | 如果单元格为空，则使用此默认值。                                                                                                                                                                                                              |
+| `fixed`            | bool   | 自动检测水平 list/map 的固定大小。<br> 默认值：`false`。                                                                                                                                                                                      |
+| `size`             | uint32 | 指定水平 list/map 的固定大小。                                                                                                                                                                                                                |
+| `form`             | Form   | 指定 incell struct 的单元格数据格式。<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                                                                                                     |
+| `json_name`        | string | 指定字段的自定义 JSON 名称，替代 proto 字段名的 lowerCamelCase 形式。                                                                                                                                                                         |
+| `present`          | bool   | 如果 present 为 true，则必须显式填写单元格数据。<br> 默认值：`false`。                                                                                                                                                                        |
+| `optional`         | bool   | 该字段是否为可选（字段名可缺失）。                                                                                                                                                                                                            |
+| `patch`            | Patch  | 字段 patch 类型。<br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                                                                                                  |
+| `sep`              | string | 字段级分隔符。                                                                                                                                                                                                                                |
+| `subsep`           | string | 字段级子分隔符。                                                                                                                                                                                                                              |
+| `pattern`          | string | 指定 scalar、list 元素和 map value 的模式。                                                                                                                                                                                                   |
 | `validate`         | string | 适用于 scalar 和 well-known 类型的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"string:{max_len:10}"`、`"int32:{gt:0 lte:100}"`、`"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`。 |
-| `validate_complex` | string | 适用于复合类型（list/map）的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"repeated:{min_items:1}"`、`"map:{min_pairs:1}"`。 |
-| `validate_message` | string | 适用于字段所嵌套 message 的 [protovalidate](https://github.com/bufbuild/protovalidate) message 级校验规则。<br>例如：`"cel_expression:\"this.start_time < this.end_time\""`。 |
+| `validate_complex` | string | 适用于复合类型（list/map）的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"repeated:{min_items:1}"`、`"map:{min_pairs:1}"`。                                                                         |
+| `validate_message` | string | 适用于字段所嵌套 message 的 [protovalidate](https://github.com/bufbuild/protovalidate) message 级校验规则。<br>例如：`"cel_expression:\"this.start_time < this.end_time\""`。                                                                 |
 {.table-striped .table-hover}
 
 ## 选项 `unique`
@@ -236,12 +236,12 @@ Tableau 集成了 [protovalidate](https://github.com/bufbuild/protovalidate)，
 
 {{< sheet colored >}}
 
-| ID                                          | Name                                              | Score                                            |
-| ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------ |
-| map<uint32, Item>\|{validate:"uint32:{gt:0}"} | string\|{validate:"string:{min_len:1 max_len:20}"} | int32\|{validate:"int32:{gt:0 lte:100}"}          |
-| Item ID                                     | Item Name                                         | Item Score                                       |
-| 1                                           | sword                                             | 80                                               |
-| 2                                           | shield                                            | 95                                               |
+| ID                                            | Name                                               | Score                                    |
+| --------------------------------------------- | -------------------------------------------------- | ---------------------------------------- |
+| map<uint32, Item>\|{validate:"uint32:{gt:0}"} | string\|{validate:"string:{min_len:1 max_len:20}"} | int32\|{validate:"int32:{gt:0 lte:100}"} |
+| Item ID                                       | Item Name                                          | Item Score                               |
+| 1                                             | sword                                              | 80                                       |
+| 2                                             | shield                                             | 95                                       |
 
 {{< /sheet >}}
 

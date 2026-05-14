@@ -12,26 +12,26 @@ toc: true
 
 ## Overview
 
-| Option      | Type   | Description                                                                                                                                                               |
-| ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `unique`    | bool   | Check field uniqueness. <br> Default: `false`. Specially for map (or KeyedList) key, default will be auto deduced.                                                        |
-| `range`     | string | Format: `"left,right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point. |
-| `refer`     | string | Format: `"SheetName(SheetAlias).ColumnName"`.<br>Ensure this field is in another sheet's column value space. Multiple refers are comma-separated.                         |
-| `sequence`  | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                       |
-| `default`   | string | Use this default value if cell is empty (not present).                                                                                                                    |
-| `fixed`     | bool   | Auto-detected fixed size of horizontal list/map. <br> Default: `false`.                                                                                                   |
-| `size`      | uint32 | Specify fixed size of horizontal list/map.                                                                                                                                |
-| `form`      | Form   | Specify cell data form of incell struct.<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                              |
-| `json_name` | string | Specify field's custom JSON name instead of lowerCamelCase name of proto field name.                                                                                      |
-| `present`   | bool   | Must fill cell data explicitly if present is true. <br> Default: `false`.                                                                                                 |
-| `optional`  | bool   | Whether this field is optional (field name existence).                                                                                                                    |
-| `patch`     | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                             |
-| `sep`       | string | Field-level separator.                                                                                                                                                    |
-| `subsep`    | string | Field-level subseparator.                                                                                                                                                 |
-| `pattern`   | string | Specify the pattern of scalar, list element, and map value.                                                                                                               |
+| Option             | Type   | Description                                                                                                                                                                                                                                  |
+| ------------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `unique`           | bool   | Check field uniqueness. <br> Default: `false`. Specially for map (or KeyedList) key, default will be auto deduced.                                                                                                                           |
+| `range`            | string | Format: `"left,right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point.                                                                    |
+| `refer`            | string | Format: `"SheetName(SheetAlias).ColumnName"`.<br>Ensure this field is in another sheet's column value space. Multiple refers are comma-separated.                                                                                            |
+| `sequence`         | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                                                                                          |
+| `default`          | string | Use this default value if cell is empty (not present).                                                                                                                                                                                       |
+| `fixed`            | bool   | Auto-detected fixed size of horizontal list/map. <br> Default: `false`.                                                                                                                                                                      |
+| `size`             | uint32 | Specify fixed size of horizontal list/map.                                                                                                                                                                                                   |
+| `form`             | Form   | Specify cell data form of incell struct.<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                                                                                                 |
+| `json_name`        | string | Specify field's custom JSON name instead of lowerCamelCase name of proto field name.                                                                                                                                                         |
+| `present`          | bool   | Must fill cell data explicitly if present is true. <br> Default: `false`.                                                                                                                                                                    |
+| `optional`         | bool   | Whether this field is optional (field name existence).                                                                                                                                                                                       |
+| `patch`            | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                                                                                                |
+| `sep`              | string | Field-level separator.                                                                                                                                                                                                                       |
+| `subsep`           | string | Field-level subseparator.                                                                                                                                                                                                                    |
+| `pattern`          | string | Specify the pattern of scalar, list element, and map value.                                                                                                                                                                                  |
 | `validate`         | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for scalar and well-known types. <br>E.g.: `"string:{max_len:10}"`, `"int32:{gt:0 lte:100}"`, `"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`. |
-| `validate_complex` | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for complex types (list/map). <br>E.g.: `"repeated:{min_items:1}"`, `"map:{min_pairs:1}"`. |
-| `validate_message` | string | [protovalidate](https://github.com/bufbuild/protovalidate) message-level rules for the nested message of a field. <br>E.g.: `"cel_expression:\"this.start_time < this.end_time\""`. |
+| `validate_complex` | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for complex types (list/map). <br>E.g.: `"repeated:{min_items:1}"`, `"map:{min_pairs:1}"`.                                                                      |
+| `validate_message` | string | [protovalidate](https://github.com/bufbuild/protovalidate) message-level rules for the nested message of a field. <br>E.g.: `"cel_expression:\"this.start_time < this.end_time\""`.                                                          |
 {.table-striped .table-hover}
 
 ## Option `unique`
@@ -242,12 +242,12 @@ For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
 
 {{< sheet colored >}}
 
-| ID                                          | Name                                              | Score                                            |
-| ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------ |
-| map<uint32, Item>\|{validate:"uint32:{gt:0}"} | string\|{validate:"string:{min_len:1 max_len:20}"} | int32\|{validate:"int32:{gt:0 lte:100}"}          |
-| Item ID                                     | Item Name                                         | Item Score                                       |
-| 1                                           | sword                                             | 80                                               |
-| 2                                           | shield                                            | 95                                               |
+| ID                                            | Name                                               | Score                                    |
+| --------------------------------------------- | -------------------------------------------------- | ---------------------------------------- |
+| map<uint32, Item>\|{validate:"uint32:{gt:0}"} | string\|{validate:"string:{min_len:1 max_len:20}"} | int32\|{validate:"int32:{gt:0 lte:100}"} |
+| Item ID                                       | Item Name                                          | Item Score                               |
+| 1                                             | sword                                              | 80                                       |
+| 2                                             | shield                                             | 95                                       |
 
 {{< /sheet >}}
 
@@ -318,4 +318,3 @@ Examples:
 
 The CEL expression operates on `this`, which refers to the nested message
 instance.
-  
