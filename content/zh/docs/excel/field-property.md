@@ -29,6 +29,9 @@ toc: true
 | `sep`       | string | 字段级分隔符。                                                                                                                       |
 | `subsep`    | string | 字段级子分隔符。                                                                                                                     |
 | `pattern`   | string | 指定 scalar、list 元素和 map value 的模式。                                                                                          |
+| `validate`         | string | 适用于 scalar 和 well-known 类型的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"string:{max_len:10}"`、`"int32:{gt:0 lte:100}"`、`"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`。 |
+| `validate_complex` | string | 适用于复合类型（list/map）的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"repeated:{min_items:1}"`、`"map:{min_pairs:1}"`。 |
+| `validate_message` | string | 适用于字段所嵌套 message 的 [protovalidate](https://github.com/bufbuild/protovalidate) message 级校验规则。<br>例如：`"cel_expression:\"this.start_time < this.end_time\""`。 |
 {.table-striped .table-hover}
 
 ## 选项 `unique`
@@ -197,3 +200,114 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 指定当前单元格的点分十进制模式。每个十进制数的范围从 0 到模式对应部分的最大值（MAX）。
 
 默认模式：`255.255.255`。
+
+## 选项 `validate`
+
+Tableau 集成了 [protovalidate](https://github.com/bufbuild/protovalidate)，
+可以直接在表格字段属性中声明校验规则。这些规则会被编译为生成 `.proto` 文件中
+字段上的 [`(buf.validate.field)`](https://buf.build/bufbuild/protovalidate)
+选项，并在 tableau 生成配置时强制执行。支持 CEL 表达式以及 protovalidate 提供
+的标准规则、predefined 规则和自定义（custom）规则。
+
+选项 `validate` 用于指定 **scalar 和 well-known 类型** （例如 `int32`、
+`string`、`bool`、`google.protobuf.Timestamp`、`google.protobuf.Duration` 等）
+的**字段级**校验规则。其值为 [`buf.validate.FieldRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.FieldRules)
+的 [protobuf text format](https://protobuf.dev/reference/protobuf/textformat-spec/) 表示。
+
+示例：
+
+- `int32|{validate:"int32:{gt:0 lte:100}"}`：值必须在 `(0, 100]` 范围内。
+- `string|{validate:"string:{min_len:1 max_len:20}"}`：字符串长度必须在 `[1, 20]` 范围内。
+- `uint32|{validate:"uint32:{gt:0}"}`：值必须大于 `0`。
+- `datetime|{validate:"timestamp:{lt:{seconds:1893456000}}"}`：时间戳必须早于 `2030-01-01T00:00:00Z`（Unix 秒数 `1893456000`）。
+- `datetime|{validate:"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""}`：自定义 CEL 表达式。
+
+> [!WARNING]
+> 避免将字段值与当前时间进行比较（例如 `timestamp:{gt_now:true}` /
+> `lt_now:true`，或在 CEL 表达式中引用 `now`）。配置是在**构建时**生成并校验的，
+> 依赖“当前时间”的规则会因**生成时刻**不同而时而通过、时而失败，导致配置导出
+> 不稳定且不可复现。建议使用固定的边界（绝对时间戳），或在同一条记录的多个
+> 字段之间施加约束（例如 `start_time < end_time`）。
+- `int32|{validate:"int32:{[protoconf.is_zero]:true}"}`：使用通过 proto 扩展定义的 [自定义规则](https://buf.build/docs/protovalidate/schemas/custom-rules/)。
+
+例如，*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                                          | Name                                              | Score                                            |
+| ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------ |
+| map<uint32, Item>\|{validate:"uint32:{gt:0}"} | string\|{validate:"string:{min_len:1 max_len:20}"} | int32\|{validate:"int32:{gt:0 lte:100}"}          |
+| Item ID                                     | Item Name                                         | Item Score                                       |
+| 1                                           | sword                                             | 80                                               |
+| 2                                           | shield                                            | 95                                               |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+生成结果：
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "buf/validate/validate.proto";
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}, (buf.validate.field) = {uint32:{gt:0}}];
+    string name = 2 [(tableau.field) = {name:"Name"}, (buf.validate.field) = {string:{min_len:1 max_len:20}}];
+    int32 score = 3 [(tableau.field) = {name:"Score"}, (buf.validate.field) = {int32:{gt:0 lte:100}}];
+  }
+}
+```
+
+{{< /details >}}
+
+## 选项 `validate_complex`
+
+选项 `validate_complex` 用于指定**复合类型**（即 `list`/`map`）的**字段级**校验
+规则——即对容器本身（而非其元素）施加的规则。其值为
+[`buf.validate.FieldRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.FieldRules)
+（`repeated` 或 `map` 字段已设置）的 text format 表示。
+
+示例：
+
+- `map<uint32, Item>|{validate_complex:"map:{min_pairs:1}"}`：map 必须至少包含一个条目。
+- `[]string|{validate_complex:"repeated:{min_items:1}"}`：list 必须至少包含一个元素。
+- `[]string|{validate_complex:"repeated:{[protoconf.min_items_three]:true}"}`：使用自定义规则。
+
+> [!NOTE]
+> `validate` 用于元素/值类型自身的规则，`validate_complex` 用于容器的规则。
+> 这两个选项可以在同一个字段上同时使用。
+
+## 选项 `validate_message`
+
+选项 `validate_message` 用于指定**字段所嵌套 message 的 message 级校验规则**。
+通常在字段的值类型为子 message（例如 struct，或 map/list 的 value 类型）时使用，
+用于通过 CEL 表达式对 message 的多个字段进行交叉校验。其值为
+[`buf.validate.MessageRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.MessageRules)
+的 text format 表示。
+
+示例：
+
+- `map<uint32, Item>|{validate_message:"cel_expression:\"this.value <= 0 || this.name != ''\""}`：map 中每个 value（`Item`）都必须满足该 CEL 表达式。
+- `{Timespan}datetime|{validate_message:"cel_expression:\"this.start_time < this.end_time\""}`：每个 `Timespan` struct 都必须满足 `start_time < end_time`。
+
+CEL 表达式中的 `this` 指代被嵌套的 message 实例。
+

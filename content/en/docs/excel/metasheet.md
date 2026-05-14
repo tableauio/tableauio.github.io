@@ -41,6 +41,7 @@ Options below can be specified in the metasheet `@TABLEAU` to affect the corresp
 | `Index`                  | []string            | Generate index accessers. <br> - Single-column Index format: `Column<ColumnX,ColumnY,...>@IndexName`.<br> - Multi-column Index format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.                                                                                                                                                                                                                                                                                                                                                                         |
 | `OrderedIndex`           | []string            | Generate OrderedIndex accessers. <br> - Single-column OrderedIndex format: `Column<ColumnX,ColumnY,...>@IndexName`.<br> - Multi-column OrderedIndex format: `(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`.                                                                                                                                                                                                                                                                                                                                                    |
 | `LangOptions`            | map<string, string> | Specify loader language options. <br> Valid keys are: `OrderedMap`, `Index`. <br> Different kvs must be seperated by `,` and one key value must be seperated by `:`. <br> If one key doesn't exist in map, it means that this loader option is supported in all languages. <br> Valid values are all combinations of `cpp`, `go` with space as seperator. <br> Examples: <br> - `OrderedMap:cpp,Index:cpp go` // ordered map supported in cpp, index supported in cpp and go <br> - `OrderedMap:cpp` // ordered map supported in cpp, index supported in all languages |
+| `Validate`               | string              | [protovalidate](https://github.com/bufbuild/protovalidate) message-level rules at the worksheet/messager level. The value is the text format of [`buf.validate.MessageRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.MessageRules), e.g. `cel_expression:"this.item_map.size() > 0"`. Also supported on `MODE_STRUCT_TYPE`/`MODE_UNION_TYPE` sheets. |
 {.table-striped .table-hover}
 
 ## Empty `@TABLEAU`
@@ -1046,3 +1047,70 @@ If not set, it will use **global-level** seq (default: `,`)  in [Tableauc yaml.c
 - struct fields of each incell struct list element.
 
 If not set, it will use **global-level** subseq (default: `:`) in [Tableauc yaml.config](../../prologue/config/#protoinputheadersubsep).
+
+## Option `Validate`
+
+Tableau integrates [protovalidate](https://github.com/bufbuild/protovalidate)
+to declare validation rules directly in spreadsheets. Option `Validate` is the
+**worksheet/messager-level** counterpart of the field-level
+[`validate_message`]({{< relref "field-property/#option-validate_message" >}})
+option. It is compiled into a [`(buf.validate.message)`](https://buf.build/bufbuild/protovalidate)
+option on the generated worksheet's proto message and enforced by tableau at
+config generation time.
+
+The value is the [protobuf text format](https://protobuf.dev/reference/protobuf/textformat-spec/)
+of [`buf.validate.MessageRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.MessageRules),
+typically containing one or more `cel_expression` (or `cel`) entries. `this`
+refers to the worksheet's whole top-level message instance.
+
+`Validate` is also supported on sheets with `Mode` set to:
+
+- `MODE_STRUCT_TYPE` / `MODE_STRUCT_TYPE_MULTI`
+- `MODE_UNION_TYPE` / `MODE_UNION_TYPE_MULTI`
+
+For example, the metasheet `@TABLEAU` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                | Name      |
+| ----------------- | --------- |
+| map<uint32, Item> | string    |
+| Item ID           | Item Name |
+| 1                 | Apple     |
+| 2                 | Orange    |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | Validate                              |
+| -------- | ------------------------------------- |
+| ItemConf | `cel_expression:"this.item_map.size() > 0"` |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "buf/validate/validate.proto";
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+  option (buf.validate.message) = {cel_expression:"this.item_map.size() > 0"};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}

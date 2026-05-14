@@ -41,6 +41,7 @@ toc: true
 | `Index`                  | []string            | 生成 index 访问器。<br> - 单列 Index 格式：`Column<ColumnX,ColumnY,...>@IndexName`。<br> - 多列 Index 格式：`(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`。                                                                                                                                                                                                                                                   |
 | `OrderedIndex`           | []string            | 生成 OrderedIndex 访问器。<br> - 单列 OrderedIndex 格式：`Column<ColumnX,ColumnY,...>@IndexName`。<br> - 多列 OrderedIndex 格式：`(Column1,Column2,...)<ColumnX,ColumnY,...>@IndexName`。                                                                                                                                                                                                                              |
 | `LangOptions`            | map<string, string> | 指定 loader 语言选项。<br>有效 key：`OrderedMap`、`Index`。<br>不同 kv 之间用 `,` 分隔，key 和 value 之间用 `:` 分隔。<br>如果某个 key 不在 map 中，表示该 loader 选项在所有语言中均支持。<br>有效 value 为 `cpp`、`go` 的任意组合（以空格分隔）。<br>示例：<br> - `OrderedMap:cpp,Index:cpp go` // ordered map 仅支持 cpp，index 支持 cpp 和 go <br> - `OrderedMap:cpp` // ordered map 仅支持 cpp，index 支持所有语言 |
+| `Validate`               | string              | 工作表/messager 级别的 [protovalidate](https://github.com/bufbuild/protovalidate) message 级校验规则。其值为 [`buf.validate.MessageRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.MessageRules) 的 text format 表示，例如：`cel_expression:"this.item_map.size() > 0"`。也支持在 `MODE_STRUCT_TYPE`/`MODE_UNION_TYPE` 等 sheet 上使用。 |
 {.table-striped .table-hover}
 
 ## 空 `@TABLEAU`
@@ -1019,3 +1020,69 @@ enum Patch {
 - 每个 incell struct list 元素的结构体字段。
 
 如果未设置，将使用 [Tableauc 配置](../../prologue/config/#protoinputheadersubsep) 中的**全局级别**子分隔符（默认：`:`）。
+
+## 选项 `Validate`
+
+Tableau 集成了 [protovalidate](https://github.com/bufbuild/protovalidate)，
+可以直接在表格中声明校验规则。选项 `Validate` 是字段级
+[`validate_message`]({{< relref "field-property/#选项-validate_message" >}})
+选项在**工作表/messager 级别**的对应版本。它会被编译为生成 worksheet 对应 proto
+message 上的 [`(buf.validate.message)`](https://buf.build/bufbuild/protovalidate)
+选项，并在 tableau 生成配置时强制执行。
+
+其值为 [`buf.validate.MessageRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.MessageRules)
+的 [protobuf text format](https://protobuf.dev/reference/protobuf/textformat-spec/)
+表示，通常包含一个或多个 `cel_expression`（或 `cel`）项。CEL 表达式中的 `this`
+指代整张 worksheet 对应的顶层 message 实例。
+
+`Validate` 也支持在以下 `Mode` 的 sheet 上使用：
+
+- `MODE_STRUCT_TYPE` / `MODE_STRUCT_TYPE_MULTI`
+- `MODE_UNION_TYPE` / `MODE_UNION_TYPE_MULTI`
+
+例如，*HelloWorld.xlsx* 中的 metasheet `@TABLEAU`：
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                | Name      |
+| ----------------- | --------- |
+| map<uint32, Item> | string    |
+| Item ID           | Item Name |
+| 1                 | Apple     |
+| 2                 | Orange    |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+| Sheet    | Validate                              |
+| -------- | ------------------------------------- |
+| ItemConf | `cel_expression:"this.item_map.size() > 0"` |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+生成结果：
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "buf/validate/validate.proto";
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+  option (buf.validate.message) = {cel_expression:"this.item_map.size() > 0"};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+  }
+}
+```
+
+{{< /details >}}

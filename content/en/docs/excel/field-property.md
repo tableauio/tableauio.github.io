@@ -29,6 +29,9 @@ toc: true
 | `sep`       | string | Field-level separator.                                                                                                                                                    |
 | `subsep`    | string | Field-level subseparator.                                                                                                                                                 |
 | `pattern`   | string | Specify the pattern of scalar, list element, and map value.                                                                                                               |
+| `validate`         | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for scalar and well-known types. <br>E.g.: `"string:{max_len:10}"`, `"int32:{gt:0 lte:100}"`, `"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`. |
+| `validate_complex` | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for complex types (list/map). <br>E.g.: `"repeated:{min_items:1}"`, `"map:{min_pairs:1}"`. |
+| `validate_message` | string | [protovalidate](https://github.com/bufbuild/protovalidate) message-level rules for the nested message of a field. <br>E.g.: `"cel_expression:\"this.start_time < this.end_time\""`. |
 {.table-striped .table-hover}
 
 ## Option `unique`
@@ -200,4 +203,119 @@ Specify the dotted-decimal pattern of current cell. Each decimal
 number ranges from 0 to the corresponding part (MAX) of pattern.
 
 Default pattern: `255.255.255`.
+
+## Option `validate`
+
+Tableau integrates [protovalidate](https://github.com/bufbuild/protovalidate)
+to declare validation rules directly in spreadsheet field properties. The rules
+are compiled into [`(buf.validate.field)`](https://buf.build/bufbuild/protovalidate)
+options on generated `.proto` fields and enforced by tableau at config generation
+time. CEL expressions and protovalidate's standard/predefined/custom rules are
+all supported.
+
+Option `validate` is used to specify **field-level rules for scalar and
+well-known types** (e.g. `int32`, `string`, `bool`, `google.protobuf.Timestamp`,
+`google.protobuf.Duration`). Its value is the [protobuf text format](https://protobuf.dev/reference/protobuf/textformat-spec/)
+of [`buf.validate.FieldRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.FieldRules).
+
+Examples:
+
+- `int32|{validate:"int32:{gt:0 lte:100}"}`: the value must be in `(0, 100]`.
+- `string|{validate:"string:{min_len:1 max_len:20}"}`: the string length must be in `[1, 20]`.
+- `uint32|{validate:"uint32:{gt:0}"}`: the value must be greater than `0`.
+- `datetime|{validate:"timestamp:{lt:{seconds:1893456000}}"}`: the timestamp must be earlier than `2030-01-01T00:00:00Z` (Unix seconds `1893456000`).
+- `datetime|{validate:"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""}`: a custom CEL expression.
+
+> [!WARNING]
+> Avoid comparing a field value against the current time (e.g.
+> `timestamp:{gt_now:true}` / `lt_now:true`, or CEL expressions referencing
+> `now`). Configuration is generated and validated **at build time**, so a rule
+> that depends on "now" will pass or fail depending on **when** the config is
+> generated, making generation flaky and irreproducible. Prefer fixed boundaries
+> (absolute timestamps) or constraints between fields of the same record (e.g.
+> `start_time < end_time`).
+- `int32|{validate:"int32:{[protoconf.is_zero]:true}"}`: a [custom rule](https://buf.build/docs/protovalidate/schemas/custom-rules/) defined as a proto extension.
+
+For example, a worksheet `ItemConf` in `HelloWorld.xlsx`:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                                          | Name                                              | Score                                            |
+| ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------ |
+| map<uint32, Item>\|{validate:"uint32:{gt:0}"} | string\|{validate:"string:{min_len:1 max_len:20}"} | int32\|{validate:"int32:{gt:0 lte:100}"}          |
+| Item ID                                     | Item Name                                         | Item Score                                       |
+| 1                                           | sword                                             | 80                                               |
+| 2                                           | shield                                            | 95                                               |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Generated:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+import "buf/validate/validate.proto";
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID"}, (buf.validate.field) = {uint32:{gt:0}}];
+    string name = 2 [(tableau.field) = {name:"Name"}, (buf.validate.field) = {string:{min_len:1 max_len:20}}];
+    int32 score = 3 [(tableau.field) = {name:"Score"}, (buf.validate.field) = {int32:{gt:0 lte:100}}];
+  }
+}
+```
+
+{{< /details >}}
+
+## Option `validate_complex`
+
+Option `validate_complex` is used to specify **field-level rules for complex
+types** (i.e. `list`/`map`) — that is, rules that apply to the container itself
+rather than to its elements. Its value is the text format of
+[`buf.validate.FieldRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.FieldRules)
+with `repeated` or `map` set.
+
+Examples:
+
+- `map<uint32, Item>|{validate_complex:"map:{min_pairs:1}"}`: the map must have at least one entry.
+- `[]string|{validate_complex:"repeated:{min_items:1}"}`: the list must have at least one element.
+- `[]string|{validate_complex:"repeated:{[protoconf.min_items_three]:true}"}`: a custom rule.
+
+> [!NOTE]
+> Use `validate` for the element/value type's own rules, and `validate_complex`
+> for the container's rules. Both can be specified at the same time on a single field.
+
+## Option `validate_message`
+
+Option `validate_message` is used to specify **message-level rules for the nested
+message of a field**. It is typically used when the field's value type is a
+sub-message (e.g. a struct, or the value type of a map/list), and you want to
+validate cross-field constraints by CEL. Its value is the text format of
+[`buf.validate.MessageRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.MessageRules).
+
+Examples:
+
+- `map<uint32, Item>|{validate_message:"cel_expression:\"this.value <= 0 || this.name != ''\""}`: every map value (`Item`) must satisfy the CEL expression.
+- `{Timespan}datetime|{validate_message:"cel_expression:\"this.start_time < this.end_time\""}`: every `Timespan` struct must have `start_time < end_time`.
+
+The CEL expression operates on `this`, which refers to the nested message
+instance.
   
