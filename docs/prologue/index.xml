@@ -67,14 +67,14 @@ data-default-ver="v0.15.1">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-bfjdkgclahmnie-389288-tab" data-bs-toggle="tab" data-bs-target="#sheet-bfjdkgclahmnie-389288" type="button" role="tab" aria-controls="sheet-bfjdkgclahmnie-389288" aria-selected=" active ">Item&lt;/button>
+&lt;button class="nav-link active " id="sheet-cbkjdfiaehgnlm-36300-tab" data-bs-toggle="tab" data-bs-target="#sheet-cbkjdfiaehgnlm-36300" type="button" role="tab" aria-controls="sheet-cbkjdfiaehgnlm-36300" aria-selected=" active ">Item&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-jglikdebanchfm-389483-tab" data-bs-toggle="tab" data-bs-target="#sheet-jglikdebanchfm-389483" type="button" role="tab" aria-controls="sheet-jglikdebanchfm-389483" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-embkfijhclangd-36508-tab" data-bs-toggle="tab" data-bs-target="#sheet-embkfijhclangd-36508" type="button" role="tab" aria-controls="sheet-embkfijhclangd-36508" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-bfjdkgclahmnie-389288" role="tabpanel" aria-labelledby="sheet-bfjdkgclahmnie-389288-tab">
+&lt;div class="tab-pane fade active show " id="sheet-cbkjdfiaehgnlm-36300" role="tabpanel" aria-labelledby="sheet-cbkjdfiaehgnlm-36300-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -114,7 +114,7 @@ data-default-ver="v0.15.1">
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-jglikdebanchfm-389483" role="tabpanel" aria-labelledby="sheet-jglikdebanchfm-389483-tab">
+&lt;div class="tab-pane fade " id="sheet-embkfijhclangd-36508" role="tabpanel" aria-labelledby="sheet-embkfijhclangd-36508-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -150,6 +150,8 @@ data-default-ver="v0.15.1">
 &lt;p>Run command: &lt;code>./tableauc HelloWorld.xlsx&lt;/code>&lt;/p></description></item><item><title>Tableauc config</title><link>https://tableauio.github.io/docs/prologue/config/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/docs/prologue/config/</guid><description>&lt;h2 id="configyaml">config.yaml &lt;a href="#configyaml" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>Create a file named &lt;em>config.yaml&lt;/em>, and copy configurations below to it:&lt;/p>
 &lt;pre>&lt;code class="language-yaml"># locale BCP 47 language tags: en, zh.
+#
+# Default: &amp;quot;en&amp;quot;.
 lang: en
 # Location represents the collection of time offsets in use in a geographical area.
 # - If the name is &amp;quot;&amp;quot; or &amp;quot;UTC&amp;quot;, LoadLocation returns UTC.
@@ -158,8 +160,11 @@ lang: en
 # IANA Time Zone database, such as &amp;quot;America/New_York&amp;quot;, &amp;quot;Asia/Shanghai&amp;quot;, and so on.
 #
 # See https://go.dev/src/time/zoneinfo_abbrs_windows.go.
+#
+# Default: &amp;quot;Local&amp;quot;.
 locationName: Local
-# Configure your custom acronyms. Out of the box, &amp;quot;ID&amp;quot; -&amp;gt; &amp;quot;id&amp;quot; is auto configured.
+# Configure your custom acronyms (regexp supported). Out of the box,
+# &amp;quot;ID&amp;quot; -&amp;gt; &amp;quot;id&amp;quot; is auto configured.
 # For example, if you configure K8s -&amp;gt; k8s, then the field name in PascalCase &amp;quot;InK8s&amp;quot;
 # will be converted to snake_case &amp;quot;in_k8s&amp;quot; but not &amp;quot;in_k_8_s&amp;quot;.
 acronyms: {}
@@ -173,59 +178,92 @@ level: INFO
 filename: &amp;quot;&amp;quot;
 # Log sink: CONSOLE, FILE, and MULTI.
 sink: CONSOLE
-# Options for generating proto files.
+# Options for generating proto files. Only for protogen.
 proto:
 input:
-# Header options for worksheet and workbook.
+# Header options of worksheet.
 header:
 # Exact row number of column name definition at a worksheet.
+#
+# Default: 1.
 namerow: 1
 # Exact row number of column type definition at a worksheet.
+#
+# Default: 2.
 typerow: 2
 # Exact row number of column note at a worksheet.
+#
+# Default: 3.
 noterow: 3
 # Start row number of data at a worksheet.
+#
+# Default: 4.
 datarow: 4
 # The line number of column name definition in a cell.
 # Value 0 means the whole cell.
+#
+# Default: 0.
 nameline: 0
 # The line number of column type definition in a cell.
 # Value 0 means the whole cell.
+#
+# Default: 0.
 typeline: 0
 # The line number of column note definition in a cell.
 # Value 0 means the whole cell.
+#
+# Default: 0.
 noteline: 0
 # Separator for separating:
 # - incell list elements (scalar or struct).
 # - incell map items.
 #
-# Default: &amp;quot;,&amp;quot;
+# Default: &amp;quot;,&amp;quot;.
 sep: &amp;quot;&amp;quot;
 # Subseparator for separating:
 # - key-value pair of each incell map item.
 # - struct fields of each incell struct list element.
 #
-# Default: &amp;quot;:&amp;quot;
+# Default: &amp;quot;:&amp;quot;.
 subsep: &amp;quot;&amp;quot;
 # The proto paths are used to search for dependencies that are referenced in import
 # statements in proto source files. If no import paths are provided then
 # &amp;quot;.&amp;quot; (current directory) is assumed to be the only import path.
+#
+# Default: nil.
 protoPaths: [.]
-# The enums and messages in protoFiles can be used in Excel/CSV/XML/YAML as
-# common types.
+# The enums and messages in protoFiles can be used in Excel/CSV/XML/YAML
+# as common types.
+#
+# NOTE: Glob patterns are supported, which can specify sets
+# of filenames with wildcard characters.
+#
+# Default: nil.
 protoFiles: []
-# Specify input file formats to be parsed. It will recognize all formats
-# if not set.
+# Specify input file formats.
+# Note: recognize all formats (Excel/CSV/XML/YAML) if not set
+# (value is nil).
 # Available formats: &amp;quot;xlsx&amp;quot;, &amp;quot;csv&amp;quot;, &amp;quot;xml&amp;quot;, and &amp;quot;yaml&amp;quot;.
+#
+# Default: nil.
 formats: [xlsx]
 # Specify only these subdirs (relative to input dir) to be processed.
+#
+# Default: nil.
 subdirs: []
 # Specify rewrite subdir path (relative to input dir).
+#
+# Default: nil.
 subdirRewrites: {}
-# Whether to follow the symbolic links when traversing directories recursively.
+# Follow the symbolic links when traversing directories recursively.
 # WARN: be careful to use this option, it may lead to infinite loop.
+#
+# Default: false.
 followSymlink: false
-# Specify metasheet name.
+# Specify metasheet name. Metasheet is &amp;quot;@TABLEAU&amp;quot; if not set.
+# NOTE: metasheet name must start with '@'.
+#
+# Default: &amp;quot;&amp;quot;.
 metasheetName: &amp;quot;@TABLEAU&amp;quot;
 # Specify the first-pass mode to parse predefined types when generate
 # specified config files. Under the hood, the parsed predefined types will
@@ -236,20 +274,42 @@ metasheetName: &amp;quot;@TABLEAU&amp;quot;
 # - &amp;quot;&amp;quot;: default mode, parse based on specified config files.
 # - &amp;quot;normal&amp;quot;: parse based on all config files.
 # - &amp;quot;advanced&amp;quot;: parse based on all previous generated proto files.
+#
+# Default: &amp;quot;&amp;quot;.
 firstPassMode: &amp;quot;&amp;quot;
-# Specify the name pattern for messager(regexp supported). If the generated
+# Specify the name pattern for messager (regexp supported). If the generated
 # messager name does not match this pattern, an error will be reported.
 # Example: &amp;quot;Conf$&amp;quot;
+#
+# Default: &amp;quot;&amp;quot;.
 messagerPattern: &amp;quot;&amp;quot;
 output:
 # Specify subdir (relative to output dir) for generated proto files.
+#
+# Default: &amp;quot;&amp;quot;.
 subdir: &amp;quot;&amp;quot;
 # Dir separator `/` or `\` in filename is replaced by &amp;quot;__&amp;quot;.
+#
+# Default: false.
 filenameWithSubdirPrefix: false
 # Append suffix to each generated proto filename.
+#
+# Default: &amp;quot;&amp;quot;.
 filenameSuffix: &amp;quot;&amp;quot;
-# Specify proto file options.
-# Example: go_package, csharp_namespace...
+# Specify the generated protobuf file's edition.
+# See https://protobuf.dev/editions/overview/.
+#
+# Default: &amp;quot;&amp;quot;.
+edition: &amp;quot;&amp;quot;
+# Specify options (including features) at file level.
+# Examples: &amp;quot;go_package&amp;quot;, &amp;quot;csharp_namespace&amp;quot;,
+# &amp;quot;features.(pb.go).strip_enum_prefix&amp;quot; etc.
+#
+# References:
+# - https://protobuf.dev/programming-guides/proto3/#options
+# - https://protobuf.dev/editions/features/
+#
+# Default: nil.
 fileOptions: {}
 # Whether to prepend prefix &amp;quot;UPPER_SNAKE_CASE of EnumType&amp;quot; to each enum value name.
 #
@@ -257,42 +317,85 @@ fileOptions: {}
 # enum ItemType has a value &amp;quot;EQUIP&amp;quot;, then converted to &amp;quot;ITEM_TYPE_EQUIP&amp;quot;.
 # If the enum value name is already prefixed with &amp;quot;ENUM_TYPE_&amp;quot;, then it will
 # not be prefixed again.
+#
+# Default: false.
 enumValueWithPrefix: false
-# Options for generating conf files.
+# In Protocol Buffers (Protobuf), to guarantee both backward and forward
+# compatibility, field numbers must be preserved because they are used as
+# unique identifiers in the binary wire format. Changing a field number
+# breaks backward compatibility with any existing data that uses the old
+# numbering. Compared with the old generated proto message, if a new field
+# name occurs, then assign the max field number plus 1 in the same level.
+#
+# Default: false.
+preserveFieldNumbers: false
+# Options for generating conf files. Only for confgen.
 conf:
 input:
-# The proto paths are used to search for dependencies that are referenced in import
-# statements in proto source files. If no import paths are provided then
-# &amp;quot;.&amp;quot; (current directory) is assumed to be the only import path.
+# The proto paths are used to search for dependencies that are referenced
+# in import statements in proto source files. If no import paths are
+# provided then &amp;quot;.&amp;quot; (current directory) is assumed to be the only import
+# path.
+#
+# Default: nil.
 protoPaths: [.]
 # The files to be parsed to generate configurations.
 #
 # NOTE:
-# - Recognize &amp;quot;*.proto&amp;quot; pattern if not set.
-# - Glob patterns is supported, which can specify sets
-# of filenames with wildcard characters.
+# - By default, recognize &amp;quot;*.proto&amp;quot; pattern if not set.
+# - Glob patterns are supported, which can specify sets of filenames
+# with wildcard characters. Double asterisk (**) for recursive
+# globbing is not supported.
+#
+# Default: nil.
 protoFiles: [&amp;quot;*.proto&amp;quot;]
 # The files not to be parsed to generate configurations.
 #
-# NOTE: Glob patterns is supported, which can specify sets
-# of filenames with wildcard characters.
+# NOTE: Glob patterns are supported, which can specify sets of filenames
+# with wildcard characters. Double asterisk (**) for recursive globbing
+# is not supported.
+#
+# Default: nil.
 excludedProtoFiles: []
-# Specify input file formats to be parsed. It will recognize all formats
-# if not set.
+# Specify input file formats to be parsed.
+# Note: recognize all formats (Excel/CSV/XML/YAML) if not set
+# (value is nil).
 # Available formats: &amp;quot;xlsx&amp;quot;, &amp;quot;csv&amp;quot;, &amp;quot;xml&amp;quot;, and &amp;quot;yaml&amp;quot;.
+#
+# Default: nil.
 formats: [xlsx]
 # Specify only these subdirs (relative to workbook name option in proto file).
+#
+# Default: nil.
 subdirs: []
 # Specify rewrite subdir path (relative to workbook name option in proto file).
+#
+# Default: nil.
 subdirRewrites: {}
 output:
 # Specify subdir (relative to output dir) for generated configuration files.
+#
+# Default: &amp;quot;&amp;quot;.
 subdir: &amp;quot;&amp;quot;
-# Specify generated conf file formats. It will generate all formats if not set.
+# Specify generated conf file formats. If not set, it will generate all
+# formats (JSON/Text/Bin).
 # Refer: https://protobuf.dev/programming-guides/techniques/#suffixes
 # Available formats: &amp;quot;json&amp;quot;, &amp;quot;binpb&amp;quot;, and &amp;quot;txtpb&amp;quot;.
+#
+# Default: nil.
 formats: [json]
-# Whether to output pretty format of JSON, with multiline and indent.
+# Specify generated conf file formats in messager level. This overrides
+# the formats option above.
+# Example:
+# messagerFormats:
+# ItemConf: [json, binpb]
+# ActivityConf: [txtpb]
+#
+# Default: nil.
+messagerFormats: {}
+# Output pretty format of JSON and Text, with multiline and indent.
+#
+# Default: false.
 pretty: true
 # EmitUnpopulated specifies whether to emit unpopulated fields. It does not
 # emit unpopulated oneof fields or unpopulated extension fields.
@@ -312,16 +415,28 @@ pretty: true
 # NOTE: worksheet with FieldPresence set as true ignore this option.
 #
 # Refer: https://github.com/protocolbuffers/protobuf/blob/main/docs/field_presence.md
+#
+# Default: false.
 emitUnpopulated: false
-# Whether to emit timestamp in string format with timezones (as indicated by an offset).
+# EmitTimezones specifies whether to emit timestamp in string format with
+# timezones (as indicated by an offset).
+#
+# Default: false.
 emitTimezones: false
-# Whether to use proto field name instead of lowerCamelCase name in JSON field names.
+# UseProtoNames uses proto field name instead of lowerCamelCase name
+# in JSON field names.
+#
+# Default: false.
 useProtoNames: false
-# Whether to emit enum values as numbers.
+# UseEnumNumbers emits enum values as numbers.
+#
+# Default: false.
 useEnumNumbers: false
 # Specify dry run mode:
 # - &amp;quot;patch&amp;quot;: if sheet options are specified: Patch (PATCH_MERGE) and Scatter
+#
+# Default: &amp;quot;&amp;quot;.
 dryRun: &amp;quot;&amp;quot;
 &lt;/code>&lt;/pre>
-&lt;h3 id="protoinputheaderseq">proto.input.header.seq &lt;a href="#protoinputheaderseq" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;h3 id="protoinputheadersep">proto.input.header.sep &lt;a href="#protoinputheadersep" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>Default: &lt;code>,&lt;/code>&lt;/p></description></item></channel></rss>
