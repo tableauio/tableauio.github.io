@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Excel on</title><link>https://tableauio.github.io/zh/docs/excel/</link><description>Recent content in Excel on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 08 Mar 2022 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/excel/index.xml" rel="self" type="application/rss+xml"/><item><title>Scalar（标量）</title><link>https://tableauio.github.io/zh/docs/excel/scalar/</link><pubDate>Sun, 04 Sep 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/scalar/</guid><description>&lt;h2 id="scalar">Scalar &lt;a href="#scalar" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>Apple&lt;/code>：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Excel on</title><link>https://tableauio.github.io/zh/docs/excel/</link><description>Recent content in Excel on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Tue, 08 Mar 2022 08:48:45 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/zh/docs/excel/index.xml" rel="self" type="application/rss+xml"/><item><title>标量（Scalar）</title><link>https://tableauio.github.io/zh/docs/excel/scalar/</link><pubDate>Sun, 04 Sep 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/scalar/</guid><description>&lt;h2 id="标量scalar">标量（Scalar） &lt;a href="#%e6%a0%87%e9%87%8fscalar" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>Apple&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-gemdhkficbnjla-384633-tab" data-bs-toggle="tab" data-bs-target="#sheet-gemdhkficbnjla-384633" type="button" role="tab" aria-controls="sheet-gemdhkficbnjla-384633" aria-selected=" active ">Apple&lt;/button>
+&lt;button class="nav-link active " id="sheet-eibdajnlcfmhkg-352055-tab" data-bs-toggle="tab" data-bs-target="#sheet-eibdajnlcfmhkg-352055" type="button" role="tab" aria-controls="sheet-eibdajnlcfmhkg-352055" aria-selected=" active ">Apple&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-agbmnchdjlfeik-384867-tab" data-bs-toggle="tab" data-bs-target="#sheet-agbmnchdjlfeik-384867" type="button" role="tab" aria-controls="sheet-agbmnchdjlfeik-384867" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-cndlhjigmkbafe-352276-tab" data-bs-toggle="tab" data-bs-target="#sheet-cndlhjigmkbafe-352276" type="button" role="tab" aria-controls="sheet-cndlhjigmkbafe-352276" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-gemdhkficbnjla-384633" role="tabpanel" aria-labelledby="sheet-gemdhkficbnjla-384633-tab">
+&lt;div class="tab-pane fade active show " id="sheet-eibdajnlcfmhkg-352055" role="tabpanel" aria-labelledby="sheet-eibdajnlcfmhkg-352055-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -41,7 +41,7 @@
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-agbmnchdjlfeik-384867" role="tabpanel" aria-labelledby="sheet-agbmnchdjlfeik-384867-tab">
+&lt;div class="tab-pane fade " id="sheet-cndlhjigmkbafe-352276" role="tabpanel" aria-labelledby="sheet-cndlhjigmkbafe-352276-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -73,10 +73,10 @@
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>该 worksheet 中定义了三个 scalar 字段：&lt;/p></description></item><item><title>Enum（枚举）</title><link>https://tableauio.github.io/zh/docs/excel/enum/</link><pubDate>Tue, 24 Sep 2024 14:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/enum/</guid><description>&lt;h2 id="使用预定义枚举类型">使用预定义枚举类型 &lt;a href="#%e4%bd%bf%e7%94%a8%e9%a2%84%e5%ae%9a%e4%b9%89%e6%9e%9a%e4%b8%be%e7%b1%bb%e5%9e%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>该工作表中定义了三个标量字段：&lt;/p></description></item><item><title>枚举（Enum）</title><link>https://tableauio.github.io/zh/docs/excel/enum/</link><pubDate>Tue, 24 Sep 2024 14:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/enum/</guid><description>&lt;h2 id="使用预定义枚举类型">使用预定义枚举类型 &lt;a href="#%e4%bd%bf%e7%94%a8%e9%a2%84%e5%ae%9a%e4%b9%89%e6%9e%9a%e4%b8%be%e7%b1%bb%e5%9e%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
 &lt;p>[!NOTE]
-枚举基础知识请参考 &lt;a href="https://tableauio.github.io/zh/docs/basics/enum/">Enum（枚举）&lt;/a> 。&lt;/p>&lt;/blockquote>
+枚举基础知识请参考 &lt;a href="https://tableauio.github.io/zh/docs/basics/enum/">枚举&lt;/a> 。&lt;/p>&lt;/blockquote>
 &lt;p>例如，&lt;code>common.proto&lt;/code> 中定义的枚举类型 &lt;code>FruitType&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">enum FruitType {
 FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];
@@ -85,19 +85,19 @@ FRUIT_TYPE_ORANGE = 2 [(tableau.evalue).name = &amp;quot;Orange&amp;quot;];
 FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 }
 &lt;/code>&lt;/pre>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-haglijckbnefmd-393603-tab" data-bs-toggle="tab" data-bs-target="#sheet-haglijckbnefmd-393603" type="button" role="tab" aria-controls="sheet-haglijckbnefmd-393603" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-inchgkfmbajeld-360921-tab" data-bs-toggle="tab" data-bs-target="#sheet-inchgkfmbajeld-360921" type="button" role="tab" aria-controls="sheet-inchgkfmbajeld-360921" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-iakncdhfgjeblm-393798-tab" data-bs-toggle="tab" data-bs-target="#sheet-iakncdhfgjeblm-393798" type="button" role="tab" aria-controls="sheet-iakncdhfgjeblm-393798" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-cikabnmeljghfd-361129-tab" data-bs-toggle="tab" data-bs-target="#sheet-cikabnmeljghfd-361129" type="button" role="tab" aria-controls="sheet-cikabnmeljghfd-361129" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-haglijckbnefmd-393603" role="tabpanel" aria-labelledby="sheet-haglijckbnefmd-393603-tab">
+&lt;div class="tab-pane fade active show " id="sheet-inchgkfmbajeld-360921" role="tabpanel" aria-labelledby="sheet-inchgkfmbajeld-360921-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -131,7 +131,7 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-iakncdhfgjeblm-393798" role="tabpanel" aria-labelledby="sheet-iakncdhfgjeblm-393798-tab">
+&lt;div class="tab-pane fade " id="sheet-cikabnmeljghfd-361129" role="tabpanel" aria-labelledby="sheet-cikabnmeljghfd-361129-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -163,22 +163,22 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>Struct（结构体）</title><link>https://tableauio.github.io/zh/docs/excel/struct/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/struct/</guid><description>&lt;h2 id="cross-cell-struct">Cross-cell struct &lt;a href="#cross-cell-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>生成结果：&lt;/p></description></item><item><title>结构体（Struct）</title><link>https://tableauio.github.io/zh/docs/excel/struct/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/struct/</guid><description>&lt;h2 id="跨单元格结构体cross-cell-struct">跨单元格结构体（Cross-cell struct） &lt;a href="#%e8%b7%a8%e5%8d%95%e5%85%83%e6%a0%bc%e7%bb%93%e6%9e%84%e4%bd%93cross-cell-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>&lt;strong>语法&lt;/strong>：&lt;code>&amp;lt;StructType&amp;gt;ColumnType&lt;/code>。&lt;/p>
-&lt;p>每个列名应以相同的 struct 变量名作为前缀，默认情况下变量名与 struct 类型名相同。&lt;/p>
-&lt;p>例如，&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;p>每个列名应以相同的结构体变量名作为前缀，默认情况下变量名与结构体类型名相同。&lt;/p>
+&lt;p>例如，&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-jfkmcbanlhideg-19083-tab" data-bs-toggle="tab" data-bs-target="#sheet-jfkmcbanlhideg-19083" type="button" role="tab" aria-controls="sheet-jfkmcbanlhideg-19083" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-ecndgabmfljikh-385673-tab" data-bs-toggle="tab" data-bs-target="#sheet-ecndgabmfljikh-385673" type="button" role="tab" aria-controls="sheet-ecndgabmfljikh-385673" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-nfdblhicgjmkea-19252-tab" data-bs-toggle="tab" data-bs-target="#sheet-nfdblhicgjmkea-19252" type="button" role="tab" aria-controls="sheet-nfdblhicgjmkea-19252" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-hjlgbcfmdakine-385868-tab" data-bs-toggle="tab" data-bs-target="#sheet-hjlgbcfmdakine-385868" type="button" role="tab" aria-controls="sheet-hjlgbcfmdakine-385868" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-jfkmcbanlhideg-19083" role="tabpanel" aria-labelledby="sheet-jfkmcbanlhideg-19083-tab">
+&lt;div class="tab-pane fade active show " id="sheet-ecndgabmfljikh-385673" role="tabpanel" aria-labelledby="sheet-ecndgabmfljikh-385673-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -208,7 +208,7 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-nfdblhicgjmkea-19252" role="tabpanel" aria-labelledby="sheet-nfdblhicgjmkea-19252-tab">
+&lt;div class="tab-pane fade " id="sheet-hjlgbcfmdakine-385868" role="tabpanel" aria-labelledby="sheet-hjlgbcfmdakine-385868-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -240,7 +240,7 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>注意 &lt;code>ItemConf&lt;/code> 中每个列名都以 struct 变量名 &lt;strong>Property&lt;/strong> 作为前缀，该变量名与 struct 类型名相同。&lt;/p></description></item><item><title>Union（联合体）</title><link>https://tableauio.github.io/zh/docs/excel/union/</link><pubDate>Sun, 04 Sep 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/union/</guid><description>&lt;h2 id="原理">原理 &lt;a href="#%e5%8e%9f%e7%90%86" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>注意 &lt;code>ItemConf&lt;/code> 中每个列名都以结构体变量名 &lt;strong>Property&lt;/strong> 作为前缀，该变量名与结构体类型名相同。&lt;/p></description></item><item><title>联合体（Union）</title><link>https://tableauio.github.io/zh/docs/excel/union/</link><pubDate>Sun, 04 Sep 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/union/</guid><description>&lt;h2 id="原理">原理 &lt;a href="#%e5%8e%9f%e7%90%86" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>在 protoconf 中，&lt;code>union&lt;/code> 类型是指&lt;strong>带标签的联合体（tagged union）&lt;/strong>：一种用于保存可以取多种不同但固定类型值的数据结构。任意时刻只有一种类型在使用，且一个 &lt;strong>tag&lt;/strong> 字段明确指示当前使用的是哪种类型。更多详情请参考维基百科 &lt;a href="https://en.wikipedia.org/wiki/Tagged_union">Tagged union&lt;/a>。&lt;/p>
 &lt;p>&lt;strong>Tagged union&lt;/strong> 在不同编程语言中的对应：&lt;/p>
 &lt;ul>
@@ -248,8 +248,8 @@ FRUIT_TYPE_BANANA = 4 [(tableau.evalue).name = &amp;quot;Banana&amp;quot;];
 &lt;li>Rust: &lt;a href="https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html">Defining an Enum&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>Tableau 使用 protobuf &lt;code>message&lt;/code> 将 &lt;a href="https://protobuf.dev/programming-guides/proto3/#enum">enum&lt;/a> 类型和 &lt;a href="https://protobuf.dev/programming-guides/proto3/#oneof">oneof&lt;/a> 类型绑定在一起，以实现 &lt;strong>tagged union&lt;/strong>。默认情况下，每个枚举值（&amp;gt;0）与 &lt;code>oneof&lt;/code> 类型中具有相同 tag 编号的字段绑定。&lt;/p>
-&lt;h2 id="union-定义">Union 定义 &lt;a href="#union-%e5%ae%9a%e4%b9%89" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>例如，&lt;em>common.proto&lt;/em> 中预定义的 union 类型 &lt;code>Target&lt;/code>：&lt;/p>
+&lt;h2 id="union-definition">联合体定义（Union definition） &lt;a href="#union-definition" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>例如，&lt;em>common.proto&lt;/em> 中预定义的联合体类型 &lt;code>Target&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">// Predefined union type.
 message Target {
 option (tableau.union) = {name:&amp;quot;Target&amp;quot;};
@@ -301,14 +301,14 @@ int64 damage = 2; // scalar
 }
 }
 &lt;/code>&lt;/pre>
-&lt;h2 id="list-中的-predefined-union">List 中的 predefined union &lt;a href="#list-%e4%b8%ad%e7%9a%84-predefined-union" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h2 id="predefined-union-in-list">列表嵌套预定义联合体（Predefined-union in list） &lt;a href="#predefined-union-in-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
 &lt;p>[!NOTE]
-基于 &lt;a href="https://tableauio.github.io/zh/docs/excel/union/#union-定义">predefined union 类型 &lt;code>Target&lt;/code>&lt;/a>。&lt;/p></description></item><item><title>List（列表）</title><link>https://tableauio.github.io/zh/docs/excel/list/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/list/</guid><description>&lt;h2 id="水平列表horizontal-list">水平列表（Horizontal list） &lt;a href="#%e6%b0%b4%e5%b9%b3%e5%88%97%e8%a1%a8horizontal-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+基于 &lt;a href="https://tableauio.github.io/zh/docs/excel/union/#union-definition">predefined union 类型 &lt;code>Target&lt;/code>&lt;/a>。&lt;/p></description></item><item><title>列表（List）</title><link>https://tableauio.github.io/zh/docs/excel/list/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/list/</guid><description>&lt;h2 id="水平列表horizontal-list">水平列表（Horizontal list） &lt;a href="#%e6%b0%b4%e5%b9%b3%e5%88%97%e8%a1%a8horizontal-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
 &lt;p>[!IMPORTANT]
-水平 list 的列名中，列表元素名&lt;strong>必须&lt;/strong>带有从 &lt;code>1&lt;/code> 开始的数字后缀。&lt;/p>
-&lt;p>例如：&lt;code>Item1ID&lt;/code>、&lt;code>Item2ID&lt;/code>、&lt;code>Item3ID&lt;/code>（struct list，元素名：&lt;code>Item&lt;/code>）；&lt;code>ID1&lt;/code>、&lt;code>ID2&lt;/code>、&lt;code>ID3&lt;/code>（scalar list，元素名：&lt;code>ID&lt;/code>）。&lt;/p>&lt;/blockquote>
+水平列表的列名中，列表元素名&lt;strong>必须&lt;/strong>带有从 &lt;code>1&lt;/code> 开始的数字后缀。&lt;/p>
+&lt;p>例如：&lt;code>Item1ID&lt;/code>、&lt;code>Item2ID&lt;/code>、&lt;code>Item3ID&lt;/code>（结构体列表，元素名：&lt;code>Item&lt;/code>）；&lt;code>ID1&lt;/code>、&lt;code>ID2&lt;/code>、&lt;code>ID3&lt;/code>（标量列表，元素名：&lt;code>ID&lt;/code>）。&lt;/p>&lt;/blockquote>
 &lt;p>水平列表语法概览：&lt;/p>
 &lt;table class="table-striped table-hover">
 &lt;thead>
@@ -344,20 +344,20 @@ int64 damage = 2; // scalar
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h3 id="水平标量列表">水平标量列表 &lt;a href="#%e6%b0%b4%e5%b9%b3%e6%a0%87%e9%87%8f%e5%88%97%e8%a1%a8" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;h3 id="水平标量列表horizontal-scalar-list">水平标量列表（Horizontal scalar list） &lt;a href="#%e6%b0%b4%e5%b9%b3%e6%a0%87%e9%87%8f%e5%88%97%e8%a1%a8horizontal-scalar-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-ncakeilhdjbmfg-303577-tab" data-bs-toggle="tab" data-bs-target="#sheet-ncakeilhdjbmfg-303577" type="button" role="tab" aria-controls="sheet-ncakeilhdjbmfg-303577" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-jfnkmhidgelbac-279384-tab" data-bs-toggle="tab" data-bs-target="#sheet-jfnkmhidgelbac-279384" type="button" role="tab" aria-controls="sheet-jfnkmhidgelbac-279384" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-edkgimcnfjabhl-303850-tab" data-bs-toggle="tab" data-bs-target="#sheet-edkgimcnfjabhl-303850" type="button" role="tab" aria-controls="sheet-edkgimcnfjabhl-303850" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-eidhnkljgfcbam-279696-tab" data-bs-toggle="tab" data-bs-target="#sheet-eidhnkljgfcbam-279696" type="button" role="tab" aria-controls="sheet-eidhnkljgfcbam-279696" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-ncakeilhdjbmfg-303577" role="tabpanel" aria-labelledby="sheet-ncakeilhdjbmfg-303577-tab">
+&lt;div class="tab-pane fade active show " id="sheet-jfnkmhidgelbac-279384" role="tabpanel" aria-labelledby="sheet-jfnkmhidgelbac-279384-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -387,7 +387,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-edkgimcnfjabhl-303850" role="tabpanel" aria-labelledby="sheet-edkgimcnfjabhl-303850-tab">
+&lt;div class="tab-pane fade " id="sheet-eidhnkljgfcbam-279696" role="tabpanel" aria-labelledby="sheet-eidhnkljgfcbam-279696-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -419,33 +419,33 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>Map（映射）</title><link>https://tableauio.github.io/zh/docs/excel/map/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/map/</guid><description>&lt;h2 id="水平映射horizontal-map">水平映射（Horizontal map） &lt;a href="#%e6%b0%b4%e5%b9%b3%e6%98%a0%e5%b0%84horizontal-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>生成结果：&lt;/p></description></item><item><title>映射（Map）</title><link>https://tableauio.github.io/zh/docs/excel/map/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/map/</guid><description>&lt;h2 id="水平映射horizontal-map">水平映射（Horizontal map） &lt;a href="#%e6%b0%b4%e5%b9%b3%e6%98%a0%e5%b0%84horizontal-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
 &lt;p>[!IMPORTANT]
-水平映射的列名中，map 元素名&lt;strong>必须&lt;/strong>带有从 &lt;code>1&lt;/code> 开始的数字后缀。&lt;/p>
-&lt;p>例如：&lt;code>Item1ID&lt;/code>、&lt;code>Item1Name&lt;/code>、&lt;code>Item2ID&lt;/code>、&lt;code>Item2Name&lt;/code>（struct map，元素名：&lt;code>Item&lt;/code>）。&lt;/p>&lt;/blockquote>
-&lt;p>水平 map 有以下几种：&lt;/p>
+水平映射的列名中，映射值名&lt;strong>必须&lt;/strong>带有从 &lt;code>1&lt;/code> 开始的数字后缀。&lt;/p>
+&lt;p>例如：&lt;code>Item1ID&lt;/code>、&lt;code>Item1Name&lt;/code>、&lt;code>Item2ID&lt;/code>、&lt;code>Item2Name&lt;/code>（结构体映射，值名：&lt;code>Item&lt;/code>）。&lt;/p>&lt;/blockquote>
+&lt;p>水平映射有以下几种：&lt;/p>
 &lt;ol>
-&lt;li>水平 &lt;strong>scalar&lt;/strong> map，map value 类型为 scalar。例如：&lt;code>map&amp;lt;int32, int32&amp;gt;&lt;/code>。&lt;/li>
-&lt;li>水平 &lt;strong>struct&lt;/strong> map，map value 类型为 struct。例如：&lt;code>map&amp;lt;int32, Item&amp;gt;&lt;/code>。&lt;/li>
-&lt;li>水平 &lt;strong>predefined-struct&lt;/strong> map，map value 类型为 predefined struct。例如：&lt;code>map&amp;lt;int32, .Item&amp;gt;&lt;/code>。&lt;/li>
+&lt;li>水平标量映射，映射值类型为标量。例如：&lt;code>map&amp;lt;int32, int32&amp;gt;&lt;/code>。&lt;/li>
+&lt;li>水平结构体映射，映射值类型为结构体。例如：&lt;code>map&amp;lt;int32, Item&amp;gt;&lt;/code>。&lt;/li>
+&lt;li>水平预定义结构体映射，映射值类型为预定义结构体。例如：&lt;code>map&amp;lt;int32, .Item&amp;gt;&lt;/code>。&lt;/li>
 &lt;/ol>
-&lt;h3 id="水平标量映射">水平标量映射 &lt;a href="#%e6%b0%b4%e5%b9%b3%e6%a0%87%e9%87%8f%e6%98%a0%e5%b0%84" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;h3 id="水平标量映射horizontal-scalar-map">水平标量映射（Horizontal scalar map） &lt;a href="#%e6%b0%b4%e5%b9%b3%e6%a0%87%e9%87%8f%e6%98%a0%e5%b0%84horizontal-scalar-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;p>无需单独支持，请使用 &lt;code>map&amp;lt;int32, Item&amp;gt;&lt;/code> 代替。&lt;/p>
-&lt;h3 id="水平结构体映射">水平结构体映射 &lt;a href="#%e6%b0%b4%e5%b9%b3%e7%bb%93%e6%9e%84%e4%bd%93%e6%98%a0%e5%b0%84" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;h3 id="水平结构体映射horizontal-struct-map">水平结构体映射（Horizontal struct map） &lt;a href="#%e6%b0%b4%e5%b9%b3%e7%bb%93%e6%9e%84%e4%bd%93%e6%98%a0%e5%b0%84horizontal-struct-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-fdibghkaejlcmn-219764-tab" data-bs-toggle="tab" data-bs-target="#sheet-fdibghkaejlcmn-219764" type="button" role="tab" aria-controls="sheet-fdibghkaejlcmn-219764" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-hmdfcijakbngel-245803-tab" data-bs-toggle="tab" data-bs-target="#sheet-hmdfcijakbngel-245803" type="button" role="tab" aria-controls="sheet-hmdfcijakbngel-245803" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-klbjemngahidfc-219946-tab" data-bs-toggle="tab" data-bs-target="#sheet-klbjemngahidfc-219946" type="button" role="tab" aria-controls="sheet-klbjemngahidfc-219946" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-iabclhngkdejfm-246232-tab" data-bs-toggle="tab" data-bs-target="#sheet-iabclhngkdejfm-246232" type="button" role="tab" aria-controls="sheet-iabclhngkdejfm-246232" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-fdibghkaejlcmn-219764" role="tabpanel" aria-labelledby="sheet-fdibghkaejlcmn-219764-tab">
+&lt;div class="tab-pane fade active show " id="sheet-hmdfcijakbngel-245803" role="tabpanel" aria-labelledby="sheet-hmdfcijakbngel-245803-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -487,7 +487,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-klbjemngahidfc-219946" role="tabpanel" aria-labelledby="sheet-klbjemngahidfc-219946-tab">
+&lt;div class="tab-pane fade " id="sheet-iabclhngkdejfm-246232" role="tabpanel" aria-labelledby="sheet-iabclhngkdejfm-246232-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -519,30 +519,30 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>KeyedList（键控列表）</title><link>https://tableauio.github.io/zh/docs/excel/keyedlist/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/keyedlist/</guid><description>&lt;h2 id="语法">语法 &lt;a href="#%e8%af%ad%e6%b3%95" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>Keyed list 与普通 list 相同，区别在于 &lt;code>ColumnType&lt;/code>（第一个字段类型）被尖括号 &lt;code>&amp;lt;&amp;gt;&lt;/code> 包围，并作为 map key 处理。&lt;/p>
+&lt;p>生成结果：&lt;/p></description></item><item><title>键控列表（KeyedList）</title><link>https://tableauio.github.io/zh/docs/excel/keyedlist/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/keyedlist/</guid><description>&lt;h2 id="语法">语法 &lt;a href="#%e8%af%ad%e6%b3%95" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>键控列表与普通列表相同，区别在于 &lt;code>ColumnType&lt;/code>（第一个字段类型）被尖括号 &lt;code>&amp;lt;&amp;gt;&lt;/code> 包围，并作为键处理。&lt;/p>
 &lt;p>&lt;strong>语法&lt;/strong>：&lt;code>[ElemType]&amp;lt;ColumnType&amp;gt;&lt;/code>&lt;/p>
-&lt;h2 id="水平-list">水平 list &lt;a href="#%e6%b0%b4%e5%b9%b3-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h2 id="水平键控列表horizontal-keyedlist">水平键控列表（Horizontal KeyedList） &lt;a href="#%e6%b0%b4%e5%b9%b3%e9%94%ae%e6%8e%a7%e5%88%97%e8%a1%a8horizontal-keyedlist" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
 &lt;p>TODO&amp;hellip;&lt;/p>&lt;/blockquote>
-&lt;h2 id="垂直-keyedlist">垂直 KeyedList &lt;a href="#%e5%9e%82%e7%9b%b4-keyedlist" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;h3 id="垂直-scalar-keyedlist">垂直 scalar KeyedList &lt;a href="#%e5%9e%82%e7%9b%b4-scalar-keyedlist" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;h2 id="垂直键控列表vertical-keyedlist">垂直键控列表（Vertical KeyedList） &lt;a href="#%e5%9e%82%e7%9b%b4%e9%94%ae%e6%8e%a7%e5%88%97%e8%a1%a8vertical-keyedlist" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="垂直标量键控列表vertical-scalar-keyedlist">垂直标量键控列表（Vertical scalar KeyedList） &lt;a href="#%e5%9e%82%e7%9b%b4%e6%a0%87%e9%87%8f%e9%94%ae%e6%8e%a7%e5%88%97%e8%a1%a8vertical-scalar-keyedlist" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>[!NOTE]
-定义方式与 &lt;a href="https://tableauio.github.io/zh/docs/excel/keyedlist/#incell-scalar-keyedlist">Incell scalar KeyedList&lt;/a> 相同，但如果提供了多行数据，会进行聚合。&lt;/p>&lt;/blockquote>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+定义方式与 &lt;a href="https://tableauio.github.io/zh/docs/excel/keyedlist/#%e5%8d%95%e5%85%83%e6%a0%bc%e5%86%85%e6%a0%87%e9%87%8f%e9%94%ae%e6%8e%a7%e5%88%97%e8%a1%a8">单元格内标量键控列表&lt;/a> 相同，但如果提供了多行数据，会进行聚合。&lt;/p>&lt;/blockquote>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-kcbfmeinahgjld-268800-tab" data-bs-toggle="tab" data-bs-target="#sheet-kcbfmeinahgjld-268800" type="button" role="tab" aria-controls="sheet-kcbfmeinahgjld-268800" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-dkinbghmjlaefc-317784-tab" data-bs-toggle="tab" data-bs-target="#sheet-dkinbghmjlaefc-317784" type="button" role="tab" aria-controls="sheet-dkinbghmjlaefc-317784" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-ifkmjhgdcenalb-268982-tab" data-bs-toggle="tab" data-bs-target="#sheet-ifkmjhgdcenalb-268982" type="button" role="tab" aria-controls="sheet-ifkmjhgdcenalb-268982" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-lmgajindkfecbh-317979-tab" data-bs-toggle="tab" data-bs-target="#sheet-lmgajindkfecbh-317979" type="button" role="tab" aria-controls="sheet-lmgajindkfecbh-317979" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-kcbfmeinahgjld-268800" role="tabpanel" aria-labelledby="sheet-kcbfmeinahgjld-268800-tab">
+&lt;div class="tab-pane fade active show " id="sheet-dkinbghmjlaefc-317784" role="tabpanel" aria-labelledby="sheet-dkinbghmjlaefc-317784-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -570,7 +570,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-ifkmjhgdcenalb-268982" role="tabpanel" aria-labelledby="sheet-ifkmjhgdcenalb-268982-tab">
+&lt;div class="tab-pane fade " id="sheet-lmgajindkfecbh-317979" role="tabpanel" aria-labelledby="sheet-lmgajindkfecbh-317979-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -602,24 +602,24 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>Wellknown types（知名类型）</title><link>https://tableauio.github.io/zh/docs/excel/wellknown-types/</link><pubDate>Tue, 24 Sep 2024 14:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/wellknown-types/</guid><description>&lt;h2 id="datetime日期时间">Datetime（日期时间） &lt;a href="#datetime%e6%97%a5%e6%9c%9f%e6%97%b6%e9%97%b4" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;h3 id="datetime日期时间-1">Datetime（日期时间） &lt;a href="#datetime%e6%97%a5%e6%9c%9f%e6%97%b6%e9%97%b4-1" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>生成结果：&lt;/p></description></item><item><title>知名类型（Wellknown types）</title><link>https://tableauio.github.io/zh/docs/excel/wellknown-types/</link><pubDate>Tue, 24 Sep 2024 14:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/wellknown-types/</guid><description>&lt;h2 id="datetime">日期时间（Datetime） &lt;a href="#datetime" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="datetime-1">日期时间（Datetime） &lt;a href="#datetime-1" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;blockquote>
 &lt;p>[!NOTE]
-参考 &lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#datetime日期时间">Basics: Datetime&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+参考 &lt;a href="https://tableauio.github.io/zh/docs/basics/wellknown-types/#datetime">Basics: 日期时间&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-fdcakmliejhnbg-299753-tab" data-bs-toggle="tab" data-bs-target="#sheet-fdcakmliejhnbg-299753" type="button" role="tab" aria-controls="sheet-fdcakmliejhnbg-299753" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-ildckahgfjbnme-342068-tab" data-bs-toggle="tab" data-bs-target="#sheet-ildckahgfjbnme-342068" type="button" role="tab" aria-controls="sheet-ildckahgfjbnme-342068" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-feldkmiabjcghn-299935-tab" data-bs-toggle="tab" data-bs-target="#sheet-feldkmiabjcghn-299935" type="button" role="tab" aria-controls="sheet-feldkmiabjcghn-299935" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-ebafchgijdklnm-342263-tab" data-bs-toggle="tab" data-bs-target="#sheet-ebafchgijdklnm-342263" type="button" role="tab" aria-controls="sheet-ebafchgijdklnm-342263" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-fdcakmliejhnbg-299753" role="tabpanel" aria-labelledby="sheet-fdcakmliejhnbg-299753-tab">
+&lt;div class="tab-pane fade active show " id="sheet-ildckahgfjbnme-342068" role="tabpanel" aria-labelledby="sheet-ildckahgfjbnme-342068-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -649,7 +649,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-feldkmiabjcghn-299935" role="tabpanel" aria-labelledby="sheet-feldkmiabjcghn-299935-tab">
+&lt;div class="tab-pane fade " id="sheet-ebafchgijdklnm-342263" role="tabpanel" aria-labelledby="sheet-ebafchgijdklnm-342263-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -681,20 +681,20 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>Struct 嵌套 Struct</title><link>https://tableauio.github.io/zh/docs/excel/struct-in-struct/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/struct-in-struct/</guid><description>&lt;h2 id="struct-in-struct">Struct in struct &lt;a href="#struct-in-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;p>生成结果：&lt;/p></description></item><item><title>结构体嵌套结构体（Struct in struct）</title><link>https://tableauio.github.io/zh/docs/excel/struct-in-struct/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/struct-in-struct/</guid><description>&lt;h2 id="结构体嵌套结构体struct-in-struct">结构体嵌套结构体（Struct in struct） &lt;a href="#%e7%bb%93%e6%9e%84%e4%bd%93%e5%b5%8c%e5%a5%97%e7%bb%93%e6%9e%84%e4%bd%93struct-in-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-bnedfglajmihck-330550-tab" data-bs-toggle="tab" data-bs-target="#sheet-bnedfglajmihck-330550" type="button" role="tab" aria-controls="sheet-bnedfglajmihck-330550" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-aknebjhgfdiclm-378065-tab" data-bs-toggle="tab" data-bs-target="#sheet-aknebjhgfdiclm-378065" type="button" role="tab" aria-controls="sheet-aknebjhgfdiclm-378065" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-lkjbfhimnadgec-330732-tab" data-bs-toggle="tab" data-bs-target="#sheet-lkjbfhimnadgec-330732" type="button" role="tab" aria-controls="sheet-lkjbfhimnadgec-330732" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-dfjenmhblgakci-378234-tab" data-bs-toggle="tab" data-bs-target="#sheet-dfjenmhblgakci-378234" type="button" role="tab" aria-controls="sheet-dfjenmhblgakci-378234" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-bnedfglajmihck-330550" role="tabpanel" aria-labelledby="sheet-bnedfglajmihck-330550-tab">
+&lt;div class="tab-pane fade active show " id="sheet-aknebjhgfdiclm-378065" role="tabpanel" aria-labelledby="sheet-aknebjhgfdiclm-378065-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -724,7 +724,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-lkjbfhimnadgec-330732" role="tabpanel" aria-labelledby="sheet-lkjbfhimnadgec-330732-tab">
+&lt;div class="tab-pane fade " id="sheet-dfjenmhblgakci-378234" role="tabpanel" aria-labelledby="sheet-dfjenmhblgakci-378234-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -756,21 +756,21 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>List 嵌套 Struct</title><link>https://tableauio.github.io/zh/docs/excel/struct-in-list/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/struct-in-list/</guid><description>&lt;h2 id="垂直-list-中的嵌套">垂直 list 中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4-list-%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;h3 id="垂直-list-中的-struct">垂直 list 中的 struct &lt;a href="#%e5%9e%82%e7%9b%b4-list-%e4%b8%ad%e7%9a%84-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;p>生成结果：&lt;/p></description></item><item><title>列表嵌套结构体（Struct in list）</title><link>https://tableauio.github.io/zh/docs/excel/struct-in-list/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/struct-in-list/</guid><description>&lt;h2 id="垂直列表中的嵌套">垂直列表中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4%e5%88%97%e8%a1%a8%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="垂直列表嵌套结构体struct-in-vertical-list">垂直列表嵌套结构体（Struct in vertical-list） &lt;a href="#%e5%9e%82%e7%9b%b4%e5%88%97%e8%a1%a8%e5%b5%8c%e5%a5%97%e7%bb%93%e6%9e%84%e4%bd%93struct-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-bhljankcidfemg-344785-tab" data-bs-toggle="tab" data-bs-target="#sheet-bhljankcidfemg-344785" type="button" role="tab" aria-controls="sheet-bhljankcidfemg-344785" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-bklemgjfdihnac-391468-tab" data-bs-toggle="tab" data-bs-target="#sheet-bklemgjfdihnac-391468" type="button" role="tab" aria-controls="sheet-bklemgjfdihnac-391468" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-bjgmhndeaikfcl-344954-tab" data-bs-toggle="tab" data-bs-target="#sheet-bjgmhndeaikfcl-344954" type="button" role="tab" aria-controls="sheet-bjgmhndeaikfcl-344954" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-jicemhbkadgnlf-391637-tab" data-bs-toggle="tab" data-bs-target="#sheet-jicemhbkadgnlf-391637" type="button" role="tab" aria-controls="sheet-jicemhbkadgnlf-391637" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-bhljankcidfemg-344785" role="tabpanel" aria-labelledby="sheet-bhljankcidfemg-344785-tab">
+&lt;div class="tab-pane fade active show " id="sheet-bklemgjfdihnac-391468" role="tabpanel" aria-labelledby="sheet-bklemgjfdihnac-391468-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -816,7 +816,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-bjgmhndeaikfcl-344954" role="tabpanel" aria-labelledby="sheet-bjgmhndeaikfcl-344954-tab">
+&lt;div class="tab-pane fade " id="sheet-jicemhbkadgnlf-391637" role="tabpanel" aria-labelledby="sheet-jicemhbkadgnlf-391637-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -848,21 +848,21 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>Map 嵌套 Struct</title><link>https://tableauio.github.io/zh/docs/excel/struct-in-map/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/struct-in-map/</guid><description>&lt;h2 id="垂直-map-中的嵌套">垂直 map 中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4-map-%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;h3 id="垂直-map-中的-struct">垂直 map 中的 struct &lt;a href="#%e5%9e%82%e7%9b%b4-map-%e4%b8%ad%e7%9a%84-struct" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;p>生成结果：&lt;/p></description></item><item><title>映射嵌套结构体（Struct in map）</title><link>https://tableauio.github.io/zh/docs/excel/struct-in-map/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/struct-in-map/</guid><description>&lt;h2 id="垂直映射中的嵌套">垂直映射中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4%e6%98%a0%e5%b0%84%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="垂直映射嵌套结构体struct-in-vertical-map">垂直映射嵌套结构体（Struct in vertical-map） &lt;a href="#%e5%9e%82%e7%9b%b4%e6%98%a0%e5%b0%84%e5%b5%8c%e5%a5%97%e7%bb%93%e6%9e%84%e4%bd%93struct-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-giakhdlmjnbfce-366040-tab" data-bs-toggle="tab" data-bs-target="#sheet-giakhdlmjnbfce-366040" type="button" role="tab" aria-controls="sheet-giakhdlmjnbfce-366040" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-mneliabcfkhgjd-11319-tab" data-bs-toggle="tab" data-bs-target="#sheet-mneliabcfkhgjd-11319" type="button" role="tab" aria-controls="sheet-mneliabcfkhgjd-11319" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-ejbfhnckialmdg-366222-tab" data-bs-toggle="tab" data-bs-target="#sheet-ejbfhnckialmdg-366222" type="button" role="tab" aria-controls="sheet-ejbfhnckialmdg-366222" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-abfmclhdgijnke-11488-tab" data-bs-toggle="tab" data-bs-target="#sheet-abfmclhdgijnke-11488" type="button" role="tab" aria-controls="sheet-abfmclhdgijnke-11488" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-giakhdlmjnbfce-366040" role="tabpanel" aria-labelledby="sheet-giakhdlmjnbfce-366040-tab">
+&lt;div class="tab-pane fade active show " id="sheet-mneliabcfkhgjd-11319" role="tabpanel" aria-labelledby="sheet-mneliabcfkhgjd-11319-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -902,7 +902,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-ejbfhnckialmdg-366222" role="tabpanel" aria-labelledby="sheet-ejbfhnckialmdg-366222-tab">
+&lt;div class="tab-pane fade " id="sheet-abfmclhdgijnke-11488" role="tabpanel" aria-labelledby="sheet-abfmclhdgijnke-11488-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -934,21 +934,21 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>List 嵌套 List</title><link>https://tableauio.github.io/zh/docs/excel/list-in-list/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/list-in-list/</guid><description>&lt;h2 id="垂直-list-中的嵌套">垂直 list 中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4-list-%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;h3 id="垂直-list-中的水平-list">垂直 list 中的水平 list &lt;a href="#%e5%9e%82%e7%9b%b4-list-%e4%b8%ad%e7%9a%84%e6%b0%b4%e5%b9%b3-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;p>生成结果：&lt;/p></description></item><item><title>列表嵌套列表（List in list）</title><link>https://tableauio.github.io/zh/docs/excel/list-in-list/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/list-in-list/</guid><description>&lt;h2 id="垂直列表中的嵌套">垂直列表中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4%e5%88%97%e8%a1%a8%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="垂直列表嵌套水平列表horizontal-list-in-vertical-list">垂直列表嵌套水平列表（Horizontal-list in vertical-list） &lt;a href="#%e5%9e%82%e7%9b%b4%e5%88%97%e8%a1%a8%e5%b5%8c%e5%a5%97%e6%b0%b4%e5%b9%b3%e5%88%97%e8%a1%a8horizontal-list-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-ifkaebnglhjcdm-387269-tab" data-bs-toggle="tab" data-bs-target="#sheet-ifkaebnglhjcdm-387269" type="button" role="tab" aria-controls="sheet-ifkaebnglhjcdm-387269" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-menjfdhakclbig-26672-tab" data-bs-toggle="tab" data-bs-target="#sheet-menjfdhakclbig-26672" type="button" role="tab" aria-controls="sheet-menjfdhakclbig-26672" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-hfdekangcbmlij-387464-tab" data-bs-toggle="tab" data-bs-target="#sheet-hfdekangcbmlij-387464" type="button" role="tab" aria-controls="sheet-hfdekangcbmlij-387464" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-lehmjgndcbkiaf-26854-tab" data-bs-toggle="tab" data-bs-target="#sheet-lehmjgndcbkiaf-26854" type="button" role="tab" aria-controls="sheet-lehmjgndcbkiaf-26854" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-ifkaebnglhjcdm-387269" role="tabpanel" aria-labelledby="sheet-ifkaebnglhjcdm-387269-tab">
+&lt;div class="tab-pane fade active show " id="sheet-menjfdhakclbig-26672" role="tabpanel" aria-labelledby="sheet-menjfdhakclbig-26672-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -1006,7 +1006,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-hfdekangcbmlij-387464" role="tabpanel" aria-labelledby="sheet-hfdekangcbmlij-387464-tab">
+&lt;div class="tab-pane fade " id="sheet-lehmjgndcbkiaf-26854" role="tabpanel" aria-labelledby="sheet-lehmjgndcbkiaf-26854-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -1038,21 +1038,21 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>Map 嵌套 List</title><link>https://tableauio.github.io/zh/docs/excel/list-in-map/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/list-in-map/</guid><description>&lt;h2 id="垂直-map-中的嵌套">垂直 map 中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4-map-%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;h3 id="垂直-map-中的水平-list">垂直 map 中的水平 list &lt;a href="#%e5%9e%82%e7%9b%b4-map-%e4%b8%ad%e7%9a%84%e6%b0%b4%e5%b9%b3-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;p>生成结果：&lt;/p></description></item><item><title>映射嵌套列表（List in map）</title><link>https://tableauio.github.io/zh/docs/excel/list-in-map/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/list-in-map/</guid><description>&lt;h2 id="垂直映射中的嵌套">垂直映射中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4%e6%98%a0%e5%b0%84%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="垂直映射嵌套水平列表horizontal-list-in-vertical-map">垂直映射嵌套水平列表（Horizontal-list in vertical-map） &lt;a href="#%e5%9e%82%e7%9b%b4%e6%98%a0%e5%b0%84%e5%b5%8c%e5%a5%97%e6%b0%b4%e5%b9%b3%e5%88%97%e8%a1%a8horizontal-list-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-mgjifcbdkehlan-33731-tab" data-bs-toggle="tab" data-bs-target="#sheet-mgjifcbdkehlan-33731" type="button" role="tab" aria-controls="sheet-mgjifcbdkehlan-33731" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-njalkbdhciemgf-61447-tab" data-bs-toggle="tab" data-bs-target="#sheet-njalkbdhciemgf-61447" type="button" role="tab" aria-controls="sheet-njalkbdhciemgf-61447" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-ekfjigahbldnmc-34134-tab" data-bs-toggle="tab" data-bs-target="#sheet-ekfjigahbldnmc-34134" type="button" role="tab" aria-controls="sheet-ekfjigahbldnmc-34134" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-kgeblmnachifdj-61629-tab" data-bs-toggle="tab" data-bs-target="#sheet-kgeblmnachifdj-61629" type="button" role="tab" aria-controls="sheet-kgeblmnachifdj-61629" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-mgjifcbdkehlan-33731" role="tabpanel" aria-labelledby="sheet-mgjifcbdkehlan-33731-tab">
+&lt;div class="tab-pane fade active show " id="sheet-njalkbdhciemgf-61447" role="tabpanel" aria-labelledby="sheet-njalkbdhciemgf-61447-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -1110,7 +1110,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-ekfjigahbldnmc-34134" role="tabpanel" aria-labelledby="sheet-ekfjigahbldnmc-34134-tab">
+&lt;div class="tab-pane fade " id="sheet-kgeblmnachifdj-61629" role="tabpanel" aria-labelledby="sheet-kgeblmnachifdj-61629-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -1142,21 +1142,21 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>List 嵌套 Map</title><link>https://tableauio.github.io/zh/docs/excel/map-in-list/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/map-in-list/</guid><description>&lt;h2 id="垂直-list-中的嵌套">垂直 list 中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4-list-%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;h3 id="垂直-list-中的水平-map">垂直 list 中的水平 map &lt;a href="#%e5%9e%82%e7%9b%b4-list-%e4%b8%ad%e7%9a%84%e6%b0%b4%e5%b9%b3-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;p>生成结果：&lt;/p></description></item><item><title>列表嵌套映射（Map in list）</title><link>https://tableauio.github.io/zh/docs/excel/map-in-list/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/map-in-list/</guid><description>&lt;h2 id="垂直列表中的嵌套">垂直列表中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4%e5%88%97%e8%a1%a8%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="垂直列表嵌套水平映射horizontal-map-in-vertical-list">垂直列表嵌套水平映射（Horizontal-map in vertical-list） &lt;a href="#%e5%9e%82%e7%9b%b4%e5%88%97%e8%a1%a8%e5%b5%8c%e5%a5%97%e6%b0%b4%e5%b9%b3%e6%98%a0%e5%b0%84horizontal-map-in-vertical-list" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-bejchflaidmngk-91659-tab" data-bs-toggle="tab" data-bs-target="#sheet-bejchflaidmngk-91659" type="button" role="tab" aria-controls="sheet-bejchflaidmngk-91659" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-kjehalmbfgdnic-87798-tab" data-bs-toggle="tab" data-bs-target="#sheet-kjehalmbfgdnic-87798" type="button" role="tab" aria-controls="sheet-kjehalmbfgdnic-87798" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-nfldehimgjbcak-92036-tab" data-bs-toggle="tab" data-bs-target="#sheet-nfldehimgjbcak-92036" type="button" role="tab" aria-controls="sheet-nfldehimgjbcak-92036" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-jbkaefnlgdhmci-87967-tab" data-bs-toggle="tab" data-bs-target="#sheet-jbkaefnlgdhmci-87967" type="button" role="tab" aria-controls="sheet-jbkaefnlgdhmci-87967" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-bejchflaidmngk-91659" role="tabpanel" aria-labelledby="sheet-bejchflaidmngk-91659-tab">
+&lt;div class="tab-pane fade active show " id="sheet-kjehalmbfgdnic-87798" role="tabpanel" aria-labelledby="sheet-kjehalmbfgdnic-87798-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -1214,7 +1214,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-nfldehimgjbcak-92036" role="tabpanel" aria-labelledby="sheet-nfldehimgjbcak-92036-tab">
+&lt;div class="tab-pane fade " id="sheet-jbkaefnlgdhmci-87967" role="tabpanel" aria-labelledby="sheet-jbkaefnlgdhmci-87967-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -1246,21 +1246,21 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>Map 嵌套 Map</title><link>https://tableauio.github.io/zh/docs/excel/map-in-map/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/map-in-map/</guid><description>&lt;h2 id="垂直-map-中的嵌套">垂直 map 中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4-map-%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;h3 id="垂直-map-中的水平-map">垂直 map 中的水平 map &lt;a href="#%e5%9e%82%e7%9b%b4-map-%e4%b8%ad%e7%9a%84%e6%b0%b4%e5%b9%b3-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
-&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的 worksheet &lt;code>ItemConf&lt;/code>：&lt;/p>
+&lt;p>生成结果：&lt;/p></description></item><item><title>映射嵌套映射（Map in map）</title><link>https://tableauio.github.io/zh/docs/excel/map-in-map/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/map-in-map/</guid><description>&lt;h2 id="垂直映射中的嵌套">垂直映射中的嵌套 &lt;a href="#%e5%9e%82%e7%9b%b4%e6%98%a0%e5%b0%84%e4%b8%ad%e7%9a%84%e5%b5%8c%e5%a5%97" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;h3 id="垂直映射嵌套水平映射horizontal-map-in-vertical-map">垂直映射嵌套水平映射（Horizontal-map in vertical-map） &lt;a href="#%e5%9e%82%e7%9b%b4%e6%98%a0%e5%b0%84%e5%b5%8c%e5%a5%97%e6%b0%b4%e5%b9%b3%e6%98%a0%e5%b0%84horizontal-map-in-vertical-map" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;p>&lt;em>HelloWorld.xlsx&lt;/em> 中的工作表 &lt;code>ItemConf&lt;/code>：&lt;/p>
 &lt;div class="table-responsive spreadsheet">
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-ilemagjhkfcndb-140149-tab" data-bs-toggle="tab" data-bs-target="#sheet-ilemagjhkfcndb-140149" type="button" role="tab" aria-controls="sheet-ilemagjhkfcndb-140149" aria-selected=" active ">ItemConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-lbnmifedhkgjca-110080-tab" data-bs-toggle="tab" data-bs-target="#sheet-lbnmifedhkgjca-110080" type="button" role="tab" aria-controls="sheet-lbnmifedhkgjca-110080" aria-selected=" active ">ItemConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-elfmcidgnbhajk-140799-tab" data-bs-toggle="tab" data-bs-target="#sheet-elfmcidgnbhajk-140799" type="button" role="tab" aria-controls="sheet-elfmcidgnbhajk-140799" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-ighbcjdlekfnma-110288-tab" data-bs-toggle="tab" data-bs-target="#sheet-ighbcjdlekfnma-110288" type="button" role="tab" aria-controls="sheet-ighbcjdlekfnma-110288" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-ilemagjhkfcndb-140149" role="tabpanel" aria-labelledby="sheet-ilemagjhkfcndb-140149-tab">
+&lt;div class="tab-pane fade active show " id="sheet-lbnmifedhkgjca-110080" role="tabpanel" aria-labelledby="sheet-lbnmifedhkgjca-110080-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -1318,7 +1318,7 @@ int64 damage = 2; // scalar
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-elfmcidgnbhajk-140799" role="tabpanel" aria-labelledby="sheet-elfmcidgnbhajk-140799-tab">
+&lt;div class="tab-pane fade " id="sheet-ighbcjdlekfnma-110288" role="tabpanel" aria-labelledby="sheet-ighbcjdlekfnma-110288-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -1351,14 +1351,14 @@ int64 damage = 2; // scalar
 &lt;/div>
 &lt;/div>
 &lt;p>生成结果：&lt;/p></description></item><item><title>无限嵌套</title><link>https://tableauio.github.io/zh/docs/excel/infinite-nesting/</link><pubDate>Sat, 26 Feb 2022 08:48:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/infinite-nesting/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>现在，水平/垂直 list 元素的第一个字段可以是任意类型，包括 struct、list 和 map。&lt;/p>
+&lt;p>现在，水平/垂直列表元素的第一个字段可以是任意类型，包括结构体、列表和映射。&lt;/p>
 &lt;ul>
-&lt;li>List 元素的第一个字段是 struct：&lt;code>[Reward]{Icon}int32&lt;/code>&lt;/li>
-&lt;li>List 元素的第一个字段是 predefined struct：&lt;code>[Cost]{.Item}uint32&lt;/code>&lt;/li>
-&lt;li>List 元素的第一个字段是 incell struct：&lt;code>[Magic]{int32 Id, int32 Num}Ability&lt;/code>&lt;/li>
-&lt;li>List 元素的第一个字段是 list：&lt;code>[Reward][Item]uint32&lt;/code>&lt;/li>
-&lt;li>List 元素的第一个字段是元素为 predefined struct 的 list：&lt;code>[Power][.Item]uint32&lt;/code>&lt;/li>
-&lt;li>List 元素的第一个字段是 map：&lt;code>[Superpower]map&amp;lt;uint32, Ability&amp;gt;&lt;/code>&lt;/li>
+&lt;li>列表元素的第一个字段是结构体：&lt;code>[Reward]{Icon}int32&lt;/code>&lt;/li>
+&lt;li>列表元素的第一个字段是预定义结构体：&lt;code>[Cost]{.Item}uint32&lt;/code>&lt;/li>
+&lt;li>列表元素的第一个字段是单元格内结构体：&lt;code>[Magic]{int32 Id, int32 Num}Ability&lt;/code>&lt;/li>
+&lt;li>列表元素的第一个字段是列表：&lt;code>[Reward][Item]uint32&lt;/code>&lt;/li>
+&lt;li>列表元素的第一个字段是元素为预定义结构体的列表：&lt;code>[Power][.Item]uint32&lt;/code>&lt;/li>
+&lt;li>列表元素的第一个字段是映射：&lt;code>[Superpower]map&amp;lt;uint32, Ability&amp;gt;&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;blockquote>
 &lt;p>TODO: 补充清晰的示例。&lt;/p>&lt;/blockquote>
@@ -1382,14 +1382,14 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>HelloWorld.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-kimeacfgnjlhbd-182035-tab" data-bs-toggle="tab" data-bs-target="#sheet-kimeacfgnjlhbd-182035" type="button" role="tab" aria-controls="sheet-kimeacfgnjlhbd-182035" aria-selected=" active ">LoaderConf&lt;/button>
+&lt;button class="nav-link active " id="sheet-dflecakhmgbnij-134780-tab" data-bs-toggle="tab" data-bs-target="#sheet-dflecakhmgbnij-134780" type="button" role="tab" aria-controls="sheet-dflecakhmgbnij-134780" aria-selected=" active ">LoaderConf&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-khbimgjnflaced-182217-tab" data-bs-toggle="tab" data-bs-target="#sheet-khbimgjnflaced-182217" type="button" role="tab" aria-controls="sheet-khbimgjnflaced-182217" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-lciegnmjkfdabh-135170-tab" data-bs-toggle="tab" data-bs-target="#sheet-lciegnmjkfdabh-135170" type="button" role="tab" aria-controls="sheet-lciegnmjkfdabh-135170" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-kimeacfgnjlhbd-182035" role="tabpanel" aria-labelledby="sheet-kimeacfgnjlhbd-182035-tab">
+&lt;div class="tab-pane fade active show " id="sheet-dflecakhmgbnij-134780" role="tabpanel" aria-labelledby="sheet-dflecakhmgbnij-134780-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -1477,7 +1477,7 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-khbimgjnflaced-182217" role="tabpanel" aria-labelledby="sheet-khbimgjnflaced-182217-tab">
+&lt;div class="tab-pane fade " id="sheet-lciegnmjkfdabh-135170" role="tabpanel" aria-labelledby="sheet-lciegnmjkfdabh-135170-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
@@ -1497,7 +1497,7 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;p>生成结果：&lt;/p></description></item><item><title>Field property（字段属性）</title><link>https://tableauio.github.io/zh/docs/excel/field-property/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/excel/field-property/</guid><description>&lt;h2 id="概览">概览 &lt;a href="#%e6%a6%82%e8%a7%88" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>生成结果：&lt;/p></description></item><item><title>字段属性（Field property）</title><link>https://tableauio.github.io/zh/docs/excel/field-property/</link><pubDate>Tue, 13 Oct 2020 15:21:01 +0200</pubDate><guid>https://tableauio.github.io/zh/docs/excel/field-property/</guid><description>&lt;h2 id="概览">概览 &lt;a href="#%e6%a6%82%e8%a7%88" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;table class="table-striped table-hover">
 &lt;thead>
 &lt;tr>
@@ -1510,7 +1510,7 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;tr>
 &lt;td>&lt;code>unique&lt;/code>&lt;/td>
 &lt;td>bool&lt;/td>
-&lt;td>检查字段唯一性。&lt;br> 默认值：&lt;code>false&lt;/code>。对于 map（或 KeyedList）的 key，默认值会自动推断。&lt;/td>
+&lt;td>检查字段唯一性。&lt;br> 默认值：&lt;code>false&lt;/code>。对于映射（或键控列表）的键，默认值会自动推断。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>range&lt;/code>&lt;/td>
@@ -1520,7 +1520,7 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;tr>
 &lt;td>&lt;code>refer&lt;/code>&lt;/td>
 &lt;td>string&lt;/td>
-&lt;td>格式：&lt;code>&amp;quot;SheetName(SheetAlias).ColumnName&amp;quot;&lt;/code>。&lt;br>确保该字段的值在另一个 sheet 的列值空间中。多个 refer 用逗号分隔。&lt;/td>
+&lt;td>格式：&lt;code>&amp;quot;SheetName(SheetAlias).ColumnName&amp;quot;&lt;/code>。&lt;br>确保该字段的值在另一个工作表的列值空间中。多个 refer 用逗号分隔。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>sequence&lt;/code>&lt;/td>
@@ -1535,17 +1535,17 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;tr>
 &lt;td>&lt;code>fixed&lt;/code>&lt;/td>
 &lt;td>bool&lt;/td>
-&lt;td>自动检测水平 list/map 的固定大小。&lt;br> 默认值：&lt;code>false&lt;/code>。&lt;/td>
+&lt;td>自动检测水平列表/映射的固定大小。&lt;br> 默认值：&lt;code>false&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>size&lt;/code>&lt;/td>
 &lt;td>uint32&lt;/td>
-&lt;td>指定水平 list/map 的固定大小。&lt;/td>
+&lt;td>指定水平列表/映射的固定大小。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>form&lt;/code>&lt;/td>
 &lt;td>Form&lt;/td>
-&lt;td>指定 incell struct 的单元格数据格式。&lt;br> - &lt;code>FORM_TEXT&lt;/code>&lt;br> - &lt;code>FORM_JSON&lt;/code>&lt;/td>
+&lt;td>指定单元格内结构体的单元格数据格式。&lt;br> - &lt;code>FORM_TEXT&lt;/code>&lt;br> - &lt;code>FORM_JSON&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>json_name&lt;/code>&lt;/td>
@@ -1580,28 +1580,28 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;tr>
 &lt;td>&lt;code>pattern&lt;/code>&lt;/td>
 &lt;td>string&lt;/td>
-&lt;td>指定 scalar、list 元素和 map value 的模式。&lt;/td>
+&lt;td>指定标量、列表元素和映射值的模式。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>validate&lt;/code>&lt;/td>
 &lt;td>string&lt;/td>
-&lt;td>适用于 scalar 和 well-known 类型的 &lt;a href="https://github.com/bufbuild/protovalidate">protovalidate&lt;/a> 字段级校验规则。&lt;br>例如：&lt;code>&amp;quot;string:{max_len:10}&amp;quot;&lt;/code>、&lt;code>&amp;quot;int32:{gt:0 lte:100}&amp;quot;&lt;/code>、&lt;code>&amp;quot;cel_expression:\&amp;quot;this &amp;gt;= timestamp('2024-01-01T00:00:00Z')\&amp;quot;&amp;quot;&lt;/code>。&lt;/td>
+&lt;td>适用于标量和知名类型的 &lt;a href="https://github.com/bufbuild/protovalidate">protovalidate&lt;/a> 字段级校验规则。&lt;br>例如：&lt;code>&amp;quot;string:{max_len:10}&amp;quot;&lt;/code>、&lt;code>&amp;quot;int32:{gt:0 lte:100}&amp;quot;&lt;/code>、&lt;code>&amp;quot;cel_expression:\&amp;quot;this &amp;gt;= timestamp('2024-01-01T00:00:00Z')\&amp;quot;&amp;quot;&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>validate_complex&lt;/code>&lt;/td>
 &lt;td>string&lt;/td>
-&lt;td>适用于复合类型（list/map）的 &lt;a href="https://github.com/bufbuild/protovalidate">protovalidate&lt;/a> 字段级校验规则。&lt;br>例如：&lt;code>&amp;quot;repeated:{min_items:1}&amp;quot;&lt;/code>、&lt;code>&amp;quot;map:{min_pairs:1}&amp;quot;&lt;/code>。&lt;/td>
+&lt;td>适用于复合类型（列表/映射）的 &lt;a href="https://github.com/bufbuild/protovalidate">protovalidate&lt;/a> 字段级校验规则。&lt;br>例如：&lt;code>&amp;quot;repeated:{min_items:1}&amp;quot;&lt;/code>、&lt;code>&amp;quot;map:{min_pairs:1}&amp;quot;&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>validate_message&lt;/code>&lt;/td>
 &lt;td>string&lt;/td>
-&lt;td>适用于字段所嵌套 message 的 &lt;a href="https://github.com/bufbuild/protovalidate">protovalidate&lt;/a> message 级校验规则。&lt;br>例如：&lt;code>&amp;quot;cel_expression:\&amp;quot;this.start_time &amp;lt; this.end_time\&amp;quot;&amp;quot;&lt;/code>。&lt;/td>
+&lt;td>适用于字段所嵌套结构体的 &lt;a href="https://github.com/bufbuild/protovalidate">protovalidate&lt;/a> message 级校验规则。&lt;br>例如：&lt;code>&amp;quot;cel_expression:\&amp;quot;this.start_time &amp;lt; this.end_time\&amp;quot;&amp;quot;&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
 &lt;h2 id="选项-unique">选项 &lt;code>unique&lt;/code> &lt;a href="#%e9%80%89%e9%a1%b9-unique" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>选项 &lt;code>unique&lt;/code> 可在 field property 中指定为 &lt;code>true&lt;/code> 或 &lt;code>false&lt;/code>，用于检查 list/map 元素中任意 scalar 字段的唯一性。&lt;/p></description></item><item><title>Metasheet（元表）</title><link>https://tableauio.github.io/zh/docs/excel/metasheet/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/metasheet/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>以下选项可在 metasheet &lt;code>@TABLEAU&lt;/code> 中指定，用于影响对应 worksheet 的布局、功能、loader 等。&lt;/p>
+&lt;p>选项 &lt;code>unique&lt;/code> 可在字段属性中指定为 &lt;code>true&lt;/code> 或 &lt;code>false&lt;/code>，用于检查列表/映射元素中任意标量字段的唯一性。&lt;/p></description></item><item><title>元表（Metasheet）</title><link>https://tableauio.github.io/zh/docs/excel/metasheet/</link><pubDate>Sat, 26 Feb 2022 13:59:39 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/excel/metasheet/</guid><description>&lt;h2 id="概述">概述 &lt;a href="#%e6%a6%82%e8%bf%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>以下选项可在元表 &lt;code>@TABLEAU&lt;/code> 中指定，用于影响对应工作表的布局、功能、loader 等。&lt;/p>
 &lt;table class="table-striped table-hover">
 &lt;thead>
 &lt;tr>
@@ -1614,32 +1614,32 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;tr>
 &lt;td>&lt;code>Sheet&lt;/code>&lt;/td>
 &lt;td>string&lt;/td>
-&lt;td>要处理的 worksheet 名称。特别地，&lt;code>#&lt;/code> 表示 workbook 名称，可用于设置 workbook 的 &lt;code>Alias&lt;/code>。&lt;/td>
+&lt;td>要处理的工作表名称。特别地，&lt;code>#&lt;/code> 表示工作簿名称，可用于设置工作簿的 &lt;code>Alias&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Alias&lt;/code>&lt;/td>
 &lt;td>string&lt;/td>
-&lt;td>对于 worksheet，alias 用作 proto message 名称。对于 workbook &lt;code>#&lt;/code>，alias 用作 proto 文件名（不含扩展名）。&lt;/td>
+&lt;td>对于工作表，alias 用作 proto message 名称。对于工作簿 &lt;code>#&lt;/code>，alias 用作 proto 文件名（不含扩展名）。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Namerow&lt;/code>&lt;/td>
 &lt;td>int32&lt;/td>
-&lt;td>worksheet 中列名定义所在的精确行号。&lt;br>默认值：&lt;code>1&lt;/code>。&lt;/td>
+&lt;td>工作表中列名定义所在的精确行号。&lt;br>默认值：&lt;code>1&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Typerow&lt;/code>&lt;/td>
 &lt;td>int32&lt;/td>
-&lt;td>worksheet 中列类型定义所在的精确行号。&lt;br>默认值：&lt;code>2&lt;/code>。&lt;/td>
+&lt;td>工作表中列类型定义所在的精确行号。&lt;br>默认值：&lt;code>2&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Noterow&lt;/code>&lt;/td>
 &lt;td>int32&lt;/td>
-&lt;td>worksheet 中列注释定义所在的精确行号。&lt;br>默认值：&lt;code>3&lt;/code>。&lt;/td>
+&lt;td>工作表中列注释定义所在的精确行号。&lt;br>默认值：&lt;code>3&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Datarow&lt;/code>&lt;/td>
 &lt;td>int32&lt;/td>
-&lt;td>worksheet 中数据起始行号。&lt;br>默认值：&lt;code>4&lt;/code>。&lt;/td>
+&lt;td>工作表中数据起始行号。&lt;br>默认值：&lt;code>4&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Nameline&lt;/code>&lt;/td>
@@ -1654,7 +1654,7 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;tr>
 &lt;td>&lt;code>Transpose&lt;/code>&lt;/td>
 &lt;td>bool&lt;/td>
-&lt;td>对指定 sheet 进行行列转置。&lt;/td>
+&lt;td>对指定工作表进行行列转置。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Nested&lt;/code>&lt;/td>
@@ -1674,7 +1674,7 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;tr>
 &lt;td>&lt;code>Merger&lt;/code>&lt;/td>
 &lt;td>[]string&lt;/td>
-&lt;td>将多个具有相同结构的 sheet（逗号分隔）合并为一个。&lt;br>每个元素可以是：&lt;br> - 仅 workbook 文件路径或 glob 路径（相对于当前 workbook）：&lt;code>&amp;lt;Workbook&amp;gt;&lt;/code>，此时 sheet 名称与当前 sheet 相同。&lt;br> - workbook 文件路径（相对于当前 workbook）加 worksheet 名称：&lt;code>&amp;lt;Workbook&amp;gt;#&amp;lt;Worksheet&amp;gt;&lt;/code>。&lt;/td>
+&lt;td>将多个具有相同结构的工作表（逗号分隔）合并为一个。&lt;br>每个元素可以是：&lt;br> - 仅工作簿文件路径或 glob 路径（相对于当前工作簿）：&lt;code>&amp;lt;Workbook&amp;gt;&lt;/code>，此时工作表名称与当前工作表相同。&lt;br> - 工作簿文件路径（相对于当前工作簿）加工作表名称：&lt;code>&amp;lt;Workbook&amp;gt;#&amp;lt;Worksheet&amp;gt;&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>AdjacentKey&lt;/code>&lt;/td>
@@ -1689,22 +1689,22 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;tr>
 &lt;td>&lt;code>Mode&lt;/code>&lt;/td>
 &lt;td>Mode&lt;/td>
-&lt;td>Sheet 模式。&lt;br>可用模式：&lt;br> - &lt;code>MODE_ENUM_TYPE&lt;/code> &lt;br> - &lt;code>MODE_ENUM_TYPE_MULTI&lt;/code> &lt;br> - &lt;code>MODE_STRUCT_TYPE&lt;/code> &lt;br> - &lt;code>MODE_STRUCT_TYPE_MULTI&lt;/code> &lt;br> - &lt;code>MODE_UNION_TYPE&lt;/code>&lt;br> - &lt;code>MODE_UNION_TYPE_MULTI&lt;/code>&lt;/td>
+&lt;td>工作表模式。&lt;br>可用模式：&lt;br> - &lt;code>MODE_ENUM_TYPE&lt;/code> &lt;br> - &lt;code>MODE_ENUM_TYPE_MULTI&lt;/code> &lt;br> - &lt;code>MODE_STRUCT_TYPE&lt;/code> &lt;br> - &lt;code>MODE_STRUCT_TYPE_MULTI&lt;/code> &lt;br> - &lt;code>MODE_UNION_TYPE&lt;/code>&lt;br> - &lt;code>MODE_UNION_TYPE_MULTI&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Scatter&lt;/code>&lt;/td>
 &lt;td>[]string&lt;/td>
-&lt;td>将多个具有相同 schema 的 sheet（逗号分隔）分别转换为不同的配置文件。&lt;br>每个元素可以是：&lt;br> - workbook 名称或 Glob（相对于当前 workbook）：&lt;code>&amp;lt;Workbook&amp;gt;&lt;/code>，此时 sheet 名称与当前 sheet 相同。&lt;br> - workbook 名称（相对于当前 workbook）加 worksheet 名称：&lt;code>&amp;lt;Workbook&amp;gt;#&amp;lt;Worksheet&amp;gt;&lt;/code>。&lt;/td>
+&lt;td>将多个具有相同 schema 的工作表（逗号分隔）分别转换为不同的配置文件。&lt;br>每个元素可以是：&lt;br> - 工作簿名称或 Glob（相对于当前工作簿）：&lt;code>&amp;lt;Workbook&amp;gt;&lt;/code>，此时工作表名称与当前工作表相同。&lt;br> - 工作簿名称（相对于当前工作簿）加工作表名称：&lt;code>&amp;lt;Workbook&amp;gt;#&amp;lt;Worksheet&amp;gt;&lt;/code>。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Optional&lt;/code>&lt;/td>
 &lt;td>bool&lt;/td>
-&lt;td>该 sheet 中所有字段是否均为可选（字段名存在性）。&lt;/td>
+&lt;td>该工作表中所有字段是否均为可选（字段名存在性）。&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>Patch&lt;/code>&lt;/td>
 &lt;td>Patch&lt;/td>
-&lt;td>Sheet patch 类型。&lt;br> - &lt;code>PATCH_REPLACE&lt;/code> &lt;br> - &lt;code>PATCH_MERGE&lt;/code>&lt;/td>
+&lt;td>工作表 patch 类型。&lt;br> - &lt;code>PATCH_REPLACE&lt;/code> &lt;br> - &lt;code>PATCH_MERGE&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>WithParentDir&lt;/code>&lt;/td>
@@ -1739,9 +1739,9 @@ SERVER_TYPE_MATCH = 3 [(tableau.evalue).name = &amp;quot;MatchServer&amp;quot;];
 &lt;tr>
 &lt;td>&lt;code>Validate&lt;/code>&lt;/td>
 &lt;td>string&lt;/td>
-&lt;td>工作表/messager 级别的 &lt;a href="https://github.com/bufbuild/protovalidate">protovalidate&lt;/a> message 级校验规则。其值为 &lt;a href="https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.MessageRules">&lt;code>buf.validate.MessageRules&lt;/code>&lt;/a> 的 text format 表示，例如：&lt;code>cel_expression:&amp;quot;this.item_map.size() &amp;gt; 0&amp;quot;&lt;/code>。也支持在 &lt;code>MODE_STRUCT_TYPE&lt;/code>/&lt;code>MODE_UNION_TYPE&lt;/code> 等 sheet 上使用。&lt;/td>
+&lt;td>工作表/messager 级别的 &lt;a href="https://github.com/bufbuild/protovalidate">protovalidate&lt;/a> message 级校验规则。其值为 &lt;a href="https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.MessageRules">&lt;code>buf.validate.MessageRules&lt;/code>&lt;/a> 的 text format 表示，例如：&lt;code>cel_expression:&amp;quot;this.item_map.size() &amp;gt; 0&amp;quot;&lt;/code>。也支持在 &lt;code>MODE_STRUCT_TYPE&lt;/code>/&lt;code>MODE_UNION_TYPE&lt;/code> 等工作表上使用。&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
 &lt;h2 id="空-tableau">空 &lt;code>@TABLEAU&lt;/code> &lt;a href="#%e7%a9%ba-tableau" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;p>如果 metasheet &lt;code>@TABLEAU&lt;/code> 为空，则同一 workbook 中的所有其他 worksheet 都会被处理。&lt;/p></description></item></channel></rss>
+&lt;p>如果元表 &lt;code>@TABLEAU&lt;/code> 为空，则同一工作簿中的所有其他工作表都会被处理。&lt;/p></description></item></channel></rss>

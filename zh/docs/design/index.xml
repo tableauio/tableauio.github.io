@@ -9,8 +9,8 @@
 &lt;ul>
 &lt;li>Importer（导入器）：
 &lt;ul>
-&lt;li>将 &lt;strong>Excel/CSV&lt;/strong> 文件导入为内存中的 &lt;strong>Table&lt;/strong> sheet 集合。&lt;/li>
-&lt;li>将 &lt;strong>XML/YAML&lt;/strong> 文件导入为内存中的 &lt;strong>Document&lt;/strong> sheet 集合。&lt;/li>
+&lt;li>将 &lt;strong>Excel/CSV&lt;/strong> 文件导入为内存中的 &lt;strong>Table&lt;/strong> 工作表集合。&lt;/li>
+&lt;li>将 &lt;strong>XML/YAML&lt;/strong> 文件导入为内存中的 &lt;strong>Document&lt;/strong> 工作表集合。&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>Parsers（解析器）：
@@ -89,10 +89,10 @@ classDef greenclass fill:#40E0D0;
 &lt;/ul>
 &lt;h3 id="metadata">Metadata &lt;a href="#metadata" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
 &lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> metatable：描述 worksheet 元数据的 message。&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> metatable：描述工作表元数据的 message。&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> metafield：描述 caption 元数据的 message。&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> captrow：caption 行，worksheet 中 caption 所在的精确行号。caption 中允许&lt;strong>换行&lt;/strong>以提高可读性，转换时会被去除。&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> descrow：description 行，worksheet 中描述所在的精确行号。&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> captrow：caption 行，工作表中 caption 所在的精确行号。caption 中允许&lt;strong>换行&lt;/strong>以提高可读性，转换时会被去除。&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> descrow：description 行，工作表中描述所在的精确行号。&lt;/li>
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> datarow：data 行，数据的起始行号。&lt;/li>
 &lt;/ul>
 &lt;p>主流操作系统中的&lt;a href="https://www.wikiwand.com/en/Newline">换行符&lt;/a>：&lt;/p></description></item><item><title>Metadata</title><link>https://tableauio.github.io/zh/docs/design/metadata/</link><pubDate>Sun, 09 Jan 2022 19:39:57 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/design/metadata/</guid><description>&lt;h2 id="符号说明">符号说明 &lt;a href="#%e7%ac%a6%e5%8f%b7%e8%af%b4%e6%98%8e" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
@@ -117,14 +117,14 @@ classDef greenclass fill:#40E0D0;
 &lt;div class="text-center">&lt;button type="button" id="download-btn" class="btn btn-sm spreadsheet-download-btn">&lt;span>Activity.xlsx&lt;/span>&amp;nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">&lt;path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>&lt;path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>&lt;/svg>&lt;/button>&lt;/div>
 &lt;ul class="nav nav-tabs" role="tablist">
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link active " id="sheet-fkljamghcinebd-260678-tab" data-bs-toggle="tab" data-bs-target="#sheet-fkljamghcinebd-260678" type="button" role="tab" aria-controls="sheet-fkljamghcinebd-260678" aria-selected=" active ">Activity&lt;/button>
+&lt;button class="nav-link active " id="sheet-kgfhcmjleidnba-244272-tab" data-bs-toggle="tab" data-bs-target="#sheet-kgfhcmjleidnba-244272" type="button" role="tab" aria-controls="sheet-kgfhcmjleidnba-244272" aria-selected=" active ">Activity&lt;/button>
 &lt;/li>
 &lt;li class="nav-item" role="presentation">
-&lt;button class="nav-link " id="sheet-mhcianebgjkfld-260912-tab" data-bs-toggle="tab" data-bs-target="#sheet-mhcianebgjkfld-260912" type="button" role="tab" aria-controls="sheet-mhcianebgjkfld-260912" aria-selected=" false ">@TABLEAU&lt;/button>
+&lt;button class="nav-link " id="sheet-dhkjcbfemiglan-244519-tab" data-bs-toggle="tab" data-bs-target="#sheet-dhkjcbfemiglan-244519" type="button" role="tab" aria-controls="sheet-dhkjcbfemiglan-244519" aria-selected=" false ">@TABLEAU&lt;/button>
 &lt;/li>
 &lt;/ul>
 &lt;div class="tab-content">
-&lt;div class="tab-pane fade active show " id="sheet-fkljamghcinebd-260678" role="tabpanel" aria-labelledby="sheet-fkljamghcinebd-260678-tab">
+&lt;div class="tab-pane fade active show " id="sheet-kgfhcmjleidnba-244272" role="tabpanel" aria-labelledby="sheet-kgfhcmjleidnba-244272-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored">
 &lt;table>
 &lt;thead>
@@ -218,7 +218,7 @@ classDef greenclass fill:#40E0D0;
 &lt;/table>
 &lt;/div>
 &lt;/div>
-&lt;div class="tab-pane fade " id="sheet-mhcianebgjkfld-260912" role="tabpanel" aria-labelledby="sheet-mhcianebgjkfld-260912-tab">
+&lt;div class="tab-pane fade " id="sheet-dhkjcbfemiglan-244519" role="tabpanel" aria-labelledby="sheet-dhkjcbfemiglan-244519-tab">
 &lt;div class="table-responsive text-nowrap sheet sheet-colored1">
 &lt;table>
 &lt;thead>
