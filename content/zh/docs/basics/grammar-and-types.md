@@ -14,7 +14,7 @@ toc: true
 
 Tableau 的大部分语法和类型借鉴自 [Protocol Buffers (proto3)](https://developers.google.com/protocol-buffers/docs/proto3) 和 [Golang](https://go.dev/)。
 
-## Scalar types（标量类型）
+## 标量类型（Scalar types） {#scalar-types}
 
 > 详细说明请参考 [Protocol Buffers Proto3 Scalar](https://developers.google.com/protocol-buffers/docs/proto3#scalar)。
 
@@ -26,7 +26,7 @@ Tableau 的大部分语法和类型借鉴自 [Protocol Buffers (proto3)](https:/
 | 字节   | `bytes`                                                     | `""`                |
 {.table-striped}
 
-## Composite types（复合类型）
+## 复合类型（Composite types）
 
 | 类型     | 说明                                        |
 | -------- | ------------------------------------------- |
@@ -35,7 +35,7 @@ Tableau 的大部分语法和类型借鉴自 [Protocol Buffers (proto3)](https:/
 | `map`    | map 映射为 protobuf 的 **map** 字段。       |
 {.table-striped}
 
-### Struct（结构体）
+### 结构体（Struct）
 
 | 特性                          | 说明                                                                                                                                                                 |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -43,7 +43,7 @@ Tableau 的大部分语法和类型借鉴自 [Protocol Buffers (proto3)](https:/
 | 简单 in-cell struct           | 每个字段必须是**标量**类型。<br>以逗号分隔的字段列表，例如：`1,test,3.0`。<br>若数据列表长度与 struct 字段数不一致，则按顺序填充，未配置的字段使用标量类型的默认值。 |
 {.table-striped}
 
-### List（列表）
+### 列表（List）
 
 | 特性                          | 说明                                                              |
 | ----------------------------- | ----------------------------------------------------------------- |
@@ -54,7 +54,7 @@ Tableau 的大部分语法和类型借鉴自 [Protocol Buffers (proto3)](https:/
 | 忽略空元素                    | 智能识别任意位置的空元素。                                        |
 {.table-striped}
 
-### Map（映射）
+### 映射（Map）
 
 | 特性                          | 说明                                                                                             |
 | ----------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -67,7 +67,7 @@ Tableau 的大部分语法和类型借鉴自 [Protocol Buffers (proto3)](https:/
 | 忽略空条目                    | 智能识别任意位置的空条目。                                                                       |
 {.table-striped}
 
-## Enumeration（枚举）
+## 枚举（Enumeration）
 
 | 特性           | 说明                                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -75,7 +75,7 @@ Tableau 的大部分语法和类型借鉴自 [Protocol Buffers (proto3)](https:/
 | 校验           | 自动检查枚举值的合法性。                                                                                     |
 {.table-striped}
 
-## Empty value（空值）
+## 空值（Empty value）
 
 | 类型    | 说明                                                                                           |
 | ------- | ---------------------------------------------------------------------------------------------- |

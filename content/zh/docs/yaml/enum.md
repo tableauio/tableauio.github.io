@@ -1,7 +1,7 @@
 ---
-title: "Enum（枚举）"
+title: "枚举（Enum）"
 description: "YAML enum 使用指南。"
-lead: "YAML enum 使用指南。"
+lead: "YAML 枚举使用指南。"
 date: 2024-06-22T10:00:00+08:00
 lastmod: 2024-06-22T10:00:00+08:00
 draft: false
@@ -23,7 +23,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets

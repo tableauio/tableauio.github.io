@@ -16,7 +16,7 @@ Keyed list is same as normal list, except that `ColumnType` (first field type) i
 
 **Syntax**: `[ElemType]<ColumnType>`
 
-## Horizontal list
+## Horizontal KeyedList
 
 > TODO...
 

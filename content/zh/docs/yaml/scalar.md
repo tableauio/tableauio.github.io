@@ -1,7 +1,7 @@
 ---
-title: "Scalar（标量）"
+title: "标量（Scalar）"
 description: "YAML scalar 使用指南。"
-lead: "YAML scalar 使用指南。"
+lead: "YAML 标量使用指南。"
 date: 2024-06-22T10:00:00+08:00
 lastmod: 2024-06-22T10:00:00+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 4000
 toc: true
 ---
 
-## Scalar
+## 标量（Scalar）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets

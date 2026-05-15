@@ -1,7 +1,7 @@
 ---
-title: "List（列表）"
+title: "列表（List）"
 description: "列表使用指南。"
-lead: "List（列表）是一种有序且长度可变的容器，主要用于存储和管理一组顺序相关、允许重复的数据。"
+lead: "列表是一种有序且长度可变的容器，主要用于存储和管理一组顺序相关、允许重复的数据。"
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2025-04-12T13:59:39+08:00
 draft: false
@@ -13,9 +13,9 @@ toc: true
 ## 水平列表（Horizontal list）
 
 > [!IMPORTANT]
-> 水平 list 的列名中，列表元素名**必须**带有从 `1` 开始的数字后缀。
+> 水平列表的列名中，列表元素名**必须**带有从 `1` 开始的数字后缀。
 >
-> 例如：`Item1ID`、`Item2ID`、`Item3ID`（struct list，元素名：`Item`）；`ID1`、`ID2`、`ID3`（scalar list，元素名：`ID`）。
+> 例如：`Item1ID`、`Item2ID`、`Item3ID`（结构体列表，元素名：`Item`）；`ID1`、`ID2`、`ID3`（标量列表，元素名：`ID`）。
 
 水平列表语法概览：
 
@@ -29,9 +29,9 @@ toc: true
 | [incell predefined struct](#水平单元格内预定义结构体列表) | `[]{.Item}`                     |
 {.table-striped .table-hover}
 
-### 水平标量列表
+### 水平标量列表（Horizontal scalar list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -88,7 +88,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平枚举列表
+### 水平枚举列表（Horizontal enum list）
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -101,7 +101,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -159,9 +159,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平结构体列表
+### 水平结构体列表（Horizontal struct list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -231,7 +231,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平预定义结构体列表
+### 水平预定义结构体列表（Horizontal predefined-struct list）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -242,7 +242,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -309,9 +309,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平单元格内结构体列表
+### 水平单元格内结构体列表（Horizontal incell-struct list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -381,7 +381,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平单元格内预定义结构体列表
+### 水平单元格内预定义结构体列表（Horizontal incell-predefined-struct list）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -392,7 +392,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -463,22 +463,22 @@ message ItemConf {
 
 垂直列表语法概览：
 
-| List 元素类型                                             | 语法示例                     |
-| --------------------------------------------------------- | ---------------------------- |
-| [scalar](#垂直标量列表)                                   | `[]uint32`                   |
-| [enum](#垂直枚举列表)                                     | `[]enum<.FruitType>`         |
-| [struct](#垂直结构体列表)                                 | `[Item]uint32`               |
-| [predefined struct](#垂直预定义结构体列表)                | `[.Item]int32`               |
-| [incell struct](#垂直单元格内结构体列表)                  | `[]{int32 ID,int32 Num}Item` |
-| [incell predefined struct](#垂直单元格内预定义结构体列表) | `[]{.Item}`                  |
+| List 元素类型                                         | 语法示例                     |
+| ----------------------------------------------------- | ---------------------------- |
+| [标量](#垂直标量列表)                                 | `[]uint32`                   |
+| [枚举](#垂直枚举列表)                                 | `[]enum<.FruitType>`         |
+| [结构体](#垂直结构体列表)                             | `[Item]uint32`               |
+| [预定义结构体](#垂直预定义结构体列表)                 | `[.Item]int32`               |
+| [单元格内结构体](#垂直单元格内结构体列表)             | `[]{int32 ID,int32 Num}Item` |
+| [单元格内预定义结构体](#垂直单元格内预定义结构体列表) | `[]{.Item}`                  |
 {.table-striped .table-hover}
 
-### 垂直标量列表
+### 垂直标量列表（Vertical scalar list）
 
 > [!NOTE]
 > 定义方式与 [单元格内标量列表](#单元格内标量列表) 相同，但如果提供了多行数据，会聚合多行。
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -540,7 +540,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直枚举列表
+### 垂直枚举列表（Vertical enum list）
 
 > [!NOTE]
 > 定义方式与 [单元格内枚举列表](#单元格内枚举列表) 相同，但如果提供了多行数据，会聚合多行。
@@ -556,7 +556,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -618,9 +618,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直结构体列表
+### 垂直结构体列表（Vertical struct list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -696,7 +696,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直预定义结构体列表
+### 垂直预定义结构体列表（Vertical predefined-struct list）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -707,7 +707,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -776,9 +776,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直单元格内结构体列表
+### 垂直单元格内结构体列表（Vertical incell-struct list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -849,7 +849,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直单元格内预定义结构体列表
+### 垂直单元格内预定义结构体列表（Vertical incell-predefined-struct list）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -860,7 +860,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -928,21 +928,21 @@ message ItemConf {
 
 {{< /details >}}
 
-## 单元格内列表（Incell list）
+## 单元格内列表（Incell list） {#incell-list}
 
 单元格内列表语法概览：
 
-| List 元素类型                                         | 语法示例                     |
-| ----------------------------------------------------- | ---------------------------- |
-| [scalar](#单元格内标量列表)                           | `[]int32`                    |
-| [enum](#单元格内枚举列表)                             | `[]enum<.FruitType>`         |
-| [incell struct](#单元格内结构体列表)                  | `[]{int32 ID,int32 Num}Item` |
-| [incell predefined struct](#单元格内预定义结构体列表) | `[]{.Item}`                  |
+| List 元素类型                             | 语法示例                     |
+| ----------------------------------------- | ---------------------------- |
+| [标量](#单元格内标量列表)                 | `[]int32`                    |
+| [枚举](#单元格内枚举列表)                 | `[]enum<.FruitType>`         |
+| [结构体](#单元格内结构体列表)             | `[]{int32 ID,int32 Num}Item` |
+| [预定义结构体](#单元格内预定义结构体列表) | `[]{.Item}`                  |
 {.table-striped .table-hover}
 
-### 单元格内标量列表
+### 单元格内标量列表（Incell scalar list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -1006,7 +1006,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 单元格内枚举列表
+### 单元格内枚举列表（Incell enum list）
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -1019,7 +1019,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -1079,12 +1079,12 @@ message ItemConf {
 
 {{< /details >}}
 
-### 单元格内结构体列表
+### 单元格内结构体列表（Incell struct list）
 
 > [!NOTE]
 > 更高级的 incell 数据解析，请参考 [高级 predefined incell struct]({{< relref "struct/#advanced-predefined-incell-struct" >}})。
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -1154,7 +1154,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 单元格内预定义结构体列表
+### 单元格内预定义结构体列表（Incell predefined-struct list）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -1165,7 +1165,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -1235,17 +1235,17 @@ message ItemConf {
 
 ### 动态大小
 
-默认情况下，所有 list 都是**动态大小类型**。List 元素应连续存在，否则如果中间存在空元素会报错。
+默认情况下，所有列表都是**动态大小类型**。列表元素应连续存在，否则如果中间存在空元素会报错。
 
 ### 固定大小
 
-#### 隐式固定大小
+#### 隐式固定大小 {#implicit-fixed-size}
 
-List 大小由名称行中最大存在的 list 元素数量自动确定。
+列表大小由名称行中最大存在的列表元素数量自动确定。
 
 在下面的示例中，虽然第二个元素 **Item2** 为空，但由于 field property `fixed` 设置为 `true`，这是合法的。此外，**Item2** 也会作为空元素生成，可以在生成的 *ItemConf.json* 文件中看到。
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -1315,13 +1315,13 @@ message ItemConf {
 
 {{< /details >}}
 
-#### 显式固定大小
+#### 显式固定大小 {#explicit-fixed-size}
 
-List 大小由 field property `size` 显式设置。
+列表大小由字段属性 `size` 显式设置。
 
-在下面的示例中，field property `size` 设置为 2，则第二个元素 **Item2** 之后的所有 list 元素都会被截断。此外，**Item2** 也会作为空元素生成，可以在生成的 *ItemConf.json* 文件中看到。
+在下面的示例中，字段属性 `size` 设置为 2，则第二个元素 **Item2** 之后的所有列表元素都会被截断。此外，**Item2** 也会作为空元素生成，可以在生成的 *ItemConf.json* 文件中看到。
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -1389,9 +1389,9 @@ message ItemConf {
 
 ## 高级特性
 
-### 水平跳列列表
+### 水平跳列列表（Horizontal column-skipped list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

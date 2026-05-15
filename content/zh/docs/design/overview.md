@@ -21,8 +21,8 @@ mermaid: true
 ## 概念
 
 - Importer（导入器）：
-  - 将 **Excel/CSV** 文件导入为内存中的 **Table** sheet 集合。
-  - 将 **XML/YAML** 文件导入为内存中的 **Document** sheet 集合。
+  - 将 **Excel/CSV** 文件导入为内存中的 **Table** 工作表集合。
+  - 将 **XML/YAML** 文件导入为内存中的 **Document** 工作表集合。
 - Parsers（解析器）：
   - protogen：将 **Excel/CSV/XML/YAML** 文件转换为 **Protoconf** 文件。
   - confgen：将 **Excel/CSV/XML/YAML** 与 **Protoconf** 文件一起转换为 **JSON/Text/Bin** 文件。
@@ -113,10 +113,10 @@ flowchart TD
 
 ### Metadata
 
-- [ ] metatable：描述 worksheet 元数据的 message。
+- [ ] metatable：描述工作表元数据的 message。
 - [ ] metafield：描述 caption 元数据的 message。
-- [x] captrow：caption 行，worksheet 中 caption 所在的精确行号。caption 中允许**换行**以提高可读性，转换时会被去除。
-- [ ] descrow：description 行，worksheet 中描述所在的精确行号。
+- [x] captrow：caption 行，工作表中 caption 所在的精确行号。caption 中允许**换行**以提高可读性，转换时会被去除。
+- [ ] descrow：description 行，工作表中描述所在的精确行号。
 - [x] datarow：data 行，数据的起始行号。
 
 主流操作系统中的[换行符](https://www.wikiwand.com/en/Newline)：
@@ -131,8 +131,8 @@ flowchart TD
 
 ### Generator
 
-- [x] 通过 Excel（header）生成 protoconf：**Excel -> protoconf**
-- [ ] 通过 protoconf 生成 Excel（header）：**protoconf -> Excel**
+- [x] 通过 Excel（表头）生成 protoconf：**Excel -> protoconf**
+- [ ] 通过 protoconf 生成 Excel（表头）：**protoconf -> Excel**
 
 ### Conversion
 
@@ -214,15 +214,15 @@ flowchart TD
 
 ### 合并
 
-- [x] 合并具有相同 sheet 名称的多个 workbook
-- [x] 合并同一 workbook 中的多个 worksheet
+- [x] 合并具有相同工作表名称的多个工作簿
+- [x] 合并同一工作簿中的多个工作表
 
 ### Workbook meta
 
 workbook meta sheet **@TABLEAU**：
 
-- 指定要解析的 sheet
-- 为每个 sheet 指定解析器选项
+- 指定要解析的工作表
+- 为每个工作表指定解析器选项
 
 | Sheet  | Alias        | Nameline | Typeline |
 | ------ | ------------ | -------- | -------- |
@@ -242,7 +242,7 @@ workbook meta sheet **@TABLEAU**：
 
 ### Transpose
 
-- [x] 对 worksheet 进行行列转置。
+- [x] 对工作表进行行列转置。
 
 ### 校验
 
@@ -259,5 +259,5 @@ workbook meta sheet **@TABLEAU**：
 ### 性能
 
 - [ ] 压力测试
-- [ ] 每个 goroutine 处理一个 worksheet
+- [ ] 每个 goroutine 处理一个工作表
 - [ ] 多进程模型

@@ -1,7 +1,7 @@
 ---
-title: "Map（映射）"
+title: "映射（Map）"
 description: "XML map 使用指南。"
-lead: "XML map 使用指南。"
+lead: "XML 映射使用指南。"
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2024-08-23T11:21:01+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 5300
 toc: true
 ---
 
-## Incell scalar map
+## 单元格内标量映射（Incell scalar map）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -58,7 +58,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell enum map
+## 单元格内枚举映射（Incell enum map）
 
 *common.proto* 中预定义的枚举类型 `FruitType` 和 `FruitFlavor`：
 
@@ -78,7 +78,7 @@ enum FruitFlavor {
 }
 ```
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -132,9 +132,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Struct map
+## 结构体映射（Struct map）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -189,7 +189,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Enum key struct map
+## 枚举键结构体映射（Enum key struct map）
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -202,7 +202,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -260,9 +260,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## List in map
+## 映射嵌套列表（List in map）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -337,9 +337,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Map in map
+## 映射嵌套映射（Map in map）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

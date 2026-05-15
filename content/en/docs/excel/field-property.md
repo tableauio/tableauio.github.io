@@ -63,9 +63,6 @@ Option `range` can be specified as format: `"left,right"` (left and right are bo
 Different interpretations of `range`:
 
 - [x] **number**: value range, e.g.: `"1,10"`, `"1,~"`, `"~,10"`.
-- [ ] **string**: count of utf-8 code point.
-- [ ] **list**: length of list.
-- [ ] **map**: length of map.
 
 ## Option `refer`
 

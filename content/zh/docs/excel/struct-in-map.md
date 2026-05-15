@@ -1,7 +1,7 @@
 ---
-title: "Map 嵌套 Struct"
+title: "映射嵌套结构体（Struct in map）"
 description: "Excel struct in map 使用指南。"
-lead: "Excel map 中嵌套 struct 的规范说明。"
+lead: "Excel 映射中嵌套结构体的规范说明。"
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false
@@ -10,11 +10,11 @@ weight: 7203
 toc: true
 ---
 
-## 垂直 map 中的嵌套
+## 垂直映射中的嵌套
 
-### 垂直 map 中的 struct
+### 垂直映射嵌套结构体（Struct in vertical-map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -81,7 +81,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 map 中的 predefined struct
+### 垂直映射嵌套预定义结构体（Predefined-struct in vertical-map）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -92,7 +92,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -156,9 +156,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 map 中的 incell struct
+### 垂直映射嵌套单元格内结构体（Incell-struct in vertical-map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

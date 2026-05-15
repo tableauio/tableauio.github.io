@@ -1,7 +1,7 @@
 ---
-title: "List 嵌套 List"
+title: "列表嵌套列表（List in list）"
 description: "Excel list in list 使用指南。"
-lead: "Excel list 中嵌套 list 的规范说明。"
+lead: "Excel 列表中嵌套列表的规范说明。"
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false
@@ -10,11 +10,11 @@ weight: 7301
 toc: true
 ---
 
-## 垂直 list 中的嵌套
+## 垂直列表中的嵌套
 
-### 垂直 list 中的水平 list
+### 垂直列表嵌套水平列表（Horizontal-list in vertical-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -108,9 +108,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 keyed-list 中的垂直 list
+### 垂直键控列表嵌套垂直列表（Vertical-list in vertical-keyed-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -199,9 +199,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 keyed-list 中的垂直 keyed-list
+### 垂直键控列表嵌套垂直键控列表（Vertical-keyed-list in vertical-keyed-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -290,9 +290,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 keyed-list 中的 incell list
+### 垂直键控列表嵌套单元格内列表（Incell-list in vertical-keyed-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -373,9 +373,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 keyed-list 中的 incell keyed-list
+### 垂直键控列表嵌套单元格内键控列表（Incell-keyed-list in vertical-keyed-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -457,11 +457,11 @@ message ItemConf {
 
 {{< /details >}}
 
-## 水平 list 中的嵌套
+## 水平列表中的嵌套
 
-### 水平 list 中的水平 list
+### 水平列表嵌套水平列表（Horizontal-list in horizontal-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -545,7 +545,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 list 中的 predefined struct list
+### 水平列表嵌套预定义结构体列表（Predefined-struct-list in horizontal-list）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -556,7 +556,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -637,9 +637,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 list 中的 incell list
+### 水平列表嵌套单元格内列表（Incell-list in horizontal-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

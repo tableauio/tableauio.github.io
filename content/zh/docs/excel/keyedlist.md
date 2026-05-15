@@ -1,7 +1,7 @@
 ---
-title: "KeyedList（键控列表）"
+title: "键控列表（KeyedList）"
 description: "Excel keyed list 使用指南。"
-lead: "本文说明 Excel keyed list 类型的各种特性。"
+lead: "本文说明 Excel 键控列表类型的各种特性。"
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2025-04-12T13:59:39+08:00
 draft: false
@@ -12,22 +12,22 @@ toc: true
 
 ## 语法
 
-Keyed list 与普通 list 相同，区别在于 `ColumnType`（第一个字段类型）被尖括号 `<>` 包围，并作为 map key 处理。
+键控列表与普通列表相同，区别在于 `ColumnType`（第一个字段类型）被尖括号 `<>` 包围，并作为键处理。
 
 **语法**：`[ElemType]<ColumnType>`
 
-## 水平 list
+## 水平键控列表（Horizontal KeyedList）
 
 > TODO...
 
-## 垂直 KeyedList
+## 垂直键控列表（Vertical KeyedList）
 
-### 垂直 scalar KeyedList
+### 垂直标量键控列表（Vertical scalar KeyedList）
 
 > [!NOTE]
-> 定义方式与 [Incell scalar KeyedList](#incell-scalar-keyedlist) 相同，但如果提供了多行数据，会进行聚合。
+> 定义方式与 [单元格内标量键控列表](#单元格内标量键控列表) 相同，但如果提供了多行数据，会进行聚合。
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -82,10 +82,10 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 enum KeyedList
+### 垂直枚举键控列表（Vertical enum KeyedList）
 
 > [!NOTE]
-> 定义方式与 [Incell enum KeyedList](#incell-enum-keyedlist) 相同，但如果提供了多行数据，会进行聚合。
+> 定义方式与 [单元格内枚举键控列表](#单元格内枚举键控列表) 相同，但如果提供了多行数据，会进行聚合。
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -98,7 +98,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -158,9 +158,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 struct KeyedList
+### 垂直结构体键控列表（Vertical struct KeyedList）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -235,11 +235,11 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell KeyedList
+## 单元格内键控列表（Incell KeyedList）
 
-### Incell scalar KeyedList
+### 单元格内标量键控列表（Incell scalar KeyedList） {#单元格内标量键控列表}
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -292,7 +292,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### Incell enum KeyedList
+### 单元格内枚举键控列表（Incell enum KeyedList） {#单元格内枚举键控列表}
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -305,7 +305,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

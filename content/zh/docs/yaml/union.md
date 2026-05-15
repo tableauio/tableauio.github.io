@@ -1,7 +1,7 @@
 ---
-title: "Union（联合体）"
+title: "联合体（Union）"
 description: "YAML union 使用指南。"
-lead: "YAML union 使用指南。"
+lead: "YAML 联合体使用指南。"
 date: 2024-09-02T19:21:01+08:00
 lastmod: 2024-09-02T19:21:01+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 4350
 toc: true
 ---
 
-## Union 定义
+## 联合体定义（Union definition）
 
-例如，*common.proto* 中预定义的 union 类型 `Target`：
+例如，*common.proto* 中预定义的联合体类型 `Target`：
 
 ```protobuf
 // Predefined union type.
@@ -69,9 +69,9 @@ message Target {
 }
 ```
 
-## Predefined union
+## 预定义联合体（Predefined union） {#predefined-union}
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -123,9 +123,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined incell union
+## 预定义单元格内联合体（Predefined incell union）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -175,9 +175,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined union list
+## 预定义联合体列表（Predefined union list） {#predefined-union-list}
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -188,7 +188,7 @@ message ItemConf {
 Targets: "[.Target]"
 ---
 "@sheet": ItemConf
-Targets: 
+Targets:
   - Type: Story
     Field1: "1001,10"
     Field2: "1:Apple,2:Orange"

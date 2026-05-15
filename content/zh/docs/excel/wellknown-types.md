@@ -1,7 +1,7 @@
 ---
-title: "Wellknown types（知名类型）"
+title: "知名类型（Wellknown types）"
 description: "Wellknown types 使用指南。"
-lead: "本文说明 wellknown types 的各种特性。"
+lead: "本文说明知名类型的各种特性。"
 date: 2024-09-24T14:00:00+08:00
 lastmod: 2024-09-24T14:00:00+08:00
 draft: false
@@ -10,14 +10,14 @@ weight: 7108
 toc: true
 ---
 
-## Datetime（日期时间）
+## 日期时间（Datetime） {#datetime}
 
-### Datetime（日期时间）
+### 日期时间（Datetime） {#datetime-1}
 
 > [!NOTE]
-> 参考 [Basics: Datetime]({{< relref "../basics/wellknown-types/#datetime日期时间" >}})
+> 参考 [Basics: 日期时间]({{< relref "../basics/wellknown-types/#datetime" >}})
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -77,12 +77,12 @@ message ItemConf {
 
 {{< /details >}}
 
-### Date（日期）
+### 日期（Date） {#date}
 
 > [!NOTE]
-> 参考 [Basics: Datetime]({{< relref "../basics/wellknown-types/#datetime日期时间" >}})
+> 参考 [Basics: 日期时间]({{< relref "../basics/wellknown-types/#datetime" >}})
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -142,12 +142,12 @@ message ItemConf {
 
 {{< /details >}}
 
-### Time（时间）
+### 时间（Time） {#time}
 
 > [!NOTE]
-> 参考 [Basics: Datetime]({{< relref "../basics/wellknown-types/#datetime日期时间" >}})
+> 参考 [Basics: 日期时间]({{< relref "../basics/wellknown-types/#datetime" >}})
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -207,12 +207,12 @@ message ItemConf {
 
 {{< /details >}}
 
-## Duration（时长）
+## 时长（Duration） {#duration}
 
 > [!NOTE]
-> 参考 [Basics: Duration]({{< relref "../basics/wellknown-types/#duration时长" >}})
+> 参考 [Basics: 时长]({{< relref "../basics/wellknown-types/#duration" >}})
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -272,12 +272,12 @@ message ItemConf {
 
 {{< /details >}}
 
-## Fraction（分数）
+## 分数（Fraction） {#fraction}
 
 > [!NOTE]
-> 参考 [Basics: Fraction]({{< relref "../basics/wellknown-types/#fraction分数" >}})
+> 参考 [Basics: 分数]({{< relref "../basics/wellknown-types/#fraction" >}})
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -338,12 +338,12 @@ message ItemConf {
 
 {{< /details >}}
 
-## Comparator（比较器）
+## 比较器（Comparator） {#comparator}
 
 > [!NOTE]
-> 参考 [Basics: Comparator]({{< relref "../basics/wellknown-types/#comparator比较器" >}})
+> 参考 [Basics: 比较器]({{< relref "../basics/wellknown-types/#comparator" >}})
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -407,14 +407,14 @@ message ItemConf {
 
 {{< /details >}}
 
-## Version（版本号）
+## 版本号（Version） {#version}
 
 > [!NOTE]
-> 参考 [Basics: Version]({{< relref "../basics/wellknown-types/#version版本号" >}})
+> 参考 [Basics: 版本号]({{< relref "../basics/wellknown-types/#version" >}})
 
 默认 `pattern` 为：`255.255.255`。
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

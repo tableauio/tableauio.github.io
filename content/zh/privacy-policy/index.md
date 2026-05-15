@@ -1,36 +1,36 @@
 ---
-title: "Privacy Policy"
-description: "We do not use cookies and we do not collect any personal data."
+title: "隐私政策"
+description: "我们不使用 cookies，也不收集任何个人数据。"
 date: 2020-08-27T19:23:18+02:00
 lastmod: 2020-08-27T19:23:18+02:00
 draft: true
 images: []
 ---
 
-__TLDR__: We do not use cookies and we do not collect any personal data.
+__一句话总结__：我们不使用 cookies，也不收集任何个人数据。
 
-## Website visitors
+## 网站访客
 
-- No personal information is collected.
-- No information is stored in the browser.
-- No information is shared with, sent to or sold to third-parties.
-- No information is shared with advertising companies.
-- No information is mined and harvested for personal and behavioral trends.
-- No information is monetized.
+- 不收集任何个人信息。
+- 不在浏览器中存储任何信息。
+- 不向第三方分享、发送或出售任何信息。
+- 不与广告公司分享任何信息。
+- 不挖掘或采集任何用于个人偏好和行为分析的信息。
+- 不将任何信息用于商业变现。
 
-### Information we collect and what we use it for
+### 我们收集的信息及其用途
 
-We run [Plausible](https://plausible.io/) analytics on getdoks.org. The following information is collected:
+我们在 getdoks.org 上使用 [Plausible](https://plausible.io/) 分析服务。收集的信息如下：
 
-- __Page URL__. We track the page URL of each page view on this website. We use this to understand which pages have been viewed and how many times a particular page has been viewed. For example: _https://getdoks.org/_.
-- __HTTP Referrer__. We use the referrer string to understand the number of visitors referred to this website from links on other sites. For example: _https://github.com/_.
-- __Browser__. We use this to understand what browsers people use when visiting this website. This is derived from the User-Agent HTTP header. The full User-Agent is discarded. For example: _Chrome_.
-- __Operating system__. We use this to understand what operating systems people use when visiting this website. We only use the brand of the operating system and don’t include the version number or any other details. This is derived from the User-Agent HTTP header. The full User-Agent is discarded. For example: _GNU/Linux_.
-- __Device type__. We use this to understand what devices people use when visiting this website. This is derived from window.innerWidth. The actual width of the browser in pixels is discarded. For example: _Desktop_.
-- __Visitor Country__. We look up the visitor’s country using the IP address. We do not track anything more granular than the country of origin and the IP address of the visitor is discarded. We never store IP addresses in our database or logs. For example: _Canada_.
+- __页面 URL__。我们记录本网站上每个页面访问的 URL，用于了解哪些页面被访问以及特定页面的访问次数。例如：_https://getdoks.org/_。
+- __HTTP Referrer__。我们使用 referrer 字符串来了解从其他网站链接引导至本网站的访客数量。例如：_https://github.com/_。
+- __浏览器__。我们使用此信息来了解访客访问本网站时使用的浏览器。该信息来自 User-Agent HTTP 头，完整的 User-Agent 会被丢弃。例如：_Chrome_。
+- __操作系统__。我们使用此信息来了解访客访问本网站时使用的操作系统。我们只记录操作系统的品牌，不包含版本号或其他详细信息。该信息来自 User-Agent HTTP 头，完整的 User-Agent 会被丢弃。例如：_GNU/Linux_。
+- __设备类型__。我们使用此信息来了解访客访问本网站时使用的设备。该信息来自 window.innerWidth，浏览器的实际像素宽度会被丢弃。例如：_Desktop_。
+- __访客国家__。我们通过 IP 地址查询访客所在国家。我们不会记录比国家更细粒度的信息，且访客的 IP 地址会被丢弃。我们绝不会在数据库或日志中存储 IP 地址。例如：_Canada_。
 
-## Contact us
+## 联系我们
 
-[Contact us]({{< relref "contact/index.md" >}}) if you have any questions.
+如有任何疑问，请[联系我们]({{< relref "contact/index.md" >}})。
 
-Effective Date: _27th August 2020_
+生效日期：_2020 年 8 月 27 日_

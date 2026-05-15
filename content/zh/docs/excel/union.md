@@ -1,7 +1,7 @@
 ---
-title: "Union（联合体）"
+title: "联合体（Union）"
 description: "Excel union 使用指南。"
-lead: "本文说明 Excel union 类型的各种特性。"
+lead: "本文说明 Excel 联合体类型的各种特性。"
 date: 2022-09-04T13:59:39+08:00
 lastmod: 2022-09-04T13:59:39+08:00
 draft: false
@@ -21,9 +21,9 @@ toc: true
 
 Tableau 使用 protobuf `message` 将 [enum](https://protobuf.dev/programming-guides/proto3/#enum) 类型和 [oneof](https://protobuf.dev/programming-guides/proto3/#oneof) 类型绑定在一起，以实现 **tagged union**。默认情况下，每个枚举值（>0）与 `oneof` 类型中具有相同 tag 编号的字段绑定。
 
-## Union 定义
+## 联合体定义（Union definition） {#union-definition}
 
-例如，*common.proto* 中预定义的 union 类型 `Target`：
+例如，*common.proto* 中预定义的联合体类型 `Target`：
 
 ```protobuf
 // Predefined union type.
@@ -81,12 +81,12 @@ message Target {
 }
 ```
 
-## List 中的 predefined union
+## 列表嵌套预定义联合体（Predefined-union in list） {#predefined-union-in-list}
 
 > [!NOTE]
-> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
+> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-definition" >}})。
 
-*HelloWorld.xlsx* 中的 worksheet `TaskConf`：
+*HelloWorld.xlsx* 中的工作表 `TaskConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
 
@@ -310,12 +310,12 @@ task_map: {
 
 {{< /details >}}
 
-## Map 中的 predefined union
+## 映射嵌套预定义联合体（Predefined-union in map） {#predefined-union-in-map}
 
 > [!NOTE]
-> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
+> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-definition" >}})。
 
-*HelloWorld.xlsx* 中的 worksheet `TaskConf`：
+*HelloWorld.xlsx* 中的工作表 `TaskConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
 
@@ -564,12 +564,12 @@ task_map:  {
 
 {{< /details >}}
 
-## Map 中的 predefined incell union
+## 映射嵌套预定义单元格内联合体（Predefined-incell-union in map） {#predefined-incell-union-in-map}
 
 > [!NOTE]
-> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-定义" >}})。
+> 基于 [predefined union 类型 `Target`]({{< relref "union/#union-definition" >}})。
 
-*HelloWorld.xlsx* 中的 worksheet `TaskConf`：
+*HelloWorld.xlsx* 中的工作表 `TaskConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
 
@@ -772,14 +772,14 @@ message TaskConf {
 
 {{< /details >}}
 
-## 在 sheet 中定义 union 类型
+## 在工作表中定义联合体类型（Define union type in sheet）
 
-在 metasheet `@TABLEAU` 中有两种 `Mode` 可用于在 sheet 中定义 union 类型：
+在元表 `@TABLEAU` 中有两种 `Mode` 可用于在工作表中定义联合体类型：
 
-- `MODE_UNION_TYPE`：在一个 sheet 中定义单个 union 类型。
-- `MODE_UNION_TYPE_MULTI`：在一个 sheet 中定义多个 union 类型。
+- `MODE_UNION_TYPE`：在一个工作表中定义单个联合体类型。
+- `MODE_UNION_TYPE_MULTI`：在一个工作表中定义多个联合体类型。
 
-每个 union 字段可以使用以下类型定义：
+每个联合体字段可以使用以下类型定义：
 
 - [Scalar]({{< relref "scalar" >}})
 - [Enum]({{< relref "../basics/enum" >}})
@@ -788,14 +788,14 @@ message TaskConf {
 - [Incell list]({{< relref "list/#incell-list" >}})
 - [Incell map]({{< relref "map/#incell-map" >}})
 
-### 单个 union 类型
+### 单个联合体类型（Single union type in sheet）
 
 > [!Note]
 > `Number` 列是可选的，用于指定字段编号及对应的枚举值编号。省略时从 `1` 开始自动递增。
 
-需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_UNION_TYPE`。
+需要在元表 `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_UNION_TYPE`。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `Target`：
+例如，*HelloWorld.xlsx* 中的工作表 `Target`：
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
@@ -864,14 +864,14 @@ message Target {
 
 {{< /details >}}
 
-### 多个 union 类型
+### 多个联合体类型（Multiple union types in sheet）
 
 > [!IMPORTANT]
 > 每个 union 类型由一个 **block** 定义，即一系列连续的非空行。不同的 block 之间由**一行或多行空行**分隔。
 
-需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_UNION_TYPE_MULTI`。
+需要在元表 `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_UNION_TYPE_MULTI`。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `Union`：
+例如，*HelloWorld.xlsx* 中的工作表 `Union`：
 
 {{< spreadsheet "HelloWorld.xlsx" Union "@TABLEAU" >}}
 
@@ -971,18 +971,18 @@ message BattleTarget {
 
 {{< /details >}}
 
-### 指定 Type 列
+### 指定 Type 列（Specify Type column）
 
-默认情况下，每个 union 的 oneof 字段是一个以 `Name` 列指定名称的 message 类型。
+默认情况下，每个联合体的 oneof 字段是一个以 `Name` 列指定名称的 message 类型。
 现在，你可以添加 `Type` 列并指定自定义的 oneof 字段类型：
 
-- scalar
-- enum
-- 全局 predefined struct
-- 自定义命名 struct
-- 同级的本地 predefined struct
+- 标量
+- 枚举
+- 全局预定义结构体
+- 自定义命名结构体
+- 同级的本地预定义结构体
 
-例如，*HelloWorld.xlsx* 中的 worksheet `Target`：
+例如，*HelloWorld.xlsx* 中的工作表 `Target`：
 
 {{< spreadsheet "HelloWorld.xlsx" Target "@TABLEAU" >}}
 
@@ -1059,9 +1059,9 @@ message Target {
 
 {{< /details >}}
 
-### 复杂 union 类型
+### 复杂联合体类型（Complex union type in sheet）
 
-例如，*HelloWorld.xlsx* 中的两个 worksheet `Target` 和 `TaskConf`：
+例如，*HelloWorld.xlsx* 中的两个工作表 `Target` 和 `TaskConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" Target TaskConf "@TABLEAU" >}}
 

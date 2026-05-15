@@ -1,7 +1,7 @@
 ---
-title: "Field property（字段属性）"
+title: "字段属性（Field property）"
 description: "Tableau field property 使用指南。"
-lead: "Tableau field property 使用指南。"
+lead: "Tableau 字段属性使用指南。"
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2022-08-24T23:21:01+02:00
 draft: false
@@ -12,46 +12,46 @@ toc: true
 
 ## 概览
 
-| 选项               | 类型   | 说明                                                                                                                                                                                                                                          |
-| ------------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `unique`           | bool   | 检查字段唯一性。<br> 默认值：`false`。对于 map（或 KeyedList）的 key，默认值会自动推断。                                                                                                                                                      |
-| `range`            | string | 格式：`"left,right"`。例如：`"1,10"`、`"1,~"`、`"~,10"`。<br> range 的不同含义：<br> - 数字：值范围。<br> - 字符串：UTF-8 码点数量。                                                                                                          |
-| `refer`            | string | 格式：`"SheetName(SheetAlias).ColumnName"`。<br>确保该字段的值在另一个 sheet 的列值空间中。多个 refer 用逗号分隔。                                                                                                                            |
-| `sequence`         | int64  | 确保该字段的值是一个从指定值开始的序列。                                                                                                                                                                                                      |
-| `default`          | string | 如果单元格为空，则使用此默认值。                                                                                                                                                                                                              |
-| `fixed`            | bool   | 自动检测水平 list/map 的固定大小。<br> 默认值：`false`。                                                                                                                                                                                      |
-| `size`             | uint32 | 指定水平 list/map 的固定大小。                                                                                                                                                                                                                |
-| `form`             | Form   | 指定 incell struct 的单元格数据格式。<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                                                                                                     |
-| `json_name`        | string | 指定字段的自定义 JSON 名称，替代 proto 字段名的 lowerCamelCase 形式。                                                                                                                                                                         |
-| `present`          | bool   | 如果 present 为 true，则必须显式填写单元格数据。<br> 默认值：`false`。                                                                                                                                                                        |
-| `optional`         | bool   | 该字段是否为可选（字段名可缺失）。                                                                                                                                                                                                            |
-| `patch`            | Patch  | 字段 patch 类型。<br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                                                                                                  |
-| `sep`              | string | 字段级分隔符。                                                                                                                                                                                                                                |
-| `subsep`           | string | 字段级子分隔符。                                                                                                                                                                                                                              |
-| `pattern`          | string | 指定 scalar、list 元素和 map value 的模式。                                                                                                                                                                                                   |
-| `validate`         | string | 适用于 scalar 和 well-known 类型的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"string:{max_len:10}"`、`"int32:{gt:0 lte:100}"`、`"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`。 |
-| `validate_complex` | string | 适用于复合类型（list/map）的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"repeated:{min_items:1}"`、`"map:{min_pairs:1}"`。                                                                         |
-| `validate_message` | string | 适用于字段所嵌套 message 的 [protovalidate](https://github.com/bufbuild/protovalidate) message 级校验规则。<br>例如：`"cel_expression:\"this.start_time < this.end_time\""`。                                                                 |
+| 选项               | 类型   | 说明                                                                                                                                                                                                                              |
+| ------------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `unique`           | bool   | 检查字段唯一性。<br> 默认值：`false`。对于映射（或键控列表）的键，默认值会自动推断。                                                                                                                                              |
+| `range`            | string | 格式：`"left,right"`。例如：`"1,10"`、`"1,~"`、`"~,10"`。<br> range 的不同含义：<br> - 数字：值范围。<br> - 字符串：UTF-8 码点数量。                                                                                              |
+| `refer`            | string | 格式：`"SheetName(SheetAlias).ColumnName"`。<br>确保该字段的值在另一个工作表的列值空间中。多个 refer 用逗号分隔。                                                                                                                 |
+| `sequence`         | int64  | 确保该字段的值是一个从指定值开始的序列。                                                                                                                                                                                          |
+| `default`          | string | 如果单元格为空，则使用此默认值。                                                                                                                                                                                                  |
+| `fixed`            | bool   | 自动检测水平列表/映射的固定大小。<br> 默认值：`false`。                                                                                                                                                                           |
+| `size`             | uint32 | 指定水平列表/映射的固定大小。                                                                                                                                                                                                     |
+| `form`             | Form   | 指定单元格内结构体的单元格数据格式。<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                                                                                          |
+| `json_name`        | string | 指定字段的自定义 JSON 名称，替代 proto 字段名的 lowerCamelCase 形式。                                                                                                                                                             |
+| `present`          | bool   | 如果 present 为 true，则必须显式填写单元格数据。<br> 默认值：`false`。                                                                                                                                                            |
+| `optional`         | bool   | 该字段是否为可选（字段名可缺失）。                                                                                                                                                                                                |
+| `patch`            | Patch  | 字段 patch 类型。<br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                                                                                      |
+| `sep`              | string | 字段级分隔符。                                                                                                                                                                                                                    |
+| `subsep`           | string | 字段级子分隔符。                                                                                                                                                                                                                  |
+| `pattern`          | string | 指定标量、列表元素和映射值的模式。                                                                                                                                                                                                |
+| `validate`         | string | 适用于标量和知名类型的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"string:{max_len:10}"`、`"int32:{gt:0 lte:100}"`、`"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`。 |
+| `validate_complex` | string | 适用于复合类型（列表/映射）的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"repeated:{min_items:1}"`、`"map:{min_pairs:1}"`。                                                            |
+| `validate_message` | string | 适用于字段所嵌套结构体的 [protovalidate](https://github.com/bufbuild/protovalidate) message 级校验规则。<br>例如：`"cel_expression:\"this.start_time < this.end_time\""`。                                                        |
 {.table-striped .table-hover}
 
 ## 选项 `unique`
 
-选项 `unique` 可在 field property 中指定为 `true` 或 `false`，用于检查 list/map 元素中任意 scalar 字段的唯一性。
+选项 `unique` 可在字段属性中指定为 `true` 或 `false`，用于检查列表/映射元素中任意标量字段的唯一性。
 
-- 如果显式设置 `unique` 为 `true`，当出现重复 key 时 tableau 会报错。
+- 如果显式设置 `unique` 为 `true`，当出现重复值时 tableau 会报错。
 - 如果显式设置 `unique` 为 `false`，则不进行检查。
 
-### Map（或 KeyedList）的 key
+### 映射/键控列表的键
 
-Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
+Tableau 会自动推断映射（或键控列表）键的 `unique` 是否为 true。
 
-**规则是**：如果 map 的 value 类型（或 KeyedList 元素类型）没有相同布局（垂直/水平）的子 map/list 字段，则 key 必须唯一。
+**规则是**：如果映射的值类型（或键控列表元素类型）没有相同布局（垂直/水平）的子映射/列表字段，则键必须唯一。
 
 因此大多数情况下不需要显式配置。
 
-### 通用 scalar 字段
+### 通用标量字段
 
-如果将通用 scalar 字段的属性 `unique` 指定为 true，则 tableau 会检查该字段在 map 或 list 中的唯一性。
+如果将通用标量字段的属性 `unique` 指定为 true，则 tableau 会检查该字段在映射或列表中的唯一性。
 
 ## 选项 `range`
 
@@ -63,30 +63,27 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 `range` 的不同含义：
 
 - [x] **数字**：值范围，例如：`"1,10"`、`"1,~"`、`"~,10"`。
-- [ ] **字符串**：UTF-8 码点数量。
-- [ ] **list**：list 的长度。
-- [ ] **map**：map 的长度。
 
 ## 选项 `refer`
 
-选项 `refer` 类似于 SQL 中的**外键（FOREIGN KEY）**约束，用于防止破坏表之间关联的操作。但 tableau 的 `refer` 可以引用任意 sheet 的列（不限于 map key 列），并且支持**多个 refer**（逗号分隔）。它用于确保该字段的值至少在其他某个 sheet 的列值空间（即 message 的字段值空间）中存在。
+选项 `refer` 类似于 SQL 中的**外键（FOREIGN KEY）**约束，用于防止破坏表之间关联的操作。但 tableau 的 `refer` 可以引用任意工作表的列（不限于 map key 列），并且支持**多个 refer**（逗号分隔）。它用于确保该字段的值至少在其他某个工作表的列值空间（即 message 的字段值空间）中存在。
 
 格式：`"SheetName(SheetAlias).ColumnName[,SheetName(SheetAlias).ColumnName]..."`。
 
 示例：
 
-- `map<uint32, Reward>|{refer:"ItemConf.ID"}`：无别名的单 refer，**sheet 名**即为生成的 protobuf message 名。
-- `map<uint32, Reward>|{refer:"ItemConf.ID,EquipConf.ID"}`：无别名的多 refer，**sheet 别名**即为生成的 protobuf message 名。
-- `map<uint32, Reward>|{refer:"Sheet1(ItemConf).ID"}`：有别名的单 refer，**sheet 别名**即为生成的 protobuf message 名。
+- `map<uint32, Reward>|{refer:"ItemConf.ID"}`：无别名的单 refer，**工作表名**即为生成的 protobuf message 名。
+- `map<uint32, Reward>|{refer:"ItemConf.ID,EquipConf.ID"}`：无别名的多 refer，**工作表别名**即为生成的 protobuf message 名。
+- `map<uint32, Reward>|{refer:"Sheet1(ItemConf).ID"}`：有别名的单 refer，**工作表别名**即为生成的 protobuf message 名。
 
 ## 选项 `sequence`
 
-选项 `sequence` 用于确保该字段的值是一个从指定值开始的序列，可用于任意字段，包括嵌套 list/map 中的字段。
+选项 `sequence` 用于确保该字段的值是一个从指定值开始的序列，可用于任意字段，包括嵌套列表/映射中的字段。
 
 示例：
 
-- `map<uint32, Item>|{sequence:1}`：该 map key 必须遵循从值 `1` 开始的序列规则。
-- `int32|{sequence:1}`：父级 list/map 的元素必须遵循从值 `1` 开始的序列规则。
+- `map<uint32, Item>|{sequence:1}`：该映射键必须遵循从值 `1` 开始的序列规则。
+- `int32|{sequence:1}`：父级列表/映射的元素必须遵循从值 `1` 开始的序列规则。
 
 ## 选项 `default`
 
@@ -94,21 +91,21 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 ## 选项 `fixed`
 
-如果将选项 `fixed` 设置为 `true`，则自动检测水平 list/map 的固定大小。
+如果将选项 `fixed` 设置为 `true`，则自动检测水平列表/映射的固定大小。
 
 示例：
 
-- [List: 隐式固定大小]({{< relref "list/#隐式固定大小implicit-fixed-size" >}})
-- [Map: 隐式固定大小]({{< relref "map/#隐式固定大小implicit-fixed-size" >}})
+- [列表: 隐式固定大小]({{< relref "list/#implicit-fixed-size" >}})
+- [映射: 隐式固定大小]({{< relref "map/#implicit-fixed-size" >}})
 
 ## 选项 `size`
 
-选项 `size` 用于指定水平 list/map 的固定大小。
+选项 `size` 用于指定水平列表/映射的固定大小。
 
 示例：
 
-- [List: 显式固定大小]({{< relref "list/#显式固定大小explicit-fixed-size" >}})
-- [Map: 显式固定大小]({{< relref "map/#显式固定大小explicit-fixed-size" >}})
+- [列表: 显式固定大小]({{< relref "list/#explicit-fixed-size" >}})
+- [映射: 显式固定大小]({{< relref "map/#explicit-fixed-size" >}})
 
 ## 选项 `form`
 
@@ -119,13 +116,13 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 - `FORM_TEXT`：protobuf [text format](https://developers.google.com/protocol-buffers/docs/text-format-spec)。
 - `FORM_JSON`：protobuf [JSON format](https://developers.google.com/protocol-buffers/docs/proto3#json)。
 
-详细示例请参考 [高级 predefined incell struct]({{< relref "struct/#advanced-predefined-incell-struct" >}})。
+详细示例请参考 [高级预定义单元格内结构体]({{< relref "struct/#advanced-predefined-incell-struct" >}})。
 
 ## 选项 `json_name`
 
-默认情况下，JSON 名称由字段的 proto 名称转换为 camelCase 得到。现在可以通过 `json_name` prop 选项显式指定。
+默认情况下，JSON 名称由字段的 proto 名称转换为 camelCase 得到。现在可以通过 `json_name` 选项显式指定。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+例如，*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -174,28 +171,28 @@ Tableau 会自动推断 map（或 KeyedList）key 的 `unique` 是否为 true。
 
 **字段级**分隔符，用于分隔：
 
-- incell list 元素（scalar 或 struct）。
-- incell map 元素
+- 单元格内映射的键值对。
+- 单元格内列表的元素（标量或结构体）。
 
-如果未设置，将使用 [metasheet](../metasheet/#选项-sep) 中的**sheet 级** sep。
+如果未设置，将使用 [元表](../metasheet/#选项-sep) 中的**工作表级** sep。
 
 ## 选项 `subsep`
 
 **字段级**子分隔符，用于分隔：
 
-- 每个 incell map 元素的键值对。
-- 每个 incell struct list 元素的结构体字段。
+- 每个单元格内映射的键和值。
+- 每个单元格内结构体列表元素的结构体各字段。
 
-如果未设置，将使用 [metasheet](../metasheet/#选项-subsep) 中的**sheet 级** subsep。
+如果未设置，将使用 [元表](../metasheet/#选项-subsep) 中的**工作表级** subsep。
 
 ## 选项 `pattern`
 
-指定 scalar 字段、list 元素和 map value 的模式。
+指定标量字段、列表元素和映射值的模式。
 
-### Wellknown version 字段
+### 版本号字段
 
 > [!NOTE]
-> 使用案例请参考 [Wellknown types: Version]({{< relref "../excel/wellknown-types/#version" >}})
+> 使用案例请参考 [知名类型: 版本号]({{< relref "../excel/wellknown-types/#version" >}})
 
 指定当前单元格的点分十进制模式。每个十进制数的范围从 0 到模式对应部分的最大值（MAX）。
 
@@ -209,7 +206,7 @@ Tableau 集成了 [protovalidate](https://github.com/bufbuild/protovalidate)，
 选项，并在 tableau 生成配置时强制执行。支持 CEL 表达式以及 protovalidate 提供
 的标准规则、predefined 规则和自定义（custom）规则。
 
-选项 `validate` 用于指定 **scalar 和 well-known 类型** （例如 `int32`、
+选项 `validate` 用于指定标量和知名类型（例如 `int32`、
 `string`、`bool`、`google.protobuf.Timestamp`、`google.protobuf.Duration` 等）
 的**字段级**校验规则。其值为 [`buf.validate.FieldRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.FieldRules)
 的 [protobuf text format](https://protobuf.dev/reference/protobuf/textformat-spec/) 表示。
@@ -230,7 +227,7 @@ Tableau 集成了 [protovalidate](https://github.com/bufbuild/protovalidate)，
 > 不稳定且不可复现。建议使用固定的边界（绝对时间戳），或在同一条记录的多个
 > 字段之间施加约束（例如 `start_time < end_time`）。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+例如，*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -281,15 +278,15 @@ message ItemConf {
 
 ## 选项 `validate_complex`
 
-选项 `validate_complex` 用于指定**复合类型**（即 `list`/`map`）的**字段级**校验
+选项 `validate_complex` 用于指定**复合类型**（即 `列表`/`映射`）的**字段级**校验
 规则——即对容器本身（而非其元素）施加的规则。其值为
 [`buf.validate.FieldRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.FieldRules)
 （`repeated` 或 `map` 字段已设置）的 text format 表示。
 
 示例：
 
-- `map<uint32, Item>|{validate_complex:"map:{min_pairs:1}"}`：map 必须至少包含一个条目。
-- `[]string|{validate_complex:"repeated:{min_items:1}"}`：list 必须至少包含一个元素。
+- `map<uint32, Item>|{validate_complex:"map:{min_pairs:1}"}`：映射必须至少包含一个条目。
+- `[]string|{validate_complex:"repeated:{min_items:1}"}`：列表必须至少包含一个元素。
 - `[]string|{validate_complex:"repeated:{[protoconf.min_items_three]:true}"}`：使用自定义规则。
 
 > [!NOTE]
@@ -299,7 +296,7 @@ message ItemConf {
 ## 选项 `validate_message`
 
 选项 `validate_message` 用于指定**字段所嵌套 message 的 message 级校验规则**。
-通常在字段的值类型为子 message（例如 struct，或 map/list 的 value 类型）时使用，
+通常在字段的值类型为子 message（例如结构体、列表元素或映射值的类型）时使用，
 用于通过 CEL 表达式对 message 的多个字段进行交叉校验。其值为
 [`buf.validate.MessageRules`](https://buf.build/bufbuild/protovalidate/docs/main:buf.validate#buf.validate.MessageRules)
 的 text format 表示。

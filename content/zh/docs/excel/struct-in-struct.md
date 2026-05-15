@@ -1,7 +1,7 @@
 ---
-title: "Struct 嵌套 Struct"
+title: "结构体嵌套结构体（Struct in struct）"
 description: "Excel struct in struct 使用指南。"
-lead: "Excel struct 嵌套 struct 的规范说明。"
+lead: "Excel 结构体中嵌套结构体的规范说明。"
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 7201
 toc: true
 ---
 
-## Struct in struct
+## 结构体嵌套结构体（Struct in struct）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -76,7 +76,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined-struct in struct
+## 结构体嵌套预定义结构体（Predefined-struct in struct）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -87,7 +87,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -148,9 +148,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell-struct in struct
+## 结构体嵌套单元格内结构体（Incell-struct in struct）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

@@ -1,7 +1,7 @@
 ---
-title: "Enum（枚举）"
+title: "枚举（Enum）"
 description: "XML enum 使用指南。"
-lead: "XML enum 使用指南。"
+lead: "XML 标量使用指南。"
 date: 2024-08-23T11:21:01+08:00
 lastmod: 2024-08-23T11:21:01+08:00
 draft: false
@@ -23,7 +23,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

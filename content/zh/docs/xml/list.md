@@ -1,7 +1,7 @@
 ---
-title: "List（列表）"
+title: "列表（List）"
 description: "XML list 使用指南。"
-lead: "XML list 使用指南。"
+lead: "XML 列表使用指南。"
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2024-08-23T11:21:01+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 5200
 toc: true
 ---
 
-## Scalar list
+## 标量列表（Scalar list）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -60,7 +60,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Enum list
+## 枚举列表（Enum list）
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -73,7 +73,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -122,9 +122,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell scalar list
+## 单元格内标量列表（Incell scalar list）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -170,7 +170,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell enum list
+## 单元格内枚举列表（Incell enum list）
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -183,7 +183,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -230,9 +230,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Struct list
+## 结构体列表（Struct list）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -286,7 +286,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined struct list
+## 预定义结构体列表（Predefined struct list） {#predefined-struct-list}
 
 *common.proto* 中预定义的 `Item`：
 
@@ -297,7 +297,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -348,9 +348,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## List in list
+## 列表嵌套列表（List in list）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -425,9 +425,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Map in list
+## 列表嵌套映射（Map in list）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

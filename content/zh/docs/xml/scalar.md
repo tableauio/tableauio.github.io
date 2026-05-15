@@ -1,7 +1,7 @@
 ---
-title: "Scalar（标量）"
+title: "标量（Scalar）"
 description: "XML scalar 使用指南。"
-lead: "XML scalar 使用指南。"
+lead: "XML 标量使用指南。"
 date: 2024-08-23T11:21:01+08:00
 lastmod: 2024-08-23T11:21:01+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 5000
 toc: true
 ---
 
-## Scalar
+## 标量（Scalar）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

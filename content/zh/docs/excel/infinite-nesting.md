@@ -12,14 +12,14 @@ toc: true
 
 ## 概述
 
-现在，水平/垂直 list 元素的第一个字段可以是任意类型，包括 struct、list 和 map。
+现在，水平/垂直列表元素的第一个字段可以是任意类型，包括结构体、列表和映射。
 
-- List 元素的第一个字段是 struct：`[Reward]{Icon}int32`
-- List 元素的第一个字段是 predefined struct：`[Cost]{.Item}uint32`
-- List 元素的第一个字段是 incell struct：`[Magic]{int32 Id, int32 Num}Ability`
-- List 元素的第一个字段是 list：`[Reward][Item]uint32`
-- List 元素的第一个字段是元素为 predefined struct 的 list：`[Power][.Item]uint32`
-- List 元素的第一个字段是 map：`[Superpower]map<uint32, Ability>`
+- 列表元素的第一个字段是结构体：`[Reward]{Icon}int32`
+- 列表元素的第一个字段是预定义结构体：`[Cost]{.Item}uint32`
+- 列表元素的第一个字段是单元格内结构体：`[Magic]{int32 Id, int32 Num}Ability`
+- 列表元素的第一个字段是列表：`[Reward][Item]uint32`
+- 列表元素的第一个字段是元素为预定义结构体的列表：`[Power][.Item]uint32`
+- 列表元素的第一个字段是映射：`[Superpower]map<uint32, Ability>`
 
 > TODO: 补充清晰的示例。
 

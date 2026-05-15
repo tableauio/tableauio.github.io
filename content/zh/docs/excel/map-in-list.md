@@ -1,7 +1,7 @@
 ---
-title: "List 嵌套 Map"
+title: "列表嵌套映射（Map in list）"
 description: "Excel map in list 使用指南。"
-lead: "Excel list 中嵌套 map 的规范说明。"
+lead: "Excel 列表中嵌套映射的规范说明。"
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false
@@ -10,11 +10,11 @@ weight: 7401
 toc: true
 ---
 
-## 垂直 list 中的嵌套
+## 垂直列表中的嵌套
 
-### 垂直 list 中的水平 map
+### 垂直列表嵌套水平映射（Horizontal-map in vertical-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -82,9 +82,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 keyed-list 中的垂直 map
+### 垂直键控列表嵌套垂直映射（Vertical-map in vertical-keyed-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -151,9 +151,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 list 中的 incell map
+### 垂直列表嵌套单元格内映射（Incell-map in vertical-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -216,11 +216,11 @@ message ItemConf {
 
 {{< /details >}}
 
-## 水平 list 的第一个字段
+## 水平列表的第一个字段
 
-### 水平 list 中的水平 map
+### 水平列表嵌套水平映射（Horizontal-map in horizontal-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -284,7 +284,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 list 中的 predefined struct map
+### 水平列表嵌套预定义结构体映射（Predefined-struct-map in horizontal-list）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -295,7 +295,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

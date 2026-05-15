@@ -28,9 +28,9 @@ toc: true
 
 ### OrderedMap
 
-> 前提条件：需要在 metasheet 中将 `OrderedMap` 选项设置为 `true`。
+> 前提条件：需要在元表中将 `OrderedMap` 选项设置为 `true`。
 >
-> 参考 [metasheet 选项：OrderedMap](../../../excel/metasheet/#选项-orderedmap)。
+> 参考 [元表选项：OrderedMap](../../../excel/metasheet/#选项-orderedmap)。
 
 - `public ref readonly OrderedMapMap GetOrderedMap()`：获取整个有序 map。
 - `public OrderedMapValueType? GetOrderedMap1(KEY1 k1)`：获取第 1 层有序 map 的值。找不到 key 时返回 `null`。
@@ -40,9 +40,9 @@ toc: true
 
 ### Index
 
-> 前提条件：需要在 metasheet 中适当设置 `Index` 选项。
+> 前提条件：需要在元表中适当设置 `Index` 选项。
 >
-> 参考 [metasheet 选项：Index](../../../excel/metasheet/#选项-index)。
+> 参考 [元表选项：Index](../../../excel/metasheet/#选项-index)。
 
 如果 index 名称为 `Chapter`，且被索引的 key 为 `k1, k2 ...`，则访问器为：
 
@@ -58,9 +58,9 @@ toc: true
 
 ### OrderedIndex
 
-> 前提条件：需要在 metasheet 中适当设置 `OrderedIndex` 选项。
+> 前提条件：需要在元表中适当设置 `OrderedIndex` 选项。
 >
-> 参考 [metasheet 选项：OrderedIndex](../../../excel/metasheet/#选项-orderedindex)。
+> 参考 [元表选项：OrderedIndex](../../../excel/metasheet/#选项-orderedindex)。
 
 如果有序 index 名称为 `Chapter`，且被索引的 key 为 `k1, k2 ...`，则访问器为：
 

@@ -57,10 +57,10 @@ githubRelease: true
 
 ## 2. 添加工作簿
 
-添加 **HelloWorld.xlsx**，包含两个 sheet：
+添加 **HelloWorld.xlsx**，包含两个工作表：
 
-- `Item`：将下方数据复制到此 worksheet。
-- `@TABLEAU`：暂时留空。这是 tableau 的 [metasheet]({{< relref "../excel/metasheet" >}})，用于指定解析器选项。
+- `Item`：将下方数据复制到此工作表。
+- `@TABLEAU`：暂时留空。这是 tableau 的 [元表]({{< relref "../excel/metasheet" >}})，用于指定解析器选项。
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 

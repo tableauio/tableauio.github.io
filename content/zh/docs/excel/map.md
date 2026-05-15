@@ -1,7 +1,7 @@
 ---
-title: "Map（映射）"
+title: "映射（Map）"
 description: "映射使用指南。"
-lead: "Map (映射）表示一种“键值对”（Key-Value Pair）的数据结构，键（Key）必须唯一，用于快速检索。"
+lead: "映射表示一种“键值对”（Key-Value Pair）的数据结构，键（Key）必须唯一，用于快速检索。"
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2022-02-26T13:59:39+08:00
 draft: false
@@ -13,23 +13,23 @@ toc: true
 ## 水平映射（Horizontal map）
 
 > [!IMPORTANT]
-> 水平映射的列名中，map 元素名**必须**带有从 `1` 开始的数字后缀。
+> 水平映射的列名中，映射值名**必须**带有从 `1` 开始的数字后缀。
 >
-> 例如：`Item1ID`、`Item1Name`、`Item2ID`、`Item2Name`（struct map，元素名：`Item`）。
+> 例如：`Item1ID`、`Item1Name`、`Item2ID`、`Item2Name`（结构体映射，值名：`Item`）。
 
-水平 map 有以下几种：
+水平映射有以下几种：
 
-1. 水平 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
-2. 水平 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
-3. 水平 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
+1. 水平标量映射，映射值类型为标量。例如：`map<int32, int32>`。
+2. 水平结构体映射，映射值类型为结构体。例如：`map<int32, Item>`。
+3. 水平预定义结构体映射，映射值类型为预定义结构体。例如：`map<int32, .Item>`。
 
-### 水平标量映射
+### 水平标量映射（Horizontal scalar map）
 
 无需单独支持，请使用 `map<int32, Item>` 代替。
 
-### 水平结构体映射
+### 水平结构体映射（Horizontal struct map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -99,7 +99,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平预定义结构体映射
+### 水平预定义结构体映射（Horizontal predefined-struct map）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -110,7 +110,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -181,17 +181,17 @@ message ItemConf {
 
 垂直映射有以下几种：
 
-1. 垂直 **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
-2. 垂直 **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
-3. 垂直 **predefined-struct** map，map value 类型为 predefined struct。例如：`map<int32, .Item>`。
+1. 垂直标量映射，映射值类型为标量。例如：`map<int32, int32>`。
+2. 垂直结构体映射，映射值类型为结构体。例如：`map<int32, Item>`。
+3. 垂直预定义结构体映射，映射值类型为预定义结构体。例如：`map<int32, .Item>`。
 
-### 垂直标量映射
+### 垂直标量映射（Vertical scalar map）
 
 无需单独支持，请使用 `map<int32, Item>` 代替。
 
-### 垂直结构体映射
+### 垂直结构体映射（Vertical struct map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -267,7 +267,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直预定义结构体映射
+### 垂直预定义结构体映射（Vertical predefined-struct map）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -278,7 +278,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -347,16 +347,16 @@ message ItemConf {
 
 {{< /details >}}
 
-## 单元格内映射（Incell map）
+## 单元格内映射（Incell map） {#incell-map}
 
 单元格内映射有以下几种：
 
-1. Incell **scalar** map，map value 类型为 scalar。例如：`map<int32, int32>`。
-2. Incell **struct** map，map value 类型为 struct。例如：`map<int32, Item>`。
+1. 单元格内标量映射，映射值类型为标量。例如：`map<int32, int32>`。
+2. 单元格内结构体映射，映射值类型为结构体。例如：`map<int32, Item>`。
 
-### 单元格内标量映射
+### 单元格内标量映射（Incell scalar map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -382,10 +382,10 @@ message ItemConf {
 
 {{< /spreadsheet >}}
 
-`Item` 列的类型为 incell map `map<uint32, string>`，map value 为 scalar 类型 `string`。
+`Item` 列的类型为单元格内映射 `map<uint32, string>`，映射值为标量类型 `string`。
 
 > [!IMPORTANT]
-> 如果希望使用显式模式 `[Key:Value]...`，请将 field property `present` 设置为 true。
+> 如果希望使用显式模式 `[Key:Value]...`，请将字段属性 `present` 设置为 true。
 > 参见 [选项 `present`]({{< relref "field-property/#选项-present" >}})。
 
 生成结果：
@@ -421,9 +421,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 单元格内枚举映射
+### 单元格内枚举映射（Incell enum map）
 
-对于 incell map，key 和 value 都可以是枚举类型。
+对于单元格内映射，键和值都可以是枚举类型。
 
 例如，*common.proto* 中预定义的枚举类型 `FruitType` 和 `FruitFlavor`：
 
@@ -443,7 +443,7 @@ enum FruitFlavor {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -532,9 +532,9 @@ message ItemConf {
 
 ## 空键映射（Empty key map）
 
-如果 map key 未配置，则视为 map key 类型的默认值。默认值参见 [Scalar types]({{< relref "../basics/grammar-and-types/#scalar-types" >}})。
+如果映射的键未配置，则视为键类型的默认值。默认值参见 [标量类型]({{< relref "../basics/grammar-and-types/#scalar-types" >}})。
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -608,14 +608,14 @@ message ItemConf {
 
 ## 枚举键映射（Enum key map）
 
-根据 protobuf 文档对 [map key type](https://developers.google.com/protocol-buffers/docs/proto3#maps) 的限制：
+根据 protobuf 文档对 [映射键的类型](https://developers.google.com/protocol-buffers/docs/proto3#maps) 的限制：
 
-> ... `key_type` 可以是任意整数或字符串类型（即除浮点类型和 `bytes` 之外的任意 [scalar](https://developers.google.com/protocol-buffers/docs/proto3#scalar) 类型）。注意，`enum` 不是有效的 `key_type`。
+> ... `key_type` 可以是任意整数或字符串类型（即除浮点类型和 `bytes` 之外的任意 [标量](https://developers.google.com/protocol-buffers/docs/proto3#scalar) 类型）。注意，`enum` 不是有效的 `key_type`。
 
-然而，在某些场景下，以枚举作为 key 类型非常有用。因此我们以一种简单的方式支持它：
+然而，在某些场景下，以枚举作为键类型非常有用。因此我们以一种简单的方式支持它：
 
-- 枚举类型作为 map key 类型时，视为 `int32`，
-- 枚举类型保留在 map value 类型（struct）中。
+- 枚举类型作为映射键类型时，视为 `int32`，
+- 枚举类型保留在映射值类型（结构体）中。
 
 例如，*common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -638,7 +638,7 @@ message ValueType {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -715,20 +715,20 @@ message ItemConf {
 
 ### 动态大小
 
-默认情况下，所有 map 都是**动态大小类型**。Map 条目应连续存在，否则如果中间存在空条目会报错。
+默认情况下，所有映射都是**动态大小类型**。Map 条目应连续存在，否则如果中间存在空条目会报错。
 
 ### 固定大小
 
-#### 隐式固定大小
+#### 隐式固定大小 {#implicit-fixed-size}
 
-Map 大小由名称行中最大存在的 map 条目数量自动确定。
+Map 大小由名称行中最大存在的映射条目数量自动确定。
 
-在下面的示例中，虽然第二个 map 条目 **Item2** 为空，但由于 field property `fixed` 设置为 `true`，这是合法的。此外，**Item2** 也会作为空 map 条目生成，可以在生成的 *ItemConf.json* 文件中看到。
+在下面的示例中，虽然第二个映射条目 **Item2** 为空，但由于字段属性 `fixed` 设置为 `true`，这是合法的。此外，**Item2** 也会作为空映射条目生成，可以在生成的 *ItemConf.json* 文件中看到。
 
 > [!CAUTION]
-> 若插入多个空 map 条目，实际上只会生成一个——因为所有空 map 条目的 key 相同。这与 list 的行为不同，请特别注意。
+> 若插入多个空映射条目，实际上只会生成一个——因为所有空映射条目的键相同。这与列表的行为不同，请特别注意。
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -798,16 +798,16 @@ message ItemConf {
 
 {{< /details >}}
 
-#### 显式固定大小（Explicit fixed size）
+#### 显式固定大小 {#explicit-fixed-size}
 
-Map 大小由 field property `size` 显式设置。
+Map 大小由字段属性 `size` 显式设置。
 
-在下面的示例中，field property `size` 设置为 2，则第二个 map 条目 **Item2** 之后的所有 map 条目都会被截断。此外，**Item2** 也会作为空 map 条目生成，可以在生成的 *ItemConf.json* 文件中看到。
+在下面的示例中，字段属性 `size` 设置为 2，则第二个映射条目 **Item2** 之后的所有映射条目都会被截断。此外，**Item2** 也会作为空映射条目生成，可以在生成的 *ItemConf.json* 文件中看到。
 
 > [!CAUTION]
-> 若插入多个空 map 条目，实际上只会生成一个——因为所有空 map 条目的 key 相同。这与 list 的行为不同，请特别注意。
+> 若插入多个空映射条目，实际上只会生成一个——因为所有空映射条目的键相同。这与列表的行为不同，请特别注意。
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -875,9 +875,9 @@ message ItemConf {
 
 ## 高级特性
 
-### 水平跳列映射
+### 水平跳列映射（Horizontal column-skipped map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

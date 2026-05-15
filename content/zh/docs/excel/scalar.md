@@ -1,7 +1,7 @@
 ---
-title: "Scalar（标量）"
+title: "标量（Scalar）"
 description: "Excel scalar 使用指南。"
-lead: "本文说明 Excel scalar 类型的各种特性。"
+lead: "本文说明 Excel 标量类型的各种特性。"
 date: 2022-09-04T13:59:39+08:00
 lastmod: 2022-09-04T13:59:39+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 7101
 toc: true
 ---
 
-## Scalar
+## 标量（Scalar）
 
-*HelloWorld.xlsx* 中的 worksheet `Apple`：
+*HelloWorld.xlsx* 中的工作表 `Apple`：
 
 {{< spreadsheet "HelloWorld.xlsx" Apple "@TABLEAU" >}}
 
@@ -38,7 +38,7 @@ toc: true
 
 {{< /spreadsheet >}}
 
-该 worksheet 中定义了三个 scalar 字段：
+该工作表中定义了三个标量字段：
 
 1. ID：`uint32`
 2. Name：`string`
@@ -77,4 +77,4 @@ message Apple {
 
 ### 说明
 
-Scalar 类型通常用于定义 struct 类型的字段。[Struct]({{< relref "struct" >}})
+标量类型通常用于定义[结构体]({{< relref "struct" >}})类型的字段。

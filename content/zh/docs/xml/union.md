@@ -1,7 +1,7 @@
 ---
-title: "Union（联合体）"
+title: "联合体（Union）"
 description: "XML union 使用指南。"
-lead: "XML union 使用指南。"
+lead: "XML 联合体使用指南。"
 date: 2024-09-02T19:21:01+08:00
 lastmod: 2024-09-02T19:21:01+08:00
 draft: false
@@ -10,7 +10,7 @@ weight: 5150
 toc: true
 ---
 
-## Union 定义
+## 联合体定义
 
 例如，*common.proto* 中预定义的 union 类型 `Target`：
 
@@ -70,9 +70,9 @@ message Target {
 }
 ```
 
-## Predefined union
+## 预定义联合体（Predefined union） {#predefined-union}
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -125,9 +125,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined incell union
+## 预定义单元格内联合体（Predefined incell union）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -180,9 +180,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined union list
+## 预定义联合体列表（Predefined union list） {#predefined-union-list}
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

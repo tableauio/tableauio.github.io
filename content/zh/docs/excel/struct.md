@@ -1,7 +1,7 @@
 ---
-title: "Struct（结构体）"
+title: "结构体（Struct）"
 description: "Excel struct 使用指南。"
-lead: "本文说明 Excel struct 类型的各种特性。"
+lead: "本文说明 Excel 结构体类型的各种特性。"
 date: 2022-02-26T13:59:39+08:00
 lastmod: 2022-02-26T13:59:39+08:00
 draft: false
@@ -10,13 +10,13 @@ weight: 7103
 toc: true
 ---
 
-## Cross-cell struct
+## 跨单元格结构体（Cross-cell struct）
 
 **语法**：`<StructType>ColumnType`。
 
-每个列名应以相同的 struct 变量名作为前缀，默认情况下变量名与 struct 类型名相同。
+每个列名应以相同的结构体变量名作为前缀，默认情况下变量名与结构体类型名相同。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+例如，*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -42,7 +42,7 @@ toc: true
 
 {{< /spreadsheet >}}
 
-注意 `ItemConf` 中每个列名都以 struct 变量名 **Property** 作为前缀，该变量名与 struct 类型名相同。
+注意 `ItemConf` 中每个列名都以结构体变量名 **Property** 作为前缀，该变量名与结构体类型名相同。
 
 生成结果：
 
@@ -82,16 +82,16 @@ message ItemConf {
 
 ### 说明
 
-Cross-cell struct 通常与以下类型配合使用：
+跨单元格结构体通常与以下类型配合使用：
 
-- cross-cell 水平/垂直 map，作为 map 的 value 类型。[Map]({{< relref "map" >}})
-- cross-cell 水平/垂直 list，作为 list 的元素类型。[List]({{< relref "list" >}})
+- 跨单元格水平/垂直映射，作为映射的值类型。[Map]({{< relref "map" >}})
+- 跨单元格水平/垂直列表，作为列表的元素类型。[List]({{< relref "list" >}})
 
-## Incell struct
+## 单元格内结构体（Incell struct） {#incell-struct}
 
-struct 的每个字段类型应为标量类型。
+结构体的每个字段类型应为标量类型。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+例如，*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -119,7 +119,7 @@ struct 的每个字段类型应为标量类型。
 
 {{< /spreadsheet >}}
 
-`Property` 列的类型为 in-cell struct `{int32 ID,string Name,string Desc}Property`。
+`Property` 列的类型为单元格内结构体 `{int32 ID,string Name,string Desc}Property`。
 
 生成结果：
 
@@ -182,9 +182,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined struct
+## 预定义结构体（Predefined struct） {#predefined-struct}
 
-例如，*common.proto* 中定义的 struct 类型 `Prop`：
+例如，*common.proto* 中定义的结构体类型 `Prop`：
 
 ```protobuf
 message Prop {
@@ -193,7 +193,7 @@ message Prop {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -289,9 +289,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined incell struct
+## 预定义单元格内结构体（Predefined incell struct）
 
-预定义 struct 的每个字段类型应为标量类型。
+预定义结构体的每个字段类型应为标量类型。
 
 例如，*common.proto* 中预定义的 `Property`：
 
@@ -303,7 +303,7 @@ message Property {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -331,7 +331,7 @@ message Property {
 
 {{< /spreadsheet >}}
 
-`Prop` 列的类型为预定义 struct `Property`。
+`Prop` 列的类型为预定义结构体 `Property`。
 
 生成结果：
 
@@ -390,11 +390,11 @@ message ItemConf {
 
 {{< /details >}}
 
-## Custom named struct
+## 自定义命名结构体（Custom named struct） {#custom-named-struct}
 
-默认情况下，struct 变量名与 struct 类型名相同，但你可以指定不同的 struct 变量名。Custom named struct 主要用于在 tableau（protogen）无法自动识别变量名时，标识 name row 中连续单元格的名称前缀。
+默认情况下，结构体变量名与结构体类型名相同，但你可以指定不同的结构体变量名。自定义命名结构体主要用于在 tableau（protogen）无法自动识别变量名时，标识 name row 中连续单元格的名称前缀。
 
-**语法**：在 struct 类型名后面，使用括号 `()` 指定 struct 变量名：`VariableType(VariableName)`。
+**语法**：在结构体类型名后面，使用括号 `()` 指定结构体变量名：`VariableType(VariableName)`。
 
 例如，`Item` 已预定义：
 
@@ -405,7 +405,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -432,7 +432,7 @@ message Item {
 {{< /spreadsheet >}}
 
 **详细说明**：
-在类型单元格 `{Item(RewardItem)}int32` 中，`RewardItem` 是新定义的 struct `Item` 的自定义变量名。在类型单元格 `{Item(CostItem)}int32` 中，`CostItem` 是同一作用域内已定义的 struct `Item` 的自定义变量名。最后，在类型单元格 `{.Item(PredefinedItem)}int32` 中，`PredefinedItem` 是全局（同一 protobuf package）预定义 struct `Item` 的自定义变量名。
+在类型单元格 `{Item(RewardItem)}int32` 中，`RewardItem` 是新定义的结构体 `Item` 的自定义变量名。在类型单元格 `{Item(CostItem)}int32` 中，`CostItem` 是同一作用域内已定义的结构体 `Item` 的自定义变量名。最后，在类型单元格 `{.Item(PredefinedItem)}int32` 中，`PredefinedItem` 是全局（同一 protobuf package）预定义结构体 `Item` 的自定义变量名。
 
 生成结果：
 
@@ -478,9 +478,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Advanced predefined incell struct
+## 高级预定义单元格内结构体（Advanced predefined incell struct） {#advanced-predefined-incell-struct}
 
-在某些情况下，你可能希望在单元格中配置任意复杂的 struct，因此 tableau 支持两种 protobuf 序列化格式：[text format](https://developers.google.com/protocol-buffers/docs/text-format-spec) 和 [JSON format](https://developers.google.com/protocol-buffers/docs/proto3#json)。
+在某些情况下，你可能希望在单元格中配置任意复杂的结构体，因此 tableau 支持两种 protobuf 序列化格式：[text format](https://developers.google.com/protocol-buffers/docs/text-format-spec) 和 [JSON format](https://developers.google.com/protocol-buffers/docs/proto3#json)。
 
 **语法**：在字段属性中，将 `form` 选项指定为 `FORM_TEXT` 或 `FORM_JSON`。
 
@@ -500,7 +500,7 @@ message Vector3 {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -587,21 +587,21 @@ message ItemConf {
 
 {{< /details >}}
 
-## 在 sheet 中定义 struct 类型
+## 在工作表中定义结构体类型（Define struct type in sheet）
 
-在 metasheet `@TABLEAU` 中有两种 `Mode` 可用于在 sheet 中定义 struct 类型：
+在元表 `@TABLEAU` 中有两种 `Mode` 可用于在工作表中定义结构体类型：
 
-- `MODE_STRUCT_TYPE`：在一个 sheet 中定义单个 struct 类型。
-- `MODE_STRUCT_TYPE_MULTI`：在一个 sheet 中定义多个 struct 类型。
+- `MODE_STRUCT_TYPE`：在一个工作表中定义单个结构体类型。
+- `MODE_STRUCT_TYPE_MULTI`：在一个工作表中定义多个结构体类型。
 
-### 单个 struct 类型
+### 单个结构体类型（Single struct type in sheet）
 
 > [!Note]
 > `Number` 列是可选的，用于指定字段编号。省略时从 `1` 开始自动递增。
 
-需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_STRUCT_TYPE`。
+需要在元表 `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_STRUCT_TYPE`。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `Item`：
+例如，*HelloWorld.xlsx* 中的工作表 `Item`：
 
 {{< spreadsheet "HelloWorld.xlsx" Item "@TABLEAU" >}}
 
@@ -654,14 +654,14 @@ message Item {
 
 {{< /details >}}
 
-### 多个 struct 类型
+### 多个结构体类型（Multiple struct types in sheet）
 
 > [!IMPORTANT]
-> 每个 struct 类型由一个 **block** 定义，即一系列连续的非空行。不同的 block 之间由**一行或多行空行**分隔。
+> 每个结构体类型由一个 **block** 定义，即一系列连续的非空行。不同的 block 之间由**一行或多行空行**分隔。
 
-需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_STRUCT_TYPE_MULTI`。
+需要在元表 `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_STRUCT_TYPE_MULTI`。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `Struct`：
+例如，*HelloWorld.xlsx* 中的工作表 `Struct`：
 
 {{< spreadsheet "HelloWorld.xlsx" Struct "@TABLEAU" >}}
 

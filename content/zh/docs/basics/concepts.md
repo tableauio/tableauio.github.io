@@ -17,45 +17,45 @@ toc: true
 | 术语         | 定义                                                                                               |
 | ------------ | -------------------------------------------------------------------------------------------------- |
 | `Workbook`   | 一个 Excel 文件；或一组以相同前缀命名、用 `#` 分隔的 CSV 文件；或一个 XML 文件；或一个 YAML 文件。 |
-| `Worksheet`  | Excel 文件中的一个 sheet；或一个 CSV 文件；或 XML 文件的根节点；或 YAML 文件中的一个文档。         |
-| `Metasheet`  | 名为 `@TABLEAU` 的特殊 worksheet，用于指定 tableau 解析器选项。                                    |
-| `Row`        | sheet 中的一行。                                                                                   |
-| `Column`     | sheet 中的一列。                                                                                   |
+| `Worksheet`  | Excel 文件中的一个工作表；或一个 CSV 文件；或 XML 文件的根节点；或 YAML 文件中的一个文档。         |
+| `Metasheet`  | 名为 `@TABLEAU` 的特殊工作表，用于指定 tableau 解析器选项。                                        |
+| `Row`        | 工作表中的一行。                                                                                   |
+| `Column`     | 工作表中的一列。                                                                                   |
 | `Cell`       | 行与列的交叉点（单元格）。                                                                         |
 | `In-cell`    | 单元格内部。                                                                                       |
 | `Cross-cell` | 一行或一列中连续的多个单元格。                                                                     |
 {.table-striped .table-hover}
 
-### Worksheet 相关术语
+### 工作表相关术语
 
 | 术语        | 定义                                                                                                     |
 | ----------- | -------------------------------------------------------------------------------------------------------- |
-| `Namerow`   | worksheet 中列名定义所在的行号。<br>⚠️ 注意：同一 worksheet 中每个列名必须唯一！<br>默认值：`1`。         |
-| `Typerow`   | worksheet 中列类型定义所在的行号。<br>默认值：`2`。                                                      |
-| `Noterow`   | worksheet 中列注释所在的行号。<br>默认值：`3`。                                                          |
-| `Datarow`   | worksheet 中数据起始行号。<br>默认值：`4`。                                                              |
+| `Namerow`   | 工作表中列名定义所在的行号。<br>⚠️ 注意：同一工作表中每个列名必须唯一！<br>默认值：`1`。                  |
+| `Typerow`   | 工作表中列类型定义所在的行号。<br>默认值：`2`。                                                          |
+| `Noterow`   | 工作表中列注释所在的行号。<br>默认值：`3`。                                                              |
+| `Datarow`   | 工作表中数据起始行号。<br>默认值：`4`。                                                                  |
 | `Nameline`  | 单元格内列名定义所在的行号，`0` 表示整个单元格。<br>默认值：`0`。                                        |
 | `Typeline`  | 单元格内列类型定义所在的行号，`0` 表示整个单元格。<br>默认值：`0`。                                      |
 | `Sep`       | 分隔符，用于：<br>    1. 分隔 in-cell list 的元素。<br>    2. 分隔 in-cell map 的条目。<br>默认值：`,`。 |
 | `Subsep`    | 子分隔符，用于分隔 in-cell map 的 Key-Value 对。<br>默认值：`:`。                                        |
 | `Nested`    | **namerow** 的嵌套命名方式。<br>默认值：`false`。                                                        |
 | `Layout`    | Incell（单元格内）、vertical（跨单元格垂直）或 horizontal（跨单元格水平）。                              |
-| `Transpose` | 对指定 sheet 进行行列转置。                                                                              |
+| `Transpose` | 对指定工作表进行行列转置。                                                                               |
 {.table-striped .table-hover}
 
 ## 与 Protoconf 的映射关系
 
-| 术语        | Protoconf                                                                                                                                      |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Workbook`  | 一个 protoconf（`.proto`）文件。                                                                                                               |
-| `Worksheet` | protoconf 文件中的一个顶层 [message](https://developers.google.com/protocol-buffers/docs/proto3#simple)（名为 `@TABLEAU` 的 metasheet 除外）。 |
-| `column`    | [message](https://developers.google.com/protocol-buffers/docs/proto3#simple) 中的一个字段。                                                    |
+| 术语        | Protoconf                                                                                                                               |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `Workbook`  | 一个 protoconf（`.proto`）文件。                                                                                                        |
+| `Worksheet` | protoconf 文件中的一个顶层 [message](https://developers.google.com/protocol-buffers/docs/proto3#simple)（名为 `@TABLEAU` 的元表除外）。 |
+| `column`    | [message](https://developers.google.com/protocol-buffers/docs/proto3#simple) 中的一个字段。                                             |
 
 ## 简单映射示例
 
 ### 输入：一个 Excel 文件
 
-一个工作簿（*HelloWorld.xlsx*），包含两个数据 worksheet（`ItemConf` 和 `ActivityConf`）以及一个空的 tableau metasheet（`@TABLEAU`）。
+一个工作簿（*HelloWorld.xlsx*），包含两个数据工作表（`ItemConf` 和 `ActivityConf`）以及一个空的 tableau 元表（`@TABLEAU`）。
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf ActivityConf "@TABLEAU" >}}
 

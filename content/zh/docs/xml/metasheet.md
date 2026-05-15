@@ -1,7 +1,7 @@
 ---
-title: "Metasheet（元表）"
-description: "XML metasheet @TABLEAU 使用指南。"
-lead: "XML metasheet \"@TABLEAU\" 使用指南。"
+title: "元表（Metasheet）"
+description: "XML 元表 @TABLEAU 使用指南。"
+lead: "XML 元表 \"@TABLEAU\" 使用指南。"
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2024-08-23T11:21:01+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 5400
 toc: true
 ---
 
-## XML 中的 metasheet 是什么？
+## XML 中的元表是什么？
 
-**metasheet** 是通常写在 XML 文件开头的注释块，必须以关键字 `@TABLEAU` 开头，并在后续行中定义节点属性的类型。例如：
+**元表** 是通常写在 XML 文件开头的注释块，必须以关键字 `@TABLEAU` 开头，并在后续行中定义节点属性的类型。例如：
 
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -42,6 +42,6 @@ toc: true
 -->
 ```
 
-## 没有 metasheet 的情况
+## 没有元表的情况
 
-如果一个 XML 文件没有 metasheet（即没有以 `@TABLEAU` 开头的注释块），则不会生成任何 protobuf 和 JSON 文件。
+如果一个 XML 文件没有元表（即没有以 `@TABLEAU` 开头的注释块），则不会生成任何 protobuf 和 JSON 文件。

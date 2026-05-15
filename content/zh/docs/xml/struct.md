@@ -1,7 +1,7 @@
 ---
-title: "Struct（结构体）"
+title: "结构体（Struct）"
 description: "XML struct 使用指南。"
-lead: "XML struct 使用指南。"
+lead: "XML 结构体使用指南。"
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2024-08-23T11:21:01+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 5100
 toc: true
 ---
 
-## 通用 struct
+## 通用结构体
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -87,9 +87,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## 复用同级 struct
+## 复用同级结构体
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -158,7 +158,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined struct
+## 预定义结构体（Predefined struct） {#predefined-struct}
 
 *common.proto* 中预定义的 `Item`：
 
@@ -169,7 +169,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -220,9 +220,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell struct
+## 单元格内结构体（Incell struct）
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -278,7 +278,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell predefined struct
+## 单元格内预定义结构体（Incell predefined struct）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -289,7 +289,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xml* 中的 worksheet `ItemConf`：
+*HelloWorld.xml* 中的工作表 `ItemConf`：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

@@ -1,7 +1,7 @@
 ---
-title: "List 嵌套 Struct"
+title: "列表嵌套结构体（Struct in list）"
 description: "Excel struct in list 使用指南。"
-lead: "Excel list 中嵌套 struct 的规范说明。"
+lead: "Excel 列表中嵌套结构体的规范说明。"
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false
@@ -10,11 +10,11 @@ weight: 7202
 toc: true
 ---
 
-## 垂直 list 中的嵌套
+## 垂直列表中的嵌套
 
-### 垂直 list 中的 struct
+### 垂直列表嵌套结构体（Struct in vertical-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -82,9 +82,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 list 中的 incell struct
+### 垂直列表嵌套单元格内结构体（Incell-struct in vertical-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -152,11 +152,11 @@ message ItemConf {
 
 {{< /details >}}
 
-## 水平 list 的第一个字段
+## 水平列表的第一个字段
 
-### 水平 list 中的 struct
+### 水平列表嵌套结构体（Struct in horizontal-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -220,7 +220,7 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 list 中的 predefined struct
+### 水平列表嵌套预定义结构体（Predefined-struct in horizontal-list）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -231,7 +231,7 @@ message Item {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -292,9 +292,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 list 中的 incell struct
+### 水平列表嵌套单元格内结构体（Incell-struct in horizontal-list）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

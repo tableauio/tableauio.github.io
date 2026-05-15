@@ -1,7 +1,7 @@
 ---
-title: "Map（映射）"
+title: "映射（Map）"
 description: "YAML map 使用指南。"
-lead: "YAML map 使用指南。"
+lead: "YAML 映射使用指南。"
 date: 2024-06-22T10:00:00+08:00
 lastmod: 2024-06-22T10:00:00+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 4500
 toc: true
 ---
 
-## Scalar map
+## 标量映射（Scalar map）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -57,7 +57,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Enum key map
+## 枚举键映射（Enum key map）
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -70,7 +70,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -124,7 +124,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Enum key-value map
+## 枚举键值映射（Enum key-value map）
 
 *common.proto* 中预定义的枚举类型 `FruitType` 和 `FruitFlavor`：
 
@@ -144,7 +144,7 @@ enum FruitFlavor {
 }
 ```
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -198,9 +198,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell scalar map
+## 单元格内标量映射（Incell scalar map）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -244,7 +244,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell enum map
+## 单元格内枚举映射（Incell enum map）
 
 *common.proto* 中预定义的枚举类型 `FruitType` 和 `FruitFlavor`：
 
@@ -264,7 +264,7 @@ enum FruitFlavor {
 }
 ```
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -317,9 +317,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Struct map
+## 结构体映射（Struct map）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -383,7 +383,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Enum key struct map
+## 枚举键结构体映射（Enum key struct map）
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -396,7 +396,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -461,9 +461,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Custom key struct map
+## 自定义键结构体映射（Custom key struct map）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -528,9 +528,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## List in map
+## 映射嵌套列表（List in map）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -614,9 +614,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Map in map
+## 映射嵌套映射（Map in map）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets

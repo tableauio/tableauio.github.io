@@ -1,7 +1,7 @@
 ---
-title: "Map 嵌套 Map"
+title: "映射嵌套映射（Map in map）"
 description: "Excel map in map 使用指南。"
-lead: "Excel map 中嵌套 map 的规范说明。"
+lead: "Excel 映射中嵌套映射的规范说明。"
 date: 2022-02-26T08:48:57+08:00
 lastmod: 2022-02-26T08:48:57+08:00
 draft: false
@@ -10,11 +10,11 @@ weight: 7402
 toc: true
 ---
 
-## 垂直 map 中的嵌套
+## 垂直映射中的嵌套
 
-### 垂直 map 中的水平 map
+### 垂直映射嵌套水平映射（Horizontal-map in vertical-map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -82,9 +82,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 map 中的垂直 map
+### 垂直映射嵌套垂直映射（Vertical-map in vertical-map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -151,9 +151,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 垂直 map 中的 incell map
+### 垂直映射嵌套单元格内映射（Incell-map in vertical-map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -216,11 +216,11 @@ message ItemConf {
 
 {{< /details >}}
 
-## 水平 map 中的嵌套
+## 水平映射中的嵌套
 
-### 水平 map 中的水平 map
+### 水平映射嵌套水平映射（Horizontal-map in horizontal-map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -284,9 +284,9 @@ message ItemConf {
 
 {{< /details >}}
 
-### 水平 map 中的 incell map
+### 水平映射嵌套单元格内映射（Incell-map in horizontal-map）
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 

@@ -1,5 +1,5 @@
 ---
-title: "Index（索引）使用指南"
+title: "索引（Index）使用指南"
 description: "介绍 Tableau 的 Index 功能，实现对配置表的高效索引查询。"
 lead: "介绍 Tableau 的 Index 功能，实现对配置表的高效索引查询。"
 date: 2026-03-30T15:00:00+08:00
@@ -15,13 +15,13 @@ contributors: ["Wenchy"]
 - 查找所有 `Type == 1` 的商店
 - 查找某个道具下所有 `Param == 2` 的属性
 
-如果每次都遍历整张表，性能开销较大。Tableau 提供了 **Index** metasheet 选项，让 loader 插件在加载时自动构建索引，实现 O(1) 的快速查询。
+如果每次都遍历整张表，性能开销较大。Tableau 提供了 **Index** 元表选项，让 loader 插件在加载时自动构建索引，实现 O(1) 的快速查询。
 
 ---
 
 ## 配置语法
 
-在 `@TABLEAU` metasheet 中，通过 `Index` 选项指定列索引。
+在 `@TABLEAU` 元表中，通过 `Index` 选项指定列索引。
 
 **完整格式：**
 
@@ -41,7 +41,7 @@ contributors: ["Wenchy"]
 
 ### 配置示例
 
-*HelloWorld.xlsx* 中的 `ItemConf` sheet（map 布局）以及 `@TABLEAU` metasheet 配置：
+*HelloWorld.xlsx* 中的 `ItemConf` 工作表（map 布局）以及 `@TABLEAU` 元表配置：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -278,5 +278,5 @@ Index 支持以下列类型作为索引键：
 
 ## 参考文档
 
-- [Metasheet 选项：Index](../../docs/excel/metasheet/#选项-index)
+- [元表选项：Index](../../docs/excel/metasheet/#选项-index)
 - [Go Loader API: Index](../../docs/api/loader/go/#index)

@@ -1,5 +1,5 @@
 ---
-title: "Enum（枚举）"
+title: "枚举（Enum）"
 description: "枚举基础。"
 lead: "本文介绍枚举类型的基础知识。"
 date: 2022-02-26T13:59:39+08:00
@@ -10,7 +10,7 @@ weight: 8300
 toc: true
 ---
 
-## 枚举值
+## 枚举值（Enum value）
 
 tableau 解析器支持三种枚举值形式：
 
@@ -43,6 +43,6 @@ enum FruitType {
 
 了解预定义 **Enum** 类型的详细信息：[预定义类型]({{< relref "predefined-types" >}})。
 
-## 校验
+## 校验（Validation）
 
 由于枚举类型是预先定义的，tableau 解析器会自动校验枚举值的合法性。

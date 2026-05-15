@@ -1,5 +1,5 @@
 ---
-title: "Wellknown types（知名类型）"
+title: "知名类型（Wellknown types）"
 description: "Wellknown 类型。"
 lead: "Wellknown 类型是 Tableau 生态系统中广泛使用的内置通用类型。"
 date: 2024-09-24T15:59:39+08:00
@@ -20,10 +20,10 @@ toc: true
 - [google/protobuf/timestamp.proto](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/timestamp.proto)
 - [google/protobuf/duration.proto](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/duration.proto)
 
-## Datetime（日期时间）
+## 日期时间（Datetime） {#datetime}
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Datetime]({{< relref "../excel/wellknown-types/#datetime日期时间" >}}) 。
+> 使用示例请参考 [Wellknown 类型：Datetime]({{< relref "../excel/wellknown-types/#datetime" >}}) 。
 
 | 类型       | 默认值                | 说明                                                                                                        |
 | ---------- | --------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -38,10 +38,10 @@ toc: true
 - `time` 基于 [**google.protobuf.Duration**](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)，参考 [JSON 映射](https://developers.google.com/protocol-buffers/docs/proto3#json)。
 - [RFC 3339: 互联网日期和时间戳](https://datatracker.ietf.org/doc/html/rfc3339)
 
-## Duration（时长）
+## 时长（Duration） {#duration}
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Duration]({{< relref "../excel/wellknown-types/#duration时长" >}}) 。
+> 使用示例请参考 [Wellknown 类型：Duration]({{< relref "../excel/wellknown-types/#duration" >}}) 。
 
 | 类型       | 默认值 | 说明                                                                                                                                                                                                 |
 | ---------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -53,10 +53,10 @@ toc: true
 - [golang duration 字符串格式](https://golang.org/pkg/time/#Duration.String)。
 - [golang ParseDuration](https://pkg.go.dev/time#ParseDuration)。
 
-## Fraction（分数）
+## 分数（Fraction） {#fraction}
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Fraction]({{< relref "../excel/wellknown-types/#fraction分数" >}}) 。
+> 使用示例请参考 [Wellknown 类型：Fraction]({{< relref "../excel/wellknown-types/#fraction" >}}) 。
 
 分数表示整体的一部分，或更广泛地说，任意数量的等份。详见 [wiki: Fraction](https://en.wikipedia.org/wiki/Fraction)。
 
@@ -71,10 +71,10 @@ message Fraction {
 }
 ```
 
-## Comparator（比较器）
+## 比较器（Comparator） {#comparator}
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Comparator]({{< relref "../excel/wellknown-types/#comparator比较器" >}}) 。
+> 使用示例请参考 [Wellknown 类型：Comparator]({{< relref "../excel/wellknown-types/#comparator" >}}) 。
 
 comparator 包含一个 `sign`（符号）和一个分数 `value`（值），任意数字或分数均可与之比较。
 
@@ -98,10 +98,10 @@ message Comparator {
 }
 ```
 
-## Version（版本号）
+## 版本号（Version） {#version}
 
 > [!NOTE]
-> 使用示例请参考 [Wellknown 类型：Version]({{< relref "../excel/wellknown-types/#version版本号" >}}) 。
+> 使用示例请参考 [Wellknown 类型：Version]({{< relref "../excel/wellknown-types/#version" >}}) 。
 
 version 表示[点分十进制表示法](https://en.wikipedia.org/wiki/Dot-decimal_notation)的版本号。
 版本格式为：`<MAJOR>.<MINOR>.<PATCH>[.<OTHER>]...`。

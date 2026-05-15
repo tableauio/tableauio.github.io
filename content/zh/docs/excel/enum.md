@@ -1,7 +1,7 @@
 ---
-title: "Enum（枚举）"
+title: "枚举（Enum）"
 description: "Excel enum 使用指南。"
-lead: "本文说明 Excel enum 类型的各种特性。"
+lead: "本文说明 Excel 枚举类型的各种特性。"
 date: 2024-09-24T14:00:00+08:00
 lastmod: 2024-09-24T14:00:00+08:00
 draft: false
@@ -13,7 +13,7 @@ toc: true
 ## 使用预定义枚举类型
 
 > [!NOTE]
-> 枚举基础知识请参考 [Enum（枚举）]({{< relref "../basics/enum" >}}) 。
+> 枚举基础知识请参考 [枚举]({{< relref "../basics/enum" >}}) 。
 
 例如，`common.proto` 中定义的枚举类型 `FruitType`：
 
@@ -26,7 +26,7 @@ enum FruitType {
 }
 ```
 
-*HelloWorld.xlsx* 中的 worksheet `ItemConf`：
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
@@ -99,23 +99,23 @@ message ItemConf {
 
 {{< /details >}}
 
-## 在 sheet 中定义枚举类型
+## 在工作表中定义枚举类型
 
-在 metasheet `@TABLEAU` 中有两种 `Mode` 可用于在 sheet 中定义枚举类型：
+在元表 `@TABLEAU` 中有两种 `Mode` 可用于在工作表中定义枚举类型：
 
-- `MODE_ENUM_TYPE`：在一个 sheet 中定义单个枚举类型。
-- `MODE_ENUM_TYPE_MULTI`：在一个 sheet 中定义多个枚举类型。
+- `MODE_ENUM_TYPE`：在一个工作表中定义单个枚举类型。
+- `MODE_ENUM_TYPE_MULTI`：在一个工作表中定义多个枚举类型。
 
-### 单个枚举类型
+### 单个枚举类型（Single enum type in sheet）
 
 > [!Note]
 >
 > 1. `Number` 列是可选的，用于指定枚举值编号。省略时从 `1` 开始自动递增。
 > 2. 如果未显式定义默认枚举值 `0`，则会自动生成，命名模式为 `{ENUM_TYPE}_INVALID`。
 
-需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_ENUM_TYPE`。
+需要在元表 `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_ENUM_TYPE`。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `ItemType`：
+例如，*HelloWorld.xlsx* 中的工作表 `ItemType`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType "@TABLEAU" >}}
 
@@ -163,9 +163,9 @@ enum ItemType {
 > [!IMPORTANT]
 > 每个枚举类型由一个 **block** 定义，即一系列连续的非空行。不同的 block 之间由**一行或多行空行**分隔。
 
-需要在 metasheet `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_ENUM_TYPE_MULTI`。
+需要在元表 `@TABLEAU` 中将 `Mode` 选项设置为 `MODE_ENUM_TYPE_MULTI`。
 
-例如，*HelloWorld.xlsx* 中的 worksheet `Enum`：
+例如，*HelloWorld.xlsx* 中的工作表 `Enum`：
 
 {{< spreadsheet "HelloWorld.xlsx" Enum "@TABLEAU" >}}
 
@@ -243,9 +243,9 @@ enum BirdType {
 
 {{< /details >}}
 
-## 在 sheet 中定义并使用枚举类型
+## 在工作表中定义并使用枚举类型
 
-例如，*HelloWorld.xlsx* 中的两个 worksheet `ItemType` 和 `ItemConf`：
+例如，*HelloWorld.xlsx* 中的两个工作表 `ItemType` 和 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemType ItemConf "@TABLEAU" >}}
 

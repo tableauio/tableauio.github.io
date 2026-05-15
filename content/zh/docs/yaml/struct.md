@@ -1,7 +1,7 @@
 ---
-title: "Struct（结构体）"
+title: "结构体（Struct）"
 description: "YAML struct 使用指南。"
-lead: "YAML struct 使用指南。"
+lead: "YAML 结构体使用指南。"
 date: 2024-06-22T10:00:00+08:00
 lastmod: 2024-06-22T10:00:00+08:00
 draft: false
@@ -10,9 +10,9 @@ weight: 4300
 toc: true
 ---
 
-## 通用 struct
+## 通用结构体
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -75,9 +75,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## 复用同级 struct
+## 复用同级结构体
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -138,7 +138,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Predefined struct
+## 预定义结构体（Predefined struct） {#predefined-struct}
 
 *common.proto* 中预定义的 `Item`：
 
@@ -149,7 +149,7 @@ message Item {
 }
 ```
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -194,9 +194,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell struct
+## 单元格内结构体（Incell struct）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -242,9 +242,9 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell general struct
+## 单元格内通用结构体（Incell general struct）
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets
@@ -294,7 +294,7 @@ message ItemConf {
 
 {{< /details >}}
 
-## Incell predefined struct
+## 单元格内预定义结构体（Incell predefined struct）
 
 *common.proto* 中预定义的 `Item`：
 
@@ -305,7 +305,7 @@ message Item {
 }
 ```
 
-*HelloWorld.yaml* 中的 worksheet `ItemConf`：
+*HelloWorld.yaml* 中的工作表 `ItemConf`：
 
 ```yaml
 # define metasheet: generate all sheets

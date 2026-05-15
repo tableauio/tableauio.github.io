@@ -1,6 +1,6 @@
 ---
-title: "Blog"
-description: "The Tableau Blog."
+title: "博客"
+description: "Tableau 博客。"
 date: 2020-10-06T08:49:55+00:00
 lastmod: 2020-10-06T08:49:55+00:00
 draft: false
