@@ -82,6 +82,84 @@ message ItemConf {
 
 {{< /details >}}
 
+### 垂直映射嵌套水平聚合列表（Horizontal-aggregate-list in vertical-map） {#horizontal-aggregate-list-in-vertical-map}
+
+> [!NOTE]
+> 当键相同的多行需要把**水平展开**的键控列表元素**跨行追加**到同一个父记录时，
+> 在水平列表字段上设置 [`prop:{aggregate:true}`]({{< relref "field-property/#选项-aggregate" >}})，
+> 父映射的键字段同时设置 `prop:{unique:false}` 允许重复键。
+>
+> 重复键控列表素会触发 [E2028]({{< relref "../help/troubleshooting/#e2028-keyed-list-元素重复" >}})。
+
+*HelloWorld.xlsx* 中的工作表 `ItemConf`：
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                                | Name        | Param1ID                        | Param1Num    | Param2ID    | Param2Num    |
+| --------------------------------- | ----------- | ------------------------------- | ------------ | ----------- | ------------ |
+| map<uint32, Item>\|{unique:false} | string      | [Param]uint32\|{aggregate:true} | int32        | uint32      | int32        |
+| Item's ID                         | Item's name | Param1's ID                     | Param1's num | Param2's ID | Param2's num |
+| 1                                 | Apple       | 101                             | 10           |             |              |
+| 1                                 |             | 102                             | 20           |             |              |
+| 2                                 | Orange      | 201                             | 30           | 202         | 40           |
+| 3                                 | Banana      | 301                             | 50           |             |              |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+生成结果：
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID" prop:{unique:false}}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    repeated Param param_list = 3 [(tableau.field) = {name:"Param" layout:LAYOUT_HORIZONTAL prop:{aggregate:true}}];
+    message Param {
+      uint32 id = 1 [(tableau.field) = {name:"ID"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemMap": {
+        "1": {"id": 1, "name": "Apple", "paramList": [{"id": 101, "num": 10}, {"id": 102, "num": 20}]},
+        "2": {"id": 2, "name": "Orange", "paramList": [{"id": 201, "num": 30}, {"id": 202, "num": 40}]},
+        "3": {"id": 3, "name": "Banana", "paramList": [{"id": 301, "num": 50}]}
+    }
+}
+```
+
+{{< /details >}}
+
 ### 垂直映射嵌套垂直列表（Vertical-list in vertical-map）
 
 *HelloWorld.xlsx* 中的工作表 `ItemConf`：

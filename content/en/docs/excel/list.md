@@ -477,7 +477,12 @@ Overview of vertical list syntax:
 ### Vertical scalar list
 
 > [!NOTE]
-> It's defined same as [Incell scalar list](#incell-scalar-list), but will aggregate multiple rows if provided.
+> Defined the same as [Incell scalar list](#incell-scalar-list), but with field
+> property [`aggregate:true`]({{< relref "field-property/#option-aggregate" >}})
+> so that the per-row incell lists are concatenated into a single flat list.
+> Without `aggregate:true`, multi-row data on the same parent record fails the
+> consistency check and reports
+> [E2023]({{< relref "../help/troubleshooting/#e2023-field-value-conflict-across-rows-or-columns" >}}).
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
@@ -485,13 +490,13 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet colored >}}
 
-| ID       |
-| -------- |
-| []uint32 |
-| ID       |
-| 1,2,3    |
-| 1,2      |
-| 1        |
+| ID                         |
+| -------------------------- |
+| []uint32\|{aggregate:true} |
+| ID                         |
+| 1,2,3                      |
+| 1,2                        |
+| 1                          |
 
 {{< /sheet >}}
 
@@ -518,7 +523,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated uint32 id_list = 1 [(tableau.field) = {name:"ID" layout:LAYOUT_INCELL}];
+  repeated uint32 id_list = 1 [(tableau.field) = {name:"ID" layout:LAYOUT_INCELL prop:{aggregate:true}}];
 }
 ```
 
@@ -544,7 +549,12 @@ message ItemConf {
 ### Vertical enum list
 
 > [!NOTE]
-> It's defined same as [Incell enum list](#incell-enum-list), but will aggregate multiple rows if provided.
+> Defined the same as [Incell enum list](#incell-enum-list), but with field
+> property [`aggregate:true`]({{< relref "field-property/#option-aggregate" >}})
+> so that the per-row incell lists are concatenated into a single flat list.
+> Without `aggregate:true`, multi-row data on the same parent record fails the
+> consistency check and reports
+> [E2023]({{< relref "../help/troubleshooting/#e2023-field-value-conflict-across-rows-or-columns" >}}).
 
 `FruitType` in *common.proto* is predefined as:
 
@@ -563,13 +573,13 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet colored >}}
 
-| Type                               |
-| ---------------------------------- |
-| []enum\<.FruitType\>               |
-| Type                               |
-| Apple,Orange,Banana                |
-| FRUIT_TYPE_APPLE,FRUIT_TYPE_ORANGE |
-| 1                                  |
+| Type                                   |
+| -------------------------------------- |
+| []enum\<.FruitType\>\|{aggregate:true} |
+| Type                                   |
+| Apple,Orange,Banana                    |
+| FRUIT_TYPE_APPLE,FRUIT_TYPE_ORANGE     |
+| 1                                      |
 
 {{< /sheet >}}
 
@@ -596,7 +606,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated protoconf.FruitType type_list = 1 [(tableau.field) = {name:"Type" layout:LAYOUT_INCELL}];
+  repeated protoconf.FruitType type_list = 1 [(tableau.field) = {name:"Type" layout:LAYOUT_INCELL prop:{aggregate:true}}];
 }
 ```
 
@@ -779,18 +789,26 @@ message ItemConf {
 
 ### Vertical incell-struct list
 
+> [!NOTE]
+> Defined the same as [Incell struct list](#incell-struct-list), but with field
+> property [`aggregate:true`]({{< relref "field-property/#option-aggregate" >}})
+> so that the per-row incell lists are concatenated into a single flat list.
+> Without `aggregate:true`, multi-row data on the same parent record fails the
+> consistency check and reports
+> [E2023]({{< relref "../help/troubleshooting/#e2023-field-value-conflict-across-rows-or-columns" >}}).
+
 A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
 {{< sheet colored >}}
 
-| Item                       |
-| -------------------------- |
-| []{int32 ID,int32 Num}Item |
-| Item list                  |
-| 1:100                      |
-| 2:200,3:300                |
+| Item                                         |
+| -------------------------------------------- |
+| []{int32 ID,int32 Num}Item\|{aggregate:true} |
+| Item list                                    |
+| 1:100                                        |
+| 2:200,3:300                                  |
 
 {{< /sheet >}}
 
@@ -817,7 +835,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
+  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL prop:{aggregate:true}}];
   message Item {
     int32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -852,6 +870,15 @@ message ItemConf {
 
 ### Vertical incell-predefined-struct list
 
+> [!NOTE]
+> Defined the same as [Incell predefined-struct list](#incell-predefined-struct-list),
+> but with field property
+> [`aggregate:true`]({{< relref "field-property/#option-aggregate" >}}) so that
+> the per-row incell lists are concatenated into a single flat list. Without
+> `aggregate:true`, multi-row data on the same parent record fails the
+> consistency check and reports
+> [E2023]({{< relref "../help/troubleshooting/#e2023-field-value-conflict-across-rows-or-columns" >}}).
+
 `Item` in *common.proto* is predefined as:
 
 ```protobuf
@@ -867,12 +894,12 @@ A worksheet `ItemConf` in *HelloWorld.xlsx*:
 
 {{< sheet colored >}}
 
-| Item        |
-| ----------- |
-| []{.Item}   |
-| Item's info |
-| 1:100       |
-| 2:200,3:300 |
+| Item                        |
+| --------------------------- |
+| []{.Item}\|{aggregate:true} |
+| Item's info                 |
+| 1:100                       |
+| 2:200,3:300                 |
 
 {{< /sheet >}}
 
@@ -900,7 +927,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
+  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL prop:{aggregate:true}}];
 }
 ```
 

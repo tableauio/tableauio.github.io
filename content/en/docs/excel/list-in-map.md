@@ -108,6 +108,87 @@ message ItemConf {
 
 {{< /details >}}
 
+### Horizontal-aggregate-list in vertical-map {#horizontal-aggregate-list-in-vertical-map}
+
+> [!NOTE]
+> When the same map key spans multiple rows and the **horizontally** unrolled
+> keyed-list elements should be **appended across rows** into one parent
+> record, set [`prop:{aggregate:true}`]({{< relref "field-property/#option-aggregate" >}})
+> on the horizontal list field, and `prop:{unique:false}` on the parent map
+> key field to allow duplicate keys.
+>
+> Duplicate keyed-list elements trigger
+> [E2028]({{< relref "../help/troubleshooting/#e2028-duplicate-elements-in-keyed-list" >}}).
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                                | Name        | Param1ID                        | Param1Num    | Param2ID    | Param2Num    |
+| --------------------------------- | ----------- | ------------------------------- | ------------ | ----------- | ------------ |
+| map<uint32, Item>\|{unique:false} | string      | [Param]uint32\|{aggregate:true} | int32        | uint32      | int32        |
+| Item's ID                         | Item's name | Param1's ID                     | Param1's num | Param2's ID | Param2's num |
+| 1                                 | Apple       | 101                             | 10           |             |              |
+| 1                                 |             | 102                             | 20           |             |              |
+| 2                                 | Orange      | 201                             | 30           | 202         | 40           |
+| 3                                 | Banana      | 301                             | 50           |             |              |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Output:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID" prop:{unique:false}}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    repeated Param param_list = 3 [(tableau.field) = {name:"Param" layout:LAYOUT_HORIZONTAL prop:{aggregate:true}}];
+    message Param {
+      uint32 id = 1 [(tableau.field) = {name:"ID"}];
+      int32 num = 2 [(tableau.field) = {name:"Num"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemMap": {
+        "1": {"id": 1, "name": "Apple", "paramList": [{"id": 101, "num": 10}, {"id": 102, "num": 20}]},
+        "2": {"id": 2, "name": "Orange", "paramList": [{"id": 201, "num": 30}, {"id": 202, "num": 40}]},
+        "3": {"id": 3, "name": "Banana", "paramList": [{"id": 301, "num": 50}]}
+    }
+}
+```
+
+{{< /details >}}
+
 ### Vertical-list in vertical-map
 
 A worksheet `ItemConf` in *HelloWorld.xlsx*:

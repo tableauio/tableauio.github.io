@@ -12,26 +12,27 @@ toc: true
 
 ## Overview
 
-| Option             | Type   | Description                                                                                                                                                                                                                                  |
-| ------------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `unique`           | bool   | Check field uniqueness. <br> Default: `false`. Specially for map (or KeyedList) key, default will be auto deduced.                                                                                                                           |
-| `range`            | string | Format: `"left,right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point.                                                                    |
-| `refer`            | string | Format: `"SheetName(SheetAlias).ColumnName"`.<br>Ensure this field is in another sheet's column value space. Multiple refers are comma-separated.                                                                                            |
-| `sequence`         | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                                                                                          |
-| `default`          | string | Use this default value if cell is empty (not present).                                                                                                                                                                                       |
-| `fixed`            | bool   | Auto-detected fixed size of horizontal list/map. <br> Default: `false`.                                                                                                                                                                      |
-| `size`             | uint32 | Specify fixed size of horizontal list/map.                                                                                                                                                                                                   |
-| `form`             | Form   | Specify cell data form of incell struct.<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                                                                                                 |
-| `json_name`        | string | Specify field's custom JSON name instead of lowerCamelCase name of proto field name.                                                                                                                                                         |
-| `present`          | bool   | Must fill cell data explicitly if present is true. <br> Default: `false`.                                                                                                                                                                    |
-| `optional`         | bool   | Whether this field is optional (field name existence).                                                                                                                                                                                       |
-| `patch`            | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                                                                                                |
-| `sep`              | string | Field-level separator.                                                                                                                                                                                                                       |
-| `subsep`           | string | Field-level subseparator.                                                                                                                                                                                                                    |
-| `pattern`          | string | Specify the pattern of scalar, list element, and map value.                                                                                                                                                                                  |
-| `validate`         | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for scalar and well-known types. <br>E.g.: `"string:{max_len:10}"`, `"int32:{gt:0 lte:100}"`, `"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`. |
-| `validate_complex` | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for complex types (list/map). <br>E.g.: `"repeated:{min_items:1}"`, `"map:{min_pairs:1}"`.                                                                      |
-| `validate_message` | string | [protovalidate](https://github.com/bufbuild/protovalidate) message-level rules for the nested message of a field. <br>E.g.: `"cel_expression:\"this.start_time < this.end_time\""`.                                                          |
+| Option             | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------------ | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `unique`           | bool   | Check field uniqueness. <br> Default: `false`. Specially for map (or KeyedList) key, default will be auto deduced.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `range`            | string | Format: `"left,right"`. E.g.: `"1,10"`, `"1,~"`, `"~,10"`. <br> Different interpretations of range: <br> - number: value range. <br> - string: count of utf-8 code point.                                                                                                                                                                                                                                                                                                                                                           |
+| `refer`            | string | Format: `"SheetName(SheetAlias).ColumnName"`.<br>Ensure this field is in another sheet's column value space. Multiple refers are comma-separated.                                                                                                                                                                                                                                                                                                                                                                                   |
+| `sequence`         | int64  | Ensure this field's value is a sequence and begins with this value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `default`          | string | Use this default value if cell is empty (not present).                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `fixed`            | bool   | Auto-detected fixed size of horizontal list/map. <br> Default: `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `size`             | uint32 | Specify fixed size of horizontal list/map.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `form`             | Form   | Specify cell data form of incell struct.<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `json_name`        | string | Specify field's custom JSON name instead of lowerCamelCase name of proto field name.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `present`          | bool   | Must fill cell data explicitly if present is true. <br> Default: `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `optional`         | bool   | Whether this field is optional (field name existence).                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `patch`            | Patch  | Field patch type. <br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `sep`              | string | Field-level separator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `subsep`           | string | Field-level subseparator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `pattern`          | string | Specify the pattern of scalar, list element, and map value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `validate`         | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for scalar and well-known types. <br>E.g.: `"string:{max_len:10}"`, `"int32:{gt:0 lte:100}"`, `"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`.                                                                                                                                                                                                                                                                                        |
+| `validate_complex` | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for complex types (list/map). <br>E.g.: `"repeated:{min_items:1}"`, `"map:{min_pairs:1}"`.                                                                                                                                                                                                                                                                                                                                                             |
+| `validate_message` | string | [protovalidate](https://github.com/bufbuild/protovalidate) message-level rules for the nested message of a field. <br>E.g.: `"cel_expression:\"this.start_time < this.end_time\""`.                                                                                                                                                                                                                                                                                                                                                 |
+| `aggregate`        | bool   | For **incell** or **horizontal** list/map fields. If `true`, when the same parent record is visited across multiple rows/columns (e.g. vertical map / keyed-list with same key, vertical/horizontal list spanning multiple rows/columns), elements from each visit are merged into one aggregated collection on the parent. If `false`, every visit must produce identical values for that field, otherwise [E2023](../help/troubleshooting/#e2023-field-value-conflict-across-rows-or-columns) is reported. <br> Default: `false`. |
 {.table-striped .table-hover}
 
 ## Option `unique`
@@ -315,3 +316,92 @@ Examples:
 
 The CEL expression operates on `this`, which refers to the nested message
 instance.
+
+## Option `aggregate`
+
+Option `aggregate` applies to **incell** (`layout:LAYOUT_INCELL`) or
+**horizontal** (`layout:LAYOUT_HORIZONTAL`) list/map fields. When the same
+parent record is visited across multiple rows/columns (vertical map /
+keyed-list with same key across rows, vertical/horizontal list spanning
+multiple rows/columns, etc.), `aggregate:true` **merges** the elements
+produced by each visit into one combined collection on the parent, instead
+of requiring every visit to carry identical values.
+
+> [!NOTE]
+> Without `aggregate`, when the parent record is visited more than once,
+> tableau requires every visit to carry **identical values** for the field;
+> otherwise it reports
+> [E2023]({{< relref "../help/troubleshooting/#e2023-field-value-conflict-across-rows-or-columns" >}}).
+> `aggregate:true` opts out of this consistency check and turns the field
+> into a true cross-row/cross-column accumulator.
+
+### Where it applies
+
+| Parent layout                                             | Target of `aggregate`                                                        | Repeated-visit scenario                    |
+| --------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------ |
+| Vertical map / vertical keyed-list (same key across rows) | Incell list/map (`LAYOUT_INCELL`), horizontal list/map (`LAYOUT_HORIZONTAL`) | Multiple rows mapped to one parent         |
+| Horizontal map (same key across columns)                  | Incell list/map, horizontal list/map                                         | Multiple columns mapped to one parent      |
+| Vertical/horizontal list spanning multiple rows/columns   | Sibling incell fields revisited per row/column                               | Multiple rows/columns mapped to one parent |
+
+### Per-type behavior
+
+| Sub-field type              | Behavior with `aggregate:true`                                           | Error code                                                                                |
+| --------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| Incell list                 | Elements from each visit are **appended** into one list                  | —                                                                                         |
+| Incell map                  | Entries from each visit are **merged**; duplicate keys reported as error | [E2005]({{< relref "../help/troubleshooting/#e2005-map-key-not-unique" >}})               |
+| Incell keyed-list (`[]<T>`) | Elements **appended** with **dedup by key**; duplicate elements reported | [E2028]({{< relref "../help/troubleshooting/#e2028-duplicate-elements-in-keyed-list" >}}) |
+| Horizontal list             | Cross-row horizontal list elements are **appended** into one list        | —                                                                                         |
+| Horizontal keyed-list       | Cross-row elements **appended** with **dedup by key**                    | [E2028]({{< relref "../help/troubleshooting/#e2028-duplicate-elements-in-keyed-list" >}}) |
+| Horizontal map              | Cross-row entries **merged**; duplicate keys reported as error           | [E2005]({{< relref "../help/troubleshooting/#e2005-map-key-not-unique" >}})               |
+
+### Vertical aggregation
+
+For end-to-end examples, see the corresponding entries in **Vertical list**:
+
+- [Vertical scalar list]({{< relref "list/#vertical-scalar-list" >}}) — incell
+  list of scalars aggregated across rows.
+- [Vertical enum list]({{< relref "list/#vertical-enum-list" >}}) — incell
+  list of enums aggregated across rows.
+- [Vertical incell-struct list]({{< relref "list/#vertical-incell-struct-list" >}})
+  — incell list of inline structs aggregated across rows.
+- [Vertical incell-predefined-struct list]({{< relref "list/#vertical-incell-predefined-struct-list" >}})
+  — incell list of predefined structs aggregated across rows.
+
+### Horizontal aggregation
+
+For end-to-end examples of cross-row aggregation on horizontal-layout
+fields, see list-in-map / map-in-map:
+
+- [Horizontal-aggregate-list in vertical-map]({{< relref "list-in-map/#horizontal-aggregate-list-in-vertical-map" >}})
+  — horizontal list (`LAYOUT_HORIZONTAL`) aggregated across rows.
+- [Horizontal-aggregate-map in vertical-map]({{< relref "map-in-map/#horizontal-aggregate-map-in-vertical-map" >}})
+  — horizontal map (`LAYOUT_HORIZONTAL`) aggregated across rows.
+
+### Combining `aggregate` with `key` (keyed-list dedup)
+
+When `aggregate:true` is combined with a keyed-list (`[]<T>` syntax, which
+sets `key` on the field), tableau also **deduplicates** elements during
+aggregation:
+
+- Scalar / enum keyed-list: the element itself is the key — duplicate elements
+  across rows/columns trigger
+  [E2028]({{< relref "../help/troubleshooting/#e2028-duplicate-elements-in-keyed-list" >}}).
+- Message keyed-list: only the configured `key` sub-field is compared between
+  elements.
+
+For end-to-end examples, see
+[Vertical KeyedList]({{< relref "keyedlist/#vertical-keyedlist" >}})
+(vertical aggregation) and
+[Horizontal-aggregate-list in vertical-map]({{< relref "list-in-map/#horizontal-aggregate-list-in-vertical-map" >}})
+(horizontal aggregation).
+
+### Notes
+
+- `aggregate` only takes effect on **incell** (`layout:LAYOUT_INCELL`) or
+  **horizontal** (`layout:LAYOUT_HORIZONTAL`) list/map fields.
+- When the parent key is repeated across rows, also set
+  `prop:{unique:false}` on the parent key field; otherwise
+  [E2005]({{< relref "../help/troubleshooting/#e2005-map-key-not-unique" >}})
+  blocks the duplicate.
+- Scalar field props such as `range`, `refer`, `unique` remain effective on the
+  individual elements after aggregation.

@@ -476,7 +476,11 @@ message ItemConf {
 ### 垂直标量列表（Vertical scalar list）
 
 > [!NOTE]
-> 定义方式与 [单元格内标量列表](#单元格内标量列表) 相同，但如果提供了多行数据，会聚合多行。
+> 定义方式与 [单元格内标量列表](#单元格内标量列表) 相同，但需要显式开启字段属性
+> [`aggregate:true`]({{< relref "field-property/#选项-aggregate" >}})，
+> 才会把每一行的 incell list 合并到同一条记录的扁平列表中。
+> 如果未设置 `aggregate:true`，同一父记录的多行数据会因一致性校验失败而报
+> [E2023]({{< relref "../help/troubleshooting/#e2023-字段值跨行或列冲突" >}})。
 
 *HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
@@ -484,13 +488,13 @@ message ItemConf {
 
 {{< sheet colored >}}
 
-| ID       |
-| -------- |
-| []uint32 |
-| ID       |
-| 1,2,3    |
-| 1,2      |
-| 1        |
+| ID                         |
+| -------------------------- |
+| []uint32\|{aggregate:true} |
+| ID                         |
+| 1,2,3                      |
+| 1,2                        |
+| 1                          |
 
 {{< /sheet >}}
 
@@ -517,7 +521,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated uint32 id_list = 1 [(tableau.field) = {name:"ID" layout:LAYOUT_INCELL}];
+  repeated uint32 id_list = 1 [(tableau.field) = {name:"ID" layout:LAYOUT_INCELL prop:{aggregate:true}}];
 }
 ```
 
@@ -543,7 +547,11 @@ message ItemConf {
 ### 垂直枚举列表（Vertical enum list）
 
 > [!NOTE]
-> 定义方式与 [单元格内枚举列表](#单元格内枚举列表) 相同，但如果提供了多行数据，会聚合多行。
+> 定义方式与 [单元格内枚举列表](#单元格内枚举列表) 相同，但需要显式开启字段属性
+> [`aggregate:true`]({{< relref "field-property/#选项-aggregate" >}})，
+> 才会把每一行的 incell list 合并到同一条记录的扁平列表中。
+> 如果未设置 `aggregate:true`，同一父记录的多行数据会因一致性校验失败而报
+> [E2023]({{< relref "../help/troubleshooting/#e2023-字段值跨行或列冲突" >}})。
 
 *common.proto* 中预定义的枚举类型 `FruitType`：
 
@@ -562,13 +570,13 @@ enum FruitType {
 
 {{< sheet colored >}}
 
-| Type                               |
-| ---------------------------------- |
-| []enum\<.FruitType\>               |
-| Type                               |
-| Apple,Orange,Banana                |
-| FRUIT_TYPE_APPLE,FRUIT_TYPE_ORANGE |
-| 1                                  |
+| Type                                   |
+| -------------------------------------- |
+| []enum\<.FruitType\>\|{aggregate:true} |
+| Type                                   |
+| Apple,Orange,Banana                    |
+| FRUIT_TYPE_APPLE,FRUIT_TYPE_ORANGE     |
+| 1                                      |
 
 {{< /sheet >}}
 
@@ -595,7 +603,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated protoconf.FruitType type_list = 1 [(tableau.field) = {name:"Type" layout:LAYOUT_INCELL}];
+  repeated protoconf.FruitType type_list = 1 [(tableau.field) = {name:"Type" layout:LAYOUT_INCELL prop:{aggregate:true}}];
 }
 ```
 
@@ -778,18 +786,25 @@ message ItemConf {
 
 ### 垂直单元格内结构体列表（Vertical incell-struct list）
 
+> [!NOTE]
+> 定义方式与 [单元格内结构体列表](#单元格内结构体列表) 相同，但需要显式开启字段属性
+> [`aggregate:true`]({{< relref "field-property/#选项-aggregate" >}})，
+> 才会把每一行的 incell list 合并到同一条记录的扁平列表中。
+> 如果未设置 `aggregate:true`，同一父记录的多行数据会因一致性校验失败而报
+> [E2023]({{< relref "../help/troubleshooting/#e2023-字段值跨行或列冲突" >}})。
+
 *HelloWorld.xlsx* 中的工作表 `ItemConf`：
 
 {{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
 
 {{< sheet colored >}}
 
-| Item                       |
-| -------------------------- |
-| []{int32 ID,int32 Num}Item |
-| Item list                  |
-| 1:100                      |
-| 2:200,3:300                |
+| Item                                         |
+| -------------------------------------------- |
+| []{int32 ID,int32 Num}Item\|{aggregate:true} |
+| Item list                                    |
+| 1:100                                        |
+| 2:200,3:300                                  |
 
 {{< /sheet >}}
 
@@ -816,7 +831,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
+  repeated Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL prop:{aggregate:true}}];
   message Item {
     int32 id = 1 [(tableau.field) = {name:"ID"}];
     int32 num = 2 [(tableau.field) = {name:"Num"}];
@@ -851,6 +866,13 @@ message ItemConf {
 
 ### 垂直单元格内预定义结构体列表（Vertical incell-predefined-struct list）
 
+> [!NOTE]
+> 定义方式与 [单元格内预定义结构体列表](#单元格内预定义结构体列表) 相同，但需要显式开启字段属性
+> [`aggregate:true`]({{< relref "field-property/#选项-aggregate" >}})，
+> 才会把每一行的 incell list 合并到同一条记录的扁平列表中。
+> 如果未设置 `aggregate:true`，同一父记录的多行数据会因一致性校验失败而报
+> [E2023]({{< relref "../help/troubleshooting/#e2023-字段值跨行或列冲突" >}})。
+
 *common.proto* 中预定义的 `Item`：
 
 ```protobuf
@@ -866,12 +888,12 @@ message Item {
 
 {{< sheet colored >}}
 
-| Item        |
-| ----------- |
-| []{.Item}   |
-| Item's info |
-| 1:100       |
-| 2:200,3:300 |
+| Item                        |
+| --------------------------- |
+| []{.Item}\|{aggregate:true} |
+| Item's info                 |
+| 1:100                       |
+| 2:200,3:300                 |
 
 {{< /sheet >}}
 
@@ -899,7 +921,7 @@ option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:
 message ItemConf {
   option (tableau.worksheet) = {name:"ItemConf"};
 
-  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL}];
+  repeated protoconf.Item item_list = 1 [(tableau.field) = {name:"Item" layout:LAYOUT_INCELL span:SPAN_INNER_CELL prop:{aggregate:true}}];
 }
 ```
 

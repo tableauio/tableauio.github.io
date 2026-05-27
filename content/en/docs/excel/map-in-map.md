@@ -108,6 +108,87 @@ message ItemConf {
 
 {{< /details >}}
 
+### Horizontal-aggregate-map in vertical-map {#horizontal-aggregate-map-in-vertical-map}
+
+> [!NOTE]
+> When the same map key spans multiple rows and the **horizontally** unrolled
+> child-map entries should be **merged across rows** into one parent record,
+> set [`prop:{aggregate:true}`]({{< relref "field-property/#option-aggregate" >}})
+> on the horizontal map field, and `prop:{unique:false}` on the parent map
+> key field to allow duplicate keys.
+>
+> Duplicate child-map keys across rows trigger
+> [E2005]({{< relref "../help/troubleshooting/#e2005-map-key-not-unique" >}}).
+
+A worksheet `ItemConf` in *HelloWorld.xlsx*:
+
+{{< spreadsheet "HelloWorld.xlsx" ItemConf "@TABLEAU" >}}
+
+{{< sheet colored >}}
+
+| ID                                | Name        | Prop1ID                            | Prop1Value    | Prop2ID    | Prop2Value    |
+| --------------------------------- | ----------- | ---------------------------------- | ------------- | ---------- | ------------- |
+| map<uint32, Item>\|{unique:false} | string      | map<int32, Prop>\|{aggregate:true} | int64         | int32      | int64         |
+| Item's ID                         | Item's name | Prop1's ID                         | Prop1's value | Prop2's ID | Prop2's value |
+| 1                                 | Apple       | 1                                  | 10            |            |               |
+| 1                                 |             | 2                                  | 20            |            |               |
+| 2                                 | Orange      | 3                                  | 30            | 4          | 40            |
+| 3                                 | Banana      | 5                                  | 50            |            |               |
+
+{{< /sheet >}}
+
+{{< sheet colored1 >}}
+
+|     |     |     |
+| --- | --- | --- |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+{{< /sheet >}}
+
+{{< /spreadsheet >}}
+
+Output:
+
+{{< details "hello_world.proto" >}}
+
+```protobuf
+// --snip--
+option (tableau.workbook) = {name:"HelloWorld.xlsx" namerow:1 typerow:2 noterow:3 datarow:4};
+
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  map<uint32, Item> item_map = 1 [(tableau.field) = {key:"ID" layout:LAYOUT_VERTICAL}];
+  message Item {
+    uint32 id = 1 [(tableau.field) = {name:"ID" prop:{unique:false}}];
+    string name = 2 [(tableau.field) = {name:"Name"}];
+    map<int32, Prop> prop_map = 3 [(tableau.field) = {name:"Prop" key:"ID" layout:LAYOUT_HORIZONTAL prop:{aggregate:true}}];
+    message Prop {
+      int32 id = 1 [(tableau.field) = {name:"ID"}];
+      int64 value = 2 [(tableau.field) = {name:"Value"}];
+    }
+  }
+}
+```
+
+{{< /details >}}
+
+{{< details "ItemConf.json" >}}
+
+```json
+{
+    "itemMap": {
+        "1": {"id": 1, "name": "Apple", "propMap": {"1": {"id": 1, "value": "10"}, "2": {"id": 2, "value": "20"}}},
+        "2": {"id": 2, "name": "Orange", "propMap": {"3": {"id": 3, "value": "30"}, "4": {"id": 4, "value": "40"}}},
+        "3": {"id": 3, "name": "Banana", "propMap": {"5": {"id": 5, "value": "50"}}}
+    }
+}
+```
+
+{{< /details >}}
+
 ### Multiple horizontal maps in vertical-map
 
 > TODO: add details and examples.

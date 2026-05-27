@@ -12,26 +12,27 @@ toc: true
 
 ## 概览
 
-| 选项               | 类型   | 说明                                                                                                                                                                                                                              |
-| ------------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `unique`           | bool   | 检查字段唯一性。<br> 默认值：`false`。对于映射（或键控列表）的键，默认值会自动推断。                                                                                                                                              |
-| `range`            | string | 格式：`"left,right"`。例如：`"1,10"`、`"1,~"`、`"~,10"`。<br> range 的不同含义：<br> - 数字：值范围。<br> - 字符串：UTF-8 码点数量。                                                                                              |
-| `refer`            | string | 格式：`"SheetName(SheetAlias).ColumnName"`。<br>确保该字段的值在另一个工作表的列值空间中。多个 refer 用逗号分隔。                                                                                                                 |
-| `sequence`         | int64  | 确保该字段的值是一个从指定值开始的序列。                                                                                                                                                                                          |
-| `default`          | string | 如果单元格为空，则使用此默认值。                                                                                                                                                                                                  |
-| `fixed`            | bool   | 自动检测水平列表/映射的固定大小。<br> 默认值：`false`。                                                                                                                                                                           |
-| `size`             | uint32 | 指定水平列表/映射的固定大小。                                                                                                                                                                                                     |
-| `form`             | Form   | 指定单元格内结构体的单元格数据格式。<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                                                                                          |
-| `json_name`        | string | 指定字段的自定义 JSON 名称，替代 proto 字段名的 lowerCamelCase 形式。                                                                                                                                                             |
-| `present`          | bool   | 如果 present 为 true，则必须显式填写单元格数据。<br> 默认值：`false`。                                                                                                                                                            |
-| `optional`         | bool   | 该字段是否为可选（字段名可缺失）。                                                                                                                                                                                                |
-| `patch`            | Patch  | 字段 patch 类型。<br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                                                                                      |
-| `sep`              | string | 字段级分隔符。                                                                                                                                                                                                                    |
-| `subsep`           | string | 字段级子分隔符。                                                                                                                                                                                                                  |
-| `pattern`          | string | 指定标量、列表元素和映射值的模式。                                                                                                                                                                                                |
-| `validate`         | string | 适用于标量和知名类型的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"string:{max_len:10}"`、`"int32:{gt:0 lte:100}"`、`"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`。 |
-| `validate_complex` | string | 适用于复合类型（列表/映射）的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"repeated:{min_items:1}"`、`"map:{min_pairs:1}"`。                                                            |
-| `validate_message` | string | 适用于字段所嵌套结构体的 [protovalidate](https://github.com/bufbuild/protovalidate) message 级校验规则。<br>例如：`"cel_expression:\"this.start_time < this.end_time\""`。                                                        |
+| 选项               | 类型   | 说明                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `unique`           | bool   | 检查字段唯一性。<br> 默认值：`false`。对于映射（或键控列表）的键，默认值会自动推断。                                                                                                                                                                                                                                                                      |
+| `range`            | string | 格式：`"left,right"`。例如：`"1,10"`、`"1,~"`、`"~,10"`。<br> range 的不同含义：<br> - 数字：值范围。<br> - 字符串：UTF-8 码点数量。                                                                                                                                                                                                                      |
+| `refer`            | string | 格式：`"SheetName(SheetAlias).ColumnName"`。<br>确保该字段的值在另一个工作表的列值空间中。多个 refer 用逗号分隔。                                                                                                                                                                                                                                         |
+| `sequence`         | int64  | 确保该字段的值是一个从指定值开始的序列。                                                                                                                                                                                                                                                                                                                  |
+| `default`          | string | 如果单元格为空，则使用此默认值。                                                                                                                                                                                                                                                                                                                          |
+| `fixed`            | bool   | 自动检测水平列表/映射的固定大小。<br> 默认值：`false`。                                                                                                                                                                                                                                                                                                   |
+| `size`             | uint32 | 指定水平列表/映射的固定大小。                                                                                                                                                                                                                                                                                                                             |
+| `form`             | Form   | 指定单元格内结构体的单元格数据格式。<br> - `FORM_TEXT`<br> - `FORM_JSON`                                                                                                                                                                                                                                                                                  |
+| `json_name`        | string | 指定字段的自定义 JSON 名称，替代 proto 字段名的 lowerCamelCase 形式。                                                                                                                                                                                                                                                                                     |
+| `present`          | bool   | 如果 present 为 true，则必须显式填写单元格数据。<br> 默认值：`false`。                                                                                                                                                                                                                                                                                    |
+| `optional`         | bool   | 该字段是否为可选（字段名可缺失）。                                                                                                                                                                                                                                                                                                                        |
+| `patch`            | Patch  | 字段 patch 类型。<br> - `PATCH_REPLACE` <br> - `PATCH_MERGE`                                                                                                                                                                                                                                                                                              |
+| `sep`              | string | 字段级分隔符。                                                                                                                                                                                                                                                                                                                                            |
+| `subsep`           | string | 字段级子分隔符。                                                                                                                                                                                                                                                                                                                                          |
+| `pattern`          | string | 指定标量、列表元素和映射值的模式。                                                                                                                                                                                                                                                                                                                        |
+| `validate`         | string | 适用于标量和知名类型的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"string:{max_len:10}"`、`"int32:{gt:0 lte:100}"`、`"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`。                                                                                                                         |
+| `validate_complex` | string | 适用于复合类型（列表/映射）的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"repeated:{min_items:1}"`、`"map:{min_pairs:1}"`。                                                                                                                                                                                    |
+| `validate_message` | string | 适用于字段所嵌套结构体的 [protovalidate](https://github.com/bufbuild/protovalidate) message 级校验规则。<br>例如：`"cel_expression:\"this.start_time < this.end_time\""`。                                                                                                                                                                                |
+| `aggregate`        | bool   | 适用于**单元格内**或**水平**的列表/映射字段。若为 `true`，当同一父记录被多行/多列重复访问时（如垂直映射/键控列表多行键相同、垂直列表跨多行、水平映射/列表跨多列等），会将每次访问产生的元素聚合到同一个集合中；若为 `false`，则要求所有行/列对该字段填写相同值，否则报 [E2023](../help/troubleshooting/#e2023-字段值跨行或列冲突)。<br> 默认值：`false`。 |
 {.table-striped .table-hover}
 
 ## 选项 `unique`
@@ -307,3 +308,76 @@ message ItemConf {
 - `{Timespan}datetime|{validate_message:"cel_expression:\"this.start_time < this.end_time\""}`：每个 `Timespan` struct 都必须满足 `start_time < end_time`。
 
 CEL 表达式中的 `this` 指代被嵌套的 message 实例。
+
+## 选项 `aggregate`
+
+选项 `aggregate` 作用于**单元格内**（`layout:LAYOUT_INCELL`）或**水平**
+（`layout:LAYOUT_HORIZONTAL`）的列表/映射字段。当同一父记录被多行/多列重复
+访问时（同一映射键跨行、同一垂直/水平列表跨多行/多列等），`aggregate:true`
+会把每次访问产生的元素**聚合**到父记录的同一个集合中，而不要求所有访问填写
+完全相同的值。
+
+> [!NOTE]
+> 不设置 `aggregate` 时，若父记录被多行/多列重复访问，tableau 会要求所有访问
+> 在该字段上填写**完全相同的值**；否则会报
+> [E2023]({{< relref "../help/troubleshooting/#e2023-字段值跨行或列冲突" >}})。
+> 设置 `aggregate:true` 即可跳过该一致性校验，并将该字段视为真正的跨行/跨列累加器。
+
+### 适用场景
+
+| 父级布局                          | `aggregate` 作用对象                                                       | 重复访问场景            |
+| --------------------------------- | -------------------------------------------------------------------------- | ----------------------- |
+| 垂直映射/垂直键控列表（多行同键） | 单元格内列表/映射（`LAYOUT_INCELL`）、水平列表/映射（`LAYOUT_HORIZONTAL`） | 多行落到同一父记录      |
+| 水平映射（多列同键）              | 单元格内列表/映射、水平列表/映射                                           | 多列落到同一父记录      |
+| 垂直/水平列表自身跨多行/多列      | 兄弟单元格内字段在每行/列被重复访问                                        | 多行/多列落到同一父记录 |
+
+### 各类型聚合行为
+
+| 子字段类型                  | `aggregate:true` 行为                              | 错误码                                                                       |
+| --------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
+| 单元格内列表                | 各次访问的元素**追加**到同一列表                   | —                                                                            |
+| 单元格内映射                | 各次访问的键值**合并**到同一映射；键重复报错       | [E2005]({{< relref "../help/troubleshooting/#e2005-map-key-不唯一" >}})      |
+| 单元格内键控列表（`[]<T>`） | 各次访问的元素**追加**并按键**去重**；元素重复报错 | [E2028]({{< relref "../help/troubleshooting/#e2028-keyed-list-元素重复" >}}) |
+| 水平列表                    | 跨行的水平列表元素**追加**到同一列表               | —                                                                            |
+| 水平键控列表                | 跨行的元素**追加**并按键**去重**                   | [E2028]({{< relref "../help/troubleshooting/#e2028-keyed-list-元素重复" >}}) |
+| 水平映射                    | 跨行的键值**合并**到同一映射；键重复报错           | [E2005]({{< relref "../help/troubleshooting/#e2005-map-key-不唯一" >}})      |
+
+### 垂直聚合
+
+端到端示例参见 **垂直列表（Vertical list）** 中的对应小节：
+
+- [垂直标量列表]({{< relref "list/#垂直标量列表" >}}) —— 跨行聚合的 incell 标量列表。
+- [垂直枚举列表]({{< relref "list/#垂直枚举列表" >}}) —— 跨行聚合的 incell 枚举列表。
+- [垂直单元格内结构体列表]({{< relref "list/#垂直单元格内结构体列表" >}})
+  —— 跨行聚合的 incell 内联结构体列表。
+- [垂直单元格内预定义结构体列表]({{< relref "list/#垂直单元格内预定义结构体列表" >}})
+  —— 跨行聚合的 incell 预定义结构体列表。
+
+### 水平聚合
+
+端到端示例参见映射嵌套列表/映射嵌套映射中的水平聚合用例：
+
+- [垂直映射嵌套水平聚合列表]({{< relref "list-in-map/#horizontal-aggregate-list-in-vertical-map" >}})
+  —— 跨行聚合的水平 list（`LAYOUT_HORIZONTAL`）。
+- [垂直映射嵌套水平聚合映射]({{< relref "map-in-map/#horizontal-aggregate-map-in-vertical-map" >}})
+  —— 跨行聚合的水平 map（`LAYOUT_HORIZONTAL`）。
+
+### `aggregate` 与 `key` 组合（keyed-list 去重）
+
+当 `aggregate:true` 与键控列表（`[]<T>` 语法，会自动设置字段的 `key`）一同使用时，
+tableau 在聚合过程中还会对元素**去重**：
+
+- 标量/枚举键控列表：元素本身就是键——跨行/跨列重复的元素会触发
+  [E2028]({{< relref "../help/troubleshooting/#e2028-keyed-list-元素重复" >}})。
+- 结构体键控列表：仅比较通过 `key` 配置的子字段。
+
+端到端示例参见 [垂直键控列表]({{< relref "keyedlist/#vertical-keyedlist" >}})
+（垂直聚合）以及 [垂直映射嵌套水平聚合列表]({{< relref "list-in-map/#horizontal-aggregate-list-in-vertical-map" >}})（水平聚合）。
+
+### 注意
+
+- `aggregate` 仅在**单元格内**（`layout:LAYOUT_INCELL`）或**水平**
+  （`layout:LAYOUT_HORIZONTAL`）的列表/映射字段上生效。
+- 父字段键跨行重复时，需要在父字段上同时设置 `prop:{unique:false}`，
+  否则会被 [E2005]({{< relref "../help/troubleshooting/#e2005-map-key-不唯一" >}}) 拦截。
+- 聚合后，`range`、`refer`、`unique` 等针对单元素的字段属性仍会逐元素生效。
