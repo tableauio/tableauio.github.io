@@ -4,11 +4,40 @@
 &lt;/div>
 &lt;h2 id="tableauc">tableauc &lt;a href="#tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
-&lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote></description></item><item><title>Troubleshooting</title><link>https://tableauio.github.io/docs/help/troubleshooting/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0800</pubDate><guid>https://tableauio.github.io/docs/help/troubleshooting/</guid><description>&lt;h2 id="problems-updating-tableauc-config">Problems updating tableauc config &lt;a href="#problems-updating-tableauc-config" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;blockquote>
-&lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote>
-&lt;h2 id="problems-with-loader">Problems with loader &lt;a href="#problems-with-loader" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;blockquote>
-&lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote></description></item><item><title>FAQ</title><link>https://tableauio.github.io/docs/help/faq/</link><pubDate>Tue, 06 Oct 2020 08:49:31 +0800</pubDate><guid>https://tableauio.github.io/docs/help/faq/</guid><description>&lt;h2 id="question-1-">Question 1 ? &lt;a href="#question-1-" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote></description></item><item><title>Troubleshooting</title><link>https://tableauio.github.io/docs/help/troubleshooting/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0800</pubDate><guid>https://tableauio.github.io/docs/help/troubleshooting/</guid><description>&lt;h2 id="error-code-index">Error code index &lt;a href="#error-code-index" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>When &lt;code>tableauc&lt;/code> aborts with an error, the message is prefixed by a stable error
+code (e.g. &lt;code>E2023&lt;/code>). This page lists the most frequently encountered codes,
+groups them by component, and explains the typical fixes.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Range&lt;/th>
+&lt;th>Component&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>E0001..E0999&lt;/code>&lt;/td>
+&lt;td>common (workbook / sheet / column basics)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>E1000..E1999&lt;/code>&lt;/td>
+&lt;td>protogen (proto generation)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>E2000..E2999&lt;/code>&lt;/td>
+&lt;td>confgen (config parsing &amp;amp; validation)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>E3000..E3999&lt;/code>&lt;/td>
+&lt;td>importer (workbook discovery &amp;amp; I/O)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="common-e0xxx">Common (E0xxx) &lt;a href="#common-e0xxx" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;h4 id="e0001-sheet-not-found-in-book">E0001: sheet not found in book &lt;a href="#e0001-sheet-not-found-in-book" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;p>The sheet referenced by &lt;code>tableau.worksheet.name&lt;/code> (or by sheet specifier
+&lt;code>Book#Sheet&lt;/code>) does not exist in the workbook. Check both the workbook file
+and the sheet name (case-sensitive).&lt;/p></description></item><item><title>FAQ</title><link>https://tableauio.github.io/docs/help/faq/</link><pubDate>Tue, 06 Oct 2020 08:49:31 +0800</pubDate><guid>https://tableauio.github.io/docs/help/faq/</guid><description>&lt;h2 id="question-1-">Question 1 ? &lt;a href="#question-1-" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
 &lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote></description></item></channel></rss>

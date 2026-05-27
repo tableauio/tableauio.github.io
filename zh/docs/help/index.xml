@@ -4,11 +4,53 @@
 &lt;/div>
 &lt;h2 id="tableauc">tableauc &lt;a href="#tableauc" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
-&lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote></description></item><item><title>疑难解答</title><link>https://tableauio.github.io/zh/docs/help/troubleshooting/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate><guid>https://tableauio.github.io/zh/docs/help/troubleshooting/</guid><description>&lt;h2 id="更新-tableauc-配置问题">更新 tableauc 配置问题 &lt;a href="#%e6%9b%b4%e6%96%b0-tableauc-%e9%85%8d%e7%bd%ae%e9%97%ae%e9%a2%98" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;blockquote>
-&lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote>
-&lt;h2 id="loader-相关问题">Loader 相关问题 &lt;a href="#loader-%e7%9b%b8%e5%85%b3%e9%97%ae%e9%a2%98" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
-&lt;blockquote>
-&lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote></description></item><item><title>常见问题</title><link>https://tableauio.github.io/zh/docs/help/faq/</link><pubDate>Tue, 06 Oct 2020 08:49:31 +0000</pubDate><guid>https://tableauio.github.io/zh/docs/help/faq/</guid><description>&lt;h2 id="问题-1-">问题 1 ? &lt;a href="#%e9%97%ae%e9%a2%98-1-" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote></description></item><item><title>疑难解答</title><link>https://tableauio.github.io/zh/docs/help/troubleshooting/</link><pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate><guid>https://tableauio.github.io/zh/docs/help/troubleshooting/</guid><description>&lt;h2 id="错误码索引">错误码索引 &lt;a href="#%e9%94%99%e8%af%af%e7%a0%81%e7%b4%a2%e5%bc%95" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>&lt;code>tableauc&lt;/code> 报错时，错误信息都会带有稳定的错误码（如 &lt;code>E2023&lt;/code>）。本页按照组件
+分类列出常见错误码，并说明排查方向。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>区间&lt;/th>
+&lt;th>组件&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>E0001..E0999&lt;/code>&lt;/td>
+&lt;td>common（工作簿/工作表/列等基础检查）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>E1000..E1999&lt;/code>&lt;/td>
+&lt;td>protogen（proto 生成）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>E2000..E2999&lt;/code>&lt;/td>
+&lt;td>confgen（配置解析与校验）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>E3000..E3999&lt;/code>&lt;/td>
+&lt;td>importer（工作簿发现与读取）&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="commone0xxx">Common（E0xxx） &lt;a href="#commone0xxx" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;h4 id="e0001sheet-not-found-in-book">E0001：sheet not found in book &lt;a href="#e0001sheet-not-found-in-book" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;p>&lt;code>tableau.worksheet.name&lt;/code> 或工作表指示器 &lt;code>Book#Sheet&lt;/code> 所指定的工作表在工作簿
+中不存在。请确认工作簿文件、工作表名（区分大小写）。&lt;/p>
+&lt;h4 id="e0002cannot-unmarshal-file-content-to-given-protomessage">E0002：cannot unmarshal file content to given proto.Message &lt;a href="#e0002cannot-unmarshal-file-content-to-given-protomessage" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;p>文件内容无法解析为目标 message。请确认文件格式（JSON/Text/Bin）与
+&lt;code>conf.output.formats&lt;/code> 配置一致，并且 proto schema 已更新。&lt;/p>
+&lt;h4 id="e0003列名重复">E0003：列名重复 &lt;a href="#e0003%e5%88%97%e5%90%8d%e9%87%8d%e5%a4%8d" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;p>同一行中存在两列被生成出相同的列名。请重命名其中一列以保证唯一性。&lt;/p>
+&lt;h3 id="confgene2xxx">Confgen（E2xxx） &lt;a href="#confgene2xxx" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h3>
+&lt;h4 id="e2000整数溢出">E2000：整数溢出 &lt;a href="#e2000%e6%95%b4%e6%95%b0%e6%ba%a2%e5%87%ba" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;p>单元格值超出目标整数类型（如 &lt;code>uint32&lt;/code>）的可表示范围。请改用更宽的类型或调整值。&lt;/p>
+&lt;h4 id="e2001字段属性-refer-配置不正确">E2001：字段属性 &lt;code>refer&lt;/code> 配置不正确 &lt;a href="#e2001%e5%ad%97%e6%ae%b5%e5%b1%9e%e6%80%a7-refer-%e9%85%8d%e7%bd%ae%e4%b8%8d%e6%ad%a3%e7%a1%ae" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;p>&lt;code>refer:&amp;quot;SheetName(SheetAlias).ColumnName&amp;quot;&lt;/code> 无法解析到任何已知工作表。
+若使用 sheet 别名，请确保别名与生成的 message 名一致。&lt;/p>
+&lt;h4 id="e2002字段值不在引用的值空间中">E2002：字段值不在引用的值空间中 &lt;a href="#e2002%e5%ad%97%e6%ae%b5%e5%80%bc%e4%b8%8d%e5%9c%a8%e5%bc%95%e7%94%a8%e7%9a%84%e5%80%bc%e7%a9%ba%e9%97%b4%e4%b8%ad" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;p>单元格值不在被引用列的值空间内。请确保被引用工作表在引用方之前完成生成。&lt;/p>
+&lt;h4 id="e2003非法的序列号">E2003：非法的序列号 &lt;a href="#e2003%e9%9d%9e%e6%b3%95%e7%9a%84%e5%ba%8f%e5%88%97%e5%8f%b7" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h4>
+&lt;p>值不满足 &lt;code>prop:{sequence:N}&lt;/code>。序列必须从 &lt;code>N&lt;/code> 开始，按 1 单调递增。&lt;/p></description></item><item><title>常见问题</title><link>https://tableauio.github.io/zh/docs/help/faq/</link><pubDate>Tue, 06 Oct 2020 08:49:31 +0000</pubDate><guid>https://tableauio.github.io/zh/docs/help/faq/</guid><description>&lt;h2 id="问题-1-">问题 1 ? &lt;a href="#%e9%97%ae%e9%a2%98-1-" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;blockquote>
 &lt;p>TODO &amp;hellip;&lt;/p>&lt;/blockquote></description></item></channel></rss>
