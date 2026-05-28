@@ -182,7 +182,7 @@ Version pattern must be dotted-decimal: `<MAJOR>.<MINOR>.<PATCH>[.<OTHER>]...`.
 The version value does not match the configured pattern, or some component
 exceeds the per-position MAX.
 
-#### E2026: illegally ordered values
+#### E2026: illegally ordered values {#e2026-illegally-ordered-values}
 
 The value sequence violates `prop:{order:...}` (`ORDER_ASC`, `ORDER_DESC`,
 `ORDER_STRICTLY_ASC`, `ORDER_STRICTLY_DESC`).

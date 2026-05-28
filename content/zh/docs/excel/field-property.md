@@ -29,6 +29,7 @@ toc: true
 | `sep`              | string | 字段级分隔符。                                                                                                                                                                                                                                                                                                                                            |
 | `subsep`           | string | 字段级子分隔符。                                                                                                                                                                                                                                                                                                                                          |
 | `pattern`          | string | 指定标量、列表元素和映射值的模式。                                                                                                                                                                                                                                                                                                                        |
+| `order`            | Order  | 确保字段的值按行/列/元素方向有序。<br> - `ORDER_ASC`（`>=`）<br> - `ORDER_DESC`（`<=`）<br> - `ORDER_STRICTLY_ASC`（`>`）<br> - `ORDER_STRICTLY_DESC`（`<`）                                                                                                                                                                                              |
 | `validate`         | string | 适用于标量和知名类型的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"string:{max_len:10}"`、`"int32:{gt:0 lte:100}"`、`"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`。                                                                                                                         |
 | `validate_complex` | string | 适用于复合类型（列表/映射）的 [protovalidate](https://github.com/bufbuild/protovalidate) 字段级校验规则。<br>例如：`"repeated:{min_items:1}"`、`"map:{min_pairs:1}"`。                                                                                                                                                                                    |
 | `validate_message` | string | 适用于字段所嵌套结构体的 [protovalidate](https://github.com/bufbuild/protovalidate) message 级校验规则。<br>例如：`"cel_expression:\"this.start_time < this.end_time\""`。                                                                                                                                                                                |
@@ -198,6 +199,38 @@ Tableau 会自动推断映射（或键控列表）键的 `unique` 是否为 true
 指定当前单元格的点分十进制模式。每个十进制数的范围从 0 到模式对应部分的最大值（MAX）。
 
 默认模式：`255.255.255`。
+
+## 选项 `order`
+
+选项 `order` 用于确保字段的值沿解析方向（垂直布局按行、水平布局按列、单元格内列表/映射按元素顺序）满足指定的次序。
+若后一个值相对于前一个值违反了所配置的次序，tableau 会报
+[E2026]({{< relref "../help/troubleshooting/#e2026-值序非法" >}})。
+
+支持的次序：
+
+- `ORDER_ASC`：升序，前值必须 `<=` 后值。
+- `ORDER_DESC`：降序，前值必须 `>=` 后值。
+- `ORDER_STRICTLY_ASC`：严格升序，前值必须 `<` 后值。
+- `ORDER_STRICTLY_DESC`：严格降序，前值必须 `>` 后值。
+
+支持的字段类型：
+
+- 数值标量（`int32`/`int64`/`uint32`/`uint64`/`float`/`double` 及其变体）。
+- `string`（按字典序）。
+- `enum`（按枚举编号比较）。
+- 知名类型：[`datetime`（`google.protobuf.Timestamp`）]({{< relref "wellknown-types/#datetime" >}})
+  和 [`duration`（`google.protobuf.Duration`）]({{< relref "wellknown-types/#duration" >}})。
+
+示例：
+
+- `map<uint32, Item>|{order:ORDER_ASC}`：映射的键列必须升序。
+- `int32|{order:ORDER_STRICTLY_ASC}`：该列各行的值必须严格递增。
+- `datetime|{order:ORDER_ASC}`：时间戳必须非递减。
+
+> [!NOTE]
+> `order` 与 [`sequence`]({{< relref "#选项-sequence" >}}) 不同：
+> `sequence` 要求各值组成从指定起点开始的连续序列（如 `1, 2, 3, ...`），
+> 而 `order` 仅约束相邻值之间的相对次序，不限定起点和步长。
 
 ## 选项 `validate`
 

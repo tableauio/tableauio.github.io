@@ -29,6 +29,7 @@ toc: true
 | `sep`              | string | Field-level separator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | `subsep`           | string | Field-level subseparator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `pattern`          | string | Specify the pattern of scalar, list element, and map value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `order`            | Order  | Ensure the field's values are ordered across rows/columns/elements. <br> - `ORDER_ASC` (`>=`) <br> - `ORDER_DESC` (`<=`) <br> - `ORDER_STRICTLY_ASC` (`>`) <br> - `ORDER_STRICTLY_DESC` (`<`)                                                                                                                                                                                                                                                                                                                                       |
 | `validate`         | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for scalar and well-known types. <br>E.g.: `"string:{max_len:10}"`, `"int32:{gt:0 lte:100}"`, `"cel_expression:\"this >= timestamp('2024-01-01T00:00:00Z')\""`.                                                                                                                                                                                                                                                                                        |
 | `validate_complex` | string | [protovalidate](https://github.com/bufbuild/protovalidate) field-level rules for complex types (list/map). <br>E.g.: `"repeated:{min_items:1}"`, `"map:{min_pairs:1}"`.                                                                                                                                                                                                                                                                                                                                                             |
 | `validate_message` | string | [protovalidate](https://github.com/bufbuild/protovalidate) message-level rules for the nested message of a field. <br>E.g.: `"cel_expression:\"this.start_time < this.end_time\""`.                                                                                                                                                                                                                                                                                                                                                 |
@@ -201,6 +202,41 @@ Specify the dotted-decimal pattern of current cell. Each decimal
 number ranges from 0 to the corresponding part (MAX) of pattern.
 
 Default pattern: `255.255.255`.
+
+## Option `order`
+
+Option `order` ensures the field's values follow a specific order along the
+parsing direction (rows for vertical layout, columns for horizontal layout,
+or elements for incell list/map). If a later value violates the configured
+order against the previous one, tableau reports
+[E2026]({{< relref "../help/troubleshooting/#e2026-illegally-ordered-values" >}}).
+
+Supported orders:
+
+- `ORDER_ASC`: ascending, the previous value must be `<=` the next.
+- `ORDER_DESC`: descending, the previous value must be `>=` the next.
+- `ORDER_STRICTLY_ASC`: strictly ascending, the previous value must be `<` the next.
+- `ORDER_STRICTLY_DESC`: strictly descending, the previous value must be `>` the next.
+
+Supported field kinds:
+
+- Numeric scalars (`int32`/`int64`/`uint32`/`uint64`/`float`/`double` and their variants).
+- `string` (lexicographic order).
+- `enum` (compared by enum number).
+- Well-known types: [`datetime` (`google.protobuf.Timestamp`)]({{< relref "wellknown-types/#datetime" >}})
+  and [`duration` (`google.protobuf.Duration`)]({{< relref "wellknown-types/#duration" >}}).
+
+Examples:
+
+- `map<uint32, Item>|{order:ORDER_ASC}`: the map key column must be ascending.
+- `int32|{order:ORDER_STRICTLY_ASC}`: the values down the column must be strictly increasing.
+- `datetime|{order:ORDER_ASC}`: timestamps must be non-decreasing.
+
+> [!NOTE]
+> `order` differs from [`sequence`]({{< relref "#option-sequence" >}}):
+> `sequence` requires the values to form a contiguous sequence starting at a
+> specific value (e.g. `1, 2, 3, ...`), while `order` only constrains the
+> relative order between adjacent values without fixing the start or step.
 
 ## Option `validate`
 

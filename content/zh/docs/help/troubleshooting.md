@@ -161,7 +161,7 @@ toc: true
 
 输入版本号不符合配置的模式，或某段超出位上限。
 
-#### E2026：值序非法
+#### E2026：值序非法 {#e2026-值序非法}
 
 值序违反 `prop:{order:...}`（`ORDER_ASC`、`ORDER_DESC`、`ORDER_STRICTLY_ASC`、
 `ORDER_STRICTLY_DESC`）。
