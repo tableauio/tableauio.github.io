@@ -1,0 +1,40 @@
+# Validate lint and build on every push and pull request.
+# Mirrors what the GitHub Pages deploy job does, minus the publish step.
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Lint & build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint scripts (eslint)
+        run: npm run lint:scripts
+
+      - name: Lint styles (stylelint)
+        run: npm run lint:styles
+
+      - name: Lint markdown
+        run: npm run lint:markdown
+
+      - name: Build production site
+        run: npm run build
