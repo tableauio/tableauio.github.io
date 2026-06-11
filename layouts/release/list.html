@@ -13,7 +13,7 @@
             <div class="card-body">
               <h2 class="h3"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a>{{ if .Params.iframe }} <span class="badge release-html-badge">HTML</span>{{ end }}</h2>
               <p>{{ .Params.lead | safeHTML }}</p>
-              {{ partial "main/blog-meta.html" . -}}
+              {{ partial "main/release-meta.html" . -}}
             </div>
           </div>
         {{ end -}}
