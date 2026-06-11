@@ -75,8 +75,7 @@
 }
 
 /* Browser native fullscreen: occupy whole screen with no padding. */
-.release-iframe-wrap:fullscreen,
-.release-iframe-wrap:-webkit-full-screen {
+.release-iframe-wrap:fullscreen {
   width: 100vw;
   height: 100vh;
   border: 0;
@@ -85,8 +84,7 @@
   background: #fff;
 }
 
-.release-iframe-wrap:fullscreen iframe,
-.release-iframe-wrap:-webkit-full-screen iframe {
+.release-iframe-wrap:fullscreen iframe {
   width: 100vw;
   height: 100vh;
 }
