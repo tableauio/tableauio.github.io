@@ -46,3 +46,7 @@ assets/js/               # scripts (entry: index.js)
 static/                  # files served as-is at the URL root
 .github/workflows/       # CI: lint + build + GitHub Pages deploy
 ```
+
+## Skills
+
+- [tableau-release-html](.claude/skills/tableau-release-html)
