@@ -86,7 +86,7 @@
           {{ end }}
           <div class="release-header">
             <h1>{{ .Title }}</h1>
-            <p><small>{{ .Date.Format "January 2, 2006" }}</small></p>
+            {{ partial "main/blog-meta.html" . }}
           </div>
           {{ with .Params.lead }}<p class="lead">{{ . | safeHTML }}</p>{{ end }}
           {{ if ne .Params.toc false -}}
