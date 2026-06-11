@@ -1,0 +1,112 @@
+/* Release section */
+
+/* Iframe page wrapper. Width matches the top-menu container (`.container-xxl`),
+   inheriting the parent layout. No edge-to-edge breakout. */
+.release-iframe-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.release-iframe-header {
+  padding: 0.5rem 0.25rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bs-border-color, #dee2e6);
+  min-height: 2.5rem;
+  line-height: 1.5;
+}
+
+.release-iframe-header .breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 1.5;
+}
+
+.release-iframe-header nav[aria-label="breadcrumb"] {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.release-iframe-actions .release-iframe-action {
+  color: var(--bs-secondary-color, #495057);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.release-iframe-actions .release-iframe-action:hover,
+.release-iframe-actions .release-iframe-action:focus {
+  color: var(--bs-primary, #0d6efd);
+  background: var(--bs-secondary-bg, rgba(13, 110, 253, 0.08));
+}
+
+.release-iframe-lead {
+  margin: 0 0 0.5rem;
+}
+
+/* Iframe wrap: tall, edge-to-edge inside the page. */
+.release-iframe-wrap {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 160px);
+  min-height: 520px;
+  margin-top: 0.5rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+.release-iframe-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Browser native fullscreen: occupy whole screen with no padding. */
+.release-iframe-wrap:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  background: #fff;
+}
+
+.release-iframe-wrap:fullscreen iframe {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Active sidebar item: subtle highlight using the existing docs-sidebar look. */
+.release-sidebar-item.active > a {
+  font-weight: 600;
+  color: var(--bs-primary, #0d6efd);
+}
+
+/* HTML badge in sidebar and list. */
+.release-html-badge {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.4rem;
+  background: var(--bs-secondary-bg, #e9ecef);
+  color: var(--bs-secondary-color, #495057);
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Optional caption block above an iframe (when stub body is non-empty). */
+.release-prelude {
+  margin-bottom: 1rem;
+}

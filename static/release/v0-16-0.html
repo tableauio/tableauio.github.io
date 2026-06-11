@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau v0.16.0 — Release Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: {
+          sans: ['Inter','system-ui','sans-serif'],
+          mono: ['"JetBrains Mono"','monospace'],
+        },
+        colors: {
+          orange:{50:'#FEF0E8',100:'#FDD9C4',200:'#FBBA96',400:'#F07040',500:'#D95A27',600:'#C24D18',700:'#A03D10'},
+        },
+      }}
+    }
+  </script>
+  <style>
+    :root{
+      --bg:#ffffff; --bg-alt:#f9fafb;
+      --card:#ffffff; --border:#e5e7eb; --border-l:#f3f4f6;
+      --text:#111827; --muted:#6b7280; --subtle:#9ca3af;
+      --accent:#f97316; --accent-bg:#fff7ed; --accent-border:rgba(249,115,22,0.22);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);font-family:'Inter',system-ui,sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;padding-top:0;}
+
+    /* Typography */
+    .hero-version{font-weight:900;font-size:clamp(60px,10vw,130px);line-height:.92;letter-spacing:-4px;color:#111827;} .hero-anim-0{animation:fadeInUp .7s ease .02s both;}
+    .sec-title{font-weight:800;font-size:clamp(28px,4.5vw,50px);line-height:1.06;color:var(--text);}
+    .sec-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--orange);letter-spacing:.12em;text-transform:uppercase;}
+
+    /* Hero */
+    .hero-section{background:#ffffff;}
+
+    /* Pill nav */
+    .nav-link{font-size:13.5px;font-weight:500;color:#6b7280;text-decoration:none;transition:color .15s;}
+    .nav-link:hover{color:#111827;}
+
+    /* Cards */
+    .card-base{background:var(--card);border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,0.05),0 4px 16px rgba(0,0,0,0.07);}
+    .feat-card{background:var(--card);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05);transition:transform .22s,box-shadow .22s;}
+    .feat-card:hover{transform:translateY(-3px);box-shadow:0 4px 8px rgba(0,0,0,.06),0 16px 40px rgba(0,0,0,.09);}
+    .feat-border-orange{border-top-color:#16a34a!important;border-left-color:transparent!important;}
+
+    /* Animations */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+    @keyframes bounceY{0%,100%{transform:translateY(0) translateX(-50%)}50%{transform:translateY(7px) translateX(-50%)}}
+    @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.72)}}
+    .pulse-dot{animation:pulseDot 2.2s ease infinite;}
+    .scroll-cue{animation:bounceY 2.2s ease infinite;}
+    .hero-anim-1{animation:fadeInUp .7s ease .10s both;}
+    .hero-anim-2{animation:fadeInUp .7s ease .22s both;}
+    .hero-anim-3{animation:fadeInUp .7s ease .34s both;}
+    .hero-anim-4{animation:fadeInUp .7s ease .46s both;}
+    .hero-anim-5{animation:fadeInUp .7s ease .56s both;}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+    .reveal.on{opacity:1;transform:none;}
+    .rd1{transition-delay:.07s}.rd2{transition-delay:.14s}.rd3{transition-delay:.21s}
+    .rd4{transition-delay:.28s}.rd5{transition-delay:.35s}.rd6{transition-delay:.42s}
+
+    /* Chips & Tags */
+    .stat-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;}
+    .chip-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;}
+    .chip-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;}
+    .chip-amber{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+    .chip-violet{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .tag{display:inline-flex;align-items:center;padding:2px 9px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+    .tag-new,.tag-option{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;}
+    .tag-breaking{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+    .tag-tooling{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;}
+    .tag-enhanced{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;}
+    .tag-arch{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .demo-badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:4px;margin-bottom:10px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+    .db-new{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;}
+    .db-fix{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;}
+    .db-breaking{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+    .db-dep{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .db-arch{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .icode-o{font-family:'JetBrains Mono',monospace;font-size:11.5px;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;padding:1px 6px;border-radius:4px;}
+
+    /* Fix rows */
+    .fix-row{border-bottom:1px solid #f3f4f6;transition:background .12s;}
+    .fix-row:last-child{border-bottom:none;}
+    .fix-row:hover{background:#f9fafb;}
+
+    /* Dark terminal code blocks */
+    .code-blk{background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.05);}
+    .code-blk-hd{padding:9px 16px;background:#f9fafb;border-bottom:1px solid #e5e7eb;font-family:'JetBrains Mono',monospace;font-size:11px;color:#57606a;letter-spacing:.04em;}
+    .code-blk-hd::before,.demo-out-hd::before{display:none;}
+    .code-blk-bd{padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;overflow-x:auto;color:#24292f;}
+    .c-del{color:#82071e;display:block;background:#ffebe9;margin:0 -16px;padding:0 16px;}
+    .c-add{color:#116329;display:block;background:#e6ffec;margin:0 -16px;padding:0 16px;}
+    .c-com{color:#6e7781;display:block;}.c-inf{color:#0550ae;display:block;}
+    .c-key{color:#cf222e;}.c-val{color:#116329;}.c-str{color:#0a3069;}
+    .c-ann{color:#8250df;}.c-typ{color:#953800;}.c-num{color:#0550ae;}.c-fld{color:#24292f;}
+    .c-hl{background:#e6ffec;display:block;border-left:2px solid #2da44e;padding-left:14px;margin-left:-16px;margin-right:-16px;padding-right:16px;}
+    .c-warn{background:#fff8c5;display:block;border-left:2px solid #d29922;padding-left:14px;margin-left:-16px;margin-right:-16px;padding-right:16px;}
+
+    /* Demo output blocks */
+    .demo-out{border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.05);}
+    .demo-out-hd{padding:9px 16px;background:#f9fafb;border-bottom:1px solid #e5e7eb;font-family:'JetBrains Mono',monospace;font-size:11px;color:#57606a;letter-spacing:.04em;}
+    .demo-out-bd{padding:14px 16px;background:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;overflow-x:auto;color:#24292f;}
+
+    /* SBS panels (dark) */
+    .sbs-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    @media(max-width:720px){.sbs-wrap{grid-template-columns:1fr;}}
+    .sbs-panel{border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 2px 8px rgba(0,0,0,0.06);}
+    .sbs-hd{padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+    .sbs-hd-before{background:#fff1ee;color:#a32424;border:1px solid #ffc1be;border-bottom:none;}
+    .sbs-hd-after{background:#e6ffec;color:#116329;border:1px solid #abdfba;border-bottom:none;}
+    .sbs-bd{padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.85;}
+    .sbs-bd-before{background:#ffebe9;border:1px solid #ffc1be;border-top:none;color:#3d1515;}
+    .sbs-bd-after{background:#e6ffec;border:1px solid #abdfba;border-top:none;color:#0d3b1f;}
+    .ok{color:#116329;}.bad{color:#82071e;text-decoration:line-through;}.warn{color:#953800;}.dim{color:#6e7781;}
+
+    /* Callout */
+    .callout{background:#eff6ff;border:1px solid #bfdbfe;border-left:3px solid #2563eb;padding:11px 16px;border-radius:0 8px 8px 0;font-size:13.5px;color:#1e40af;line-height:1.65;}
+    .callout code{font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(37,99,235,0.1);color:#1e40af;padding:1px 5px;border-radius:3px;}
+
+    /* Excel tables */
+    .xl-scroll{overflow-x:auto;border:1px solid #d0d7de;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,0.05),0 4px 16px rgba(0,0,0,0.08);}
+    .xl{border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:11.5px;background:#fff;min-width:380px;width:100%;}
+    .xl thead th{background:#DDE4EE;color:#4A5878;border:1px solid #B8C4D4;text-align:center;padding:3px 8px;font-size:10.5px;font-weight:600;user-select:none;white-space:nowrap;}
+    .xl td{border:1px solid #D0D8E8;padding:5px 10px;color:#1a2434;vertical-align:top;white-space:nowrap;max-width:260px;overflow:hidden;text-overflow:ellipsis;}
+    .xl td.rn{background:#E8EDF4;color:#8898A8;text-align:right;padding:4px 7px;font-size:10.5px;user-select:none;width:28px;min-width:28px;}
+    .xl tr.xr-name td{background:#DCE8FC;color:#18305E;font-weight:600;}
+    .xl tr.xr-type td{background:#D8EDD8;color:#1A4020;font-size:10.5px;white-space:pre-wrap;word-break:break-all;max-width:240px;}
+    .xl tr.xr-note td{background:#F5F5F5;color:#5A6878;font-style:italic;}
+    .xl tr.xr-data td{background:#fff;}.xl tr.xr-data2 td{background:#FAFBFC;}
+    .xl tr.xr-data td.key,.xl tr.xr-data2 td.key{background:#FFFDE8;}
+    .xl tr.xr-meta td{background:#F0EEF8;color:#4A3880;}
+    .xl-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:#A2A2A2;letter-spacing:.05em;margin-bottom:6px;}
+
+    /* Dependency tags */
+    .dep-tag{background:#fff;border:1px solid rgba(0,0,0,.1);padding:7px 15px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#626060;transition:all .15s;cursor:default;}
+    .dep-tag:hover{border-color:var(--ob);color:var(--orange);background:var(--op-bg);transform:translateY(-1px);}
+    .dep-tag-new{background:var(--op-bg);border-color:var(--ob);color:var(--orange);}
+
+    /* Demo block dividers */
+    .demo-block{padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid #f3f4f6;}
+    .demo-block:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+
+    /* Breaking cards */
+    .breaking-card{background:#fff;border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,.09);border-left:4px solid var(--orange);}
+
+    @media(max-width:640px){
+      .hero-version{letter-spacing:-2px;}
+      .sec-title{font-size:clamp(24px,8vw,38px);}
+    }
+
+    /* ══ Hero grid + spreadsheet decoration ══ */
+    .hero-section::before{
+      content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,0,0,0.025) 1px,transparent 1px);
+      background-size:80px 28px;
+    }
+
+    /* Decorative floating spreadsheet */
+    .deco-sheet-wrap {
+      position: absolute; bottom: -30px; right: -24px;
+      pointer-events: none; user-select: none; z-index: 1;
+      opacity: 0.10;
+      transform: perspective(1100px) rotateY(-14deg) rotateX(5deg);
+      transform-origin: right bottom;
+      transition: opacity .3s;
+    }
+    .hero-section:hover .deco-sheet-wrap { opacity: 0.16; }
+    .deco-sheet {
+      border-collapse: collapse;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      background: #fff;
+      border: 2px solid #9AAAB8;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    }
+    .deco-sheet th {
+      background: #DDE4EE; color: #4A5878;
+      border: 1px solid #B8C4D4;
+      text-align: center; padding: 4px 12px;
+      font-size: 10.5px; font-weight: 600;
+      min-width: 36px; user-select: none;
+    }
+    .deco-sheet th.rn { min-width: 28px; max-width: 28px; }
+    .deco-sheet td {
+      border: 1px solid #D0D8E8;
+      padding: 5px 12px; white-space: nowrap;
+      color: #1a2434; min-width: 80px;
+    }
+    .deco-sheet td.rn {
+      background: #E8EDF4; color: #8898A8;
+      text-align: right; padding: 4px 7px;
+      font-size: 10.5px; width: 28px; min-width: 28px;
+    }
+    .deco-sheet tr.xr-name td { background: #DCE8FC; color: #18305E; font-weight: 600; }
+    .deco-sheet tr.xr-type td { background: #D8EDD8; color: #1A4020; }
+    .deco-sheet tr.xr-note td { background: #F5F5F5; color: #5A6878; font-style: italic; }
+    .deco-sheet tr.xr-data  td { background: #fff; }
+    .deco-sheet tr.xr-data2 td { background: #FAFBFC; }
+    .deco-sheet td.key { background: #FFFDE8; }
+    /* Orange selected-cell highlight */
+    .deco-sheet td.sel, .deco-sheet th.sel {
+      background: rgba(217,90,39,0.15) !important;
+      outline: 2px solid rgba(217,90,39,0.5);
+      outline-offset: -2px;
+    }
+    /* Column/row number indicator strip */
+    .deco-col-bar {
+      position: absolute; bottom: -30px; right: -24px;
+      pointer-events: none; user-select: none; z-index: 0;
+      opacity: 0.06;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: var(--text);
+      letter-spacing: 0.05em;
+    }
+
+
+    /* Per-section semantic background tints */
+    .sec-feat  { background: linear-gradient(180deg, #fafffe 0%, #fafffe 90%, #f0fdf8 100%); }
+    .sec-fix   { background: linear-gradient(180deg, #f0f8ff 0%, #f0f8ff 90%, #ffffff 100%); }
+    .sec-break { background: linear-gradient(180deg, #fffafa 0%, #fffafa 90%, #fff5f5 100%); }
+    .sec-dep   { background: linear-gradient(180deg, #fffdf0 0%, #fffdf0 90%, #ffffff 100%); }
+
+    /* Section alternating backgrounds with gradient transitions */
+    .sec-white {
+      background: #ffffff;
+    }
+    .sec-gray {
+      background: linear-gradient(180deg,
+        #f8fafc 0%, #f8fafc 92%, #ffffff 100%);
+    }
+    .sec-white-next-gray {
+      background: linear-gradient(180deg,
+        #ffffff 0%, #ffffff 92%, #f8fafc 100%);
+    }
+  </style>
+</head>
+<body>
+<!-- ░░░ PILL NAV ░░░ -->
+  <nav class="sticky top-0 z-50" style="background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;box-shadow:0 1px 0 rgba(0,0,0,0.04),0 2px 12px rgba(0,0,0,0.06);">
+    <div class="max-w-7xl mx-auto px-8 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="/" target="_top" class="flex items-center gap-3" style="text-decoration:none;color:inherit;" title="Tableau home" aria-label="Tableau home">
+          <img src="https://tableauio.github.io/tableau-logo.svg" width="22" height="22" alt="Tableau" style="display:block;flex-shrink:0;" />
+          <span class="font-semibold text-sm tracking-tight" style="color:#111827">Tableau</span>
+        </a>
+        <span class="font-mono text-xs px-2 py-0.5 rounded" style="background:#f3f4f6;color:#6b7280">v0.16.0</span>
+      </div>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#features"  class="nav-link">Features</a>
+        <a href="#fixes"     class="nav-link">Fixes</a>
+        <a href="#breaking"  class="nav-link">Breaking</a>
+        <a href="#examples"  class="nav-link">Examples</a>
+        <a href="https://github.com/tableauio/tableau/releases/tag/v0.16.0" target="_blank"
+           title="View on GitHub"
+           style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;color:#374151;transition:background .15s,color .15s;"
+           onmouseover="this.style.background='#f3f4f6';this.style.color='#111827'"
+           onmouseout="this.style.background='transparent';this.style.color='#374151'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ░░░ HERO ░░░ -->
+  <section class="hero-section sec-white-next-gray min-h-screen flex flex-col justify-center px-6 lg:px-14 xl:px-20 py-24 relative overflow-hidden border-b border-stone-200" id="top">
+
+    <!-- Grid + spreadsheet background decoration -->
+    <div class="deco-sheet-wrap">
+      <table class="deco-sheet">
+        <thead>
+          <tr>
+            <th class="rn"></th>
+            <th>A</th><th>B</th><th class="sel">C</th><th>D</th><th>E</th><th>F</th><th>G</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="xr-name">
+            <td class="rn">1</td>
+            <td>ID</td><td>Name</td><td class="sel">Level</td><td>HP</td><td>Attack</td><td>Type</td><td>Validate</td>
+          </tr>
+          <tr class="xr-type">
+            <td class="rn">2</td>
+            <td>map&lt;uint32,Hero&gt;</td><td>string</td><td class="sel">int32</td><td>int32</td><td>int32</td><td>enum&lt;HeroType&gt;</td><td>string|{validate:...</td>
+          </tr>
+          <tr class="xr-note">
+            <td class="rn">3</td>
+            <td>Hero ID</td><td>Hero name</td><td class="sel">Hero level</td><td>Max HP</td><td>Base attack</td><td>Hero class</td><td>CEL rule</td>
+          </tr>
+          <tr class="xr-data">
+            <td class="rn">4</td>
+            <td class="key">1</td><td>Arthur</td><td class="sel">50</td><td>500</td><td>120</td><td>warrior</td><td></td>
+          </tr>
+          <tr class="xr-data2">
+            <td class="rn">5</td>
+            <td class="key">2</td><td>Merlin</td><td class="sel">45</td><td>380</td><td>90</td><td>mage</td><td></td>
+          </tr>
+          <tr class="xr-data">
+            <td class="rn">6</td>
+            <td class="key">3</td><td>Lancelot</td><td class="sel">55</td><td>620</td><td>150</td><td>knight</td><td></td>
+          </tr>
+          <tr class="xr-data2">
+            <td class="rn">7</td>
+            <td class="key">4</td><td>Guinevere</td><td class="sel">48</td><td>420</td><td>110</td><td>rogue</td><td></td>
+          </tr>
+          <tr class="xr-data">
+            <td class="rn">8</td>
+            <td class="key">5</td><td>Galahad</td><td class="sel">60</td><td>700</td><td>180</td><td>paladin</td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+    <!-- decorative watermark -->
+    <div class="absolute right-[-2%] top-1/2 -translate-y-1/2 font-display font-black leading-none select-none pointer-events-none whitespace-nowrap"
+         style="font-size:min(18vw,240px); color:transparent; -webkit-text-stroke:2px rgba(0,0,0,0.05);">v0.16.0</div>
+
+    <div class="relative max-w-5xl w-full mx-auto">
+
+      <!-- Brand identity row: logo + name + version badge + release pill -->
+      <div class="hero-anim-0 flex items-center gap-3 flex-wrap mb-12">
+        <img src="https://tableauio.github.io/tableau-logo.svg" width="28" height="28" alt="Tableau" style="display:block;flex-shrink:0;" />
+        <span style="font-size:15px;font-weight:700;color:#111827;letter-spacing:-0.015em;">Tableau</span>
+        <span style="color:#e5e7eb;font-size:16px;font-weight:300;">|</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;background:#f3f4f6;color:#6b7280;padding:3px 10px;border-radius:5px;font-weight:500;border:1px solid #e5e7eb;">v0.16.0</span>
+        <span style="color:#e5e7eb;font-size:16px;font-weight:300;">|</span>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#f0fdf4;border:1px solid #bbf7d0;color:#16a34a;padding:4px 11px;border-radius:100px;font-size:11px;font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:0.04em;">
+          <span class="pulse-dot" style="width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;display:inline-block;"></span>
+          Released May 29, 2026
+        </div>
+      </div>
+
+      <!-- eyebrow label -->
+      <div class="hero-anim-1" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;color:#9ca3af;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:16px;">Release Notes</div>
+
+      <!-- version number — large editorial display -->
+      <div class="hero-anim-2 hero-version mb-7"><span style="color:#16a34a;">v</span>0.16.0</div>
+
+      <!-- descriptive subtitle -->
+      <p class="hero-anim-3 mb-12" style="font-size:clamp(15px,1.75vw,19px);color:#6b7280;font-weight:400;line-height:1.7;max-width:580px;">
+        CEL validation via protovalidate, Buf toolchain support, structured error collection,
+        PreserveFieldNumbers, and more.
+      </p>
+
+      <!-- stat chips — larger, bolder -->
+      <div class="hero-anim-4 flex flex-wrap gap-3 items-center">
+        <div class="stat-chip chip-green">✦ 7 Features</div>
+        <div class="stat-chip chip-blue">⬡ 9 Bug Fixes</div>
+        <div class="stat-chip chip-amber">⚠ 2 Breaking</div>
+        <div class="stat-chip chip-violet">↯ 1 Deprecated</div>
+        <span style="color:#d1d5db;margin:0 6px;font-size:15px;font-weight:300;">|</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9ca3af;letter-spacing:0.04em;">Go · Protobuf · Config Generation</span>
+      </div>
+    </div>
+
+    <!-- scroll cue -->
+    <div class="scroll-cue absolute bottom-9 left-1/2 flex flex-col items-center gap-2" style="opacity:0.4;">
+      <div class="w-px h-8 bg-gradient-to-b from-gray-300 to-transparent"></div>
+      <span class="font-mono text-[10px] tracking-widest uppercase" style="color:#9ca3af">Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- ░░░ 01 NEW FEATURES ░░░ -->
+  <section class="py-24 px-6 lg:px-14 xl:px-20 sec-feat" id="features">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="flex items-baseline gap-4 mb-14 reveal">
+        <span class="sec-num" style="color:#16a34a">01</span>
+        <h2 class="sec-title" style="color:#16a34a;">New Features</h2>
+        <div class="flex-1 h-px bg-stone-200 self-center ml-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- 01 Protobuf Editions -->
+        <div class="feat-card rounded-2xl p-8 border-t-2 feat-border-orange reveal rd1">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-3xl">📦</span>
+            <span class="font-mono text-xs text-stone-300">01 / 07</span>
+          </div>
+          <h3 class="font-semibold text-lg text-stone-900 mb-3 leading-snug">Protobuf Editions Support</h3>
+          <p class="text-stone-500 text-sm leading-relaxed">Generator now supports protobuf editions alongside proto2/proto3, with properly quoted file option values. A key step toward future-proofing generated proto files.</p>
+          <div class="flex gap-2 mt-5 flex-wrap">
+            <span class="tag tag-new">New</span>
+            <span class="tag tag-breaking">Breaking</span>
+          </div>
+        </div>
+
+        <!-- 02 PreserveFieldNumbers -->
+        <div class="feat-card rounded-2xl p-8 border-t-2 feat-border-orange reveal rd2">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-3xl">🔖</span>
+            <span class="font-mono text-xs text-stone-300">02 / 07</span>
+          </div>
+          <h3 class="font-semibold text-lg text-stone-900 mb-3 leading-snug">PreserveFieldNumbers</h3>
+          <p class="text-stone-500 text-sm leading-relaxed">New option to maintain field tag number compatibility across regenerations — critical for wire format stability. Works on both regular fields and union structs.</p>
+          <div class="flex gap-2 mt-5">
+            <span class="tag tag-option">New Option</span>
+          </div>
+        </div>
+
+        <!-- 03 CEL Validation -->
+        <div class="feat-card rounded-2xl p-8 border-t-2 feat-border-orange reveal rd3">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-3xl">✅</span>
+            <span class="font-mono text-xs text-stone-300">03 / 07</span>
+          </div>
+          <h3 class="font-semibold text-lg text-stone-900 mb-3 leading-snug">CEL Validation via protovalidate</h3>
+          <p class="text-stone-500 text-sm leading-relaxed">Integrated buf's protovalidate framework — declare CEL validation rules directly in spreadsheet field/worksheet properties, compiled into generated proto files.</p>
+          <div class="flex gap-2 mt-5">
+            <span class="tag tag-new">New</span>
+          </div>
+        </div>
+
+        <!-- 04 Buf Migration -->
+        <div class="feat-card rounded-2xl p-8 border-t-2 feat-border-orange reveal rd1">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-3xl">🔧</span>
+            <span class="font-mono text-xs text-stone-300">04 / 07</span>
+          </div>
+          <h3 class="font-semibold text-lg text-stone-900 mb-3 leading-snug">Buf Toolchain Migration</h3>
+          <p class="text-stone-500 text-sm leading-relaxed">Switched to Buf for protobuf generation, linting, and BSR publishing. CI no longer requires manual <code class="font-mono text-xs bg-stone-100 text-stone-600 px-1.5 py-0.5 rounded">protoc</code> install steps.</p>
+          <div class="flex gap-2 mt-5">
+            <span class="tag tag-tooling">Tooling</span>
+            <span class="tag tag-new">New</span>
+          </div>
+        </div>
+
+        <!-- 05 Union Field Improvements -->
+        <div class="feat-card rounded-2xl p-8 border-t-2 feat-border-orange reveal rd2">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-3xl">🔗</span>
+            <span class="font-mono text-xs text-stone-300">05 / 07</span>
+          </div>
+          <h3 class="font-semibold text-lg text-stone-900 mb-3 leading-snug">Union Field Improvements</h3>
+          <p class="text-stone-500 text-sm leading-relaxed">Field numbers preserved on union structs. Fixed column ordering — definition order index (i+1) used as column suffix, ensuring stable <code class="font-mono text-xs bg-stone-100 px-1 rounded">Field1, Field2…</code>.</p>
+          <div class="flex gap-2 mt-5">
+            <span class="tag tag-enhanced">Enhanced</span>
+          </div>
+        </div>
+
+        <!-- 06 Per-Messager Output -->
+        <div class="feat-card rounded-2xl p-8 border-t-2 feat-border-orange reveal rd3">
+          <div class="flex justify-between items-start mb-6">
+            <span class="text-3xl">📊</span>
+            <span class="font-mono text-xs text-stone-300">06 / 07</span>
+          </div>
+          <h3 class="font-semibold text-lg text-stone-900 mb-3 leading-snug">Per-Messager Output Formats</h3>
+          <p class="text-stone-500 text-sm leading-relaxed">Configure different output formats (<code class="font-mono text-xs bg-stone-100 text-stone-600 px-1 rounded">json</code>, <code class="font-mono text-xs bg-stone-100 text-stone-600 px-1 rounded">txtpb</code>, <code class="font-mono text-xs bg-stone-100 text-stone-600 px-1 rounded">binpb</code>) for individual messagers in confgen — fine-grained control beyond the global default.</p>
+          <div class="flex gap-2 mt-5">
+            <span class="tag tag-new">New</span>
+          </div>
+        </div>
+
+        <!-- 07 Error Collector — full width -->
+        <div class="feat-card rounded-2xl p-8 md:col-span-2 lg:col-span-3 border-t-2 reveal" style="border-top-color:#d97706;"
+             style="background:linear-gradient(135deg,#fff 0%,#fffdf7 100%);">
+          <div class="grid lg:grid-cols-3 gap-8 items-start">
+            <div class="lg:col-span-2">
+              <div class="flex justify-between items-start mb-6">
+                <span class="text-3xl">🏗️</span>
+                <span class="font-mono text-xs text-stone-300">07 / 07 · Largest Change</span>
+              </div>
+              <h3 class="font-semibold text-xl text-stone-900 mb-3 leading-snug">Structured Error Collection System</h3>
+              <p class="text-stone-500 text-sm leading-relaxed mb-4">
+                The biggest architectural change in v0.16.0 (<strong class="text-stone-700">#387 — 6,595 insertions, 119 files</strong>).
+                Previously tableau stopped on the <em>first</em> parse error. Now a hierarchical
+                <code class="font-mono text-xs icode-o">Collector</code> tree
+                accumulates multiple errors concurrently — global → book → sheet → message — each level
+                with its own cap. You see <em>all</em> errors in one run.
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="tag tag-new">New</span>
+                <span class="tag tag-arch">Architectural · 119 files</span>
+              </div>
+            </div>
+            <!-- hierarchy diagram -->
+            <div class="code-blk">
+              <div class="code-blk-hd">Error Collector Hierarchy</div>
+              <div class="code-blk-bd text-xs leading-loose">
+                <div style="padding-left:0px">
+                  <span class="font-semibold" style="color:#16a34a">Generator</span>
+                  <span class="c-com" style="display:inline"> max 20</span>
+                </div>
+                <div style="padding-left:16px">
+                  <span class="c-com">└─ </span><span class="font-semibold" style="color:#2563eb">Book</span>
+                  <span class="c-com" style="display:inline"> max 10 / book</span>
+                </div>
+                <div style="padding-left:32px">
+                  <span class="c-com">└─ </span><span class="font-semibold" style="color:#7c3aed">Sheet</span>
+                  <span class="c-com" style="display:inline"> max 5 / sheet</span>
+                </div>
+                <div style="padding-left:48px">
+                  <span class="c-com">└─ </span><span class="font-semibold" style="color:#d97706">Message</span>
+                  <span class="c-com" style="display:inline"> max 3 / row</span>
+                </div>
+                <div class="mt-3 pt-3 border-t border-stone-200 text-stone-400 text-[10.5px] leading-relaxed">
+                  confgen: 20 → 10 → 5 → 3 (4 levels)<br>
+                  protogen: 10 → 5 → 3 (3 levels)<br>
+                  Join() assembles the full error tree
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ░░░ 02 BUG FIXES ░░░ -->
+  <section class="py-24 px-6 lg:px-14 xl:px-20 border-b" style="border-color:#f3f4f6;" id="fixes" style="background:#f9fafb;">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-baseline gap-4 mb-14 reveal">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title" style="color:#2563eb;">Bug Fixes</h2>
+        <div class="flex-1 h-px bg-stone-200 self-center ml-4"></div>
+      </div>
+
+      <div class="card-base rounded-2xl overflow-hidden reveal rd1">
+        <div class="flex items-center gap-2 px-6 py-3 border-b" style="border-color:#f3f4f6;background:#f9fafb;">
+          <span class="font-mono text-xs" style="color:#9ca3af">git log — 9 patches since v0.15.0</span>
+        </div>
+        <div>
+          <div class="fix-row flex items-start gap-3 px-6 py-4">
+            <span class="font-mono text-[10.5px] text-ink-700 bg-ink-50 border border-ink-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5">bc70718</span>
+            <span class="font-mono text-[10.5px] text-stone-400 bg-stone-50 border border-stone-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5 w-20 text-center">protogen</span>
+            <div class="text-sm text-stone-600 leading-relaxed">Wrap <strong class="text-stone-800 font-medium">bookName</strong> and <strong class="text-stone-800 font-medium">sheetName</strong> correctly when parsing special sheet mode</div>
+          </div>
+          <div class="fix-row flex items-start gap-3 px-6 py-4">
+            <span class="font-mono text-[10.5px] text-ink-700 bg-ink-50 border border-ink-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5">05396e8</span>
+            <span class="font-mono text-[10.5px] text-stone-400 bg-stone-50 border border-stone-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5 w-20 text-center">protogen</span>
+            <div class="text-sm text-stone-600 leading-relaxed">Add correct <strong class="text-stone-800 font-medium">cell positioners</strong> for struct and union type sheet parsing</div>
+          </div>
+          <div class="fix-row flex items-start gap-3 px-6 py-4">
+            <span class="font-mono text-[10.5px] text-ink-700 bg-ink-50 border border-ink-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5">0f3049f</span>
+            <span class="font-mono text-[10.5px] text-stone-400 bg-stone-50 border border-stone-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5 w-20 text-center">protogen</span>
+            <div class="text-sm text-stone-600 leading-relaxed">Skip <strong class="text-stone-800 font-medium">TYPE_INVALID=0</strong> in union when enum value 0 is user-specified</div>
+          </div>
+          <div class="fix-row flex items-start gap-3 px-6 py-4">
+            <span class="font-mono text-[10.5px] text-ink-700 bg-ink-50 border border-ink-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5">7e3e4bc</span>
+            <span class="font-mono text-[10.5px] text-stone-400 bg-stone-50 border border-stone-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5 w-20 text-center">union</span>
+            <div class="text-sm text-stone-600 leading-relaxed">Fix <strong class="text-stone-800 font-medium">incell list field properties</strong> in union message field parsing; simplify parser logic</div>
+          </div>
+          <div class="fix-row flex items-start gap-3 px-6 py-4">
+            <span class="font-mono text-[10.5px] text-ink-700 bg-ink-50 border border-ink-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5">b80914b</span>
+            <span class="font-mono text-[10.5px] text-stone-400 bg-stone-50 border border-stone-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5 w-20 text-center">fieldprop</span>
+            <div class="text-sm text-stone-600 leading-relaxed">Check presence correctly for <strong class="text-stone-800 font-medium">incell struct / list / map / union</strong> fields</div>
+          </div>
+          <div class="fix-row flex items-start gap-3 px-6 py-4">
+            <span class="font-mono text-[10.5px] text-ink-700 bg-ink-50 border border-ink-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5">c0f520c</span>
+            <span class="font-mono text-[10.5px] text-stone-400 bg-stone-50 border border-stone-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5 w-20 text-center">protogen</span>
+            <div class="text-sm text-stone-600 leading-relaxed">Use <strong class="text-stone-800 font-medium">fullpath</strong> when removing all protos except imports in outdir (fixes Windows)</div>
+          </div>
+          <div class="fix-row flex items-start gap-3 px-6 py-4">
+            <span class="font-mono text-[10.5px] text-ink-700 bg-ink-50 border border-ink-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5">69e0296</span>
+            <span class="font-mono text-[10.5px] text-stone-400 bg-stone-50 border border-stone-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5 w-20 text-center">refer</span>
+            <div class="text-sm text-stone-600 leading-relaxed">Skip <strong class="text-stone-800 font-medium">ignored rows</strong> in refer check to avoid false-positive validation errors</div>
+          </div>
+          <div class="fix-row flex items-start gap-3 px-6 py-4">
+            <span class="font-mono text-[10.5px] text-ink-700 bg-ink-50 border border-ink-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5">508d6c4</span>
+            <span class="font-mono text-[10.5px] text-stone-400 bg-stone-50 border border-stone-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5 w-20 text-center">protogen</span>
+            <div class="text-sm text-stone-600 leading-relaxed">Use <strong class="text-stone-800 font-medium">strings.LastIndex</strong> to correctly trim first field name from predefined struct names</div>
+          </div>
+          <div class="fix-row flex items-start gap-3 px-6 py-4">
+            <span class="font-mono text-[10.5px] text-ink-700 bg-ink-50 border border-ink-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5">1da426f</span>
+            <span class="font-mono text-[10.5px] text-stone-400 bg-stone-50 border border-stone-100 px-2 py-0.5 rounded flex-shrink-0 mt-0.5 w-20 text-center">log</span>
+            <div class="text-sm text-stone-600 leading-relaxed">Only output log to console <strong class="text-stone-800 font-medium">after log.Init is called</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ░░░ 03 BREAKING CHANGES ░░░ -->
+  <section class="py-24 px-6 lg:px-14 xl:px-20 sec-break" id="breaking">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-baseline gap-4 mb-14 reveal">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title" style="color:#dc2626;">Breaking Changes</h2>
+        <div class="flex-1 h-px bg-stone-200 self-center ml-4"></div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="breaking-card feat-card reveal rd1">
+          <div class="inline-flex items-center gap-2 bg-terra-50 text-terra-800 border border-terra-200 rounded-full px-3 py-1 font-mono text-[10px] font-bold tracking-wider uppercase mb-5">⚠ Breaking 1 / 2</div>
+          <h3 class="font-semibold text-lg text-stone-900 mb-3 leading-snug">Protobuf Editions: go_package Must Be Quoted</h3>
+          <p class="text-sm text-stone-500 leading-relaxed mb-5">File option values like <code class="font-mono text-xs bg-terra-50 text-terra-700 px-1.5 py-0.5 rounded border border-terra-100">go_package</code> now require explicit double-quote wrapping in YAML config.</p>
+          <div class="code-blk">
+            <div class="code-blk-hd"># config.yaml — fileOptions migration</div>
+            <div class="code-blk-bd text-xs">
+              <span class="c-del">- go_package: github.com/org/protoconf</span>
+              <span class="c-add">+ go_package: '"github.com/org/protoconf"'</span>
+              <span class="c-com">#            ↑ outer single + inner double</span>
+            </div>
+          </div>
+        </div>
+        <div class="breaking-card feat-card reveal rd2">
+          <div class="inline-flex items-center gap-2 bg-terra-50 text-terra-800 border border-terra-200 rounded-full px-3 py-1 font-mono text-[10px] font-bold tracking-wider uppercase mb-5">⚠ Breaking 2 / 2</div>
+          <h3 class="font-semibold text-lg text-stone-900 mb-3 leading-snug">Consistent protoFiles Parsing Refactor</h3>
+          <p class="text-sm text-stone-500 leading-relaxed mb-5">protoFiles parsing unified across all code paths. Workflows relying on previous parser behavior may be affected. Re-run proto generation and verify output.</p>
+          <div class="code-blk">
+            <div class="code-blk-hd"># Commit: c27cf3c — action required</div>
+            <div class="code-blk-bd text-xs">
+              <span class="c-inf">// Affects: protogen + confgen pipelines</span>
+              <span class="c-com">// Also: CleanSlashPath for Windows paths</span>
+              <span class="c-com">// Also: Go 1.25 support via sonic upgrade</span>
+              <span class="c-com">// Action: re-generate + verify output</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ░░░ 04 DEPRECATED & REFACTORED ░░░ -->
+  <section class="py-24 px-6 lg:px-14 xl:px-20 border-b" style="border-color:#f3f4f6;" id="deprecated" style="background:#f9fafb;">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-baseline gap-4 mb-14 reveal">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title" style="color:#d97706;">Deprecated &amp; Refactored</h2>
+        <div class="flex-1 h-px bg-stone-200 self-center ml-4"></div>
+      </div>
+      <!-- deprecation alert -->
+      <div class="card-base rounded-2xl p-6 border-l-4 border-amber-500 flex items-start gap-5 mb-8 reveal rd1">
+        <div class="text-2xl flex-shrink-0 mt-0.5">🚫</div>
+        <div>
+          <h4 class="font-semibold text-stone-900 mb-2">Field Option <code class="font-mono text-sm px-2 py-0.5 rounded" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a;">cross</code> — Deprecated</h4>
+          <p class="text-sm text-stone-500 leading-relaxed">The field option <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">cross</code> is deprecated as of this release. Existing sheets continue to work but the option will be removed in a future version.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5 reveal rd2">
+        <div class="card-base rounded-xl p-6">
+          <div class="font-mono text-[10px] text-stone-400 uppercase tracking-widest mb-3">Refactor</div>
+          <h4 class="font-semibold text-base text-stone-900 mb-2">JSON Parser: sonic → fastjson</h4>
+          <p class="text-sm text-stone-500">Replaced <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">bytedance/sonic</code> with <code class="font-mono text-xs icode-o">valyala/fastjson</code> for cross-platform compatibility.</p>
+        </div>
+        <div class="card-base rounded-xl p-6">
+          <div class="font-mono text-[10px] text-stone-400 uppercase tracking-widest mb-3">Refactor</div>
+          <h4 class="font-semibold text-base text-stone-900 mb-2">i18n Template Quoting</h4>
+          <p class="text-sm text-stone-500">Use template quote function instead of manual <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">strconv.Quote</code> at all call sites across the codebase.</p>
+        </div>
+        <div class="card-base rounded-xl p-6">
+          <div class="font-mono text-[10px] text-stone-400 uppercase tracking-widest mb-3">Refactor</div>
+          <h4 class="font-semibold text-base text-stone-900 mb-2">IsSamePath with Absolute Paths</h4>
+          <p class="text-sm text-stone-500">Improved <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">xfs.IsSamePath</code> to resolve absolute paths, fixing subtle mismatches on Windows and symlinked directories.</p>
+        </div>
+        <div class="card-base rounded-xl p-6">
+          <div class="font-mono text-[10px] text-stone-400 uppercase tracking-widest mb-3">Improvement</div>
+          <h4 class="font-semibold text-base text-stone-900 mb-2">Validate Violation Error Messages</h4>
+          <p class="text-sm text-stone-500">Richer, more actionable error messages for field, message, list, and map violations — easier to trace issues to source cells.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ░░░ 05 DEPENDENCIES ░░░ -->
+  <section class="py-24 px-6 lg:px-14 xl:px-20 sec-white-next-gray" id="deps">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-baseline gap-4 mb-14 reveal">
+        <span class="sec-num">05</span>
+        <h2 class="sec-title" style="color:#9ca3af;">Dependency Updates</h2>
+        <div class="flex-1 h-px bg-stone-200 self-center ml-4"></div>
+      </div>
+      <div class="flex flex-wrap gap-3 reveal rd1">
+        <div class="dep-tag dep-tag-new">buf (toolchain) NEW</div>
+        <div class="dep-tag dep-tag-new">valyala/fastjson NEW</div>
+        <div class="dep-tag">golangci-lint-action 8 → 9</div>
+        <div class="dep-tag">codecov-action 5 → 6</div>
+        <div class="dep-tag">actions/checkout 5 → 6</div>
+        <div class="dep-tag">antchfx/xpath ↑</div>
+        <div class="dep-tag">bufbuild/protocompile ↑</div>
+        <div class="dep-tag">spf13/cobra ↑</div>
+        <div class="dep-tag">go.uber.org/zap ↑</div>
+        <div class="dep-tag">xuri/excelize ↑</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ░░░ 06 SPREADSHEET EXAMPLES ░░░ -->
+  <section class="py-24 px-6 lg:px-14 xl:px-20 border-b" style="border-color:#f3f4f6;" id="examples" style="background:#f9fafb;">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="flex items-baseline gap-4 mb-6 reveal">
+        <span class="sec-num">06</span>
+        <h2 class="sec-title" style="color:#7c3aed;">Spreadsheet Examples</h2>
+        <div class="flex-1 h-px bg-stone-200 self-center ml-4"></div>
+      </div>
+      <p class="text-stone-500 text-sm leading-relaxed max-w-3xl mb-16 reveal rd1">
+        Tableau converts Excel/CSV spreadsheets into protobuf configs. Sheets use a 3-row header convention:
+        <strong class="text-stone-700">Row 1</strong> = field names &nbsp;·&nbsp;
+        <strong class="text-stone-700">Row 2</strong> = field types + props &nbsp;·&nbsp;
+        <strong class="text-stone-700">Row 3</strong> = notes. Examples use real test-data from the repository.
+      </p>
+
+      <!-- ── 6.1 CEL Validation ── -->
+      <div class="demo-block reveal">
+        <div class="demo-badge db-new">✦ New Feature</div>
+        <h3 class="font-semibold text-xl text-stone-900 mb-2">CEL Validation via protovalidate</h3>
+        <p class="text-sm text-stone-500 leading-relaxed max-w-3xl mb-6">
+          Add <code class="font-mono text-xs icode-o">validate:</code> /
+          <code class="font-mono text-xs icode-o">validate_complex:</code> /
+          <code class="font-mono text-xs icode-o">validate_message:</code>
+          props directly in the field-type cell (Row 2). Worksheet-level rules go in the
+          <code class="font-mono text-xs bg-ink-50 text-ink-700 px-1.5 py-0.5 rounded">@TABLEAU</code> metasheet.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <div class="xl-label">📄 ValidateFieldLevel — field-level validation props in Row 2</div>
+            <div class="xl-scroll">
+              <table class="xl">
+                <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+                <tbody>
+                  <tr class="xr-name"><td class="rn">1</td><td>ID</td><td>Name</td><td>Score</td></tr>
+                  <tr class="xr-type"><td class="rn">2</td>
+                    <td>map&lt;uint32, Item&gt;|{validate:"uint32:{gt:0}" validate_complex:"map:{min_pairs:1}"}</td>
+                    <td>string|{validate:"string:{min_len:1 max_len:20}"}</td>
+                    <td>int32|{validate:"int32:{gt:0 lte:100}"}</td>
+                  </tr>
+                  <tr class="xr-note"><td class="rn">3</td><td>Item ID</td><td>Item Name</td><td>Item Score</td></tr>
+                  <tr class="xr-data"><td class="rn">4</td><td class="key">1</td><td>sword</td><td>80</td></tr>
+                  <tr class="xr-data2"><td class="rn">5</td><td class="key">2</td><td>shield</td><td>95</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="xl-label">📋 Validate#@TABLEAU — worksheet-level CEL expressions</div>
+            <div class="xl-scroll">
+              <table class="xl">
+                <thead><tr><th></th><th>A (Sheet)</th><th>B (Mode)</th><th>C (Validate)</th></tr></thead>
+                <tbody>
+                  <tr class="xr-meta"><td class="rn">2</td><td>ValidateWorksheetLevel</td><td></td><td>cel_expression:"this.item_map.size() &gt; 0"</td></tr>
+                  <tr class="xr-meta"><td class="rn">3</td><td>ValidateStructType</td><td>MODE_STRUCT_TYPE</td><td>cel_expression:"this.begin &gt; this.end ? 'begin must be before end' : ''"</td></tr>
+                  <tr class="xr-meta"><td class="rn">4</td><td>ValidateUnionType</td><td>MODE_UNION_TYPE</td><td>cel_expression:"this.type != 0"</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="demo-out mt-4">
+          <div class="demo-out-hd">▸ generated proto — field-level buf.validate annotations</div>
+          <div class="demo-out-bd">
+            <span class="c-com">// Validation rules compiled from spreadsheet props</span>
+            <span><span class="c-typ">message</span> <span class="c-key">Item</span> {</span>
+            <span class="c-hl">  <span class="c-typ">&nbsp;&nbsp;uint32</span> <span class="c-fld">id</span>    = <span class="c-num">1</span> [<span class="c-ann">(tableau.field)</span> = {<span class="c-key">name</span>:<span class="c-str">"ID"</span>},    <span class="c-ann">(buf.validate.field)</span>.uint32 = {<span class="c-key">gt</span>: <span class="c-num">0</span>}];</span>
+            <span class="c-hl">  <span class="c-typ">&nbsp;&nbsp;string</span>  <span class="c-fld">name</span>  = <span class="c-num">2</span> [<span class="c-ann">(tableau.field)</span> = {<span class="c-key">name</span>:<span class="c-str">"Name"</span>},  <span class="c-ann">(buf.validate.field)</span>.string  = {<span class="c-key">min_len</span>: <span class="c-num">1</span>, <span class="c-key">max_len</span>: <span class="c-num">20</span>}];</span>
+            <span class="c-hl">  <span class="c-typ">&nbsp;&nbsp;int32</span>   <span class="c-fld">score</span> = <span class="c-num">3</span> [<span class="c-ann">(tableau.field)</span> = {<span class="c-key">name</span>:<span class="c-str">"Score"</span>}, <span class="c-ann">(buf.validate.field)</span>.int32  = {<span class="c-key">gt</span>: <span class="c-num">0</span>, <span class="c-key">lte</span>: <span class="c-num">100</span>}];</span>
+            <span>}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 6.2 PreserveFieldNumbers ── -->
+      <div class="demo-block reveal">
+        <div class="demo-badge db-new">✦ New Option</div>
+        <h3 class="font-semibold text-xl text-stone-900 mb-2">PreserveFieldNumbers — Safe Schema Evolution</h3>
+        <p class="text-sm text-stone-500 leading-relaxed max-w-3xl mb-6">
+          Adding a column mid-sheet silently shifts field tag numbers — breaking binary-serialized data.
+          Enable <code class="font-mono text-xs icode-o">preserveFieldNumbers: true</code>
+          to lock existing fields to their original numbers. New fields get <em>max+1</em>.
+        </p>
+        <div class="grid md:grid-cols-2 gap-5 mb-5">
+          <div>
+            <div class="xl-label">📄 HeroConf — v1 (original)</div>
+            <div class="xl-scroll">
+              <table class="xl">
+                <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+                <tbody>
+                  <tr class="xr-name"><td class="rn">1</td><td>ID</td><td>Name</td><td>Level</td></tr>
+                  <tr class="xr-type"><td class="rn">2</td><td>map&lt;uint32, Hero&gt;</td><td>string</td><td>int32</td></tr>
+                  <tr class="xr-note"><td class="rn">3</td><td>Hero ID</td><td>Hero name</td><td>Hero level</td></tr>
+                  <tr class="xr-data"><td class="rn">4</td><td class="key">1</td><td>Arthur</td><td>50</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="xl-label">📄 HeroConf — v2 (HP inserted between Name and Level)</div>
+            <div class="xl-scroll">
+              <table class="xl">
+                <thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>
+                <tbody>
+                  <tr class="xr-name"><td class="rn">1</td><td>ID</td><td>Name</td><td style="background:#fff0d0;color:#7a4000;font-weight:700">HP</td><td>Level</td></tr>
+                  <tr class="xr-type"><td class="rn">2</td><td>map&lt;uint32, Hero&gt;</td><td>string</td><td style="background:#fff8e8;color:#5a3000">int32</td><td>int32</td></tr>
+                  <tr class="xr-note"><td class="rn">3</td><td>Hero ID</td><td>Hero name</td><td style="background:#f8f8f0;color:#7a7060;font-style:italic">Hero HP</td><td>Hero level</td></tr>
+                  <tr class="xr-data"><td class="rn">4</td><td class="key">1</td><td>Arthur</td><td>500</td><td>50</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="sbs-wrap">
+          <div class="sbs-panel">
+            <div class="sbs-hd sbs-hd-before">✗ Without PreserveFieldNumbers</div>
+            <div class="sbs-bd sbs-bd-before">
+              <span class="dim">// Fields re-numbered in sheet order</span><br>
+              <span>uint32 id    = <span class="ok">1</span>;  <span class="dim">// ✓ unchanged</span></span><br>
+              <span>string name  = <span class="ok">2</span>;  <span class="dim">// ✓ unchanged</span></span><br>
+              <span>int32  hp    = <span class="warn">3</span>;  <span class="dim">// ← took level's old #</span></span><br>
+              <span>int32  level = <span class="bad">4</span>;  <span class="warn">// ⚠ SHIFTED 3→4!</span></span><br>
+              <span class="dim">                    // binary data CORRUPTED</span>
+            </div>
+          </div>
+          <div class="sbs-panel">
+            <div class="sbs-hd sbs-hd-after">✓ With preserveFieldNumbers: true</div>
+            <div class="sbs-bd sbs-bd-after">
+              <span class="dim">// Existing numbers locked; new = max+1</span><br>
+              <span>uint32 id    = <span class="ok">1</span>;  <span class="dim">// ✓ preserved</span></span><br>
+              <span>string name  = <span class="ok">2</span>;  <span class="dim">// ✓ preserved</span></span><br>
+               <span>int32  hp    = <span class="ok">4</span>;  <span class="dim">// ✓ new = max+1</span></span><br>
+			   <span>int32  level = <span class="ok">3</span>;  <span class="dim">// ✓ preserved!</span></span><br>
+              <span class="dim">                    // wire format safe ✓</span>
+            </div>
+          </div>
+        </div>
+        <div class="demo-out">
+          <div class="demo-out-hd">▸ tableauc config.yaml</div>
+          <div class="demo-out-bd">
+            <span><span class="c-key">proto</span>:</span>
+            <span>  <span class="c-key">output</span>:</span>
+            <span class="c-hl">    <span class="c-key">preserveFieldNumbers</span>: <span class="c-val">true</span>   <span class="c-com"># enable preservation</span></span>
+          </div>
+        </div>
+        <div class="callout mt-4">
+          💡 On first run, tableau reads <em>existing</em> generated <code>.proto</code> files in <code>outdir</code> to learn current field numbers — keep them before regenerating.
+        </div>
+      </div>
+
+      <!-- ── 6.3 Union Field Ordering ── -->
+      <div class="demo-block reveal">
+        <div class="demo-badge db-fix">⬡ Bug Fix</div>
+        <h3 class="font-semibold text-xl text-stone-900 mb-2">Union Field Ordering — Column Lookup Fixed</h3>
+        <p class="text-sm text-stone-500 leading-relaxed max-w-3xl mb-6">
+          The bug was in the <strong class="text-stone-700">confgen parser</strong>: when reading a union member's
+          value fields, it used <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">fd.Number()</code>
+          (the protobuf tag number) to construct the column name to look up. If a union member struct
+          has non-sequential field tag numbers, the parser searched for the wrong columns and silently
+          produced zero values. The fix uses <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">i+1</code>
+          (definition order) instead — matching how column names are always generated.
+        </p>
+
+        <!-- Proto definition showing non-sequential tags -->
+        <div class="demo-out mb-5">
+          <div class="demo-out-hd">▸ Proto — Pvp union member struct with non-sequential field tag numbers</div>
+          <div class="demo-out-bd">
+            <span class="c-com">// (tableau.oneof) = {field: "Field"} → column prefix is "Field"</span>
+            <span><span class="c-typ">message</span> <span class="c-key">Pvp</span> {</span>
+            <span>  <span class="c-typ">int32</span>  <span class="c-fld">type</span>   = <span class="c-num">1</span>;  <span class="c-com">// definition index i=0  → column suffix = 0+1 = 1 → TargetField1</span></span>
+            <span class="c-warn">  <span class="c-typ">int32</span>  <span class="c-fld">health</span> = <span class="c-num">4</span>;  <span class="c-com">// definition index i=1  → column suffix = 1+1 = 2 → TargetField2  (tag ≠ position!)</span></span>
+            <span class="c-warn">  <span class="c-typ">int64</span>  <span class="c-fld">damage</span> = <span class="c-num">3</span>;  <span class="c-com">// definition index i=2  → column suffix = 2+1 = 3 → TargetField3  (tag ≠ position!)</span></span>
+            <span>}</span>
+          </div>
+        </div>
+
+        <!-- Spreadsheet: columns are always sequential (unchanged by the fix) -->
+        <div class="mb-5">
+          <div class="xl-label">📄 TaskConf — column names are always sequential (TargetField1, TargetField2, TargetField3)</div>
+          <div class="xl-scroll">
+            <table class="xl">
+              <thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr></thead>
+              <tbody>
+                <tr class="xr-name"><td class="rn">1</td>
+                  <td>ID</td><td>TargetType</td>
+                  <td style="background:#dce8fc;color:#18305e;font-weight:700">TargetField1</td>
+                  <td style="background:#dce8fc;color:#18305e;font-weight:700">TargetField2</td>
+                  <td style="background:#dce8fc;color:#18305e;font-weight:700">TargetField3</td>
+                </tr>
+                <tr class="xr-type"><td class="rn">2</td>
+                  <td>map&lt;int32, Task&gt;</td>
+                  <td>{union.Target}enum&lt;union.Target.Type&gt;</td>
+                  <td style="background:#d8edd8;color:#1a4020">union</td>
+                  <td style="background:#d8edd8;color:#1a4020">union</td>
+                  <td style="background:#d8edd8;color:#1a4020">union</td>
+                </tr>
+                <tr class="xr-note"><td class="rn">3</td>
+                  <td>Task ID</td><td>Target type</td>
+                  <td>Target field 1</td><td>Target field 2</td><td>Target field 3</td>
+                </tr>
+                <tr class="xr-data"><td class="rn">4</td>
+                  <td class="key">1</td><td>PVP</td>
+                  <td>10</td><td>200</td><td>500</td>
+                </tr>
+                <tr class="xr-data2"><td class="rn">5</td>
+                  <td class="key">2</td><td>PVE</td>
+                  <td>3</td><td>5</td><td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SBS: what the parser was actually looking up -->
+        <div class="sbs-wrap">
+          <div class="sbs-panel">
+            <div class="sbs-hd sbs-hd-before">✗ Before fix — parser used fd.Number() as column suffix</div>
+            <div class="sbs-bd sbs-bd-before">
+              <span class="dim">// Parsing PVP row, iterating Pvp fields:</span><br>
+              <span>Pvp.type   (tag=<span class="warn">1</span>) → looked for <span class="ok">TargetField1</span> → found, type=10  ✓</span><br>
+              <span>Pvp.health (tag=<span class="warn">4</span>) → looked for <span class="bad">TargetField4</span> → NOT FOUND → health=<span class="bad">0</span>  ✗</span><br>
+              <span>Pvp.damage (tag=<span class="warn">3</span>) → looked for <span class="bad">TargetField3</span> → found BUT reads <span class="bad">wrong slot</span>  ✗</span><br>
+              <br>
+              <span class="dim">// Result: health silently zeroed, damage wrong</span>
+            </div>
+          </div>
+          <div class="sbs-panel">
+            <div class="sbs-hd sbs-hd-after">✓ After fix — parser uses i+1 (definition order)</div>
+            <div class="sbs-bd sbs-bd-after">
+              <span class="dim">// Parsing PVP row, iterating Pvp fields:</span><br>
+              <span>Pvp.type   (i=0, i+1=<span class="ok">1</span>) → looked for <span class="ok">TargetField1</span> → found, type=10    ✓</span><br>
+              <span>Pvp.health (i=1, i+1=<span class="ok">2</span>) → looked for <span class="ok">TargetField2</span> → found, health=200  ✓</span><br>
+              <span>Pvp.damage (i=2, i+1=<span class="ok">3</span>) → looked for <span class="ok">TargetField3</span> → found, damage=500  ✓</span><br>
+              <br>
+              <span class="dim">// Result: all fields correctly parsed ✓</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code fix -->
+        <div class="demo-out" style="margin-top:16px;">
+          <div class="demo-out-hd">▸ internal/confgen/document_parser.go — the one-line fix</div>
+          <div class="demo-out-bd">
+            <span class="c-com">// Inside parseUnionMessage(), iterating fields of a union member struct:</span>
+            <span class="c-del">- valNodeName := unionDesc.ValueFieldName() + strconv.Itoa(int(fd.Number()))</span>
+            <span class="c-add">+ valNodeName := unionDesc.ValueFieldName() + strconv.Itoa(i+1)</span>
+            <span class="c-com">  // fd.Number() = proto tag (can be any int)  →  wrong column when non-sequential</span>
+            <span class="c-com">  // i+1         = definition order (always 1,2,3…) →  always matches sheet columns</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 6.4 Per-Messager Formats ── -->
+      <div class="demo-block reveal">
+        <div class="demo-badge db-new">✦ New Feature</div>
+        <h3 class="font-semibold text-xl text-stone-900 mb-2">Per-Messager Output Formats</h3>
+        <p class="text-sm text-stone-500 leading-relaxed max-w-3xl mb-6">
+          Override output formats per messager. Supported formats: <code class="font-mono text-xs icode-o">json</code>,
+          <code class="font-mono text-xs icode-o">txtpb</code> (text protobuf),
+          <code class="font-mono text-xs icode-o">binpb</code> (binary protobuf).
+          Useful when some messagers need compact binary for runtime performance while others stay in human-readable JSON or text protobuf.
+        </p>
+        <div class="grid md:grid-cols-2 gap-5 mb-5">
+          <div>
+            <div class="xl-label">📄 ItemConf — runtime-critical, needs binary</div>
+            <div class="xl-scroll">
+              <table class="xl">
+                <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+                <tbody>
+                  <tr class="xr-name"><td class="rn">1</td><td>ID</td><td>Name</td><td>Price</td></tr>
+                  <tr class="xr-type"><td class="rn">2</td><td>map&lt;uint32, Item&gt;</td><td>string</td><td>int32</td></tr>
+                  <tr class="xr-note"><td class="rn">3</td><td>Item ID</td><td>Item name</td><td>Item price</td></tr>
+                  <tr class="xr-data"><td class="rn">4</td><td class="key">1</td><td>Sword</td><td>100</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="xl-label">📄 LevelConf — needs text protobuf for inspection</div>
+            <div class="xl-scroll">
+              <table class="xl">
+                <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+                <tbody>
+                  <tr class="xr-name"><td class="rn">1</td><td>Level</td><td>Exp</td><td>MaxHP</td></tr>
+                  <tr class="xr-type"><td class="rn">2</td><td>map&lt;int32, LevelData&gt;</td><td>int64</td><td>int32</td></tr>
+                  <tr class="xr-note"><td class="rn">3</td><td>Level num</td><td>Exp needed</td><td>Max HP</td></tr>
+                  <tr class="xr-data"><td class="rn">4</td><td class="key">1</td><td>0</td><td>100</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="demo-out">
+          <div class="demo-out-hd">▸ tableauc config.yaml — messagerFormats (NEW in v0.16.0)</div>
+          <div class="demo-out-bd">
+            <span><span class="c-key">conf</span>:</span>
+            <span>  <span class="c-key">output</span>:</span>
+            <span>    <span class="c-key">formats</span>: [<span class="c-str">json</span>]           <span class="c-com"># default for all</span></span>
+            <span class="c-hl">    <span class="c-key">messagerFormats</span>:          <span class="c-com"># per-messager overrides</span></span>
+            <span class="c-hl">      <span class="c-key">ItemConf</span>:  [<span class="c-str">json</span>, <span class="c-str">binpb</span>]  <span class="c-com"># json for debug + binpb for runtime perf</span></span>
+            <span class="c-hl">      <span class="c-key">LevelConf</span>: [<span class="c-str">json</span>, <span class="c-str">txtpb</span>]  <span class="c-com"># json + txtpb for human-readable inspection</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 6.5 Breaking: go_package ── -->
+      <div class="demo-block reveal">
+        <div class="demo-badge db-breaking">⚠ Breaking Change</div>
+        <h3 class="font-semibold text-xl text-stone-900 mb-2">Protobuf Editions: go_package Must Be Quoted</h3>
+        <p class="text-sm text-stone-500 leading-relaxed max-w-3xl mb-6">
+          With editions support, string file options must be explicitly double-quoted in YAML config.
+        </p>
+        <div class="sbs-wrap">
+          <div class="sbs-panel">
+            <div class="sbs-hd sbs-hd-before">✗ v0.15.x config (now broken)</div>
+            <div class="sbs-bd sbs-bd-before">
+              <span class="dim"># tableauc config.yaml</span><br>
+              <span>proto:</span><br><span>  output:</span><br><span>    fileOptions:</span><br>
+              <span>      <span class="bad">go_package: github.com/org/protoconf</span></span><br><br>
+              <span class="dim"># Generated proto (wrong):</span><br>
+              <span>  <span class="bad">option go_package = github.com/org/protoconf;</span></span><br>
+              <span class="dim">  # ↑ missing quotes → parse error</span>
+            </div>
+          </div>
+          <div class="sbs-panel">
+            <div class="sbs-hd sbs-hd-after">✓ v0.16.0 migration</div>
+            <div class="sbs-bd sbs-bd-after">
+              <span class="dim"># tableauc config.yaml</span><br>
+              <span>proto:</span><br><span>  output:</span><br><span>    fileOptions:</span><br>
+              <span>      <span class="ok">go_package: '"github.com/org/protoconf"'</span></span><br>
+              <span class="dim">      # outer single + inner double quotes</span><br><br>
+              <span class="dim"># Generated proto (correct):</span><br>
+              <span>  <span class="ok">option go_package = "github.com/org/protoconf";</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 6.6 Deprecated: cross ── -->
+      <div class="demo-block reveal">
+        <div class="demo-badge db-dep">↯ Deprecated</div>
+        <h3 class="font-semibold text-xl text-stone-900 mb-2">Field Option <code class="font-mono text-lg">cross</code> — Deprecated</h3>
+        <p class="text-sm text-stone-500 leading-relaxed max-w-3xl mb-6">
+          <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">cross</code> was used on a <strong class="text-stone-700">horizontal union list</strong> field to specify how many value-field columns each list element spans.
+          <code class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">cross:3</code> means every element in the list occupies exactly <strong class="text-stone-700">3</strong> consecutive value-field columns.
+          The option is deprecated as of v0.16.0 — existing sheets still work but it will be removed in a future version.
+        </p>
+
+      <!-- ── 6.7 Error Collector ── -->
+      <div class="demo-block reveal">
+        <div class="demo-badge db-arch">🏗️ Architectural</div>
+        <h3 class="font-semibold text-xl text-stone-900 mb-2">Structured Error Collector — See All Errors, Not Just the First</h3>
+        <p class="text-sm text-stone-500 leading-relaxed max-w-3xl mb-6">
+          The new <code class="font-mono text-xs icode-o border border-forest-100">xerrors.Collector</code> tree collects multiple parse errors concurrently
+          across the full pipeline. Each level has its own cap — parsing stops only when a level's budget is exhausted, not on the very first error.
+        </p>
+        <!-- two sheets with bad cells -->
+        <div class="grid md:grid-cols-2 gap-5 mb-5">
+          <div>
+            <div class="xl-label">📄 Collector#ItemConf.csv — two invalid cells in the same row</div>
+            <div class="xl-scroll">
+              <table class="xl">
+                <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+                <tbody>
+                  <tr class="xr-name"><td class="rn">1</td><td>ID</td><td>Num</td><td>Price</td></tr>
+                  <tr class="xr-type"><td class="rn">2</td><td>uint32</td><td>int32</td><td>int32</td></tr>
+                  <tr class="xr-note"><td class="rn">3</td><td>Item's ID</td><td>Item's num</td><td>Item's price</td></tr>
+                  <tr class="xr-data"><td class="rn">4</td><td class="key">1</td>
+                    <td style="background:#fee2e2;color:#991b1b;font-weight:600">xyz</td>
+                    <td style="background:#fee2e2;color:#991b1b;font-weight:600">bad_price</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="xl-label">📄 Collector#ShopConf.csv — errors across two rows</div>
+            <div class="xl-scroll">
+              <table class="xl">
+                <thead><tr><th></th><th>A</th><th>B</th></tr></thead>
+                <tbody>
+                  <tr class="xr-name"><td class="rn">1</td><td>ShopID</td><td>Price</td></tr>
+                  <tr class="xr-type"><td class="rn">2</td><td>uint32</td><td>int32</td></tr>
+                  <tr class="xr-note"><td class="rn">3</td><td>Shop's ID</td><td>Goods's price</td></tr>
+                  <tr class="xr-data"><td class="rn">4</td><td class="key">1</td><td style="background:#fee2e2;color:#991b1b;font-weight:600">bad_price</td></tr>
+                  <tr class="xr-data2"><td class="rn">5</td><td style="background:#fee2e2;color:#991b1b;font-weight:600">bad_id</td><td>200</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- before / after terminal output -->
+        <div class="sbs-wrap mb-5">
+          <div class="sbs-panel">
+            <div class="sbs-hd sbs-hd-before">✗ Old behavior (v0.15.x) — stops at first error</div>
+            <div class="sbs-bd sbs-bd-before" style="font-size:11px;">
+              <span class="dim">$ tableauc gen ...</span><br><br>
+              <span style="color:#991b1b;font-weight:600">error[E2012]: invalid syntax of numerical value</span><br>
+              <span>Workbook:    Collector#*.csv</span><br>
+              <span>Worksheet:   ItemConf</span><br>
+              <span>DataCellPos: <span class="warn">B4</span></span><br>
+              <span>DataCell:    <span class="warn">xyz</span></span><br>
+              <span>Reason: "xyz" cannot be parsed to int32</span><br><br>
+              <span class="dim">// ← STOPS. Fix xyz, run again,</span><br>
+              <span class="dim">// discover bad_price, fix it, run again…</span><br>
+              <span class="dim">// painful iteration cycle.</span>
+            </div>
+          </div>
+          <div class="sbs-panel">
+            <div class="sbs-hd sbs-hd-after">✓ New behavior (v0.16.0) — all errors at once</div>
+            <div class="sbs-bd sbs-bd-after" style="font-size:11px;">
+              <span class="dim">$ tableauc gen ...</span><br><br>
+              <span><span class="ok font-bold">[1]</span> error[E2012]: invalid syntax…</span><br>
+              <span>Workbook:    Collector#*.csv</span><br>...<br><br>
+              <span><span class="ok font-bold">[2]</span> error[E2012]: invalid syntax…</span><br>
+              <span>Workbook:    Collector#*.csv</span><br>...<br><br>
+              <span><span class="ok font-bold">[3]</span> error[E2012]: invalid syntax…</span><br>
+              <span>Workbook:    Collector#*.csv</span><br>...<br><br>
+              <span class="dim">// Fix ALL 3 issues in one pass ✓</span>
+            </div>
+          </div>
+        </div>
+        <!-- collector API code block -->
+        <div class="demo-out">
+          <div class="demo-out-hd">▸ confgen 4-level collector hierarchy (protogen uses 3 levels: 10→5→3, no message level)</div>
+          <div class="demo-out-bd">
+            <span class="c-com">// Each level has its own cap; Collect(err) increments self + ALL ancestors</span>
+            <span><span class="c-key">gen</span>.collector              = <span class="c-typ">NewCollector</span>(<span class="c-num">20</span>)   <span class="c-com">// global: all workbooks</span></span>
+            <span class="c-hl">  bookCollector            = gen.collector.<span class="c-typ">NewChild</span>(<span class="c-num">10</span>)   <span class="c-com">// per workbook</span></span>
+            <span class="c-hl">    sheetCollector         = bookCollector.<span class="c-typ">NewChild</span>(<span class="c-num">5</span>)    <span class="c-com">// per sheet</span></span>
+            <span class="c-hl">      messageCollector     = sheetCollector.<span class="c-typ">NewChild</span>(<span class="c-num">3</span>)   <span class="c-com">// per row/message</span></span>
+            <span>&nbsp;</span>
+            <span class="c-com">// Concurrent workbooks via Group (cancels ctx when full):</span>
+            <span><span class="c-key">group</span> = gen.collector.<span class="c-typ">NewGroup</span>(ctx)</span>
+            <span>group.<span class="c-typ">Go</span>(<span class="c-key">func</span>(ctx) { <span class="c-key">return</span> gen.convertTable(fd) })  <span class="c-com">// one goroutine per workbook</span></span>
+            <span><span class="c-key">err</span>   = group.<span class="c-typ">Wait</span>()  <span class="c-com">// returns joined error tree or nil</span></span>
+          </div>
+        </div>
+        <div class="callout mt-4">
+          💡 <strong>Cap behavior with overflow (confgen):</strong> A sheet with 12 bad rows reports only the first <strong>5 errors per sheet</strong> (up to <strong>3 per row</strong>). Parsing skips remaining rows once the sheet cap is reached. The global cap of <strong>20</strong> prevents runaway output across all concurrent workbooks.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ░░░ FOOTER ░░░ -->
+  <footer class="py-16 px-6 lg:px-14 xl:px-20 sec-white" style="border-top:1px solid #e5e7eb;">
+    <div class="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-6">
+      <div class="font-bold text-xl" style="color:#D95A27">Tableau</div>
+      <div class="font-mono text-xs text-stone-400">v0.16.0 · Released May 29, 2026 · github.com/tableauio/tableau</div>
+      <div class="flex gap-6">
+        <a href="https://github.com/tableauio/tableau/releases/tag/v0.16.0" class="font-mono text-xs text-stone-500 hover:style="color:#D95A27" class="transition-colors">↗ GitHub Release</a>
+        <a href="https://github.com/tableauio/tableau" class="font-mono text-xs text-stone-500 hover:style="color:#D95A27" class="transition-colors">↗ Repository</a>
+        <a href="https://buf.build" class="font-mono text-xs text-stone-500 hover:style="color:#D95A27" class="transition-colors">↗ Buf BSR</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -28px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Smooth fix-row hover
+    document.querySelectorAll('.fix-row').forEach(row => {
+      row.addEventListener('mouseenter', () => row.style.background = '#F5F4F1');
+      row.addEventListener('mouseleave', () => row.style.background = '');
+    });
+  </script>
+
+</body>
+</html>

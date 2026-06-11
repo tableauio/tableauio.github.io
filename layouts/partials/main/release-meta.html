@@ -1,0 +1,19 @@
+{{/*
+  Release card meta line. Same shape as blog-meta.html, but when the page is
+  an HTML stub (`.Params.iframe` is set), reading time is computed from the
+  linked artifact's word count instead of the (typically empty) stub body.
+
+  Reading speed: 213 wpm (Hugo's default).
+*/ -}}
+{{- $readingTime := .ReadingTime -}}
+{{- if .Params.iframe -}}
+  {{- $path := printf "static/%s" (strings.TrimPrefix "/" .Params.iframe) -}}
+  {{- if fileExists $path -}}
+    {{- $text := readFile $path | plainify -}}
+    {{- $wordCount := len (findRE "\\S+" $text) -}}
+    {{- $rt := math.Ceil (div (float $wordCount) 213.0) -}}
+    {{- if lt $rt 1.0 -}}{{- $rt = 1.0 -}}{{- end -}}
+    {{- $readingTime = int $rt -}}
+  {{- end -}}
+{{- end -}}
+<p><small>Posted {{ .PublishDate.Format "January 2, 2006" }}{{ if .Params.contributors }} by {{ range $index, $contributor := .Params.contributors }}{{ if gt $index 0 }} and {{ end }}<a class="stretched-link position-relative" href="{{ "/contributors/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}{{ end }}&nbsp;&hyphen;&nbsp;<strong>{{ $readingTime -}}&nbsp;min read</strong></small></p>
