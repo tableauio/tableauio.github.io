@@ -1,0 +1,23 @@
+{{ define "main" }}
+  <div class="row flex-xl-nowrap">
+    <div class="col-lg-4 col-xl-3 docs-sidebar d-none d-lg-block">
+      {{ partial "release/sidebar.html" . }}
+    </div>
+    <main class="docs-content col-lg-12 col-xl-9 mx-xl-auto">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lead }}<p class="lead">{{ . | safeHTML }}</p>{{ end }}
+      {{ .Content }}
+      <ul class="list-unstyled mt-4">
+        {{ $currentLang := .Site.Language.Lang }}
+        {{ $releasePages := where (where site.RegularPages "Section" "release") "Lang" $currentLang }}
+        {{ range $releasePages.ByWeight }}
+          <li class="mb-2">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ if .Params.iframe }}<span class="badge release-html-badge ms-2">HTML</span>{{ end }}
+            {{ with .Params.description }}<div class="text-muted small">{{ . }}</div>{{ end }}
+          </li>
+        {{ end }}
+      </ul>
+    </main>
+  </div>
+{{ end }}
