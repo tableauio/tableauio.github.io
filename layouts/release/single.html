@@ -1,0 +1,49 @@
+{{ define "main" }}
+  <div class="row flex-xl-nowrap">
+    <div class="col-lg-4 col-xl-3 docs-sidebar d-none d-lg-block">
+      {{ partial "release/sidebar.html" . }}
+    </div>
+    {{ if .Params.iframe -}}
+    <main class="release-content col-lg-12 col-xl-9">
+      {{ if .Site.Params.options.breadCrumb -}}
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            {{ partial "main/breadcrumb" . -}}
+            <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+          </ol>
+        </nav>
+      {{ end }}
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lead }}<p class="lead">{{ . | safeHTML }}</p>{{ end }}
+      {{ with .Content }}<div class="release-prelude">{{ . }}</div>{{ end }}
+      <div class="release-iframe-wrap">
+        <iframe
+          src="{{ .Params.iframe }}"
+          title="{{ .Title }}"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+          referrerpolicy="no-referrer"></iframe>
+      </div>
+    </main>
+    {{ else -}}
+    <main class="docs-content col-lg-12 col-xl-9 mx-xl-auto">
+      {{ if .Site.Params.options.breadCrumb -}}
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            {{ partial "main/breadcrumb" . -}}
+            <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+          </ol>
+        </nav>
+      {{ end }}
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lead }}<p class="lead">{{ . | safeHTML }}</p>{{ end }}
+      {{ if ne .Params.toc false -}}
+        <nav class="d-xl-none" aria-label="Quaternary navigation">
+          {{ partial "sidebar/docs-toc.html" . }}
+        </nav>
+      {{ end -}}
+      {{ .Content }}
+    </main>
+    {{ end -}}
+  </div>
+{{ end }}
