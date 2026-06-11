@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau Loader v0.6.0 — Release Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: {
+          sans: ['Inter','system-ui','sans-serif'],
+          mono: ['"JetBrains Mono"','monospace'],
+        },
+        colors: {
+          orange:{50:'#FEF0E8',100:'#FDD9C4',200:'#FBBA96',400:'#F07040',500:'#D95A27',600:'#C24D18',700:'#A03D10'},
+        },
+      }}
+    }
+  </script>
+  <style>
+    :root{
+      --bg:#ffffff; --bg-alt:#f9fafb;
+      --card:#ffffff; --border:#e5e7eb; --border-l:#f3f4f6;
+      --text:#111827; --muted:#6b7280; --subtle:#9ca3af;
+      --accent:#f97316; --accent-bg:#fff7ed; --accent-border:rgba(249,115,22,0.22);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);font-family:'Inter',system-ui,sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;padding-top:0;}
+
+    /* Typography */
+    .hero-version{font-weight:900;font-size:clamp(60px,10vw,130px);line-height:.92;letter-spacing:-4px;color:#111827;} .hero-anim-0{animation:fadeInUp .7s ease .02s both;}
+    .sec-title{font-weight:800;font-size:clamp(28px,4.5vw,50px);line-height:1.06;color:var(--text);}
+    .sec-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;}
+
+    /* Nav */
+    .hero-section{background:#ffffff;}
+    .nav-link{font-size:13.5px;font-weight:500;color:#6b7280;text-decoration:none;transition:color .15s;}
+    .nav-link:hover{color:#111827;}
+
+    /* Cards */
+    .card-base{background:var(--card);border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,0.05),0 4px 16px rgba(0,0,0,0.07);}
+    .feat-card{background:var(--card);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05);transition:transform .22s,box-shadow .22s;}
+    .feat-card:hover{transform:translateY(-3px);box-shadow:0 4px 8px rgba(0,0,0,.06),0 16px 40px rgba(0,0,0,.09);}
+
+    /* Animations */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+    @keyframes bounceY{0%,100%{transform:translateY(0) translateX(-50%)}50%{transform:translateY(7px) translateX(-50%)}}
+    @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.72)}}
+    .pulse-dot{animation:pulseDot 2.2s ease infinite;}
+    .scroll-cue{animation:bounceY 2.2s ease infinite;}
+    .hero-anim-1{animation:fadeInUp .7s ease .10s both;}
+    .hero-anim-2{animation:fadeInUp .7s ease .22s both;}
+    .hero-anim-3{animation:fadeInUp .7s ease .34s both;}
+    .hero-anim-4{animation:fadeInUp .7s ease .46s both;}
+    .hero-anim-5{animation:fadeInUp .7s ease .56s both;}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+    .reveal.on{opacity:1;transform:none;}
+    .rd1{transition-delay:.07s}.rd2{transition-delay:.14s}.rd3{transition-delay:.21s}
+    .rd4{transition-delay:.28s}.rd5{transition-delay:.35s}.rd6{transition-delay:.42s}
+
+    /* Chips & Tags */
+    .stat-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;}
+    .chip-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;}
+    .chip-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;}
+    .chip-amber{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+    .chip-violet{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .tag{display:inline-flex;align-items:center;padding:2px 9px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+    .tag-new,.tag-option{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;}
+    .tag-breaking{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+    .tag-tooling{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;}
+    .tag-enhanced{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;}
+    .tag-arch{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .demo-badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:4px;margin-bottom:10px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+    .db-new{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;}
+    .db-fix{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;}
+    .db-breaking{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+    .db-dep{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .icode-o{font-family:'JetBrains Mono',monospace;font-size:11.5px;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;padding:1px 6px;border-radius:4px;}
+
+    /* Fix rows */
+    .fix-row{border-bottom:1px solid #f3f4f6;transition:background .12s;}
+    .fix-row:last-child{border-bottom:none;}
+    .fix-row:hover{background:#f9fafb;}
+
+    /* Code blocks */
+    .code-blk{background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.05);}
+    .code-blk-hd{padding:9px 16px;background:#f9fafb;border-bottom:1px solid #e5e7eb;font-family:'JetBrains Mono',monospace;font-size:11px;color:#57606a;letter-spacing:.04em;}
+    .code-blk-hd::before,.demo-out-hd::before{display:none;}
+    .code-blk-bd{padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;overflow-x:auto;color:#24292f;}
+    .c-del{color:#82071e;display:block;background:#ffebe9;margin:0 -16px;padding:0 16px;}
+    .c-add{color:#116329;display:block;background:#e6ffec;margin:0 -16px;padding:0 16px;}
+    .c-com{color:#6e7781;display:block;}.c-inf{color:#0550ae;display:block;}
+    .c-key{color:#cf222e;}.c-val{color:#116329;}.c-str{color:#0a3069;}
+    .c-ann{color:#8250df;}.c-typ{color:#953800;}.c-num{color:#0550ae;}.c-fld{color:#24292f;}
+    .c-hl{background:#e6ffec;display:block;border-left:2px solid #2da44e;padding-left:14px;margin-left:-16px;margin-right:-16px;padding-right:16px;}
+    .c-warn{background:#fff8c5;display:block;border-left:2px solid #d29922;padding-left:14px;margin-left:-16px;margin-right:-16px;padding-right:16px;}
+
+    /* Demo output */
+    .demo-out{border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.05);}
+    .demo-out-hd{padding:9px 16px;background:#f9fafb;border-bottom:1px solid #e5e7eb;font-family:'JetBrains Mono',monospace;font-size:11px;color:#57606a;letter-spacing:.04em;}
+    .demo-out-bd{padding:14px 16px;background:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;overflow-x:auto;color:#24292f;}
+
+    /* SBS panels */
+    .sbs-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    @media(max-width:720px){.sbs-wrap{grid-template-columns:1fr;}}
+    .sbs-panel{border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 2px 8px rgba(0,0,0,0.06);}
+    .sbs-hd{padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+    .sbs-hd-before{background:#fff1ee;color:#a32424;border:1px solid #ffc1be;border-bottom:none;}
+    .sbs-hd-after{background:#e6ffec;color:#116329;border:1px solid #abdfba;border-bottom:none;}
+    .sbs-bd{padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.85;}
+    .sbs-bd-before{background:#ffebe9;border:1px solid #ffc1be;border-top:none;color:#3d1515;}
+    .sbs-bd-after{background:#e6ffec;border:1px solid #abdfba;border-top:none;color:#0d3b1f;}
+    .ok{color:#116329;}.bad{color:#82071e;text-decoration:line-through;}.warn{color:#953800;}.dim{color:#6e7781;}
+
+    /* Callout */
+    .callout{background:#eff6ff;border:1px solid #bfdbfe;border-left:3px solid #2563eb;padding:11px 16px;border-radius:0 8px 8px 0;font-size:13.5px;color:#1e40af;line-height:1.65;}
+    .callout code{font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(37,99,235,0.1);color:#1e40af;padding:1px 5px;border-radius:3px;}
+
+    /* Excel */
+    .xl-scroll{overflow-x:auto;border:1px solid #d0d7de;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,0.05),0 4px 16px rgba(0,0,0,0.08);}
+    .xl{border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:11.5px;background:#fff;min-width:380px;width:100%;}
+    .xl thead th{background:#DDE4EE;color:#4A5878;border:1px solid #B8C4D4;text-align:center;padding:3px 8px;font-size:10.5px;font-weight:600;user-select:none;white-space:nowrap;}
+    .xl td{border:1px solid #D0D8E8;padding:5px 10px;color:#1a2434;vertical-align:top;white-space:nowrap;max-width:260px;overflow:hidden;text-overflow:ellipsis;}
+    .xl td.rn{background:#E8EDF4;color:#8898A8;text-align:right;padding:4px 7px;font-size:10.5px;user-select:none;width:28px;min-width:28px;}
+    .xl tr.xr-name td{background:#DCE8FC;color:#18305E;font-weight:600;}
+    .xl tr.xr-type td{background:#D8EDD8;color:#1A4020;font-size:10.5px;white-space:pre-wrap;word-break:break-all;max-width:240px;}
+    .xl tr.xr-note td{background:#F5F5F5;color:#5A6878;font-style:italic;}
+    .xl tr.xr-data td{background:#fff;}.xl tr.xr-data2 td{background:#FAFBFC;}
+    .xl tr.xr-data td.key,.xl tr.xr-data2 td.key{background:#FFFDE8;}
+    .xl tr.xr-meta td{background:#F0EEF8;color:#4A3880;}
+    .xl-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:#A2A2A2;letter-spacing:.05em;margin-bottom:6px;}
+
+    /* Dependency tags */
+    .dep-tag{background:#fff;border:1px solid rgba(0,0,0,.1);padding:7px 15px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#626060;transition:all .15s;cursor:default;box-shadow:0 1px 2px rgba(0,0,0,0.04);}
+    .dep-tag-new{background:#fff7ed;border-color:rgba(249,115,22,0.3);color:#ea580c;}
+
+    /* Demo blocks */
+    .demo-block{padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid #f3f4f6;}
+    .demo-block:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+
+    /* Breaking cards */
+    .breaking-card{background:#fff;border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,.09);border-left:4px solid #dc2626;box-shadow:0 1px 3px rgba(220,38,38,0.05),0 4px 14px rgba(220,38,38,0.08);}
+
+    @media(max-width:640px){
+      .hero-version{letter-spacing:-2px;}
+      .sec-title{font-size:clamp(24px,8vw,38px);}
+    }
+
+    /* Hero grid background */
+    .hero-section::before{
+      content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,0,0,0.025) 1px,transparent 1px);
+      background-size:80px 28px;
+    }
+
+    /* Decorative spreadsheet */
+    .deco-sheet-wrap{position:absolute;bottom:-30px;right:-24px;pointer-events:none;user-select:none;z-index:1;opacity:0.10;transform:perspective(1100px) rotateY(-14deg) rotateX(5deg);transform-origin:right bottom;transition:opacity .3s;}
+    .hero-section:hover .deco-sheet-wrap{opacity:0.16;}
+    .deco-sheet{border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:11.5px;background:#fff;border:2px solid #9AAAB8;box-shadow:0 8px 40px rgba(0,0,0,0.18);}
+    .deco-sheet th{background:#DDE4EE;color:#4A5878;border:1px solid #B8C4D4;text-align:center;padding:4px 12px;font-size:10.5px;font-weight:600;min-width:36px;user-select:none;}
+    .deco-sheet th.rn{min-width:28px;max-width:28px;}
+    .deco-sheet td{border:1px solid #D0D8E8;padding:5px 12px;white-space:nowrap;color:#1a2434;min-width:80px;}
+    .deco-sheet td.rn{background:#E8EDF4;color:#8898A8;text-align:right;padding:4px 7px;font-size:10.5px;width:28px;min-width:28px;}
+    .deco-sheet tr.xr-name td{background:#DCE8FC;color:#18305E;font-weight:600;}
+    .deco-sheet tr.xr-type td{background:#D8EDD8;color:#1A4020;}
+    .deco-sheet tr.xr-note td{background:#F5F5F5;color:#5A6878;font-style:italic;}
+    .deco-sheet tr.xr-data td{background:#fff;}.deco-sheet tr.xr-data2 td{background:#FAFBFC;}
+    .deco-sheet td.key{background:#FFFDE8;}
+    .deco-sheet td.sel,.deco-sheet th.sel{background:rgba(217,90,39,0.15)!important;outline:2px solid rgba(217,90,39,0.5);outline-offset:-2px;}
+
+    /* Section tints */
+    .sec-feat{background:linear-gradient(180deg,#fafffe 0%,#fafffe 90%,#f0fdf8 100%);}
+    .sec-fix{background:linear-gradient(180deg,#f0f8ff 0%,#f0f8ff 90%,#ffffff 100%);}
+    .sec-break{background:linear-gradient(180deg,#fffafa 0%,#fffafa 90%,#fff5f5 100%);}
+    .sec-dep{background:linear-gradient(180deg,#fffdf0 0%,#fffdf0 90%,#ffffff 100%);}
+    .sec-white{background:#ffffff;}
+    .sec-gray{background:linear-gradient(180deg,#f8fafc 0%,#f8fafc 92%,#ffffff 100%);}
+    .sec-white-next-gray{background:linear-gradient(180deg,#ffffff 0%,#ffffff 92%,#f8fafc 100%);}
+  </style>
+</head>
+<body>
+
+<!-- ░░░ NAV ░░░ -->
+<nav class="sticky top-0 z-50" style="background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;box-shadow:0 1px 0 rgba(0,0,0,0.04),0 2px 12px rgba(0,0,0,0.06);">
+  <div class="max-w-7xl mx-auto px-8 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="/" target="_top" class="flex items-center gap-3" style="text-decoration:none;color:inherit;" title="Tableau home" aria-label="Tableau home">
+        <img src="https://tableauio.github.io/tableau-logo.svg" width="22" height="22" alt="Tableau" style="display:block;flex-shrink:0;" />
+        <span class="font-semibold text-sm tracking-tight" style="color:#111827">Tableau Loader</span>
+      </a>
+      <span class="font-mono text-xs px-2 py-0.5 rounded" style="background:#f3f4f6;color:#6b7280">v0.6.0</span>
+    </div>
+    <div class="hidden md:flex items-center gap-7">
+      <a href="#features"  class="nav-link">Features</a>
+      <a href="#fixes"     class="nav-link">Fixes</a>
+      <a href="#deps"      class="nav-link">Dependencies</a>
+      <a href="#examples"  class="nav-link">Examples</a>
+      <a href="https://github.com/tableauio/loader/releases/tag/v0.6.0" target="_blank"
+         title="View on GitHub"
+         style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;color:#374151;transition:background .15s,color .15s;"
+         onmouseover="this.style.background='#f3f4f6';this.style.color='#111827'"
+         onmouseout="this.style.background='transparent';this.style.color='#374151'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ░░░ HERO ░░░ -->
+<section class="hero-section relative overflow-hidden" style="padding:120px 24px 140px;">
+  <div class="deco-sheet-wrap">
+    <table class="deco-sheet">
+      <thead>
+        <tr>
+          <th class="rn"></th>
+          <th>A</th><th>B</th><th class="sel">C</th><th>D</th><th>E</th><th>F</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="xr-name">
+          <td class="rn">1</td>
+          <td>ID</td><td>Name</td><td class="sel">Loader</td><td>Lang</td><td>Index</td><td>Patch</td>
+        </tr>
+        <tr class="xr-type">
+          <td class="rn">2</td>
+          <td>map&lt;uint32,Item&gt;</td><td>string</td><td class="sel">enum&lt;Loader&gt;</td><td>string</td><td>[Index]</td><td>bool</td>
+        </tr>
+        <tr class="xr-note">
+          <td class="rn">3</td>
+          <td>Item ID</td><td>Display name</td><td class="sel">Target loader</td><td>Language</td><td>Indexes</td><td>Patch on</td>
+        </tr>
+        <tr class="xr-data">
+          <td class="rn">4</td><td class="key">1</td><td>Hero</td><td class="sel">go</td><td>Go</td><td>by_name</td><td>true</td>
+        </tr>
+        <tr class="xr-data2">
+          <td class="rn">5</td><td class="key">2</td><td>Hero</td><td class="sel">cpp</td><td>C++</td><td>by_name</td><td>true</td>
+        </tr>
+        <tr class="xr-data">
+          <td class="rn">6</td><td class="key">3</td><td>Hero</td><td class="sel">csharp</td><td>C#</td><td>by_name</td><td>true</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="max-w-6xl mx-auto relative" style="z-index:2;">
+    <!-- watermark -->
+    <div aria-hidden="true" style="position:absolute;top:60px;right:0;font-weight:900;font-size:clamp(220px,28vw,360px);line-height:.9;letter-spacing:-12px;color:#111827;opacity:0.025;pointer-events:none;user-select:none;z-index:0;">v0.6.0</div>
+
+    <div class="relative" style="z-index:2;">
+      <div class="hero-anim-0 flex items-center gap-3 flex-wrap mb-12">
+        <img src="https://tableauio.github.io/tableau-logo.svg" width="28" height="28" alt="Tableau" style="display:block;flex-shrink:0;" />
+        <span style="font-size:15px;font-weight:700;color:#111827;letter-spacing:-0.015em;">Tableau Loader</span>
+        <span style="color:#e5e7eb;font-size:16px;font-weight:300;">|</span>
+        <span class="font-mono text-xs px-2 py-1 rounded" style="background:#f3f4f6;color:#6b7280">v0.6.0</span>
+        <span style="color:#e5e7eb;font-size:16px;font-weight:300;">|</span>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold" style="background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;">
+          <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full" style="background:#16a34a;"></span>
+          Released June 11, 2026
+        </span>
+      </div>
+
+      <p class="hero-anim-1 text-xs font-mono mb-3" style="color:#9ca3af;letter-spacing:.3em;">RELEASE NOTES</p>
+
+      <h1 class="hero-anim-2 hero-version mb-6"><span style="color:#16a34a">v</span>0.6.0</h1>
+
+      <p class="hero-anim-3 text-stone-500 text-base leading-relaxed mb-12 max-w-xl" style="color:#6b7280;">
+        C# loader plugin, Protobuf Editions (2023/2024) support, cross-language patch system, and a Windows CI overhaul.
+      </p>
+
+      <div class="hero-anim-4 flex flex-wrap items-center gap-3 mb-2">
+        <span class="stat-chip chip-green">+ 6 Features</span>
+        <span class="stat-chip chip-blue">○ 6 Bug Fixes</span>
+        <span class="stat-chip chip-violet">⟲ 3 Refactors</span>
+        <span style="color:#e5e7eb;font-size:16px;font-weight:300;">|</span>
+        <span class="font-mono text-xs" style="color:#9ca3af;">Go · C++ · C# · Python · Protobuf Editions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- scroll cue -->
+  <div class="scroll-cue" style="position:absolute;bottom:24px;left:50%;color:#9ca3af;font-size:18px;z-index:2;">↓</div>
+</section>
+
+<!-- ░░░ 01 FEATURES ░░░ -->
+<section class="py-24 px-6 lg:px-14 xl:px-20 sec-feat" id="features">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-14 reveal">
+      <span class="sec-num" style="color:#16a34a">01</span>
+      <h2 class="sec-title">New Features</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Feature 1: C# Loader -->
+      <div class="feat-card rounded-2xl p-8 border-t-2 reveal rd1" style="border-top-color:#16a34a;">
+        <div class="flex gap-2 mb-4 flex-wrap">
+          <span class="tag tag-new">NEW</span>
+          <span class="tag tag-tooling">PLUGIN</span>
+        </div>
+        <h3 class="text-lg font-bold mb-3" style="color:#111827;">C# Loader Plugin</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:#6b7280;">
+          First-class C# code generation alongside Go, C++, and Python. Generates strongly-typed accessors, indexes, and OrderedMap collections from your protobuf schema.
+        </p>
+        <div class="code-blk">
+          <div class="code-blk-hd">▸ Hero.cs (generated)</div>
+          <div class="code-blk-bd">
+<span><span class="c-key">public class</span> <span class="c-typ">HeroMgr</span> {</span>
+<span>  <span class="c-key">public</span> <span class="c-typ">Hero</span> <span class="c-fld">Get</span>(<span class="c-typ">uint</span> id);</span>
+<span class="c-hl">  <span class="c-key">public</span> <span class="c-typ">OrderedMap</span> <span class="c-fld">All</span>();</span>
+<span>  <span class="c-key">public</span> <span class="c-typ">Hero</span> <span class="c-fld">FindByName</span>(<span class="c-typ">string</span> name);</span>
+<span>}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2: Protobuf Editions -->
+      <div class="feat-card rounded-2xl p-8 border-t-2 reveal rd2" style="border-top-color:#16a34a;">
+        <div class="flex gap-2 mb-4 flex-wrap">
+          <span class="tag tag-new">NEW</span>
+          <span class="tag tag-arch">PROTOBUF</span>
+        </div>
+        <h3 class="text-lg font-bold mb-3" style="color:#111827;">Protobuf Editions 2023/2024</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:#6b7280;">
+          Full support for the new Protobuf Editions model. Generated code now compiles cleanly under <span class="icode-o">edition&nbsp;=&nbsp;"2023"</span> and <span class="icode-o">"2024"</span>, with a modernized build toolchain.
+        </p>
+        <div class="code-blk">
+          <div class="code-blk-hd">▸ schema.proto</div>
+          <div class="code-blk-bd">
+<span class="c-com">// proto2 / proto3 still supported</span>
+<span class="c-com">// new: editions 2023, 2024</span>
+<span class="c-hl"><span class="c-key">edition</span> = <span class="c-str">"2024"</span>;</span>
+<span class="c-key">package</span> tableau;
+<span class="c-key">message</span> <span class="c-typ">Hero</span> { ... }
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3: Cross-language Patch -->
+      <div class="feat-card rounded-2xl p-8 border-t-2 reveal rd3" style="border-top-color:#16a34a;">
+        <div class="flex gap-2 mb-4 flex-wrap">
+          <span class="tag tag-new">NEW</span>
+          <span class="tag tag-enhanced">CROSS-LANG</span>
+        </div>
+        <h3 class="text-lg font-bold mb-3" style="color:#111827;">Cross-Language Patch Support</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:#6b7280;">
+          Unified patch loading across Go, C++, C#, and Python. Real test suites verify byte-for-byte parity. A Windows-CI overhaul ensures every PR runs the full matrix.
+        </p>
+        <div class="demo-out">
+          <div class="demo-out-hd">▸ patch matrix</div>
+          <div class="demo-out-bd">
+<span class="c-com">// patch.json applied identically across languages</span>
+<span style="color:#116329;">✓ go     loader/patch_test.go      PASS</span>
+<span style="color:#116329;">✓ cpp    loader/patch_test.cpp     PASS</span>
+<span style="color:#116329;">✓ csharp Loader.Tests/Patch.cs    PASS</span>
+<span style="color:#116329;">✓ python loader/test_patch.py     PASS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 4: Windows prepare.bat -->
+      <div class="feat-card rounded-2xl p-8 border-t-2 reveal rd4" style="border-top-color:#16a34a;">
+        <div class="flex gap-2 mb-4 flex-wrap">
+          <span class="tag tag-new">NEW</span>
+          <span class="tag tag-tooling">WINDOWS</span>
+        </div>
+        <h3 class="text-lg font-bold mb-3" style="color:#111827;">Windows Build Setup</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:#6b7280;">
+          One-command Windows environment bootstrap. <span class="icode-o">prepare.bat</span> installs CMake 3.x, sets up vcpkg, and prompts for admin where needed.
+        </p>
+        <div class="code-blk">
+          <div class="code-blk-hd">▸ prepare.bat</div>
+          <div class="code-blk-bd">
+<span class="c-com">:: From a fresh Windows checkout</span>
+<span>&gt; <span class="c-key">prepare.bat</span></span>
+<span class="c-com">  → Installing CMake 3.x ...</span>
+<span class="c-com">  → Setting up vcpkg ...</span>
+<span class="c-hl"><span class="c-com">  ✓ Build environment ready</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 5: Protobuf log handler -->
+      <div class="feat-card rounded-2xl p-8 border-t-2 reveal rd5" style="border-top-color:#16a34a;">
+        <div class="flex gap-2 mb-4 flex-wrap">
+          <span class="tag tag-new">NEW</span>
+          <span class="tag tag-enhanced">LOGGING</span>
+        </div>
+        <h3 class="text-lg font-bold mb-3" style="color:#111827;">Protobuf Log Handler</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:#6b7280;">
+          Structured logging output as Protobuf messages, suitable for downstream pipelines. Bundled with improved code generation for log fields and CI toolchain upgrades.
+        </p>
+        <div class="code-blk">
+          <div class="code-blk-hd">▸ usage</div>
+          <div class="code-blk-bd">
+<span><span class="c-typ">loader</span>.<span class="c-fld">SetLogHandler</span>(<span class="c-key">func</span>(e *<span class="c-typ">pb.LogEntry</span>) {</span>
+<span class="c-com">  // structured proto, easy to ship</span>
+<span class="c-hl">  <span class="c-typ">sink</span>.<span class="c-fld">Write</span>(e)</span>
+<span>})</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 6: TreeMap generics -->
+      <div class="feat-card rounded-2xl p-8 border-t-2 reveal rd6" style="border-top-color:#16a34a;">
+        <div class="flex gap-2 mb-4 flex-wrap">
+          <span class="tag tag-new">NEW</span>
+          <span class="tag tag-tooling">GO 1.26</span>
+        </div>
+        <h3 class="text-lg font-bold mb-3" style="color:#111827;">Generic Tree Map (Go 1.26)</h3>
+        <p class="text-sm leading-relaxed mb-5" style="color:#6b7280;">
+          The internal tree-map index uses Go 1.26's self-referential generics, eliminating runtime type assertions and giving you compile-time-checked nested map access.
+        </p>
+        <div class="code-blk">
+          <div class="code-blk-hd">▸ treemap.go</div>
+          <div class="code-blk-bd">
+<span class="c-key">type</span> <span class="c-typ">TreeMap</span>[K <span class="c-typ">comparable</span>, V <span class="c-key">any</span>] <span class="c-key">struct</span> {</span>
+<span class="c-hl">  children <span class="c-key">map</span>[K]*<span class="c-typ">TreeMap</span>[K, V]</span>
+<span>  value    V</span>
+<span>}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 02 BUG FIXES ░░░ -->
+<section class="py-24 px-6 lg:px-14 xl:px-20 sec-fix" id="fixes">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-14 reveal">
+      <span class="sec-num" style="color:#1d4ed8">02</span>
+      <h2 class="sec-title" style="color:#1d4ed8">Bug Fixes</h2>
+    </div>
+
+    <div class="card-base rounded-2xl overflow-hidden reveal">
+      <div class="fix-row flex items-start gap-4 px-7 py-5">
+        <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+        <div>
+          <p class="font-semibold text-sm mb-1" style="color:#111827;">C++ <code class="font-mono text-xs px-1 rounded" style="background:#f3f4f6;color:#374151;">GetLastLoadedTime</code> no longer marked <code class="font-mono text-xs px-1 rounded" style="background:#f3f4f6;color:#374151;">inline</code></p>
+          <p class="text-sm" style="color:#6b7280;">Removing the keyword fixes ODR violations when the symbol is referenced from multiple translation units.</p>
+        </div>
+        <span class="tag tag-tooling ml-auto flex-shrink-0">CPP</span>
+      </div>
+
+      <div class="fix-row flex items-start gap-4 px-7 py-5">
+        <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+        <div>
+          <p class="font-semibold text-sm mb-1" style="color:#111827;">Template includes use original names; OrderedMap accessors adjusted</p>
+          <p class="text-sm" style="color:#6b7280;">Generated headers now reference the original proto file names instead of munged variants, and OrderedMap iteration helpers were corrected.</p>
+        </div>
+        <span class="tag tag-tooling ml-auto flex-shrink-0">TEMPLATE</span>
+      </div>
+
+      <div class="fix-row flex items-start gap-4 px-7 py-5">
+        <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+        <div>
+          <p class="font-semibold text-sm mb-1" style="color:#111827;">Windows <code class="font-mono text-xs px-1 rounded" style="background:#f3f4f6;color:#374151;">prepare.bat</code> handles CMake 3.x and admin elevation</p>
+          <p class="text-sm" style="color:#6b7280;">The bootstrap script now installs the correct CMake major version and prompts for admin rights when required.</p>
+        </div>
+        <span class="tag tag-tooling ml-auto flex-shrink-0">WINDOWS</span>
+      </div>
+
+      <div class="fix-row flex items-start gap-4 px-7 py-5">
+        <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+        <div>
+          <p class="font-semibold text-sm mb-1" style="color:#111827;">Field-name case conversion + cross-platform generation order</p>
+          <p class="text-sm" style="color:#6b7280;">Generated output is now byte-identical regardless of build platform. Diff-friendly artifacts unblock reproducible builds.</p>
+        </div>
+        <span class="tag tag-enhanced ml-auto flex-shrink-0">CODEGEN</span>
+      </div>
+
+      <div class="fix-row flex items-start gap-4 px-7 py-5">
+        <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+        <div>
+          <p class="font-semibold text-sm mb-1" style="color:#111827;">Index parser skips <code class="font-mono text-xs px-1 rounded" style="background:#f3f4f6;color:#374151;">oneof</code> fields when walking level messages</p>
+          <p class="text-sm" style="color:#6b7280;">Level traversal no longer descends into <code class="font-mono text-xs px-1 rounded" style="background:#f3f4f6;color:#374151;">oneof</code> branches, removing spurious "field not found" errors.</p>
+        </div>
+        <span class="tag tag-tooling ml-auto flex-shrink-0">INDEX</span>
+      </div>
+
+      <div class="fix-row flex items-start gap-4 px-7 py-5">
+        <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+        <div>
+          <p class="font-semibold text-sm mb-1" style="color:#111827;">Index field in list with upper maps now resolves correctly</p>
+          <p class="text-sm" style="color:#6b7280;">Fixes a path-resolution bug where index fields nested under both a list and a parent map produced wrong key sequences.</p>
+        </div>
+        <span class="tag tag-tooling ml-auto flex-shrink-0">INDEX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 05 DEPENDENCIES & REFACTORS ░░░ -->
+<section class="py-24 px-6 lg:px-14 xl:px-20 sec-white-next-gray" id="deps">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-14 reveal">
+      <span class="sec-num" style="color:#6b7280">03</span>
+      <h2 class="sec-title" style="color:#374151;">Dependencies &amp; Toolchain</h2>
+    </div>
+
+    <p class="text-stone-500 text-sm leading-relaxed max-w-3xl mb-12 reveal rd1">
+      Major build-system modernization. The protobuf submodule was removed in favor of vcpkg-managed dependencies, the Go diff library was swapped, and CI now runs <code class="font-mono px-1 rounded" style="background:#f3f4f6;color:#1f2937;">buf</code> for proto generation.
+    </p>
+
+    <div class="flex flex-wrap gap-3 reveal rd2">
+      <span class="dep-tag dep-tag-new">+ vcpkg (replaces protobuf submodule)</span>
+      <span class="dep-tag">- protobuf submodule (removed)</span>
+      <span class="dep-tag dep-tag-new">+ go-udiff (extracted to pkg/udiff)</span>
+      <span class="dep-tag">- go-difflib (replaced)</span>
+      <span class="dep-tag dep-tag-new">+ buf (CI proto generation)</span>
+      <span class="dep-tag">+ Protobuf Editions 2023/2024</span>
+      <span class="dep-tag">+ Go 1.26 (self-refer generics)</span>
+      <span class="dep-tag">+ Recursive submodule checkout in CI</span>
+    </div>
+
+    <div class="callout mt-8 reveal rd3" style="max-width:780px;">
+      <strong style="font-weight:600;">Migration note:</strong> if you previously built from a checkout that pulled the bundled protobuf submodule, run <code>prepare.bat</code> (Windows) or <code>./prepare.sh</code> (Linux/macOS) once after upgrading to bootstrap vcpkg-managed dependencies.
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ 06 EXAMPLES ░░░ -->
+<section class="py-24 px-6 lg:px-14 xl:px-20 sec-gray" id="examples">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-14 reveal">
+      <span class="sec-num" style="color:#7c3aed">04</span>
+      <h2 class="sec-title">Examples</h2>
+    </div>
+
+    <!-- Example 1: index in list with upper maps -->
+    <div class="demo-block reveal">
+      <span class="demo-badge db-fix">FIX · INDEX</span>
+      <h3 class="text-xl font-bold mb-3" style="color:#111827;">Indexes through list-under-map paths</h3>
+      <p class="text-sm leading-relaxed mb-6" style="color:#6b7280;max-width:780px;">
+        Before v0.6.0, an index defined on a field nested inside a <code class="font-mono px-1 rounded" style="background:#fff;border:1px solid #e5e7eb;color:#1f2937;font-size:11.5px;">list</code> that itself sits under a parent <code class="font-mono px-1 rounded" style="background:#fff;border:1px solid #e5e7eb;color:#1f2937;font-size:11.5px;">map</code> generated an incorrect key path. v0.6.0 walks the parent map context correctly and emits stable lookups.
+      </p>
+
+      <p class="xl-label">▸ HeroSquads.xlsx — Squad</p>
+      <div class="xl-scroll mb-6">
+        <table class="xl">
+          <thead><tr>
+            <th class="rn"></th>
+            <th>A</th><th>B</th><th>C</th><th>D</th>
+          </tr></thead>
+          <tbody>
+            <tr class="xr-name"><td class="rn">1</td><td>SquadID</td><td>Members</td><td>HeroID</td><td>Role</td></tr>
+            <tr class="xr-type"><td class="rn">2</td><td>map&lt;uint32,Squad&gt;</td><td>[Member]</td><td>uint32|{index:"ByHero"}</td><td>string</td></tr>
+            <tr class="xr-note"><td class="rn">3</td><td>Squad ID</td><td>Member list</td><td>Index by hero</td><td>Member role</td></tr>
+            <tr class="xr-data"><td class="rn">4</td><td class="key">10</td><td></td><td>1001</td><td>tank</td></tr>
+            <tr class="xr-data2"><td class="rn">5</td><td class="key">10</td><td></td><td>1002</td><td>healer</td></tr>
+            <tr class="xr-data"><td class="rn">6</td><td class="key">11</td><td></td><td>1001</td><td>dps</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sbs-wrap">
+        <div class="sbs-panel">
+          <div class="sbs-hd sbs-hd-before">✗ Before (v0.5.0)</div>
+          <div class="sbs-bd sbs-bd-before">
+<span class="bad">// FindByHero(1001) returned only the first squad's match</span><br>
+<span class="bad">// upper map context dropped during index build</span><br>
+<span class="bad">[]Member{ {SquadID:10, HeroID:1001} }</span>
+          </div>
+        </div>
+        <div class="sbs-panel">
+          <div class="sbs-hd sbs-hd-after">✓ After (v0.6.0)</div>
+          <div class="sbs-bd sbs-bd-after">
+<span class="ok">// FindByHero(1001) returns all matching members</span><br>
+<span class="ok">// across every squad in the parent map</span><br>
+<span class="ok">[]Member{</span><br>
+<span class="ok">  {SquadID:10, HeroID:1001, Role:"tank"},</span><br>
+<span class="ok">  {SquadID:11, HeroID:1001, Role:"dps"},</span><br>
+<span class="ok">}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example 2: Cross-language loader -->
+    <div class="demo-block reveal">
+      <span class="demo-badge db-new">NEW · MULTI-LANG</span>
+      <h3 class="text-xl font-bold mb-3" style="color:#111827;">Same data, four languages</h3>
+      <p class="text-sm leading-relaxed mb-6" style="color:#6b7280;max-width:780px;">
+        From a single protobuf schema, v0.6.0 generates idiomatic loader code for Go, C++, C#, and Python. All four use the same patch system, the same indexes, and ship with parity tests.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="code-blk">
+          <div class="code-blk-hd">▸ main.go</div>
+          <div class="code-blk-bd">
+<span><span class="c-typ">m</span>, _ := <span class="c-typ">loader.New</span>(<span class="c-str">"./conf"</span>)</span>
+<span class="c-typ">hero</span> := <span class="c-typ">m</span>.<span class="c-typ">Hero</span>().<span class="c-fld">Get</span>(<span class="c-num">1001</span>)
+          </div>
+        </div>
+        <div class="code-blk">
+          <div class="code-blk-hd">▸ main.cpp</div>
+          <div class="code-blk-bd">
+<span><span class="c-typ">tableau</span>::<span class="c-typ">Loader</span> m(<span class="c-str">"./conf"</span>);</span>
+<span class="c-key">auto</span>* hero = m.<span class="c-fld">Hero</span>().<span class="c-fld">Get</span>(<span class="c-num">1001</span>);
+          </div>
+        </div>
+        <div class="code-blk">
+          <div class="code-blk-hd">▸ Program.cs</div>
+          <div class="code-blk-bd">
+<span><span class="c-key">var</span> m = <span class="c-key">new</span> <span class="c-typ">Loader</span>(<span class="c-str">"./conf"</span>);</span>
+<span><span class="c-key">var</span> hero = m.Hero.Get(<span class="c-num">1001</span>);</span>
+          </div>
+        </div>
+        <div class="code-blk">
+          <div class="code-blk-hd">▸ main.py</div>
+          <div class="code-blk-bd">
+<span>m = <span class="c-typ">Loader</span>(<span class="c-str">"./conf"</span>)</span>
+<span>hero = m.hero.get(<span class="c-num">1001</span>)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ FOOTER ░░░ -->
+<footer class="py-16 px-6 lg:px-14 xl:px-20 sec-white" style="border-top:1px solid #e5e7eb;">
+  <div class="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-6">
+    <div class="font-bold text-xl" style="color:#D95A27">Tableau Loader</div>
+    <div class="font-mono text-xs text-stone-400">v0.6.0 · Released June 11, 2026 · github.com/tableauio/loader</div>
+    <div class="flex gap-6">
+      <a href="https://github.com/tableauio/loader/releases/tag/v0.6.0" class="font-mono text-xs text-stone-500" target="_blank" rel="noopener">↗ GitHub Release</a>
+      <a href="https://github.com/tableauio/loader" class="font-mono text-xs text-stone-500" target="_blank" rel="noopener">↗ Repository</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -28px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.fix-row').forEach(row => {
+    row.addEventListener('mouseenter', () => row.style.background = '#F5F4F1');
+    row.addEventListener('mouseleave', () => row.style.background = '');
+  });
+</script>
+
+</body>
+</html>
