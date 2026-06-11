@@ -24,7 +24,7 @@
 [[main]]
   name = "发布"
   url = "/release/"
-  weight = 15
+  weight = 30
 
 [[social]]
   name = "GitHub"

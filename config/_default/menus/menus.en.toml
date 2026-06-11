@@ -33,7 +33,7 @@
 [[main]]
   name = "Release"
   url = "/release/"
-  weight = 25
+  weight = 40
 
 [[social]]
   name = "GitHub"
