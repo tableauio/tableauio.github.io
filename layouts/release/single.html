@@ -44,7 +44,6 @@
           </button>
         </div>
       </header>
-      {{ with .Params.lead }}<p class="lead release-iframe-lead">{{ . | safeHTML }}</p>{{ end }}
       {{ with .Content }}<div class="release-prelude">{{ . }}</div>{{ end }}
       <div class="release-iframe-wrap" data-release-iframe-wrap>
         <iframe
