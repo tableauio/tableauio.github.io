@@ -1,13 +1,57 @@
 /* Release section */
 
-/* Iframe pane: fill the available content column height. */
+/* Full-width iframe page: break out of the parent `.container-xxl` so reports
+   span the entire viewport width regardless of the global fullWidth setting.
+   `100vw` minus its own offset keeps it left-aligned without horizontal scroll. */
+.release-iframe-page {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.release-iframe-header {
+  padding: 0.5rem 0.25rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.release-iframe-header .breadcrumb {
+  background: transparent;
+  padding: 0;
+}
+
+.release-iframe-actions .release-iframe-action {
+  color: var(--bs-secondary-color, #495057);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.release-iframe-actions .release-iframe-action:hover,
+.release-iframe-actions .release-iframe-action:focus {
+  color: var(--bs-primary, #0d6efd);
+  background: var(--bs-secondary-bg, rgba(13, 110, 253, 0.08));
+}
+
+.release-iframe-lead {
+  margin: 0 0 0.5rem;
+}
+
+/* Iframe wrap: tall, edge-to-edge inside the page. */
 .release-iframe-wrap {
   position: relative;
   width: 100%;
-  /* Approximate offset: site header (~64px) + breadcrumb/title block (~120px). */
-  height: calc(100vh - 200px);
-  min-height: 480px;
-  margin-top: 1rem;
+  height: calc(100vh - 160px);
+  min-height: 520px;
+  margin-top: 0.5rem;
   border: 1px solid var(--bs-border-color, #dee2e6);
   border-radius: 0.25rem;
   overflow: hidden;
@@ -19,6 +63,23 @@
   height: 100%;
   border: 0;
   display: block;
+}
+
+/* Browser native fullscreen: occupy whole screen with no padding. */
+.release-iframe-wrap:fullscreen,
+.release-iframe-wrap:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  background: #fff;
+}
+
+.release-iframe-wrap:fullscreen iframe,
+.release-iframe-wrap:-webkit-full-screen iframe {
+  width: 100vw;
+  height: 100vh;
 }
 
 /* Active sidebar item: subtle highlight using the existing docs-sidebar look. */

@@ -1,22 +1,52 @@
 {{ define "main" }}
-  <div class="row flex-xl-nowrap">
-    <div class="col-lg-4 col-xl-3 docs-sidebar d-none d-lg-block">
-      {{ partial "release/sidebar.html" . }}
-    </div>
-    {{ if .Params.iframe -}}
-    <main class="release-content col-lg-12 col-xl-9">
-      {{ if .Site.Params.options.breadCrumb -}}
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            {{ partial "main/breadcrumb" . -}}
-            <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
-          </ol>
-        </nav>
-      {{ end }}
-      <h1>{{ .Title }}</h1>
-      {{ with .Params.lead }}<p class="lead">{{ . | safeHTML }}</p>{{ end }}
+  {{ if .Params.iframe -}}
+    {{/* Full-width iframe layout — no sidebar, content fills viewport. */}}
+    <div class="release-iframe-page">
+      <header class="release-iframe-header d-flex align-items-center justify-content-between">
+        {{ if .Site.Params.options.breadCrumb -}}
+          <nav aria-label="breadcrumb" class="mb-0">
+            <ol class="breadcrumb mb-0">
+              {{ partial "main/breadcrumb" . -}}
+              <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+            </ol>
+          </nav>
+        {{ else -}}
+          <h1 class="release-iframe-title h5 mb-0">{{ .Title }}</h1>
+        {{ end -}}
+        <div class="release-iframe-actions d-flex align-items-center gap-2">
+          <a class="btn btn-sm btn-link release-iframe-action"
+             href="{{ .Params.iframe }}"
+             target="_blank"
+             rel="noopener"
+             title="Open in new tab"
+             aria-label="Open in new tab">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+          <button type="button"
+                  class="btn btn-sm btn-link release-iframe-action"
+                  data-release-fullscreen
+                  title="Toggle fullscreen"
+                  aria-label="Toggle fullscreen">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
+              <path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
+              <path d="M3 16v3a2 2 0 0 0 2 2h3"/>
+              <path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+      {{ with .Params.lead }}<p class="lead release-iframe-lead">{{ . | safeHTML }}</p>{{ end }}
       {{ with .Content }}<div class="release-prelude">{{ . }}</div>{{ end }}
-      <div class="release-iframe-wrap">
+      <div class="release-iframe-wrap" data-release-iframe-wrap>
         <iframe
           src="{{ .Params.iframe }}"
           title="{{ .Title }}"
@@ -24,26 +54,47 @@
           sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
           referrerpolicy="no-referrer"></iframe>
       </div>
-    </main>
-    {{ else -}}
-    <main class="docs-content col-lg-12 col-xl-9 mx-xl-auto">
-      {{ if .Site.Params.options.breadCrumb -}}
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            {{ partial "main/breadcrumb" . -}}
-            <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
-          </ol>
-        </nav>
-      {{ end }}
-      <h1>{{ .Title }}</h1>
-      {{ with .Params.lead }}<p class="lead">{{ . | safeHTML }}</p>{{ end }}
-      {{ if ne .Params.toc false -}}
-        <nav class="d-xl-none" aria-label="Quaternary navigation">
-          {{ partial "sidebar/docs-toc.html" . }}
-        </nav>
-      {{ end -}}
-      {{ .Content }}
-    </main>
-    {{ end -}}
-  </div>
+    </div>
+    <script>
+      (function () {
+        var btn = document.querySelector('[data-release-fullscreen]');
+        var wrap = document.querySelector('[data-release-iframe-wrap]');
+        if (!btn || !wrap) return;
+        btn.addEventListener('click', function () {
+          var doc = document;
+          var inFullscreen = doc.fullscreenElement || doc.webkitFullscreenElement;
+          if (inFullscreen) {
+            (doc.exitFullscreen || doc.webkitExitFullscreen).call(doc);
+          } else {
+            (wrap.requestFullscreen || wrap.webkitRequestFullscreen).call(wrap);
+          }
+        });
+      })();
+    </script>
+  {{ else -}}
+    {{/* Markdown release: docs-style two-pane layout with sidebar + TOC. */}}
+    <div class="row flex-xl-nowrap">
+      <div class="col-lg-4 col-xl-3 docs-sidebar d-none d-lg-block">
+        {{ partial "release/sidebar.html" . }}
+      </div>
+      <main class="docs-content col-lg-12 col-xl-9 mx-xl-auto">
+        {{ if .Site.Params.options.breadCrumb -}}
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              {{ partial "main/breadcrumb" . -}}
+              <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+            </ol>
+          </nav>
+        {{ end }}
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.lead }}<p class="lead">{{ . | safeHTML }}</p>{{ end }}
+        {{ if ne .Params.toc false -}}
+          <nav class="d-xl-none" aria-label="Quaternary navigation">
+            {{ partial "sidebar/docs-toc.html" . }}
+          </nav>
+        {{ end -}}
+        {{ .Content }}
+      </main>
+    </div>
+  {{ end -}}
 {{ end }}
