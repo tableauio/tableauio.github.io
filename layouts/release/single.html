@@ -1,6 +1,6 @@
 {{ define "main" }}
   {{ if .Params.iframe -}}
-    {{/* Full-width iframe layout — no sidebar, content fills viewport. */}}
+    {{/* Full-width iframe layout — content fills viewport, no sidebar. */}}
     <div class="release-iframe-page">
       <header class="release-iframe-header d-flex align-items-center justify-content-between">
         {{ if .Site.Params.options.breadCrumb -}}
@@ -72,29 +72,36 @@
       })();
     </script>
   {{ else -}}
-    {{/* Markdown release: docs-style two-pane layout with sidebar + TOC. */}}
-    <div class="row flex-xl-nowrap">
-      <div class="col-lg-4 col-xl-3 docs-sidebar d-none d-lg-block">
-        {{ partial "release/sidebar.html" . }}
-      </div>
-      <main class="docs-content col-lg-12 col-xl-9 mx-xl-auto">
-        {{ if .Site.Params.options.breadCrumb -}}
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              {{ partial "main/breadcrumb" . -}}
-              <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
-            </ol>
-          </nav>
-        {{ end }}
-        <h1>{{ .Title }}</h1>
-        {{ with .Params.lead }}<p class="lead">{{ . | safeHTML }}</p>{{ end }}
-        {{ if ne .Params.toc false -}}
-          <nav class="d-xl-none" aria-label="Quaternary navigation">
-            {{ partial "sidebar/docs-toc.html" . }}
-          </nav>
-        {{ end -}}
-        {{ .Content }}
+    {{/* Markdown release: blog-style centered article with optional right TOC. */}}
+    <div class="row flex-xl-nowrap justify-content-center">
+      <main class="docs-content col-lg-12 col-xl{{ if ne .Params.toc false }}-9{{ else }}-10 mx-xl-auto{{ end }}">
+        <article>
+          {{ if .Site.Params.options.breadCrumb -}}
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                {{ partial "main/breadcrumb" . -}}
+                <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+              </ol>
+            </nav>
+          {{ end }}
+          <div class="release-header">
+            <h1>{{ .Title }}</h1>
+            <p><small>{{ .Date.Format "January 2, 2006" }}</small></p>
+          </div>
+          {{ with .Params.lead }}<p class="lead">{{ . | safeHTML }}</p>{{ end }}
+          {{ if ne .Params.toc false -}}
+            <nav class="d-xl-none" aria-label="Quaternary navigation">
+              {{ partial "sidebar/docs-toc.html" . }}
+            </nav>
+          {{ end -}}
+          {{ .Content }}
+        </article>
       </main>
+      {{ if ne .Params.toc false -}}
+        <nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+          {{ partial "sidebar/docs-toc.html" . }}
+        </nav>
+      {{ end -}}
     </div>
   {{ end -}}
 {{ end }}
