@@ -2,10 +2,6 @@
 
 The documentation and marketing site for [Tableau](https://github.com/tableauio/tableau) — a configuration converter that turns Excel / CSV / XML / YAML into JSON / Text / Bin.
 
-Built with [Hugo](https://gohugo.io/) on the [Doks](https://getdoks.org) theme using its [child-theme pattern](https://getdoks.org/docs/prologue/quick-start/#child-theme): the upstream theme is consumed as an npm package and overridden by the same-path files in this repo (`layouts/`, `assets/`, `static/`, …).
-
-Published at <https://tableauio.github.io>.
-
 ## Requirements
 
 - **Node.js** ≥ 24 ([download](https://nodejs.org/en/download/))
