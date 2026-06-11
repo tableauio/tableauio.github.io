@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>发布 on</title><link>https://tableauio.github.io/zh/release/</link><description>Recent content in 发布 on</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Thu, 11 Jun 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/zh/release/index.xml" rel="self" type="application/rss+xml"/><item><title>v0.16.0</title><link>https://tableauio.github.io/zh/release/v0-16-0/</link><pubDate>Wed, 11 Jun 2025 00:00:00 +0800</pubDate><guid>https://tableauio.github.io/zh/release/v0-16-0/</guid><description/></item><item><title>v0.15.0</title><link>https://tableauio.github.io/zh/release/v0-15-0/</link><pubDate>Wed, 07 Jan 2026 07:12:40 +0000</pubDate><guid>https://tableauio.github.io/zh/release/v0-15-0/</guid><description>&lt;h2 id="主要更新">主要更新 &lt;a href="#%e4%b8%bb%e8%a6%81%e6%9b%b4%e6%96%b0" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>字段属性 &lt;code>optional&lt;/code>&lt;/strong> 现在可以从父字段继承（#310）。&lt;/li>
+&lt;li>&lt;strong>新增字段属性 &lt;code>order&lt;/code>&lt;/strong>，用于校验字段顺序的单调性（#326）。&lt;/li>
+&lt;li>&lt;strong>单个 sheet 生成多个 messager&lt;/strong>（#332）。&lt;/li>
+&lt;li>&lt;strong>&lt;code>enum&lt;/code>、&lt;code>struct&lt;/code>、&lt;code>union&lt;/code> 类型定义模式&lt;/strong>全部支持 &lt;code>Transpose&lt;/code>（#338）。&lt;/li>
+&lt;li>&lt;strong>CSV 导入器&lt;/strong>支持 UTF-8-BOM 格式（#318）。&lt;/li>
+&lt;li>&lt;strong>&lt;code>fraction&lt;/code> well-known 类型&lt;/strong>支持浮点数，兼容 Excel 原始值（#323）。&lt;/li>
+&lt;li>&lt;strong>&lt;code>Merger&lt;/code> / &lt;code>Scatter&lt;/code>&lt;/strong> 支持 sheet 名称模式，并自动去重多个 book/sheet pattern 中的重复表（#341）。&lt;/li>
+&lt;li>&lt;strong>解析器替换&lt;/strong>：&lt;code>jhump/protoreflect&lt;/code> 替换为 &lt;code>bufbuild/protocompile&lt;/code>（#334）。&lt;/li>
+&lt;/ul>
+&lt;h2 id="新增功能">新增功能 &lt;a href="#%e6%96%b0%e5%a2%9e%e5%8a%9f%e8%83%bd" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>fieldprop(optional)&lt;/code>：继承父字段的 &lt;code>optional&lt;/code> 属性（&lt;a href="https://github.com/tableauio/tableau/pull/310">#310&lt;/a>）。&lt;/li>
+&lt;li>识别 metasheet noteline 并优化日期时间错误信息（&lt;a href="https://github.com/tableauio/tableau/pull/315">#315&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>importer(CSV)&lt;/code>：支持 UTF-8-BOM 格式（&lt;a href="https://github.com/tableauio/tableau/pull/318">#318&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>confgen(table)&lt;/code>：增加用于忽略某些行的 specifier（&lt;a href="https://github.com/tableauio/tableau/pull/259">#259&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>protogen(errmsg)&lt;/code>：改进解析 metasheet 时的错误信息（&lt;a href="https://github.com/tableauio/tableau/pull/319">#319&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>wellknown(fraction)&lt;/code>：支持浮点数，兼容 Excel 原始值（&lt;a href="https://github.com/tableauio/tableau/pull/323">#323&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>fieldprop(order)&lt;/code>：新增字段属性 &lt;code>order&lt;/code>，用于校验字段单调性（&lt;a href="https://github.com/tableauio/tableau/pull/326">#326&lt;/a>）。&lt;/li>
+&lt;li>支持单个 sheet 生成多个 messager（&lt;a href="https://github.com/tableauio/tableau/pull/332">#332&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>protogen(struct-mode)&lt;/code>：struct 模式支持字段注释（&lt;a href="https://github.com/tableauio/tableau/pull/336">#336&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>protogen&lt;/code>：&lt;code>enum&lt;/code>、&lt;code>struct&lt;/code>、&lt;code>union&lt;/code> 类型定义模式支持 &lt;code>Transpose&lt;/code>（&lt;a href="https://github.com/tableauio/tableau/pull/338">#338&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>confgen(Merger/Scatter)&lt;/code>：支持 sheet 名称模式，并自动过滤多个 book/sheet pattern 中的重复表（&lt;a href="https://github.com/tableauio/tableau/pull/341">#341&lt;/a>）。&lt;/li>
+&lt;/ul>
+&lt;h2 id="缺陷修复">缺陷修复 &lt;a href="#%e7%bc%ba%e9%99%b7%e4%bf%ae%e5%a4%8d" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>fix(fieldprop)&lt;/code>：incell struct 子字段属性原本不生效（&lt;a href="https://github.com/tableauio/tableau/pull/311">#311&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>fix(xerrors)&lt;/code>：错误栈逻辑修复（&lt;a href="https://github.com/tableauio/tableau/pull/327">#327&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>fix(load)&lt;/code>：仅在 patch 目录上检查文件是否存在（&lt;a href="https://github.com/tableauio/tableau/pull/340">#340&lt;/a>）。&lt;/li>
+&lt;/ul>
+&lt;h2 id="重构">重构 &lt;a href="#%e9%87%8d%e6%9e%84" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>refactor(ecode)&lt;/code>：引入代码生成并提升可测试性（&lt;a href="https://github.com/tableauio/tableau/pull/312">#312&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>refactor(transpose)&lt;/code>：优化 transposed table sheet 的逻辑（&lt;a href="https://github.com/tableauio/tableau/pull/320">#320&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>refactor(protoparse)&lt;/code>：使用 &lt;code>bufbuild/protocompile&lt;/code> 替换 &lt;code>jhump/protoreflect&lt;/code>（&lt;a href="https://github.com/tableauio/tableau/pull/334">#334&lt;/a>）。&lt;/li>
+&lt;/ul>
+&lt;h2 id="测试与杂项">测试与杂项 &lt;a href="#%e6%b5%8b%e8%af%95%e4%b8%8e%e6%9d%82%e9%a1%b9" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>test(union)&lt;/code>：补充 list/map 中 &lt;code>union&lt;/code> 的完整示例（&lt;a href="https://github.com/tableauio/tableau/pull/321">#321&lt;/a>）。&lt;/li>
+&lt;li>&lt;code>chore(importer)&lt;/code>：清理代码（&lt;a href="https://github.com/tableauio/tableau/pull/329">#329&lt;/a>）。&lt;/li>
+&lt;/ul>
+&lt;h2 id="链接">链接 &lt;a href="#%e9%93%be%e6%8e%a5" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/tableauio/tableau/compare/v0.14.4...v0.15.0">完整更新记录（v0.14.4 → v0.15.0）&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/tableauio/tableau/releases/tag/v0.15.0">GitHub release 页面&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

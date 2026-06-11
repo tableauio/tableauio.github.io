@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Release on</title><link>https://tableauio.github.io/release/</link><description>Recent content in Release on</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Copyright (c) 2020-2021 Tableau IO</copyright><lastBuildDate>Thu, 11 Jun 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://tableauio.github.io/release/index.xml" rel="self" type="application/rss+xml"/><item><title>v0.16.0</title><link>https://tableauio.github.io/release/v0-16-0/</link><pubDate>Wed, 11 Jun 2025 00:00:00 +0800</pubDate><guid>https://tableauio.github.io/release/v0-16-0/</guid><description/></item><item><title>v0.15.0</title><link>https://tableauio.github.io/release/v0-15-0/</link><pubDate>Wed, 07 Jan 2026 07:12:40 +0000</pubDate><guid>https://tableauio.github.io/release/v0-15-0/</guid><description>&lt;h2 id="highlights">Highlights &lt;a href="#highlights" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Field property &lt;code>optional&lt;/code>&lt;/strong> now inherits from a parent field (#310).&lt;/li>
+&lt;li>&lt;strong>New field property &lt;code>order&lt;/code>&lt;/strong> checks field monotonicity (#326).&lt;/li>
+&lt;li>&lt;strong>Multiple messagers from one sheet&lt;/strong> — generate several messages for the same sheet (#332).&lt;/li>
+&lt;li>&lt;strong>Transpose in &lt;code>enum&lt;/code>, &lt;code>struct&lt;/code>, and &lt;code>union&lt;/code>&lt;/strong> type-definition modes (#338).&lt;/li>
+&lt;li>&lt;strong>CSV importer&lt;/strong> accepts UTF-8 with BOM (#318).&lt;/li>
+&lt;li>&lt;strong>Fraction well-known type&lt;/strong> accepts floating-point numbers for Excel raw-value compatibility (#323).&lt;/li>
+&lt;li>&lt;strong>&lt;code>Merger&lt;/code> / &lt;code>Scatter&lt;/code>&lt;/strong> support sheet-name patterns and auto-deduplicate across multiple book/sheet patterns (#341).&lt;/li>
+&lt;li>&lt;strong>Parser swap&lt;/strong> — &lt;code>jhump/protoreflect&lt;/code> replaced with &lt;code>bufbuild/protocompile&lt;/code> (#334).&lt;/li>
+&lt;/ul>
+&lt;h2 id="features">Features &lt;a href="#features" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>fieldprop(optional)&lt;/code>: inherit parent field&amp;rsquo;s &lt;code>optional&lt;/code> prop (&lt;a href="https://github.com/tableauio/tableau/pull/310">#310&lt;/a>).&lt;/li>
+&lt;li>Recognize metasheet noteline and improve datetime error messages (&lt;a href="https://github.com/tableauio/tableau/pull/315">#315&lt;/a>).&lt;/li>
+&lt;li>&lt;code>importer(CSV)&lt;/code>: support UTF-8-BOM format (&lt;a href="https://github.com/tableauio/tableau/pull/318">#318&lt;/a>).&lt;/li>
+&lt;li>&lt;code>confgen(table)&lt;/code>: add a specifier to ignore some rows (&lt;a href="https://github.com/tableauio/tableau/pull/259">#259&lt;/a>).&lt;/li>
+&lt;li>&lt;code>protogen(errmsg)&lt;/code>: improve error message on parsing metasheet (&lt;a href="https://github.com/tableauio/tableau/pull/319">#319&lt;/a>).&lt;/li>
+&lt;li>&lt;code>wellknown(fraction)&lt;/code>: support floating-point numbers for Excel raw-value compatibility (&lt;a href="https://github.com/tableauio/tableau/pull/323">#323&lt;/a>).&lt;/li>
+&lt;li>&lt;code>fieldprop(order)&lt;/code>: add new field property &lt;code>order&lt;/code> to check field monotonicity (&lt;a href="https://github.com/tableauio/tableau/pull/326">#326&lt;/a>).&lt;/li>
+&lt;li>Support generating multiple messagers for the same sheet (&lt;a href="https://github.com/tableauio/tableau/pull/332">#332&lt;/a>).&lt;/li>
+&lt;li>&lt;code>protogen(struct-mode)&lt;/code>: support field notes for struct mode (&lt;a href="https://github.com/tableauio/tableau/pull/336">#336&lt;/a>).&lt;/li>
+&lt;li>&lt;code>protogen&lt;/code>: support &lt;code>Transpose&lt;/code> in &lt;code>enum&lt;/code>, &lt;code>struct&lt;/code>, and &lt;code>union&lt;/code> type-definition modes (&lt;a href="https://github.com/tableauio/tableau/pull/338">#338&lt;/a>).&lt;/li>
+&lt;li>&lt;code>confgen(Merger/Scatter)&lt;/code>: support sheet-name patterns and auto-filter duplicate sheets across multiple book/sheet patterns (&lt;a href="https://github.com/tableauio/tableau/pull/341">#341&lt;/a>).&lt;/li>
+&lt;/ul>
+&lt;h2 id="fixes">Fixes &lt;a href="#fixes" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>fix(fieldprop)&lt;/code>: incell struct&amp;rsquo;s sub-field&amp;rsquo;s prop had no effect (&lt;a href="https://github.com/tableauio/tableau/pull/311">#311&lt;/a>).&lt;/li>
+&lt;li>&lt;code>fix(xerrors)&lt;/code>: error-stack logic (&lt;a href="https://github.com/tableauio/tableau/pull/327">#327&lt;/a>).&lt;/li>
+&lt;li>&lt;code>fix(load)&lt;/code>: only check file existence on patch dirs (&lt;a href="https://github.com/tableauio/tableau/pull/340">#340&lt;/a>).&lt;/li>
+&lt;/ul>
+&lt;h2 id="refactors">Refactors &lt;a href="#refactors" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>refactor(ecode)&lt;/code>: add codegen and improve testability (&lt;a href="https://github.com/tableauio/tableau/pull/312">#312&lt;/a>).&lt;/li>
+&lt;li>&lt;code>refactor(transpose)&lt;/code>: improve transposed-table-sheet logic (&lt;a href="https://github.com/tableauio/tableau/pull/320">#320&lt;/a>).&lt;/li>
+&lt;li>&lt;code>refactor(protoparse)&lt;/code>: replace &lt;code>jhump/protoreflect&lt;/code> with &lt;code>bufbuild/protocompile&lt;/code> (&lt;a href="https://github.com/tableauio/tableau/pull/334">#334&lt;/a>).&lt;/li>
+&lt;/ul>
+&lt;h2 id="tests--chores">Tests &amp;amp; chores &lt;a href="#tests--chores" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>test(union)&lt;/code>: full examples for &lt;code>union&lt;/code> in list/map (&lt;a href="https://github.com/tableauio/tableau/pull/321">#321&lt;/a>).&lt;/li>
+&lt;li>&lt;code>chore(importer)&lt;/code>: clean code (&lt;a href="https://github.com/tableauio/tableau/pull/329">#329&lt;/a>).&lt;/li>
+&lt;/ul>
+&lt;h2 id="links">Links &lt;a href="#links" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/tableauio/tableau/compare/v0.14.4...v0.15.0">Full changelog (v0.14.4 → v0.15.0)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/tableauio/tableau/releases/tag/v0.15.0">GitHub release page&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>
