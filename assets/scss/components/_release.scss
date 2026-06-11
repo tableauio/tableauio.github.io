@@ -1,16 +1,11 @@
 /* Release section */
 
-/* Full-width iframe page: break out of the parent `.container-xxl` so reports
-   span the entire viewport width regardless of the global fullWidth setting.
-   `100vw` minus its own offset keeps it left-aligned without horizontal scroll. */
+/* Iframe page wrapper. Width matches the top-menu container (`.container-xxl`),
+   inheriting the parent layout. No edge-to-edge breakout. */
 .release-iframe-page {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding: 0 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
