@@ -105,18 +105,30 @@ exactly for the page to look correct.
 
 Background: CSS grid (`::before`) + ghosted watermark version text + `deco-sheet-wrap` (3D spreadsheet table, absolute positioned bottom-right).
 
-**Section structure** — each major section:
+**Section structure** — each major section. The `sec-num` and the `sec-title` MUST share the section's accent colour (the same colour as the section's tag style). This colour pairing is non-negotiable — never leave the title at the default dark.
+
 ```html
 <section class="py-24 px-6 lg:px-14 xl:px-20 sec-feat|sec-fix|sec-break|sec-dep|sec-white-next-gray" id="features|fixes|breaking|deprecated|deps|examples">
   <div class="max-w-7xl mx-auto">
     <div class="flex items-center gap-3 mb-14 reveal">
       <span class="sec-num" style="color:#16a34a">01</span>
-      <h2 class="sec-title">New Features</h2>
+      <h2 class="sec-title" style="color:#16a34a;">New Features</h2>
     </div>
     <!-- section body -->
   </div>
 </section>
 ```
+
+**Section accent colour matrix** (identical to `tag-*` colours — see `references/design-system.md` for the full matrix):
+
+| Section | `sec-num` + `sec-title` colour | Matching tag |
+|---------|--------------------------------|--------------|
+| New Features | `#16a34a` (green) | `tag-new`, `tag-option` |
+| Bug Fixes | `#1d4ed8` (blue, deep) — pair with section background `sec-fix` | `tag-tooling` |
+| Breaking Changes | `#dc2626` (red) | `tag-breaking` |
+| Deprecated | `#d97706` (amber) | `tag-arch` |
+| Dependencies | `#6b7280` (slate) — body title may use `#374151` for contrast | n/a |
+| Examples | `#7c3aed` (violet) | `tag-enhanced` |
 
 **Feature cards** — grid layout, `border-t-2` accent:
 ```html

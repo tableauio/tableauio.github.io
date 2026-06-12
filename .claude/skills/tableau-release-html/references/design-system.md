@@ -195,14 +195,17 @@ Then use the component colour matrix to apply the right classes.
 ## Semantic color matrix
 
 ### Sections
-| Section | Number | CSS class | Accent colour | Title colour |
-|---------|--------|-----------|---------------|--------------|
-| New Features | 01 | `sec-feat` | `#16a34a` green | `#16a34a` |
-| Bug Fixes | 02 | `sec-fix` | `#2563eb` blue | `#1d4ed8` |
-| Breaking Changes | 03 | `sec-break` | `#dc2626` red | `#b91c1c` |
-| Deprecated | 04 | `sec-dep` | `#d97706` amber | `#92400e` |
-| Dependencies | 05 | `sec-white-next-gray` | `#6b7280` slate | `#6b7280` |
-| Examples | 06 | `sec-gray` | `#7c3aed` violet | default |
+
+The `sec-num` AND `sec-title` of every section MUST be set to the accent colour below — the same colour as the section's matching tag. Title left at the default dark is a bug.
+
+| Section | Number | CSS class | `sec-num` + `sec-title` colour |
+|---------|--------|-----------|--------------------------------|
+| New Features | 01 | `sec-feat` | `#16a34a` (green) |
+| Bug Fixes | 02 | `sec-fix` | `#1d4ed8` (deep blue — readable on the light-blue background) |
+| Breaking Changes | 03 | `sec-break` | `#dc2626` (red, or `#b91c1c` for slightly darker) |
+| Deprecated | 04 | `sec-dep` | `#d97706` (amber, or `#92400e` for darker) |
+| Dependencies | 05 | `sec-white-next-gray` | `#6b7280` (slate) — body title may use `#374151` for contrast |
+| Examples | 06 | `sec-gray` | `#7c3aed` (violet) |
 
 ### Tags (`.tag` base class)
 | Class | Use |
