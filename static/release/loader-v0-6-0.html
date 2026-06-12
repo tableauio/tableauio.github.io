@@ -1,0 +1,2116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tableau Loader v0.6.0 — Release Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+              mono: ['"JetBrains Mono"', "monospace"],
+            },
+            colors: {
+              orange: {
+                50: "#FEF0E8",
+                100: "#FDD9C4",
+                200: "#FBBA96",
+                400: "#F07040",
+                500: "#D95A27",
+                600: "#C24D18",
+                700: "#A03D10",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-alt: #f9fafb;
+        --card: #ffffff;
+        --border: #e5e7eb;
+        --border-l: #f3f4f6;
+        --text: #111827;
+        --muted: #6b7280;
+        --subtle: #9ca3af;
+        --accent: #f97316;
+        --accent-bg: #fff7ed;
+        --accent-border: rgba(249, 115, 22, 0.22);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        font-family: "Inter", system-ui, sans-serif;
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        padding-top: 0;
+      }
+
+      .hero-version {
+        font-weight: 900;
+        font-size: clamp(60px, 10vw, 130px);
+        line-height: 0.92;
+        letter-spacing: -4px;
+        color: #111827;
+      }
+      .hero-anim-0 {
+        animation: fadeInUp 0.7s ease 0.02s both;
+      }
+      .sec-title {
+        font-weight: 800;
+        font-size: clamp(28px, 4.5vw, 50px);
+        line-height: 1.06;
+        color: var(--text);
+      }
+      .sec-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero-section {
+        background: #ffffff;
+      }
+      .nav-link {
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #6b7280;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .nav-link:hover {
+        color: #111827;
+      }
+
+      .card-base {
+        background: var(--card);
+        border: 1px solid #e5e7eb;
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.05),
+          0 4px 16px rgba(0, 0, 0, 0.07);
+      }
+      .feat-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.04),
+          0 4px 16px rgba(0, 0, 0, 0.05);
+        transition:
+          transform 0.22s,
+          box-shadow 0.22s;
+      }
+      .feat-card:hover {
+        transform: translateY(-3px);
+        box-shadow:
+          0 4px 8px rgba(0, 0, 0, 0.06),
+          0 16px 40px rgba(0, 0, 0, 0.09);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes bounceY {
+        0%,
+        100% {
+          transform: translateY(0) translateX(-50%);
+        }
+        50% {
+          transform: translateY(7px) translateX(-50%);
+        }
+      }
+      @keyframes pulseDot {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.35;
+          transform: scale(0.72);
+        }
+      }
+      .pulse-dot {
+        animation: pulseDot 2.2s ease infinite;
+      }
+      .scroll-cue {
+        animation: bounceY 2.2s ease infinite;
+      }
+      .hero-anim-1 {
+        animation: fadeInUp 0.7s ease 0.1s both;
+      }
+      .hero-anim-2 {
+        animation: fadeInUp 0.7s ease 0.22s both;
+      }
+      .hero-anim-3 {
+        animation: fadeInUp 0.7s ease 0.34s both;
+      }
+      .hero-anim-4 {
+        animation: fadeInUp 0.7s ease 0.46s both;
+      }
+      .hero-anim-5 {
+        animation: fadeInUp 0.7s ease 0.56s both;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s,
+          transform 0.6s;
+      }
+      .reveal.on {
+        opacity: 1;
+        transform: none;
+      }
+      .rd1 {
+        transition-delay: 0.07s;
+      }
+      .rd2 {
+        transition-delay: 0.14s;
+      }
+      .rd3 {
+        transition-delay: 0.21s;
+      }
+      .rd4 {
+        transition-delay: 0.28s;
+      }
+      .rd5 {
+        transition-delay: 0.35s;
+      }
+      .rd6 {
+        transition-delay: 0.42s;
+      }
+
+      .stat-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 18px;
+        border-radius: 8px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12.5px;
+        font-weight: 600;
+      }
+      .chip-green {
+        background: #f0fdf4;
+        color: #16a34a;
+        border: 1px solid #bbf7d0;
+      }
+      .chip-blue {
+        background: #eff6ff;
+        color: #2563eb;
+        border: 1px solid #bfdbfe;
+      }
+      .chip-amber {
+        background: #fef2f2;
+        color: #dc2626;
+        border: 1px solid #fecaca;
+      }
+      .chip-violet {
+        background: #fffbeb;
+        color: #d97706;
+        border: 1px solid #fde68a;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 9px;
+        border-radius: 4px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .tag-new,
+      .tag-option {
+        background: #f0fdf4;
+        color: #16a34a;
+        border: 1px solid #bbf7d0;
+      }
+      .tag-breaking {
+        background: #fef2f2;
+        color: #dc2626;
+        border: 1px solid #fecaca;
+      }
+      .tag-tooling {
+        background: #eff6ff;
+        color: #2563eb;
+        border: 1px solid #bfdbfe;
+      }
+      .tag-enhanced {
+        background: #f5f3ff;
+        color: #7c3aed;
+        border: 1px solid #ddd6fe;
+      }
+      .tag-arch {
+        background: #fffbeb;
+        color: #d97706;
+        border: 1px solid #fde68a;
+      }
+      .demo-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .db-new {
+        background: #f0fdf4;
+        color: #16a34a;
+        border: 1px solid #bbf7d0;
+      }
+      .db-fix {
+        background: #eff6ff;
+        color: #2563eb;
+        border: 1px solid #bfdbfe;
+      }
+      .db-breaking {
+        background: #fef2f2;
+        color: #dc2626;
+        border: 1px solid #fecaca;
+      }
+      .db-dep {
+        background: #fffbeb;
+        color: #d97706;
+        border: 1px solid #fde68a;
+      }
+      .icode-o {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        background: #f0fdf4;
+        color: #16a34a;
+        border: 1px solid #bbf7d0;
+        padding: 1px 6px;
+        border-radius: 4px;
+      }
+
+      .fix-row {
+        border-bottom: 1px solid #f3f4f6;
+        transition: background 0.12s;
+      }
+      .fix-row:last-child {
+        border-bottom: none;
+      }
+      .fix-row:hover {
+        background: #f9fafb;
+      }
+
+      .code-blk {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.04),
+          0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      .code-blk-hd {
+        padding: 9px 16px;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: #57606a;
+        letter-spacing: 0.04em;
+      }
+      .code-blk-hd::before,
+      .demo-out-hd::before {
+        display: none;
+      }
+      .code-blk-bd {
+        padding: 0;
+        background: #fff;
+      }
+      .code-blk-bd > pre {
+        margin: 0;
+        padding: 14px 16px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        line-height: 1.8;
+        color: #24292f;
+        overflow-x: auto;
+        white-space: pre;
+        tab-size: 2;
+      }
+      .code-blk-bd > pre > code {
+        font-family: inherit;
+        background: none;
+        padding: 0;
+        white-space: pre;
+        display: block;
+        min-width: max-content;
+      }
+      .code-blk-bd > pre > code .c-del,
+      .code-blk-bd > pre > code .c-add,
+      .code-blk-bd > pre > code .c-com,
+      .code-blk-bd > pre > code .c-inf,
+      .code-blk-bd > pre > code .c-hl,
+      .code-blk-bd > pre > code .c-warn,
+      .demo-out-bd > pre > code .c-com,
+      .demo-out-bd > pre > code .c-inf {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        border-left: 0;
+      }
+      .code-blk-bd > pre > code .c-del,
+      .code-blk-bd > pre > code .c-add,
+      .code-blk-bd > pre > code .c-com,
+      .code-blk-bd > pre > code .c-inf,
+      .code-blk-bd > pre > code .c-hl,
+      .code-blk-bd > pre > code .c-warn,
+      .demo-out-bd > pre > code .c-com,
+      .demo-out-bd > pre > code .c-inf {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        border-left: 0;
+      }
+      .c-del {
+        color: #82071e;
+        display: block;
+        background: #ffebe9;
+        margin: 0 -16px;
+        padding: 0 16px;
+      }
+      .c-add {
+        color: #116329;
+        display: block;
+        background: #e6ffec;
+        margin: 0 -16px;
+        padding: 0 16px;
+      }
+      .c-com {
+        color: #6e7781;
+        display: block;
+      }
+      .c-inf {
+        color: #0550ae;
+        display: block;
+      }
+      .c-key {
+        color: #cf222e;
+      }
+      .c-val {
+        color: #116329;
+      }
+      .c-str {
+        color: #0a3069;
+      }
+      .c-ann {
+        color: #8250df;
+      }
+      .c-typ {
+        color: #953800;
+      }
+      .c-num {
+        color: #0550ae;
+      }
+      .c-fld {
+        color: #24292f;
+      }
+      .c-hl {
+        background: #e6ffec;
+        display: block;
+        border-left: 2px solid #2da44e;
+        padding-left: 14px;
+        margin-left: -16px;
+        margin-right: -16px;
+        padding-right: 16px;
+      }
+      .c-warn {
+        background: #fff8c5;
+        display: block;
+        border-left: 2px solid #d29922;
+        padding-left: 14px;
+        margin-left: -16px;
+        margin-right: -16px;
+        padding-right: 16px;
+      }
+
+      .demo-out {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 16px;
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.04),
+          0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      .demo-out-hd {
+        padding: 9px 16px;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: #57606a;
+        letter-spacing: 0.04em;
+      }
+      .demo-out-bd {
+        padding: 0;
+        background: #fff;
+      }
+      .demo-out-bd > pre {
+        margin: 0;
+        padding: 14px 16px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        line-height: 1.8;
+        color: #24292f;
+        overflow-x: auto;
+        white-space: pre;
+        tab-size: 2;
+      }
+      .demo-out-bd > pre > code {
+        font-family: inherit;
+        background: none;
+        padding: 0;
+        white-space: pre;
+        display: block;
+        min-width: max-content;
+      }
+
+      .sbs-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      @media (max-width: 720px) {
+        .sbs-wrap {
+          grid-template-columns: 1fr;
+        }
+      }
+      .sbs-panel {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.04),
+          0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .sbs-hd {
+        padding: 8px 14px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .sbs-hd-before {
+        background: #fff1ee;
+        color: #a32424;
+        border: 1px solid #ffc1be;
+        border-bottom: none;
+      }
+      .sbs-hd-after {
+        background: #e6ffec;
+        color: #116329;
+        border: 1px solid #abdfba;
+        border-bottom: none;
+      }
+      .sbs-bd {
+        padding: 14px 18px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        line-height: 1.85;
+      }
+      .sbs-bd-before {
+        background: #ffebe9;
+        border: 1px solid #ffc1be;
+        border-top: none;
+        color: #3d1515;
+      }
+      .sbs-bd-after {
+        background: #e6ffec;
+        border: 1px solid #abdfba;
+        border-top: none;
+        color: #0d3b1f;
+      }
+      .ok {
+        color: #116329;
+      }
+      .bad {
+        color: #82071e;
+        text-decoration: line-through;
+      }
+      .warn {
+        color: #953800;
+      }
+      .dim {
+        color: #6e7781;
+      }
+
+      .callout {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-left: 3px solid #2563eb;
+        padding: 11px 16px;
+        border-radius: 0 8px 8px 0;
+        font-size: 13.5px;
+        color: #1e40af;
+        line-height: 1.65;
+      }
+      .callout code {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        background: rgba(37, 99, 235, 0.1);
+        color: #1e40af;
+        padding: 1px 5px;
+        border-radius: 3px;
+      }
+
+      .xl-scroll {
+        overflow-x: auto;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.05),
+          0 4px 16px rgba(0, 0, 0, 0.08);
+      }
+      .xl {
+        border-collapse: collapse;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        background: #fff;
+        min-width: 380px;
+        width: 100%;
+      }
+      .xl thead th {
+        background: #dde4ee;
+        color: #4a5878;
+        border: 1px solid #b8c4d4;
+        text-align: center;
+        padding: 3px 8px;
+        font-size: 10.5px;
+        font-weight: 600;
+        user-select: none;
+        white-space: nowrap;
+      }
+      .xl td {
+        border: 1px solid #d0d8e8;
+        padding: 5px 10px;
+        color: #1a2434;
+        vertical-align: top;
+        white-space: nowrap;
+        max-width: 260px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .xl td.rn {
+        background: #e8edf4;
+        color: #8898a8;
+        text-align: right;
+        padding: 4px 7px;
+        font-size: 10.5px;
+        user-select: none;
+        width: 28px;
+        min-width: 28px;
+      }
+      .xl tr.xr-name td {
+        background: #dce8fc;
+        color: #18305e;
+        font-weight: 600;
+      }
+      .xl tr.xr-type td {
+        background: #d8edd8;
+        color: #1a4020;
+        font-size: 10.5px;
+        white-space: pre-wrap;
+        word-break: break-all;
+        max-width: 240px;
+      }
+      .xl tr.xr-note td {
+        background: #f5f5f5;
+        color: #5a6878;
+        font-style: italic;
+      }
+      .xl tr.xr-data td {
+        background: #fff;
+      }
+      .xl tr.xr-data2 td {
+        background: #fafbfc;
+      }
+      .xl tr.xr-data td.key,
+      .xl tr.xr-data2 td.key {
+        background: #fffde8;
+      }
+      .xl tr.xr-meta td {
+        background: #f0eef8;
+        color: #4a3880;
+      }
+      .xl-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: #a2a2a2;
+        letter-spacing: 0.05em;
+        margin-bottom: 6px;
+      }
+
+      .dep-tag {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 7px 15px;
+        border-radius: 6px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: #626060;
+        transition: all 0.15s;
+        cursor: default;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      }
+      .dep-tag-new {
+        background: #fff7ed;
+        border-color: rgba(249, 115, 22, 0.3);
+        color: #ea580c;
+      }
+
+      .demo-block {
+        padding-bottom: 56px;
+        margin-bottom: 56px;
+        border-bottom: 1px solid #f3f4f6;
+      }
+      .demo-block:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      .breaking-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px;
+        border: 1px solid rgba(0, 0, 0, 0.09);
+        border-left: 4px solid #dc2626;
+        box-shadow:
+          0 1px 3px rgba(220, 38, 38, 0.05),
+          0 4px 14px rgba(220, 38, 38, 0.08);
+      }
+
+      @media (max-width: 640px) {
+        .hero-version {
+          letter-spacing: -2px;
+        }
+        .sec-title {
+          font-size: clamp(24px, 8vw, 38px);
+        }
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+        background-size: 80px 28px;
+      }
+
+      .deco-sheet-wrap {
+        position: absolute;
+        bottom: -30px;
+        right: -24px;
+        pointer-events: none;
+        user-select: none;
+        z-index: 1;
+        opacity: 0.1;
+        transform: perspective(1100px) rotateY(-14deg) rotateX(5deg);
+        transform-origin: right bottom;
+        transition: opacity 0.3s;
+      }
+      .hero-section:hover .deco-sheet-wrap {
+        opacity: 0.16;
+      }
+      .deco-sheet {
+        border-collapse: collapse;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        background: #fff;
+        border: 2px solid #9aaab8;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+      }
+      .deco-sheet th {
+        background: #dde4ee;
+        color: #4a5878;
+        border: 1px solid #b8c4d4;
+        text-align: center;
+        padding: 4px 12px;
+        font-size: 10.5px;
+        font-weight: 600;
+        min-width: 36px;
+        user-select: none;
+      }
+      .deco-sheet th.rn {
+        min-width: 28px;
+        max-width: 28px;
+      }
+      .deco-sheet td {
+        border: 1px solid #d0d8e8;
+        padding: 5px 12px;
+        white-space: nowrap;
+        color: #1a2434;
+        min-width: 80px;
+      }
+      .deco-sheet td.rn {
+        background: #e8edf4;
+        color: #8898a8;
+        text-align: right;
+        padding: 4px 7px;
+        font-size: 10.5px;
+        width: 28px;
+        min-width: 28px;
+      }
+      .deco-sheet tr.xr-name td {
+        background: #dce8fc;
+        color: #18305e;
+        font-weight: 600;
+      }
+      .deco-sheet tr.xr-type td {
+        background: #d8edd8;
+        color: #1a4020;
+      }
+      .deco-sheet tr.xr-note td {
+        background: #f5f5f5;
+        color: #5a6878;
+        font-style: italic;
+      }
+      .deco-sheet tr.xr-data td {
+        background: #fff;
+      }
+      .deco-sheet tr.xr-data2 td {
+        background: #fafbfc;
+      }
+      .deco-sheet td.key {
+        background: #fffde8;
+      }
+      .deco-sheet td.sel,
+      .deco-sheet th.sel {
+        background: rgba(217, 90, 39, 0.15) !important;
+        outline: 2px solid rgba(217, 90, 39, 0.5);
+        outline-offset: -2px;
+      }
+
+      .sec-feat {
+        background: linear-gradient(
+          180deg,
+          #fafffe 0%,
+          #fafffe 90%,
+          #f0fdf8 100%
+        );
+      }
+      .sec-fix {
+        background: linear-gradient(
+          180deg,
+          #f0f8ff 0%,
+          #f0f8ff 90%,
+          #ffffff 100%
+        );
+      }
+      .sec-break {
+        background: linear-gradient(
+          180deg,
+          #fffafa 0%,
+          #fffafa 90%,
+          #fff5f5 100%
+        );
+      }
+      .sec-dep {
+        background: linear-gradient(
+          180deg,
+          #fffdf0 0%,
+          #fffdf0 90%,
+          #ffffff 100%
+        );
+      }
+      .sec-white {
+        background: #ffffff;
+      }
+      .sec-gray {
+        background: linear-gradient(
+          180deg,
+          #f8fafc 0%,
+          #f8fafc 92%,
+          #ffffff 100%
+        );
+      }
+      .sec-white-next-gray {
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #ffffff 92%,
+          #f8fafc 100%
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ░░░ NAV ░░░ -->
+    <nav
+      class="sticky top-0 z-50"
+      style="
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.04),
+          0 2px 12px rgba(0, 0, 0, 0.06);
+      "
+    >
+      <div
+        class="max-w-7xl mx-auto px-8 h-14 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <a
+            href="/"
+            target="_top"
+            class="flex items-center gap-3"
+            style="text-decoration: none; color: inherit"
+            title="Tableau home"
+            aria-label="Tableau home"
+          >
+            <img
+              src="https://tableauio.github.io/tableau-logo.svg"
+              width="22"
+              height="22"
+              alt="Tableau"
+              style="display: block; flex-shrink: 0"
+            />
+            <span
+              class="font-semibold text-sm tracking-tight"
+              style="color: #111827"
+              >Tableau Loader</span
+            >
+          </a>
+          <span
+            class="font-mono text-xs px-2 py-0.5 rounded"
+            style="background: #f3f4f6; color: #6b7280"
+            >v0.6.0</span
+          >
+        </div>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#fixes" class="nav-link">Fixes</a>
+          <a href="#deps" class="nav-link">Toolchain</a>
+          <a href="#examples" class="nav-link">Examples</a>
+          <a
+            href="https://github.com/tableauio/loader/releases/tag/v0.6.0"
+            target="_blank"
+            title="View on GitHub"
+            style="
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 34px;
+              height: 34px;
+              border-radius: 8px;
+              color: #374151;
+              transition:
+                background 0.15s,
+                color 0.15s;
+            "
+            onmouseover="
+              this.style.background = '#f3f4f6';
+              this.style.color = '#111827';
+            "
+            onmouseout="
+              this.style.background = 'transparent';
+              this.style.color = '#374151';
+            "
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ░░░ HERO ░░░ -->
+    <section
+      class="hero-section relative overflow-hidden"
+      style="padding: 120px 24px 140px"
+    >
+      <div class="deco-sheet-wrap">
+        <table class="deco-sheet">
+          <thead>
+            <tr>
+              <th class="rn"></th>
+              <th>A</th>
+              <th>B</th>
+              <th class="sel">C</th>
+              <th>D</th>
+              <th>E</th>
+              <th>F</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="xr-name">
+              <td class="rn">1</td>
+              <td>FruitType</td>
+              <td>ID</td>
+              <td class="sel">Price</td>
+              <td>Name</td>
+              <td>Tag</td>
+              <td>Stock</td>
+            </tr>
+            <tr class="xr-type">
+              <td class="rn">2</td>
+              <td>map&lt;int32,Fruit&gt;</td>
+              <td>map&lt;int32,Item&gt;</td>
+              <td class="sel">int32</td>
+              <td>string</td>
+              <td>string</td>
+              <td>int32</td>
+            </tr>
+            <tr class="xr-note">
+              <td class="rn">3</td>
+              <td>Outer key</td>
+              <td>Inner key</td>
+              <td class="sel">Indexed field</td>
+              <td>Display</td>
+              <td>Tag</td>
+              <td>Stock</td>
+            </tr>
+            <tr class="xr-data">
+              <td class="rn">4</td>
+              <td class="key">1</td>
+              <td class="key">100</td>
+              <td class="sel">99</td>
+              <td>Apple</td>
+              <td>fresh</td>
+              <td>120</td>
+            </tr>
+            <tr class="xr-data2">
+              <td class="rn">5</td>
+              <td class="key">1</td>
+              <td class="key">101</td>
+              <td class="sel">79</td>
+              <td>Pear</td>
+              <td>fresh</td>
+              <td>80</td>
+            </tr>
+            <tr class="xr-data">
+              <td class="rn">6</td>
+              <td class="key">2</td>
+              <td class="key">200</td>
+              <td class="sel">99</td>
+              <td>Berry</td>
+              <td>frozen</td>
+              <td>40</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="max-w-6xl mx-auto relative" style="z-index: 2">
+        <div
+          aria-hidden="true"
+          style="
+            position: absolute;
+            top: 60px;
+            right: 0;
+            font-weight: 900;
+            font-size: clamp(220px, 28vw, 360px);
+            line-height: 0.9;
+            letter-spacing: -12px;
+            color: #111827;
+            opacity: 0.025;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+          "
+        >
+          v0.6.0
+        </div>
+
+        <div class="relative" style="z-index: 2">
+          <div class="hero-anim-0 flex items-center gap-3 flex-wrap mb-12">
+            <img
+              src="https://tableauio.github.io/tableau-logo.svg"
+              width="28"
+              height="28"
+              alt="Tableau"
+              style="display: block; flex-shrink: 0"
+            />
+            <span
+              style="
+                font-size: 15px;
+                font-weight: 700;
+                color: #111827;
+                letter-spacing: -0.015em;
+              "
+              >Tableau Loader</span
+            >
+            <span style="color: #e5e7eb; font-size: 16px; font-weight: 300"
+              >|</span
+            >
+            <span
+              class="font-mono text-xs px-2 py-1 rounded"
+              style="background: #f3f4f6; color: #6b7280"
+              >v0.6.0</span
+            >
+            <span style="color: #e5e7eb; font-size: 16px; font-weight: 300"
+              >|</span
+            >
+            <span
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold"
+              style="
+                background: #f0fdf4;
+                color: #16a34a;
+                border: 1px solid #bbf7d0;
+              "
+            >
+              <span
+                class="pulse-dot inline-block w-1.5 h-1.5 rounded-full"
+                style="background: #16a34a"
+              ></span>
+              Released June 11, 2026
+            </span>
+          </div>
+
+          <p
+            class="hero-anim-1 text-xs font-mono mb-3"
+            style="color: #9ca3af; letter-spacing: 0.3em"
+          >
+            RELEASE NOTES
+          </p>
+
+          <h1 class="hero-anim-2 hero-version mb-6">
+            <span style="color: #16a34a">v</span>0.6.0
+          </h1>
+
+          <p
+            class="hero-anim-3 text-stone-500 text-base leading-relaxed mb-12 max-w-2xl"
+            style="color: #6b7280"
+          >
+            First-class C# loader plugin, Protobuf Editions 2023/2024 across all
+            three plugins, a unified
+            <code
+              class="font-mono px-1 rounded text-sm"
+              style="background: #f3f4f6; color: #1f2937"
+              >make.py</code
+            >
+            build pipeline replacing init.bat / init.sh / prepare.bat, and
+            vcpkg-managed protobuf with a quarterly-pinned matrix.
+          </p>
+
+          <div class="hero-anim-4 flex flex-wrap items-center gap-3 mb-2">
+            <span class="stat-chip chip-green">+ 7 Features</span>
+            <span class="stat-chip chip-blue">○ 6 Bug Fixes</span>
+            <span class="stat-chip chip-violet">⟲ 3 Refactors</span>
+            <span style="color: #e5e7eb; font-size: 16px; font-weight: 300"
+              >|</span
+            >
+            <span class="font-mono text-xs" style="color: #9ca3af"
+              >Go · C++17 · C# (Unity 2022.3 LTS / .NET 8) · Editions 2023/2024
+              · Go 1.26</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="scroll-cue"
+        style="
+          position: absolute;
+          bottom: 24px;
+          left: 50%;
+          color: #9ca3af;
+          font-size: 18px;
+          z-index: 2;
+        "
+      >
+        ↓
+      </div>
+    </section>
+
+    <!-- ░░░ 01 FEATURES ░░░ -->
+    <section class="py-24 px-6 lg:px-14 xl:px-20 sec-feat" id="features">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 mb-14 reveal">
+          <span class="sec-num" style="color: #16a34a">01</span>
+          <h2 class="sec-title" style="color: #16a34a">New Features</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="feat-card rounded-2xl p-8 border-t-2 reveal rd1"
+            style="border-top-color: #16a34a"
+          >
+            <div class="flex gap-2 mb-4 flex-wrap">
+              <span class="tag tag-new">NEW</span>
+              <span class="tag tag-tooling">PLUGIN</span>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #111827">
+              C# Loader Plugin
+            </h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: #6b7280">
+              New
+              <span class="icode-o">protoc-gen-csharp-tableau-loader</span>
+              plugin. Targets <strong>Unity 2022.3 LTS / .NET 8</strong>,
+              generates <span class="icode-o">*.pc.cs</span>. Same Hub /
+              Messager / Load API surface as Go &amp; C++, including patch
+              loading, <span class="icode-o">MessagerOptions</span>, custom
+              <span class="icode-o">ReadFunc</span>/<span class="icode-o"
+                >LoadFunc</span
+              >, and a thread-safe
+              <span class="icode-o">Atomic&lt;T&gt;</span>-backed Hub.
+            </p>
+            <div class="code-blk">
+              <div class="code-blk-hd">▸ Program.cs</div>
+              <div class="code-blk-bd"><pre><code><span class="c-key">var</span> hub  = <span class="c-key">new</span> <span class="c-typ">Tableau</span>.<span class="c-typ">Hub</span>();
+<span class="c-key">var</span> opts = <span class="c-key">new</span> <span class="c-typ">Tableau</span>.<span class="c-typ">Load</span>.<span class="c-typ">Options</span> {
+    <span class="c-fld">IgnoreUnknownFields</span> = <span class="c-key">true</span>,
+    <span class="c-fld">PatchDirs</span>           = <span class="c-key">new</span>() { <span class="c-str">"./patch"</span> },
+};
+hub.<span class="c-fld">Load</span>(<span class="c-str">"./conf"</span>, <span class="c-typ">Format</span>.JSON, opts);
+<span class="c-key">var</span> conf = hub.<span class="c-fld">GetItemConf</span>();</code></pre></div>
+            </div>
+          </div>
+
+          <div
+            class="feat-card rounded-2xl p-8 border-t-2 reveal rd2"
+            style="border-top-color: #16a34a"
+          >
+            <div class="flex gap-2 mb-4 flex-wrap">
+              <span class="tag tag-new">NEW</span>
+              <span class="tag tag-arch">EDITIONS</span>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #111827">
+              Protobuf Editions 2023 &amp; 2024
+            </h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: #6b7280">
+              All three plugins (Go / C++ / C#) emit code that compiles cleanly
+              under <span class="icode-o">edition&nbsp;=&nbsp;"2023"</span> and
+              <span class="icode-o">"2024"</span> alongside proto2 / proto3. The
+              build toolchain in <span class="icode-o">init.sh</span> /
+              <span class="icode-o">init.bat</span> was modernized to install a
+              matching <span class="icode-o">protoc</span>.
+            </p>
+            <div class="code-blk">
+              <div class="code-blk-hd">▸ schema.proto</div>
+              <div class="code-blk-bd"><pre><code><span class="c-com">// proto2 / proto3 still supported</span>
+<span class="c-com">// new: Editions 2023 &amp; 2024</span>
+<span class="c-key">edition</span> = <span class="c-str">"2024"</span>;
+<span class="c-key">package</span> protoconf;
+<span class="c-key">message</span> <span class="c-typ">ItemConf</span> { ... }</code></pre></div>
+            </div>
+          </div>
+
+          <div
+            class="feat-card rounded-2xl p-8 border-t-2 reveal rd3"
+            style="border-top-color: #16a34a"
+          >
+            <div class="flex gap-2 mb-4 flex-wrap">
+              <span class="tag tag-new">NEW</span>
+              <span class="tag tag-enhanced">PATCH · TESTS</span>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #111827">
+              Cross-Language Patch + Real Test Suites
+            </h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: #6b7280">
+              Three real test suites — Go (<span class="icode-o">testing</span
+              >), C++ (<span class="icode-o">gtest</span>), C# (<span
+                class="icode-o"
+                >xUnit</span
+              >) — exercise the same patch scenarios with golden-file parity.
+              Standalone <span class="icode-o">main.go</span> /
+              <span class="icode-o">main.cpp</span> /
+              <span class="icode-o">Program.cs</span> demos were retired.
+            </p>
+            <div class="demo-out">
+              <div class="demo-out-hd">▸ patch matrix</div>
+              <div class="demo-out-bd"><pre><code><span style="color: #116329">✓ go     main_test.go::Test_Patch_*           PASS</span>
+<span style="color: #116329">✓ cpp    tests/patch_test.cpp PatchConf_*     PASS</span>
+<span style="color: #116329">✓ csharp tests/PatchTests.cs PatchConf_*       PASS</span>
+<span class="c-com">// All three load the same testdata/conf + testdata/patchconf</span>
+<span class="c-com">// and compare to testdata/patchresult/ goldens.</span></code></pre></div>
+            </div>
+          </div>
+
+          <div
+            class="feat-card rounded-2xl p-8 border-t-2 reveal rd4"
+            style="border-top-color: #16a34a"
+          >
+            <div class="flex gap-2 mb-4 flex-wrap">
+              <span class="tag tag-new">NEW</span>
+              <span class="tag tag-tooling">BUILD</span>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #111827">
+              Unified <code class="font-mono">make.py</code> Pipeline
+            </h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: #6b7280">
+              One Python 3.10+ stdlib-only entry point replaces
+              <span class="icode-o">init.sh</span>,
+              <span class="icode-o">init.bat</span>, and
+              <span class="icode-o">prepare.bat</span>. Subcommands:
+              <span class="icode-o">setup</span>,
+              <span class="icode-o">generate</span>,
+              <span class="icode-o">build</span>,
+              <span class="icode-o">test</span>,
+              <span class="icode-o">clean</span>,
+              <span class="icode-o">env</span>. CI runs the same script as
+              developers.
+            </p>
+            <div class="code-blk">
+              <div class="code-blk-hd">▸ shell</div>
+              <div class="code-blk-bd"><pre><code><span class="c-key">$</span> python3 make.py setup --lang all
+<span class="c-key">$</span> python3 make.py test  --lang go
+<span class="c-key">$</span> python3 make.py test  --lang cpp     <span class="c-com"># vcpkg-installed protobuf</span>
+<span class="c-key">$</span> python3 make.py test  --lang csharp -k HubTests
+<span class="c-key">$</span> python3 make.py test  --lang cpp     --protobuf-version 3.21.12</code></pre></div>
+            </div>
+          </div>
+
+          <div
+            class="feat-card rounded-2xl p-8 border-t-2 reveal rd5"
+            style="border-top-color: #16a34a"
+          >
+            <div class="flex gap-2 mb-4 flex-wrap">
+              <span class="tag tag-new">NEW</span>
+              <span class="tag tag-arch">DEV ENV</span>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #111827">
+              Devcontainer &amp; <code class="font-mono">buf</code> Codegen
+            </h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: #6b7280">
+              Reproducible dev environment via
+              <span class="icode-o">.devcontainer/</span>: VS Code → "Reopen in
+              Container" gives the same Go, <span class="icode-o">buf</span>,
+              vcpkg, and protobuf versions used in CI.
+              <span class="icode-o">buf generate</span> replaces the
+              per-language <span class="icode-o">gen.sh</span> /
+              <span class="icode-o">gen.bat</span> scripts in every test
+              workspace.
+            </p>
+            <div class="code-blk">
+              <div class="code-blk-hd">▸ .devcontainer/versions.env</div>
+              <div class="code-blk-bd"><pre><code><span class="c-fld">GO_VERSION</span>=<span class="c-str">1.24.0</span>
+<span class="c-fld">BUF_VERSION</span>=<span class="c-str">1.67.0</span>
+<span class="c-fld">DOTNET_VERSION</span>=<span class="c-str">8.0</span>
+<span class="c-fld">DEFAULT_VARIANT</span>=<span class="c-str">modern</span>
+<span class="c-fld">MODERN_PROTOBUF_VERSION</span>=<span class="c-str">6.33.4</span>
+<span class="c-fld">LEGACY_V3_PROTOBUF_VERSION</span>=<span class="c-str">3.21.12</span></code></pre></div>
+            </div>
+          </div>
+
+          <div
+            class="feat-card rounded-2xl p-8 border-t-2 reveal rd6"
+            style="border-top-color: #16a34a"
+          >
+            <div class="flex gap-2 mb-4 flex-wrap">
+              <span class="tag tag-new">NEW</span>
+              <span class="tag tag-enhanced">LOGGING</span>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #111827">
+              Dual-Mode Protobuf Log Handler (C++)
+            </h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: #6b7280">
+              The C++ runtime now installs a Tableau log sink on libprotobuf —
+              routing <span class="icode-o">[libprotobuf]</span> messages into
+              the Tableau logger. Compile-time
+              <span class="icode-o">TABLEAU_PB_LOG_LEGACY</span> picks legacy
+              <span class="icode-o">SetLogHandler</span> (protobuf ≤ 3.x) or
+              modern <span class="icode-o">absl::LogSink</span> (protobuf ≥ 4.x
+              with Abseil).
+            </p>
+            <div class="code-blk">
+              <div class="code-blk-hd">▸ util.pc.cc</div>
+              <div class="code-blk-bd"><pre><code><span class="c-key">#if</span> TABLEAU_PB_LOG_LEGACY
+  <span class="c-com">// SetLogHandler(ProtobufLogHandler) on protobuf 3.x</span>
+<span class="c-key">#else</span>
+  <span class="c-com">// class ProtobufAbslLogSink : public absl::LogSink {</span>
+  <span class="c-com">//   void Send(const absl::LogEntry&amp; entry) override;</span>
+  <span class="c-com">// };</span>
+<span class="c-key">#endif</span>
+<span class="c-typ">ATOM_LOGGER_CALL</span>(<span class="c-typ">tableau</span>::<span class="c-typ">log</span>::<span class="c-fld">DefaultLogger</span>(), lvl,
+                 <span class="c-str">"[libprotobuf %s:%d] %s"</span>, ...);</code></pre></div>
+            </div>
+          </div>
+
+          <div
+            class="feat-card rounded-2xl p-8 border-t-2 reveal rd1"
+            style="border-top-color: #16a34a"
+          >
+            <div class="flex gap-2 mb-4 flex-wrap">
+              <span class="tag tag-new">NEW</span>
+              <span class="tag tag-tooling">GO 1.26</span>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: #111827">
+              Self-Referential Generics for TreeMap
+            </h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: #6b7280">
+              <span class="icode-o">pkg/treemap/redblacktree</span> now uses
+              self-referential generics on Go ≥ 1.26 (<span class="icode-o"
+                >Lesser[T Lesser[T]]</span
+              >), with a
+              <span class="icode-o">//go:build !go1.26</span> fallback to keep
+              older toolchains compiling. Tightens type safety for
+              <span class="icode-o">FindIter</span>,
+              <span class="icode-o">UpperBound</span>,
+              <span class="icode-o">LowerBound</span>.
+            </p>
+            <div class="code-blk">
+              <div class="code-blk-hd">
+                ▸ pkg/treemap/redblacktree/lesser_go126.go
+              </div>
+              <div class="code-blk-bd"><pre><code><span class="c-com">//go:build go1.26</span>
+
+<span class="c-key">package</span> redblacktree
+
+<span class="c-key">type</span> <span class="c-typ">Lesser</span>[T <span class="c-typ">Lesser</span>[T]] <span class="c-key">interface</span> {
+    <span class="c-typ">comparable</span>
+    <span class="c-fld">Less</span>(other T) <span class="c-typ">bool</span>
+}</code></pre></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░ 02 BUG FIXES ░░░ -->
+    <section class="py-24 px-6 lg:px-14 xl:px-20 sec-fix" id="fixes">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 mb-14 reveal">
+          <span class="sec-num" style="color: #1d4ed8">02</span>
+          <h2 class="sec-title" style="color: #1d4ed8">Bug Fixes</h2>
+        </div>
+
+        <div class="card-base rounded-2xl overflow-hidden reveal">
+          <div class="fix-row flex items-start gap-4 px-7 py-5">
+            <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color: #111827">
+                Index field in a list under upper maps now resolves correctly
+                <span class="font-mono text-xs" style="color: #6b7280"
+                  >(#158)</span
+                >
+              </p>
+              <p class="text-sm" style="color: #6b7280">
+                Reworked
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >LevelMessage</code
+                >
+                to track
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >MapDepth</code
+                >
+                + a new
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >LeveledContainerDepth()</code
+                >. List levels under a parent map now generate the correct
+                number of leveled finders (<code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >FindItem1</code
+                >,
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >FindItem2</code
+                >, …). Adds <span class="icode-o">Fruit6Conf.json</span> + 543
+                lines of <span class="icode-o">index_test.go</span>.
+              </p>
+            </div>
+            <span class="tag tag-tooling ml-auto flex-shrink-0">INDEX</span>
+          </div>
+
+          <div class="fix-row flex items-start gap-4 px-7 py-5">
+            <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color: #111827">
+                Index parser skips
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >oneof</code
+                >
+                branches when walking levels
+                <span class="font-mono text-xs" style="color: #6b7280"
+                  >(#156)</span
+                >
+              </p>
+              <p class="text-sm" style="color: #6b7280">
+                Three-line fix in
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >internal/index/descriptor.go</code
+                >: when iterating a message's fields, descriptors with
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >ContainingOneof()&nbsp;!=&nbsp;nil</code
+                >
+                are skipped, removing spurious "field not found" errors caused
+                by oneof name conflicts.
+              </p>
+            </div>
+            <span class="tag tag-tooling ml-auto flex-shrink-0">INDEX</span>
+          </div>
+
+          <div class="fix-row flex items-start gap-4 px-7 py-5">
+            <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color: #111827">
+                Field-name case conversion + cross-platform generation order
+                <span class="font-mono text-xs" style="color: #6b7280"
+                  >(#153)</span
+                >
+              </p>
+              <p class="text-sm" style="color: #6b7280">
+                New
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >underscoresToCamelCase</code
+                >
+                helper unifies property naming across all three plugins;
+                introduces
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >internal/xproto.SplitShards</code
+                >
+                so generation order is identical on Linux / macOS / Windows. New
+                <span class="icode-o">StrcaseConf</span> regression suite covers
+                <span class="icode-o">UserID</span>,
+                <span class="icode-o">V2Ray</span>,
+                <span class="icode-o">XCoordinate</span>, etc.
+              </p>
+            </div>
+            <span class="tag tag-enhanced ml-auto flex-shrink-0">CODEGEN</span>
+          </div>
+
+          <div class="fix-row flex items-start gap-4 px-7 py-5">
+            <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color: #111827">
+                Windows
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >prepare.bat</code
+                >
+                CMake 3.x install + admin elevation prompt
+                <span class="font-mono text-xs" style="color: #6b7280"
+                  >(#152, #154)</span
+                >
+              </p>
+              <p class="text-sm" style="color: #6b7280">
+                Bootstrap script now winget-installs the right CMake major
+                version and re-launches itself elevated when needed. Subsequent
+                commits absorbed it into
+                <span class="icode-o">make.py setup</span>.
+              </p>
+            </div>
+            <span class="tag tag-tooling ml-auto flex-shrink-0">WINDOWS</span>
+          </div>
+
+          <div class="fix-row flex items-start gap-4 px-7 py-5">
+            <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color: #111827">
+                Templated includes use original proto names; OrderedMap
+                accessors adjusted
+                <span class="font-mono text-xs" style="color: #6b7280"
+                  >(#151)</span
+                >
+              </p>
+              <p class="text-sm" style="color: #6b7280">
+                Generated C++
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >hub.pc.cc</code
+                >
+                /
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >hub_shard.pc.cc</code
+                >
+                templates emit the original (non-snake-cased) include names, and
+                the OrderedMap accessor in C++ &amp; C# generators only fires
+                when there's a top-level map.
+              </p>
+            </div>
+            <span class="tag tag-tooling ml-auto flex-shrink-0">TEMPLATE</span>
+          </div>
+
+          <div class="fix-row flex items-start gap-4 px-7 py-5">
+            <span class="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color: #111827">
+                C++
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >GetLastLoadedTime</code
+                >
+                no longer marked
+                <code
+                  class="font-mono text-xs px-1 rounded"
+                  style="background: #f3f4f6; color: #374151"
+                  >inline</code
+                >
+                <span class="font-mono text-xs" style="color: #6b7280"
+                  >(#146)</span
+                >
+              </p>
+              <p class="text-sm" style="color: #6b7280">
+                The <span class="icode-o">inline</span> keyword on a non-trivial
+                accessor caused ODR violations when the symbol was referenced
+                from multiple translation units; removing it makes the link-time
+                behavior portable.
+              </p>
+            </div>
+            <span class="tag tag-tooling ml-auto flex-shrink-0">CPP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░ 03 TOOLCHAIN & DEPS ░░░ -->
+    <section class="py-24 px-6 lg:px-14 xl:px-20 sec-white-next-gray" id="deps">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 mb-14 reveal">
+          <span class="sec-num" style="color: #6b7280">03</span>
+          <h2 class="sec-title" style="color: #374151">
+            Toolchain &amp; Dependencies
+          </h2>
+        </div>
+
+        <p
+          class="text-stone-500 text-sm leading-relaxed max-w-3xl mb-8 reveal rd1"
+        >
+          The biggest non-feature change in v0.6.0 is build-system
+          modernization. The bundled
+          <span class="icode-o">third_party/_submodules/protobuf</span>
+          submodule was <strong>removed</strong> in favor of vcpkg-managed
+          protobuf with a quarterly-pinned
+          <span class="icode-o">VCPKG_BASELINE_COMMIT</span>. Two variants ship
+          out of the box:
+        </p>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mb-10 reveal rd2"
+        >
+          <div class="card-base rounded-xl p-5">
+            <p class="font-mono text-xs mb-2" style="color: #16a34a">
+              DEFAULT_VARIANT=modern
+            </p>
+            <p class="text-sm font-semibold mb-1" style="color: #111827">
+              protobuf 6.33.4
+            </p>
+            <p class="text-xs" style="color: #6b7280">
+              vcpkg snapshot pinned to
+              <code class="font-mono">56bb2411…</code> (tip of
+              <code class="font-mono">2026.04.27</code>).
+            </p>
+          </div>
+          <div class="card-base rounded-xl p-5">
+            <p class="font-mono text-xs mb-2" style="color: #d97706">
+              DEFAULT_VARIANT=legacy_v3
+            </p>
+            <p class="text-sm font-semibold mb-1" style="color: #111827">
+              protobuf 3.21.12 (Linux-only smoke)
+            </p>
+            <p class="text-xs" style="color: #6b7280">
+              vcpkg snapshot from 2023-01-15 (<code class="font-mono"
+                >6245ce44…</code
+              >).
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mb-10 reveal rd3">
+          <span class="dep-tag dep-tag-new">+ vcpkg-managed protobuf</span>
+          <span class="dep-tag"
+            >- third_party/_submodules/protobuf (removed)</span
+          >
+          <span class="dep-tag dep-tag-new"
+            >+ go-udiff (extracted to pkg/udiff)</span
+          >
+          <span class="dep-tag">- pmezard/go-difflib (replaced)</span>
+          <span class="dep-tag dep-tag-new"
+            >+ buf v1.67.0 (CI proto generation)</span
+          >
+          <span class="dep-tag dep-tag-new">+ Editions 2023 / 2024</span>
+          <span class="dep-tag"
+            >+ Go 1.24 (devcontainer) · Go 1.26 build tag</span
+          >
+          <span class="dep-tag">+ .NET 8.0 SDK</span>
+          <span class="dep-tag">+ tableau v0.16.0</span>
+          <span class="dep-tag">+ submodule recursive checkout in CI</span>
+        </div>
+
+        <div class="callout reveal rd4" style="max-width: 780px">
+          <strong style="font-weight: 600">Migration note.</strong> If you
+          previously cloned with <code>--recurse-submodules</code> for the
+          bundled protobuf, drop that flag and run
+          <code>python3 make.py setup --lang all</code> (or open the repo in the
+          devcontainer). The script bootstraps vcpkg at
+          <code>VCPKG_BASELINE_COMMIT</code>, installs Go / buf / .NET pinned to
+          <code>.devcontainer/versions.env</code>, and is idempotent.
+        </div>
+
+        <div
+          class="callout reveal rd5 mt-4"
+          style="
+            max-width: 780px;
+            background: #fef2f2;
+            border-color: #fecaca;
+            border-left-color: #dc2626;
+            color: #991b1b;
+          "
+        >
+          <strong style="font-weight: 600">Heads-up.</strong>
+          <code>init.bat</code>, <code>init.sh</code>, and the original
+          <code>prepare.bat</code> were deleted. If your CI or local scripts
+          call them, switch to <code>python3 make.py</code>.
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░ 04 EXAMPLES ░░░ -->
+    <section class="py-24 px-6 lg:px-14 xl:px-20 sec-gray" id="examples">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 mb-14 reveal">
+          <span class="sec-num" style="color: #7c3aed">04</span>
+          <h2 class="sec-title" style="color: #7c3aed">Examples</h2>
+        </div>
+
+        <div class="demo-block reveal">
+          <span class="demo-badge db-fix">FIX · INDEX (#158)</span>
+          <h3 class="text-xl font-bold mb-3" style="color: #111827">
+            Index on a list nested under a parent map
+          </h3>
+          <p
+            class="text-sm leading-relaxed mb-6"
+            style="color: #6b7280; max-width: 780px"
+          >
+            Consider <span class="icode-o">Fruit6Conf</span>: an outer map keyed
+            by
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >FruitType</code
+            >
+            whose values contain a list of items, with the index
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >Price&lt;ID&gt;</code
+            >
+            and ordered index
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >Price&lt;ID&gt;@OrderedFruit</code
+            >. v0.5.0 generated the wrong number of leveled containers because
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >MapDepth</code
+            >
+            alone didn't capture "list under map". v0.6.0 introduces
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >LeveledContainerDepth()</code
+            >, which adds 1 for non-map levels that still need the parent map's
+            container.
+          </p>
+
+          <p class="xl-label">▸ Index.xlsx — Fruit6Conf</p>
+          <div class="xl-scroll mb-6">
+            <table class="xl">
+              <thead>
+                <tr>
+                  <th class="rn"></th>
+                  <th>A</th>
+                  <th>B</th>
+                  <th>C</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="xr-name">
+                  <td class="rn">1</td>
+                  <td>FruitType</td>
+                  <td>ID</td>
+                  <td>Price</td>
+                </tr>
+                <tr class="xr-type">
+                  <td class="rn">2</td>
+                  <td>map&lt;int32,Fruit&gt;</td>
+                  <td>[Item]</td>
+                  <td>int32</td>
+                </tr>
+                <tr class="xr-note">
+                  <td class="rn">3</td>
+                  <td>Outer map key</td>
+                  <td>List of items (vertical)</td>
+                  <td>Indexed by Price&lt;ID&gt;</td>
+                </tr>
+                <tr class="xr-data">
+                  <td class="rn">4</td>
+                  <td class="key">1</td>
+                  <td>—</td>
+                  <td>99</td>
+                </tr>
+                <tr class="xr-data2">
+                  <td class="rn">5</td>
+                  <td class="key">1</td>
+                  <td>—</td>
+                  <td>79</td>
+                </tr>
+                <tr class="xr-data">
+                  <td class="rn">6</td>
+                  <td class="key">2</td>
+                  <td>—</td>
+                  <td>99</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="sbs-wrap">
+            <div class="sbs-panel">
+              <div class="sbs-hd sbs-hd-before">✗ Before (v0.5.0)</div>
+              <div class="sbs-bd sbs-bd-before">
+                <span class="bad"
+                  >// list under map → 0 leveled finders generated</span
+                ><br />
+                <span class="bad">// FindItem1(fruitType, price) absent</span
+                ><br />
+                <span class="bad"
+                  >items := mgr.FindItem(99) // returns only 1 fruit type</span
+                >
+              </div>
+            </div>
+            <div class="sbs-panel">
+              <div class="sbs-hd sbs-hd-after">✓ After (v0.6.0)</div>
+              <div class="sbs-bd sbs-bd-after">
+                <span class="ok">// LCD = MapDepth + 1 → 1 leveled finder</span
+                ><br />
+                <span class="ok"
+                  >items := mgr.FindItem1(<span class="dim">/*fruitType*/</span>
+                  1, 99)</span
+                ><br />
+                <span class="ok">// scoped to the parent map key</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-block reveal">
+          <span class="demo-badge db-fix">FIX · ONEOF (#156)</span>
+          <h3 class="text-xl font-bold mb-3" style="color: #111827">
+            Oneof branches no longer break level walking
+          </h3>
+          <p
+            class="text-sm leading-relaxed mb-6"
+            style="color: #6b7280; max-width: 780px"
+          >
+            When a level message embeds a
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >oneof</code
+            >, the parser previously tried to resolve oneof case fields by name
+            and conflicted with regular fields. The fix skips any descriptor
+            whose
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >ContainingOneof()</code
+            >
+            is non-nil.
+          </p>
+          <div class="code-blk">
+            <div class="code-blk-hd">
+              ▸ internal/index/descriptor.go (parseCols)
+            </div>
+            <div class="code-blk-bd"><pre><code><span class="c-key">for</span> i := <span class="c-num">0</span>; i &lt; md.<span class="c-fld">Fields</span>().<span class="c-fld">Len</span>(); i++ {
+    fd := md.<span class="c-fld">Fields</span>().<span class="c-fld">Get</span>(i)
+    <span class="c-key">if</span> fd.<span class="c-fld">ContainingOneof</span>() != <span class="c-key">nil</span> {
+        <span class="c-key">continue</span>  <span class="c-com">// skip oneof case fields</span>
+    }
+    <span class="c-com">// ... existing logic</span>
+}</code></pre></div>
+          </div>
+        </div>
+
+        <div class="demo-block reveal">
+          <span class="demo-badge db-new">NEW · MULTI-LANG</span>
+          <h3 class="text-xl font-bold mb-3" style="color: #111827">
+            One schema, three loaders, identical patch tests
+          </h3>
+          <p
+            class="text-sm leading-relaxed mb-6"
+            style="color: #6b7280; max-width: 780px"
+          >
+            From a single <span class="icode-o">.proto</span> set, v0.6.0
+            generates idiomatic Go, C++17, and C# loaders — and three real test
+            suites (<span class="icode-o">testing</span>,
+            <span class="icode-o">gtest</span>,
+            <span class="icode-o">xUnit</span>) running the same
+            <span class="icode-o">PatchConf</span> scenarios against shared
+            <span class="icode-o">testdata/</span> goldens.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="code-blk">
+              <div class="code-blk-hd">▸ go: main_test.go</div>
+              <div class="code-blk-bd"><pre><code><span class="c-key">func</span> <span class="c-fld">prepareHub</span>(t *<span class="c-typ">testing</span>.<span class="c-typ">T</span>) *<span class="c-typ">hub</span>.<span class="c-typ">MyHub</span> {
+    h := hub.<span class="c-fld">NewMyHub</span>()
+    h.<span class="c-fld">Load</span>(<span class="c-str">"../testdata/conf/"</span>,
+        format.<span class="c-typ">JSON</span>,
+        load.<span class="c-fld">IgnoreUnknownFields</span>())
+    <span class="c-key">return</span> h
+}</code></pre></div>
+            </div>
+
+            <div class="code-blk">
+              <div class="code-blk-hd">▸ cpp: tests/patch_test.cpp</div>
+              <div class="code-blk-bd"><pre><code><span class="c-typ">TEST_F</span>(PatchTest, <span class="c-typ">RecursivePatchConf</span>) {
+    <span class="c-key">auto</span> opts = <span class="c-fld">NewOptions</span>();
+    opts-&gt;patch_dirs = {
+        test::<span class="c-typ">TestPaths</span>::<span class="c-fld">PatchConf</span>().<span class="c-fld">string</span>()};
+    Hub::<span class="c-fld">Instance</span>().<span class="c-fld">Load</span>(...);
+}</code></pre></div>
+            </div>
+
+            <div class="code-blk">
+              <div class="code-blk-hd">▸ csharp: PatchTests.cs</div>
+              <div class="code-blk-bd"><pre><code>[<span class="c-typ">Fact</span>]
+<span class="c-key">public void</span> <span class="c-fld">PatchReplaceConf</span>() {
+    <span class="c-key">var</span> opts = <span class="c-key">new</span> <span class="c-typ">Load</span>.<span class="c-typ">Options</span> {
+        <span class="c-fld">PatchDirs</span> = <span class="c-key">new</span>() { <span class="c-typ">TestPaths</span>.<span class="c-fld">PatchConfDir</span> }
+    };
+    <span class="c-key">var</span> hub = <span class="c-key">new</span> <span class="c-typ">Hub</span>();
+    hub.<span class="c-fld">Load</span>(...);
+}</code></pre></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-block reveal">
+          <span class="demo-badge db-new">NEW · BUILD</span>
+          <h3 class="text-xl font-bold mb-3" style="color: #111827">
+            A single Python script for the whole flow
+          </h3>
+          <p
+            class="text-sm leading-relaxed mb-6"
+            style="color: #6b7280; max-width: 780px"
+          >
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >make.py</code
+            >
+            uses Python 3.10 stdlib only. It mounts vcpkg, sources
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >vcvarsall.bat</code
+            >
+            per-subprocess on Windows (your shell PATH/INCLUDE/LIB are never
+            mutated), and is itself unit-tested via
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >test_make.py</code
+            >
+            +
+            <code
+              class="font-mono px-1 rounded"
+              style="
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                color: #1f2937;
+                font-size: 11.5px;
+              "
+              >testing-make.yml</code
+            >.
+          </p>
+          <div class="code-blk">
+            <div class="code-blk-hd">▸ shell — typical contributor flow</div>
+            <div class="code-blk-bd"><pre><code><span class="c-com"># one-time host toolchain (no-op inside devcontainer)</span>
+<span class="c-key">$</span> python3 make.py setup --lang all
+
+<span class="c-com"># per-language</span>
+<span class="c-key">$</span> python3 make.py test --lang go     -k Test_ActivityConf_OrderedMap
+<span class="c-key">$</span> python3 make.py test --lang cpp    --cxx-std 20 --cxx-compiler clang
+<span class="c-key">$</span> python3 make.py test --lang cpp    --protobuf-version 3.21.12
+<span class="c-key">$</span> python3 make.py test --lang csharp -k HubTests
+
+<span class="c-com"># diagnostic JSON (paths, versions, env probes)</span>
+<span class="c-key">$</span> python3 make.py env</code></pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░ FOOTER ░░░ -->
+    <footer
+      class="py-16 px-6 lg:px-14 xl:px-20 sec-white"
+      style="border-top: 1px solid #e5e7eb"
+    >
+      <div
+        class="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-6"
+      >
+        <div class="font-bold text-xl" style="color: #d95a27">
+          Tableau Loader
+        </div>
+        <div class="font-mono text-xs text-stone-400">
+          v0.6.0 · Released June 11, 2026 · github.com/tableauio/loader
+        </div>
+        <div class="flex gap-6">
+          <a
+            href="https://github.com/tableauio/loader/releases/tag/v0.6.0"
+            class="font-mono text-xs text-stone-500"
+            target="_blank"
+            rel="noopener"
+            >↗ GitHub Release</a
+          >
+          <a
+            href="https://github.com/tableauio/loader/compare/v0.5.0...v0.6.0"
+            class="font-mono text-xs text-stone-500"
+            target="_blank"
+            rel="noopener"
+            >↗ Full Changelog</a
+          >
+          <a
+            href="https://github.com/tableauio/loader"
+            class="font-mono text-xs text-stone-500"
+            target="_blank"
+            rel="noopener"
+            >↗ Repository</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("on");
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.07, rootMargin: "0px 0px -28px 0px" },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+      document.querySelectorAll(".fix-row").forEach((row) => {
+        row.addEventListener(
+          "mouseenter",
+          () => (row.style.background = "#F5F4F1"),
+        );
+        row.addEventListener("mouseleave", () => (row.style.background = ""));
+      });
+    </script>
+  </body>
+</html>

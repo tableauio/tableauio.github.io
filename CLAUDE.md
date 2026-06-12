@@ -66,3 +66,51 @@ SCSS lives in `assets/scss/` (entry `app.scss`); JS in `assets/js/` (entry `inde
 **GitHub Pages** (see `.github/workflows/deploy-github.yml`) — on push to `master`, runs `npm install`, `npm run lint:markdown`, `npm run build`, then publishes `./public` via `peaceiris/actions-gh-pages@v3`. CI pins Node 24.
 
 Treat upstream Doks files (delivered via `node_modules/@hyas/doks`) as read-only; override by creating same-path files in this repo's `layouts/`, `assets/`, etc.
+
+## Adding a release page
+
+The Release section (`/release/`) lists release entries from `content/<lang>/release/` as Bootstrap cards. Each entry is a `.md` page; the iframe field in front-matter determines whether it renders the markdown body or embeds a standalone HTML report.
+
+### Two flavors
+
+**Markdown release** — author release notes as plain Hugo markdown:
+
+1. Create `content/en/release/<slug>.md` and `content/zh/release/<slug>.md` with parallel content.
+2. Use the same front-matter shape as `docs/` (`title`, `description`, `lead`, `date`, `lastmod`, `weight`, `toc`, …).
+3. The page renders in the blog-style centered article layout with an optional right-side TOC.
+
+**HTML release** — embed a pre-built standalone HTML report:
+
+1. Place the artifact at `static/release/<slug>.html`. It is served as-is at `/release/<slug>.html` (no theme wrapping). For multi-repo disambiguation (e.g., the `loader` repo and the `tableau` repo can both reach v0.6.0), prefix the slug with the repo name: `loader-v0-6-0.html`, `tableau-v0-16-0.html`.
+2. Inside the artifact, wrap the brand link with `target="_top"` so navigation escapes the iframe.
+3. Create stub markdown files `content/en/release/<slug>.md` and `content/zh/release/<slug>.md` with the docs front-matter plus an extra field:
+
+   ```yaml
+   ---
+   title: "Loader v0.6.0"
+   description: "Loader v0.6.0 release report."
+   lead: "One-line summary of the headline features."
+   date: 2026-06-11T04:17:48+00:00
+   lastmod: 2026-06-11T04:17:48+00:00
+   draft: false
+   images: []
+   weight: 1610
+   toc: false
+   iframe: "/release/loader-v0-6-0.html"
+   ---
+   ```
+
+   The body is empty; the iframe renders inside a full-width frame with breadcrumb + open-in-tab + fullscreen-toggle action bar. Reading time on the card is computed by reading the artifact's prose at build time (see `layouts/partials/main/release-meta.html`).
+
+### Generating the HTML report
+
+The `tableau-release-html` skill (in `.claude/skills/tableau-release-html/`) generates the styled standalone HTML for a Tableau-family release from a GitHub release tag. Pipeline:
+
+1. Invoke the skill with the repo + version: `gh release view <tag> --repo <repo>` is used internally to fetch the release body.
+2. The skill produces a self-contained HTML file (Inter + JetBrains Mono fonts via Google Fonts CDN, Tailwind via CDN, all CSS inline) following the design system in `.claude/skills/tableau-release-html/references/design-system.md`.
+3. Move the output to `static/release/<slug>.html`.
+4. Author the en + zh markdown stubs as above.
+
+### Sort order
+
+The card list uses `weight` ascending — lower weight sorts to the top. Convention: newer releases use lower weights (e.g., v0.16.0 = 1600, v0.15.0 = 1700). For multi-repo entries, choose weights that preserve the desired chronological order across repos.
