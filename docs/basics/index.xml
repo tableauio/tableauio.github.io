@@ -333,7 +333,7 @@ FOO_BAR_SECOND_VALUE = 2;
 &lt;ol>
 &lt;li>enum value &lt;strong>name&lt;/strong>.&lt;/li>
 &lt;li>enum value &lt;strong>number&lt;/strong>.&lt;/li>
-&lt;li>enum value &lt;strong>alias&lt;/strong>. It is another name in English, Chinese, or any other language, which can be specified by &lt;a href="https://github.com/tableauio/tableau/blob/v0.15.1/proto/tableau/protobuf/tableau.proto#L39">tableau.evalue&lt;/a> by extending &lt;a href="https://github.com/protocolbuffers/protobuf/blob/v34.0/src/google/protobuf/descriptor.proto#L904">google.protobuf.EnumValueOptions&lt;/a>.&lt;/li>
+&lt;li>enum value &lt;strong>alias&lt;/strong>. It is another name in English, Chinese, or any other language, which can be specified by &lt;a href="https://github.com/tableauio/tableau/blob/v0.16.0/proto/tableau/protobuf/tableau.proto#L39">tableau.evalue&lt;/a> by extending &lt;a href="https://github.com/protocolbuffers/protobuf/blob/v34.0/src/google/protobuf/descriptor.proto#L904">google.protobuf.EnumValueOptions&lt;/a>.&lt;/li>
 &lt;/ol>
 &lt;p>For example, enum type &lt;code>FruitType&lt;/code> in &lt;code>common.proto&lt;/code> is defined as:&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">enum FruitType {

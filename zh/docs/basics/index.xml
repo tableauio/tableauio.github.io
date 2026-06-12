@@ -365,7 +365,7 @@ FOO_BAR_SECOND_VALUE = 2;
 &lt;ol>
 &lt;li>枚举值&lt;strong>名称&lt;/strong>（name）。&lt;/li>
 &lt;li>枚举值&lt;strong>编号&lt;/strong>（number）。&lt;/li>
-&lt;li>枚举值&lt;strong>别名&lt;/strong>（alias）。别名可以是英文、中文或其他任意语言，通过 &lt;a href="https://github.com/tableauio/tableau/blob/v0.15.1/proto/tableau/protobuf/tableau.proto#L39">tableau.evalue&lt;/a> 扩展 &lt;a href="https://github.com/protocolbuffers/protobuf/blob/v34.0/src/google/protobuf/descriptor.proto#L904">google.protobuf.EnumValueOptions&lt;/a> 来指定。&lt;/li>
+&lt;li>枚举值&lt;strong>别名&lt;/strong>（alias）。别名可以是英文、中文或其他任意语言，通过 &lt;a href="https://github.com/tableauio/tableau/blob/v0.16.0/proto/tableau/protobuf/tableau.proto#L39">tableau.evalue&lt;/a> 扩展 &lt;a href="https://github.com/protocolbuffers/protobuf/blob/v34.0/src/google/protobuf/descriptor.proto#L904">google.protobuf.EnumValueOptions&lt;/a> 来指定。&lt;/li>
 &lt;/ol>
 &lt;p>例如，&lt;code>common.proto&lt;/code> 中定义的枚举类型 &lt;code>FruitType&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">enum FruitType {
