@@ -91,11 +91,25 @@ Then use the component colour matrix to apply the right classes.
   .fix-row:last-child{border-bottom:none;}
   .fix-row:hover{background:#f9fafb;}
 
-  /* Code blocks — GitHub light */
+  /* Code blocks — GitHub light. Body MUST be `<pre><code>...</code></pre>` so
+     Prettier preserves whitespace verbatim. Long lines scroll horizontally
+     inside the block; they never wrap or push the surrounding card wider. */
   .code-blk{background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.05);}
   .code-blk-hd{padding:9px 16px;background:#f9fafb;border-bottom:1px solid #e5e7eb;font-family:'JetBrains Mono',monospace;font-size:11px;color:#57606a;letter-spacing:.04em;}
   .code-blk-hd::before,.demo-out-hd::before{display:none;}
-  .code-blk-bd{padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;overflow-x:auto;color:#24292f;}
+  .code-blk-bd{padding:0;background:#fff;}
+  .code-blk-bd > pre{margin:0;padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#24292f;overflow-x:auto;white-space:pre;tab-size:2;}
+  .code-blk-bd > pre > code{font-family:inherit;background:none;padding:0;white-space:pre;display:block;min-width:max-content;}
+  /* Inside <pre><code>, syntax-color spans are inline (the literal newline does the line break). */
+  .code-blk-bd > pre > code .c-del,
+  .code-blk-bd > pre > code .c-add,
+  .code-blk-bd > pre > code .c-com,
+  .code-blk-bd > pre > code .c-inf,
+  .code-blk-bd > pre > code .c-hl,
+  .code-blk-bd > pre > code .c-warn,
+  .demo-out-bd > pre > code .c-com,
+  .demo-out-bd > pre > code .c-inf{display:inline;margin:0;padding:0;border-left:0;}
+  /* Block-level highlight defaults (used outside pre/code, kept for compatibility). */
   .c-del{color:#82071e;display:block;background:#ffebe9;margin:0 -16px;padding:0 16px;}
   .c-add{color:#116329;display:block;background:#e6ffec;margin:0 -16px;padding:0 16px;}
   .c-com{color:#6e7781;display:block;}.c-inf{color:#0550ae;display:block;}
@@ -104,10 +118,12 @@ Then use the component colour matrix to apply the right classes.
   .c-hl{background:#e6ffec;display:block;border-left:2px solid #2da44e;padding-left:14px;margin-left:-16px;margin-right:-16px;padding-right:16px;}
   .c-warn{background:#fff8c5;display:block;border-left:2px solid #d29922;padding-left:14px;margin-left:-16px;margin-right:-16px;padding-right:16px;}
 
-  /* Demo output blocks */
+  /* Demo output blocks — same `<pre><code>` rule as code blocks. */
   .demo-out{border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.05);}
   .demo-out-hd{padding:9px 16px;background:#f9fafb;border-bottom:1px solid #e5e7eb;font-family:'JetBrains Mono',monospace;font-size:11px;color:#57606a;letter-spacing:.04em;}
-  .demo-out-bd{padding:14px 16px;background:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;overflow-x:auto;color:#24292f;}
+  .demo-out-bd{padding:0;background:#fff;}
+  .demo-out-bd > pre{margin:0;padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#24292f;overflow-x:auto;white-space:pre;tab-size:2;}
+  .demo-out-bd > pre > code{font-family:inherit;background:none;padding:0;white-space:pre;display:block;min-width:max-content;}
 
   /* SBS panels */
   .sbs-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;}

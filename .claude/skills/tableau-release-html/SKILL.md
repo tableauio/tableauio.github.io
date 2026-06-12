@@ -184,18 +184,21 @@ Background: CSS grid (`::before`) + ghosted watermark version text + `deco-sheet
 </div>
 ```
 
-**Code blocks** — GitHub light style:
+**Code blocks** — GitHub light style. **Always wrap the body in `<pre><code>` with literal newlines** (one source line per line). Do NOT use one inline `<span>` per line — Prettier and other formatters collapse whitespace inside `<div>` flow content but preserve it inside `<pre>`, so this is the only formatter-proof pattern. Long lines must scroll horizontally inside the block (CSS already sets `overflow-x: auto` on `.code-blk-bd > pre`); never let long lines wrap or push the surrounding card wider.
+
 ```html
 <div class="code-blk">
   <div class="code-blk-hd">▸ filename.go</div>
-  <div class="code-blk-bd">
-    <span class="c-com">// comment</span>
-    <span><span class="c-key">func</span> <span class="c-fld">Example</span>() <span class="c-typ">error</span> {</span>
-    <span class="c-hl">  <span class="c-com">// highlighted new line</span></span>
-    <span>}</span>
-  </div>
+  <div class="code-blk-bd"><pre><code><span class="c-com">// comment</span>
+<span class="c-key">func</span> <span class="c-fld">Example</span>() <span class="c-typ">error</span> {
+<span class="c-hl">  <span class="c-com">// highlighted new line</span></span>
+}</code></pre></div>
 </div>
 ```
+
+The same rule applies to `.demo-out-bd` blocks: wrap content in `<pre><code>...</code></pre>`.
+
+**Important.** The `<pre><code>` open and close tags MUST sit immediately adjacent to their content — no whitespace between `<code>` and the first character, no whitespace between the last character and `</code>`. The very first character after `<code>` becomes column 0; any leading newline or indent will show up as a blank line in the rendered output.
 Syntax color classes: `c-key` (red `#cf222e`), `c-str` (dark blue `#0a3069`), `c-typ` (brown `#953800`), `c-ann` (purple `#8250df`), `c-num` (blue `#0550ae`), `c-val` (green `#116329`), `c-fld` (default `#24292f`), `c-com` (grey `#6e7781`).
 Highlight classes: `c-hl` (green bg, good), `c-warn` (yellow bg, caution), `c-add` (green line), `c-del` (red line).
 
