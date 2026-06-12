@@ -352,12 +352,53 @@
         display: none;
       }
       .code-blk-bd {
+        padding: 0;
+        background: #fff;
+      }
+      .code-blk-bd > pre {
+        margin: 0;
         padding: 14px 16px;
         font-family: "JetBrains Mono", monospace;
         font-size: 12px;
         line-height: 1.8;
-        overflow-x: auto;
         color: #24292f;
+        overflow-x: auto;
+        white-space: pre;
+        tab-size: 2;
+      }
+      .code-blk-bd > pre > code {
+        font-family: inherit;
+        background: none;
+        padding: 0;
+        white-space: pre;
+        display: block;
+        min-width: max-content;
+      }
+      .code-blk-bd > pre > code .c-del,
+      .code-blk-bd > pre > code .c-add,
+      .code-blk-bd > pre > code .c-com,
+      .code-blk-bd > pre > code .c-inf,
+      .code-blk-bd > pre > code .c-hl,
+      .code-blk-bd > pre > code .c-warn,
+      .demo-out-bd > pre > code .c-com,
+      .demo-out-bd > pre > code .c-inf {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        border-left: 0;
+      }
+      .code-blk-bd > pre > code .c-del,
+      .code-blk-bd > pre > code .c-add,
+      .code-blk-bd > pre > code .c-com,
+      .code-blk-bd > pre > code .c-inf,
+      .code-blk-bd > pre > code .c-hl,
+      .code-blk-bd > pre > code .c-warn,
+      .demo-out-bd > pre > code .c-com,
+      .demo-out-bd > pre > code .c-inf {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        border-left: 0;
       }
       .c-del {
         color: #82071e;
@@ -440,13 +481,27 @@
         letter-spacing: 0.04em;
       }
       .demo-out-bd {
-        padding: 14px 16px;
+        padding: 0;
         background: #fff;
+      }
+      .demo-out-bd > pre {
+        margin: 0;
+        padding: 14px 16px;
         font-family: "JetBrains Mono", monospace;
         font-size: 12px;
         line-height: 1.8;
-        overflow-x: auto;
         color: #24292f;
+        overflow-x: auto;
+        white-space: pre;
+        tab-size: 2;
+      }
+      .demo-out-bd > pre > code {
+        font-family: inherit;
+        background: none;
+        padding: 0;
+        white-space: pre;
+        display: block;
+        min-width: max-content;
       }
 
       .sbs-wrap {
@@ -1145,42 +1200,13 @@
             </p>
             <div class="code-blk">
               <div class="code-blk-hd">▸ Program.cs</div>
-              <div class="code-blk-bd">
-                <span
-                  ><span class="c-key">var</span> hub =
-                  <span class="c-key">new</span>
-                  <span class="c-typ">Tableau</span>.<span class="c-typ"
-                    >Hub</span
-                  >();</span
-                >
-                <span
-                  ><span class="c-key">var</span> opts =
-                  <span class="c-key">new</span>
-                  <span class="c-typ">Tableau</span>.<span class="c-typ"
-                    >Load</span
-                  >.<span class="c-typ">Options</span> {</span
-                >
-                <span>
-                  <span class="c-fld">IgnoreUnknownFields</span> =
-                  <span class="c-key">true</span>,</span
-                >
-                <span class="c-hl">
-                  <span class="c-fld">PatchDirs</span> =
-                  <span class="c-key">new</span>() {
-                  <span class="c-str">"./patch"</span> },</span
-                >
-                <span>};</span>
-                <span
-                  >hub.<span class="c-fld">Load</span>(<span class="c-str"
-                    >"./conf"</span
-                  >, <span class="c-typ">Format</span>.JSON, opts);</span
-                >
-                <span
-                  ><span class="c-key">var</span> conf = hub.<span class="c-fld"
-                    >GetItemConf</span
-                  >();</span
-                >
-              </div>
+              <div class="code-blk-bd"><pre><code><span class="c-key">var</span> hub  = <span class="c-key">new</span> <span class="c-typ">Tableau</span>.<span class="c-typ">Hub</span>();
+<span class="c-key">var</span> opts = <span class="c-key">new</span> <span class="c-typ">Tableau</span>.<span class="c-typ">Load</span>.<span class="c-typ">Options</span> {
+    <span class="c-fld">IgnoreUnknownFields</span> = <span class="c-key">true</span>,
+    <span class="c-fld">PatchDirs</span>           = <span class="c-key">new</span>() { <span class="c-str">"./patch"</span> },
+};
+hub.<span class="c-fld">Load</span>(<span class="c-str">"./conf"</span>, <span class="c-typ">Format</span>.JSON, opts);
+<span class="c-key">var</span> conf = hub.<span class="c-fld">GetItemConf</span>();</code></pre></div>
             </div>
           </div>
 
@@ -1205,19 +1231,11 @@
             </p>
             <div class="code-blk">
               <div class="code-blk-hd">▸ schema.proto</div>
-              <div class="code-blk-bd">
-                <span class="c-com">// proto2 / proto3 still supported</span>
-                <span class="c-com">// new: Editions 2023 &amp; 2024</span>
-                <span class="c-hl"
-                  ><span class="c-key">edition</span> =
-                  <span class="c-str">"2024"</span>;</span
-                >
-                <span><span class="c-key">package</span> protoconf;</span>
-                <span
-                  ><span class="c-key">message</span>
-                  <span class="c-typ">ItemConf</span> { ... }</span
-                >
-              </div>
+              <div class="code-blk-bd"><pre><code><span class="c-com">// proto2 / proto3 still supported</span>
+<span class="c-com">// new: Editions 2023 &amp; 2024</span>
+<span class="c-key">edition</span> = <span class="c-str">"2024"</span>;
+<span class="c-key">package</span> protoconf;
+<span class="c-key">message</span> <span class="c-typ">ItemConf</span> { ... }</code></pre></div>
             </div>
           </div>
 
@@ -1244,24 +1262,11 @@
             </p>
             <div class="demo-out">
               <div class="demo-out-hd">▸ patch matrix</div>
-              <div class="demo-out-bd">
-                <span style="color: #116329"
-                  >✓ go main_test.go::Test_Patch_* PASS</span
-                >
-                <span style="color: #116329"
-                  >✓ cpp tests/patch_test.cpp PatchConf_* PASS</span
-                >
-                <span style="color: #116329"
-                  >✓ csharp tests/PatchTests.cs PatchConf_* PASS</span
-                >
-                <span class="c-com"
-                  >// All three load the same testdata/conf +
-                  testdata/patchconf</span
-                >
-                <span class="c-com"
-                  >// and compare to testdata/patchresult/ goldens.</span
-                >
-              </div>
+              <div class="demo-out-bd"><pre><code><span style="color: #116329">✓ go     main_test.go::Test_Patch_*           PASS</span>
+<span style="color: #116329">✓ cpp    tests/patch_test.cpp PatchConf_*     PASS</span>
+<span style="color: #116329">✓ csharp tests/PatchTests.cs PatchConf_*       PASS</span>
+<span class="c-com">// All three load the same testdata/conf + testdata/patchconf</span>
+<span class="c-com">// and compare to testdata/patchresult/ goldens.</span></code></pre></div>
             </div>
           </div>
 
@@ -1291,28 +1296,11 @@
             </p>
             <div class="code-blk">
               <div class="code-blk-hd">▸ shell</div>
-              <div class="code-blk-bd">
-                <span
-                  ><span class="c-key">$</span> python3 make.py setup --lang
-                  all</span
-                >
-                <span
-                  ><span class="c-key">$</span> python3 make.py test --lang
-                  go</span
-                >
-                <span
-                  ><span class="c-key">$</span> python3 make.py test --lang cpp
-                  <span class="c-com"># vcpkg-installed protobuf</span></span
-                >
-                <span class="c-hl"
-                  ><span class="c-key">$</span> python3 make.py test --lang
-                  csharp -k HubTests</span
-                >
-                <span
-                  ><span class="c-key">$</span> python3 make.py test --lang cpp
-                  --protobuf-version 3.21.12</span
-                >
-              </div>
+              <div class="code-blk-bd"><pre><code><span class="c-key">$</span> python3 make.py setup --lang all
+<span class="c-key">$</span> python3 make.py test  --lang go
+<span class="c-key">$</span> python3 make.py test  --lang cpp     <span class="c-com"># vcpkg-installed protobuf</span>
+<span class="c-key">$</span> python3 make.py test  --lang csharp -k HubTests
+<span class="c-key">$</span> python3 make.py test  --lang cpp     --protobuf-version 3.21.12</code></pre></div>
             </div>
           </div>
 
@@ -1339,41 +1327,12 @@
             </p>
             <div class="code-blk">
               <div class="code-blk-hd">▸ .devcontainer/versions.env</div>
-              <div class="code-blk-bd">
-                <span
-                  ><span class="c-fld">GO_VERSION</span>=<span class="c-str"
-                    >1.24.0</span
-                  ></span
-                >
-                <span
-                  ><span class="c-fld">BUF_VERSION</span>=<span class="c-str"
-                    >1.67.0</span
-                  ></span
-                >
-                <span
-                  ><span class="c-fld">DOTNET_VERSION</span>=<span class="c-str"
-                    >8.0</span
-                  ></span
-                >
-                <span class="c-hl"
-                  ><span class="c-fld">DEFAULT_VARIANT</span>=<span
-                    class="c-str"
-                    >modern</span
-                  ></span
-                >
-                <span
-                  ><span class="c-fld">MODERN_PROTOBUF_VERSION</span>=<span
-                    class="c-str"
-                    >6.33.4</span
-                  ></span
-                >
-                <span
-                  ><span class="c-fld">LEGACY_V3_PROTOBUF_VERSION</span>=<span
-                    class="c-str"
-                    >3.21.12</span
-                  ></span
-                >
-              </div>
+              <div class="code-blk-bd"><pre><code><span class="c-fld">GO_VERSION</span>=<span class="c-str">1.24.0</span>
+<span class="c-fld">BUF_VERSION</span>=<span class="c-str">1.67.0</span>
+<span class="c-fld">DOTNET_VERSION</span>=<span class="c-str">8.0</span>
+<span class="c-fld">DEFAULT_VARIANT</span>=<span class="c-str">modern</span>
+<span class="c-fld">MODERN_PROTOBUF_VERSION</span>=<span class="c-str">6.33.4</span>
+<span class="c-fld">LEGACY_V3_PROTOBUF_VERSION</span>=<span class="c-str">3.21.12</span></code></pre></div>
             </div>
           </div>
 
@@ -1399,30 +1358,15 @@
             </p>
             <div class="code-blk">
               <div class="code-blk-hd">▸ util.pc.cc</div>
-              <div class="code-blk-bd">
-                <span class="c-key">#if</span> TABLEAU_PB_LOG_LEGACY
-                <span class="c-com">
-                  // SetLogHandler(ProtobufLogHandler) on protobuf 3.x</span
-                >
-                <span class="c-key">#else</span>
-                <span class="c-com">
-                  // class ProtobufAbslLogSink : public absl::LogSink {</span
-                >
-                <span class="c-com">
-                  // void Send(const absl::LogEntry&amp; entry) override;</span
-                >
-                <span class="c-com"> // };</span>
-                <span class="c-key">#endif</span>
-                <span class="c-hl"
-                  ><span class="c-typ">ATOM_LOGGER_CALL</span>(<span
-                    class="c-typ"
-                    >tableau</span
-                  >::<span class="c-typ">log</span>::<span class="c-fld"
-                    >DefaultLogger</span
-                  >(), lvl, <span class="c-str">"[libprotobuf %s:%d] %s"</span>,
-                  ...);</span
-                >
-              </div>
+              <div class="code-blk-bd"><pre><code><span class="c-key">#if</span> TABLEAU_PB_LOG_LEGACY
+  <span class="c-com">// SetLogHandler(ProtobufLogHandler) on protobuf 3.x</span>
+<span class="c-key">#else</span>
+  <span class="c-com">// class ProtobufAbslLogSink : public absl::LogSink {</span>
+  <span class="c-com">//   void Send(const absl::LogEntry&amp; entry) override;</span>
+  <span class="c-com">// };</span>
+<span class="c-key">#endif</span>
+<span class="c-typ">ATOM_LOGGER_CALL</span>(<span class="c-typ">tableau</span>::<span class="c-typ">log</span>::<span class="c-fld">DefaultLogger</span>(), lvl,
+                 <span class="c-str">"[libprotobuf %s:%d] %s"</span>, ...);</code></pre></div>
             </div>
           </div>
 
@@ -1452,23 +1396,14 @@
               <div class="code-blk-hd">
                 ▸ pkg/treemap/redblacktree/lesser_go126.go
               </div>
-              <div class="code-blk-bd">
-                <span class="c-com">//go:build go1.26</span>
-                <span><span class="c-key">package</span> redblacktree</span>
-                <span></span>
-                <span class="c-hl"
-                  ><span class="c-key">type</span>
-                  <span class="c-typ">Lesser</span>[T
-                  <span class="c-typ">Lesser</span>[T]]
-                  <span class="c-key">interface</span> {</span
-                >
-                <span class="c-hl"> <span class="c-typ">comparable</span></span>
-                <span class="c-hl">
-                  <span class="c-fld">Less</span>(other T)
-                  <span class="c-typ">bool</span></span
-                >
-                <span class="c-hl">}</span>
-              </div>
+              <div class="code-blk-bd"><pre><code><span class="c-com">//go:build go1.26</span>
+
+<span class="c-key">package</span> redblacktree
+
+<span class="c-key">type</span> <span class="c-typ">Lesser</span>[T <span class="c-typ">Lesser</span>[T]] <span class="c-key">interface</span> {
+    <span class="c-typ">comparable</span>
+    <span class="c-fld">Less</span>(other T) <span class="c-typ">bool</span>
+}</code></pre></div>
             </div>
           </div>
         </div>
@@ -1980,31 +1915,13 @@
             <div class="code-blk-hd">
               ▸ internal/index/descriptor.go (parseCols)
             </div>
-            <div class="code-blk-bd">
-              <span
-                ><span class="c-key">for</span> i :=
-                <span class="c-num">0</span>; i &lt; md.<span class="c-fld"
-                  >Fields</span
-                >().<span class="c-fld">Len</span>(); i++ {</span
-              >
-              <span>
-                fd := md.<span class="c-fld">Fields</span>().<span class="c-fld"
-                  >Get</span
-                >(i)</span
-              >
-              <span class="c-hl">
-                <span class="c-key">if</span> fd.<span class="c-fld"
-                  >ContainingOneof</span
-                >() != <span class="c-key">nil</span> {</span
-              >
-              <span class="c-hl">
-                <span class="c-key">continue</span>
-                <span class="c-com">// skip oneof case fields</span></span
-              >
-              <span class="c-hl"> }</span>
-              <span> <span class="c-com">// ... existing logic</span></span>
-              <span>}</span>
-            </div>
+            <div class="code-blk-bd"><pre><code><span class="c-key">for</span> i := <span class="c-num">0</span>; i &lt; md.<span class="c-fld">Fields</span>().<span class="c-fld">Len</span>(); i++ {
+    fd := md.<span class="c-fld">Fields</span>().<span class="c-fld">Get</span>(i)
+    <span class="c-key">if</span> fd.<span class="c-fld">ContainingOneof</span>() != <span class="c-key">nil</span> {
+        <span class="c-key">continue</span>  <span class="c-com">// skip oneof case fields</span>
+    }
+    <span class="c-com">// ... existing logic</span>
+}</code></pre></div>
           </div>
         </div>
 
@@ -2029,87 +1946,35 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div class="code-blk">
               <div class="code-blk-hd">▸ go: main_test.go</div>
-              <div class="code-blk-bd">
-                <span
-                  ><span class="c-key">func</span>
-                  <span class="c-fld">prepareHub</span>(t *<span class="c-typ"
-                    >testing</span
-                  >.<span class="c-typ">T</span>) *<span class="c-typ">hub</span
-                  >.<span class="c-typ">MyHub</span> {</span
-                >
-                <span> h := hub.<span class="c-fld">NewMyHub</span>()</span>
-                <span class="c-hl">
-                  h.<span class="c-fld">Load</span>(<span class="c-str"
-                    >"../testdata/conf/"</span
-                  >,</span
-                >
-                <span class="c-hl">
-                  format.<span class="c-typ">JSON</span>,</span
-                >
-                <span class="c-hl">
-                  load.<span class="c-fld">IgnoreUnknownFields</span>())</span
-                >
-                <span> <span class="c-key">return</span> h</span>
-                <span>}</span>
-              </div>
+              <div class="code-blk-bd"><pre><code><span class="c-key">func</span> <span class="c-fld">prepareHub</span>(t *<span class="c-typ">testing</span>.<span class="c-typ">T</span>) *<span class="c-typ">hub</span>.<span class="c-typ">MyHub</span> {
+    h := hub.<span class="c-fld">NewMyHub</span>()
+    h.<span class="c-fld">Load</span>(<span class="c-str">"../testdata/conf/"</span>,
+        format.<span class="c-typ">JSON</span>,
+        load.<span class="c-fld">IgnoreUnknownFields</span>())
+    <span class="c-key">return</span> h
+}</code></pre></div>
             </div>
 
             <div class="code-blk">
               <div class="code-blk-hd">▸ cpp: tests/patch_test.cpp</div>
-              <div class="code-blk-bd">
-                <span
-                  ><span class="c-typ">TEST_F</span>(PatchTest,
-                  <span class="c-typ">RecursivePatchConf</span>) {</span
-                >
-                <span>
-                  <span class="c-key">auto</span> opts =
-                  <span class="c-fld">NewOptions</span>();</span
-                >
-                <span class="c-hl"> opts-&gt;patch_dirs = {</span>
-                <span class="c-hl">
-                  test::<span class="c-typ">TestPaths</span>::<span
-                    class="c-fld"
-                    >PatchConf</span
-                  >().<span class="c-fld">string</span>()};</span
-                >
-                <span>
-                  Hub::<span class="c-fld">Instance</span>().<span class="c-fld"
-                    >Load</span
-                  >(...);</span
-                >
-                <span>}</span>
-              </div>
+              <div class="code-blk-bd"><pre><code><span class="c-typ">TEST_F</span>(PatchTest, <span class="c-typ">RecursivePatchConf</span>) {
+    <span class="c-key">auto</span> opts = <span class="c-fld">NewOptions</span>();
+    opts-&gt;patch_dirs = {
+        test::<span class="c-typ">TestPaths</span>::<span class="c-fld">PatchConf</span>().<span class="c-fld">string</span>()};
+    Hub::<span class="c-fld">Instance</span>().<span class="c-fld">Load</span>(...);
+}</code></pre></div>
             </div>
 
             <div class="code-blk">
               <div class="code-blk-hd">▸ csharp: PatchTests.cs</div>
-              <div class="code-blk-bd">
-                <span>[<span class="c-typ">Fact</span>]</span>
-                <span
-                  ><span class="c-key">public void</span>
-                  <span class="c-fld">PatchReplaceConf</span>() {</span
-                >
-                <span>
-                  <span class="c-key">var</span> opts =
-                  <span class="c-key">new</span>
-                  <span class="c-typ">Load</span>.<span class="c-typ"
-                    >Options</span
-                  >{</span
-                >
-                <span class="c-hl">
-                  <span class="c-fld">PatchDirs</span> =
-                  <span class="c-key">new</span>(){<span class="c-typ"
-                    >TestPaths</span
-                  >.<span class="c-fld">PatchConfDir</span>}};</span
-                >
-                <span>
-                  <span class="c-key">var</span> hub =
-                  <span class="c-key">new</span>
-                  <span class="c-typ">Hub</span>();</span
-                >
-                <span> hub.<span class="c-fld">Load</span>(...);</span>
-                <span>}</span>
-              </div>
+              <div class="code-blk-bd"><pre><code>[<span class="c-typ">Fact</span>]
+<span class="c-key">public void</span> <span class="c-fld">PatchReplaceConf</span>() {
+    <span class="c-key">var</span> opts = <span class="c-key">new</span> <span class="c-typ">Load</span>.<span class="c-typ">Options</span> {
+        <span class="c-fld">PatchDirs</span> = <span class="c-key">new</span>() { <span class="c-typ">TestPaths</span>.<span class="c-fld">PatchConfDir</span> }
+    };
+    <span class="c-key">var</span> hub = <span class="c-key">new</span> <span class="c-typ">Hub</span>();
+    hub.<span class="c-fld">Load</span>(...);
+}</code></pre></div>
             </div>
           </div>
         </div>
@@ -2170,42 +2035,17 @@
           </p>
           <div class="code-blk">
             <div class="code-blk-hd">▸ shell — typical contributor flow</div>
-            <div class="code-blk-bd">
-              <span
-                ><span class="c-com"
-                  ># one-time host toolchain (no-op inside devcontainer)</span
-                ></span
-              >
-              <span
-                ><span class="c-key">$</span> python3 make.py setup --lang
-                all</span
-              >
-              <span></span>
-              <span><span class="c-com"># per-language</span></span>
-              <span
-                ><span class="c-key">$</span> python3 make.py test --lang go -k
-                Test_ActivityConf_OrderedMap</span
-              >
-              <span
-                ><span class="c-key">$</span> python3 make.py test --lang cpp
-                --cxx-std 20 --cxx-compiler clang</span
-              >
-              <span class="c-hl"
-                ><span class="c-key">$</span> python3 make.py test --lang cpp
-                --protobuf-version 3.21.12</span
-              >
-              <span
-                ><span class="c-key">$</span> python3 make.py test --lang csharp
-                -k HubTests</span
-              >
-              <span></span>
-              <span
-                ><span class="c-com"
-                  ># diagnostic JSON (paths, versions, env probes)</span
-                ></span
-              >
-              <span><span class="c-key">$</span> python3 make.py env</span>
-            </div>
+            <div class="code-blk-bd"><pre><code><span class="c-com"># one-time host toolchain (no-op inside devcontainer)</span>
+<span class="c-key">$</span> python3 make.py setup --lang all
+
+<span class="c-com"># per-language</span>
+<span class="c-key">$</span> python3 make.py test --lang go     -k Test_ActivityConf_OrderedMap
+<span class="c-key">$</span> python3 make.py test --lang cpp    --cxx-std 20 --cxx-compiler clang
+<span class="c-key">$</span> python3 make.py test --lang cpp    --protobuf-version 3.21.12
+<span class="c-key">$</span> python3 make.py test --lang csharp -k HubTests
+
+<span class="c-com"># diagnostic JSON (paths, versions, env probes)</span>
+<span class="c-key">$</span> python3 make.py env</code></pre></div>
           </div>
         </div>
       </div>
