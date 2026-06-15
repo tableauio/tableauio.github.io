@@ -274,7 +274,7 @@
   </nav>
 
   <!-- ░░░ HERO ░░░ -->
-  <section class="hero-section sec-white-next-gray min-h-screen flex flex-col justify-center px-6 lg:px-14 xl:px-20 py-24 relative overflow-hidden border-b border-stone-200" id="top">
+  <section class="hero-section relative overflow-hidden" id="top" style="padding:120px 24px 140px;">
 
     <!-- Grid + spreadsheet background decoration -->
     <div class="deco-sheet-wrap">
@@ -324,11 +324,10 @@
 
 
 
-    <!-- decorative watermark -->
-    <div class="absolute right-[-2%] top-1/2 -translate-y-1/2 font-display font-black leading-none select-none pointer-events-none whitespace-nowrap"
-         style="font-size:min(18vw,240px); color:transparent; -webkit-text-stroke:2px rgba(0,0,0,0.05);">v0.16.0</div>
+    <!-- decorative watermark — soft, subtle (matches loader hero) -->
+    <div aria-hidden="true" style="position:absolute;top:60px;right:0;font-weight:900;font-size:clamp(220px,28vw,360px);line-height:.9;letter-spacing:-12px;color:#111827;opacity:0.025;pointer-events:none;user-select:none;z-index:0;">v0.16.0</div>
 
-    <div class="relative max-w-5xl w-full mx-auto">
+    <div class="max-w-6xl mx-auto relative" style="z-index:2;">
 
       <!-- Brand identity row: logo + name + version badge + release pill -->
       <div class="hero-anim-0 flex items-center gap-3 flex-wrap mb-12">
@@ -357,8 +356,8 @@
 
       <!-- stat chips — larger, bolder -->
       <div class="hero-anim-4 flex flex-wrap gap-3 items-center">
-        <div class="stat-chip chip-green">✦ 7 Features</div>
-        <div class="stat-chip chip-blue">⬡ 9 Bug Fixes</div>
+        <div class="stat-chip chip-green">+ 7 Features</div>
+        <div class="stat-chip chip-blue">○ 9 Bug Fixes</div>
         <div class="stat-chip chip-amber">⚠ 2 Breaking</div>
         <div class="stat-chip chip-violet">↯ 1 Deprecated</div>
         <span style="color:#d1d5db;margin:0 6px;font-size:15px;font-weight:300;">|</span>
