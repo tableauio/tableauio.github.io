@@ -85,3 +85,30 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+## Field note
+
+Since [v0.16.2](https://github.com/tableauio/tableau/releases/tag/v0.16.2), a `#` comment attached to a schema field is extracted as a field comment in the generated proto file. It can be written as a trailing comment on the same line, or as a standalone comment line right above the field.
+
+```yaml
+"@sheet": "@ItemConf"
+ID: uint32 # Item's ID
+# Item's Name
+Name: string
+```
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  uint32 id = 1 [(tableau.field) = {name:"ID"}]; // Item's ID
+  string name = 2 [(tableau.field) = {name:"Name"}]; // Item's Name
+}
+```
+
+{{< /details >}}

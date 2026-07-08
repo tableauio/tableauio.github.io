@@ -89,3 +89,46 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+## Field note
+
+Since [v0.16.2](https://github.com/tableauio/tableau/releases/tag/v0.16.2), a `@note` meta-attribute in the metasheet comment block is extracted as a field comment in the generated proto file.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<@TABLEAU>
+    <Item Sheet="ItemConf" />
+</@TABLEAU>
+
+<ItemConf>
+    <ID @note="Item's ID">uint32</ID>
+    <Name @note="Item's Name">string</Name>
+</ItemConf>
+-->
+
+<ItemConf>
+    <ID>1</ID>
+    <Name>Apple</Name>
+</ItemConf>
+```
+
+Generated:
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  uint32 id = 1 [(tableau.field) = {name:"ID"}]; // Item's ID
+  string name = 2 [(tableau.field) = {name:"Name"}]; // Item's Name
+}
+```
+
+{{< /details >}}
+
+> Tips
+>
+> - For a field defined as an XML **attribute** rather than a child element (e.g. `ID="uint32"`), annotate it with `@note.<AttrName>` (e.g. `@note.ID="Item's ID"`) instead of `@note`, because a bare `@note` on the parent element annotates the parent field itself.

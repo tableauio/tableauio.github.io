@@ -18,8 +18,7 @@ githubRelease: true
 <div class="download-section"
     data-github-release
     data-repo="tableauio/tableau"
-    data-tag-prefix="cmd/tableauc/"
-    data-url-template="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{ver}/tableauc.{ver}.{platform}.tar.gz"
+    data-url-template="https://github.com/tableauio/tableau/releases/download/{ver}/tableauc.{ver}.{platform}.tar.gz"
     data-default-ver="{{< tableauc-version >}}">
     <div class="download-card">
         <img class="download-card__logo" src="/images/logo/windows-logo.png" alt="Windows" />

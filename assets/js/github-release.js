@@ -32,9 +32,8 @@
  * ```html
  * <div data-github-release
  *      data-repo="tableauio/tableau"
- *      data-tag-prefix="cmd/tableauc/"
- *      data-url-template="https://github.com/tableauio/tableau/releases/download/cmd%2Ftableauc%2F{ver}/tableauc.{ver}.{platform}.tar.gz"
- *      data-default-ver="v0.10.0">
+ *      data-url-template="https://github.com/tableauio/tableau/releases/download/{ver}/tableauc.{ver}.{platform}.tar.gz"
+ *      data-default-ver="v0.16.2">
  *   <a class="btn-download" data-platform="windows.amd64">...</a>
  *   <a class="btn-download" data-platform="linux.amd64">...</a>
  * </div>

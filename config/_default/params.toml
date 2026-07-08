@@ -10,7 +10,7 @@ description = "Tableau can convert Excel/CSV/XML/YAML to multiple formats: JSON,
 # docsVersion = "0.3"
 
 ## Tableauc version for download links
-tableaucVersion = "v0.16.0"
+tableaucVersion = "v0.16.2"
 
 ## Open Graph
 images = ["tableau-logo.svg"]

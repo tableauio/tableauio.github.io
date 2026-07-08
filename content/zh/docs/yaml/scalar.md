@@ -85,3 +85,30 @@ message ItemConf {
 ```
 
 {{< /details >}}
+
+## 字段注释（Note）
+
+自 [v0.16.2](https://github.com/tableauio/tableau/releases/tag/v0.16.2) 起，写在 schema 字段上的 `#` 注释会被提取为生成 proto 文件中对应字段的注释。可以写成同一行的行尾注释，也可以写成字段正上方独立一行的注释。
+
+```yaml
+"@sheet": "@ItemConf"
+ID: uint32 # Item's ID
+# Item's Name
+Name: string
+```
+
+生成结果：
+
+{{< details "hello_world.proto" open >}}
+
+```protobuf
+// --snip--
+message ItemConf {
+  option (tableau.worksheet) = {name:"ItemConf"};
+
+  uint32 id = 1 [(tableau.field) = {name:"ID"}]; // Item's ID
+  string name = 2 [(tableau.field) = {name:"Name"}]; // Item's Name
+}
+```
+
+{{< /details >}}
