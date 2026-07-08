@@ -59,7 +59,9 @@ bool ok = 9 [(tableau.field) = {name:&amp;quot;OK&amp;quot;}];
 &amp;quot;ok&amp;quot;: true
 }
 &lt;/code>&lt;/pre>
-&lt;/details></description></item><item><title>Enum</title><link>https://tableauio.github.io/docs/yaml/enum/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/yaml/enum/</guid><description>&lt;h2 id="use-predefined-enum-type">Use predefined enum type &lt;a href="#use-predefined-enum-type" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;/details>
+&lt;h2 id="field-note">Field note &lt;a href="#field-note" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>Since &lt;a href="https://github.com/tableauio/tableau/releases/tag/v0.16.2">v0.16.2&lt;/a>, a &lt;code>#&lt;/code> comment attached to a schema field is extracted as a field comment in the generated proto file. It can be written as a trailing comment on the same line, or as a standalone comment line right above the field.&lt;/p></description></item><item><title>Enum</title><link>https://tableauio.github.io/docs/yaml/enum/</link><pubDate>Sat, 22 Jun 2024 10:00:00 +0800</pubDate><guid>https://tableauio.github.io/docs/yaml/enum/</guid><description>&lt;h2 id="use-predefined-enum-type">Use predefined enum type &lt;a href="#use-predefined-enum-type" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>Enum type &lt;code>FruitType&lt;/code> in &lt;em>common.proto&lt;/em> is predefined as:&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">enum FruitType {
 FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];

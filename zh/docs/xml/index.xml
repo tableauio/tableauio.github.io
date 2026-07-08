@@ -62,7 +62,9 @@ bool ok = 9 [(tableau.field) = {name:&amp;quot;OK&amp;quot;}];
 &amp;quot;ok&amp;quot;: true
 }
 &lt;/code>&lt;/pre>
-&lt;/details></description></item><item><title>枚举（Enum）</title><link>https://tableauio.github.io/zh/docs/xml/enum/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/xml/enum/</guid><description>&lt;h2 id="使用预定义枚举类型">使用预定义枚举类型 &lt;a href="#%e4%bd%bf%e7%94%a8%e9%a2%84%e5%ae%9a%e4%b9%89%e6%9e%9a%e4%b8%be%e7%b1%bb%e5%9e%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;/details>
+&lt;h2 id="字段注释note">字段注释（Note） &lt;a href="#%e5%ad%97%e6%ae%b5%e6%b3%a8%e9%87%8anote" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
+&lt;p>自 &lt;a href="https://github.com/tableauio/tableau/releases/tag/v0.16.2">v0.16.2&lt;/a> 起，写在元表注释块中的 &lt;code>@note&lt;/code> 元属性会被提取为生成 proto 文件中对应字段的注释。&lt;/p></description></item><item><title>枚举（Enum）</title><link>https://tableauio.github.io/zh/docs/xml/enum/</link><pubDate>Fri, 23 Aug 2024 11:21:01 +0800</pubDate><guid>https://tableauio.github.io/zh/docs/xml/enum/</guid><description>&lt;h2 id="使用预定义枚举类型">使用预定义枚举类型 &lt;a href="#%e4%bd%bf%e7%94%a8%e9%a2%84%e5%ae%9a%e4%b9%89%e6%9e%9a%e4%b8%be%e7%b1%bb%e5%9e%8b" class="anchor" aria-hidden="true">#&lt;/a>&lt;/h2>
 &lt;p>&lt;em>common.proto&lt;/em> 中预定义的枚举类型 &lt;code>FruitType&lt;/code>：&lt;/p>
 &lt;pre>&lt;code class="language-protobuf">enum FruitType {
 FRUIT_TYPE_UNKNOWN = 0 [(tableau.evalue).name = &amp;quot;Unknown&amp;quot;];
