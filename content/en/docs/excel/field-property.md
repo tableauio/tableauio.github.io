@@ -1,7 +1,7 @@
 ---
 title: "Field property"
-description: "Tableau field property guide."
-lead: "Tableau field property guide."
+description: "Excel field property guide."
+lead: "A field property is appended to a field's type as a protobuf text-format block (|{...}) to set field-level validation and constraint options such as range, refer, unique, sequence, and more."
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2022-08-24T23:21:01+02:00
 draft: false
@@ -11,6 +11,27 @@ toc: true
 ---
 
 ## Overview
+
+A field property is appended to a field's type with a pipe `|`, followed by
+a `{}` block written in [protobuf text format](https://protobuf.dev/reference/protobuf/textformat-spec/) —
+one or more `option:value` pairs separated by whitespace:
+
+```text
+FieldType|{option1:value1 option2:value2}
+```
+
+String values are quoted (`"1,10"`); numeric and boolean values are bare
+(`1`, `true`). The comma inside a quoted value like `"1,10"` is part of the
+value, not an option separator.
+
+For example:
+
+- `int32|{range:"1,10"}`: a scalar field constrained to a value range.
+- `map<uint32, Item>|{sequence:1}`: a map whose keys must form a sequence starting at `1`.
+- `string|{json_name:"rarity_1"}`: a string field with a custom JSON name.
+- `int32|{range:"1,10" unique:true}`: multiple options on a single field.
+
+The available options are listed in the table below.
 
 | Option             | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
