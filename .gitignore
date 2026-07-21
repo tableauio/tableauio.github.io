@@ -6,3 +6,8 @@ resources
 .hugo_build.lock
 .DS_Store
 .claude
+
+# Skills managed by `npx skills` — regenerated from skills-lock.json
+# via `npx skills experimental_install`. Keep skills-lock.json tracked.
+.agents/
+.codebuddy/

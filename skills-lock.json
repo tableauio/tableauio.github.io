@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "skills": {
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "93f53fd1c0352d3d7ec17b8f73d7351bf76f4821e55d123c9d2abc2c53ba48e4"
+    },
+    "playwright-cli": {
+      "source": "microsoft/playwright-cli",
+      "sourceType": "github",
+      "skillPath": "skills/playwright-cli/SKILL.md",
+      "computedHash": "438b922468b7bb2ab5ce4a0f318fc65db93337f0df03908a5476effbae9487e6"
+    },
+    "tableau-release-html": {
+      "source": "D:\\GitHub\\tableauio\\tableauio.github.io\\skills",
+      "sourceType": "local",
+      "computedHash": "fdd393eb0e7081b872dcea8df155f4bde620c0be1403c981f3b18a6c2fddf1db"
+    }
+  }
+}
